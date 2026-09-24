@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The ntfy namespace — findings</title>
+<meta name="description" content="Read-only study of the public ntfy.sh notification namespace: exposed agent sessions, probe crossfire, and compositional actionability.">
+<style>
+:root{
+  --bg:#0b0e14; --panel:#141922; --line:#242c3a; --fg:#e6edf3; --dim:#7d8899;
+  --live:#3fb950; --accent:#4c9aff; --warn:#d29922; --err:#f85149;
+  --cred:#f85149; --anom:#a371f7; --misc:#f0883e; --probe:#d29922; --relay:#4c9aff;
+  --ops:#3fb950; --iot:#39c5cf; --news:#8b949e; --noise:#6e7681;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.65 var(--mono);
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:10;background:#0d1119;border-bottom:1px solid var(--line);
+  padding:11px 22px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.brand{font-size:15px;font-weight:600;color:var(--accent);white-space:nowrap}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);margin-right:7px}
+.dot.err{background:var(--err)}
+.stats{display:flex;gap:15px;flex-wrap:wrap;font-size:11px;color:var(--dim)}
+.stats b{color:var(--fg);font-weight:600}
+.retired{margin-left:auto;font-size:10px;letter-spacing:.5px;color:var(--err);
+  border:1px solid #5c1f1c;background:#2a1110;padding:2px 8px;border-radius:9px;white-space:nowrap}
+
+/* ---------- layout ---------- */
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0;align-items:start}
+nav{padding:22px 18px;border-right:1px solid var(--line);position:sticky;top:47px;
+  max-height:calc(100vh - 47px);overflow:auto}
+nav h4{margin:0 0 10px;font-size:10px;letter-spacing:.7px;text-transform:uppercase;color:var(--dim)}
+nav a{display:block;font-size:12px;color:var(--dim);padding:3px 0;border-left:2px solid transparent;padding-left:9px}
+nav a:hover{color:var(--fg);text-decoration:none;border-left-color:var(--line)}
+main{padding:26px 30px 90px;min-width:0;max-width:1000px}
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  nav{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line)}
+  nav a{display:inline-block;margin-right:12px}
+  main{padding:20px 18px 60px}
+}
+
+/* ---------- type ---------- */
+h1{font-size:26px;line-height:1.25;margin:0 0 6px;letter-spacing:-.3px}
+h2{font-size:16px;margin:44px 0 4px;color:var(--accent);letter-spacing:.2px}
+h2 .n{color:var(--noise);font-weight:400;margin-right:9px}
+h3{font-size:13px;margin:26px 0 6px;color:var(--fg)}
+p{margin:10px 0;color:#c9d4e0}
+.lede{font-size:15px;color:var(--fg)}
+.sub{color:var(--dim);font-size:12px;margin:0 0 14px}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+code{background:#1b212c;padding:1px 5px;border-radius:4px;font-size:12px;color:#d7e2ee}
+ul,ol{color:#c9d4e0;padding-left:22px}
+li{margin:5px 0}
+strong{color:var(--fg)}
+
+/* ---------- components ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:11px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:13px}
+.card .k{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--dim)}
+.card .v{font-size:22px;font-weight:700;line-height:1.15;margin:3px 0 2px;font-variant-numeric:tabular-nums}
+.card .d{font-size:11px;color:var(--dim);line-height:1.45}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px}
+th{text-align:left;color:var(--dim);font-weight:600;font-size:10px;letter-spacing:.5px;
+  text-transform:uppercase;border-bottom:1px solid var(--line);padding:6px 9px 6px 0}
+td{border-bottom:1px solid #1b212c;padding:7px 9px 7px 0;vertical-align:top;color:#c9d4e0}
+td:first-child{color:var(--fg);white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+
+.tag{font-size:9px;font-weight:700;letter-spacing:.4px;padding:1px 6px;border-radius:9px;
+  white-space:nowrap;color:#000}
+.t-anom{background:var(--anom)} .t-misc{background:var(--misc)} .t-ops{background:var(--ops)}
+.t-probe{background:var(--probe)} .t-iot{background:var(--iot)} .t-news{background:var(--news)}
+.t-noise{background:#2a3242;color:var(--dim)} .t-err{background:var(--err)}
+.t-live{background:var(--live)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin:16px 0}
+.note.warn{border-left-color:var(--warn)}
+.note.crit{border-left-color:var(--err)}
+.note.ok{border-left-color:var(--live)}
+.note p:first-child{margin-top:0} .note p:last-child{margin-bottom:0}
+.note .h{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
+
+pre{background:#0d1119;border:1px solid var(--line);border-radius:8px;padding:13px 15px;
+  overflow:auto;font-size:12px;line-height:1.55;color:#c9d4e0;margin:14px 0}
+pre .c{color:var(--noise)}
+pre .g{color:var(--live)} pre .r{color:var(--err)} pre .y{color:var(--warn)}
+
+blockquote{margin:16px 0;padding:2px 0 2px 16px;border-left:3px solid var(--line);
+  color:var(--dim);font-style:italic}
+
+footer{border-top:1px solid var(--line);padding:22px 30px;color:var(--dim);font-size:11px}
+footer a{color:var(--dim)} footer a:hover{color:var(--accent)}
+
+@media print{
+  header,nav{display:none} main{padding:0;max-width:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  h1,h2,strong,td:first-child{color:#000} h2{color:#000}
+  p,td,li{color:#222} .card,.note,pre{border-color:#ccc;background:#fafafa}
+  a{color:#000;text-decoration:underline}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="dot err"></span>the ntfy namespace</div>
+  <div class="stats">
+    <span><b>27</b> topics</span>
+    <span><b>1,221</b> messages</span>
+    <span><b>397 KB</b></span>
+    <span><b>0</b> published</span>
+  </div>
+  <div class="retired">RETIRED 2026-09-15 · READ-ONLY</div>
+</header>
+
+<div class="wrap">
+
+<nav>
+  <h4>Findings</h4>
+  <a href="#tldr">1 · In one line</a>
+  <a href="#corpus">2 · The corpus</a>
+  <a href="#sessions">3 · Agent sessions</a>
+  <a href="#serious">4 · The serious find</a>
+  <a href="#misconfig">5 · Misconfiguration</a>
+  <a href="#census">6 · The census collision</a>
+  <a href="#structure">7 · Structure, not text</a>
+  <a href="#negatives">8 · Negative results</a>
+  <a href="#limits">9 · The limits model</a>
+  <a href="#wrong">10 · Where it went wrong</a>
+  <a href="#thesis">11 · The thesis</a>
+  <a href="#ethics">12 · Ethics</a>
+  <a href="#repo">13 · Repository</a>
+</nav>
+
+<main>
+
+<h1>The ntfy namespace</h1>
+<p class="sub">A read-only study of the public <code>ntfy.sh</code> notification namespace.<br>
+Captured 2026-09-15 under the service's real rate limits.</p>
+
+<p class="lede">Between early 2026 and 15 September 2026 this project explored the public
+<code>ntfy.sh</code> namespace around one question: <strong>when an agent framework sends a
+notification, where does it send it, and what does that leak?</strong></p>
+
+<div class="note crit">
+  <div class="h">Status</div>
+  <p><strong>Retired 2026-09-15.</strong> No network tooling here is run any more. The project
+  ended when sustained throttling escalated to a host-level IP block. Every probing tool is kept
+  as a record of method, not as a working set. The offline analyzers remain live.</p>
+</div>
+
+<h2 id="tldr"><span class="n">1</span>In one line</h2>
+
+<p>The namespace holds <strong>almost no agents doing interesting things</strong>, and a great
+deal of ordinary people leaking their infrastructure through a channel nobody classified as a
+data store.</p>
+
+<blockquote>The exposed population is not a hidden network. It is the <strong>error rate of a
+privacy-correct default</strong>.</blockquote>
+
+<p>Every mainstream agent notifier generates a random 128-bit topic and tells the user the topic
+name <em>is</em> the password. So the only topics we can find are the ones where a human overrode
+that default with something memorable — <code>test</code>, <code>ai</code>, <code>llm</code>,
+<code>codex</code>, <code>cursor</code>. The population is small by construction.</p>
+
+<h2 id="corpus"><span class="n">2</span>The corpus</h2>
+
+<div class="grid">
+  <div class="card"><div class="k">topics</div><div class="v">27</div>
+    <div class="d">1,221 messages, 397 KB, captured from the 12h public cache</div></div>
+  <div class="card"><div class="k">live discoveries</div><div class="v">25</div>
+    <div class="d">found by the collector across a 14,697-name candidate list</div></div>
+  <div class="card"><div class="k">throttle responses</div><div class="v">257</div>
+    <div class="d">the warning we kept working through, before the IP block</div></div>
+  <div class="card"><div class="k">published</div><div class="v">0</div>
+    <div class="d">nothing was ever written to a topic we did not create</div></div>
+</div>
+
+<p>The collector also logged <strong>24 restarts</strong>, <strong>2 forced cool-offs</strong>,
+and hit <strong>5 reserved names</strong> — <code>claude</code>, <code>home</code>,
+<code>inbox</code>, <code>me</code>, <code>private</code>. Those are names the service has
+claimed and locked (HTTP 403, code 40301), and they turned out to be the most productive lead in
+the project, not a dead end.</p>
+
+<h2 id="sessions"><span class="n">3</span>Agent sessions</h2>
+
+<p>These are real, and they are the strongest evidence in the corpus.</p>
+
+<table>
+  <thead><tr><th>topic</th><th class="num">msgs</th><th>what it actually is</th></tr></thead>
+  <tbody>
+    <tr><td>claude-code</td><td class="num">214</td>
+      <td><strong>5 distinct sessions</strong> colliding on one name — five independent installs
+      that all chose the same obvious topic</td></tr>
+    <tr><td>claude-notifications</td><td class="num">94</td>
+      <td>project names and <em>subagent</em> lifecycle events</td></tr>
+    <tr><td>codex1</td><td class="num">88</td>
+      <td>per-call <strong>token accounting</strong> plus a cumulative daily counter</td></tr>
+    <tr><td>cursor</td><td class="num">52</td>
+      <td>52 × <code>"Cursor fertig"</code> — one distinct message</td></tr>
+    <tr><td>codex</td><td class="num">30</td>
+      <td><strong>6 threads</strong>, every message carrying <code>Thread:</code> +
+      <code>Turn:</code> UUIDv7 identifiers</td></tr>
+    <tr><td>opencode-notifications</td><td class="num">15</td>
+      <td>15 × <code>"Task completed"</code> — one distinct message</td></tr>
+  </tbody>
+</table>
+
+<h3>Why <code>claude-code</code> matters most</h3>
+<p>It is not one session. It is <strong>five</strong> — session ids <code>333c36b4</code>,
+<code>4c8796ce</code>, <code>627afe3b</code>, <code>73fa06ef</code>, <code>f443bead</code> —
+across 214 messages. It carries an agent <em>asking its human a question</em>, which is an
+interactive turn rather than a status ping:</p>
+
+<pre><span class="c">Session 627afe3b asks: How should the AI label read on replies the bot writes with AI?</span>
+<span class="c">Session 627afe3b: AskUserQuestion → N/A</span></pre>
+
+<p>It also leaks a macOS username, a project name, a homegrown hook directory
+(<code>.claude/overseer/AUTH_EXPIRED</code>), authentication state, and a remote-desktop link
+attached to every completion.</p>
+
+<div class="note warn">
+  <div class="h">Honest caveat</div>
+  <p>Four of those six topics are one-line status pings. We hold the <strong>notification
+  edge of sessions, not transcripts</strong> — no prompts, no responses, no diffs. The single
+  exception is that one leaked <code>AskUserQuestion</code>.</p>
+</div>
+
+<h3>The one conversation was not an agent</h3>
+<p>Topic <code>hello</code> scores conversation 1.0 and is the only confirmed interlocutor in the
+corpus — but it is a playful exchange between strangers (<em>"Oh wow a cat" / "Yeah. Meow."</em>),
+not an agent. Describing it as an agent conversation would be wrong.</p>
+
+<h2 id="serious"><span class="n">4</span>The most serious finding</h2>
+
+<p>Topic <code>alerts</code> — 16 messages, a domestic German home-automation channel
+(Airthings humidity, a battery, FinTS banking, push-budget alarms). Inside it:</p>
+
+<div class="note crit">
+  <div class="h">Wallet recovery phrase</div>
+  <p>A <strong>12-word BIP39 recovery phrase</strong>, posted as an untitled message with no
+  title and no tags. It is the only artifact in the entire corpus with the shape of a real
+  credential. <strong>It is deliberately not reproduced on this page.</strong></p>
+</div>
+
+<ul>
+  <li><strong>An SSH login record</strong> — an account name and an RFC1918 private address.</li>
+  <li><strong>A complete AWS certificate-rotation runbook</strong> — a service running −480h
+  behind, a systemd unit to restart, a CT id, a health-check path, and a named break-glass admin.
+  It states plainly that once the parent certificate lapses <em>there is no self-recovery</em>.</li>
+  <li><strong>An invitation to reply</strong> — <code>"Test from Alfred — ntfy skill works. Reply
+  if you got this."</code> An agent testing a notification skill. <strong>We never replied.</strong>
+  A public cache is not a contact channel, and answering would falsify someone's test.</li>
+</ul>
+
+<h2 id="misconfig"><span class="n">5</span>Misconfiguration at scale</h2>
+
+<table>
+  <thead><tr><th>topic</th><th>class</th><th>what is exposed</th></tr></thead>
+  <tbody>
+    <tr><td>prompt</td><td><span class="tag t-ops">ops</span></td>
+      <td>144 msgs — a <strong>Wazuh SIEM</strong> alert stream on a name that reads like a
+      prompt-injection target</td></tr>
+    <tr><td>camera</td><td><span class="tag t-iot">iot</span></td>
+      <td>101 msgs from a camera bridge — a true 120-second metronome</td></tr>
+    <tr><td>myhome</td><td><span class="tag t-misc">misconfig</span></td>
+      <td>a <strong>public university's</strong> Grafana/Alertmanager routed to a public topic:
+      internal hostnames, folder names, TLS certificate detail. Its uptime-check title is
+      literally <code>"dddddd"</code></td></tr>
+    <tr><td>notify</td><td><span class="tag t-misc">misconfig</span></td>
+      <td>a production service publishing its own hostname, a public IP, release tags and an
+      internal issue-tracker URL</td></tr>
+    <tr><td>test</td><td><span class="tag t-noise">noise</span></td>
+      <td>362 msgs from <strong>37+ unrelated producers</strong> — the base-rate topic</td></tr>
+  </tbody>
+</table>
+
+<h2 id="census"><span class="n">6</span>The census collision</h2>
+
+<p>The most methodologically interesting result. Topic <code>mcp</code> holds exactly one
+message, and it is not from a user of ntfy at all:</p>
+
+<pre>{"jsonrpc":"2.0","id":<span class="y">6075992</span>,"method":"initialize","params":{
+  "protocolVersion":"2025-06-18",
+  "capabilities":{"sampling":{},"elicitation":{},"roots":{"listChanged":true}},
+  "clientInfo":{"name":"<span class="r">internet-census-mcp-scanner</span>","version":"1.0.0"}}}</pre>
+
+<h3>The mechanism</h3>
+<p>ntfy addresses topics as <code>/&lt;topic&gt;</code>. MCP's conventional endpoint is
+<code>/mcp</code>. So <code>https://ntfy.sh/mcp</code> is a <strong>valid ntfy publish
+endpoint</strong>. An internet scanner walking hosts and POSTing an MCP handshake had it
+<strong>accepted and stored as an ordinary notification</strong> — the scanner wrote into the
+very namespace it was probing, without knowing ntfy existed.</p>
+
+<p>This is a distinct category: <strong>probe crossfire</strong> — traffic that is not a user of
+the service at all, but a scanner of some other protocol colliding with the path namespace. It
+is not a peer. It is not an agent.</p>
+
+<div class="note">
+  <div class="h">The frozen clock</div>
+  <p>The request id <code>6075992</code> <strong>never advanced</strong> — same id, same
+  timestamp, hours apart. One probe, never repeated. That stale id is the only real clock the
+  project ever had on an external actor, and it is frozen.</p>
+</div>
+
+<h3>Footprint: a single point</h3>
+<p>All 13 sibling MCP paths came back empty (<code>sse</code>, <code>jsonrpc</code>,
+<code>rpc</code>, <code>mcp-server</code>, <code>mcp-sse</code>, <code>mcp-http</code>,
+<code>modelcontextprotocol</code>, <code>initialize</code>, <code>tools</code>,
+<code>streamablehttp</code>, <code>mcpserver</code>, <code>mcpclient</code>,
+<code>census</code>), as did 29 generic protocol paths (<code>graphql</code>, <code>api</code>,
+<code>v1</code>, <code>health</code>, <code>metrics</code>, <code>admin</code>,
+<code>webhook</code>, <code>env</code>, <code>config</code> …).</p>
+
+<p><strong>The negative is the result.</strong> Cross-protocol collision is <em>narrow</em>, not a
+general property of the namespace. It needs a scanner-probed path that is <em>also</em> a
+plausible human-chosen topic name. <code>mcp</code> qualifies because it is short and guessable;
+<code>healthz</code> and <code>actuator</code> do not, because no human names a notification topic
+that. <strong>Avenue closed</strong> after ~42 created names.</p>
+
+<div class="note warn">
+  <div class="h">A false positive to avoid counting</div>
+  <p>The sibling sweep flagged <code>messages</code> with one message — but it is
+  <code>"No rain detected today."</code>, a weather notification. Despite <code>messages</code>
+  being the MCP SSE transport path, this is <strong>not</strong> a collision.</p>
+</div>
+
+<h3>The literature agrees</h3>
+<p>A paper submitted three days before this project's final session frames the identical failure
+mode — arXiv:2609.14119, <em>"Same Name, Different Server: A Security Census of Silent Drift in
+the Model Context Protocol Ecosystem"</em> (21,643 servers; 9.57% showing unauthenticated network
+exposure; 40.6% drifting silently; OR 2.96 for a high-severity finding). Its definition of a
+finding is satisfied by a notification server doing nothing wrong:
+<em>unauthenticated network exposure is exactly what an ntfy topic does when it collides with
+<code>/mcp</code> — it answers, unauthenticated, to a protocol it does not speak.</em></p>
+
+<h3>The reflexivity</h3>
+<blockquote>It found us the same way we found it — by probing the obvious name. Neither of us
+chose a hidden channel.</blockquote>
+<p>And the symmetry has a cost: this project <strong>created ~150 topics</strong> as a side effect
+of probing — the identical category error it criticises. Two scanners colliding on the same
+commons, each one's traffic becoming the other's data point.</p>
+
+<h2 id="structure"><span class="n">7</span>Structure, not text</h2>
+
+<p>The structural detector is deliberately <strong>content-blind</strong>. It measures shape —
+inter-arrival timing, modal period, message-length variance, field-presence rates, JSON key-set
+stability — on the reasoning that a covert channel which evades content monitoring has to leak
+through structure instead.</p>
+
+<p>Its strongest capability was recovering <strong>agent think-time from identifiers alone</strong>.
+Because UUIDv7 embeds a timestamp, per-turn duration could be reconstructed with
+<strong>no message text read at all</strong>: median turn <strong>398.2s</strong>, range
+0.1s – 15,725.7s.</p>
+
+<p>It also cleanly separated the two extremes, which is how we know it works:</p>
+
+<table>
+  <thead><tr><th>topic</th><th class="num">regularity</th><th>reading</th></tr></thead>
+  <tbody>
+    <tr><td>camera</td><td class="num">0.995</td>
+      <td>a true metronome — 120s period, timing CV 0.01. Maximum regularity is reachable.</td></tr>
+    <tr><td>claude-code</td><td class="num">0.018</td>
+      <td>four-plus independent humans. Minimum regularity, as expected.</td></tr>
+  </tbody>
+</table>
+
+<p>The interesting middle is machine-templated but not periodic —
+<code>cursor</code> and <code>opencode-notifications</code> both emit a <em>single</em> distinct
+message length, which is the profile a shape-only channel would have.</p>
+
+<h2 id="negatives"><span class="n">8</span>Negative results</h2>
+
+<p>Reported as loudly as the positives, because a closed avenue stops future spend.</p>
+
+<div class="grid">
+  <div class="card"><div class="k">vendor namespace</div><div class="v">33/36 free</div>
+    <div class="d">36 harness names probed. 2 reserved, 1 occupied. All 13 harness <em>event</em>
+    names (<code>needs-input</code>, <code>approval</code>, <code>task-complete</code> …) free.</div></div>
+  <div class="card"><div class="k">producer index</div><div class="v">20/25</div>
+    <div class="d">singletons — no cross-topic linkage. The pairs that appear are vendor
+    defaults, e.g. two strangers following ntfy's own tutorial.</div></div>
+  <div class="card"><div class="k">credentials</div><div class="v">none</div>
+    <div class="d">no API keys, private keys, webhook URLs, bearer tokens or password fields.
+    The BIP39 phrase is the single exception.</div></div>
+  <div class="card"><div class="k">sequence_id</div><div class="v">0</div>
+    <div class="d">what agent frameworks use. Its total absence once suggested the corpus held no
+    agent frameworks — a claim later overtaken by events.</div></div>
+</div>
+
+<div class="note warn">
+  <div class="h">Correction owed</div>
+  <p>The method notes still assert that the corpus is <em>"consumer/ops appliances, not agent
+  frameworks."</em> That was drawn from a 535-message corpus. At 1,221 messages the project holds
+  <strong>5 agent notifier channels and 11 distinct sessions/threads</strong>. That conclusion is
+  stale and should be corrected rather than left standing.</p>
+</div>
+
+<h2 id="limits"><span class="n">9</span>The limits model</h2>
+
+<p>Verified against ntfy's server source rather than guessed. The economics are the interesting
+part, and they are counter-intuitive:</p>
+
+<table>
+  <thead><tr><th>measure</th><th>value</th></tr></thead>
+  <tbody>
+    <tr><td>request token</td><td>1 per HTTP request — a batch of <strong>25 topics is still ONE
+      token</strong></td></tr>
+    <tr><td>new-topic token</td><td>100 burst, then <strong>1 per minute</strong> — the real
+      ceiling on breadth</td></tr>
+    <tr><td>subscription cap</td><td>30 topics per request, so batches stay at 25</td></tr>
+    <tr><td>cache duration</td><td>12h — results are a <em>window</em>, never history</td></tr>
+  </tbody>
+</table>
+
+<p>The consequence is that <strong>breadth is nearly free and bytes are the real budget</strong>.
+A 25-topic batch cost 185,284 B in one token; a single topic cost 644 B. Cost is dominated by
+which topics you carry, not how many — a 5-topic batch cost <strong>240×</strong> a 1-topic batch
+purely from its contents. Discovery and refresh therefore have opposite cost profiles and need
+different pacing.</p>
+
+<p>The pacing number was measured directly: <strong>two minutes of complete silence restores
+service</strong>. Any retry shorter than that is provably wasted, and a short retry loop is itself
+what keeps the budget drained.</p>
+
+<h2 id="wrong"><span class="n">10</span>Where it went wrong</h2>
+
+<p>The most expensive bug was not in the analysis. It was <strong>classifying errors by HTTP
+status instead of by body code</strong>.</p>
+
+<p>A reserved name (<code>403</code> / code <code>40301</code>) is <em>permanent</em> and demands
+you isolate the name. A throttle (<code>429</code> / <code>429xx</code>) is <em>transient</em> and
+demands you wait. They require <strong>opposite</strong> responses. Code that matched
+<code>status === 429 || status === 403</code> therefore got it wrong twice: it hit a reserved
+name, called it a throttle, slept, retried the same batch, escalated the sleep, and never advanced
+a single topic. The escalating waits were then written up as a "progressive penalty" — a theory
+that had to be publicly retracted once the misclassification was found.</p>
+
+<div class="note crit">
+  <div class="h">The ending</div>
+  <p><strong>257 rate-limit responses</strong> preceded the hard block. At ~19:25 the API host
+  stopped accepting connections entirely — not DNS, not the network, not an ntfy outage: a
+  firewall <code>DROP</code>, which produces a <em>timeout</em> with no status code at all, and so
+  fell silently through every error branch that had been written. That is why the tooling is
+  retired.</p>
+</div>
+
+<h2 id="thesis"><span class="n">11</span>The thesis: actionability is compositional</h2>
+
+<p>Ask what is "actionable" in a leak and almost everyone answers the same way: a bearer token, an
+API key, a password — something you can paste into a terminal and win with. <strong>That model is
+wrong, and this corpus is the counter-example.</strong></p>
+
+<p>The fragments found here have no entropy, no vendor prefix and no structural marker. Every DLP
+rule ever written is tuned to <code>sk-</code>, <code>AKIA</code>, <code>ghp_</code>,
+<code>xox</code>, <code>Bearer</code> and <code>-----BEGIN</code>. None of these match — because
+<strong>none of them is a secret. They are facts.</strong> A username. A directory name. A
+truncated private address. A tailnet name. A working-hour pattern.</p>
+
+<p>Assembled per person, they stop being trivia and become a targeting package: identity,
+infrastructure, environment, timing, posture, and intent.</p>
+
+<h3>Rotatable versus non-rotatable</h3>
+<p>This is the distinction that inverts conventional priority:</p>
+<ul>
+  <li>A <strong>credential</strong> is <em>event</em>-shaped. Leaked once, it is bad once. It is
+  rotated in five minutes and the incident closes. High drama, low persistence.</li>
+  <li>An <strong>identity + infrastructure + schedule profile</strong> is <em>state</em>-shaped.
+  It <strong>cannot be rotated at all.</strong> You cannot change your username, un-build a
+  project, or rename a tailnet without breaking every service attached to it.</li>
+</ul>
+
+<div class="note">
+  <div class="h">The DLP blind spot</div>
+  <p>Every fragment arrived through <strong>notification metadata</strong> — not a database, not a
+  log store, not a file share. That is precisely the category most organisations exclude from
+  data-loss tooling, on the reasoning that a notification is a transient signal rather than a
+  store. But a 12h cache makes it a store, the topic name makes it an address, and the body is
+  written by a tool that had no reason to be careful.</p>
+</div>
+
+<p><strong>The rule:</strong> a topic name on a public server is a <em>billboard</em>, not a
+<em>mailbox</em>. Put nothing on it you would not want indexed. Agent telemetry fails that test by
+construction — it is operational, personal and timestamped.</p>
+
+<p>The defensible use was the one genuine case: <code>hello</code>, where two strangers opted into
+a public space and found each other. That is what a public channel is for. Everything else was a
+private notification delivered through a public medium — a category error, not a mistake.</p>
+
+<h2 id="ethics"><span class="n">12</span>Ethics and disclosure</h2>
+
+<ul>
+  <li><strong>Read-only throughout.</strong> Nothing was ever published into a topic this project
+  did not create.</li>
+  <li><strong>No interaction</strong> with any agent or person. The explicit "reply if you got
+  this" invitation was declined: it would pollute a stranger's test, and a public cache is not a
+  contact channel.</li>
+  <li><strong>No credential or seed was used.</strong></li>
+  <li><strong>The seed phrase was not verified, spent, or moved.</strong> On that finding the
+  correct action is disclosure — and there is no non-invasive channel available to disclose
+  through. That absence is itself a finding.</li>
+  <li><strong>Personal detail is aggregated, not amplified</strong> beyond the minimum needed to
+  evidence the failure.</li>
+  <li><strong>~150 topics were created</strong> as a side effect of probing. That is the same
+  category error this project criticises, and it is recorded rather than excused.</li>
+  <li><strong>204 of 234 ranked derivation candidates were never probed</strong>, and never will
+  be.</li>
+</ul>
+
+<h2 id="repo"><span class="n">13</span>Repository</h2>
+
+<table>
+  <thead><tr><th>path</th><th>what it is</th></tr></thead>
+  <tbody>
+    <tr><td>AGENTS.md</td><td><strong>the method</strong> — protocol, failure modes, what was
+      closed. Start here.</td></tr>
+    <tr><td>docs/FINDINGS.md</td><td>the full analysis, including the closing thesis</td></tr>
+    <tr><td>docs/CENSUS.md</td><td>the MCP collision, explained</td></tr>
+    <tr><td>docs/INCIDENTS.md</td><td>2026 agent escapes, for context</td></tr>
+    <tr><td>docs/SERVICE-TRIAGE.md</td><td>classify a service instead of sweeping it</td></tr>
+    <tr><td>docs/DATA-NOTICE.md</td><td>provenance and sensitivity of the captured corpus</td></tr>
+    <tr><td>src/</td><td>all runnable code — collector, detectors, analyzers</td></tr>
+    <tr><td>data/</td><td>the accumulated product: state, archives, derived JSON</td></tr>
+  </tbody>
+</table>
+
+<h3>Running the analyzers</h3>
+<p>Offline, no network, from the repository root:</p>
+<pre>node src/structure.js          <span class="c"># structural / covert-channel profile</span>
+node src/voice-rank.js         <span class="c"># verify the voice-density re-rank</span>
+node src/derive-candidates.js  <span class="c"># derivation avenue, RANKED</span>
+node src/archive-manifest.js   <span class="c"># inventory</span></pre>
+
+<p>Everything else under <code>src/</code> is <strong>retired network tooling</strong>. It is kept
+as a record of method. Do not run it.</p>
+
+</main>
+</div>
+
+<footer>
+  Read-only study of the public ntfy.sh namespace · retired 2026-09-15 · MIT ·
+  this page is self-contained and works offline.
+</footer>
+
+</body>
+</html>

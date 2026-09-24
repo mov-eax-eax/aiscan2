@@ -4,6 +4,9 @@
 is not contacted again, and the probing tools are kept as a *record of method*, not
 as a working set. The offline analyzers over `data/` remain live and runnable.
 
+> **[Read the findings →](index.html)** — a single self-contained page. Works offline:
+> open it from disk, no server or network required.
+
 ---
 
 Between 2026 and 2026-09-15 this project explored the public `ntfy.sh` namespace

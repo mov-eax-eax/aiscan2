@@ -136,10 +136,11 @@ footer a{color:var(--dim)} footer a:hover{color:var(--accent)}
   <a href="#structure">7 · Structure, not text</a>
   <a href="#negatives">8 · Negative results</a>
   <a href="#limits">9 · The limits model</a>
-  <a href="#wrong">10 · Where it went wrong</a>
-  <a href="#thesis">11 · The thesis</a>
-  <a href="#ethics">12 · Ethics</a>
-  <a href="#repo">13 · Repository</a>
+  <a href="#pipeline">10 · The pipeline</a>
+  <a href="#wrong">11 · Where it went wrong</a>
+  <a href="#thesis">12 · The thesis</a>
+  <a href="#ethics">13 · Ethics</a>
+  <a href="#repo">14 · Repository</a>
 </nav>
 
 <main>
@@ -514,7 +515,108 @@ different pacing.</p>
 service</strong>. Any retry shorter than that is provably wasted, and a short retry loop is itself
 what keeps the budget drained.</p>
 
-<h2 id="wrong"><span class="n">10</span>Where it went wrong</h2>
+<h2 id="pipeline"><span class="n">10</span>The pipeline</h2>
+
+<p class="sub">A deliberate split: <strong>one process owns every network call</strong>, and
+nothing else is allowed to touch the network at all.</p>
+
+<pre> ntfy.sh  &lt;--- HTTP ---&gt;  src/collector.js  &lt;--- HTTP/SSE ---&gt;  src/ui.html + ui.js
+                          owns ALL traffic,                    read-only view,
+                          throttling, disk                     reconnectable</pre>
+
+<p>Why: an earlier single-file version polled from the browser, which made the tab the
+source of truth. Close it and everything learned was gone; every reload re-spent the rate
+budget. Now collection is a durable process that keeps working with no browser open.</p>
+
+<h3>Components</h3>
+<table>
+  <thead><tr><th>file</th><th>role</th></tr></thead>
+  <tbody>
+    <tr><td>topics.js</td><td>candidate generator — 14,697 deterministic names,
+      priority-ordered. UMD, so Node and the browser share <strong>one</strong>
+      implementation.</td></tr>
+    <tr><td>collector.js</td><td>the service: two loops, one throttle gate, error
+      classification, persistence, HTTP API.</td></tr>
+    <tr><td>signals.js</td><td>detection engine — a data-driven rule table, shared by
+      collector and browser.</td></tr>
+    <tr><td>ui.html / ui.css / ui.js</td><td>thin frontend. Never contacts ntfy; reads
+      <code>/api/state</code> and subscribes to <code>/api/events</code>.</td></tr>
+    <tr><td>scan.js / reserved-scan.js</td><td>one-shot CLI and reserved-name sweep,
+      checkpointing after every batch.</td></tr>
+    <tr><td>retrieve.js</td><td>single-shot retrieval — one HTTP call, no retry, no loop,
+      deliberately shaped so one request cannot become a storm.</td></tr>
+    <tr><td>structure.js · voice-rank.js · derive-candidates.js · archive-manifest.js ·
+      producers.js</td><td><strong>the offline analyzers — the only live code.</strong>
+      No network.</td></tr>
+  </tbody>
+</table>
+
+<h3>Two loops, one gate</h3>
+<ul>
+  <li><strong>Discovery</strong> walks the generated candidates in priority order,
+  advancing a cursor persisted to disk. Batches of 25. Resumable across restarts.</li>
+  <li><strong>Refresh</strong> re-polls known-live topics, cheapest-first, appending new
+  messages to <code>data/archive/&lt;topic&gt;.jsonl</code>.</li>
+</ul>
+<p>Both share a <strong>single throttle gate</strong> — when either is told to back off,
+both wait. That stops the two from defeating each other's pacing.</p>
+
+<p>Refresh intervals are <strong>cost-scaled</strong> so a 50 KB topic is not replayed as
+often as a 200-byte one:</p>
+<pre>base * (1 + bytes / 5000) * kindFactor      <span class="c">// capped at 6h</span></pre>
+
+<h3>Error classification — the rule learned the hard way</h3>
+<p><strong>An HTTP status is not an error class. The body code is.</strong></p>
+<table>
+  <thead><tr><th>observed</th><th>meaning</th><th>response</th></tr></thead>
+  <tbody>
+    <tr><td>403 + code 40301</td><td>reserved — <strong>permanent</strong>, a property of
+      the <em>name</em></td><td>isolate the name, continue</td></tr>
+    <tr><td>429 + 42901/42903/42904/42905</td><td>throttle — <strong>transient</strong></td>
+      <td>gate and wait</td></tr>
+    <tr><td>200 + empty body</td><td>dead</td><td>mark dead</td></tr>
+    <tr><td>anything else</td><td>unknown</td><td>treat as transient, keep the topic</td></tr>
+  </tbody>
+</table>
+
+<h3>The poison pill</h3>
+<p>A multi-topic subscription fails <strong>as a whole</strong> with <code>40301</code> if
+<em>any</em> one topic is reserved. So on a forbidden response the batch is
+<strong>halved recursively</strong> until the reserved name is isolated, which is marked,
+everything else is banked, and the scan continues. Without this one reserved topic stalls
+a scan forever.</p>
+
+<h3>Persistence and checkpointing</h3>
+<ul>
+  <li><code>data/state.json</code> — cursor, per-topic results, counters, log. Written
+  <strong>atomically</strong> (<code>.tmp</code> then <code>rename</code>), debounced at
+  1.5s and forced every 10s. An interrupted run loses at most one batch.</li>
+  <li><code>data/archive/&lt;topic&gt;.jsonl</code> — full untruncated messages,
+  append-only.</li>
+  <li><code>SIGINT</code>/<code>SIGTERM</code> save before exit.</li>
+</ul>
+
+<h3>Detection engine and versioning</h3>
+<p><code>signals.js</code> is data-driven so new categories are cheap. It extracts publisher
+<strong>self-descriptions</strong> the sender did not know it was revealing
+(<code>title</code>, <code>tags</code>, <code>priority</code>, <code>click</code>,
+<code>actions</code>, <code>attachment</code>), publisher <strong>signatures</strong>
+(census-scanner, mcp-client, json-rpc, agent-gateway, siem, heartbeat, credential),
+<strong>voice density</strong>, <strong>structure</strong>, <strong>conversation</strong>,
+and a combined <strong>agent score</strong>. Detection and ranking stay decoupled: a rule
+that fires is not a rule that should rank first.</p>
+
+<p><code>ANALYSIS_VERSION</code> must be bumped whenever a detector changes. Entries
+carrying an older version are re-polled at full width on boot. Without it a new detector
+silently applies only to newly-seen topics and the UI shows blanks — which happened
+<strong>four times</strong>.</p>
+
+<h3>Running it offline</h3>
+<p>The collector has a genuine no-network mode, used to render the UI from the archive
+after retirement:</p>
+<pre>DISCOVERY=false REFRESH_MINUTES=0 PORT=8787 node src/collector.js</pre>
+
+<h2 id="wrong"><span class="n">11</span>Where it went wrong</h2>
 
 <p>The most expensive bug was not in the analysis. It was <strong>classifying errors by HTTP
 status instead of by body code</strong>.</p>
@@ -536,7 +638,7 @@ that had to be publicly retracted once the misclassification was found.</p>
   retired.</p>
 </div>
 
-<h2 id="thesis"><span class="n">11</span>The thesis: actionability is compositional</h2>
+<h2 id="thesis"><span class="n">12</span>The thesis: actionability is compositional</h2>
 
 <p>Ask what is "actionable" in a leak and almost everyone answers the same way: a bearer token, an
 API key, a password — something you can paste into a terminal and win with. <strong>That model is
@@ -578,7 +680,7 @@ construction — it is operational, personal and timestamped.</p>
 a public space and found each other. That is what a public channel is for. Everything else was a
 private notification delivered through a public medium — a category error, not a mistake.</p>
 
-<h2 id="ethics"><span class="n">12</span>Ethics and disclosure</h2>
+<h2 id="ethics"><span class="n">13</span>Ethics and disclosure</h2>
 
 <ul>
   <li><strong>Read-only throughout.</strong> Nothing was ever published into a topic this project
@@ -598,7 +700,7 @@ private notification delivered through a public medium — a category error, not
   be.</li>
 </ul>
 
-<h2 id="repo"><span class="n">13</span>Repository</h2>
+<h2 id="repo"><span class="n">14</span>Repository</h2>
 
 <table>
   <thead><tr><th>path</th><th>what it is</th></tr></thead>
@@ -630,7 +732,8 @@ as a record of method. Do not run it.</p>
 
 <footer>
   Read-only study of the public ntfy.sh namespace · retired 2026-09-15 · MIT ·
-  this page is self-contained and works offline.
+  this page is self-contained and works offline.<br>
+  Markdown source of record: <code>README.md</code> — keep the two in step when editing.
 </footer>
 
 </body>

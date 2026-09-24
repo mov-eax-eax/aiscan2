@@ -1,0 +1,25 @@
+{
+  "name": "ntfy-namespace-study",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Read-only study of the public ntfy.sh notification namespace: exposed agent traffic, reserved-name derivation, and structural/covert-channel detection. Network tooling retired 2026-09-15; offline analyzers remain.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "structure": "node src/structure.js",
+    "voice-rank": "node src/voice-rank.js",
+    "derive": "node src/derive-candidates.js",
+    "manifest": "node src/archive-manifest.js",
+    "producers": "node src/producers.js",
+    "share-info": "node src/share.js info"
+  },
+  "keywords": [
+    "ntfy",
+    "security-research",
+    "agent-traffic",
+    "covert-channel",
+    "read-only"
+  ]
+}

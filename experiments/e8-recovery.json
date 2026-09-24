@@ -1,0 +1,13 @@
+{
+  "startedAt": "2026-09-15T18:14:22.439Z",
+  "trials": [
+    {
+      "silenceMin": 2,
+      "status": 200,
+      "bytes": 644,
+      "ms": 341,
+      "at": "2026-09-15T18:16:22.788Z"
+    }
+  ],
+  "recoveredAfterMin": 2
+}

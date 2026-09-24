@@ -1,0 +1,1220 @@
+{
+  "generatedAt": "2026-09-24T10:52:08.464Z",
+  "topics": {
+    "ai": {
+      "topic": "ai",
+      "n": 4,
+      "firstISO": "2026-09-15T05:07:28.000Z",
+      "lastISO": "2026-09-15T13:40:10.000Z",
+      "spanH": 8.54,
+      "timing": {
+        "medianS": 2160,
+        "meanS": 10254,
+        "cv": 1.525,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": 28280
+      },
+      "length": {
+        "min": 18,
+        "median": 73.5,
+        "max": 231,
+        "cv": 1.034,
+        "distinct": 3,
+        "distinctRatio": 0.75
+      },
+      "fields": {
+        "title": 0.5,
+        "tags": 0.5,
+        "priority": 0.5,
+        "click": 0.5,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "alerts": {
+      "topic": "alerts",
+      "n": 16,
+      "firstISO": "2026-09-15T06:30:00.000Z",
+      "lastISO": "2026-09-15T17:49:04.000Z",
+      "spanH": 11.32,
+      "timing": {
+        "medianS": 1647,
+        "meanS": 2716.3,
+        "cv": 1.261,
+        "modalPeriodS": 82.4,
+        "modalShare": 0.2,
+        "maxGapS": 12223
+      },
+      "length": {
+        "min": 27,
+        "median": 55,
+        "max": 470,
+        "cv": 1.281,
+        "distinct": 9,
+        "distinctRatio": 0.563
+      },
+      "fields": {
+        "title": 0.563,
+        "tags": 0.813,
+        "priority": 0.875,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.06
+    },
+    "camera": {
+      "topic": "camera",
+      "n": 101,
+      "firstISO": "2026-09-15T04:58:02.000Z",
+      "lastISO": "2026-09-15T08:18:02.000Z",
+      "spanH": 3.33,
+      "timing": {
+        "medianS": 120,
+        "meanS": 120,
+        "cv": 0.01,
+        "modalPeriodS": 120,
+        "modalShare": 1,
+        "maxGapS": 122
+      },
+      "length": {
+        "min": 50,
+        "median": 50,
+        "max": 50,
+        "cv": 0,
+        "distinct": 1,
+        "distinctRatio": 0.01
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.995
+    },
+    "chat": {
+      "topic": "chat",
+      "n": 3,
+      "firstISO": "2026-09-15T13:32:11.000Z",
+      "lastISO": "2026-09-15T14:07:07.000Z",
+      "spanH": 0.58,
+      "timing": {
+        "medianS": 1048,
+        "meanS": 1048,
+        "cv": 1.38,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": 2071
+      },
+      "length": {
+        "min": 5,
+        "median": 30,
+        "max": 125,
+        "cv": 1.187,
+        "distinct": 3,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0.333,
+        "priority": 0.333,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "claude-code": {
+      "topic": "claude-code",
+      "n": 214,
+      "firstISO": "2026-09-15T06:30:35.000Z",
+      "lastISO": "2026-09-15T17:14:11.000Z",
+      "spanH": 10.73,
+      "timing": {
+        "medianS": 75,
+        "meanS": 181.3,
+        "cv": 1.504,
+        "modalPeriodS": 0,
+        "modalShare": 0.061,
+        "maxGapS": 2148
+      },
+      "length": {
+        "min": 9,
+        "median": 19,
+        "max": 323,
+        "cv": 1.083,
+        "distinct": 21,
+        "distinctRatio": 0.098
+      },
+      "fields": {
+        "title": 0.995,
+        "tags": 0.986,
+        "priority": 0.495,
+        "click": 0.491,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.018
+    },
+    "claude-notifications": {
+      "topic": "claude-notifications",
+      "n": 94,
+      "firstISO": "2026-09-15T14:32:17.000Z",
+      "lastISO": "2026-09-15T20:30:19.000Z",
+      "spanH": 5.97,
+      "timing": {
+        "medianS": 56,
+        "meanS": 231,
+        "cv": 1.714,
+        "modalPeriodS": 2.8,
+        "modalShare": 0.323,
+        "maxGapS": 2011
+      },
+      "length": {
+        "min": 29,
+        "median": 45.5,
+        "max": 64,
+        "cv": 0.174,
+        "distinct": 18,
+        "distinctRatio": 0.191
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.262
+    },
+    "codex": {
+      "topic": "codex",
+      "n": 30,
+      "firstISO": "2026-09-15T08:50:27.000Z",
+      "lastISO": "2026-09-15T18:13:21.000Z",
+      "spanH": 9.38,
+      "timing": {
+        "medianS": 504,
+        "meanS": 1164.6,
+        "cv": 2.472,
+        "modalPeriodS": 176.4,
+        "modalShare": 0.138,
+        "maxGapS": 15739
+      },
+      "length": {
+        "min": 163,
+        "median": 165,
+        "max": 167,
+        "cv": 0.008,
+        "distinct": 3,
+        "distinctRatio": 0.1
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 36,
+        "latencyMedianS": 230.3,
+        "turnCount": 29,
+        "turnMedianS": 398.2,
+        "turnMinS": 0.1,
+        "turnMaxS": 15725.7
+      },
+      "regularity": 0.24
+    },
+    "codex1": {
+      "topic": "codex1",
+      "n": 88,
+      "firstISO": "2026-09-15T14:33:49.000Z",
+      "lastISO": "2026-09-16T02:20:34.000Z",
+      "spanH": 11.78,
+      "timing": {
+        "medianS": 624,
+        "meanS": 487.4,
+        "cv": 0.58,
+        "modalPeriodS": 624,
+        "modalShare": 0.609,
+        "maxGapS": 1482
+      },
+      "length": {
+        "min": 115,
+        "median": 176,
+        "max": 191,
+        "cv": 0.165,
+        "distinct": 13,
+        "distinctRatio": 0.148
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.56
+    },
+    "cursor": {
+      "topic": "cursor",
+      "n": 52,
+      "firstISO": "2026-09-15T07:20:33.000Z",
+      "lastISO": "2026-09-15T17:52:26.000Z",
+      "spanH": 10.53,
+      "timing": {
+        "medianS": 320,
+        "meanS": 743.4,
+        "cv": 1.795,
+        "modalPeriodS": 320,
+        "modalShare": 0.078,
+        "maxGapS": 7960
+      },
+      "length": {
+        "min": 13,
+        "median": 13,
+        "max": 13,
+        "cv": 0,
+        "distinct": 1,
+        "distinctRatio": 0.019
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.223
+    },
+    "fleet": {
+      "topic": "fleet",
+      "n": 1,
+      "firstISO": "2026-09-15T07:14:58.000Z",
+      "lastISO": "2026-09-15T07:14:58.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 25,
+        "median": 25,
+        "max": 25,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "hello": {
+      "topic": "hello",
+      "n": 14,
+      "firstISO": "2026-09-15T13:31:43.000Z",
+      "lastISO": "2026-09-15T16:38:00.000Z",
+      "spanH": 3.1,
+      "timing": {
+        "medianS": 26,
+        "meanS": 859.8,
+        "cv": 3.465,
+        "modalPeriodS": 26,
+        "modalShare": 0.231,
+        "maxGapS": 10775
+      },
+      "length": {
+        "min": 5,
+        "median": 70,
+        "max": 127,
+        "cv": 0.897,
+        "distinct": 9,
+        "distinctRatio": 0.643
+      },
+      "fields": {
+        "title": 0.214,
+        "tags": 0.357,
+        "priority": 0.643,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.09
+    },
+    "hermes": {
+      "topic": "hermes",
+      "n": 8,
+      "firstISO": "2026-09-15T12:00:16.000Z",
+      "lastISO": "2026-09-15T16:30:40.000Z",
+      "spanH": 4.51,
+      "timing": {
+        "medianS": 185,
+        "meanS": 2317.7,
+        "cv": 1.575,
+        "modalPeriodS": 0,
+        "modalShare": 0.429,
+        "maxGapS": 9557
+      },
+      "length": {
+        "min": 45,
+        "median": 65,
+        "max": 142,
+        "cv": 0.542,
+        "distinct": 3,
+        "distinctRatio": 0.375
+      },
+      "fields": {
+        "title": 0,
+        "tags": 1,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.22
+    },
+    "hey": {
+      "topic": "hey",
+      "n": 1,
+      "firstISO": "2026-09-15T15:33:34.000Z",
+      "lastISO": "2026-09-15T15:33:34.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 44,
+        "median": 44,
+        "max": 44,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "laptop": {
+      "topic": "laptop",
+      "n": 1,
+      "firstISO": "2026-09-15T16:00:35.000Z",
+      "lastISO": "2026-09-15T16:00:35.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 29,
+        "median": 29,
+        "max": 29,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "llm": {
+      "topic": "llm",
+      "n": 1,
+      "firstISO": "2026-09-15T13:49:20.000Z",
+      "lastISO": "2026-09-15T13:49:20.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 65,
+        "median": 65,
+        "max": 65,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 0,
+        "tags": 1,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "mcp": {
+      "topic": "mcp",
+      "n": 1,
+      "firstISO": "2026-09-15T12:46:51.000Z",
+      "lastISO": "2026-09-15T12:46:51.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 241,
+        "median": 241,
+        "max": 241,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 1,
+        "keySigs": 1,
+        "keysStable": 1
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "messages": {
+      "topic": "messages",
+      "n": 1,
+      "firstISO": "2026-09-15T06:21:25.000Z",
+      "lastISO": "2026-09-15T06:21:25.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 23,
+        "median": 23,
+        "max": 23,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "myhome": {
+      "topic": "myhome",
+      "n": 16,
+      "firstISO": "2026-09-15T07:01:05.000Z",
+      "lastISO": "2026-09-15T17:33:50.000Z",
+      "spanH": 10.55,
+      "timing": {
+        "medianS": 1582,
+        "meanS": 2531,
+        "cv": 1.257,
+        "modalPeriodS": 79.1,
+        "modalShare": 0.267,
+        "maxGapS": 11008
+      },
+      "length": {
+        "min": 27,
+        "median": 72.5,
+        "max": 1469,
+        "cv": 1.394,
+        "distinct": 8,
+        "distinctRatio": 0.5
+      },
+      "fields": {
+        "title": 0.875,
+        "tags": 0.375,
+        "priority": 0.125,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.08
+    },
+    "new": {
+      "topic": "new",
+      "n": 2,
+      "firstISO": "2026-09-15T09:57:32.000Z",
+      "lastISO": "2026-09-15T09:58:50.000Z",
+      "spanH": 0.02,
+      "timing": {
+        "medianS": 78,
+        "meanS": 78,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": 78
+      },
+      "length": {
+        "min": 122,
+        "median": 122,
+        "max": 122,
+        "cv": 0,
+        "distinct": 1,
+        "distinctRatio": 0.5
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "notify": {
+      "topic": "notify",
+      "n": 3,
+      "firstISO": "2026-09-15T08:35:07.000Z",
+      "lastISO": "2026-09-15T08:40:13.000Z",
+      "spanH": 0.09,
+      "timing": {
+        "medianS": 153,
+        "meanS": 153,
+        "cv": 0.296,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": 185
+      },
+      "length": {
+        "min": 214,
+        "median": 426,
+        "max": 634,
+        "cv": 0.495,
+        "distinct": 3,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 0,
+        "click": 1,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "opencode-notifications": {
+      "topic": "opencode-notifications",
+      "n": 15,
+      "firstISO": "2026-09-15T05:45:08.000Z",
+      "lastISO": "2026-09-15T17:46:36.000Z",
+      "spanH": 12.02,
+      "timing": {
+        "medianS": 598,
+        "meanS": 3092,
+        "cv": 2.85,
+        "modalPeriodS": 418.6,
+        "modalShare": 0.143,
+        "maxGapS": 33624
+      },
+      "length": {
+        "min": 14,
+        "median": 14,
+        "max": 14,
+        "cv": 0,
+        "distinct": 1,
+        "distinctRatio": 0.067
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.243
+    },
+    "prompt": {
+      "topic": "prompt",
+      "n": 144,
+      "firstISO": "2026-09-15T04:52:45.000Z",
+      "lastISO": "2026-09-15T18:17:05.000Z",
+      "spanH": 13.41,
+      "timing": {
+        "medianS": 312,
+        "meanS": 337.5,
+        "cv": 0.745,
+        "modalPeriodS": 0,
+        "modalShare": 0.126,
+        "maxGapS": 948
+      },
+      "length": {
+        "min": 156,
+        "median": 185,
+        "max": 257,
+        "cv": 0.125,
+        "distinct": 10,
+        "distinctRatio": 0.069
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.34
+    },
+    "system": {
+      "topic": "system",
+      "n": 12,
+      "firstISO": "2026-09-15T05:03:15.000Z",
+      "lastISO": "2026-09-15T16:02:31.000Z",
+      "spanH": 10.99,
+      "timing": {
+        "medianS": 1,
+        "meanS": 3596,
+        "cv": 1.95,
+        "modalPeriodS": 0,
+        "modalShare": 0.455,
+        "maxGapS": 21585
+      },
+      "length": {
+        "min": 93,
+        "median": 98.5,
+        "max": 108,
+        "cv": 0.049,
+        "distinct": 11,
+        "distinctRatio": 0.917
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 1,
+        "actions": 1,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.327
+    },
+    "test": {
+      "topic": "test",
+      "n": 362,
+      "firstISO": "2026-09-15T05:00:01.000Z",
+      "lastISO": "2026-09-15T18:17:10.000Z",
+      "spanH": 13.29,
+      "timing": {
+        "medianS": 15,
+        "meanS": 132.5,
+        "cv": 1.915,
+        "modalPeriodS": 0,
+        "modalShare": 0.266,
+        "maxGapS": 1781
+      },
+      "length": {
+        "min": 1,
+        "median": 90,
+        "max": 1353,
+        "cv": 1.21,
+        "distinct": 77,
+        "distinctRatio": 0.213
+      },
+      "fields": {
+        "title": 0.782,
+        "tags": 0.29,
+        "priority": 0.514,
+        "click": 0.251,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0.003,
+        "keySigs": 1,
+        "keysStable": 1
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.08
+    },
+    "vps": {
+      "topic": "vps",
+      "n": 1,
+      "firstISO": "2026-09-15T09:26:14.000Z",
+      "lastISO": "2026-09-15T09:26:14.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 184,
+        "median": 184,
+        "max": 184,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "yes": {
+      "topic": "yes",
+      "n": 1,
+      "firstISO": "2026-09-15T05:49:39.000Z",
+      "lastISO": "2026-09-15T05:49:39.000Z",
+      "spanH": 0,
+      "timing": {
+        "medianS": null,
+        "meanS": null,
+        "cv": null,
+        "modalPeriodS": null,
+        "modalShare": null,
+        "maxGapS": null
+      },
+      "length": {
+        "min": 46,
+        "median": 46,
+        "max": 46,
+        "cv": null,
+        "distinct": 1,
+        "distinctRatio": 1
+      },
+      "fields": {
+        "title": 1,
+        "tags": 1,
+        "priority": 1,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0
+    },
+    "yo": {
+      "topic": "yo",
+      "n": 35,
+      "firstISO": "2026-09-15T13:41:47.000Z",
+      "lastISO": "2026-09-15T18:22:32.000Z",
+      "spanH": 4.68,
+      "timing": {
+        "medianS": 126,
+        "meanS": 495.4,
+        "cv": 1.9,
+        "modalPeriodS": 12.6,
+        "modalShare": 0.324,
+        "maxGapS": 4226
+      },
+      "length": {
+        "min": 28,
+        "median": 40,
+        "max": 53,
+        "cv": 0.158,
+        "distinct": 14,
+        "distinctRatio": 0.4
+      },
+      "fields": {
+        "title": 0,
+        "tags": 0,
+        "priority": 0,
+        "click": 0,
+        "actions": 0,
+        "attachment": 0
+      },
+      "json": {
+        "share": 0,
+        "keySigs": 0,
+        "keysStable": null
+      },
+      "uuid7": {
+        "count": 0,
+        "latencyMedianS": null,
+        "turnCount": 0,
+        "turnMedianS": null,
+        "turnMinS": null,
+        "turnMaxS": null
+      },
+      "regularity": 0.266
+    }
+  }
+}

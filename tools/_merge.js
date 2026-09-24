@@ -1,0 +1,13 @@
+"use strict";
+const fs=require("fs");
+const p="data/probe-results.json";
+const r=JSON.parse(fs.readFileSync(p,"utf8"));
+const a=r["harness-expand-A"]||{};
+r["harness-expand"]=r["harness-expand"]||{};
+let n=0;
+Object.keys(a).forEach(function(t){ r["harness-expand"][t]=a[t]; n++; });
+delete r["harness-expand-A"];
+fs.writeFileSync(p+".tmp",JSON.stringify(r,null,2)); fs.renameSync(p+".tmp",p);
+console.log("merged "+n+" resolved names into harness-expand");
+console.log("total keys:", Object.keys(r["harness-expand"]).length);
+console.log("reserved found:", Object.keys(r["harness-expand"]).filter(function(t){return r["harness-expand"][t].reserved;}).join(",")||"(none)");

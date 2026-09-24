@@ -1,0 +1,8 @@
+# Normalise line endings so the working tree stays stable across platforms.
+* text=auto eol=lf
+
+# Windows launcher keeps CRLF.
+*.ps1 text eol=crlf
+
+# Archived corpus is data, not prose - never mangle it.
+*.jsonl text eol=lf

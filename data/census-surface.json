@@ -1,0 +1,120 @@
+{
+  "results": {
+    "graphql": {
+      "status": 200,
+      "count": 0
+    },
+    "gql": {
+      "status": 200,
+      "count": 0
+    },
+    "graphiql": {
+      "status": 200,
+      "count": 0
+    },
+    "api": {
+      "status": 200,
+      "count": 0
+    },
+    "v1": {
+      "status": 200,
+      "count": 0
+    },
+    "v2": {
+      "status": 200,
+      "count": 0
+    },
+    "rest": {
+      "status": 200,
+      "count": 0
+    },
+    "swagger": {
+      "status": 200,
+      "count": 0
+    },
+    "openapi": {
+      "status": 200,
+      "count": 0
+    },
+    "openapi.json": {
+      "status": 200,
+      "count": 0
+    },
+    "swagger.json": {
+      "status": 200,
+      "count": 0
+    },
+    "well-known": {
+      "status": 200,
+      "count": 0
+    },
+    "discovery": {
+      "status": 200,
+      "count": 0
+    },
+    "health": {
+      "status": 200,
+      "count": 0
+    },
+    "healthz": {
+      "status": 200,
+      "count": 0
+    },
+    "metrics": {
+      "status": 200,
+      "count": 0
+    },
+    "status": {
+      "status": 200,
+      "count": 0
+    },
+    "ready": {
+      "status": 200,
+      "count": 0
+    },
+    "live": {
+      "status": 200,
+      "count": 0
+    },
+    "admin": {
+      "status": 200,
+      "count": 0
+    },
+    "debug": {
+      "status": 200,
+      "count": 0
+    },
+    "console": {
+      "status": 200,
+      "count": 0
+    },
+    "webhook": {
+      "status": 200,
+      "count": 0
+    },
+    "hook": {
+      "status": 200,
+      "count": 0
+    },
+    "callback": {
+      "status": 200,
+      "count": 0
+    },
+    "actuator": {
+      "status": 200,
+      "count": 0
+    },
+    "env": {
+      "status": 200,
+      "count": 0
+    },
+    "config": {
+      "status": 200,
+      "count": 0
+    },
+    "query": {
+      "status": 200,
+      "count": 0
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "kind": "finding",
+  "id": "f-2026-09-15-0ade54",
+  "at": "2026-09-15T19:20:33.254Z",
+  "title": "harness-census",
+  "body": "Harness-name census: the coding-tool namespace is barren.\n\nWe probed 36 names drawn from major AI coding-agent vendors and their notifier\nplugin names. Result: two reserved, one occupied, the remainder free.\n\n    reserved   warp, claude      claimed by the service, not by a user\n    occupied   kiro              a single message\n    free       the other 33\n\nInterpretation. Combined with the earlier finding that mainstream agent installers\ngenerate random topic names by default, the mass of exposed traffic is concentrated in\nthe small set of names a human actually types into a config field, rather than spread\nacross vendor vocabulary. Probing vendor and model names has now been measured as low\nyield and should stop.\n\nMethod note: a reserved name causes the service to reject an entire multi-topic\nsubscription, so batches must be halved recursively to isolate it. Conflating that\nrejection with a rate limit produced an infinite retry loop and a false conclusion\nabout escalating penalties, which has been retracted.",
+  "sig": "ed25519:XaPX93+jYM7X3TlKrW9chOJnQmn7MqpTfZ8Ki4hlswBn7hV1cZkbfNZvH8hYuZhL0vYB69m5DG1gYzOacgGsCA=="
+}

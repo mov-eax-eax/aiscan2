@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ntfy collector</title>
+<link rel="stylesheet" href="/ui.css">
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="dot" id="conn"></span> ntfy collector</div>
+  <div class="stats" id="stats"><span class="dim">connecting...</span></div>
+</header>
+
+<div id="banner" class="banner" style="display:none"></div>
+
+<main>
+  <section class="content">
+    <div class="tabs">
+      <button class="ctab on" data-cview="discover">Discover</button>
+      <button class="ctab" data-cview="dashboard">Dashboard</button>
+    </div>
+
+    <div id="cview-dashboard" class="cview">
+      <div class="dash">
+        <div class="dcard">
+          <h3>Budget <span class="dim small" id="dashDate"></span></h3>
+          <div class="big" id="dashBudgetPct">-</div>
+          <div class="sub">of the daily bandwidth pool</div>
+          <div class="bar2"><div id="dashBudgetBar"></div></div>
+          <div class="drow"><span>used today</span><b id="dashUsed">-</b></div>
+          <div class="drow"><span>remaining</span><b id="dashRemaining">-</b></div>
+          <div class="drow"><span>burn rate</span><b id="dashBurn">-</b></div>
+          <div class="drow"><span>projected exhaustion</span><b id="dashHours">-</b></div>
+          <div class="drow"><span>new-topic spend</span><b id="dashCreations">-</b></div>
+          <div class="drow"><span>creation pace</span><b id="dashPace">-</b></div>
+        </div>
+
+        <div class="dcard">
+          <h3>Efficiency</h3>
+          <div class="big" id="dashYield">-</div>
+          <div class="sub">agents found per topic scanned</div>
+          <div class="drow"><span>topics / request (incl. refresh)</span><b id="dashTpr">-</b></div>
+          <div class="drow"><span>bytes / request</span><b id="dashBpr">-</b></div>
+          <div class="drow"><span>live rate</span><b id="dashLiveRate">-</b></div>
+          <div class="drow"><span>agents / conversations</span><b id="dashAgents">-</b></div>
+          <div class="drow"><span>throttle hits</span><b id="dashThrottle">-</b></div>
+          <div class="drow"><span>discovery rate</span><b id="dashTph">-</b></div>
+          <div class="drow"><span>still to scan</span><b id="dashRemain2">-</b></div>
+        </div>
+
+        <div class="dcard wide">
+          <h3>New leads <span class="dim small">most recently discovered first</span></h3>
+          <div id="dashLeads" class="dashleads"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cview-discover" class="cview on">
+    <div class="bar">
+      <div style="flex:1;min-width:160px"><input id="filter" placeholder="filter live topics..."></div>
+      <label class="inline" style="margin:0"><input type="checkbox" id="agentsOnly"> <span>agents only</span></label>
+      <span class="dim small" id="liveCount"></span>
+    </div>
+    <div class="catbar" id="cats"></div>
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="empty">no live topics yet - the collector is working through the candidate list</div>
+    </div>
+  </section>
+
+  <aside class="rail">
+    <div class="panel">
+      <h3>Collector</h3>
+      <div id="statusRows"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Most promising <span class="badge lead" id="leadCount">0</span></h3>
+      <div class="small dim" style="margin-bottom:6px">ranked by liveness tier (T0 reserved / T1 seen once / T2 growing / T3 counter advancing), category weight, publisher metadata and payload signatures</div>
+      <div class="inline" style="margin-bottom:6px">
+        <label style="width:60px">sort</label>
+        <select id="leadSort">
+          <option value="score">score</option>
+          <option value="density">voice density</option>
+          <option value="tier">liveness tier</option>
+          <option value="recent">most recent</option>
+        </select>
+      </div>
+      <div id="leads" class="leads"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Reserved names <span class="badge res" id="resCount">0</span></h3>
+      <div class="small dim" style="margin-bottom:6px">40301 - deliberately claimed, auth required. The only intentional acts we observe.</div>
+      <div id="reserved" class="vchips"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Producers</h3>
+      <div class="small dim" style="margin-bottom:6px">title prefixes across every archived message - a census of what writes here</div>
+      <div id="producers" class="vchips"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Anomalies <span class="badge" id="anomCount">0</span></h3>
+      <div class="small dim" style="margin-bottom:6px">credential leaks, agent anomalies, misconfigurations and probes, ranked by confidence</div>
+      <div id="anoms" class="anoms"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Provenance</h3>
+      <div class="small dim" style="margin-bottom:6px">vendor and protocol tokens seen in live topics</div>
+      <div id="vendors" class="vchips"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Agent rendezvous</h3>
+      <input id="rvBase" value="claude" placeholder="agent identity or base topic">
+      <input id="rvPass" placeholder="shared passphrase (peers only)">
+      <label class="inline"><input type="checkbox" id="rvAgent" checked> <span>agent fallback ladder</span></label>
+      <div class="btns">
+        <button id="btnDerive">Derive</button>
+        <button id="btnProbe" class="primary">Probe occupancy</button>
+      </div>
+      <div class="small dim" id="rvNote"></div>
+      <div id="rvLadder"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Controls</h3>
+      <label class="inline"><input type="checkbox" id="cfgDiscovery"> <span>discovery enabled</span></label>
+      <div class="inline"><label style="width:110px">batch (1-25)</label><input id="cfgBatch" type="number" min="1" max="25"></div>
+      <div class="inline"><label style="width:110px">max topics</label><input id="cfgMax" type="number" min="1"></div>
+      <div class="inline"><label style="width:110px">refresh (min)</label><input id="cfgRefresh" type="number" min="0"></div>
+      <div class="btns">
+        <button id="btnApply" class="primary">Apply</button>
+        <button id="btnExport">Export JSON</button>
+        <button id="btnReset">Reset</button>
+      </div>
+      <div class="ack" id="cfgAck"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Publish</h3>
+      <input id="pubTopic" placeholder="topic (own or derived only)">
+      <textarea id="pubMsg" placeholder="message body"></textarea>
+      <label class="inline"><input type="checkbox" id="pubGuard"> <span>I know this is a public cache</span></label>
+      <button id="btnPub" class="primary">Send</button>
+      <div class="ack" id="pubAck"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Recent hits</h3>
+      <div id="hits" class="hits"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Log</h3>
+      <pre id="log"></pre>
+    </div>
+  </aside>
+</main>
+
+<div id="detail" class="overlay" style="display:none">
+  <div class="sheet">
+    <div class="sheethead">
+      <b id="detailTopic">topic</b>
+      <span class="dim small" id="detailMeta"></span>
+      <span style="flex:1"></span>
+      <button id="btnCopyDetail">copy all</button>
+      <button id="btnCloseDetail">close</button>
+    </div>
+    <div id="detailBody" class="sheetbody"></div>
+  </div>
+</div>
+
+<script src="/topics.js"></script>
+<script src="/signals.js"></script>
+<script src="/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,661 @@
+{
+  "generatedAt": "2026-09-16T02:25:14.684Z",
+  "note": "Producer-prefix index over data/archive. Fingerprints are publisher metadata the sender did not know it was revealing. Fanout separates identity from boilerplate.",
+  "topics": 27,
+  "messages": 1221,
+  "linkedTopicCount": 12,
+  "clusters": [
+    [
+      "alerts",
+      "claude-code",
+      "hello",
+      "new",
+      "test"
+    ],
+    [
+      "hermes",
+      "llm"
+    ],
+    [
+      "ai"
+    ],
+    [
+      "camera"
+    ],
+    [
+      "chat"
+    ],
+    [
+      "claude-notifications"
+    ],
+    [
+      "codex"
+    ],
+    [
+      "codex1"
+    ],
+    [
+      "cursor"
+    ],
+    [
+      "fleet"
+    ],
+    [
+      "hey"
+    ],
+    [
+      "laptop"
+    ],
+    [
+      "mcp"
+    ],
+    [
+      "messages"
+    ],
+    [
+      "myhome"
+    ],
+    [
+      "notify"
+    ],
+    [
+      "opencode-notifications"
+    ],
+    [
+      "prompt"
+    ],
+    [
+      "system"
+    ],
+    [
+      "vps"
+    ],
+    [
+      "yes"
+    ],
+    [
+      "yo"
+    ]
+  ],
+  "strongPairs": [
+    {
+      "pair": "hello + new",
+      "kinds": [
+        "template",
+        "title",
+        "titlePrefix"
+      ],
+      "evidence": {
+        "template": "This is a test notification from the ntfy iOS app. It has a priority of <N>. If you send another one, it may look different.",
+        "title": "Test: You can set a title if you like",
+        "titlePrefix": "Test"
+      }
+    },
+    {
+      "pair": "hermes + llm",
+      "kinds": [
+        "tags",
+        "template"
+      ],
+      "evidence": {
+        "tags": "hermes-agent",
+        "template": "⚠️ Gateway shutting down — Your current task will be interrupted."
+      }
+    },
+    {
+      "pair": "claude-code + test",
+      "kinds": [
+        "tags",
+        "template"
+      ],
+      "evidence": {
+        "template": "triggered",
+        "tags": "white_check_mark"
+      }
+    },
+    {
+      "pair": "hello + test",
+      "kinds": [
+        "priority",
+        "titlePrefix"
+      ],
+      "evidence": {
+        "titlePrefix": "Test",
+        "priority": "2"
+      }
+    },
+    {
+      "pair": "alerts + test",
+      "kinds": [
+        "priority",
+        "tags"
+      ],
+      "evidence": {
+        "priority": "2",
+        "tags": "white_check_mark"
+      }
+    }
+  ],
+  "singleFingerprintPairs": [
+    {
+      "pair": "claude-code + claude-notifications",
+      "kinds": [
+        "tags"
+      ],
+      "evidence": {
+        "tags": "robot,white_check_mark"
+      }
+    },
+    {
+      "pair": "prompt + test",
+      "kinds": [
+        "tags"
+      ],
+      "evidence": {
+        "tags": "rotating_light"
+      }
+    },
+    {
+      "pair": "chat + hello",
+      "kinds": [
+        "template"
+      ],
+      "evidence": {
+        "template": "This is a test notification from the ntfy Android app. It has a level <N> priority. If you send another, it may look different."
+      }
+    },
+    {
+      "pair": "opencode-notifications + test",
+      "kinds": [
+        "titlePrefix"
+      ],
+      "evidence": {
+        "titlePrefix": "opencode"
+      }
+    },
+    {
+      "pair": "new + test",
+      "kinds": [
+        "titlePrefix"
+      ],
+      "evidence": {
+        "titlePrefix": "Test"
+      }
+    },
+    {
+      "pair": "alerts + claude-notifications",
+      "kinds": [
+        "priority"
+      ],
+      "evidence": {
+        "priority": "2"
+      }
+    },
+    {
+      "pair": "alerts + hello",
+      "kinds": [
+        "priority"
+      ],
+      "evidence": {
+        "priority": "2"
+      }
+    },
+    {
+      "pair": "claude-notifications + hello",
+      "kinds": [
+        "priority"
+      ],
+      "evidence": {
+        "priority": "2"
+      }
+    },
+    {
+      "pair": "claude-notifications + test",
+      "kinds": [
+        "priority"
+      ],
+      "evidence": {
+        "priority": "2"
+      }
+    },
+    {
+      "pair": "alerts + claude-code",
+      "kinds": [
+        "tags"
+      ],
+      "evidence": {
+        "tags": "white_check_mark"
+      }
+    },
+    {
+      "pair": "alerts + codex1",
+      "kinds": [
+        "tags"
+      ],
+      "evidence": {
+        "tags": "white_check_mark"
+      }
+    },
+    {
+      "pair": "claude-code + codex1",
+      "kinds": [
+        "tags"
+      ],
+      "evidence": {
+        "tags": "white_check_mark"
+      }
+    },
+    {
+      "pair": "codex1 + test",
+      "kinds": [
+        "tags"
+      ],
+      "evidence": {
+        "tags": "white_check_mark"
+      }
+    }
+  ],
+  "narrowLinks": [
+    {
+      "kind": "tags",
+      "value": "robot,white_check_mark",
+      "fanout": 2,
+      "topics": [
+        "claude-code",
+        "claude-notifications"
+      ],
+      "counts": {
+        "claude-code": 2,
+        "claude-notifications": 42
+      }
+    },
+    {
+      "kind": "tags",
+      "value": "hermes-agent",
+      "fanout": 2,
+      "topics": [
+        "hermes",
+        "llm"
+      ],
+      "counts": {
+        "hermes": 8,
+        "llm": 1
+      }
+    },
+    {
+      "kind": "tags",
+      "value": "rotating_light",
+      "fanout": 2,
+      "topics": [
+        "prompt",
+        "test"
+      ],
+      "counts": {
+        "prompt": 4,
+        "test": 13
+      }
+    },
+    {
+      "kind": "template",
+      "value": "This is a test notification from the ntfy Android app. It has a level <N> priority. If you send another, it may look different.",
+      "fanout": 2,
+      "topics": [
+        "chat",
+        "hello"
+      ],
+      "counts": {
+        "chat": 1,
+        "hello": 4
+      }
+    },
+    {
+      "kind": "template",
+      "value": "triggered",
+      "fanout": 2,
+      "topics": [
+        "claude-code",
+        "test"
+      ],
+      "counts": {
+        "claude-code": 2,
+        "test": 7
+      }
+    },
+    {
+      "kind": "template",
+      "value": "This is a test notification from the ntfy iOS app. It has a priority of <N>. If you send another one, it may look different.",
+      "fanout": 2,
+      "topics": [
+        "hello",
+        "new"
+      ],
+      "counts": {
+        "hello": 2,
+        "new": 2
+      }
+    },
+    {
+      "kind": "template",
+      "value": "⚠️ Gateway shutting down — Your current task will be interrupted.",
+      "fanout": 2,
+      "topics": [
+        "hermes",
+        "llm"
+      ],
+      "counts": {
+        "hermes": 2,
+        "llm": 1
+      }
+    },
+    {
+      "kind": "title",
+      "value": "Test: You can set a title if you like",
+      "fanout": 2,
+      "topics": [
+        "hello",
+        "new"
+      ],
+      "counts": {
+        "hello": 2,
+        "new": 2
+      }
+    },
+    {
+      "kind": "titlePrefix",
+      "value": "opencode",
+      "fanout": 2,
+      "topics": [
+        "opencode-notifications",
+        "test"
+      ],
+      "counts": {
+        "opencode-notifications": 15,
+        "test": 6
+      }
+    },
+    {
+      "kind": "titlePrefix",
+      "value": "Test",
+      "fanout": 3,
+      "topics": [
+        "hello",
+        "new",
+        "test"
+      ],
+      "counts": {
+        "hello": 3,
+        "new": 2,
+        "test": 1
+      }
+    },
+    {
+      "kind": "priority",
+      "value": "2",
+      "fanout": 4,
+      "topics": [
+        "alerts",
+        "claude-notifications",
+        "hello",
+        "test"
+      ],
+      "counts": {
+        "alerts": 1,
+        "claude-notifications": 52,
+        "hello": 2,
+        "test": 30
+      }
+    },
+    {
+      "kind": "tags",
+      "value": "white_check_mark",
+      "fanout": 4,
+      "topics": [
+        "alerts",
+        "claude-code",
+        "codex1",
+        "test"
+      ],
+      "counts": {
+        "alerts": 1,
+        "claude-code": 168,
+        "codex1": 68,
+        "test": 5
+      }
+    }
+  ],
+  "wideLinks": [
+    {
+      "kind": "priority",
+      "value": "5",
+      "fanout": 5,
+      "topics": [
+        "alerts",
+        "claude-code",
+        "hello",
+        "new",
+        "test"
+      ],
+      "counts": {
+        "alerts": 1,
+        "claude-code": 18,
+        "hello": 2,
+        "new": 1,
+        "test": 4
+      }
+    },
+    {
+      "kind": "tags",
+      "value": "warning",
+      "fanout": 5,
+      "topics": [
+        "alerts",
+        "codex1",
+        "notify",
+        "prompt",
+        "test"
+      ],
+      "counts": {
+        "alerts": 1,
+        "codex1": 20,
+        "notify": 3,
+        "prompt": 140,
+        "test": 7
+      }
+    },
+    {
+      "kind": "priority",
+      "value": "4",
+      "fanout": 7,
+      "topics": [
+        "alerts",
+        "chat",
+        "claude-code",
+        "hello",
+        "prompt",
+        "system",
+        "test"
+      ],
+      "counts": {
+        "alerts": 11,
+        "chat": 1,
+        "claude-code": 22,
+        "hello": 2,
+        "prompt": 4,
+        "system": 12,
+        "test": 93
+      }
+    },
+    {
+      "kind": "priority",
+      "value": "3",
+      "fanout": 13,
+      "topics": [
+        "ai",
+        "alerts",
+        "claude-code",
+        "claude-notifications",
+        "codex",
+        "hello",
+        "hey",
+        "myhome",
+        "new",
+        "opencode-notifications",
+        "prompt",
+        "test",
+        "yes"
+      ],
+      "counts": {
+        "ai": 2,
+        "alerts": 1,
+        "claude-code": 66,
+        "claude-notifications": 42,
+        "codex": 30,
+        "hello": 3,
+        "hey": 1,
+        "myhome": 2,
+        "new": 1,
+        "opencode-notifications": 15,
+        "prompt": 140,
+        "test": 58,
+        "yes": 1
+      }
+    }
+  ],
+  "perTopicTemplates": [
+    {
+      "topic": "test",
+      "n": 362,
+      "distinctTemplates": 91
+    },
+    {
+      "topic": "claude-code",
+      "n": 214,
+      "distinctTemplates": 87
+    },
+    {
+      "topic": "prompt",
+      "n": 144,
+      "distinctTemplates": 61
+    },
+    {
+      "topic": "camera",
+      "n": 101,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "claude-notifications",
+      "n": 94,
+      "distinctTemplates": 19
+    },
+    {
+      "topic": "codex1",
+      "n": 88,
+      "distinctTemplates": 8
+    },
+    {
+      "topic": "cursor",
+      "n": 52,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "yo",
+      "n": 35,
+      "distinctTemplates": 14
+    },
+    {
+      "topic": "codex",
+      "n": 30,
+      "distinctTemplates": 4
+    },
+    {
+      "topic": "alerts",
+      "n": 16,
+      "distinctTemplates": 9
+    },
+    {
+      "topic": "myhome",
+      "n": 16,
+      "distinctTemplates": 8
+    },
+    {
+      "topic": "opencode-notifications",
+      "n": 15,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "hello",
+      "n": 14,
+      "distinctTemplates": 10
+    },
+    {
+      "topic": "system",
+      "n": 12,
+      "distinctTemplates": 12
+    },
+    {
+      "topic": "hermes",
+      "n": 8,
+      "distinctTemplates": 3
+    },
+    {
+      "topic": "ai",
+      "n": 4,
+      "distinctTemplates": 3
+    },
+    {
+      "topic": "chat",
+      "n": 3,
+      "distinctTemplates": 3
+    },
+    {
+      "topic": "notify",
+      "n": 3,
+      "distinctTemplates": 2
+    },
+    {
+      "topic": "new",
+      "n": 2,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "fleet",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "hey",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "laptop",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "llm",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "mcp",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "messages",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "vps",
+      "n": 1,
+      "distinctTemplates": 1
+    },
+    {
+      "topic": "yes",
+      "n": 1,
+      "distinctTemplates": 1
+    }
+  ]
+}

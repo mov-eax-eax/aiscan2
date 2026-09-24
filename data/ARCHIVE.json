@@ -1,0 +1,288 @@
+{
+  "generatedAt": "2026-09-24T10:52:08.773Z",
+  "archive": {
+    "topics": 27,
+    "messages": 1221,
+    "bytes": 406941
+  },
+  "probe": {
+    "lists": 5,
+    "names": 102,
+    "reserved": [
+      "warp",
+      "claude"
+    ],
+    "occupied": [
+      "codex(30)",
+      "claude-code(214)",
+      "cursor(52)",
+      "kiro(1)",
+      "claude-notifications(110)",
+      "home-assistant(2)",
+      "my-notes(3)",
+      "codex1(89)"
+    ],
+    "free": 92
+  },
+  "perTopic": [
+    {
+      "topic": "test",
+      "messages": 362,
+      "bytes": 123866,
+      "first": "2026-09-15T05:00:01.000Z",
+      "last": "2026-09-15T18:17:10.000Z"
+    },
+    {
+      "topic": "claude-code",
+      "messages": 214,
+      "bytes": 70523,
+      "first": "2026-09-15T06:30:35.000Z",
+      "last": "2026-09-15T17:14:11.000Z"
+    },
+    {
+      "topic": "prompt",
+      "messages": 144,
+      "bytes": 62559,
+      "first": "2026-09-15T04:52:45.000Z",
+      "last": "2026-09-15T18:17:05.000Z"
+    },
+    {
+      "topic": "camera",
+      "messages": 101,
+      "bytes": 26159,
+      "first": "2026-09-15T04:58:02.000Z",
+      "last": "2026-09-15T08:18:02.000Z"
+    },
+    {
+      "topic": "claude-notifications",
+      "messages": 94,
+      "bytes": 22692,
+      "first": "2026-09-15T14:32:17.000Z",
+      "last": "2026-09-15T20:30:19.000Z"
+    },
+    {
+      "topic": "codex1",
+      "messages": 88,
+      "bytes": 35615,
+      "first": "2026-09-15T14:33:49.000Z",
+      "last": "2026-09-16T02:20:34.000Z"
+    },
+    {
+      "topic": "cursor",
+      "messages": 52,
+      "bytes": 9776,
+      "first": "2026-09-15T07:20:33.000Z",
+      "last": "2026-09-15T17:52:26.000Z"
+    },
+    {
+      "topic": "yo",
+      "messages": 35,
+      "bytes": 7471,
+      "first": "2026-09-15T13:41:47.000Z",
+      "last": "2026-09-15T18:22:32.000Z"
+    },
+    {
+      "topic": "codex",
+      "messages": 30,
+      "bytes": 11020,
+      "first": "2026-09-15T08:50:27.000Z",
+      "last": "2026-09-15T18:13:21.000Z"
+    },
+    {
+      "topic": "alerts",
+      "messages": 16,
+      "bytes": 4933,
+      "first": "2026-09-15T06:30:00.000Z",
+      "last": "2026-09-15T17:49:04.000Z"
+    },
+    {
+      "topic": "myhome",
+      "messages": 16,
+      "bytes": 10331,
+      "first": "2026-09-15T07:01:05.000Z",
+      "last": "2026-09-15T17:33:50.000Z"
+    },
+    {
+      "topic": "opencode-notifications",
+      "messages": 15,
+      "bytes": 3270,
+      "first": "2026-09-15T05:45:08.000Z",
+      "last": "2026-09-15T17:46:36.000Z"
+    },
+    {
+      "topic": "hello",
+      "messages": 14,
+      "bytes": 3538,
+      "first": "2026-09-15T13:31:43.000Z",
+      "last": "2026-09-15T16:38:00.000Z"
+    },
+    {
+      "topic": "system",
+      "messages": 12,
+      "bytes": 5448,
+      "first": "2026-09-15T05:03:15.000Z",
+      "last": "2026-09-15T16:02:31.000Z"
+    },
+    {
+      "topic": "hermes",
+      "messages": 8,
+      "bytes": 2235,
+      "first": "2026-09-15T12:00:16.000Z",
+      "last": "2026-09-15T16:30:40.000Z"
+    },
+    {
+      "topic": "ai",
+      "messages": 4,
+      "bytes": 1862,
+      "first": "2026-09-15T05:07:28.000Z",
+      "last": "2026-09-15T13:40:10.000Z"
+    },
+    {
+      "topic": "chat",
+      "messages": 3,
+      "bytes": 686,
+      "first": "2026-09-15T13:32:11.000Z",
+      "last": "2026-09-15T14:07:07.000Z"
+    },
+    {
+      "topic": "notify",
+      "messages": 3,
+      "bytes": 2097,
+      "first": "2026-09-15T08:35:07.000Z",
+      "last": "2026-09-15T08:40:13.000Z"
+    },
+    {
+      "topic": "new",
+      "messages": 2,
+      "bytes": 683,
+      "first": "2026-09-15T09:57:32.000Z",
+      "last": "2026-09-15T09:58:50.000Z"
+    },
+    {
+      "topic": "fleet",
+      "messages": 1,
+      "bytes": 199,
+      "first": "2026-09-15T07:14:58.000Z",
+      "last": "2026-09-15T07:14:58.000Z"
+    },
+    {
+      "topic": "hey",
+      "messages": 1,
+      "bytes": 239,
+      "first": "2026-09-15T15:33:34.000Z",
+      "last": "2026-09-15T15:33:34.000Z"
+    },
+    {
+      "topic": "laptop",
+      "messages": 1,
+      "bytes": 204,
+      "first": "2026-09-15T16:00:35.000Z",
+      "last": "2026-09-15T16:00:35.000Z"
+    },
+    {
+      "topic": "llm",
+      "messages": 1,
+      "bytes": 255,
+      "first": "2026-09-15T13:49:20.000Z",
+      "last": "2026-09-15T13:49:20.000Z"
+    },
+    {
+      "topic": "mcp",
+      "messages": 1,
+      "bytes": 449,
+      "first": "2026-09-15T12:46:51.000Z",
+      "last": "2026-09-15T12:46:51.000Z"
+    },
+    {
+      "topic": "messages",
+      "messages": 1,
+      "bytes": 227,
+      "first": "2026-09-15T06:21:25.000Z",
+      "last": "2026-09-15T06:21:25.000Z"
+    },
+    {
+      "topic": "vps",
+      "messages": 1,
+      "bytes": 357,
+      "first": "2026-09-15T09:26:14.000Z",
+      "last": "2026-09-15T09:26:14.000Z"
+    },
+    {
+      "topic": "yes",
+      "messages": 1,
+      "bytes": 247,
+      "first": "2026-09-15T05:49:39.000Z",
+      "last": "2026-09-15T05:49:39.000Z"
+    }
+  ],
+  "files": [
+    {
+      "file": "agent-defaults.json",
+      "bytes": 1357
+    },
+    {
+      "file": "archive/",
+      "dir": true
+    },
+    {
+      "file": "archive-index.json",
+      "bytes": 351
+    },
+    {
+      "file": "ARCHIVE.json",
+      "bytes": 5577
+    },
+    {
+      "file": "census-surface.json",
+      "bytes": 1916
+    },
+    {
+      "file": "derive-candidates.json",
+      "bytes": 55717
+    },
+    {
+      "file": "footprint.json",
+      "bytes": 1038
+    },
+    {
+      "file": "hits.jsonl",
+      "bytes": 4812
+    },
+    {
+      "file": "observations.jsonl",
+      "bytes": 4152
+    },
+    {
+      "file": "originals.md",
+      "bytes": 48784
+    },
+    {
+      "file": "probe-results.json",
+      "bytes": 5563
+    },
+    {
+      "file": "producers.json",
+      "bytes": 11606
+    },
+    {
+      "file": "reserved-scan.log",
+      "bytes": 276
+    },
+    {
+      "file": "scan-state.json",
+      "bytes": 81
+    },
+    {
+      "file": "scan.log",
+      "bytes": 1181
+    },
+    {
+      "file": "state.json",
+      "bytes": 83564
+    },
+    {
+      "file": "structure.json",
+      "bytes": 26254
+    }
+  ]
+}

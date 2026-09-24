@@ -1,0 +1,62 @@
+{
+  "results": {
+    "sse": {
+      "status": 200,
+      "count": 0
+    },
+    "messages": {
+      "status": 200,
+      "count": 1,
+      "kind": "news",
+      "sample": "No rain detected today."
+    },
+    "jsonrpc": {
+      "status": 200,
+      "count": 0
+    },
+    "rpc": {
+      "status": 200,
+      "count": 0
+    },
+    "mcp-server": {
+      "status": 200,
+      "count": 0
+    },
+    "mcp-sse": {
+      "status": 200,
+      "count": 0
+    },
+    "mcp-http": {
+      "status": 200,
+      "count": 0
+    },
+    "modelcontextprotocol": {
+      "status": 200,
+      "count": 0
+    },
+    "initialize": {
+      "status": 200,
+      "count": 0
+    },
+    "tools": {
+      "status": 200,
+      "count": 0
+    },
+    "streamablehttp": {
+      "status": 200,
+      "count": 0
+    },
+    "mcpserver": {
+      "status": 200,
+      "count": 0
+    },
+    "mcpclient": {
+      "status": 200,
+      "count": 0
+    },
+    "census": {
+      "status": 200,
+      "count": 0
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "results": {
+    "hermes": {
+      "status": 200,
+      "count": 8,
+      "kind": "probe",
+      "sample": "♻️ Gateway online — Hermes is back and ready."
+    },
+    "hermes-2026": {
+      "status": 200,
+      "count": 0
+    },
+    "hermes-home": {
+      "status": 200,
+      "count": 0
+    },
+    "hermes-agent": {
+      "status": 200,
+      "count": 0
+    },
+    "hermes-myname-2026": {
+      "status": 200,
+      "count": 0
+    },
+    "hermes-notifications": {
+      "status": 200,
+      "count": 0
+    },
+    "opencode": {
+      "status": 403,
+      "count": 0,
+      "forbidden": true
+    },
+    "opencode-notifications": {
+      "status": 200,
+      "count": 14,
+      "kind": "agent-anomaly",
+      "sample": "Task completed"
+    },
+    "my-notifications": {
+      "status": 200,
+      "count": 0
+    },
+    "goose": {
+      "status": 200,
+      "count": 0
+    },
+    "aider": {
+      "status": 200,
+      "count": 0
+    },
+    "cline": {
+      "status": 200,
+      "count": 0
+    },
+    "agent": {
+      "status": 200,
+      "count": 0
+    },
+    "agents": {
+      "status": 403,
+      "count": 0,
+      "forbidden": true
+    },
+    "agent-inbox": {
+      "status": 200,
+      "count": 0
+    },
+    "agent-home": {
+      "status": 200,
+      "count": 0
+    }
+  }
+}

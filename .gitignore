@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------------
+# SECRETS - never commit. The signed-findings channel's private key lives here,
+# and topic.txt names the channel: on ntfy the topic name IS the password.
+# Nothing in share/keys/ is needed to read or reuse the design - a consumer runs
+# `node src/share.js init` to generate their own channel.
+# ---------------------------------------------------------------------------
+share/keys/
+share/topic.txt
+*.key.pem
+*.pem
+.env
+.env.*
+
+# ---------------------------------------------------------------------------
+# Runtime scratch / atomic-write temporaries (the collector writes *.tmp then
+# renames). Never commit a half-written checkpoint.
+# ---------------------------------------------------------------------------
+*.tmp
+*.log
+node_modules/
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+.idea/
+.vscode/

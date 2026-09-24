@@ -1,0 +1,2189 @@
+{
+  "generatedAt": "2026-09-24T10:52:08.672Z",
+  "note": "Offline candidates for the derivation avenue. Ranked. Coverage test below is NOT an independent validation - templates were read off the same observations.",
+  "bases": {
+    "reserved": [
+      "claude",
+      "inbox",
+      "opencode",
+      "agents",
+      "home",
+      "me",
+      "warp"
+    ],
+    "occupiedAgent": [
+      "codex",
+      "cursor",
+      "hermes",
+      "llm",
+      "kiro"
+    ],
+    "learnedFromObservedOccupied": [
+      "notes"
+    ]
+  },
+  "templates": [
+    {
+      "t": "{b}-notifications",
+      "w": 5,
+      "why": "claude-notifications 110, opencode-notifications 14 - the single best template"
+    },
+    {
+      "t": "{b}1",
+      "w": 5,
+      "why": "codex1 89 - bare digit, no separator"
+    },
+    {
+      "t": "{b}-code",
+      "w": 4,
+      "why": "claude-code 214"
+    },
+    {
+      "t": "my-{b}",
+      "w": 3,
+      "why": "my-notes, my-inbox occupied"
+    },
+    {
+      "t": "my{b}",
+      "w": 3,
+      "why": "myhome occupied"
+    },
+    {
+      "t": "{b}-cli",
+      "w": 3,
+      "why": "copilot-cli, gemini-cli are shipped names"
+    },
+    {
+      "t": "{b}-agent",
+      "w": 3,
+      "why": "agent-<x> naming is the framework default shape"
+    },
+    {
+      "t": "{b}-1",
+      "w": 2,
+      "why": "digit with separator"
+    },
+    {
+      "t": "{b}-{year}",
+      "w": 2,
+      "why": "hermes-<user>-<year> convention; home2026"
+    },
+    {
+      "t": "{b}{year}",
+      "w": 2,
+      "why": "year glued on"
+    },
+    {
+      "t": "{b}-alerts",
+      "w": 2,
+      "why": "private-alerts appears in README copy-paste"
+    },
+    {
+      "t": "{b}-notify",
+      "w": 2,
+      "why": "notifier vocabulary"
+    },
+    {
+      "t": "{b}-events",
+      "w": 2,
+      "why": "harness lifecycle vocabulary"
+    },
+    {
+      "t": "{b}-done",
+      "w": 2,
+      "why": "completion vocabulary agents emit"
+    },
+    {
+      "t": "{b}-assistant",
+      "w": 2,
+      "why": "home-assistant occupied; assistant framing"
+    },
+    {
+      "t": "{b}-home",
+      "w": 1,
+      "why": "hermes-home appears in shipped probe lists"
+    },
+    {
+      "t": "{b}-bot",
+      "w": 1,
+      "why": "persona framing"
+    },
+    {
+      "t": "{b}-2",
+      "w": 1,
+      "why": "second digit - weaker than 1"
+    }
+  ],
+  "totalGenerated": 234,
+  "probeReadyCount": 203,
+  "alreadyProbedCount": 31,
+  "coverage": [
+    {
+      "name": "claude-code",
+      "generated": true,
+      "score": 7
+    },
+    {
+      "name": "claude-notifications",
+      "generated": true,
+      "score": 8
+    },
+    {
+      "name": "codex1",
+      "generated": true,
+      "score": 6
+    },
+    {
+      "name": "opencode-notifications",
+      "generated": true,
+      "score": 8
+    },
+    {
+      "name": "myhome",
+      "generated": true,
+      "score": 6
+    },
+    {
+      "name": "home-assistant",
+      "generated": true,
+      "score": 5
+    },
+    {
+      "name": "my-notes",
+      "generated": true,
+      "score": 4
+    }
+  ],
+  "probeReady": [
+    {
+      "name": "agents1",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-notifications",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home1",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-notifications",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox1",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-notifications",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me1",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-notifications",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp1",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 8,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-code",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 7,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-code",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 7,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-code",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 7,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-code",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 7,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-code",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 7,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-code",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 7,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-agent",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-cli",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-agent",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-cli",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-notifications",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-agent",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-cli",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-agent",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-cli",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-notifications",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro1",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-notifications",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm1",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-agent",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-cli",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "my-agents",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "my-{b}",
+      "templateWhy": "my-notes, my-inbox occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "my-me",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "my-{b}",
+      "templateWhy": "my-notes, my-inbox occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "my-warp",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "my-{b}",
+      "templateWhy": "my-notes, my-inbox occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myagents",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myclaude",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myinbox",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myme",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myopencode",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "mywarp",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-notifications",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-notifications",
+      "templateWhy": "claude-notifications 110, opencode-notifications 14 - the single best template",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes1",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}1",
+      "templateWhy": "codex1 89 - bare digit, no separator",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-agent",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-cli",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-agent",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-cli",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 6,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-2026",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-alerts",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-assistant",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-done",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-events",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-notify",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents2026",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-2026",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-alerts",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-assistant",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-done",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-events",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-notify",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude2026",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-code",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-code",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-code",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-2026",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-alerts",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-done",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-events",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-notify",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home2026",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-2026",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-alerts",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-assistant",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-done",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-events",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-notify",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox2026",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-code",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-code",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-2026",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-alerts",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-assistant",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-done",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-events",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-notify",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me2026",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-code",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-code",
+      "templateWhy": "claude-code 214",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-2026",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-alerts",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-assistant",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-done",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-events",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-notify",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode2026",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-1",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-1",
+      "templateWhy": "digit with separator",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-2026",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-alerts",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-assistant",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-done",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-events",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-notify",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp2026",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 5,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-2",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-bot",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "agents-home",
+      "base": "agents",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-2",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-bot",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "claude-home",
+      "base": "claude",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-agent",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-cli",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-agent",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-cli",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-agent",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-cli",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-2",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-bot",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "home-home",
+      "base": "home",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-2",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-bot",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "inbox-home",
+      "base": "inbox",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-agent",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-cli",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-agent",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-cli",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-2",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-bot",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "me-home",
+      "base": "me",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "my-hermes",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "my-{b}",
+      "templateWhy": "my-notes, my-inbox occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "my-kiro",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "my-{b}",
+      "templateWhy": "my-notes, my-inbox occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "my-llm",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "my-{b}",
+      "templateWhy": "my-notes, my-inbox occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "mycodex",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "mycursor",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myhermes",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "mykiro",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "myllm",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "mynotes",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "my{b}",
+      "templateWhy": "myhome occupied",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-agent",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-agent",
+      "templateWhy": "agent-<x> naming is the framework default shape",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-cli",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-cli",
+      "templateWhy": "copilot-cli, gemini-cli are shipped names",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-2",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "opencode-home",
+      "base": "opencode",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-2",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-bot",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "warp-home",
+      "base": "warp",
+      "baseState": "reserved",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 4,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-alerts",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-assistant",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-done",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-events",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-notify",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-2026",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-alerts",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-assistant",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-done",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-events",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-notify",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor2026",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-1",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-1",
+      "templateWhy": "digit with separator",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-2026",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-alerts",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-assistant",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-done",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-events",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-notify",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes2026",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-1",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-1",
+      "templateWhy": "digit with separator",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-2026",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-alerts",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-assistant",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-done",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-events",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-notify",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro2026",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-1",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-1",
+      "templateWhy": "digit with separator",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-2026",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-alerts",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-assistant",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-done",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-events",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-notify",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm2026",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-1",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-1",
+      "templateWhy": "digit with separator",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-2026",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-{year}",
+      "templateWhy": "hermes-<user>-<year> convention; home2026",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-alerts",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-alerts",
+      "templateWhy": "private-alerts appears in README copy-paste",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-assistant",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-assistant",
+      "templateWhy": "home-assistant occupied; assistant framing",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-done",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-done",
+      "templateWhy": "completion vocabulary agents emit",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-events",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-events",
+      "templateWhy": "harness lifecycle vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-notify",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-notify",
+      "templateWhy": "notifier vocabulary",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes2026",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}{year}",
+      "templateWhy": "year glued on",
+      "score": 3,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-2",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-bot",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "codex-home",
+      "base": "codex",
+      "baseState": "occupied",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-2",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-bot",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "cursor-home",
+      "base": "cursor",
+      "baseState": "occupied",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-2",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-bot",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "hermes-home",
+      "base": "hermes",
+      "baseState": "occupied",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-2",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-bot",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "kiro-home",
+      "base": "kiro",
+      "baseState": "occupied",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-2",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-bot",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "llm-home",
+      "base": "llm",
+      "baseState": "occupied",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-2",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-2",
+      "templateWhy": "second digit - weaker than 1",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-bot",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-bot",
+      "templateWhy": "persona framing",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    },
+    {
+      "name": "notes-home",
+      "base": "notes",
+      "baseState": "occupied",
+      "template": "{b}-home",
+      "templateWhy": "hermes-home appears in shipped probe lists",
+      "score": 2,
+      "alreadyProbed": false,
+      "knownOccupied": false
+    }
+  ]
+}

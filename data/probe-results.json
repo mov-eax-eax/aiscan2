@@ -1,0 +1,328 @@
+{
+  "harness-names": {
+    "astra": {
+      "count": 0
+    },
+    "fable": {
+      "count": 0
+    },
+    "openai-astra": {
+      "count": 0
+    },
+    "astra-ai": {
+      "count": 0
+    },
+    "fable-ai": {
+      "count": 0
+    },
+    "codex": {
+      "count": 30,
+      "sample": "Bir Codex sohbet turu tamamlandı.\nProje: kra-2\nThread: 01a0a578-2157-77a2-9ac2-cfc9bcdd678e\nTurn: 01a0a638-361d-77c0-9fbf-d9ac7c9fb5e7\nZaman: 2026-09-15T21:13:20+03:00"
+    },
+    "claude-code": {
+      "count": 214,
+      "sample": "タスクが完了しました"
+    },
+    "cursor": {
+      "count": 52,
+      "sample": "Cursor fertig"
+    },
+    "windsurf": {
+      "count": 0
+    },
+    "copilot": {
+      "count": 0
+    },
+    "continue": {
+      "count": 0
+    },
+    "zed": {
+      "count": 0
+    },
+    "ai-notifier": {
+      "count": 0
+    },
+    "notifier": {
+      "count": 0
+    },
+    "openai": {
+      "count": 0
+    },
+    "anthropic": {
+      "count": 0
+    },
+    "openai-notifications": {
+      "count": 0
+    },
+    "anthropic-notifications": {
+      "count": 0
+    }
+  },
+  "harness-expand": {
+    "windsurf": {
+      "count": 0
+    },
+    "windsurf-notifications": {
+      "count": 0
+    },
+    "copilot": {
+      "count": 0
+    },
+    "copilot-cli": {
+      "count": 0
+    },
+    "continue": {
+      "count": 0
+    },
+    "zed": {
+      "count": 0
+    },
+    "aider": {
+      "count": 0
+    },
+    "aider-notifications": {
+      "count": 0
+    },
+    "cline": {
+      "count": 0
+    },
+    "goose": {
+      "count": 0
+    },
+    "gemini-cli": {
+      "count": 0
+    },
+    "roo-code": {
+      "count": 0
+    },
+    "kilo-code": {
+      "count": 0
+    },
+    "amp": {
+      "count": 0
+    },
+    "devin": {
+      "count": 0
+    },
+    "replit": {
+      "count": 0
+    },
+    "codeium": {
+      "count": 0
+    },
+    "warp": {
+      "reserved": true,
+      "count": 0
+    },
+    "augment": {
+      "count": 0
+    },
+    "tabnine": {
+      "count": 0
+    },
+    "sourcegraph": {
+      "count": 0
+    },
+    "cody": {
+      "count": 0
+    },
+    "bolt": {
+      "count": 0
+    },
+    "lovable": {
+      "count": 0
+    },
+    "v0": {
+      "count": 0
+    },
+    "qwen-code": {
+      "count": 0
+    },
+    "grok-cli": {
+      "count": 0
+    },
+    "claude-code-notifications": {
+      "count": 0
+    },
+    "codex-notifications": {
+      "count": 0
+    },
+    "cursor-notifications": {
+      "count": 0
+    },
+    "antigravity": {
+      "count": 0
+    },
+    "kiro": {
+      "count": 1,
+      "sample": "kiro"
+    },
+    "trae": {
+      "count": 0
+    },
+    "claude": {
+      "reserved": true,
+      "count": 0
+    },
+    "gemini": {
+      "count": 0
+    },
+    "copilot-notifications": {
+      "count": 0
+    }
+  },
+  "harness-events": {
+    "agent-done": {
+      "count": 0
+    },
+    "needs-input": {
+      "count": 0
+    },
+    "needs-approval": {
+      "count": 0
+    },
+    "permission-request": {
+      "count": 0
+    },
+    "approval": {
+      "count": 0
+    },
+    "task-complete": {
+      "count": 0
+    },
+    "turn-complete": {
+      "count": 0
+    },
+    "session-complete": {
+      "count": 0
+    },
+    "agent-events": {
+      "count": 0
+    },
+    "agent-status": {
+      "count": 0
+    },
+    "notifier": {
+      "count": 0
+    },
+    "ai-notifier": {
+      "count": 0
+    },
+    "ai-notifications": {
+      "count": 0
+    }
+  },
+  "reserved-derivations": {
+    "claude-1": {
+      "count": 0
+    },
+    "claude1": {
+      "count": 0
+    },
+    "claude-ai": {
+      "count": 0
+    },
+    "claude-notifications": {
+      "count": 110,
+      "sample": "A subagent finished its task on winkbeds."
+    },
+    "claude-code-1": {
+      "count": 0
+    },
+    "claude-code1": {
+      "count": 0
+    },
+    "my-claude": {
+      "count": 0
+    },
+    "opencode-1": {
+      "count": 0
+    },
+    "opencode1": {
+      "count": 0
+    },
+    "my-opencode": {
+      "count": 0
+    },
+    "opencode-bot": {
+      "count": 0
+    },
+    "home-1": {
+      "count": 0
+    },
+    "home-assistant": {
+      "count": 2,
+      "sample": "The downtime lasted 26 minutes, 13 seconds.\n\n**Period:** 3 minutes\n**Total Pings:** 357646\n**Last Ping:** Success, a second ago\n\nAll the other checks are up."
+    },
+    "homeassistant": {
+      "count": 0
+    },
+    "my-home": {
+      "count": 0
+    },
+    "me-1": {
+      "count": 0
+    },
+    "my-notes": {
+      "count": 3,
+      "sample": "A1-1: 3DTMT Tablet ACC Holder.gcode.3mf\nTime: 35m\nFilament: 13.3g"
+    },
+    "inbox-1": {
+      "count": 0
+    },
+    "my-inbox": {
+      "count": 0
+    },
+    "agents-1": {
+      "count": 0
+    },
+    "agents-notifications": {
+      "count": 0
+    },
+    "agent-events": {
+      "count": 0
+    },
+    "myhome-1": {
+      "count": 0
+    },
+    "my-home-1": {
+      "count": 0
+    }
+  },
+  "suffix-twists": {
+    "codex-1": {
+      "count": 0
+    },
+    "codex1": {
+      "count": 89,
+      "sample": "本次: 270,508 tokens\n输入 270,339 / 输出 169 / 缓存输入 268,544 / 推理输出 35\n本次流量: 暂无可用记录（不按 Token 换算）\n今日累计: 5,227,378 tokens\n输入 5,224,382 / 输出 2,996 / 缓存输入 5,093,760 / 推理输出 66\n路径: D:\\Codex1"
+    },
+    "my-codex": {
+      "count": 0
+    },
+    "my-cursor": {
+      "count": 0
+    },
+    "test-123": {
+      "count": 0
+    },
+    "notify1": {
+      "count": 0
+    },
+    "codex-2026": {
+      "count": 0
+    },
+    "codex2026": {
+      "count": 0
+    },
+    "cursor-1": {
+      "count": 0
+    },
+    "cursor1": {
+      "count": 0
+    },
+    "hermes1": {
+      "count": 0
+    }
+  }
+}

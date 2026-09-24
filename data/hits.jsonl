@@ -1,0 +1,27 @@
+{"at":1789490017727,"topic":"llm","count":1,"kind":"ai-relay","sample":"⚠️ Gateway shutting down — Your current task will be interrupted."}
+{"at":1789490017734,"topic":"mcp","count":1,"kind":"misconfig","sample":"{\"jsonrpc\":\"2.0\",\"id\":6075992,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"sampling\":{},\"elicitation\":{},\"roots\":{\"listChanged\":true}},\"clientInfo\":{\"name\":\"internet-census-mcp-scanner\",\"version\":\"1.0.0\"}}}"}
+{"at":1789490017725,"topic":"ai","count":4,"kind":"noise","sample":"Push successful 😀"}
+{"at":1789490017731,"topic":"chat","count":3,"kind":"noise","sample":"sybau"}
+{"at":1789490017734,"topic":"prompt","count":127,"kind":"ops","sample":"Watchdog: 30 healthy, 1 warnings, 0 critical\n🟡 wazuh-indexer: High memory: 99% (2.467GiB / 2.5GiB)\n   💡 Container is near its memory limit — consider increasing its declared resources"}
+{"at":1789490017735,"topic":"fleet","count":1,"kind":"ops","sample":"web1 backup OK 2026-09-15"}
+{"at":1789490806408,"topic":"test","count":269,"kind":"agent-anomaly","sample":"1. Custom Python autocompletions using Jet ✈️\nmost controversial links : Python · 2026-09-15 16:42:07\nData science workflows often involve keeping a Python session running and iteratively running lines, e.g. when performing exploratory data analysis. I do this a lot and often find myself jumping into the REPL to run e.g. my_data.columns to check I...\n\n2. How The Oregon Trail became a generational "}
+{"at":1789490806409,"topic":"alerts","count":10,"kind":"ops","sample":"Humidity is 61% (above 60%)"}
+{"at":1789490806410,"topic":"notify","count":3,"kind":"misconfig","sample":"**CalcGkStatusAndAlarm 执行成功 (批次2/2)**\nProject: alarm\nEnvironment: production\nServer Name: supos-alarm-service-39.175.165.234\nRelease: alarm-module@1.0.0\n[View Issue ALARM-U3](http://10.0.0.66:6981/mywl/issues/1094)"}
+{"at":1789490806411,"topic":"system","count":12,"kind":"noise","sample":"noon run on 2026-09-15 wrote 0 new rows to `strikeout_props` (table total still 0). Check Railway logs."}
+{"at":1789490806411,"topic":"vps","count":1,"kind":"noise","sample":"Remote Desktop login failed on 2026-09-15\nTime: 2026-09-15 17:26:11, Account: ADMINISTRATOR, IP: 61.216.137.152, Location: Taoyuan, Taiwan, TW, AS3462 Data Communication Business Group"}
+{"at":1789491489938,"topic":"laptop","count":1,"kind":"noise","sample":"LaptopGuard test notification"}
+{"at":1789491489939,"topic":"camera","count":101,"kind":"noise","sample":"【AtomCam】録画停止の疑い：1733527秒更新なし（20260826_153729.mp4）"}
+{"at":1789492267028,"topic":"messages","count":1,"kind":"news","sample":"No rain detected today."}
+{"at":1789492661667,"topic":"yo","count":14,"kind":"noise","sample":"Venta: 1 Coca Cola pequeña plástica 335ml, Total 4.50"}
+{"at":1789492661668,"topic":"hello","count":14,"kind":"noise","sample":"[hai!]"}
+{"at":1789492661668,"topic":"hey","count":1,"kind":"noise","sample":"Bridge test 2026-09-15T15:33:34Z from studio"}
+{"at":1789492661669,"topic":"yes","count":1,"kind":"ops","sample":"Time to record today's PHQ-9 and GAD-7 scores."}
+{"at":1789492661669,"topic":"new","count":2,"kind":"noise","sample":"This is a test notification from the ntfy iOS app. It has a priority of 5. If you send another one, it may look different."}
+{"at":1789494240918,"topic":"hermes","count":8,"kind":"probe","sample":"♻️ Gateway online — Hermes is back and ready."}
+{"at":1789494240920,"topic":"opencode-notifications","count":14,"kind":"agent-anomaly","sample":"Task completed"}
+{"at":1789494315946,"topic":"hermes","count":8,"kind":"probe","sample":"♻️ Gateway online — Hermes is back and ready."}
+{"at":1789494315948,"topic":"opencode-notifications","count":14,"kind":"agent-anomaly","sample":"Task completed"}
+{"at":1789495610051,"topic":"myhome","count":16,"kind":"misconfig","sample":"There are 3 firing alert(s), and 0 resolved alert(s)\r\n\r\n\r\nFiring alerts:\r\n\r\n[firing] SSL Cert Errores Varios\r\nLabels:\r\n  alertname:  SSL Cert Errores Varios\r\n  cert_error:  x509: certificate is valid for catedraturismosostenible.es, www.catedraturismosostenible.es, not agendacultural.catedraturismosostenible.es\r\n  dns:  agendacultural.catedraturismosostenible.es\r\n  grafana_folder:  Alertas\r\n  issu"}
+{"at":1789496924123,"topic":"codex","count":30,"kind":"noise","sample":"Bir Codex sohbet turu tamamlandı.\nProje: kra-2\nThread: 01a0a578-2157-77a2-9ac2-cfc9bcdd678e\nTurn: 01a0a638-361d-77c0-9fbf-d9ac7c9fb5e7\nZaman: 2026-09-15T21:13:20+03:00"}
+{"at":1789496924132,"topic":"claude-code","count":214,"kind":"misconfig","sample":"タスクが完了しました"}
+{"at":1789496924133,"topic":"cursor","count":52,"kind":"agent-anomaly","sample":"Cursor fertig"}

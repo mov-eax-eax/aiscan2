@@ -128,11 +128,11 @@ footer a{color:var(--dim)} footer a:hover{color:var(--accent)}
 <nav>
   <h4>Findings</h4>
   <a href="#tldr">1 · In one line</a>
-  <a href="#corpus">2 · The corpus</a>
-  <a href="#sessions">3 · Agent sessions</a>
-  <a href="#serious">4 · The serious find</a>
-  <a href="#misconfig">5 · Misconfiguration</a>
-  <a href="#census">6 · The census collision</a>
+  <a href="#census">2 · The census collision</a>
+  <a href="#corpus">3 · The corpus</a>
+  <a href="#sessions">4 · Agent sessions</a>
+  <a href="#serious">5 · The serious find</a>
+  <a href="#misconfig">6 · Misconfiguration</a>
   <a href="#structure">7 · Structure, not text</a>
   <a href="#negatives">8 · Negative results</a>
   <a href="#limits">9 · The limits model</a>
@@ -159,6 +159,15 @@ notification, where does it send it, and what does that leak?</strong></p>
   as a record of method, not as a working set. The offline analyzers remain live.</p>
 </div>
 
+<div class="note ok">
+  <div class="h">Signature result</div>
+  <p>Two things carry this project. The one that is genuinely <em>new</em> is a detection
+  category: <strong>probe crossfire</strong> — a public namespace and a public HTTP endpoint
+  agreeing on a string, so that a scanner of a <em>different</em> protocol writes into a service
+  it never meant to touch. Nobody misconfigured anything; the collision is inherent to both
+  designs. &nbsp;<a href="#census">Section 2 ↓</a></p>
+</div>
+
 <h2 id="tldr"><span class="n">1</span>In one line</h2>
 
 <p>The namespace holds <strong>almost no agents doing interesting things</strong>, and a great
@@ -173,7 +182,145 @@ name <em>is</em> the password. So the only topics we can find are the ones where
 that default with something memorable — <code>test</code>, <code>ai</code>, <code>llm</code>,
 <code>codex</code>, <code>cursor</code>. The population is small by construction.</p>
 
-<h2 id="corpus"><span class="n">2</span>The corpus</h2>
+<h2 id="census"><span class="n">2</span>The census collision</h2>
+
+<p class="sub">The signature technical result — a detection category the project had to invent
+in order to describe what it was looking at.</p>
+
+<p>Every public namespace is addressed by name: a topic, a bucket, a queue, a route. So is every
+HTTP endpoint. <strong>Where those two naming schemes collide, you silently collect other people's
+traffic.</strong></p>
+
+<p>Topic <code>mcp</code> holds exactly one message — and it is not from a user of ntfy at all:</p>
+
+<pre>{"jsonrpc":"2.0","id":<span class="y">6075992</span>,"method":"initialize","params":{
+  "protocolVersion":"2025-06-18",
+  "capabilities":{"sampling":{},"elicitation":{},"roots":{"listChanged":true}},
+  "clientInfo":{"name":"<span class="r">internet-census-mcp-scanner</span>","version":"1.0.0"}}}</pre>
+
+<p>Every field is a self-description. The client <em>names itself</em> a census scanner, and
+<code>6075992</code> is its probe counter across an internet-wide sweep — the 6,075,992nd request
+of its run. Not a script someone is watching. An industrial census at scale.</p>
+
+<h3>The mechanism: namespace arithmetic</h3>
+<p>ntfy addresses topics as <code>/&lt;topic&gt;</code>. MCP's conventional endpoint is
+<code>/mcp</code>. So <code>https://ntfy.sh/mcp</code> is <strong>simultaneously a valid ntfy
+publish endpoint</strong>. An internet scanner walking hosts and POSTing an MCP handshake had that
+handshake <strong>accepted and stored as an ordinary notification</strong>.</p>
+
+<p>The scanner wrote into the very namespace it was probing, without knowing ntfy existed. It is
+not a peer, not a bot, not an agent, and not a user of the service. It is a scanner of a
+<em>different protocol</em> hitting a URL that happens to look like an endpoint it recognises.</p>
+
+<div class="note">
+  <div class="h">The new category</div>
+  <p><strong>Probe crossfire</strong> — traffic arriving at a service from something that is not
+  a client of that service at all, because two naming schemes agree on a string. Nothing is
+  misconfigured. No one made a mistake. The collision is inherent to both designs.</p>
+</div>
+
+<h3>The two real tools that produced it</h3>
+<ul>
+  <li><strong>m-q-t/mcp-server-scanner</strong> — a Go tool that detects exposed MCP servers over
+  the internet and enumerates their tools. This is the scanner that walked past.</li>
+  <li><strong>jpetrucciani/ntfy-mcp</strong> — a Rust MCP server whose transport is Streamable
+  HTTP at the path <code>/mcp</code>. It uses ntfy only to <em>send</em> notifications. Its
+  existence is why the path is plausible enough to be probed.</li>
+</ul>
+
+<div class="note warn">
+  <div class="h">The frozen clock</div>
+  <p>The request id <code>6075992</code> <strong>never advanced</strong> — same id, same
+  timestamp, hours apart. One probe, never repeated. That stale id is the only real clock the
+  project ever had on an external actor, and it is frozen: the scanner swept past once.</p>
+</div>
+
+<h3>Footprint: a single point, and that is the finding</h3>
+<p>All 13 sibling MCP paths came back empty:</p>
+<pre>sse  jsonrpc  rpc  mcp-server  mcp-sse  mcp-http  modelcontextprotocol
+initialize  tools  streamablehttp  mcpserver  mcpclient  census
+<span class="g">→ 13/13 empty</span></pre>
+
+<p>As did 29 generic protocol paths (<code>graphql</code>, <code>api</code>, <code>v1</code>,
+<code>health</code>, <code>metrics</code>, <code>admin</code>, <code>webhook</code>,
+<code>env</code>, <code>config</code> …) — <span class="g">29/29 empty</span>.</p>
+
+<p><strong>The negative is the result.</strong> Cross-protocol collision is <em>narrow</em>, not a
+general property of the namespace. It requires a scanner-probed path that is <em>also</em> a
+plausible human-chosen topic name. <code>mcp</code> qualifies because it is short, lowercase and
+guessable; <code>healthz</code> and <code>actuator</code> do not, because no human names a
+notification topic that.</p>
+
+<p>Consistent with modern Streamable HTTP converging on one canonical endpoint. <strong>Avenue
+closed</strong>, for a cost of ~42 created names. Reporting it this loudly is the point: it stops
+anyone re-spending on the idea that <em>all</em> protocol paths are contaminated. They are not.</p>
+
+<div class="note warn">
+  <div class="h">A false positive to avoid counting</div>
+  <p>The sibling sweep flagged <code>messages</code> with one message — but its content is
+  <code>"No rain detected today."</code>, a weather notification. Despite <code>messages</code>
+  being the MCP SSE transport path, this is <strong>not</strong> a collision and must not be
+  counted as one. <code>AGENTS.md</code> §1 exists for exactly this: verify the subject before
+  analysing it.</p>
+</div>
+
+<h3>Why it generalises beyond ntfy</h3>
+<p>This is not an ntfy bug and not an MCP bug. It is what happens whenever a service addresses
+resources by a bare path segment and the wider ecosystem probes a well-known path. The detector
+is trivially portable: <em>probe the paths a scanner would, and see whether the service answers
+with its own semantics to a protocol it does not speak.</em></p>
+
+<p>Any notification bus, blob store, message queue or pastebin with a flat single-segment
+namespace is exposed to the same collision. ntfy was simply the one we could observe.</p>
+
+<h3>Independent confirmation in the literature</h3>
+<p>Verified rather than taken on trust. A paper submitted three days before this project's final
+session reports the same class of exposure at internet scale — arXiv:2609.14119,
+<em>"Same Name, Different Server: A Security Census of Silent Drift in the Model Context Protocol
+Ecosystem"</em> (Kraishan, 12 Sep 2026):</p>
+
+<table>
+  <thead><tr><th>paper's measure</th><th>value</th></tr></thead>
+  <tbody>
+    <tr><td>registry harvested</td><td>21,643 servers · 72,606 version records</td></tr>
+    <tr><td>sources pattern-scanned</td><td>14,353</td></tr>
+    <tr><td><strong>unauthenticated network exposure</strong></td><td><strong>9.57%</strong> of
+      scanned servers</td></tr>
+    <tr><td>changed what they advertise</td><td>51.1% of multi-version servers</td></tr>
+    <tr><td>did so <em>silently</em></td><td>40.6%</td></tr>
+    <tr><td>redirected endpoint, kept identity</td><td>4.2%</td></tr>
+    <tr><td>silent drift → high-severity finding</td><td>OR 2.96 (95% CI 2.56–3.42)</td></tr>
+  </tbody>
+</table>
+
+<p>Every figure in this project's own <code>CENSUS.md</code> matches that abstract exactly. And
+the paper's definition of a finding is satisfied by a notification server doing nothing wrong:</p>
+
+<blockquote>"Unauthenticated network exposure" is exactly what an ntfy topic does when it collides
+with <code>/mcp</code> — it answers, unauthenticated, to a protocol it does not speak.</blockquote>
+
+<h3>The reflexivity — the best part of the whole project</h3>
+<p>This project was doing to ntfy's namespace <em>exactly</em> what the census scanner does to the
+internet: sweeping a public namespace, announcing itself in a user-agent, and leaving probes
+behind in places anyone can read.</p>
+
+<blockquote>It found us the same way we found it — by probing the obvious name. Neither of us chose
+a hidden channel. The public commons is where these probes land.</blockquote>
+
+<p>And the symmetry has a cost side. This project <strong>created ~150 topics</strong> as a side
+effect of probing — the identical category error it criticises: observation with side effects on
+a shared public resource. Two scanners colliding on the same commons, each one's traffic becoming
+the other's data point.</p>
+
+<div class="note crit">
+  <div class="h">The verification trap</div>
+  <p>The collision <strong>cannot be confirmed by publishing into <code>mcp</code></strong> —
+  that would add to the collision and manufacture the very artifact being measured. So the finding
+  is permanently observational: one frozen self-describing record, plus a negative sweep. That is
+  a real epistemic limit, and it is recorded rather than papered over.</p>
+</div>
+
+<h2 id="corpus"><span class="n">3</span>The corpus</h2>
 
 <div class="grid">
   <div class="card"><div class="k">topics</div><div class="v">27</div>
@@ -192,7 +339,7 @@ and hit <strong>5 reserved names</strong> — <code>claude</code>, <code>home</c
 claimed and locked (HTTP 403, code 40301), and they turned out to be the most productive lead in
 the project, not a dead end.</p>
 
-<h2 id="sessions"><span class="n">3</span>Agent sessions</h2>
+<h2 id="sessions"><span class="n">4</span>Agent sessions</h2>
 
 <p>These are real, and they are the strongest evidence in the corpus.</p>
 
@@ -241,7 +388,7 @@ attached to every completion.</p>
 corpus — but it is a playful exchange between strangers (<em>"Oh wow a cat" / "Yeah. Meow."</em>),
 not an agent. Describing it as an agent conversation would be wrong.</p>
 
-<h2 id="serious"><span class="n">4</span>The most serious finding</h2>
+<h2 id="serious"><span class="n">5</span>The most serious finding</h2>
 
 <p>Topic <code>alerts</code> — 16 messages, a domestic German home-automation channel
 (Airthings humidity, a battery, FinTS banking, push-budget alarms). Inside it:</p>
@@ -263,7 +410,7 @@ not an agent. Describing it as an agent conversation would be wrong.</p>
   A public cache is not a contact channel, and answering would falsify someone's test.</li>
 </ul>
 
-<h2 id="misconfig"><span class="n">5</span>Misconfiguration at scale</h2>
+<h2 id="misconfig"><span class="n">6</span>Misconfiguration at scale</h2>
 
 <table>
   <thead><tr><th>topic</th><th>class</th><th>what is exposed</th></tr></thead>
@@ -284,72 +431,6 @@ not an agent. Describing it as an agent conversation would be wrong.</p>
       <td>362 msgs from <strong>37+ unrelated producers</strong> — the base-rate topic</td></tr>
   </tbody>
 </table>
-
-<h2 id="census"><span class="n">6</span>The census collision</h2>
-
-<p>The most methodologically interesting result. Topic <code>mcp</code> holds exactly one
-message, and it is not from a user of ntfy at all:</p>
-
-<pre>{"jsonrpc":"2.0","id":<span class="y">6075992</span>,"method":"initialize","params":{
-  "protocolVersion":"2025-06-18",
-  "capabilities":{"sampling":{},"elicitation":{},"roots":{"listChanged":true}},
-  "clientInfo":{"name":"<span class="r">internet-census-mcp-scanner</span>","version":"1.0.0"}}}</pre>
-
-<h3>The mechanism</h3>
-<p>ntfy addresses topics as <code>/&lt;topic&gt;</code>. MCP's conventional endpoint is
-<code>/mcp</code>. So <code>https://ntfy.sh/mcp</code> is a <strong>valid ntfy publish
-endpoint</strong>. An internet scanner walking hosts and POSTing an MCP handshake had it
-<strong>accepted and stored as an ordinary notification</strong> — the scanner wrote into the
-very namespace it was probing, without knowing ntfy existed.</p>
-
-<p>This is a distinct category: <strong>probe crossfire</strong> — traffic that is not a user of
-the service at all, but a scanner of some other protocol colliding with the path namespace. It
-is not a peer. It is not an agent.</p>
-
-<div class="note">
-  <div class="h">The frozen clock</div>
-  <p>The request id <code>6075992</code> <strong>never advanced</strong> — same id, same
-  timestamp, hours apart. One probe, never repeated. That stale id is the only real clock the
-  project ever had on an external actor, and it is frozen.</p>
-</div>
-
-<h3>Footprint: a single point</h3>
-<p>All 13 sibling MCP paths came back empty (<code>sse</code>, <code>jsonrpc</code>,
-<code>rpc</code>, <code>mcp-server</code>, <code>mcp-sse</code>, <code>mcp-http</code>,
-<code>modelcontextprotocol</code>, <code>initialize</code>, <code>tools</code>,
-<code>streamablehttp</code>, <code>mcpserver</code>, <code>mcpclient</code>,
-<code>census</code>), as did 29 generic protocol paths (<code>graphql</code>, <code>api</code>,
-<code>v1</code>, <code>health</code>, <code>metrics</code>, <code>admin</code>,
-<code>webhook</code>, <code>env</code>, <code>config</code> …).</p>
-
-<p><strong>The negative is the result.</strong> Cross-protocol collision is <em>narrow</em>, not a
-general property of the namespace. It needs a scanner-probed path that is <em>also</em> a
-plausible human-chosen topic name. <code>mcp</code> qualifies because it is short and guessable;
-<code>healthz</code> and <code>actuator</code> do not, because no human names a notification topic
-that. <strong>Avenue closed</strong> after ~42 created names.</p>
-
-<div class="note warn">
-  <div class="h">A false positive to avoid counting</div>
-  <p>The sibling sweep flagged <code>messages</code> with one message — but it is
-  <code>"No rain detected today."</code>, a weather notification. Despite <code>messages</code>
-  being the MCP SSE transport path, this is <strong>not</strong> a collision.</p>
-</div>
-
-<h3>The literature agrees</h3>
-<p>A paper submitted three days before this project's final session frames the identical failure
-mode — arXiv:2609.14119, <em>"Same Name, Different Server: A Security Census of Silent Drift in
-the Model Context Protocol Ecosystem"</em> (21,643 servers; 9.57% showing unauthenticated network
-exposure; 40.6% drifting silently; OR 2.96 for a high-severity finding). Its definition of a
-finding is satisfied by a notification server doing nothing wrong:
-<em>unauthenticated network exposure is exactly what an ntfy topic does when it collides with
-<code>/mcp</code> — it answers, unauthenticated, to a protocol it does not speak.</em></p>
-
-<h3>The reflexivity</h3>
-<blockquote>It found us the same way we found it — by probing the obvious name. Neither of us
-chose a hidden channel.</blockquote>
-<p>And the symmetry has a cost: this project <strong>created ~150 topics</strong> as a side effect
-of probing — the identical category error it criticises. Two scanners colliding on the same
-commons, each one's traffic becoming the other's data point.</p>
 
 <h2 id="structure"><span class="n">7</span>Structure, not text</h2>
 

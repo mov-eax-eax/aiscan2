@@ -1,0 +1,50 @@
+{
+  "info": {
+    "splashFreeFlyLabel": "FREE FLY\n6-DOF · NO COLLISION",
+    "afterSplash": {
+      "mode": "fly",
+      "modeLabel": "FREE FLY",
+      "sub": "no collision",
+      "flySpeed": 1
+    },
+    "spaceRise": {
+      "y0": 46,
+      "y1": 58.12061776964465,
+      "ok": true
+    },
+    "speedAfterWheel": 1.16,
+    "afterReset": {
+      "pos": [
+        0,
+        86,
+        176
+      ],
+      "mode": "fly"
+    },
+    "mesh": {
+      "mesh": true,
+      "section": false,
+      "part": "all",
+      "partsOpen": false
+    },
+    "section": {
+      "mesh": false,
+      "section": true,
+      "part": "all",
+      "partsOpen": false
+    },
+    "parts": {
+      "mesh": false,
+      "section": false,
+      "part": "interior",
+      "partsOpen": true
+    },
+    "studyPanel": true,
+    "errors": []
+  },
+  "logs": [
+    "[log] [glory-shell] Glory wall z-range 45.00..47.96 (assert min.z > 40 OK)",
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (530 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 287, triangles: 1219198, geometries: 258, textures: 73}"
+  ]
+}

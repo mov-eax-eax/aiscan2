@@ -1,0 +1,98 @@
+{
+  "_comment": "Curated visual review for qa/verify/REPORT.md. Filled after inspecting qa/verify/shots with read_image; regenerate with SF_REPORT_ONLY=1 node qa/verify/harness.mjs",
+  "critique": "The model succeeds at the thing that matters most: it is a walkable, 1:1 basilica. From the plaza the eighteen-tower silhouette reads as a mountain range in stone, with the gold cross of Jesus and the Virgin's star as unmistakable crowns. Inside, the forest of double-twist tree columns, the branching capitals and the glowing crossing lantern give a genuine sense of Gaudí's structural imagination, and the east/west stained glass carries the cool-Nativity / warm-Passion colour story. Façade identity is clear: Nativity is warm, organic and cypress-rich; Passion is grey, angular and austere; Glory is the busiest and owns the great rose window. The weakest areas are atmosphere and finish rather than architecture: daylight interiors are over-bright and low-contrast, so carved detail reads chalky; the Eixample backdrop is placeholder-grade (repeating boxes on a flat green plate with odd floating horizon shapes); several authored framings crop the building's best features (tower tops, the cross, façade context); and the plan panel wastes most of its area. A residual teal-green roof slab is still visible from inside at the crossing vault springing, and is the one defect that still breaks the illusion.",
+  "checklist": [
+    "Façade identity: Nativity reads organic/cypress-rich; Passion reads grey/angular/Subirachs; Glory reads richest with the great rose window",
+    "Tower silhouette: 12 apostle towers + 4 evangelist towers + Virgin star + tower of Jesus with its four-armed cross readable from the plaza and from the air",
+    "Crossing/lantern/altar readability: vault hierarchy, porphyry crossing columns, baldachin and apse chapels legible when walking in",
+    "Blank surfaces: no large untextured/blank shell walls, bare roof decks, or unmodelled openings",
+    "Exterior framing and tour camera: each TOUR stop frames its subject; camera never sits inside geometry or clips through walls",
+    "Clipping/floating geometry: no detached pinnacles, statues sunk into walls, roofs through vaults, or props hovering above the plaza",
+    "Z-fighting: no shimmering coplanar surfaces (façade planes, floor/mosaic overlays, glass panels)",
+    "Lighting: day exposure not washed out; night floodlights and emissive glass not overexposed/black; interior not a black void",
+    "Legibility: HUD clock/mode/controls and tour captions readable at 800x500 and 1280x720; mobile HUD fits 390x844",
+    "Sense of scale: nave/crossing/tower proportions read as 45 m/60 m/172.5 m; door heights and column girth feel 1:1",
+    "Portal obstruction: no tower, plinth or prop blocks the three open doors (Nativity x≈30,z=0; Passion x≈-30,z=0; Glory z≈45,x=0)",
+    "Colour/material: stone family tints distinguish façades; porphyry/gold/roof-green/mosaic and glass palettes read as intended",
+    "Performance impression: no obvious hitching in tour playback at capture resolution; per-stop triangle counts reported"
+  ],
+  "observations": [
+    {
+      "title": "Interior: the forest reads, and the scale is convincing",
+      "severity": "STRENGTH",
+      "notes": "Tree columns with double-twist trunks and branching capitals, hyperboloid vaults and the glowing crossing lantern read immediately as Gaudí's forest. Standing in the nave the 30 m aisle vaults, 45 m nave and 60 m crossing give a real sense of height. Stained glass carries the cool-east / warm-west story, and the night interior glows from within. Evidence: 06-nave-interior.png, 07-crossing.png, 13-night-interior.png, 17-photo-mode.png.",
+      "shots": ["shots/06-nave-interior.png", "shots/07-crossing.png", "shots/13-night-interior.png"]
+    },
+    {
+      "title": "Façade identity is clearly differentiated",
+      "severity": "STRENGTH",
+      "notes": "Nativity (03) reads warm and organic: cypress/tree-of-life greenery, vines, mosaic band, side roses. Passion (04) is deliberately grey, angular and austere with graphic niches. Glory (stops/05-glory, 05-facade-glory) owns the largest rose window with the strongest saturated glass. Theme (a) is satisfied.",
+      "shots": ["shots/03-facade-nativity.png", "shots/04-facade-passion.png", "shots/stops/05-glory.png"]
+    },
+    {
+      "title": "Tower silhouette and the gold cross land",
+      "severity": "STRENGTH",
+      "notes": "From the plaza (stops/01-plaza), above the towers (10-towers) and from the air (11-aerial-plan), the twelve apostle towers + evangelist towers + Virgin star + the great gold cross of Jesus read as a mountain range. The cross is legible and unmistakable from most angles. Theme (b) is satisfied.",
+      "shots": ["shots/stops/01-plaza.png", "shots/10-towers.png", "shots/11-aerial-plan.png"]
+    },
+    {
+      "title": "Daylight interior is over-bright and flat",
+      "severity": "MINOR",
+      "notes": "Interior frames average ~143/255 luminance with max 255: the stone is chalky, shadow detail is thin and the stained glass struggles against the ambient. Carved capitals and vault ribs lose definition compared with the night render. A slightly lower exposure / stronger sun-vs-ambient contrast would restore depth.",
+      "shots": ["shots/06-nave-interior.png", "shots/07-crossing.png"]
+    },
+    {
+      "title": "Night exterior is atmospheric but crops the crown",
+      "severity": "MINOR",
+      "notes": "The warm floodlit façade against stars and orange city windows works well, but the hero night frame cuts the tower of Jesus and its cross at the top edge and leaves the upper towers underlit. A pulled-back night framing would show the intended lantern-like silhouette.",
+      "shots": ["shots/12-night-exterior.png"]
+    },
+    {
+      "title": "City backdrop is placeholder-grade",
+      "severity": "MINOR",
+      "notes": "The Eixample reads as repeating beige boxes with painted window stripes on a flat green plate; the distant 'hills' appear as floating dark ellipses/plates and there is a straight seam across the sky in the aerial. Roads, block variety and a believable ground plane would greatly improve the sense of place and scale.",
+      "shots": ["shots/02-exterior-3q.png", "shots/stops/01-plaza.png", "shots/10-towers.png", "shots/11-aerial-plan.png"]
+    },
+    {
+      "title": "Authored framings crop the best features",
+      "severity": "MINOR",
+      "notes": "Façade close-ups (03/04/05) are framed tight so the top of the façade and its towers are cut, and the plaza/context disappears; the Glory tour stop cuts the apostle towers above the rose. The interior hero poses are good. Pulling exterior stops back 15–25% would show composition rather than detail alone.",
+      "shots": ["shots/03-facade-nativity.png", "shots/04-facade-passion.png", "shots/05-facade-glory.png", "shots/stops/05-glory.png"]
+    },
+    {
+      "title": "Plan panel wastes its canvas",
+      "severity": "MINOR",
+      "notes": "The ground-plan drawing occupies roughly the central fifth of a large dark panel; labels and the 50 m scale bar are tiny and most of the panel is empty. Fitting the plan to the panel and enlarging the stop markers would make the minimap genuinely useful.",
+      "shots": ["shots/16-minimap.png"]
+    },
+    {
+      "title": "Captions, cards and HUD are legible",
+      "severity": "STRENGTH",
+      "notes": "Tour captions (14) are readable with a clear stop index and kicker; hotspot cards (15) are well composed and legible; the narrow 800×500 HUD (19) keeps mode/clock/menu visible with no overflow (hotspot label wraps to four lines but remains readable). Theme (d)/(e) legibility is satisfied.",
+      "shots": ["shots/14-tour-caption.png", "shots/15-hotspot-card.png", "shots/19-ui-hud-800.png"]
+    }
+  ],
+  "defects": [
+    {
+      "title": "Residual teal-green roof slab visible from inside at the crossing vault springing",
+      "severity": "MAJOR",
+      "notes": "After the interior sealing pass, the large teal vault panels are gone but a flat green roof-material slab remains visible through the vault at the crossing springing, left of centre, in the nave, crossing and night interior views. A second small green wedge appears top-right in the night interior. Zoomed evidence: _inspect-vault-zoom.png, _inspect-crossing-zoom.png, _inspect-night-zoom.png.",
+      "repro": "Enter the nave (teleport('nave'), or setPose [0,2.1,39] look [0,24,-8]) and look up toward the crossing; the green slab is at the vault springing left of centre (~765–810 x, 255–280 y at 1600×900). Night: setTime(21.5) and repeat.",
+      "shots": ["shots/06-nave-interior.png", "shots/07-crossing.png", "shots/13-night-interior.png", "shots/_inspect-vault-zoom.png", "shots/_inspect-crossing-zoom.png", "shots/_inspect-night-zoom.png"]
+    },
+    {
+      "title": "Glory façade wall through the crossing (FIXED, verified)",
+      "severity": "INFO",
+      "notes": "The earlier shell bug that placed the Glory wall panel at z≈0 through the crossing is fixed: 07-crossing shows an unobstructed nave/crossing and stops/05-glory shows the façade wall in place. Recorded for the audit trail.",
+      "repro": "Look down the nave/crossing from [2.5,2.1,8] toward [0,51,0] — no wall crosses the view.",
+      "shots": ["shots/07-crossing.png", "shots/stops/05-glory.png"]
+    },
+    {
+      "title": "Tour caption mid-transition capture (FIXED, verified)",
+      "severity": "INFO",
+      "notes": "The earlier 'blank façade' tour caption was a capture-timing issue; the final harness waits for the tour phase to reach 'dwell'. 14-tour-caption now shows the Nativity façade with the caption fully readable.",
+      "repro": "Start the tour with __sagrada.startTour('nativity'), wait for tour state phase === 'dwell', then screenshot.",
+      "shots": ["shots/14-tour-caption.png"]
+    }
+  ]
+}

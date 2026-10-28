@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Towers &amp; roofs — preview</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #9fc0d8; }
+  canvas { display: block; }
+</style>
+<script type="importmap">
+  { "imports": { "three": "../../vendor/three.module.min.js" } }
+</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { buildTowers } from '../../src/towers.js';
+
+const params = new URLSearchParams(location.search);
+const num = (k, d) => (params.get(k) === null ? d : Number(params.get(k)));
+const vec = (k, d) => {
+  const v = params.get(k);
+  return v ? v.split(',').map(Number) : d;
+};
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(1);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = num('exposure', 1.02);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x9fc0d8);
+const camera = new THREE.PerspectiveCamera(num('fov', 58), window.innerWidth / window.innerHeight, 0.1, 3000);
+camera.position.fromArray(vec('cam', [106, 30, 132]));
+camera.lookAt(new THREE.Vector3().fromArray(vec('look', [0, 70, -4])));
+
+const hemi = new THREE.HemisphereLight(0xbfd6ff, 0x8a7a63, 1.1);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff1d6, 2.55);
+sun.position.set(95, 150, 78);
+sun.castShadow = true;
+sun.shadow.mapSize.set(1024, 1024);
+sun.shadow.camera.left = -180;
+sun.shadow.camera.right = 180;
+sun.shadow.camera.top = 200;
+sun.shadow.camera.bottom = -50;
+sun.shadow.camera.near = 1;
+sun.shadow.camera.far = 520;
+sun.shadow.bias = -0.0004;
+sun.shadow.normalBias = 0.5;
+scene.add(sun);
+scene.add(sun.target);
+
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(420, 64).rotateX(-Math.PI / 2),
+  new THREE.MeshStandardMaterial({ color: 0x7d7466, roughness: 0.95 })
+);
+ground.receiveShadow = true;
+scene.add(ground);
+
+const result = (() => {
+  try {
+    return buildTowers({});
+  } catch (err) {
+    console.error('[build-error] ' + (err && err.stack ? err.stack : err));
+    return { group: new THREE.Group(), colliders: [], hotspots: [] };
+  }
+})();
+scene.add(result.group);
+
+let tris = 0;
+let meshes = 0;
+let instanced = 0;
+result.group.traverse((o) => {
+  if (!o.isMesh) return;
+  meshes++;
+  const g = o.geometry;
+  const n = g.index ? g.index.count : g.attributes.position.count;
+  const count = o.isInstancedMesh ? o.count : 1;
+  if (o.isInstancedMesh) instanced++;
+  tris += (n / 3) * count;
+});
+const stats = {
+  triangles: Math.round(tris),
+  meshes,
+  instancedMeshes: instanced,
+  colliders: result.colliders.length,
+  hotspots: result.hotspots.length,
+  builderTriangles: result.group.userData.triangles || null,
+};
+window.__stats = stats;
+console.log('[towers-preview] ' + JSON.stringify(stats));
+result.group.traverse((o) => {
+  if (!o.isMesh) return;
+  const g = o.geometry;
+  const n = g.index ? g.index.count : g.attributes.position.count;
+  if (!g.boundingBox) g.computeBoundingBox();
+  const bb = g.boundingBox;
+  console.log(
+    '[mesh] ' +
+      o.name +
+      ' tris=' +
+      Math.round(n / 3) +
+      (o.isInstancedMesh ? ' x' + o.count : '') +
+      ' size=' +
+      [bb.max.x - bb.min.x, bb.max.y - bb.min.y, bb.max.z - bb.min.z].map((v) => v.toFixed(1)).join(',') +
+      ' y=' +
+      bb.min.y.toFixed(1) +
+      '..' +
+      bb.max.y.toFixed(1)
+  );
+});
+
+let frames = 0;
+renderer.setAnimationLoop(() => {
+  renderer.render(scene, camera);
+  frames++;
+  if (frames === 3) window.__ready = true;
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>

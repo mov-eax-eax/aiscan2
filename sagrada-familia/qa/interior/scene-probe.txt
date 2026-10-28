@@ -1,0 +1,120 @@
+environment map generation failed TypeError: this._renderer.compile is not a function
+    at Na._compileMaterial (file:///F:/repo-aiscan2/sagrada-familia/vendor/three.module.min.js:6:308947)
+    at new Na (file:///F:/repo-aiscan2/sagrada-familia/vendor/three.module.min.js:6:303885)
+    at buildEnvironment (file:///F:/repo-aiscan2/sagrada-familia/src/environment.js:378:19)
+    at file:///F:/repo-aiscan2/sagrada-familia/qa/interior/offline-scene-probe.mjs:71:17
+[built] environment (87 ms)
+[glory-shell] built 232.270 triangles in 22 meshes, 122 colliders, 10 hotspots (595 ms)
+[built] glory-shell (622 ms)
+[built] facades-np (648 ms)
+[built] towers (258 ms)
+[built] interior (518 ms)
+
+environment: 34 meshes
+    15120  MeshStandardMaterial y -2.5..2.5  
+     3068  MeshStandardMaterial y 0.1..0.3  
+     1680  MeshBasicMaterial  y -0.3..0.3  
+     1512  textured           y 0.0..4.2  
+     1428  textured           y 0.0..1.0  
+     1260  MeshStandardMaterial y 1.4..1.7  
+     1120  MeshStandardMaterial y 1.5..1.7  
+     1092  MeshStandardMaterial y 0.0..60.0  
+     1088  ShaderMaterial     y -1500.0..1500.0  
+      896  MeshStandardMaterial y -0.0..0.8  
+      600  MeshStandardMaterial y 0.0..0.5  
+      540  MeshStandardMaterial y 0.0..1.5  
+      540  MeshStandardMaterial y 0.0..1.5  
+      540  MeshStandardMaterial y 0.0..1.5  
+
+glory-shell: 22 meshes
+   162392  textured           y -0.9..60.7  gs:trim
+    22080  textured           y -0.3..52.5  gs:trim2
+     7416  MeshStandardMaterial y -9.6..60.6  gs:gold
+     7098  MeshBasicMaterial  y 9.0..42.6  gs:glass:cool
+     7098  MeshBasicMaterial  y 9.0..42.6  gs:glass:warm
+     5744  MeshBasicMaterial  y 21.1..56.8  gs:glass:rose
+     4432  textured           y 0.3..4.4  gs:marble
+     3628  textured           y -1.0..45.0  gs:shell
+     3164  textured           y -2.0..60.5  gs:glory
+     2758  MeshBasicMaterial  y 10.8..37.1  gs:glass:apse
+     2450  textured           y -9.8..50.9  gs:mosaic
+     2052  textured           y -0.4..43.1  gs:aisle
+     1128  textured           y -0.0..49.1  gs:shadow
+      448  textured           y 25.0..37.8  gs:roof
+
+facades-np: 36 meshes
+   226154  textured           y -1.0..57.1  nativity-facade:stoneLight
+    34508  textured           y -1.0..54.0  nativity-facade:stoneWarm
+    11492  textured           y -1.0..59.2  passion-facade:stoneLight
+    10342  textured           y -1.0..54.4  nativity-facade:stoneDark
+     7996  textured           y 0.0..54.9  passion-facade:flatLight
+     5540  textured           y -1.0..39.0  nativity-facade:reveal
+     5192  textured           y 13.5..59.8  nativity-facade:white
+     5040  MeshBasicMaterial  y 24.4..34.7  nativity-facade:glass
+     4735  textured           y 25.1..62.2  nativity-facade:foliage
+     4324  textured           y 0.0..47.4  passion-facade:flat
+     2628  textured           y -0.4..53.7  passion-facade:stoneDark
+     2380  MeshBasicMaterial  y 24.6..35.4  passion-facade:glass
+     2160  textured           y -1.0..57.1  passion-facade:flatDark
+     1976  MeshStandardMaterial y 5.6..62.8  nativity-facade:gold
+
+towers: 55 meshes
+    29952  textured           y -0.7..8.3  winApostleStone
+    27552  textured           y 0.0..1.0  baluster
+    26720  textured           y 1.0..160.1  trim
+     9984  textured           y -0.7..8.2  winEvangelistStone
+     9728  textured           y -0.0..4.5  pinnacle
+     7920  MeshStandardMaterial y 86.2..88.9  bell
+     6448  textured           y 0.0..2.5  crest
+     5780  MeshStandardMaterial y 46.5..150.3  gold
+     5760  textured           y 0.0..3.9  roofPinnacle
+     4772  textured           y 0.0..108.4  ap_n1
+     4772  textured           y 0.0..108.4  ap_n4
+     4772  textured           y 0.0..108.4  ap_p1
+     4772  textured           y 0.0..108.4  ap_p4
+     4772  textured           y 0.0..108.4  ap_g1
+
+interior: 111 meshes
+    89824  textured           y -0.2..46.7  interior-basaltLight
+    57424  textured           y 25.3..52.0  interior-rib
+    29560  textured           y 3.3..45.6  interior-stoneLight
+    23104  MeshStandardMaterial y 28.0..52.7  interior-gold
+    18432  textured           y 8.1..39.3  interior-stoneLight
+    16140  textured           y 0.0..6.0  interior-marble
+    13440  int-vault          y 25.5..45.1  interior-vault
+     9576  textured           y 28.5..50.8  interior-stoneLight
+     7896  MeshStandardMaterial y 0.6..7.6  interior-gold
+     7316  textured           y -0.0..2.8  interior-marble
+     6944  textured           y 43.8..44.5  interior-mosaicGold
+     6480  textured           y 0.0..30.6  interior-marble
+     6080  MeshStandardMaterial y 6.9..45.2  interior-gold
+     4720  textured           y -0.0..0.9  interior-basalt
+
+lowest roof mesh: group=towers mat=textured name=roofPinnacleBig bbox y 0.00..4.98 x -0.5..0.5 z -0.5..0.5
+
+=== intrusions in the crossing box |x|,|z| < 13, y 43..58 ===
+facades-np/textured nativity-facade:stone: 36 verts in box; top cells -9,0,44 | 9,0,44
+facades-np/textured nativity-facade:stoneLight: 57418 verts in box; top cells 0,3,51 | 3,3,47 | 3,3,56 | 6,3,51 | -6,3,51 | -3,3,47 | -3,3,56 | -3,3,46
+facades-np/textured nativity-facade:stoneDark: 4038 verts in box; top cells 12,3,46 | -12,3,46 | -3,3,46 | 3,3,46 | -9,3,46 | -6,3,46 | 0,3,46 | 6,3,46
+facades-np/textured nativity-facade:stoneWarm: 1416 verts in box; top cells -6,0,45 | 6,0,45 | -6,0,44 | 6,0,44 | 0,3,43 | -6,3,44 | 6,3,44 | 0,3,54
+facades-np/textured nativity-facade:white: 9924 verts in box; top cells 0,3,49 | 0,3,50 | 0,3,56 | 0,3,54 | -3,3,57 | 3,3,56 | 0,3,58 | 3,3,54
+facades-np/MeshStandardMaterial nativity-facade:gold: 900 verts in box; top cells 6,3,47 | 6,3,52 | 6,3,48 | 0,3,47 | 0,3,48 | 6,3,46 | 3,3,47
+facades-np/textured nativity-facade:foliage: 1664 verts in box; top cells 0,3,43 | 0,3,57 | 0,3,53 | 0,3,52 | 0,3,54 | 0,3,50 | 3,3,47 | 0,3,44
+facades-np/textured passion-facade:stone: 72 verts in box; top cells 3,3,44 | 3,0,44 | -3,0,44 | -3,3,44
+facades-np/textured passion-facade:stoneLight: 982 verts in box; top cells 0,3,58 | 0,0,58 | 0,3,56 | 0,3,57 | 0,0,56 | 0,0,57 | 12,0,45 | 12,3,45
+facades-np/textured passion-facade:stoneDark: 360 verts in box; top cells -12,3,53 | 12,3,53 | -12,0,53 | 12,0,53
+facades-np/textured passion-facade:reveal: 558 verts in box; top cells 0,3,53 | 3,0,44 | -3,0,44 | 3,3,44 | -3,3,44 | -9,3,46 | 9,3,46 | -3,3,48
+facades-np/textured passion-facade:flat: 464 verts in box; top cells 0,3,43 | -3,0,44 | 3,0,44 | 3,3,43 | -9,0,44 | -12,0,44 | 0,0,44 | 9,0,44
+facades-np/textured passion-facade:flatLight: 2355 verts in box; top cells -3,3,47 | 3,3,47 | -6,3,48 | 6,3,48 | -6,3,51 | 6,3,51 | -6,3,49 | 6,3,49
+facades-np/textured passion-facade:flatDark: 668 verts in box; top cells -6,3,43 | 6,3,43 | -12,3,46 | -9,3,46 | -6,3,46 | -3,3,46 | 0,3,46 | 3,3,46
+towers/textured trim: 396 verts in box; top cells -12,-9,47 | -9,-12,47 | 12,-9,47 | 9,-12,47 | 12,9,47 | 9,12,47 | -9,12,47 | -12,9,47
+towers/textured evangelist: 196 verts in box; top cells -9,-9,47 | 9,-9,47 | 9,9,47 | -9,9,47 | -9,-9,45 | 9,-9,45 | 9,9,45 | -9,9,45
+towers/textured jesus: 672 verts in box; top cells -3,9,58 | 3,9,58 | 9,3,58 | 9,-3,58 | 3,-9,58 | -3,-9,58 | -9,-3,58 | -9,3,58
+
+upward rays: 350 tested in 14816 ms
+rays that saw NO interior ceiling: 0
+rays whose first hit was NOT my interior: 4 {"glory-shell/textured":4}
+  x=-14 z=-52 y=20.30 <- glory-shell/textured gs:trim2
+  x=-11 z=-58 y=33.95 <- glory-shell/textured gs:trim2
+  x=-8 z=-58 y=20.30 <- glory-shell/textured gs:trim2
+  x=10 z=-58 y=20.30 <- glory-shell/textured gs:trim2

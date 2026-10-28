@@ -1,0 +1,165 @@
+:root {
+  --ink: #f1e8d6;
+  --ink-dim: rgba(241, 232, 214, 0.62);
+  --ink-faint: rgba(241, 232, 214, 0.34);
+  --gold: #d9b25e;
+  --gold-soft: rgba(217, 178, 94, 0.55);
+  --stone: #cbb9a0;
+  --glass: #73b6ad;
+  --night: #0a0d16;
+  --panel: rgba(11, 14, 20, 0.72);
+  --panel-solid: rgba(9, 11, 16, 0.94);
+  --line: rgba(241, 232, 214, 0.14);
+  --serif: Georgia, "Times New Roman", "Palatino Linotype", serif;
+  --sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #07090f;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body { position: fixed; inset: 0; }
+canvas { display: block; width: 100%; height: 100%; outline: none; }
+button { font: inherit; color: inherit; }
+a { color: var(--gold); }
+
+/* ------------------------------------------------------------------ loader */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 38%, rgba(54, 49, 40, 0.55), transparent 68%),
+    radial-gradient(ellipse 120% 90% at 50% 120%, #15110b 0%, #07090f 55%, #04050a 100%);
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.1s;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+#loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 20%, transparent 75%);
+  opacity: 0.7;
+}
+.loader-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 180px 60px rgba(0, 0, 0, 0.85);
+}
+.loader-inner {
+  position: relative;
+  width: min(560px, 86vw);
+  text-align: center;
+  transform: translateY(-3vh);
+}
+.loader-rule {
+  width: 1px;
+  height: 64px;
+  margin: 0 auto 26px;
+  background: linear-gradient(to bottom, transparent, var(--gold-soft));
+}
+.loader-kicker {
+  margin: 0 0 18px;
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.9;
+}
+.loader-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(42px, 8.5vw, 84px);
+  line-height: 0.94;
+  letter-spacing: 0.02em;
+  color: #f3ead8;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+}
+.loader-title span {
+  display: inline-block;
+  font-style: italic;
+  color: var(--stone);
+  letter-spacing: 0.08em;
+}
+.loader-sub {
+  margin: 22px 0 38px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+}
+.loader-track {
+  height: 1px;
+  width: 100%;
+  background: rgba(241, 232, 214, 0.13);
+  overflow: hidden;
+}
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(217, 178, 94, 0), var(--gold) 40%, #f4e3b6);
+  box-shadow: 0 0 18px rgba(217, 178, 94, 0.5);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.loader-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 14px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.loader-note {
+  margin-top: 46px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(241, 232, 214, 0.28);
+}
+
+/* ------------------------------------------------------------------- fatal */
+#fatal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: #07090f;
+  padding: 30px;
+}
+#fatal[hidden] { display: none; }
+.fatal-inner { max-width: 520px; text-align: center; }
+.fatal-inner h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  margin: 0 0 14px;
+}
+.fatal-inner p { color: var(--ink-dim); line-height: 1.6; font-size: 14px; }
+
+/* -------------------------------------------------------------------- misc */
+#ui { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+#ui > * { pointer-events: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+::selection { background: rgba(217, 178, 94, 0.35); }

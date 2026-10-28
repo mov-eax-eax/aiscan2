@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="An extreme-detail, walkable 3D model of the Sagrada Família in Barcelona, built procedurally." />
+  <title>La Sagrada Família — A Walkable Model</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2310131b'/%3E%3Cpath d='M16 3 L20 14 L17 14 L17 28 L15 28 L15 14 L12 14 Z' fill='%23d9b25e'/%3E%3Ccircle cx='16' cy='6' r='2' fill='%23f0d27a'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/ui.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="loader" aria-live="polite">
+    <div class="loader-inner">
+      <div class="loader-rule"></div>
+      <p class="loader-kicker">Barcelona · 1882 — forever unfinished</p>
+      <h1 class="loader-title">La Sagrada<br /><span>Família</span></h1>
+      <p class="loader-sub">A walkable study in stone, light and forest</p>
+      <div class="loader-track"><div class="loader-bar" id="loader-bar"></div></div>
+      <div class="loader-meta">
+        <span id="loader-status">Preparing the site…</span>
+        <span id="loader-percent">0%</span>
+      </div>
+      <p class="loader-note">Best explored on a desktop with headphones. Takes a moment to carve.</p>
+    </div>
+    <div class="loader-vignette"></div>
+  </div>
+
+  <div id="fatal" hidden>
+    <div class="fatal-inner">
+      <h2>This browser could not open the temple</h2>
+      <p id="fatal-msg">WebGL 2 is required. Try a current version of Chrome, Edge, Firefox or Safari.</p>
+    </div>
+  </div>
+
+  <div id="ui"></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

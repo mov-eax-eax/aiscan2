@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Facades NP — preview</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #0d1420;
+        font: 12px/1.4 ui-monospace, monospace;
+        color: #cfd8e3;
+      }
+      canvas {
+        display: block;
+      }
+      #hud {
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        z-index: 5;
+        background: #000a;
+        padding: 6px 9px;
+        border-radius: 5px;
+        white-space: pre;
+        pointer-events: none;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../../vendor/three.module.min.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="hud">loading…</div>
+    <script type="module">
+      import * as THREE from 'three';
+      import { buildFacadesNP } from '../../src/facades-np.js';
+      import { stoneMat, glassMaterial } from '../../src/lib.js';
+
+      const params = new URLSearchParams(location.search);
+      const view = params.get('view') || 'nativity';
+      const night = params.get('night') === '1';
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+      renderer.setSize(innerWidth, innerHeight);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.03;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      document.body.appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(night ? 0x080d18 : 0x9fc0d8);
+
+      const camera = new THREE.PerspectiveCamera(52, innerWidth / innerHeight, 0.1, 3000);
+
+      // ---- lighting ----------------------------------------------------------
+      const isPassion = view.startsWith('passion');
+      const hemi = new THREE.HemisphereLight(night ? 0x33405c : 0xbfd6ff, night ? 0x1a1712 : 0x9a8871, night ? 0.45 : 1.25);
+      scene.add(hemi);
+      const sun = new THREE.DirectionalLight(night ? 0x9fb4dd : 0xfff3dd, night ? 0.35 : 2.7);
+      sun.position.set(isPassion ? -55 : 55, 110, 150);
+      sun.castShadow = true;
+      sun.shadow.mapSize.set(2048, 2048);
+      sun.shadow.camera.left = -120;
+      sun.shadow.camera.right = 120;
+      sun.shadow.camera.top = 120;
+      sun.shadow.camera.bottom = -120;
+      sun.shadow.camera.near = 1;
+      sun.shadow.camera.far = 500;
+      scene.add(sun);
+      scene.add(new THREE.AmbientLight(night ? 0x223044 : 0xfff0dd, night ? 0.35 : 0.28));
+
+      const ground = new THREE.Mesh(
+        new THREE.CircleGeometry(500, 64).rotateX(-Math.PI / 2),
+        stoneMat(0x7d7466, { repeat: 26 })
+      );
+      ground.receiveShadow = true;
+      scene.add(ground);
+
+      if (night) {
+        const warm = new THREE.SpotLight(0xffe0b0, 900, 220, Math.PI / 5, 0.45, 1.6);
+        warm.position.set(62, 18, 26);
+        warm.target.position.set(30, 30, 0);
+        scene.add(warm, warm.target);
+        const cool = new THREE.SpotLight(0xbfd8ff, 700, 220, Math.PI / 5, 0.5, 1.6);
+        cool.position.set(-58, 22, -22);
+        cool.target.position.set(-31, 28, 0);
+        scene.add(cool, cool.target);
+        glassMaterial.color.setRGB(1.35, 1.32, 1.25);
+      } else {
+        glassMaterial.color.setRGB(0.72, 0.75, 0.8);
+      }
+
+      // ---- build -------------------------------------------------------------
+      const t0 = performance.now();
+      const result = buildFacadesNP({});
+      scene.add(result.group);
+      const buildMs = performance.now() - t0;
+
+      // ---- camera presets ----------------------------------------------------
+      const VIEWS = {
+        nativity: [[92, 27, 0], [31, 27, 0]],
+        'nativity-tree': [[48, 40, 16], [31, 50, 0]],
+        'nativity-portal': [[44.5, 6.5, 3], [31, 12.5, 0]],
+        'nativity-upper': [[50, 44, 10], [31, 47, 0]],
+        'nativity-oblique': [[66, 33, 54], [31, 27, 0]],
+        'nativity-doors': [[18, 5, 0], [31, 8, 0]],
+        passion: [[-92, 27, 0], [-31, 27, 0]],
+        'passion-portal': [[-43, 7, 4], [-31, 12, 0]],
+        'passion-oculus': [[-54, 34, 12], [-31.5, 29, 0]],
+        'passion-oblique': [[-66, 33, -54], [-31, 27, 0]],
+        'passion-doors': [[-18, 5, 0], [-31, 9, 0]],
+        both: [[0, 60, 190], [0, 30, 0]],
+      };
+      let pos = VIEWS[view] ? VIEWS[view][0] : VIEWS.nativity[0];
+      let look = VIEWS[view] ? VIEWS[view][1] : VIEWS.nativity[1];
+      const parse = (s) => s.split(',').map(Number);
+      if (params.get('pos')) pos = parse(params.get('pos'));
+      if (params.get('look')) look = parse(params.get('look'));
+      camera.position.set(...pos);
+      camera.lookAt(...look);
+
+      // ---- render loop -------------------------------------------------------
+      let frames = 0;
+      const hud = document.getElementById('hud');
+      const clock = new THREE.Clock();
+      const render = () => {
+        renderer.render(scene, camera);
+        frames++;
+        if (frames === 6) {
+          const info = renderer.info;
+          const payload = {
+            buildMs: Math.round(buildMs),
+            triangles: info.render.triangles,
+            calls: info.render.calls,
+            geometries: info.memory.geometries,
+            textures: info.memory.textures,
+            colliders: result.colliders.length,
+            hotspots: result.hotspots.map((h) => h.id),
+            children: result.group.children.length,
+          };
+          hud.textContent =
+            `${view}${night ? ' · night' : ''}\n` +
+            `triangles ${payload.triangles.toLocaleString()}  calls ${payload.calls}  build ${payload.buildMs}ms\n` +
+            `colliders ${payload.colliders}`;
+          console.log('[facades-np-stats] ' + JSON.stringify(payload));
+        }
+        if (frames > 20) window.__ready = true;
+        requestAnimationFrame(render);
+      };
+      render();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = innerWidth / innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(innerWidth, innerHeight);
+      });
+    </script>
+  </body>
+</html>

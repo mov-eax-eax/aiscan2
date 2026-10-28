@@ -1,0 +1,32 @@
+ext-se {"ready":true,"stats":{"fps":0,"calls":283,"triangles":1133676,"geometries":247,"textures":64,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[118,42,150]}
+nativity {"ready":true,"stats":{"fps":59,"calls":267,"triangles":1132216,"geometries":243,"textures":61,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[78,26,42]}
+passion {"ready":true,"stats":{"fps":54,"calls":266,"triangles":1132214,"geometries":243,"textures":60,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[-78,26,42]}
+glory {"ready":true,"stats":{"fps":28,"calls":276,"triangles":1133060,"geometries":246,"textures":64,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[0,22,112]}
+nave {"ready":true,"stats":{"fps":0,"calls":249,"triangles":1112530,"geometries":233,"textures":57,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[0,1.7199999999999978,38]}
+crossing {"ready":true,"stats":{"fps":59,"calls":207,"triangles":1082672,"geometries":222,"textures":51,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[0,1.72,-2]}
+altar {"ready":true,"stats":{"fps":60,"calls":156,"triangles":958597,"geometries":199,"textures":39,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[0,1.7200000000000013,-24]}
+towers {"ready":true,"stats":{"fps":60,"calls":165,"triangles":998017,"geometries":205,"textures":45,"time":10.350000000000001,"quality":"high"},"errs":[],"pos":[62,110,64]}
+night-ext {"ready":true,"stats":{"fps":60,"calls":280,"triangles":1134368,"geometries":246,"textures":63,"time":21.4,"quality":"high"},"errs":[],"pos":[110,38,135]}
+night-nave {"ready":true,"stats":{"fps":60,"calls":248,"triangles":1112528,"geometries":233,"textures":56,"time":21.4,"quality":"high"},"errs":[],"pos":[0,1.7199999999999978,38]}
+LOGS [
+  "[log] [glory-shell] built 204,854 triangles in 19 meshes, 110 colliders, 10 hotspots (709 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 283, triangles: 1133676, geometries: 247, textures: 64}",
+  "[log] [glory-shell] built 204,854 triangles in 19 meshes, 110 colliders, 10 hotspots (808 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 267, triangles: 1132216, geometries: 243, textures: 61}",
+  "[log] [glory-shell] built 204,854 triangles in 19 meshes, 110 colliders, 10 hotspots (740 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 266, triangles: 1132214, geometries: 243, textures: 60}",
+  "[log] [glory-shell] built 205,046 triangles in 19 meshes, 110 colliders, 10 hotspots (1249 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 276, triangles: 1133060, geometries: 246, textures: 64}",
+  "[log] [glory-shell] built 206,078 triangles in 19 meshes, 110 colliders, 10 hotspots (4452 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 249, triangles: 1112530, geometries: 233, textures: 57}",
+  "[log] [glory-shell] built 206,078 triangles in 19 meshes, 110 colliders, 10 hotspots (1210 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 207, triangles: 1082672, geometries: 222, textures: 51}",
+  "[log] [glory-shell] built 206,078 triangles in 19 meshes, 110 colliders, 10 hotspots (916 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 156, triangles: 958597, geometries: 199, textures: 39}",
+  "[log] [glory-shell] built 206,078 triangles in 19 meshes, 110 colliders, 10 hotspots (622 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 165, triangles: 998017, geometries: 205, textures: 45}",
+  "[log] [glory-shell] built 206,078 triangles in 19 meshes, 110 colliders, 10 hotspots (437 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 280, triangles: 1134368, geometries: 246, textures: 63}",
+  "[log] [glory-shell] built 206,078 triangles in 19 meshes, 110 colliders, 10 hotspots (502 ms)",
+  "[log] [sagrada] ready {fps: 0, calls: 248, triangles: 1112528, geometries: 233, textures: 56}"
+]

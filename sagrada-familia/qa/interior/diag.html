@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Interior QA — diagnostics</title>
+<script type="importmap">
+  { "imports": { "three": "../../vendor/three.module.min.js" } }
+</script>
+</head>
+<body style="background:#111;color:#ddd;font:12px monospace">
+<pre id="out"></pre>
+<script type="module">
+import * as THREE from 'three';
+if (location.search.includes('nandebug')) window.__INTERIOR_DEBUG_NAN = true;
+import { makeMaterials } from '../../src/interior/common.js';
+import { buildFloor } from '../../src/interior/floor.js';
+import { buildColumns } from '../../src/interior/columns.js';
+import { buildVaults } from '../../src/interior/vaults.js';
+import { buildApse } from '../../src/interior/apse.js';
+import { buildSanctuary } from '../../src/interior/sanctuary.js';
+import { buildChapels } from '../../src/interior/chapels.js';
+import { buildWindows } from '../../src/interior/windows.js';
+import { buildFurniture } from '../../src/interior/furniture.js';
+import { buildLighting } from '../../src/interior/lighting.js';
+
+const lines = [];
+const log = (s) => { lines.push(s); document.getElementById('out').textContent = lines.join('\n'); };
+
+function scan(label, root) {
+  root.traverse((o) => {
+    if (!o.isMesh || !o.geometry || !o.geometry.attributes.position) return;
+    const p = o.geometry.attributes.position;
+    let bad = 0;
+    let first = -1;
+    for (let i = 0; i < p.count; i++) {
+      if (!Number.isFinite(p.getX(i)) || !Number.isFinite(p.getY(i)) || !Number.isFinite(p.getZ(i))) {
+        bad++;
+        if (first < 0) first = i;
+      }
+    }
+    if (bad) {
+      let where = '';
+      if (first >= 0) {
+        const idx = Math.max(0, first - 3);
+        where = ` @v${first} (${p.getX(idx).toFixed(2)},${p.getY(idx).toFixed(2)},${p.getZ(idx).toFixed(2)})`;
+      }
+      log(`[NAN] ${label} ${o.name || o.type} bad=${bad}/${p.count}${where}`);
+    }
+  });
+  let tris = 0;
+  root.traverse((o) => {
+    if (!o.isMesh || !o.geometry) return;
+    const g = o.geometry;
+    const n = g.index ? g.index.count : g.attributes.position ? g.attributes.position.count : 0;
+    tris += n / 3;
+  });
+  log(`[ok] ${label} tris=${Math.round(tris)} meshes=${root.children.length}`);
+  // obstruction probe: what geometry is within 3 m of these eye points?
+  const pts = [new THREE.Vector3(0, 1.7, 33), new THREE.Vector3(0, 1.7, 22), new THREE.Vector3(0, 3, 8)];
+  root.traverse((o) => {
+    if (!o.isMesh || !o.geometry || !o.geometry.attributes.position) return;
+    o.geometry.computeBoundingBox();
+    const bb = o.geometry.boundingBox;
+    for (const pt of pts) {
+      const d = bb.distanceToPoint(pt);
+      if (d < 2.5) {
+        const s = bb.getSize(new THREE.Vector3());
+        log(
+          `[near] ${label} ${o.name || o.type} pt=${pt.toArray().join(',')} d=${d.toFixed(2)} ` +
+          `size=${s.x.toFixed(1)}x${s.y.toFixed(1)}x${s.z.toFixed(1)} ` +
+          `min=(${bb.min.toArray().map((v) => v.toFixed(1)).join(',')}) max=(${bb.max.toArray().map((v) => v.toFixed(1)).join(',')})`
+        );
+      }
+    }
+  });
+}
+
+const mats = makeMaterials();
+const out = { colliders: [], hotspots: [], walkables: [] };
+const steps = [
+  ['floor', buildFloor],
+  ['columns', buildColumns],
+  ['vaults', buildVaults],
+  ['apse', buildApse],
+  ['sanctuary', buildSanctuary],
+  ['chapels', buildChapels],
+  ['windows', buildWindows],
+  ['furniture', buildFurniture],
+  ['lighting', buildLighting],
+];
+for (const [name, fn] of steps) {
+  const g = new THREE.Group();
+  g.name = name;
+  try {
+    fn(g, mats, out);
+  } catch (e) {
+    log(`[THROW] ${name}: ${e && e.message}`);
+    continue;
+  }
+  scan(name, g);
+}
+log(`[totals] colliders=${out.colliders.length} walkables=${out.walkables.length}`);
+window.__ready = true;
+console.log(lines.join('\n'));
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Glory façade + outer shell — preview</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0b1622; overflow: hidden; }
+    canvas { display: block; }
+    #err { position: fixed; left: 8px; top: 8px; z-index: 9; max-width: 64vw; max-height: 42vh;
+      overflow: auto; background: #000c; color: #f88; font: 11px/1.4 monospace; padding: 8px;
+      white-space: pre-wrap; pointer-events: none; }
+    #hud { position: fixed; right: 10px; bottom: 8px; z-index: 9; color: #cfd8e3; font: 11px monospace;
+      background: #0008; padding: 4px 8px; pointer-events: none; }
+  </style>
+  <script type="importmap">
+    { "imports": { "three": "../../vendor/three.module.min.js" } }
+  </script>
+</head>
+<body>
+<div id="err"></div>
+<div id="hud"></div>
+<script type="module">
+import * as THREE from 'three';
+import { buildGloryShell } from '../../src/glory-shell.js';
+import { DIM, TOUR } from '../../src/config.js';
+import * as LIB from '../../src/lib.js';
+
+const q = new URLSearchParams(location.search);
+const num = (s, def) => {
+  if (s === null || s === undefined || s === '') return def;
+  const v = Number(s);
+  return Number.isFinite(v) ? v : def;
+};
+const vec = (s, def) => {
+  if (!s) return def;
+  const a = s.split(',').map(Number);
+  return a.length === 3 && a.every(Number.isFinite) ? a : def;
+};
+const pos = vec(q.get('pos'), [128, 30, 142]);
+const look = vec(q.get('look'), [0, 30, 34]);
+const fov = num(q.get('fov'), 55);
+const time = num(q.get('time'), 10.35);
+const night = q.get('night') === '1' || time >= 20 || time <= 6;
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.02;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(night ? 0x0a1424 : 0x9fc0d8);
+scene.fog = new THREE.Fog(night ? 0x0a1424 : 0xa9c4d8, 260, 620);
+
+const camera = new THREE.PerspectiveCamera(fov, innerWidth / innerHeight, 0.1, 2600);
+camera.position.fromArray(pos);
+camera.lookAt(look[0], look[1], look[2]);
+
+const hemi = new THREE.HemisphereLight(night ? 0x3d5a86 : 0xbfd6ff, night ? 0x14100c : 0x8a7a63, night ? 0.55 : 1.15);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(night ? 0x9fb6e0 : 0xfff3dd, night ? 0.5 : 2.4);
+sun.position.set(110, 150, 90);
+sun.castShadow = true;
+sun.shadow.mapSize.set(1536, 1536);
+sun.shadow.camera.left = -150;
+sun.shadow.camera.right = 150;
+sun.shadow.camera.top = 150;
+sun.shadow.camera.bottom = -150;
+sun.shadow.camera.near = 1;
+sun.shadow.camera.far = 600;
+sun.shadow.bias = -0.0006;
+scene.add(sun);
+scene.add(sun.target);
+if (night) {
+  // warm floodlights as cheap point-free fill from the ground plane
+  const up = new THREE.DirectionalLight(0xffb066, 0.85);
+  up.position.set(-40, -30, -60);
+  scene.add(up);
+}
+
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(420, 72).rotateX(-Math.PI / 2),
+  new THREE.MeshStandardMaterial({ color: night ? 0x2f2a24 : 0x7d7466, roughness: 0.95 })
+);
+// The app's plaza sits at y = -0.055; match it so plinths and the mosaic
+// threshold apron read the same as in the live scene.
+ground.position.y = -0.055;
+ground.receiveShadow = true;
+scene.add(ground);
+
+const env = { time, auto: false, night: night ? 1 : 0, sunDir: new THREE.Vector3(0, 1, 0), sun, elapsed: 0, fps: 0, quality: 'high', ready: false };
+if (night) {
+  LIB.glassMaterial.color.copy(LIB.glassMaterial.userData.nightColor);
+}
+const ctx = {
+  scene, camera, renderer, env, DIM, TOUR, LIB, quality: 'high',
+  app: { setTimeOfDay() {}, getStats() { return {}; } },
+  onQuality() {},
+};
+
+const errors = [];
+const errBox = document.getElementById('err');
+const hud = document.getElementById('hud');
+let built = null;
+try {
+  const t0 = performance.now();
+  built = buildGloryShell(ctx);
+  const ms = Math.round(performance.now() - t0);
+  scene.add(built.group);
+  console.log(JSON.stringify({
+    build_ms: ms,
+    colliders: built.colliders.length,
+    hotspots: built.hotspots.length,
+    walkables: built.walkables.length,
+    errors,
+  }));
+} catch (e) {
+  errors.push(String(e && e.stack ? e.stack : e));
+  errBox.textContent = errors.join('\n\n');
+  console.error('[preview] build failed', e);
+}
+
+if (built && !errors.length) errBox.style.display = 'none';
+
+let frames = 0;
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.1);
+  env.elapsed += dt;
+  renderer.render(scene, camera);
+  frames++;
+  if (frames === 2) {
+    // Static scene: freeze the shadow map so QA renders are cheap.
+    renderer.shadowMap.autoUpdate = false;
+  }
+  if (frames === 20) {
+    window.__ready = true;
+    const info = renderer.info;
+    const stats = {
+      triangles: info.render.triangles,
+      calls: info.render.calls,
+      geometries: info.memory.geometries,
+      textures: info.memory.textures,
+      frames,
+    };
+    console.log('[preview] ' + JSON.stringify(stats));
+    hud.textContent = `${stats.triangles.toLocaleString()} tris · ${stats.calls} calls · ${stats.geometries} geos`;
+    window.__stats = stats;
+  }
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+window.__preview = { scene, camera, renderer, env, errors, built };
+</script>
+</body>
+</html>

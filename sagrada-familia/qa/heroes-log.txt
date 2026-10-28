@@ -1,0 +1,8 @@
+hero-exterior ok
+hero-nativity ok
+hero-glory ok
+hero-nave ok
+hero-altar ok
+hero-night ok
+hero-towers ok
+hero-splash ok

@@ -1,0 +1,3 @@
+// Register the vendored "three" resolver:  node --import ./qa/experience/three-register.mjs ...
+import { register } from 'node:module';
+register('./three-hooks.mjs', import.meta.url);

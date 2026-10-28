@@ -1,0 +1,2013 @@
+{
+  "meta": {
+    "startedAt": "2026-10-17T11:51:33.149Z",
+    "finishedAt": "2026-10-17T12:01:11.920Z",
+    "base": "http://127.0.0.1:8145/",
+    "project": "F:\\repo-aiscan2\\sagrada-familia",
+    "host": "DESKTOP-U6O3JM5",
+    "node": "v26.0.0",
+    "viewports": {
+      "interact": [
+        800,
+        500
+      ],
+      "capture": [
+        1280,
+        720
+      ],
+      "hero": [
+        1600,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "browser": "Edge (playwright-core 1.64.1)",
+    "gpu": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 5700 XT (0x0000731F) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "skipped": [],
+    "aborted": null,
+    "portStartedByHarness": false,
+    "lock": {
+      "file": "F:\\repo-aiscan2\\sagrada-familia\\qa\\.shot.lock",
+      "acquired": true,
+      "pid": 33324
+    },
+    "fastPassAt": "2026-10-17T12:01:11.920Z",
+    "fastPassBootMs": 9582,
+    "mobileSectionDropped": true,
+    "mobileVerifiedExternally": "qa/mobile-check.png + qa/mobile-check.txt (Lead)",
+    "fastPassNotes": "Final shell/interior fix pass: boot, builder groups, NaN scan, nave/crossing/altar/night-interior captures, quick perf. Mobile section dropped per user request and verified externally."
+  },
+  "tests": [
+    {
+      "id": "boot-ready",
+      "group": "boot",
+      "name": "app boots and signals window.__sagrada.ready",
+      "status": "PASS",
+      "detail": "ready in 8967 ms",
+      "severity": "BLOCKER",
+      "repro": "",
+      "shots": [],
+      "ms": 8968
+    },
+    {
+      "id": "boot-renderer",
+      "group": "boot",
+      "name": "real GPU renderer active (ANGLE D3D11, not SwiftShader)",
+      "status": "PASS",
+      "detail": "{\"renderer\":\"ANGLE (AMD, AMD Radeon RX 5700 XT (0x0000731F) Direct3D11 vs_5_0 ps_5_0, D3D11)\",\"vendor\":\"Google Inc. (AMD)\",\"webgl2\":true,\"pixelRatio\":1}",
+      "severity": "MAJOR",
+      "repro": "launch args must be exactly --enable-gpu --ignore-gpu-blocklist --use-angle=d3d11 --disable-gpu-sandbox --no-sandbox; read WEBGL_debug_renderer_info after boot.",
+      "shots": [],
+      "ms": 17
+    },
+    {
+      "id": "boot-canvas",
+      "group": "boot",
+      "name": "renderer canvas exists at viewport size",
+      "status": "PASS",
+      "detail": "{\"w\":800,\"h\":500,\"cw\":800,\"ch\":500}",
+      "severity": "BLOCKER",
+      "repro": "canvas should fill the viewport at 800x500",
+      "shots": [],
+      "ms": 9
+    },
+    {
+      "id": "boot-loader-dismissed",
+      "group": "boot",
+      "name": "loading screen is dismissed",
+      "status": "PASS",
+      "detail": "{\"cls\":\"hidden\",\"display\":\"flex\",\"visibility\":\"visible\",\"opacity\":\"0.0237509\"}",
+      "severity": "BLOCKER",
+      "repro": "boot should hide #loader within a few seconds of ready",
+      "shots": [],
+      "ms": 1103
+    },
+    {
+      "id": "boot-no-page-errors",
+      "group": "boot",
+      "name": "no uncaught page errors during boot",
+      "status": "PASS",
+      "detail": "clean",
+      "severity": "BLOCKER",
+      "repro": "check the browser console on a normal load",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "boot-builder-errors",
+      "group": "boot",
+      "name": "all builders completed without recorded errors",
+      "status": "PASS",
+      "detail": "no builder errors",
+      "severity": "BLOCKER",
+      "repro": "window.__sagrada.errors() after boot; a non-empty list means a builder threw and its geometry is missing.",
+      "shots": [],
+      "ms": 2
+    },
+    {
+      "id": "boot-scene-groups",
+      "group": "boot",
+      "name": "all five builder groups are present and non-empty",
+      "status": "PASS",
+      "detail": "{\"environment\":\"34 meshes/14,802 tris\",\"glory-shell\":\"22 meshes/232,270 tris\",\"facades-np\":\"36 meshes/329,431 tris\",\"towers\":\"55 meshes/108,142 tris\",\"interior\":\"109 meshes/376,904 tris\"}",
+      "severity": "BLOCKER",
+      "repro": "inspect window.__app.scene children by name after boot; every builder group must exist.",
+      "shots": [],
+      "ms": 29
+    },
+    {
+      "id": "boot-nan-geometry",
+      "group": "boot",
+      "name": "no geometry contains NaN/Infinity vertex positions",
+      "status": "PASS",
+      "detail": "257 meshes / 3,181,081 vertices clean",
+      "severity": "MAJOR",
+      "repro": "after boot, traverse window.__app.scene and scan every geometry position attribute for non-finite values; this is the source of \"Computed radius is NaN\" console errors.",
+      "shots": [],
+      "ms": 18
+    },
+    {
+      "id": "boot-debug-api",
+      "group": "boot",
+      "name": "window.__sagrada debug API is complete",
+      "status": "PASS",
+      "detail": "complete",
+      "severity": "MAJOR",
+      "repro": "read the QA contract; window.__sagrada must expose the debug API.",
+      "shots": [],
+      "ms": 6
+    },
+    {
+      "id": "boot-canvas-live",
+      "group": "boot",
+      "name": "the rendered canvas is not black",
+      "status": "PASS",
+      "detail": "{\"mean\":119.2,\"std\":32.01,\"min\":12,\"max\":224,\"darkFrac\":0,\"levels\":12,\"w\":800,\"h\":500}",
+      "severity": "BLOCKER",
+      "repro": "read the WebGL canvas after boot; a black frame means nothing rendered.",
+      "shots": [],
+      "ms": 76
+    },
+    {
+      "id": "splash-visible",
+      "group": "splash",
+      "name": "splash screen with title and three entry buttons is visible",
+      "status": "PASS",
+      "detail": "{\"splash\":true,\"title\":\"La SagradaFamília\",\"buttons\":[\"walk\",\"fly\",\"tour\"],\"buttonsVisible\":3,\"btnRects\":[[80,277,208,30],[296,277,208,30],[512,277,208,30]]}",
+      "severity": "MAJOR",
+      "repro": "load / without URL params; the splash with Enter on foot / Fly over / Guided tour must be shown.",
+      "shots": [],
+      "ms": 6
+    },
+    {
+      "id": "splash-enter-walk",
+      "group": "splash",
+      "name": "clicking \"Enter on foot\" enters walk mode",
+      "status": "PASS",
+      "detail": "{\"mode\":\"walk\",\"splashHidden\":true,\"enabled\":true,\"entered\":true} pos=72.0,1.7,100.0",
+      "severity": "MAJOR",
+      "repro": "load /, click the \"Enter on foot\" button; mode must become walk, splash must hide, controls must enable.",
+      "shots": [],
+      "ms": 2553
+    },
+    {
+      "id": "splash-default-pose",
+      "group": "splash",
+      "name": "enter-on-foot lands at the authored plaza start pose",
+      "status": "PASS",
+      "detail": "pos=72.00,1.66,100.00 mode=walk",
+      "severity": "MINOR",
+      "repro": "enter on foot; defaultPose in src/experience.js is [84, EYE, 116]",
+      "shots": [],
+      "ms": 1
+    },
+    {
+      "id": "walk-forward",
+      "group": "walk",
+      "name": "holding W moves the camera forward",
+      "status": "PASS",
+      "detail": "moved 8.28 m (vertical 0.00 m), 6 samples, fps≈60",
+      "severity": "MAJOR",
+      "repro": "walk mode, hold W for ~2 s; the camera position must change.",
+      "shots": [],
+      "ms": 1869
+    },
+    {
+      "id": "walk-eye-height",
+      "group": "walk",
+      "name": "eye height and ground contact are sane",
+      "status": "PASS",
+      "detail": "camera y=1.66 feet y=-0.06 eye=1.72 dim=1.72 onGround=true",
+      "severity": "MAJOR",
+      "repro": "walk on the plaza; the camera must sit one eye-height above the walkable ground.",
+      "shots": [],
+      "ms": 2
+    },
+    {
+      "id": "walk-jump",
+      "group": "walk",
+      "name": "Space jumps",
+      "status": "PASS",
+      "detail": "y 1.66 → 2.43 → 1.66",
+      "severity": "MINOR",
+      "repro": "walk mode, press Space; the camera should rise and land back.",
+      "shots": [],
+      "ms": 1098
+    },
+    {
+      "id": "collision-facade-wall",
+      "group": "collision",
+      "name": "Nativity façade wall blocks the walker (no pass-through)",
+      "status": "PASS",
+      "detail": "start=(24.09,1.66,15.63) end=(28.63,1.67,15.64) max x=28.63 z-range 15.62..15.64 mode=walk (wall inner face ≈29.98, expected stop ≈29.56)",
+      "severity": "MAJOR",
+      "repro": "setPose([24,1.72,18],[31,1.72,18]) in walk mode then hold W; the façade wall collider at x≈30.8 (z segment 15.25..24) must stop the walker.",
+      "shots": [],
+      "ms": 3489
+    },
+    {
+      "id": "collision-tower",
+      "group": "collision",
+      "name": "ground-standing apostle tower blocks the walker",
+      "status": "PASS",
+      "detail": "start x=17.50 end x=20.63 max x=20.63 (tower west face 21.2, expected stop ≈20.78)",
+      "severity": "MAJOR",
+      "repro": "setPose([17.5,1.72,-21],[26,1.72,-21]) then hold W toward the Nativity apostle tower n1 at (26,-21).",
+      "shots": [],
+      "ms": 3496
+    },
+    {
+      "id": "collision-column",
+      "group": "collision",
+      "name": "crossing porphyry column blocks the walker",
+      "status": "PASS",
+      "detail": "start x=8.00 end x=10.68 max x=10.68 (column surface 11.85, expected stop ≈11.43)",
+      "severity": "MAJOR",
+      "repro": "setPose([8,1.72,14],[14,1.72,14]) then hold W into the crossing column at (14,14).",
+      "shots": [],
+      "ms": 3220
+    },
+    {
+      "id": "door-nativity",
+      "group": "doors",
+      "name": "Nativity façade door is passable (walk in from the east)",
+      "status": "PASS",
+      "detail": "start=(38.0,1.7,0.0) end=(13.76,1.71,0.00) moved 24.2 m; x=13.76 (must be < 27.5, wall plane x≈30.8); y sane=true",
+      "severity": "MAJOR",
+      "repro": "setPose([38,1.72,0],[20,1.72,0]) then hold W ~5 s; the open portal must let the walker through.",
+      "shots": [],
+      "ms": 5755
+    },
+    {
+      "id": "door-passion",
+      "group": "doors",
+      "name": "Passion façade door is passable (walk in from the west)",
+      "status": "PASS",
+      "detail": "start=(-38.0,1.7,0.0) end=(-13.69,1.71,-0.00) moved 24.3 m; x=-13.69 (must be > -27.5, wall plane x≈-30.8); y sane=true",
+      "severity": "MAJOR",
+      "repro": "setPose([-38,1.72,0],[-20,1.72,0]) then hold W ~5 s; the open portal must let the walker through.",
+      "shots": [],
+      "ms": 5772
+    },
+    {
+      "id": "door-glory",
+      "group": "doors",
+      "name": "Glory façade central door is passable (walk in from the south)",
+      "status": "PASS",
+      "detail": "start=(0.0,1.7,53.0) end=(-0.00,1.71,28.69) moved 24.3 m; z=28.69 (must be < 42.5, wall plane z≈45.8); y sane=true",
+      "severity": "MAJOR",
+      "repro": "setPose([0,1.72,53],[0,1.72,20]) then hold W ~5 s; the open portal must let the walker through.",
+      "shots": [],
+      "ms": 5771
+    },
+    {
+      "id": "walk-to-interior",
+      "group": "doors",
+      "name": "walker can reach the crossing from the Glory entrance",
+      "status": "PASS",
+      "detail": "pos=(0.01,1.73,2.68) after 11 s walking south→north (4.6 m/s walk)",
+      "severity": "MAJOR",
+      "repro": "from the Glory entrance at z=53 walk straight in (W) for ~11 s; you should be inside the nave/crossing (z<20).",
+      "shots": [],
+      "ms": 11424
+    },
+    {
+      "id": "fly-toggle",
+      "group": "fly",
+      "name": "F toggles walk → fly",
+      "status": "PASS",
+      "detail": "mode=fly label=FLY",
+      "severity": "MAJOR",
+      "repro": "press F in walk mode; mode must become fly and the HUD label FLY.",
+      "shots": [],
+      "ms": 734
+    },
+    {
+      "id": "fly-rise",
+      "group": "fly",
+      "name": "Space rises in fly mode",
+      "status": "PASS",
+      "detail": "fly mode=fly, y 20.00 → 33.31 while holding Space",
+      "severity": "MAJOR",
+      "repro": "in fly mode hold Space; the camera must rise (HUD hint and README both promise Space = rise).",
+      "shots": [],
+      "ms": 1528
+    },
+    {
+      "id": "fly-descend-ctrl",
+      "group": "fly",
+      "name": "Ctrl descends in fly mode",
+      "status": "PASS",
+      "detail": "y 40.00 → 27.91 while holding Ctrl",
+      "severity": "MAJOR",
+      "repro": "in fly mode hold Ctrl; the camera must descend.",
+      "shots": [],
+      "ms": 1439
+    },
+    {
+      "id": "fly-vertical-qe",
+      "group": "fly",
+      "name": "Q descends / E rises in fly mode (as documented)",
+      "status": "PASS",
+      "detail": "y 40.00 → Q (fall) 29.41 → E (rise) 39.58",
+      "severity": "MINOR",
+      "repro": "in fly mode hold Q (descend) then E (rise); both should move the camera vertically.",
+      "shots": [],
+      "ms": 2325
+    },
+    {
+      "id": "fly-boost",
+      "group": "fly",
+      "name": "Shift boosts fly speed",
+      "status": "PASS",
+      "detail": "normal 7.63 m vs boosted 28.08 m in 0.6 s",
+      "severity": "MINOR",
+      "repro": "fly mode: hold W then Shift+W; boosted distance should be clearly larger.",
+      "shots": [],
+      "ms": 1864
+    },
+    {
+      "id": "teleport-all-stops",
+      "group": "teleport",
+      "name": "teleport() works for every TOUR stop (12 stops)",
+      "status": "PASS",
+      "detail": "12 stops teleported correctly",
+      "severity": "MAJOR",
+      "repro": "for each id in __app.TOUR call __sagrada.teleport(id) and compare the camera to stop.pos.",
+      "shots": [],
+      "ms": 3998
+    },
+    {
+      "id": "tour-start",
+      "group": "tour",
+      "name": "T starts the guided tour with a caption",
+      "status": "PASS",
+      "detail": "{\"mode\":\"tour\",\"panelVisible\":true,\"title\":\"Plaça de Gaudí\",\"body\":\"Gaudí imagined a cathedral as a forest: stone trunks, a canopy of leaves, light …\",\"index\":\"01 / 12\"}",
+      "severity": "MAJOR",
+      "repro": "enter the experience, press T; the tour caption panel must appear with a title and body.",
+      "shots": [],
+      "ms": 1039
+    },
+    {
+      "id": "tour-advance",
+      "group": "tour",
+      "name": "tour advances between stops",
+      "status": "PASS",
+      "detail": "before={\"index\":\"01 / 12\",\"title\":\"Plaça de Gaudí\"} after={\"index\":\"02 / 12\",\"title\":\"Nativity Façade\"}",
+      "severity": "MAJOR",
+      "repro": "in tour mode click \"Next →\"; the stop index/title must advance.",
+      "shots": [],
+      "ms": 1462
+    },
+    {
+      "id": "tour-pause",
+      "group": "tour",
+      "name": "pause button toggles to Resume",
+      "status": "PASS",
+      "detail": "paused label=\"Resume\" resumed label=\"Pause\"",
+      "severity": "MAJOR",
+      "repro": "in tour mode during a dwell, click Pause; the button must change to Resume and back.",
+      "shots": [],
+      "ms": 3216
+    },
+    {
+      "id": "tour-exit",
+      "group": "tour",
+      "name": "Escape exits the tour to free look",
+      "status": "PASS",
+      "detail": "{\"mode\":\"fly\",\"panelHidden\":true,\"enabled\":true}",
+      "severity": "MAJOR",
+      "repro": "during the tour press Escape; the tour panel must hide and free-look must be enabled.",
+      "shots": [],
+      "ms": 518
+    },
+    {
+      "id": "hotspots-present",
+      "group": "hotspots",
+      "name": "builder hotspots are registered",
+      "status": "PASS",
+      "detail": "35 hotspots: plaza, city, nightfall, glory-facade, glory-portal, glory-virtues, glory-dove, glory-threshold, glass-cool, glass-warm, nave-shell, transept-glazing",
+      "severity": "MAJOR",
+      "repro": "window.__sagrada.hotspots() should list the architectural labels from the builders.",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "hotspot-reticle",
+      "group": "hotspots",
+      "name": "aiming at a hotspot shows the reticle label",
+      "status": "PASS",
+      "detail": "active=\"city\" title=\"Barcelona, around\" hint=\"E to read\"",
+      "severity": "MAJOR",
+      "repro": "aim at a registered hotspot; the reticle label must show its title.",
+      "shots": [],
+      "ms": 3
+    },
+    {
+      "id": "hotspot-open-e",
+      "group": "hotspots",
+      "name": "E opens the info card with content",
+      "status": "PASS",
+      "detail": "{\"visible\":true,\"title\":\"Barcelona, around\",\"bodyLen\":241}",
+      "severity": "MAJOR",
+      "repro": "aim at a hotspot label and press E; the card must open with a title and body text.",
+      "shots": [],
+      "ms": 479
+    },
+    {
+      "id": "hotspot-close",
+      "group": "hotspots",
+      "name": "Escape closes the info card and restores control",
+      "status": "PASS",
+      "detail": "{\"hidden\":true,\"enabled\":true}",
+      "severity": "MINOR",
+      "repro": "with the card open press Escape; it must close and movement must re-enable.",
+      "shots": [],
+      "ms": 408
+    },
+    {
+      "id": "time-day",
+      "group": "time",
+      "name": "setTime(10.35) gives a morning scene",
+      "status": "PASS",
+      "detail": "{\"time\":10.350000000000001,\"night\":0,\"clock\":\"10:21\",\"period\":\"Morning\",\"slider\":10.25,\"sun\":1}",
+      "severity": "MAJOR",
+      "repro": "__sagrada.setTime(10.35); HUD clock must read 10:21 Morning and env.night≈0.",
+      "shots": [],
+      "ms": 919
+    },
+    {
+      "id": "time-night",
+      "group": "time",
+      "name": "setTime(21.5) gives a night scene with floodlights",
+      "status": "PASS",
+      "detail": "{\"time\":21.5,\"night\":1,\"clock\":\"21:30\",\"period\":\"Night\",\"slider\":21.5,\"sun\":1}",
+      "severity": "MAJOR",
+      "repro": "__sagrada.setTime(21.5); HUD clock must read 21:30 Night and env.night→1.",
+      "shots": [],
+      "ms": 1218
+    },
+    {
+      "id": "time-n-key",
+      "group": "time",
+      "name": "N toggles between day and night",
+      "status": "PASS",
+      "detail": "time 21.5 → 10.350000000000001",
+      "severity": "MINOR",
+      "repro": "press N; the clock should jump between 10.35 and 21.5.",
+      "shots": [],
+      "ms": 717
+    },
+    {
+      "id": "time-night-render-bright",
+      "group": "time",
+      "name": "night scene renders lit content (not a black frame)",
+      "status": "PASS",
+      "detail": "{\"mean\":140.73,\"std\":57.7,\"min\":6,\"max\":207,\"darkFrac\":0,\"levels\":13,\"w\":800,\"h\":500}",
+      "severity": "MAJOR",
+      "repro": "set 21:30 and read the canvas; a black frame means the night lighting/emissive glass is missing.",
+      "shots": [],
+      "ms": 19
+    },
+    {
+      "id": "ui-minimap",
+      "group": "ui",
+      "name": "M opens the plan/minimap and it is painted",
+      "status": "PASS",
+      "detail": "{\"visible\":true,\"painted\":true,\"size\":[322,206],\"closed\":true}",
+      "severity": "MAJOR",
+      "repro": "press M; the plan panel must open with a painted canvas, and M must close it.",
+      "shots": [],
+      "ms": 1010
+    },
+    {
+      "id": "ui-help",
+      "group": "ui",
+      "name": "H opens/closes the help overlay and does not trap control",
+      "status": "PASS",
+      "detail": "open={\"hidden\":false,\"enabled\":false} closed={\"hidden\":true,\"enabled\":true}",
+      "severity": "MAJOR",
+      "repro": "press H; help opens and movement pauses; H again closes it and movement resumes.",
+      "shots": [],
+      "ms": 826
+    },
+    {
+      "id": "ui-photo-mode",
+      "group": "ui",
+      "name": "P hides the interface and P restores it",
+      "status": "PASS",
+      "detail": "photo={\"root\":true,\"hud\":\"none\",\"controls\":true} restored={\"root\":false,\"hud\":\"block\",\"controls\":true}",
+      "severity": "MAJOR",
+      "repro": "press P; the HUD and overlays must hide (photo mode), P or Esc restores them.",
+      "shots": [],
+      "ms": 1235
+    },
+    {
+      "id": "ui-hide-ui-api",
+      "group": "ui",
+      "name": "hideUI(true/false) hides and restores every overlay",
+      "status": "PASS",
+      "detail": "hidden={\"cls\":true,\"hudDisplay\":\"none\"} restored={\"cls\":false,\"hudDisplay\":\"block\"}",
+      "severity": "MINOR",
+      "repro": "__sagrada.hideUI(true) then (false); all UI should hide/restore.",
+      "shots": [],
+      "ms": 639
+    },
+    {
+      "id": "ui-quality",
+      "group": "ui",
+      "name": "quality low/high changes the renderer setting",
+      "status": "PASS",
+      "detail": "narrowLayout=true popOpen=true low={\"quality\":\"low\",\"pr\":0.75} high={\"quality\":\"high\",\"pr\":1}",
+      "severity": "MINOR",
+      "repro": "open Quality in the HUD (Menu → Quality at narrow widths), pick Low; stats().quality must be low and the pixel ratio must drop.",
+      "shots": [],
+      "ms": 8773
+    },
+    {
+      "id": "ui-sound-toggle",
+      "group": "ui",
+      "name": "sound control exists and toggles (audio content not asserted)",
+      "status": "PASS",
+      "detail": "narrowLayout=true controlVisible=true muted false → true → false (headless audio output is not asserted)",
+      "severity": "MINOR",
+      "repro": "toggle Sound in the HUD (Menu → Sound at narrow widths); the mute state must change and toggle back.",
+      "shots": [],
+      "ms": 2736
+    },
+    {
+      "id": "ui-layout",
+      "group": "ui",
+      "name": "HUD fits the viewport without overflow",
+      "status": "PASS",
+      "detail": "{\"scrollW\":800,\"innerW\":800,\"scrollH\":500,\"innerH\":500,\"controls\":[576,12,788,105],\"rootVisible\":true,\"hudDisplay\":\"block\"}",
+      "severity": "MAJOR",
+      "repro": "at 800x500 the HUD controls must stay inside the viewport without scrollbars.",
+      "shots": [],
+      "ms": 3
+    },
+    {
+      "id": "ui-responsive-hud",
+      "group": "ui",
+      "name": "responsive HUD layout at 800px",
+      "status": "PASS",
+      "detail": "{\"narrow\":true,\"nav\":false,\"menu\":true,\"innerW\":800}",
+      "severity": "MINOR",
+      "repro": "at ≤820 px the desktop nav is replaced by the Menu button; above 820 px the reverse.",
+      "shots": [],
+      "ms": 2
+    },
+    {
+      "id": "ui-pointerlock-fallback",
+      "group": "ui",
+      "name": "clicking the view does not break the experience (pointer-lock fallback)",
+      "status": "PASS",
+      "detail": "locked=false toast=\"Sound on\" moved=2.98 m",
+      "severity": "MINOR",
+      "repro": "click the canvas in headless; pointer lock is unavailable, so the drag fallback must leave the app usable.",
+      "shots": [],
+      "ms": 1653
+    },
+    {
+      "id": "url-params-pose",
+      "group": "urlparams",
+      "name": "URL params skipSplash/mode/pos/look/time/ui are honoured",
+      "status": "PASS",
+      "detail": "{\"mode\":\"walk\",\"pos\":[10,1.66,60],\"time\":21.5,\"night\":1,\"allHidden\":true,\"hudHidden\":true,\"splashHidden\":true,\"poseSettled\":true}",
+      "severity": "MAJOR",
+      "repro": "load the app with the documented QA URL params; mode/pose/time/UI must follow them (pose may take ~12 s to settle on a cold start).",
+      "shots": [],
+      "ms": 3530
+    },
+    {
+      "id": "url-params-tour",
+      "group": "urlparams",
+      "name": "URL params mode=tour&tour=<id> start the tour at that stop",
+      "status": "PASS",
+      "detail": "{\"mode\":\"tour\",\"title\":\"The Nave\",\"panel\":true,\"index\":5}",
+      "severity": "MAJOR",
+      "repro": "load with ?mode=tour&tour=nave; the tour must open on the nave caption.",
+      "shots": [],
+      "ms": 4282
+    },
+    {
+      "id": "url-params-photo",
+      "group": "urlparams",
+      "name": "URL param photo=1 starts in photo mode",
+      "status": "PASS",
+      "detail": "{\"photo\":true,\"hud\":\"none\",\"mode\":\"fly\"}",
+      "severity": "MINOR",
+      "repro": "load with ?photo=1; the interface must start hidden.",
+      "shots": [],
+      "ms": 3847
+    },
+    {
+      "id": "shot-02-exterior-3q",
+      "group": "capture",
+      "name": "screenshot 02-exterior-3q is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":115.21,\"std\":33.05,\"min\":14,\"max\":203,\"darkFrac\":0,\"levels\":11,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/02-exterior-3q.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/02-exterior-3q.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-03-facade-nativity",
+      "group": "capture",
+      "name": "screenshot 03-facade-nativity is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":93.02,\"std\":26.06,\"min\":9,\"max\":187,\"darkFrac\":0,\"levels\":9,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/03-facade-nativity.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/03-facade-nativity.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-04-facade-passion",
+      "group": "capture",
+      "name": "screenshot 04-facade-passion is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":115.97,\"std\":42.48,\"min\":11,\"max\":198,\"darkFrac\":0,\"levels\":12,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/04-facade-passion.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/04-facade-passion.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-05-facade-glory",
+      "group": "capture",
+      "name": "screenshot 05-facade-glory is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":115.38,\"std\":40.27,\"min\":15,\"max\":226,\"darkFrac\":0,\"levels\":13,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/05-facade-glory.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/05-facade-glory.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-06-nave-interior",
+      "group": "capture",
+      "name": "screenshot 06-nave-interior is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":142.48,\"std\":43.21,\"min\":20,\"max\":255,\"darkFrac\":0,\"levels\":14,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/06-nave-interior.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/06-nave-interior.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-07-crossing",
+      "group": "capture",
+      "name": "screenshot 07-crossing is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":120.5,\"std\":41.02,\"min\":14,\"max\":255,\"darkFrac\":0,\"levels\":15,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/07-crossing.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/07-crossing.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-08-altar",
+      "group": "capture",
+      "name": "screenshot 08-altar is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":152.8,\"std\":44.5,\"min\":28,\"max\":253,\"darkFrac\":0,\"levels\":14,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/08-altar.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/08-altar.png"
+      ],
+      "ms": 1
+    },
+    {
+      "id": "shot-09-apse",
+      "group": "capture",
+      "name": "screenshot 09-apse is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":165.83,\"std\":26.73,\"min\":59,\"max\":211,\"darkFrac\":0,\"levels\":10,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/09-apse.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/09-apse.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-10-towers",
+      "group": "capture",
+      "name": "screenshot 10-towers is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":122.36,\"std\":33.39,\"min\":20,\"max\":206,\"darkFrac\":0,\"levels\":11,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/10-towers.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/10-towers.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-11-aerial-plan",
+      "group": "capture",
+      "name": "screenshot 11-aerial-plan is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":108.19,\"std\":29.85,\"min\":14,\"max\":199,\"darkFrac\":0,\"levels\":9,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/11-aerial-plan.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/11-aerial-plan.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-12-night-exterior",
+      "group": "capture",
+      "name": "screenshot 12-night-exterior is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":21.5,\"std\":35.7,\"min\":0,\"max\":235,\"darkFrac\":0.503,\"levels\":13,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/12-night-exterior.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/12-night-exterior.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-13-night-interior",
+      "group": "capture",
+      "name": "screenshot 13-night-interior is a live render (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":97.98,\"std\":49.84,\"min\":7,\"max\":255,\"darkFrac\":0,\"levels\":16,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "inspect qa/verify/shots/13-night-interior.png; a black/blank frame means the scene is missing at this pose.",
+      "shots": [
+        "qa/verify/shots/13-night-interior.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-tour-caption",
+      "group": "capture",
+      "name": "screenshot 14-tour-caption is a live render with caption visible",
+      "status": "PASS",
+      "detail": "{\"title\":\"Nativity Façade\",\"panel\":true} {\"mean\":140.66,\"std\":38.49,\"min\":35,\"max\":204,\"darkFrac\":0,\"levels\":9,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/14-tour-caption.png"
+      ],
+      "ms": 5
+    },
+    {
+      "id": "shot-hotspot-card",
+      "group": "capture",
+      "name": "screenshot 15-hotspot-card shows the open info card",
+      "status": "PASS",
+      "detail": "title=\"Barcelona, around\" {\"mean\":52.88,\"std\":22.09,\"min\":8,\"max\":179,\"darkFrac\":0,\"levels\":6,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/15-hotspot-card.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "shot-minimap",
+      "group": "capture",
+      "name": "screenshot 16-minimap shows the plan panel",
+      "status": "PASS",
+      "detail": "{\"visible\":true}",
+      "severity": "MINOR",
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/16-minimap.png"
+      ],
+      "ms": 8
+    },
+    {
+      "id": "shot-photo-mode",
+      "group": "capture",
+      "name": "screenshot 17-photo-mode is a clean render with no HUD",
+      "status": "PASS",
+      "detail": "{\"photo\":true,\"hud\":\"none\"}",
+      "severity": "MINOR",
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/17-photo-mode.png"
+      ],
+      "ms": 4
+    },
+    {
+      "id": "stop-shot-plaza",
+      "group": "capture",
+      "name": "tour stop plaza renders",
+      "status": "PASS",
+      "detail": "teleport=true 290 calls / 1,218,684 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/01-plaza.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-nativity",
+      "group": "capture",
+      "name": "tour stop nativity renders",
+      "status": "PASS",
+      "detail": "teleport=true 272 calls / 1,216,816 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/02-nativity.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-nativity-portal",
+      "group": "capture",
+      "name": "tour stop nativity-portal renders",
+      "status": "PASS",
+      "detail": "teleport=true 241 calls / 1,167,751 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/03-nativity-portal.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-passion",
+      "group": "capture",
+      "name": "tour stop passion renders",
+      "status": "PASS",
+      "detail": "teleport=true 260 calls / 1,216,252 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/04-passion.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-glory",
+      "group": "capture",
+      "name": "tour stop glory renders",
+      "status": "PASS",
+      "detail": "teleport=true 279 calls / 1,218,652 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/05-glory.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-nave",
+      "group": "capture",
+      "name": "tour stop nave renders",
+      "status": "PASS",
+      "detail": "teleport=true 248 calls / 1,178,362 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/06-nave.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-crossing",
+      "group": "capture",
+      "name": "tour stop crossing renders",
+      "status": "PASS",
+      "detail": "teleport=true 215 calls / 1,139,623 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/07-crossing.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-altar",
+      "group": "capture",
+      "name": "tour stop altar renders",
+      "status": "PASS",
+      "detail": "teleport=true 155 calls / 749,733 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/08-altar.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-organ",
+      "group": "capture",
+      "name": "tour stop organ renders",
+      "status": "PASS",
+      "detail": "teleport=true 237 calls / 1,162,966 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/09-organ.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-towers",
+      "group": "capture",
+      "name": "tour stop towers renders",
+      "status": "PASS",
+      "detail": "teleport=true 135 calls / 766,481 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/10-towers.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-summit",
+      "group": "capture",
+      "name": "tour stop summit renders",
+      "status": "PASS",
+      "detail": "teleport=true 285 calls / 1,218,136 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/11-summit.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "stop-shot-night",
+      "group": "capture",
+      "name": "tour stop night renders",
+      "status": "PASS",
+      "detail": "teleport=true 280 calls / 1,218,664 tris / 60 fps",
+      "severity": null,
+      "repro": "",
+      "shots": [
+        "qa/verify/shots/stops/stops/12-night.png"
+      ],
+      "ms": 0
+    },
+    {
+      "id": "perf-fps",
+      "group": "perf",
+      "name": "frame rate is workable at capture resolution",
+      "status": "PASS",
+      "detail": "high-quality fps 60–60 across 15 sampled poses/stops (headless GPU via ANGLE/D3D11; compare relative numbers)",
+      "severity": "MINOR",
+      "repro": "capture pass; fps comes from window.__app.env.fps via __sagrada.stats()",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "health-pageerrors",
+      "group": "health",
+      "name": "no uncaught page errors across the whole run",
+      "status": "PASS",
+      "detail": "none",
+      "severity": "BLOCKER",
+      "repro": "pageerror events captured during the whole suite",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "health-console-errors",
+      "group": "health",
+      "name": "no unexpected console errors (favicon 404 excluded)",
+      "status": "PASS",
+      "detail": "none",
+      "severity": "MINOR",
+      "repro": "console errors during the suite",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "health-request-failures",
+      "group": "health",
+      "name": "no failed asset requests (favicon excluded)",
+      "status": "PASS",
+      "detail": "none",
+      "severity": "MAJOR",
+      "repro": "requestfailed events during the suite",
+      "shots": [],
+      "ms": 1
+    },
+    {
+      "id": "fastpass-boot",
+      "group": "fastpass",
+      "name": "app boots and reaches ready",
+      "status": "PASS",
+      "detail": "ready in 9582 ms",
+      "severity": "BLOCKER",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-renderer",
+      "group": "fastpass",
+      "name": "real GPU renderer (ANGLE D3D11, not SwiftShader)",
+      "status": "PASS",
+      "detail": "ANGLE (AMD, AMD Radeon RX 5700 XT (0x0000731F) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-builders",
+      "group": "fastpass",
+      "name": "all five builder groups present and non-empty",
+      "status": "PASS",
+      "detail": "{\"environment\":\"34 meshes/14,802 tris\",\"glory-shell\":\"22 meshes/232,270 tris\",\"facades-np\":\"36 meshes/329,431 tris\",\"towers\":\"55 meshes/108,142 tris\",\"interior\":\"111 meshes/374,620 tris\"}",
+      "severity": "BLOCKER",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-no-builder-errors",
+      "group": "fastpass",
+      "name": "no builder errors recorded",
+      "status": "PASS",
+      "detail": "none",
+      "severity": "BLOCKER",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-nan",
+      "group": "fastpass",
+      "name": "no NaN/Infinity geometry positions",
+      "status": "PASS",
+      "detail": "259 meshes / 3,174,229 vertices clean",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-shot-06-nave-interior",
+      "group": "fastpass",
+      "name": "capture 06-nave-interior is live (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":142.59,\"std\":45.71,\"max\":255,\"darkFrac\":0,\"levels\":14,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-shot-07-crossing",
+      "group": "fastpass",
+      "name": "capture 07-crossing is live (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":142.89,\"std\":45.52,\"max\":255,\"darkFrac\":0,\"levels\":14,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-shot-08-altar",
+      "group": "fastpass",
+      "name": "capture 08-altar is live (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":151.58,\"std\":44.19,\"max\":253,\"darkFrac\":0,\"levels\":14,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-perf",
+      "group": "fastpass",
+      "name": "render stats captured at nave + crossing",
+      "status": "PASS",
+      "detail": "nave 263 calls/1197680 tris/60 fps; crossing 205 calls/1163660 tris/60 fps",
+      "severity": "MINOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-shot-14-tour-caption",
+      "group": "fastpass",
+      "name": "capture 14-tour-caption is live (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":83.29,\"std\":29.65,\"max\":199,\"darkFrac\":0,\"levels\":10,\"w\":1280,\"h\":720}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    },
+    {
+      "id": "fastpass-shot-13-night-interior",
+      "group": "fastpass",
+      "name": "capture 13-night-interior is live (not black/blank)",
+      "status": "PASS",
+      "detail": "{\"mean\":95.16,\"std\":49.26,\"max\":255,\"darkFrac\":0,\"levels\":16,\"w\":1600,\"h\":900}",
+      "severity": "MAJOR",
+      "repro": "",
+      "shots": [],
+      "ms": 0
+    }
+  ],
+  "console": [
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (706 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 285, triangles: 1221334, geometries: 256, textures: 73}",
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (585 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 259, triangles: 1184690, geometries: 245, textures: 61}",
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (520 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 248, triangles: 1178362, geometries: 237, textures: 58}",
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (502 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 288, triangles: 1218170, geometries: 259, textures: 73}",
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (509 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 287, triangles: 1218678, geometries: 258, textures: 73}",
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (584 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 281, triangles: 1218648, geometries: 257, textures: 72}"
+  ],
+  "pageErrors": [],
+  "requestFailures": [],
+  "responses404": [],
+  "shots": [
+    {
+      "name": "19-ui-hud-800.png",
+      "file": "qa/verify/shots/19-ui-hud-800.png",
+      "phase": "ui",
+      "kind": "day",
+      "stats": {
+        "mean": 138,
+        "std": 44.56,
+        "min": 26,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 800,
+        "h": 500
+      },
+      "error": null
+    },
+    {
+      "name": "01-splash.png",
+      "file": "qa/verify/shots/01-splash.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 23.2,
+        "std": 23.88,
+        "min": 1,
+        "max": 224,
+        "darkFrac": 0.187,
+        "levels": 11,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "02-exterior-3q.png",
+      "file": "qa/verify/shots/02-exterior-3q.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 115.21,
+        "std": 33.05,
+        "min": 14,
+        "max": 203,
+        "darkFrac": 0,
+        "levels": 11,
+        "w": 1600,
+        "h": 900
+      },
+      "error": null
+    },
+    {
+      "name": "03-facade-nativity.png",
+      "file": "qa/verify/shots/03-facade-nativity.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 93.02,
+        "std": 26.06,
+        "min": 9,
+        "max": 187,
+        "darkFrac": 0,
+        "levels": 9,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "04-facade-passion.png",
+      "file": "qa/verify/shots/04-facade-passion.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 115.97,
+        "std": 42.48,
+        "min": 11,
+        "max": 198,
+        "darkFrac": 0,
+        "levels": 12,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "05-facade-glory.png",
+      "file": "qa/verify/shots/05-facade-glory.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 115.38,
+        "std": 40.27,
+        "min": 15,
+        "max": 226,
+        "darkFrac": 0,
+        "levels": 13,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "09-apse.png",
+      "file": "qa/verify/shots/09-apse.png",
+      "phase": "capture",
+      "kind": "interior",
+      "stats": {
+        "mean": 165.83,
+        "std": 26.73,
+        "min": 59,
+        "max": 211,
+        "darkFrac": 0,
+        "levels": 10,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "10-towers.png",
+      "file": "qa/verify/shots/10-towers.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 122.36,
+        "std": 33.39,
+        "min": 20,
+        "max": 206,
+        "darkFrac": 0,
+        "levels": 11,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "11-aerial-plan.png",
+      "file": "qa/verify/shots/11-aerial-plan.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 108.19,
+        "std": 29.85,
+        "min": 14,
+        "max": 199,
+        "darkFrac": 0,
+        "levels": 9,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "12-night-exterior.png",
+      "file": "qa/verify/shots/12-night-exterior.png",
+      "phase": "capture",
+      "kind": "night",
+      "stats": {
+        "mean": 21.5,
+        "std": 35.7,
+        "min": 0,
+        "max": 235,
+        "darkFrac": 0.503,
+        "levels": 13,
+        "w": 1600,
+        "h": 900
+      },
+      "error": null
+    },
+    {
+      "name": "15-hotspot-card.png",
+      "file": "qa/verify/shots/15-hotspot-card.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 52.88,
+        "std": 22.09,
+        "min": 8,
+        "max": 179,
+        "darkFrac": 0,
+        "levels": 6,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "16-minimap.png",
+      "file": "qa/verify/shots/16-minimap.png",
+      "phase": "capture",
+      "kind": "day",
+      "stats": {
+        "mean": 119,
+        "std": 57.77,
+        "min": 11,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 16,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "17-photo-mode.png",
+      "file": "qa/verify/shots/17-photo-mode.png",
+      "phase": "capture",
+      "kind": "interior",
+      "stats": {
+        "mean": 143.09,
+        "std": 40.3,
+        "min": 21,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "06-nave-interior.png",
+      "file": "qa/verify/shots/06-nave-interior.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 142.59,
+        "std": 45.71,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 1600,
+        "h": 900
+      },
+      "error": null
+    },
+    {
+      "name": "07-crossing.png",
+      "file": "qa/verify/shots/07-crossing.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 142.89,
+        "std": 45.52,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 1600,
+        "h": 900
+      },
+      "error": null
+    },
+    {
+      "name": "08-altar.png",
+      "file": "qa/verify/shots/08-altar.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 151.58,
+        "std": 44.19,
+        "max": 253,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "14-tour-caption.png",
+      "file": "qa/verify/shots/14-tour-caption.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 83.29,
+        "std": 29.65,
+        "max": 199,
+        "darkFrac": 0,
+        "levels": 10,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/01-plaza.png",
+      "file": "qa/verify/shots/stops/01-plaza.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 112.88,
+        "std": 40.54,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 15,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/02-nativity.png",
+      "file": "qa/verify/shots/stops/02-nativity.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 90.76,
+        "std": 25.31,
+        "max": 186,
+        "darkFrac": 0,
+        "levels": 10,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/03-nativity-portal.png",
+      "file": "qa/verify/shots/stops/03-nativity-portal.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 85.92,
+        "std": 40.45,
+        "max": 247,
+        "darkFrac": 0,
+        "levels": 13,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/04-passion.png",
+      "file": "qa/verify/shots/stops/04-passion.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 117.97,
+        "std": 39.81,
+        "max": 211,
+        "darkFrac": 0,
+        "levels": 11,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/05-glory.png",
+      "file": "qa/verify/shots/stops/05-glory.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 112.97,
+        "std": 33.64,
+        "max": 218,
+        "darkFrac": 0,
+        "levels": 11,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/06-nave.png",
+      "file": "qa/verify/shots/stops/06-nave.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 129.24,
+        "std": 53.71,
+        "max": 254,
+        "darkFrac": 0,
+        "levels": 15,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/07-crossing.png",
+      "file": "qa/verify/shots/stops/07-crossing.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 114.72,
+        "std": 42.07,
+        "max": 251,
+        "darkFrac": 0,
+        "levels": 15,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/08-altar.png",
+      "file": "qa/verify/shots/stops/08-altar.png",
+      "phase": "fastpass",
+      "kind": "interior",
+      "stats": {
+        "mean": 151.25,
+        "std": 49.12,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/09-organ.png",
+      "file": "qa/verify/shots/stops/09-organ.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 134.2,
+        "std": 42.42,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 14,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/10-towers.png",
+      "file": "qa/verify/shots/stops/10-towers.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 117.18,
+        "std": 33.92,
+        "max": 207,
+        "darkFrac": 0,
+        "levels": 11,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/11-summit.png",
+      "file": "qa/verify/shots/stops/11-summit.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 141.67,
+        "std": 35.59,
+        "max": 207,
+        "darkFrac": 0,
+        "levels": 12,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "stops/12-night.png",
+      "file": "qa/verify/shots/stops/12-night.png",
+      "phase": "fastpass",
+      "kind": "day",
+      "stats": {
+        "mean": 19.44,
+        "std": 37.75,
+        "max": 236,
+        "darkFrac": 0.611,
+        "levels": 13,
+        "w": 1280,
+        "h": 720
+      },
+      "error": null
+    },
+    {
+      "name": "13-night-interior.png",
+      "file": "qa/verify/shots/13-night-interior.png",
+      "phase": "fastpass",
+      "kind": "night",
+      "stats": {
+        "mean": 95.16,
+        "std": 49.26,
+        "max": 255,
+        "darkFrac": 0,
+        "levels": 16,
+        "w": 1600,
+        "h": 900
+      },
+      "error": null
+    }
+  ],
+  "stops": [
+    {
+      "id": "plaza",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "nativity",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "nativity-portal",
+      "ok": true,
+      "dist": 1.22,
+      "mode": "walk",
+      "modeOk": true
+    },
+    {
+      "id": "passion",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "glory",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "nave",
+      "ok": true,
+      "dist": 0.38,
+      "mode": "walk",
+      "modeOk": true
+    },
+    {
+      "id": "crossing",
+      "ok": true,
+      "dist": 0.38,
+      "mode": "walk",
+      "modeOk": true
+    },
+    {
+      "id": "altar",
+      "ok": true,
+      "dist": 0.98,
+      "mode": "walk",
+      "modeOk": true
+    },
+    {
+      "id": "organ",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "towers",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "summit",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    },
+    {
+      "id": "night",
+      "ok": true,
+      "dist": 0,
+      "mode": "fly",
+      "modeOk": true
+    }
+  ],
+  "perf": [
+    {
+      "label": "02-exterior-3q",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 288,
+      "triangles": 1218170,
+      "geometries": 260,
+      "textures": 74,
+      "time": 16.75,
+      "viewport": "1600x900"
+    },
+    {
+      "label": "12-night-exterior",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 289,
+      "triangles": 1218682,
+      "geometries": 260,
+      "textures": 75,
+      "time": 21.5,
+      "viewport": "1600x900"
+    },
+    {
+      "label": "TOUR stop: plaza",
+      "stop": "plaza",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 290,
+      "triangles": 1218684,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: nativity",
+      "stop": "nativity",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 272,
+      "triangles": 1216816,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: nativity-portal",
+      "stop": "nativity-portal",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 241,
+      "triangles": 1167751,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: passion",
+      "stop": "passion",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 260,
+      "triangles": 1216252,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: glory",
+      "stop": "glory",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 279,
+      "triangles": 1218652,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: nave",
+      "stop": "nave",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 248,
+      "triangles": 1178362,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: crossing",
+      "stop": "crossing",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 215,
+      "triangles": 1139623,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: altar",
+      "stop": "altar",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 155,
+      "triangles": 749733,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: organ",
+      "stop": "organ",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 237,
+      "triangles": 1162966,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.350000000000001,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: towers",
+      "stop": "towers",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 135,
+      "triangles": 766481,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.5,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: summit",
+      "stop": "summit",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 285,
+      "triangles": 1218136,
+      "geometries": 260,
+      "textures": 75,
+      "time": 10.5,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "TOUR stop: night",
+      "stop": "night",
+      "quality": "high",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 280,
+      "triangles": 1218664,
+      "geometries": 260,
+      "textures": 75,
+      "time": 21.5,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "nave (low quality)",
+      "stop": "nave",
+      "quality": "low",
+      "fps": 60,
+      "sampleFps": [
+        60
+      ],
+      "calls": 247,
+      "triangles": 1178360,
+      "geometries": 260,
+      "textures": 74,
+      "time": 21.5,
+      "viewport": "1280x720"
+    },
+    {
+      "label": "nave (day, final build)",
+      "quality": "high",
+      "fps": 60,
+      "calls": 263,
+      "triangles": 1197680,
+      "geometries": 259,
+      "textures": 73,
+      "time": 16.75,
+      "viewport": "1600x900"
+    },
+    {
+      "label": "crossing (day, final build)",
+      "quality": "high",
+      "fps": 60,
+      "calls": 205,
+      "triangles": 1163660,
+      "geometries": 259,
+      "textures": 73,
+      "time": 16.75,
+      "viewport": "1600x900"
+    }
+  ],
+  "counts": {
+    "pass": 96,
+    "fail": 0,
+    "skip": 0
+  },
+  "verdict": {
+    "verdict": "PASS",
+    "why": "all executed checks passed (96/96); mobile section dropped and verified externally by the Lead; 1 known visual defect documented in curated review"
+  }
+}

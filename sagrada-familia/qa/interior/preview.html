@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interior QA — Sagrada Família</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b1016; overflow: hidden; }
+  canvas { display: block; }
+  #hud {
+    position: fixed; left: 10px; bottom: 10px; z-index: 9;
+    font: 11px/1.4 ui-monospace, monospace; color: #d8cba8;
+    background: rgba(8, 10, 14, 0.62); padding: 7px 10px; border-radius: 4px;
+    white-space: pre; pointer-events: none;
+  }
+</style>
+<script type="importmap">
+  { "imports": { "three": "../../vendor/three.module.min.js" } }
+</script>
+</head>
+<body>
+<div id="hud">interior QA</div>
+<script type="module">
+import * as THREE from 'three';
+import { buildInterior } from '../../src/interior.js';
+
+const params = new URLSearchParams(location.search);
+const view = params.get('view') || 'nave';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.08;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1d2a36);
+const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.08, 900);
+
+// --- a plain QA sky/ground so the interior reads as an interior -----------------
+const hemi = new THREE.HemisphereLight(0xd7e6ff, 0x7b6a52, 1.35);
+scene.add(hemi);
+scene.add(new THREE.AmbientLight(0xbfae95, 0.55));
+const sun = new THREE.DirectionalLight(0xfff2dc, 2.6);
+sun.position.set(70, 110, 55);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.left = -90;
+sun.shadow.camera.right = 90;
+sun.shadow.camera.top = 90;
+sun.shadow.camera.bottom = -90;
+sun.shadow.camera.near = 1;
+sun.shadow.camera.far = 320;
+scene.add(sun);
+scene.add(sun.target);
+const fill = new THREE.DirectionalLight(0xcfd8e6, 0.7);
+fill.position.set(-30, 60, -60);
+scene.add(fill);
+
+// ground beneath the whole model (QA only; the real environment builder owns it)
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(220, 48).rotateX(-Math.PI / 2),
+  new THREE.MeshStandardMaterial({ color: 0x5c574c, roughness: 0.96 })
+);
+ground.position.y = -0.06;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// --- a rough daylight shell so windows read as windows (QA only) --------------
+function wallPanel(w, h, t, x, y, z, ry) {
+  const g = new THREE.BoxGeometry(w, h, t);
+  const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: 0xbfae90, roughness: 0.94 }));
+  m.position.set(x, y, z);
+  m.rotation.y = ry;
+  m.castShadow = true;
+  m.receiveShadow = true;
+  scene.add(m);
+  return m;
+}
+// nave side walls, only where the shell has them (|z| >= 15)
+for (const sx of [-1, 1]) {
+  wallPanel(0.5, 46, 30, sx * 15.3, 23, 30, 0);
+  wallPanel(0.5, 46, 30, sx * 15.3, 23, -30, 0);
+  // transept end walls
+  wallPanel(30, 46, 0.5, sx * 30.3, 23, 0, Math.PI / 2);
+  // transept side walls
+  wallPanel(15, 46, 0.5, sx * 22.5, 23, 15.3, 0);
+  wallPanel(15, 46, 0.5, sx * 22.5, 23, -15.3, 0);
+}
+// Glory wall
+wallPanel(48, 46, 0.8, 0, 23, 45.3, 0);
+// apse drum
+{
+  const geo = new THREE.CylinderGeometry(16.25, 16.25, 46, 40, 1, true, Math.PI, Math.PI);
+  const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0xbfae90, roughness: 0.94, side: THREE.DoubleSide }));
+  m.position.set(0, 23, -45);
+  scene.add(m);
+}
+
+// --- the interior -------------------------------------------------------------
+const interior = buildInterior({ env: { time: 10.5, night: 0 } });
+scene.add(interior.group);
+if (interior.update) window.__interiorUpdate = interior.update;
+
+// QA: report any geometry with non-finite vertices (they poison bounding spheres)
+let badMeshes = 0;
+interior.group.traverse((o) => {
+  if (!o.isMesh || !o.geometry || !o.geometry.attributes.position) return;
+  const p = o.geometry.attributes.position;
+  let bad = 0;
+  for (let i = 0; i < p.count; i++) {
+    if (!Number.isFinite(p.getX(i)) || !Number.isFinite(p.getY(i)) || !Number.isFinite(p.getZ(i))) bad++;
+  }
+  if (bad) {
+    badMeshes++;
+    console.log(`[nan] ${o.name || o.type} bad=${bad}/${p.count}`);
+  }
+});
+if (!badMeshes) console.log('[nan] none');
+
+const stats = { triangles: interior.group.userData.triangles, colliders: interior.colliders.length, walkables: interior.walkables.length, hotspots: interior.hotspots.length };
+document.getElementById('hud').textContent =
+  `view ${view}\ntriangles ${stats.triangles}\ncolliders ${stats.colliders}  hotspots ${stats.hotspots}`;
+
+// --- camera views -------------------------------------------------------------
+const views = {
+  nave: { pos: [0, 1.7, 33], look: [0, 15, -16] },
+  navewide: { pos: [-2.2, 1.72, 35], look: [1.5, 24, -18] },
+  narthex: { pos: [0, 1.7, 43], look: [0, 14, -10] },
+  up: { pos: [0, 1.7, 22], look: [0, 44, 2] },
+  vaults: { pos: [-3.5, 1.7, 28], look: [4, 42, 10] },
+  crossing: { pos: [3.0, 2.0, 9], look: [0, 52, 0] },
+  altar: { pos: [0, 2.2, 2], look: [0, 10, -11] },
+  altarwide: { pos: [7.5, 2.0, -1], look: [0, 8, -12] },
+  apse: { pos: [0, 2.4, -30], look: [0, 12, -53] },
+  chapel: { pos: [10.4, 1.7, 30.4], look: [14.4, 4.0, 33.0] },
+  chapel2: { pos: [10.6, 1.7, 39.2], look: [14.6, 3.2, 42.0] },
+  organ: { pos: [0, 13.6, 35.5], look: [0, 15.5, 42] },
+  glass: { pos: [-5, 1.8, 20], look: [14.2, 27, 20] },
+  aisle: { pos: [11.2, 1.7, 30], look: [11.5, 16, -6] },
+  transept: { pos: [22, 1.8, 6], look: [0, 20, -4] },
+  doors: { pos: [0, 1.7, 44], look: [0, 6, 20] },
+};
+const v = views[view] || views.nave;
+const qp = params.get('pos');
+const ql = params.get('look');
+if (qp) v.pos = qp.split(',').map(Number);
+if (ql) v.look = ql.split(',').map(Number);
+camera.position.set(v.pos[0], v.pos[1], v.pos[2]);
+camera.lookAt(v.look[0], v.look[1], v.look[2]);
+
+let frames = 0;
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.1);
+  if (window.__interiorUpdate) window.__interiorUpdate(dt, clock.elapsedTime);
+  renderer.render(scene, camera);
+  frames++;
+  if (frames === 20) {
+    window.__ready = true;
+    const info = renderer.info.render;
+    console.log('[interior-qa] ' + JSON.stringify({ view, ...stats, drawCalls: info.calls, renderedTriangles: info.triangles }));
+  }
+});
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>

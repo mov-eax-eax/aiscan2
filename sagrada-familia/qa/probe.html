@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>probe</title>
+<style>html,body{margin:0;height:100%;background:#123}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../vendor/three.module.min.js"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1a2a44);
+const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, .1, 100);
+camera.position.set(3,2,4); camera.lookAt(0,0,0);
+const light = new THREE.DirectionalLight(0xffffff, 3); light.position.set(3,5,2); scene.add(light);
+scene.add(new THREE.AmbientLight(0x8899ff, 1.2));
+const cube = new THREE.Mesh(new THREE.BoxGeometry(1.5,1.5,1.5), new THREE.MeshStandardMaterial({color:0xcc5522, roughness:.4, metalness:.2}));
+scene.add(cube);
+let frames=0;
+renderer.setAnimationLoop((t)=>{cube.rotation.y=t*.0005; renderer.render(scene,camera); frames++; if(frames===30) window.__ready=true;});
+</script>
+</body></html>

@@ -1,0 +1,23 @@
+{
+  "state": {
+    "url": "http://127.0.0.1:8141/",
+    "ready": true,
+    "uiReady": true,
+    "fatalHidden": true,
+    "loader": "hidden",
+    "canvas": [
+      390,
+      844,
+      585,
+      1266
+    ],
+    "touch": true,
+    "isTouch": true,
+    "splash": "1",
+    "errors": []
+  },
+  "logs": [
+    "[log] [glory-shell] built 232,270 triangles in 22 meshes, 122 colliders, 10 hotspots (621 ms)",
+    "[log] [sagrada] ready {fps: 0, calls: 279, triangles: 1220784, geometries: 255, textures: 72}"
+  ]
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>environment preview</title>
+<style>html,body{margin:0;height:100%;background:#000}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../vendor/three.module.min.js"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+import { buildEnvironment } from '../../src/environment.js';
+const params = new URLSearchParams(location.search);
+const time = Number(params.get('time') || 10.35);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 2000);
+camera.position.set(100, 26, 120);
+camera.lookAt(0, 45, 0);
+const env = { time, auto:false, night:0, sunDir:new THREE.Vector3(), elapsed:0, fps:0, quality:'high' };
+const ctx = { scene, camera, renderer, env, quality:'high', onQuality(){},
+  app:{ setTimeOfDay(){}, getStats(){return{};} } };
+const e = buildEnvironment(ctx);
+scene.add(e.group);
+// cinematic slowly rotating camera for inspection
+let frames=0;
+renderer.setAnimationLoop(() => {
+  const t = performance.now()/1000;
+  e.update(1/60, t, env);
+  camera.position.set(Math.cos(0.55)*150, 32, Math.sin(0.55)*150);
+  camera.lookAt(0, 48, 0);
+  renderer.render(scene, camera);
+  if(++frames===30) window.__ready = true;
+});
+window.__env = env;
+</script>
+</body></html>

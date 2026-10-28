@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>integration preview</title>
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}canvas{display:block}
+#err{position:fixed;left:8px;top:8px;z-index:9;color:#f88;background:#000c;font:11px monospace;padding:8px;white-space:pre-wrap;max-width:60vw;max-height:40vh;overflow:auto;pointer-events:none}
+</style>
+<script type="importmap">{"imports":{"three":"../../vendor/three.module.min.js"}}</script>
+</head><body>
+<div id="err"></div>
+<script type="module">
+import * as THREE from 'three';
+import { buildEnvironment } from '../../src/environment.js';
+import { buildGloryShell } from '../../src/glory-shell.js';
+import { buildFacadesNP } from '../../src/facades-np.js';
+import { buildTowers } from '../../src/towers.js';
+import { buildInterior } from '../../src/interior.js';
+import { DIM, TOUR } from '../../src/config.js';
+import * as LIB from '../../src/lib.js';
+
+const q = new URLSearchParams(location.search);
+const num = (s, def) => { if (s === null || s === undefined || s === '') return def; const v = Number(s); return Number.isFinite(v) ? v : def; };
+const vec = (s, def) => { if (!s) return def; const a = s.split(',').map(Number); return a.length === 3 && a.every(Number.isFinite) ? a : def; };
+const time = num(q.get('time'), 10.35);
+const pos = vec(q.get('pos'), [112, 30, 128]);
+const look = vec(q.get('look'), [0, 52, 0]);
+const fov = num(q.get('fov'), 55);
+const errors = [];
+const err = document.getElementById('err');
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.02;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(fov, innerWidth / innerHeight, 0.08, 2600);
+camera.position.fromArray(pos);
+camera.lookAt(...look);
+
+const env = { time, auto: false, night: 0, sunDir: new THREE.Vector3(), elapsed: 0, fps: 0, quality: 'high', ready: false };
+const qualityHooks = [];
+const ctx = {
+  scene, camera, renderer, env, quality: 'high', DIM, TOUR, LIB,
+  app: { setTimeOfDay() {}, getStats() { return {}; } },
+  onQuality(fn) { qualityHooks.push(fn); },
+};
+const colliders = [], hotspots = [], walkables = [], updates = [];
+function run(name, fn) {
+  const t0 = performance.now();
+  try {
+    const res = fn(ctx);
+    if (res?.group) scene.add(res.group);
+    if (res?.colliders) colliders.push(...res.colliders);
+    if (res?.hotspots) hotspots.push(...res.hotspots);
+    if (res?.walkables) walkables.push(...res.walkables);
+    if (res?.update) updates.push(res.update);
+    console.log('[build]', name, (performance.now() - t0).toFixed(0) + 'ms');
+  } catch (e) {
+    errors.push(name + ': ' + (e.stack || e));
+    console.error('[build error]', name, e);
+  }
+}
+run('environment', buildEnvironment);
+run('glory-shell', buildGloryShell);
+run('facades-np', buildFacadesNP);
+run('towers', buildTowers);
+run('interior', buildInterior);
+console.log('[build] colliders', colliders.length, 'hotspots', hotspots.length, 'walkables', walkables.length);
+if (errors.length) err.textContent = errors.join('\n\n').slice(0, 6000); else err.style.display = 'none';
+
+const clock = new THREE.Clock();
+let frames = 0;
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.1);
+  env.elapsed += dt;
+  for (const fn of updates) { try { fn(dt, env.elapsed, env); } catch (e) { console.error('update', e); } }
+  renderer.render(scene, camera);
+  if (++frames === 5) window.__ready = true;
+});
+window.__preview = { scene, camera, renderer, env, errors, colliders, hotspots, walkables, update: (dt, t) => updates.forEach((fn) => fn(dt, t, env)) };
+window.addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+</script>
+</body></html>

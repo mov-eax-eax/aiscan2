@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>lib preview</title>
+<style>html,body{margin:0;height:100%;background:#222}canvas{display:block}#e{position:fixed;left:8px;top:8px;color:#f88;background:#000b;font:11px monospace;padding:6px;white-space:pre-wrap}</style>
+<script type="importmap">{"imports":{"three":"../../vendor/three.module.min.js"}}</script>
+</head><body><div id="e"></div>
+<script type="module">
+import * as THREE from 'three';
+import * as L from '../../src/lib.js';
+const errs = [];
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(1.5); renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x8aa9c0);
+const cam = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, .1, 200);
+cam.position.set(19, 11, 25); cam.lookAt(0, 4, 2);
+scene.add(new THREE.HemisphereLight(0xcfe4ff, 0x6b5b45, 1.2));
+const sun = new THREE.DirectionalLight(0xfff0d8, 3); sun.position.set(12, 20, 14); sun.castShadow = true; sun.shadow.mapSize.set(2048,2048); scene.add(sun);
+const ground = new THREE.Mesh(new THREE.CircleGeometry(40, 64).rotateX(-Math.PI/2), L.stoneMat(0x9b9180, {repeat:10}));
+ground.receiveShadow = true; scene.add(ground);
+const stone = L.stoneMat(0xcdbb9a);
+const grey = L.stoneMat(0xa9a39a);
+const add = (geo, x, z, rot=0, mat=stone) => { const m=new THREE.Mesh(geo,mat); m.position.set(x,0,z); m.rotation.y=rot; m.castShadow=true; m.receiveShadow=true; scene.add(m); return m; };
+try {
+  // figures row
+  let x = -12;
+  for (const pose of ['stand','armsUp','pray','hold','kneel','cross']) {
+    add(L.figureGeo({height:2.4, pose, seed: 10 + x}), x, -2, -0.4, stone);
+    x += 2.6;
+  }
+  add(L.figureGeo({height:3, kind:'angel', pose:'armsUp', halo:true, wings:true, seed:3}), 5, -2, 0);
+  add(L.animalGeo({kind:'ox', seed:4}).scale(1.4,1.4,1.4), 8, -2, 0.5, grey);
+  add(L.animalGeo({kind:'lion', seed:6}).scale(1.4,1.4,1.4), 11, -2, 0.2, grey);
+  add(L.birdGeo({size:1.2, seed:2}).scale(2,2,2), 13.5, -2, 0, grey);
+  // architectural pieces
+  add(L.cypressGeo({height:13, radius:1.5, seed:4}), -11, 5, 0);
+  add(L.pinnacleGeo({base:1.6, height:12, tiers:2, seed:6}), -7, 6, 0, grey);
+  const col = L.treeColumnGeo({height:33, branchY:17.5, branches:4, radius:.9, spreadX:3.5, spreadZ:2.5, seed:2, topY:30});
+  add(col, -2, 8, 0, L.basaltMat());
+  const pw = L.roseWindowParts({radius:4.2, colors:[0x8f1e2c,0x2f5f9e,0xc9a54a,0x3e8c7b], seed:2, petals:12});
+  const roseStone = new THREE.Mesh(pw.stone, grey); roseStone.position.set(6, 4.5, 7); roseStone.castShadow=true; scene.add(roseStone);
+  const roseGlass = new THREE.Mesh(pw.glass, L.glassMaterial); roseGlass.position.set(6, 4.5, 7.05); scene.add(roseGlass);
+  const lw = L.lancetWindowParts({w:3.6, h:12, colors:[0x2f5fa8,0x2b7f9e,0x48a88e], seed:5});
+  const lwS = new THREE.Mesh(lw.stone, grey); lwS.position.set(-6, 0, 7); scene.add(lwS);
+  const lwG = new THREE.Mesh(lw.glass, L.glassMaterial); lwG.position.set(-6, 0, 7.02); scene.add(lwG);
+  const star = new THREE.Mesh(L.starGeo(12, 3, .6, .5), L.goldMat()); star.position.set(10, 8, 4); scene.add(star);
+  const cross = new THREE.Mesh(L.crossGeo({arm:3, thickness:.35}), L.goldMat()); cross.position.set(12, 4, -6); scene.add(cross);
+  const bell = L.bellGroup({radius:.9, height:2.2}); bell.position.set(9, 0, 4); scene.add(bell);
+  const stair = new THREE.Mesh(L.spiralStairGeo({radius:1.3, turns:3, height:12, steps:36}), stone); stair.position.set(-13, 0, 12); stair.castShadow=true; scene.add(stair);
+  const wall = new THREE.Mesh(L.wallWithOpeningsGeo({width:14, height:18, depth:1.2, openings:[
+    {x:0, w:5, h:12, y0:-0.9},
+    {x:5, w:2.2, h:5, y0:8, arch:true},
+  ]}), grey);
+  wall.position.set(0, 0, 12); wall.rotation.y = Math.PI; scene.add(wall);
+  const ring = new THREE.Mesh(L.archRingGeo({w:5, h:12, band:1.1, depth:.8}), stone); ring.position.set(15,0,12); ring.rotation.y=Math.PI; scene.add(ring);
+  const arch = L.archPanelGeo(4, 9, .3); add(arch, 15, 9, Math.PI, L.woodMat());
+  // materials textures check
+  const moss = new THREE.Mesh(new THREE.PlaneGeometry(6,6), L.mosaicMat()); moss.rotation.x=-Math.PI/2; moss.position.set(0,0.01,18); scene.add(moss);
+  const roof = new THREE.Mesh(new THREE.PlaneGeometry(8,8), L.roofMat()); roof.rotation.x=-Math.PI/2; roof.position.set(9,0.01,18); scene.add(roof);
+
+  // textured inscriptions
+  const tex = L.textTexture('SANCTUS · SANCTUS · SANCTUS', {font:'600 52px Georgia, serif', color:'#e8d9b0', bg:'#3a3328', letterSpacing:3});
+  const plane = new THREE.Mesh(new THREE.PlaneGeometry(12,1.5), new THREE.MeshBasicMaterial({map:tex, toneMapped:false}));
+  plane.position.set(0,1.5,17.5); plane.rotation.y=Math.PI; scene.add(plane);
+} catch (e) { errs.push(e.stack || String(e)); document.getElementById('e').textContent = errs.join('\n'); console.error(e); }
+renderer.setAnimationLoop(() => { renderer.render(scene, cam); });
+window.__ready = true;
+</script>
+</body></html>

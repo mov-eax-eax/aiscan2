@@ -1,0 +1,282 @@
+[
+  {
+    "name": "ext-se",
+    "ms": 21820,
+    "ready": true,
+    "stats": {
+      "fps": 45,
+      "calls": 293,
+      "triangles": 1185430,
+      "geometries": 255,
+      "textures": 74,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      138,
+      55,
+      165
+    ]
+  },
+  {
+    "name": "nativity",
+    "ms": 11122,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 276,
+      "triangles": 1185210,
+      "geometries": 253,
+      "textures": 71,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      82,
+      28,
+      44
+    ]
+  },
+  {
+    "name": "nativity-tree",
+    "ms": 6380,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 224,
+      "triangles": 1152764,
+      "geometries": 235,
+      "textures": 62,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      54,
+      18,
+      10
+    ]
+  },
+  {
+    "name": "nativity-portal",
+    "ms": 5913,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 252,
+      "triangles": 1176232,
+      "geometries": 237,
+      "textures": 58,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      43,
+      7,
+      3
+    ]
+  },
+  {
+    "name": "passion",
+    "ms": 6179,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 273,
+      "triangles": 1197948,
+      "geometries": 250,
+      "textures": 70,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      -78,
+      28,
+      44
+    ]
+  },
+  {
+    "name": "passion-oculus",
+    "ms": 8228,
+    "ready": true,
+    "stats": {
+      "fps": 51,
+      "calls": 257,
+      "triangles": 1203264,
+      "geometries": 240,
+      "textures": 62,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      -48,
+      20,
+      4
+    ]
+  },
+  {
+    "name": "glory",
+    "ms": 6379,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 281,
+      "triangles": 1207840,
+      "geometries": 254,
+      "textures": 72,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      0,
+      26,
+      112
+    ]
+  },
+  {
+    "name": "glory-rose",
+    "ms": 5986,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 123,
+      "triangles": 725985,
+      "geometries": 199,
+      "textures": 33,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      0,
+      32,
+      42
+    ]
+  },
+  {
+    "name": "nave",
+    "ms": 6244,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 258,
+      "triangles": 1186464,
+      "geometries": 243,
+      "textures": 65,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      0,
+      1.7199999999999978,
+      40
+    ]
+  },
+  {
+    "name": "crossing",
+    "ms": 6876,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 204,
+      "triangles": 1145816,
+      "geometries": 226,
+      "textures": 57,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      0,
+      1.72,
+      6
+    ]
+  },
+  {
+    "name": "altar",
+    "ms": 7751,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 150,
+      "triangles": 727743,
+      "geometries": 209,
+      "textures": 36,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      0,
+      1.7200000000000017,
+      -26
+    ]
+  },
+  {
+    "name": "towers",
+    "ms": 7272,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 225,
+      "triangles": 1170386,
+      "geometries": 228,
+      "textures": 55,
+      "time": 16.5,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      66,
+      116,
+      70
+    ]
+  },
+  {
+    "name": "night-ext",
+    "ms": 7071,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 291,
+      "triangles": 1208640,
+      "geometries": 256,
+      "textures": 73,
+      "time": 21.4,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      118,
+      40,
+      142
+    ]
+  },
+  {
+    "name": "night-nave",
+    "ms": 6630,
+    "ready": true,
+    "stats": {
+      "fps": 60,
+      "calls": 259,
+      "triangles": 1186464,
+      "geometries": 244,
+      "textures": 65,
+      "time": 21.4,
+      "quality": "high"
+    },
+    "errs": [],
+    "pos": [
+      0,
+      1.7199999999999978,
+      40
+    ]
+  }
+]

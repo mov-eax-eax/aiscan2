@@ -1,0 +1,112 @@
+[console:log] [build] environment 151ms
+[console:log] [build] glory-shell 1ms
+[console:log] [build] facades-np 1ms
+[console:warning] [towers] missing material for batch bell
+[console:log] [build] towers 337ms
+[console:log] [build] interior 29ms
+[console:log] [build] colliders 43 hotspots 9 walkables 2
+{
+  "pixel": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "canvas": {
+    "w": 1200,
+    "h": 700,
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 700,
+      "top": 0,
+      "right": 1200,
+      "bottom": 700,
+      "left": 0
+    },
+    "opacity": "1",
+    "visibility": "visible",
+    "zIndex": "auto",
+    "position": "static",
+    "display": "block"
+  },
+  "bodyChildren": [
+    {
+      "tag": "DIV",
+      "id": "err",
+      "display": "none",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "tag": "SCRIPT",
+      "id": "",
+      "display": "none",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "tag": "CANVAS",
+      "id": "",
+      "display": "block",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 700,
+        "top": 0,
+        "right": 1200,
+        "bottom": 700,
+        "left": 0
+      }
+    }
+  ],
+  "camera": {
+    "pos": [
+      100,
+      25,
+      100
+    ],
+    "quat": [
+      0.08072209971422682,
+      0.3812199243302096,
+      -0.03343618848486608,
+      0.9203463115648369
+    ],
+    "near": 0.08,
+    "far": 2600,
+    "fov": 0,
+    "aspect": 1.7142857142857142
+  },
+  "render": {
+    "calls": 75,
+    "tris": 155444
+  }
+}
+[console:error] Failed to load resource: the server responded with a status of 404 (File not found)
+[console:warning] [.WebGL-0x40c402610400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+{"name":"environment","pixel":[0,0,0,255],"calls":50,"tris":35708}
+[console:warning] [.WebGL-0x40c402610400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+{"name":"glory-shell","pixel":[0,0,0,255],"calls":1,"tris":36}
+[console:warning] [.WebGL-0x40c402610400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+{"name":"facades-np","pixel":[0,0,0,255],"calls":1,"tris":24}
+[console:warning] [.WebGL-0x40c402610400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+{"name":"towers","pixel":[0,0,0,255],"calls":21,"tris":119280}
+{"name":"interior","pixel":[0,0,0,255],"calls":2,"tris":396}

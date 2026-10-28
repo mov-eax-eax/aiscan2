@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boeing 747-400 — procedural 3D model (three.js)</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div id="loader">
+  <div class="load-box">
+    <div class="load-title">BOEING 747-400</div>
+    <div class="load-sub">building geometry &amp; procedural textures</div>
+    <div class="bar"><i id="loadbar"></i></div>
+    <div class="load-step" id="loadstep">fuselage sections</div>
+  </div>
+</div>
+
+<div id="labels"></div>
+
+<header id="topbar">
+  <div class="brand">
+    <span class="mark">747</span>
+    <span class="txt"><b>Boeing 747-400</b><i id="liveryName">Skylark Airways 1994</i></span>
+  </div>
+  <div class="readouts" id="readouts"></div>
+</header>
+
+<button id="panelToggle" title="Hide / show controls">&#9776;</button>
+
+<aside id="panel">
+  <section>
+    <h2>View</h2>
+    <div class="grid" id="presetGrid"></div>
+    <label class="row"><span>Auto-orbit</span><input type="checkbox" id="autoRotate" /></label>
+  </section>
+
+  <section>
+    <h2>Configuration</h2>
+    <label class="row"><span>Landing gear</span><input type="checkbox" id="gear" checked /></label>
+    <label class="row"><span>Flaps <b id="flapsVal">UP</b></span><input type="range" id="flaps" min="0" max="1" step="0.01" value="0" /></label>
+    <label class="row"><span>Speedbrake <b id="sbVal">0%</b></span><input type="range" id="spoilers" min="0" max="1" step="0.01" value="0" /></label>
+    <label class="row"><span>Thrust reversers</span><input type="range" id="reverser" min="0" max="1" step="0.01" value="0" /></label>
+    <label class="row"><span>Engine spool <b id="spoolVal">55%</b></span><input type="range" id="spool" min="0" max="1" step="0.01" value="0.55" /></label>
+    <label class="row"><span>Exploded view</span><input type="range" id="explode" min="0" max="1" step="0.01" value="0" /></label>
+  </section>
+
+  <section>
+    <h2>Flight controls</h2>
+    <label class="row"><span>Elevator <b id="elevVal">0</b></span><input type="range" id="elevator" min="-1" max="1" step="0.05" value="0" /></label>
+    <label class="row"><span>Ailerons <b id="ailVal">0</b></span><input type="range" id="aileron" min="-1" max="1" step="0.05" value="0" /></label>
+    <label class="row"><span>Rudder <b id="rudVal">0</b></span><input type="range" id="rudder" min="-1" max="1" step="0.05" value="0" /></label>
+    <label class="row"><span>Control check cycle</span><input type="checkbox" id="ctlCheck" /></label>
+  </section>
+
+  <section>
+    <h2>Lights</h2>
+    <label class="row"><span>Navigation</span><input type="checkbox" id="lNav" checked /></label>
+    <label class="row"><span>Strobes</span><input type="checkbox" id="lStrobe" checked /></label>
+    <label class="row"><span>Beacons</span><input type="checkbox" id="lBeacon" checked /></label>
+    <label class="row"><span>Landing lights</span><input type="checkbox" id="lLand" checked /></label>
+    <label class="row"><span>Cabin lighting</span><input type="checkbox" id="night" /></label>
+  </section>
+
+  <section>
+    <h2>Livery</h2>
+    <div class="grid" id="liveryGrid"></div>
+  </section>
+
+  <section>
+    <h2>Display</h2>
+    <label class="row"><span>Hotspot labels</span><input type="checkbox" id="hotspots" checked /></label>
+    <label class="row"><span>Wireframe</span><input type="checkbox" id="wire" /></label>
+    <div class="grid">
+      <button id="reset" class="ghost">Reset view</button>
+      <button id="shot" class="ghost">Save PNG</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Specification — 747-400</h2>
+    <table class="spec" id="specTable"></table>
+    <table class="spec" id="modelTable"></table>
+  </section>
+</aside>
+
+<footer id="hint">Drag to orbit &middot; scroll to zoom &middot; right-drag to pan &middot; press 1&ndash;9 for views</footer>
+
+<script type="module" src="js/main.js"></script>
+
+<script>
+  // friendly fallback: ES modules cannot be loaded from file://
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (window.__747__) return;
+      var step = document.getElementById('loadstep');
+      if (location.protocol === 'file:') {
+        step.innerHTML = 'file:// blocks ES modules — run <b>start.cmd</b> (or <b>node serve.js</b>) and open http://127.0.0.1:8147/index.html';
+        step.style.maxWidth = '560px';
+        step.style.color = '#ffcf6b';
+      } else {
+        step.textContent = 'still building textures ...';
+      }
+    }, 4000);
+  });
+</script>
+</body>
+</html>

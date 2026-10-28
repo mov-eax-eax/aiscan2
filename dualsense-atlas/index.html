@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#04070b" />
+<meta name="description" content="DualSense Ontology Atlas - a research-grounded, ontology-driven SVG projection model of the PlayStation 5 DualSense controller." />
+<title>DualSense — Ontology Atlas / SVG Projections</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2304070b'/%3E%3Cpath d='M16 5l6 5.5v11L16 27l-6-5.5v-11z' fill='none' stroke='%236ee7ff' stroke-width='1.4'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%236ee7ff'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><span>△</span><span>○</span><span>✕</span><span>□</span></div>
+      <div class="brand-copy">
+        <h1>DUALSENSE <em>ONTOLOGY ATLAS</em></h1>
+        <p>CFI-ZCT1W · SVG PROJECTIONS · EVERY PART, PREDICATE &amp; PROVENANCE</p>
+      </div>
+    </div>
+    <nav id="tabs" class="tabs" aria-label="Views">
+      <button class="tab active" data-mode="sheet"><b>01</b><span>SHEET</span></button>
+      <button class="tab" data-mode="orbit"><b>02</b><span>ORBIT</span></button>
+      <button class="tab" data-mode="graph"><b>03</b><span>GRAPH</span></button>
+      <button class="tab" data-mode="matrix"><b>04</b><span>MATRIX</span></button>
+    </nav>
+    <div id="header-stats" class="header-stats" aria-label="Ontology statistics"></div>
+  </header>
+
+  <main class="workspace">
+    <aside class="panel sidebar" aria-label="Ontology explorer">
+      <div class="panel-head"><span>ONTOLOGY</span><span class="panel-sub">EXPLORER</span></div>
+      <div class="search-row">
+        <div class="search-box">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="1.2"/></svg>
+          <input id="search" type="search" placeholder="Search 208 entities…" autocomplete="off" spellcheck="false" />
+        </div>
+        <select id="layerFilter" aria-label="Filter by layer">
+          <option value="all">ALL LAYERS</option>
+          <option value="physical">PHYSICAL</option>
+          <option value="function">BEHAVIOUR</option>
+          <option value="geometry">GEOMETRY</option>
+          <option value="materials">MATERIALS</option>
+          <option value="spec">INTERFACES</option>
+        </select>
+      </div>
+      <div id="tree" class="tree"></div>
+      <div class="legend">
+        <div class="legend-row"><span class="conf conf-V">V</span><span class="conf conf-E">E</span><span class="conf conf-U">U</span><em>VERIFIED / ESTIMATED / UNKNOWN</em></div>
+        <div class="legend-row"><i class="sw" style="background:#6ee7ff"></i>SVG PROJECTION · <i class="sw" style="background:#ffcf5c"></i>DIMENSION</div>
+      </div>
+    </aside>
+
+    <section class="canvas-panel" aria-label="Drawing">
+      <div class="canvas-head">
+        <div class="canvas-title">
+          <span class="eyebrow" id="mode-eyebrow">ORTHOGRAPHIC PROJECTION</span>
+          <h2 id="mode-title">Technical sheet</h2>
+        </div>
+        <div id="toolbar" class="toolbar"></div>
+      </div>
+      <div class="stage-wrap">
+        <div id="stage" class="stage drawing-stage"></div>
+        <div id="tooltip" class="tooltip" role="status"></div>
+      </div>
+      <div class="statusbar">
+        <div id="status-text"></div>
+        <div class="keys">1–4 MODES · D DIMS · X X-RAY · L LIGHT · R RESET · ESC CLEAR</div>
+      </div>
+    </section>
+
+    <aside class="panel inspector" id="inspector" aria-label="Entity inspector"></aside>
+  </main>
+</div>
+
+<noscript><div class="noscript">This atlas is generated in the browser with HTML, SVG and JavaScript. Enable JavaScript to view it.</div></noscript>
+
+<script src="./data/ontology.js"></script>
+<script src="./data/parts.js"></script>
+<script src="./data/domain.js"></script>
+<script src="./js/geometry.js"></script>
+<script src="./js/scene.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>

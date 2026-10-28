@@ -1,0 +1,36 @@
+{
+  "id": "M9",
+  "title": "El Mural",
+  "idiom": "social-realist street mural (Rivera / Siqueiros)",
+  "scene": "a crowded street mural: labour below, history in the middle, sky and machines above; workers, a march, a mother and child, a skeleton in a sombrero, a tractor, hands",
+  "crowdRule": "The mural is read in three registers (below: labour; middle: history; above: sky and machines), each with its own scale; the crowd faces the viewer in the centre and turns away at the edges.",
+  "findIt": "one small naturalistic bird (a real bird, not painted in the mural's style) appears 8 times across all three registers: sky, crane, skeleton's sombrero, crowd, tractor, two workers, the hands",
+  "readings": {
+    "far": "At 400 px: a three-register mural — red sun, gears and a crane above; a facing crowd and a skeleton in a sombrero in the middle; workers, a tractor and raised hands below.",
+    "middle": "At 1600 px: the three registers with their scale differences; the crowd facing the viewer at the centre and turning away at the edges; the march, the mother and child, the labour.",
+    "near": "At 100%: plaster, cracks and patches; frontal, profile and back faces; hammers, drills, the tractor, the skeleton's ribs; eight naturalistic birds."
+  },
+  "palette": {
+    "wall": [
+      "#b98a58",
+      "#a97a4a",
+      "#c99a68"
+    ],
+    "ink": "#241a12",
+    "red": "#a83422",
+    "ochre": "#d3a35c",
+    "teal": "#3d5a55",
+    "blue": "#435f74",
+    "cream": "#e6d4b0",
+    "dark": "#2e241a"
+  },
+  "techniques": [
+    "three registers with independent scales",
+    "monumental figure function (front / profile / back faces, tools, raised fists)",
+    "naturalistic bird module repeated eight times",
+    "plaster texture, cracks and patches",
+    "flat mural colour with a painted frame"
+  ],
+  "statement": "History compressed into one wall: labour below, history in the middle, sky and machines above. The crowd faces you at the centre and turns its back at the edges. Eight real birds move through a painted world, and the wall never mentions them.",
+  "artist": "grabador"
+}

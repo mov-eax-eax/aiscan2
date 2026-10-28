@@ -1,0 +1,37 @@
+{
+  "id": "v5-la-tormenta",
+  "title": "La Tormenta",
+  "style": "art nouveau + Mexican ex-voto / tarot card",
+  "theme": "a hurricane as a saint",
+  "artist": "colorista",
+  "year": 2026,
+  "palette": [
+    "#101733 indigo ground",
+    "#1a2344 card band",
+    "#243060 field",
+    "#0d2833 storm field",
+    "#0a2530 storm edge",
+    "#12323e storm dark",
+    "#1e4d59 storm",
+    "#3f7f88 storm light",
+    "#d9a441 gold",
+    "#efcf87 gold light",
+    "#9c6a17 gold deep",
+    "#b8342a vermillion roof",
+    "#7d211a roof shadow",
+    "#f2e4c4 bone / lightning core",
+    "#d8e2cf rain band",
+    "#0f0d18 ink"
+  ],
+  "techniques": [
+    "hand-authored concentric geometry (circular medallion on a vertical card)",
+    "ornamental border with a repeating scallop-and-dot motif",
+    "flat ink shapes only, no gradients, no blend modes",
+    "tapered spiral rain-bands and a scalloped eye-wall around a gold halo",
+    "two ex-voto miniature scenes in the bottom corners (before / after)",
+    "votive heart plate between them",
+    "fractal-noise grain as the final layer (opacity 0.13)"
+  ],
+  "statement": "A hurricane painted as a saint: the eye of the storm is the halo, the family is sheltering under the one roof that held, and the surge is already at their feet. The picture is a votive card, not a painting: frame, medallion, dedication plate, and two little scenes of before and after in the corners.",
+  "composition": "Circular medallion inside a vertical card; concentric (frame > medallion > eye-wall > halo > family). Symmetrical, frontal, no horizon and no depth beyond the roundel."
+}

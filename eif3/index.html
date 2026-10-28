@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>La Tour Eiffel · three.js</title>
+<style>
+  :root {
+    --ink: #f2ede3;
+    --muted: rgba(242, 237, 227, 0.62);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #070a12; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  #app { position: fixed; inset: 0; }
+  canvas { display: block; }
+
+  /* ---------- overlay chrome ---------- */
+  .hud {
+    position: fixed; inset: 0; z-index: 2;
+    padding: clamp(18px, 3vw, 42px);
+    display: flex; flex-direction: column; justify-content: space-between;
+    pointer-events: none;
+  }
+  .brand h1 {
+    margin: 0;
+    font-weight: 200;
+    font-size: clamp(17px, 2vw, 28px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55);
+  }
+  .brand p {
+    margin: 11px 0 0;
+    font-size: clamp(9px, 0.8vw, 11px);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 18px; flex-wrap: wrap;
+  }
+  .hint {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  }
+  .hint b { font-weight: 600; color: var(--ink); }
+  .controls { display: flex; gap: 8px; pointer-events: auto; }
+  .controls button {
+    appearance: none;
+    display: flex; align-items: center; gap: 9px;
+    padding: 10px 16px;
+    border: 1px solid rgba(242, 237, 227, 0.22);
+    border-radius: 999px;
+    background: rgba(12, 16, 26, 0.42);
+    color: var(--ink);
+    font: inherit;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.25s, border-color 0.25s, transform 0.1s;
+  }
+  .controls button:hover { background: rgba(30, 38, 54, 0.6); border-color: rgba(242, 237, 227, 0.45); }
+  .controls button:active { transform: scale(0.97); }
+  .controls .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(242, 237, 227, 0.32);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .controls button.on .dot { background: #ffc06a; box-shadow: 0 0 9px #ffc06a; }
+
+  #vignette {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(120% 95% at 50% 42%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.45) 100%);
+  }
+
+  /* ---------- loader / error ---------- */
+  #loader {
+    position: fixed; inset: 0; z-index: 9;
+    display: grid; place-items: center;
+    background: radial-gradient(120% 120% at 50% 38%, #141a26 0%, #05070c 70%);
+    transition: opacity 0.8s ease;
+  }
+  #loader.hide { opacity: 0; pointer-events: none; }
+  #loader .inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  #loader .ring {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(242, 237, 227, 0.14);
+    border-top-color: #ffc06a;
+    animation: spin 1s linear infinite;
+  }
+  #loader span { font-size: 9px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--muted); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #error {
+    position: fixed; inset: 0; z-index: 10;
+    display: grid; place-items: center;
+    padding: 24px; text-align: center;
+    background: #070a12;
+  }
+  #error[hidden] { display: none; }
+  #error h2 { font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; font-size: 15px; }
+  #error p { font-size: 13px; line-height: 1.7; color: var(--muted); max-width: 420px; margin: 14px auto 0; }
+
+  @media (max-width: 640px) {
+    .brand h1 { letter-spacing: 0.3em; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="vignette"></div>
+
+<div class="hud">
+  <header class="brand">
+    <h1>La Tour Eiffel</h1>
+    <p>Gustave Eiffel · 1889 &nbsp;—&nbsp; procedural lattice</p>
+  </header>
+  <div class="bottom">
+    <div class="hint">drag to orbit &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; <b>300 m</b> of iron</div>
+    <div class="controls">
+      <button id="btn-night" aria-label="Toggle night lighting"><span class="dot"></span><span id="btn-night-label">Night</span></button>
+      <button id="btn-auto" class="on" aria-label="Toggle auto orbit"><span class="dot"></span><span>Orbit</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="loader"><div class="inner"><div class="ring"></div><span>assembling the iron</span></div></div>
+<div id="error" hidden><div><h2>WebGL unavailable</h2><p id="error-text">three.js could not be loaded.</p></div></div>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+// ---- three bounced lights in the shade (curator fix 2)
+P('<path d="M1010 470 L 1600 470 L 1600 700 L 1010 760 Z" fill="#2f7f86" opacity="0.22" filter="url(#b14)"/>');
+P('<path d="M1010 700 L 1600 660 L 1600 900 L 1010 940 Z" fill="#6d6289" opacity="0.30" filter="url(#b14)"/>');
+P('<path d="M980 940 L 1600 900 L 1600 1218 L 940 1218 Z" fill="#f0a866" opacity="0.16" filter="url(#b18)"/>');
+P('<path d="M1180 900 C 1300 880 1440 862 1600 850 L 1600 1218 L 1140 1218 Z" fill="#c88a5e" opacity="0.10" filter="url(#b24)"/>');
+P('<path d="M1010 470 L 1600 470 L 1600 660 L 1010 720 Z" fill="none" stroke="#3f8f8a" stroke-width="10" opacity="0.12" filter="url(#b14)"/>');
+// ================= PAVEMENT PAINT =================

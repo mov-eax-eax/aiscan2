@@ -1,0 +1,37 @@
+{
+  "id": "m4",
+  "title": "La Torre",
+  "idiom": "Bruegelian construction",
+  "scene": "a tower under construction seen from below and one side: scaffolding, cranes, hundreds of workers, a city and harbour below, clouds",
+  "crowdRule": "The scaffolding is a grid of bays, and each horizontal band of bays holds one trade (masons, carriers, carpenters, water-bearers, riggers), colour-coded by shirt so the tower reads as strata of labour.",
+  "findIt": "One worker in every bay wears a blue sash — twelve in total, each a single blue stroke across the chest.",
+  "readings": {
+    "far": "A huge tapering lattice cone cut off by the top of the frame, cranes like gallows on both flanks, a dark city strip and a dark foreground crowd. Reads instantly as a construction site.",
+    "middle": "The grid of bays, the stair climbing the right flank and ending in air beside a half-built arch, blocks hanging from cranes, the city and harbour complete and tiny below.",
+    "near": "Individual workers with barrows, hods and saws; twelve blue sashes; stone courses; crane cables and hooks; blocks in the air."
+  },
+  "palette": [
+    "#c9d2d0",
+    "#e2e7e3",
+    "#a89a80",
+    "#8f8370",
+    "#5a4632",
+    "#3f6f9a",
+    "#c08a3e",
+    "#443b30",
+    "#26221c",
+    "#332b22"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "tapered lattice cone with stone courses and ramp bands",
+    "scaffold grid generated bay by bay with trade bands",
+    "210 workers placed procedurally in the bays, incidents hand-placed",
+    "twelve blue sashes",
+    "cranes, flying blocks, a stair and arch that end in air",
+    "city and harbour at the base, foreground watchers cropped",
+    "layer order: sky, cone, scaffold, crowd of workers, incidents, city, foreground, atmosphere, grain"
+  ],
+  "statement": "A tower that cannot be finished. Every bay of its scaffold holds one trade, so from a distance the thing reads as strata of labour rather than as architecture, and the higher the work the less it is doing: a stair climbs the right flank and ends in air, an arch stands on nothing, cranes lift blocks nobody waits for. Below, the city and the harbour are small and complete. The building is the labour, and the labour is endless.",
+  "artist": "aereo"
+}

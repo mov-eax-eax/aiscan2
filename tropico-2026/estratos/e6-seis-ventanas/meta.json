@@ -1,0 +1,31 @@
+{
+  "id": "E6",
+  "title": "Seis Ventanas",
+  "style": "six-panel comic page, flat colour",
+  "idiom": "six-panel comic page: six windows of one building at six hours",
+  "rule": "Six panels, each one hour later and one floor higher; the border thickness encodes the floor's distance from the street; one dish and one page-wide crack recur in every panel, and the sixth panel breaks both the sequence and the grid.",
+  "readings": {
+    "far": "At 400 px: a comic page of six rooms plus a bleeding bottom strip; wall tones change by hour; the dish appears in the windows.",
+    "middle": "At 1600 px: six rooms at six floors/hours, each with a window onto the dish (new / bird / snow / rust / silhouette / missing), a clock, a lamp, a picture, furniture and a rug.",
+    "near": "At 100%: one crack continued across all panels through the gutters, with branches and a lit edge; floor notches in the left borders; clock hands at each hour (the sixth reversed); six recursive windows with dishes and one tiny figure."
+  },
+  "palette": {
+    "page": "#efe9db",
+    "ink": "#141312",
+    "dawn": "#d9c8a4",
+    "morning": "#e4d7b8",
+    "noon": "#efe6d0",
+    "dusk": "#c98f5e",
+    "night": "#2c3a49",
+    "predawn": "#3c4a57"
+  },
+  "techniques": [
+    "six clipped panels with border thickness as a floor/distance code",
+    "one page-wide crack polyline clipped per panel with the window punched out",
+    "per-panel window geometry and recursive facade in the sixth panel",
+    "clocks as geometry carrying the hour; border notches counting the floor",
+    "dish module at six scales and six states"
+  ],
+  "statement": "Six windows of one building, six hours, one dish on the roof opposite, and one crack that no single room admits to. The panel border is the distance from the street. On the top floor the window shows the building itself, with six lit windows and six dishes, and nothing in the comic finds that strange.",
+  "artist": "grabador"
+}

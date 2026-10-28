@@ -1,0 +1,41 @@
+{
+  "id": "m5",
+  "title": "El Puerto",
+  "idiom": "harbour panorama at dusk",
+  "scene": "a container port at shift change: gantry cranes, a container ship and a second at anchor, a crowd leaving through a gate, a bus, food stalls, a fire in the distance, gulls, a pilot boat",
+  "crowdRule": "The crowd streams in three currents — gate, bus, stalls — in three spatial bands, and the currents never cross.",
+  "findIt": "A child on shoulders appears seven times in the crowd, always facing away.",
+  "readings": {
+    "far": "A dusk port: a row of gantry cranes against a warm sky, a dark container ship, coloured container rows, three lit stalls, a smoke plume, a crowd band and a dark foreground with five silhouettes.",
+    "middle": "Three crowd currents (gate stream, bus queue, stall crowd) with the gate and bus legible; the ship a long dark mass under the cranes; a fire and smoke on the far quay.",
+    "near": "Hi-vis vests and shoulders on the foreground men; container ribs and shadows; bulbs over the stalls; coat colours and turned-away heads; seven children on shoulders."
+  },
+  "palette": [
+    "#6f8597",
+    "#b9a894",
+    "#e8b57e",
+    "#f4cd97",
+    "#2b3138",
+    "#3a4148",
+    "#b5562f",
+    "#3f6f8a",
+    "#4f7a58",
+    "#c9a03e",
+    "#767d83",
+    "#14181d"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "elevated apron with five depth bands",
+    "seven gantry cranes as silhouettes against the sky",
+    "container ship with deck containers and bridge",
+    "four rows of containers with perspective scaling and ribs",
+    "three crowd currents, each in its own band, ~110 figures",
+    "seven children on shoulders",
+    "gate, bus, three stalls, a fire and a smoke plume",
+    "dark cropped foreground quay wall with five back-turned walkers in hi-vis",
+    "layer order: sky, far water, cranes, ship, apron, containers, crowd, incidents, foreground, atmosphere, grain"
+  ],
+  "statement": "A port at shift change is a machine letting its people out. The cranes stand over the ship like a row of gallows that are also hands; the gate releases one stream, the bus takes another, the stalls catch a third, and behind them a fire burns on the far quay that nobody in the picture is looking at. The crowd is organised into currents that never cross, which is how a port works and how a shift ends.",
+  "artist": "aereo"
+}

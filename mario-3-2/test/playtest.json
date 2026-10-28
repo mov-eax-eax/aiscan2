@@ -1,0 +1,222 @@
+{
+  "pass": 30,
+  "fail": 0,
+  "ok": true,
+  "checks": [
+    {
+      "name": "boot: M32.DEBUG.ready",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "boot: no fatal error",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "boot: level built",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "boot: title state",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "boot: HUD hidden on title",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "start: Space starts the game",
+      "ok": true,
+      "detail": "play"
+    },
+    {
+      "name": "start: overlay hidden",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "start: HUD visible in play",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "start: minimap hidden during play (does not cover Mario)",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "input: holding ArrowRight swims right",
+      "ok": true,
+      "detail": {
+        "x0": 110,
+        "x1": 316
+      }
+    },
+    {
+      "name": "input: Z strokes lift the player",
+      "ok": true,
+      "detail": {
+        "y0": 310,
+        "y1": 707
+      }
+    },
+    {
+      "name": "pause: P pauses",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "pause: pause panel visible",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "pause: minimap shown as overview",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "pause: P resumes",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "item: touching a coin increments coins",
+      "ok": true,
+      "detail": {
+        "coins0": 2,
+        "coins1": 3
+      }
+    },
+    {
+      "name": "item: hitting the frogsuit ? block spawns the frog suit",
+      "ok": true,
+      "detail": {
+        "power": "small",
+        "items": [
+          "frog",
+          "frogsuit"
+        ]
+      }
+    },
+    {
+      "name": "powerup: collecting the frog suit -> frog power",
+      "ok": true,
+      "detail": {
+        "powerAfter": "frog"
+      }
+    },
+    {
+      "name": "timer: counts down while playing",
+      "ok": true,
+      "detail": {
+        "before": 299.7,
+        "after": 296.2,
+        "state": "play"
+      }
+    },
+    {
+      "name": "death: dying enters dead state",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "death: respawns with one less life at the checkpoint",
+      "ok": true,
+      "detail": {
+        "lives0": 3,
+        "lives": 2,
+        "state": "play",
+        "x": 2360,
+        "y": 525
+      }
+    },
+    {
+      "name": "pipe: bonus pipe warps into the coin room",
+      "ok": true,
+      "detail": {
+        "x": 940,
+        "y": 1160,
+        "inBonus": true
+      }
+    },
+    {
+      "name": "pipe: exit pipe returns to the main level",
+      "ok": true,
+      "detail": {
+        "x": 3400,
+        "y": 356,
+        "inBonus": false
+      }
+    },
+    {
+      "name": "gameover: losing all lives reaches GAME OVER",
+      "ok": true,
+      "detail": {
+        "state": "gameover",
+        "lives": 0
+      }
+    },
+    {
+      "name": "gameover: Space returns to title",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "audio: AudioContext unlocks after a user gesture",
+      "ok": true,
+      "detail": {
+        "state": "running",
+        "muted": false
+      }
+    },
+    {
+      "name": "perf: draw calls under budget",
+      "ok": true,
+      "detail": {
+        "draws": 145,
+        "tris": 6750
+      }
+    },
+    {
+      "name": "perf: triangles under budget",
+      "ok": true,
+      "detail": {
+        "tris": 6750
+      }
+    },
+    {
+      "name": "runtime: no page errors during the whole playtest",
+      "ok": true,
+      "detail": {
+        "page": [],
+        "cdp": []
+      }
+    },
+    {
+      "name": "runtime: no console errors",
+      "ok": true,
+      "detail": [
+        {
+          "type": "warning",
+          "text": "Scripts \"build/three.js\" and \"build/three.min.js\" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation"
+        }
+      ]
+    }
+  ],
+  "shots": [
+    "pt-01-title.png",
+    "pt-02-pause.png",
+    "pt-03-itembox.png",
+    "pt-04-death.png",
+    "pt-05-bonus-room.png",
+    "pt-06-gameover.png",
+    "pt-07-final.png"
+  ],
+  "consoleErrors": [],
+  "finishedAt": "2026-10-17T11:13:58.228Z"
+}

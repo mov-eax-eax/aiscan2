@@ -1,0 +1,38 @@
+{
+  "id": "e7-roseton",
+  "title": "Rosetón",
+  "style": "stained-glass rose window / circuit diagram",
+  "idiom": "cathedral rose window: glass, leading, stone tracery, cast light",
+  "rule": "One petal module (a lancet carrying a four-band resistor built out of its own glass) is drawn twelve times at 30 degrees; the colour permutation follows the resistor code applied to the first twelve digits of pi (3.14159265358), and the seventh petal is inverted - the break.",
+  "readings": {
+    "far": "a rose window: stone surround, radiating stone tracery, a jewelled outer ring of small lights, a grey centre",
+    "middle": "twelve lancets, each a four-band resistor in glass whose colours run orange, brown, yellow, brown, green, white, red, blue, green, orange, green, grey; a twelve-pin chip at the centre",
+    "near": "quarries subdivided by lead; gold circuit traces along the mullions with solder junctions; the stone's cast shadows on the glass assembling into a dove; the seventh petal with its widest band at the centre instead of the rim"
+  },
+  "palette": [
+    "#d9651f orange",
+    "#7a4a24 brown",
+    "#e8c72c yellow",
+    "#2f7a45 green",
+    "#2b4f9e blue",
+    "#5a2f7a violet",
+    "#8d8a84 grey",
+    "#eae4d6 white",
+    "#b4232a red",
+    "#1a1a1a black",
+    "#b9b0a0 stone",
+    "#cfc7b8 stone light",
+    "#1d1d1f leading"
+  ],
+  "techniques": [
+    "one petal module x 12 at 30 degrees; the resistor code of pi's first twelve digits as the colour permutation",
+    "each lancet is a resistor: its four glass bands are the four colour bands",
+    "one petal inverted (bands mirrored, widest band at the centre) - the deliberate break",
+    "the tracery as a circuit: gold traces along the mullions, 24 solder junctions, a twelve-pin chip",
+    "quarries subdivided by lead so the glass reads as pieces, not paint",
+    "cast stone shadows clipped to the glass, forming a dove only at 100%",
+    "flat glass colour; grain as the final layer"
+  ],
+  "statement": "A rose window wired like a resistor network. Its twelve lights are the first twelve digits of pi in the resistor code - a palette no glazier would choose - and the stone between them is a circuit with a twelve-pin chip at its heart. The shadows the tracery throws on the glass are not uniform: from outside, they are a dove.",
+  "artist": "colorista"
+}

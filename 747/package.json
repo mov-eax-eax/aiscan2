@@ -1,0 +1,7 @@
+{
+  "name": "boeing-747-3d",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ultra-detailed procedural Boeing 747 in Three.js"
+}

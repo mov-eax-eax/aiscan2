@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#062038" />
+<title>Super Mario Bros. 3 — World 3-2 (Remake)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a2e4f'/%3E%3Crect x='3' y='8' width='10' height='6' fill='%23e23a2e'/%3E%3Crect x='5' y='3' width='6' height='5' fill='%23f6d9a8'/%3E%3Crect x='2' y='9' width='12' height='3' fill='%232f5ed6'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="app">
+  <canvas id="game" width="1280" height="720"></canvas>
+
+  <!-- ============================== HUD ============================== -->
+  <div id="hud" aria-hidden="true">
+    <div class="hud-row hud-left">
+      <div class="hud-cell"><span class="hud-label">MARIO</span><span id="score" class="hud-value">000000</span></div>
+      <div class="hud-cell"><span class="hud-label">COINS</span><span id="coins" class="hud-value">x00</span></div>
+    </div>
+    <div class="hud-row hud-right">
+      <div class="hud-cell"><span class="hud-label">WORLD</span><span id="world" class="hud-value">3-2</span></div>
+      <div class="hud-cell"><span class="hud-label">TIME</span><span id="time" class="hud-value">300</span></div>
+      <div class="hud-cell"><span class="hud-label">LIVES</span><span id="lives" class="hud-value">x3</span></div>
+    </div>
+    <div id="power" class="hud-power">
+      <span id="power-icon">SMALL</span>
+      <div id="strokes" class="strokes" title="swim stroke momentum"></div>
+    </div>
+  </div>
+
+  <!-- ============================ MINIMAP ============================ -->
+  <div id="minimap" aria-hidden="true">
+    <div id="minimap-track">
+      <div id="minimap-fill"></div>
+      <div id="minimap-dot"></div>
+      <div id="minimap-marks"></div>
+    </div>
+    <div id="minimap-label">3-2 · UNDERWATER</div>
+  </div>
+
+  <!-- ============================ OVERLAYS =========================== -->
+  <div id="overlay" class="visible">
+    <div id="overlay-card">
+      <div id="overlay-kicker">WORLD 3-2</div>
+      <div id="overlay-title">UNDERWATER</div>
+      <div id="overlay-sub">A Super Mario Bros. 3 remake</div>
+      <div id="overlay-hint">PRESS <b>SPACE</b> / <b>Z</b> TO START</div>
+      <div id="overlay-keys">
+        <span><b>← →</b> swim</span><span><b>SPACE</b> stroke</span><span><b>↓</b> dive</span>
+        <span><b>SHIFT</b> dash</span><span><b>P</b> pause</span><span><b>M</b> mute</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="pause"><div class="pause-card"><h2>PAUSED</h2><p>Press <b>P</b> to resume</p></div></div>
+  <div id="toast"></div>
+
+  <!-- ============================ TOUCH ============================= -->
+  <div id="touch">
+    <button data-key="left" aria-label="left">◀</button>
+    <button data-key="right" aria-label="right">▶</button>
+    <button data-key="down" aria-label="dive">▼</button>
+    <button id="stroke-btn" data-key="stroke" aria-label="stroke">●</button>
+    <button id="run-btn" data-key="run" aria-label="dash">≫</button>
+  </div>
+</div>
+
+<!-- three.js r158 (UMD, vendored) -->
+<script src="vendor/three.min.js"></script>
+<!-- modules: order matters only for definition, all wiring happens in main.js -->
+<script src="js/core.js"></script>
+<script src="js/textures.js"></script>
+<script src="js/level.js"></script>
+<script src="js/level3d.js"></script>
+<script src="js/world.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/player.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/goal.js"></script>
+<script src="js/hud.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

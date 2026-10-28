@@ -1,0 +1,33 @@
+{
+  "id": "E4",
+  "title": "La Ola de Datos",
+  "style": "ukiyo-e woodblock print (nishiki-e), flat colour with keyblock",
+  "idiom": "ukiyo-e woodblock, the great wave reinterpreted as bundled cable and fibre",
+  "rule": "One wave-claw module (a bundle of five cable strands ending in a cut cross-section) is stamped at four scales and permuted by rotation; a single unwinding strand leaves the bundle at the crest and breaks the rule.",
+  "readings": {
+    "far": "At 400 px: a great wave with a curling crest, claw-fingers hanging, a boat in the trough, a Fuji-like mountain and a red seal. The ukiyo-e wave reads instantly.",
+    "middle": "At 1600 px: the wave is bundled cable (ridges, clamp rings, sheath bands); the foam fingers are cut cable ends; the boat is a data trawler with a net; the mountain is a server rack with status LEDs; the seal is drawn as geometry.",
+    "near": "At 100%: each cut end shows seven fibre dots; tide-gauge tally groups increment left to right and the last group is short; a connector-pin register counts beside the boat; a kento registration mark sits in the corner; the seal border is a tick scale."
+  },
+  "palette": {
+    "paper": "#f2e8d3",
+    "black_key": "#1b1a18",
+    "deep": "#152f4d",
+    "mid": "#20466c",
+    "light": "#3f7098",
+    "pale": "#8aa9bb",
+    "foam": "#f7efdb",
+    "sea": "#2a5279",
+    "seal": "#b8432c"
+  },
+  "techniques": [
+    "hand-authored wave silhouette (hook) with keyblock outline",
+    "procedural cable-bundle ridges with clamp rings, clipped to the wave",
+    "curved finger module: quadratic band + strand lines + cut-face ellipse with seven fibre dots",
+    "module repeated at four scales (1.0 / 0.55 / 0.30 / 0.15) with rotation permutations",
+    "tide-gauge tally register following the foam band; connector-pin register; kento mark",
+    "flat woodblock colour, keyblock outlines, paper and grain overlays"
+  ],
+  "statement": "The wave is not water and never was. It is the world's cable, sheathed and bundled, and the foam is where it was cut. The tally in the foam counts tide gauges left to right; one strand leaves the bundle and runs out of the frame, because a system is only visible in its break.",
+  "artist": "grabador"
+}

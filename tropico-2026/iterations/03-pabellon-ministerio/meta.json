@@ -1,0 +1,30 @@
+{
+  "id": "03",
+  "title": "Pabellón Ministerio del Futuro",
+  "style": "geometric abstraction / tropical modernism",
+  "artist": "vectorista",
+  "year": 2026,
+  "palette": [
+    "#F7F0DA",
+    "#B6D4D2",
+    "#E7DAB3",
+    "#9BA28A",
+    "#D6C391",
+    "#5E9BA4",
+    "#D8462E",
+    "#14231A"
+  ],
+  "techniques": [
+    "module + permutation brise-soleil shadow (one 45° band, permuted widths, fanned)",
+    "one-point fanned cast shadows to a horizon vanishing point",
+    "formwork board grain pattern inside concrete masses",
+    "serrated bezier palm fronds, flat black-green cut-outs",
+    "recessed coral portal that breaks the rhythm",
+    "film grain overlay, flat fields only (no gradients)",
+    "one broken fin: a hard white blade of full sun cutting four shadow bands",
+    "per-mass formwork grain (horizontal / vertical / diagonal, phase-offset)",
+    "directional stains: water bleed across the plinth joint + salt bloom, rust run from the dish bolt"
+  ],
+  "statement": "I built the whole picture around one shadow: a single 45-degree brise-soleil band, repeated on a fixed period with a permuted set of widths and fanned toward the horizon, so the wall reads as light falling rather than as a barcode of fins. The rhythm is deliberately broken at exactly one place, the coral portal, and that break is the only saturated note in the frame. The pavilion is cropped by the top edge so it stays a mass; the palms are cut-outs that break the grid; and the person at the steps is small enough to measure how much concrete the future was built out of.",
+  "fix_pass": "post-CRITIQUE-A: half-shade screen wall #E1D4AB, shadow bands #6C7149, lit faces #FCF6E2, one broken fin casting a hard white blade of sun, per-mass formwork grain, water bleed + rust run + salt bloom"
+}

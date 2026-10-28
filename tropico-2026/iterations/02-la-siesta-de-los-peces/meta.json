@@ -1,0 +1,36 @@
+{
+  "id": "02",
+  "title": "La Siesta de los Peces",
+  "style": "Sorolla light / impressionism",
+  "artist": "colorist",
+  "year": 2026,
+  "palette": [
+    "#fdf9ee",
+    "#fff8e8",
+    "#dff2ec",
+    "#a99ec6",
+    "#9489ae",
+    "#6d6289",
+    "#4a4270",
+    "#eedcb6",
+    "#f5c6a0",
+    "#a2665a",
+    "#dd7f66",
+    "#f26f2b",
+    "#3f4a63"
+  ],
+  "techniques": [
+    "hard-edged cast shadow",
+    "temperature-separated whites",
+    "clipped violet shadow shapes",
+    "warm ground bounce",
+    "radial-gradient glare",
+    "displaced edges",
+    "grain",
+    "tarp-clipped sun bloom",
+    "three-bounce shade",
+    "opaque silhouettes with hard shade side"
+  ],
+  "statement": "I painted the shade instead of the objects: every white in the picture is either sunlit-near-white or violet-white, and the whole composition rests on the diagonal where the awning's shadow cuts the foreground. The one strong dark sits in the bottom-right corner and the doorway, so the light has something to be light against. The people are backs and shadowed faces at work, never looking at us.",
+  "fix_pass": "post-CRITIQUE-A: near figure made opaque and anchored, shade rebuilt as three bounced lights, sun glare clipped through the tarp"
+}

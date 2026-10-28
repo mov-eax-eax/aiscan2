@@ -1,0 +1,37 @@
+{
+  "id": "M1",
+  "title": "La Feria",
+  "idiom": "Bruegelian village panorama",
+  "scene": "a town square on festival day: market stalls, a procession behind the market, children chasing a dog, two men fighting, a windmill, a gallows outside the walls, a church, washing lines, an overturned cart",
+  "crowdRule": "The crowd thickens toward the church door and thins toward the gallows: density = two Gaussian attractions (church door, market row) minus a Gaussian repulsion at the gallows, sampled over jittered points with clearings around stalls and incidents; figures cluster in groups of 2-4 near the market.",
+  "findIt": "one red cap appears 9 times on nine workers: market woman, porter at the church door, child chasing the dog, carter by the cart, merchant at stall four, miller at the windmill, watcher at the gallows, banner carrier in the procession, foreground carrier",
+  "readings": {
+    "far": "At 400 px: a walled town square on festival day, church dominant, windmill and gallows, a striped market row and a dense crowd.",
+    "middle": "At 1600 px: the procession with baldachin crossing behind the market, the fight at the right, the dog chase and the overturned cart, the church-door crowd and the empty ground at the gallows.",
+    "near": "At 100%: poses, skirts, hats, baskets, bundles and bundles on backs; stall counters and goods; the nine red caps; washing lines with clothes."
+  },
+  "palette": {
+    "sky": [
+      "#aebfc2",
+      "#e2ddd0"
+    ],
+    "paper": "#efe7d2",
+    "ink": "#2b2720",
+    "ochre": "#b98a4e",
+    "red": "#a03a24",
+    "cream": "#e8dcc0",
+    "green": "#5b6b3a",
+    "blue": "#7f95a0",
+    "brown": "#5a4632",
+    "grey": "#8b8778"
+  },
+  "techniques": [
+    "procedural figure function with skirts, children, hats, arms, props and shadows",
+    "jittered clustered crowd sampling with a density rule and incident clearings",
+    "hand-placed incidents and nine red caps",
+    "layered ground, architecture, crowd masses, incidents, atmosphere",
+    "flat gouache-like fills with paper grain"
+  ],
+  "statement": "A festival day in a walled town: market, procession, a fight, children, a cart on its side, a gallows outside the wall. The crowd is thickest at the church door and thinnest at the gallows, and nine red caps move through the day doing nine different jobs.",
+  "artist": "grabador"
+}

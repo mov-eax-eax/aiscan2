@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BOEING 747-400 &mdash; procedural 3D showcase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ink:#e9f1f8;
+    --dim:#93a6b8;
+    --panel:rgba(10,18,27,0.55);
+    --line:rgba(140,190,230,0.20);
+    --accent:#4fd0ff;
+    --accent2:#ffb545;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:#0b1118;overflow:hidden;
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);
+    -webkit-font-smoothing:antialiased;user-select:none}
+  #scene{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+    box-shadow:0 12px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)}
+  #hud{position:fixed;left:26px;top:24px;max-width:390px;padding:20px 22px 16px;z-index:5;
+    opacity:0;transform:translateY(-8px);transition:opacity .7s ease, transform .7s ease}
+  body.ready #hud, body.ready #specs, body.ready #controls, body.ready #hint{opacity:1;transform:none}
+  #hud .kicker{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  #hud h1{margin:6px 0 2px;font-size:29px;line-height:1;letter-spacing:.02em;font-weight:700}
+  #hud h1 span{color:var(--dim);font-weight:300}
+  #hud p{margin:9px 0 0;font-size:12.5px;line-height:1.55;color:var(--dim)}
+  #hud .rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:14px 0 10px;opacity:.6}
+  #hud .tags{display:flex;flex-wrap:wrap;gap:6px}
+  #hud .tags i{font-style:normal;font-size:10.5px;letter-spacing:.06em;color:#bcd6e8;
+    border:1px solid var(--line);border-radius:999px;padding:3px 8px;background:rgba(255,255,255,0.03)}
+  #specs{position:fixed;right:24px;top:24px;width:250px;padding:16px 18px;z-index:5;
+    opacity:0;transform:translateY(-8px);transition:opacity .8s ease .1s, transform .8s ease .1s}
+  #specs h2{margin:0 0 10px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  #specs .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    padding:5px 0;border-bottom:1px dashed rgba(140,190,230,0.12);font-size:11.5px}
+  #specs .row:last-child{border-bottom:0}
+  #specs .row b{font-weight:600;color:#eaf4fb}
+  #specs .row em{font-style:normal;color:var(--dim);text-align:right}
+  #controls{position:fixed;left:50%;bottom:22px;transform:translate(-50%,10px);z-index:6;
+    display:flex;flex-wrap:wrap;gap:7px;justify-content:center;padding:9px;max-width:min(96vw,1020px);
+    opacity:0;transition:opacity .8s ease .2s, transform .8s ease .2s}
+  #controls .grp{display:flex;gap:7px;padding:0 8px;border-right:1px solid rgba(140,190,230,0.14)}
+  #controls .grp:last-child{border-right:0}
+  button{font:inherit;font-size:11.5px;letter-spacing:.04em;color:#c8dced;cursor:pointer;
+    background:rgba(255,255,255,0.045);border:1px solid rgba(140,190,230,0.18);
+    border-radius:9px;padding:7px 11px;transition:all .18s ease;white-space:nowrap}
+  button:hover{background:rgba(79,208,255,0.15);border-color:rgba(79,208,255,0.55);color:#fff}
+  button.on{background:rgba(79,208,255,0.20);border-color:rgba(79,208,255,0.85);color:#eaf8ff;
+    box-shadow:0 0 16px rgba(79,208,255,0.20)}
+  #hint{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:4;font-size:10.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(190,214,232,0.55);
+    opacity:0;transition:opacity 1s ease .4s;text-align:center;pointer-events:none}
+  #err{display:none;position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:99;
+    max-width:86vw;padding:12px 18px;border-radius:10px;background:rgba(120,20,20,0.94);
+    border:1px solid #ff6b6b;color:#ffe8e8;font:12px/1.5 ui-monospace,Consolas,monospace;white-space:pre-wrap}
+  #boot{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#0b1118;
+    transition:opacity .7s ease, visibility .7s;pointer-events:none}
+  body.ready #boot{opacity:0;visibility:hidden}
+  #boot .inner{text-align:center}
+  #boot .ring{width:44px;height:44px;margin:0 auto 16px;border-radius:50%;
+    border:2px solid rgba(79,208,255,0.18);border-top-color:var(--accent);animation:spin 1s linear infinite}
+  #boot p{margin:0;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#7d94a8}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:900px){
+    #specs{display:none}
+    #hud{left:14px;top:14px;right:14px;max-width:none;padding:14px 16px}
+    #hud h1{font-size:22px}
+    #hud p{display:none}
+    #controls{bottom:12px;gap:5px;padding:7px}
+    #controls .grp{padding:0 4px;border-right:0}
+    button{padding:6px 8px;font-size:10.5px}
+    #hint{display:none}
+  }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+
+<div id="boot"><div class="inner"><div class="ring"></div><p>Assembling airframe</p></div></div>
+
+<div id="hud" class="card">
+  <div class="kicker">Procedural airframe study &nbsp;&middot;&nbsp; WebGL</div>
+  <h1>BOEING 747-400 <span>/ 744</span></h1>
+  <p>Every surface, window, door, wing rib, fan blade and wheel is generated in code &mdash;
+     no imported meshes. Drag to orbit, scroll to zoom, right-drag to pan.</p>
+  <div class="rule"></div>
+  <div class="tags">
+    <i>4 &times; turbofan</i><i>double-bubble fuselage</i><i>37.5&deg; wing sweep</i><i>16-wheel main gear</i>
+  </div>
+</div>
+
+<div id="specs" class="card">
+  <h2>Type data</h2>
+  <div class="row"><b>Length</b><em>70.7 m</em></div>
+  <div class="row"><b>Wingspan</b><em>64.4 m</em></div>
+  <div class="row"><b>Height</b><em>19.4 m</em></div>
+  <div class="row"><b>Wing sweep</b><em>37.5&deg;</em></div>
+  <div class="row"><b>MTOW</b><em>396,890 kg</em></div>
+  <div class="row"><b>Cruise</b><em>Mach 0.85</em></div>
+  <div class="row"><b>Range</b><em>13,450 km</em></div>
+  <div class="row"><b>Engines</b><em>4 &times; PW4056</em></div>
+  <div class="row"><b>Main gear</b><em>16 wheels</em></div>
+</div>
+
+<div id="controls" class="card">
+  <div class="grp">
+    <button data-view="hero" class="on">3/4</button>
+    <button data-view="front">Front</button>
+    <button data-view="side">Side</button>
+    <button data-view="top">Top</button>
+    <button data-view="rear">Tail</button>
+    <button data-view="nose">Nose</button>
+    <button data-view="belly">Belly</button>
+  </div>
+  <div class="grp">
+    <button id="t-engines">Engines</button>
+    <button id="t-demo">Flight controls</button>
+    <button id="t-gear">Landing gear</button>
+    <button id="t-rotate">Orbit</button>
+    <button id="t-livery">Livery: Boeing House</button>
+  </div>
+</div>
+
+<div id="hint">drag &middot; scroll &middot; double-click to reset</div>
+<div id="err"></div>
+
+<script src="lib/three.min.js"></script>
+<script src="lib/OrbitControls.js"></script>
+<script src="js/aircraft.js"></script>
+<script src="js/app.js"></script>
+<script>
+  // double-click empty scene -> back to the hero view
+  document.getElementById('scene').addEventListener('dblclick', function () {
+    var b = document.querySelector('[data-view="hero"]');
+    if (b) b.click();
+  });
+</script>
+</body>
+</html>

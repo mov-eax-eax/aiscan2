@@ -1,0 +1,39 @@
+{
+  "id": "e8",
+  "title": "Marigrama",
+  "style": "hydrographic engraving / tide chart as mountain range",
+  "idiom": "marigram: a year of tides drawn as a range, with the harbour in its negative space",
+  "rule": "One 12.42-hour sine module sampled once a day and folded into twelve monthly ridges: the 14.77-day spring-neap envelope is the mass of the range, the daily sample is its serrated crest, the annual swing, the lunar declination and one storm give the peaks unequal heights, and the low-water envelope is the harbour's skyline.",
+  "readings": {
+    "far": "A serrated dark range across a pale chart plate, a harbour skyline below it, instruments beneath, and a pale slot where one month is missing. The chart idiom is immediate.",
+    "middle": "Spring ridges and neap passes; a port of sheds, silos, cranes, a breakwater and a lighthouse whose roofs form the lower edge of the water; a datum line, a height scale, month ticks, a cartouche and two inset diagrams that state the module.",
+    "near": "Warehouse windows, crane cables and pulleys, lighthouse hatching, the rust 'no observations' rule and pointer at the missing month, the 14.77-day brace on the envelope, tallies counting months and observations."
+  },
+  "palette": [
+    "#e9dfc4",
+    "#efe7d0",
+    "#f4eeda",
+    "#22302e",
+    "#39463f",
+    "#2c3833",
+    "#5e6d62",
+    "#93a18f",
+    "#a9b6a2",
+    "#b08a45",
+    "#9c4a2f"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "365-day tide series from one sine module + spring-neap envelope + declination + one storm surge",
+    "range as a filled water mass between high-water ridge and chart datum",
+    "harbour built as paper negative space cut out of the water mass",
+    "serrated crest line = the daily sample of the 12.42 h module",
+    "engraved water hatching clipped to the band",
+    "missing month: no-data slot, rust rule, hatched field, pointer",
+    "instruments: 60-day envelope inset with period brace, one-week module inset, 12 month tallies, height scale, cartouche",
+    "constructed-roman title lettering as paths",
+    "grain last"
+  ],
+  "statement": "A year of tides drawn as a mountain range, and the range is also a coast: its lower edge is the harbour's skyline, so the water's negative space is a port. The rule is one sine module sampled once a day; the drama is the spring-neap envelope and the one storm in September; the absence is a month with no observations, left as a hole in the range with a rust rule through it. The instruments around the edge do not explain the picture, they measure it.",
+  "artist": "aereo"
+}

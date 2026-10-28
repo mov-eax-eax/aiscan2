@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TROPICO 2026 — República de Trópico</title>
+<style>
+  :root{
+    --ink:#0e0c0a; --paper:#e9dec8; --dim:#9c8f7b; --line:#2a251f;
+    --accent:#e2643c; --bg2:#15120e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--ink);color:var(--paper);
+    font-family:Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
+  body{background:
+     radial-gradient(1200px 600px at 15% -10%, #241c14 0%, transparent 60%),
+     radial-gradient(900px 500px at 100% 0%, #1b1712 0%, transparent 55%),
+     var(--ink);}
+  a{color:inherit}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 clamp(18px,4vw,64px)}
+
+  header{padding:clamp(60px,10vh,130px) 0 40px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:'Courier New',ui-monospace,monospace;font-size:11px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--dim)}
+  h1{font-weight:400;font-size:clamp(46px,9vw,132px);line-height:.92;letter-spacing:-.02em;
+    margin:.25em 0 .18em}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{max-width:46ch;font-size:clamp(15px,1.35vw,19px);line-height:1.6;color:#cfc2ab}
+  .motto{margin-top:26px;font-style:italic;color:var(--dim);font-size:14px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px;
+    font-family:'Courier New',ui-monospace,monospace;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--dim)}
+  .meta-row b{color:var(--paper);font-weight:400}
+
+  .walltext{padding:52px 0 10px;display:grid;grid-template-columns:1fr;gap:22px}
+  .walltext p{max-width:62ch;line-height:1.75;color:#c9bda8;margin:0}
+  .walltext .num{font-family:'Courier New',monospace;color:var(--accent);font-size:12px;letter-spacing:.2em}
+
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2.4vw,34px);
+    padding:26px 0 90px}
+  figure{margin:0;grid-column:span 6;position:relative}
+  figure.hero{grid-column:span 12}
+  figure.wide{grid-column:span 12}
+  @media(max-width:880px){figure,figure.hero,figure.wide{grid-column:span 12}}
+  .frame{position:relative;overflow:hidden;background:#1a1611;cursor:zoom-in;
+    box-shadow:0 30px 60px -30px #000, inset 0 0 0 1px #00000055}
+  .frame img{display:block;width:100%;height:auto;transition:transform .8s cubic-bezier(.2,.7,.2,1),
+    filter .5s}
+  .frame:hover img{transform:scale(1.018);filter:saturate(1.04) contrast(1.01)}
+  figcaption{padding-top:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+  .cap-id{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);
+    padding-top:4px}
+  .cap-title{font-size:clamp(18px,2vw,26px);line-height:1.15}
+  .cap-style{font-size:13px;font-style:italic;color:var(--dim);grid-column:2}
+  .cap-statement{grid-column:2;font-size:13.5px;line-height:1.6;color:#b3a795;margin-top:8px;
+    max-width:52ch}
+  .chips{grid-column:2;display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .chip{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px #ffffff22}
+  .score{grid-column:2;font-family:'Courier New',monospace;font-size:10.5px;letter-spacing:.14em;
+    color:#6f6557;margin-top:10px;text-transform:uppercase}
+
+  footer{border-top:1px solid var(--line);padding:40px 0 80px;display:flex;justify-content:space-between;
+    gap:20px;flex-wrap:wrap;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--dim)}
+
+  /* lightbox */
+  #lb{position:fixed;inset:0;background:#080706f2;display:none;align-items:center;justify-content:center;
+    z-index:50;padding:3vh 3vw;cursor:zoom-out;backdrop-filter:blur(3px)}
+  #lb.on{display:flex}
+  #lb img{max-width:100%;max-height:88vh;box-shadow:0 0 120px #000}
+  #lb .lbinfo{position:fixed;left:3vw;bottom:3vh;font-size:13px;color:#cfc2ab;max-width:60ch}
+  #lb .lbclose{position:fixed;right:3vw;top:3vh;font-family:'Courier New',monospace;font-size:11px;
+    letter-spacing:.2em;color:#9c8f7b;text-transform:uppercase}
+  .empty{padding:80px 0;color:var(--dim);font-style:italic}
+
+  .process{padding:34px 0 10px;display:grid;grid-template-columns:1fr;gap:18px}
+  .process ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+  .process li{border-top:1px solid var(--line);padding-top:14px;font-size:13.5px;line-height:1.65;color:#b3a795}
+  .process li b{display:block;color:var(--paper);font-weight:400;font-size:15px;margin-bottom:6px}
+  .process li em{color:var(--accent);font-style:normal;font-family:'Courier New',monospace;font-size:10.5px;letter-spacing:.18em;display:block;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">A collection of vector paintings · 2026</div>
+    <h1>TROPICO<br><em>2026</em></h1>
+    <p class="lede">Seven views of the República de Trópico in the year 2026 — the near future that
+      has already arrived, and is already weathering. Painted by hand in SVG, by a team of agents,
+      one art language at a time.</p>
+    <div class="motto">“El sol es la deuda.” — The sun is the debt.</div>
+    <div class="meta-row">
+      <span><b id="count">0</b> works</span>
+      <span>languages <b>realism · light · geometry · tenebrism · data · ornament</b></span>
+      <span>medium <b>SVG, hand-authored</b></span>
+      <span>render <b>1600 px</b></span>
+    </div>
+  </header>
+
+  <section class="walltext">
+    <div class="num">WALL TEXT / 01</div>
+    <p><b>The fiction.</b> Eight degrees north. A tourism economy, a container port, blackouts, a Ministry of
+      the Future that survives mostly as a stencil on a wall, and a sun that is simultaneously the national
+      resource and the national debt. Nothing in these paintings is science fiction. Everything in them is 2026:
+      solar panels, remittances, cables, salt bloom, heat, debt, mangoes, a machete, a fan.</p>
+    <p><b>The method.</b> The collection begins in <i>Spanish realism</i> — the bodegón as a ledger — and then
+      refuses to stay there. Each following piece re-looks at the same country through an entirely different
+      visual language, until the country is only recognisable by its objects, its light, and its weather.
+      The gallery is ordered by the order in which the languages were learned.</p>
+  </section>
+
+
+  <section class="process">
+    <div class="num">PROCESS / 02</div>
+    <ol>
+      <li><em>ROUND A</em><b>Three languages, one country.</b> Spanish-realist bodegón as a ledger of
+        the household; Sorolla's noon on the malecón; tropical-modernist poster for a ministry that
+        has already aged.</li>
+      <li><em>CRITIQUE</em><b>The curator interrupts.</b> All three scored below the ship line, and the
+        verdict was about the collection, not the pieces: one repeating composition skeleton, drifting
+        accents, and no painting in which the sun actually hurts.</li>
+      <li><em>ROUND B</em><b>Three more languages.</b> Neo-baroque tenebrism in a container yard; a
+        thermal surveillance frame at 03:00; a botanical plate for a plant that does not exist.</li>
+      <li><em>FIX PASSES</em><b>Each piece sent back once.</b> Not to be repainted — to solve the one
+        fault the critic named by place: a translucent figure, a flat shadow, a circle pretending to
+        be a mango.</li>
+      <li><em>SYNTHESIS</em><b>The retablo.</b> The collection closes as a three-ink screenprint: the
+        private room, the threshold, the state's thermal eye, and the inventory printed beneath like
+        a register of saints.</li>
+    </ol>
+  </section>
+
+  <p style="margin:0 0 8px"><a href="../variedades/index.html" style="display:inline-block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid #e2643c55;padding-bottom:3px;margin-right:18px">→ second room: VARIEDADES — eight composition archetypes</a>
+  <a href="../estratos/index.html" style="display:inline-block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid #e2643c55;padding-bottom:3px">→ third room: ESTRATOS — ten systems, three readings</a>
+  <a href="../multitudes/index.html" style="display:inline-block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid #e2643c55;padding-bottom:3px">→ fourth room: MULTITUDES — ten crowded scenes</a></p>
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    <span>TROPICO 2026 · República de Trópico</span>
+    <span>SVG · librsvg · 1600 px</span>
+  </footer>
+</div>
+
+<div id="lb"><span class="lbclose">esc / click to close</span><img id="lbimg" alt=""><div class="lbinfo" id="lbinfo"></div></div>
+
+<script src="pieces.js"></script>
+<script>
+(function(){
+  var P = (window.PIECES || []);
+  document.getElementById('count').textContent = P.length;
+  var grid = document.getElementById('grid');
+  if(!P.length){ grid.innerHTML = '<div class="empty">No works rendered yet.</div>'; return; }
+  P.forEach(function(p,i){
+    var fig = document.createElement('figure');
+    fig.className = (p.id === '07' ? 'hero' : '');
+    var pal = Array.isArray(p.palette) ? p.palette : Object.values(p.palette || {});
+    var chips = pal.slice(0,7).map(function(c){
+      return '<span class="chip" style="background:'+c+'"></span>';}).join('');
+    var score = p.score ? ('<div class="score">curator '+p.score+'</div>') : '';
+    fig.innerHTML =
+      '<div class="frame"><img loading="lazy" src="'+p.file+'" alt="'+p.title+'"></div>'+
+      '<figcaption>'+
+        '<div class="cap-id">'+p.id+'</div>'+
+        '<div class="cap-title">'+p.title+'</div>'+
+        '<div class="cap-style">'+p.style+' · '+p.artist+' · '+p.year+'</div>'+
+        (p.statement ? '<div class="cap-statement">'+p.statement+'</div>' : '')+
+        '<div class="chips">'+chips+'</div>'+ score +
+      '</figcaption>';
+    fig.querySelector('.frame').addEventListener('click', function(){
+      document.getElementById('lbimg').src = p.file;
+      document.getElementById('lbinfo').textContent = p.id+' — '+p.title+' · '+p.style;
+      document.getElementById('lb').classList.add('on');
+    });
+    grid.appendChild(fig);
+  });
+  var lb = document.getElementById('lb');
+  lb.addEventListener('click', function(){ lb.classList.remove('on'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') lb.classList.remove('on'); });
+})();
+</script>
+</body>
+</html>

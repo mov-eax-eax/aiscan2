@@ -1,0 +1,38 @@
+{
+  "id": "v4",
+  "title": "Un Día",
+  "style": "monochrome photographic contact sheet",
+  "theme": "one day on one city block",
+  "artist": "aereo",
+  "year": 2026,
+  "palette": [
+    "#0b0b0a",
+    "#050505",
+    "#161614",
+    "#1f1f1d",
+    "#2c2c28",
+    "#4d4b47",
+    "#6c6a66",
+    "#8b8983",
+    "#a3a19b",
+    "#c6c4be",
+    "#e4e0d7",
+    "#f8f6f0",
+    "#d8402a"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "4x6 contact-sheet grid, 230x150 frames",
+    "fixed camera, 24 exposures across one day",
+    "one continuous scene geometry (cornice/kerb lines align across gutters)",
+    "value ladder as the day's clock",
+    "per-frame exposure drift and camera jitter",
+    "film-edge strips with sprocket perforations",
+    "frame numbers as small ticks (no letterforms)",
+    "one deliberately unexposed black frame",
+    "one red frame number as the sheet's only colour",
+    "photographic grain last"
+  ],
+  "statement": "Twenty-four exposures of the same wall, and the only subject is the light leaving it. The frames are deliberately not pictures you could hang: each is a fragment of one pan, and the seams line up across the gutters so the block only exists as a sequence. The day is told as a value ladder — dawn, market, noon glare, a dog, rain, a lit window, night — and one frame is unexposed, so the sheet prints a black hole in the last hour. I marked that hole with the only colour on the sheet.",
+  "composition": "4x6 contact-sheet grid. The grid is the composition: regular lattice, black frame borders, film-edge strips, margins as sheet; frame sequence (top-to-bottom = hours, left-to-right = minutes) carries the picture; no frame is individually hangable."
+}

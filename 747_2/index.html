@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boeing 747-8 — procedural 3D model (three.js)</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="vignette"></div>
+
+<div id="loader">
+  <div class="load-box">
+    <div class="load-eyebrow">THE QUEEN OF THE SKIES</div>
+    <div class="load-title">747<span>-8</span></div>
+    <div class="load-sub">procedural geometry &middot; 554 m&sup2; wing &middot; four GEnx</div>
+    <div class="bar"><i id="loadbar"></i></div>
+    <div class="load-meta"><span id="loadstep">lofting the fuselage</span><span id="loadpct">00</span></div>
+  </div>
+</div>
+
+<div id="labels"></div>
+
+<header id="topbar">
+  <div class="brand">
+    <span class="mark">748</span>
+    <span class="txt"><b>BOEING 747-8</b><i id="liveryName">Boeing House 2011</i></span>
+  </div>
+  <div class="readouts" id="readouts"></div>
+</header>
+
+<button id="panelToggle" title="Hide / show controls (H)" aria-label="Toggle controls">&#9776;</button>
+
+<aside id="panel">
+  <div class="panel-head">
+    <span><i></i>FLIGHTLINE</span>
+    <button id="panelClose" aria-label="Close">&#215;</button>
+  </div>
+
+  <section>
+    <h2>View</h2>
+    <div class="grid views" id="presetGrid"></div>
+    <div class="row"><span>Auto-orbit</span><input type="checkbox" id="autoRotate" /></div>
+    <button id="tour" class="wide ghost">&#9654; Guided tour</button>
+  </section>
+
+  <section>
+    <h2>Configuration</h2>
+    <div class="row"><span>Landing gear</span><input type="checkbox" id="gear" checked /></div>
+    <label class="row"><span>Flaps <b id="flapsVal">UP</b></span><input type="range" id="flaps" min="0" max="1" step="0.01" value="0" /></label>
+    <label class="row"><span>Speedbrake <b id="sbVal">0%</b></span><input type="range" id="spoilers" min="0" max="1" step="0.01" value="0" /></label>
+    <label class="row"><span>Reversers <b id="revVal">0%</b></span><input type="range" id="reverser" min="0" max="1" step="0.01" value="0" /></label>
+    <label class="row"><span>N1 spool <b id="spoolVal">35%</b></span><input type="range" id="spool" min="0" max="1" step="0.01" value="0.35" /></label>
+    <label class="row"><span>Exploded view</span><input type="range" id="explode" min="0" max="1" step="0.01" value="0" /></label>
+  </section>
+
+  <section>
+    <h2>Flight controls</h2>
+    <label class="row"><span>Elevator <b id="elevVal">0</b></span><input type="range" id="elevator" min="-1" max="1" step="0.05" value="0" /></label>
+    <label class="row"><span>Ailerons <b id="ailVal">0</b></span><input type="range" id="aileron" min="-1" max="1" step="0.05" value="0" /></label>
+    <label class="row"><span>Rudder <b id="rudVal">0</b></span><input type="range" id="rudder" min="-1" max="1" step="0.05" value="0" /></label>
+    <div class="row"><span>Control check cycle</span><input type="checkbox" id="ctlCheck" /></div>
+  </section>
+
+  <section>
+    <h2>Lights</h2>
+    <div class="row"><span>Navigation</span><input type="checkbox" id="lNav" checked /></div>
+    <div class="row"><span>Strobes</span><input type="checkbox" id="lStrobe" checked /></div>
+    <div class="row"><span>Beacons</span><input type="checkbox" id="lBeacon" checked /></div>
+    <div class="row"><span>Landing lights</span><input type="checkbox" id="lLand" checked /></div>
+    <div class="row"><span>Cabin lighting</span><input type="checkbox" id="lCabin" checked /></div>
+  </section>
+
+  <section>
+    <h2>Livery</h2>
+    <div class="liveries" id="liveryGrid"></div>
+  </section>
+
+  <section>
+    <h2>Display</h2>
+    <div class="row"><span>Component labels</span><input type="checkbox" id="hotspots" /></div>
+    <div class="row"><span>Wireframe</span><input type="checkbox" id="wire" /></div>
+    <div class="grid">
+      <button id="reset" class="ghost">Reset view</button>
+      <button id="shot" class="ghost">Save PNG</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Specification</h2>
+    <table class="spec" id="specTable"></table>
+    <table class="spec dim" id="modelTable"></table>
+  </section>
+</aside>
+
+<div id="hero">
+  <div class="eyebrow">BOEING &nbsp;/&nbsp; INTERCONTINENTAL</div>
+  <h1>747-8</h1>
+  <p>Four engines. One silhouette.</p>
+  <div class="spec-chips">
+    <span>76.3 m length</span><span>68.4 m span</span><span>4 &times; GEnx-2B</span><span>M 0.855</span>
+  </div>
+</div>
+
+<div id="tourCaption"><b></b><span></span></div>
+
+<footer id="hint">Drag to orbit &middot; scroll to zoom &middot; right-drag to pan &middot; 1&ndash;9 views &middot; H hides the panel</footer>
+
+<script type="module" src="js/main.js"></script>
+<script>
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (window.__747__) return;
+      var step = document.getElementById('loadstep');
+      if (location.protocol === 'file:') {
+        step.innerHTML = 'file:// blocks ES modules &mdash; run <b>start.cmd</b> (or <b>node serve.js</b>) and open <b>http://127.0.0.1:8147/</b>';
+        step.style.color = '#ffcf6b';
+        step.style.maxWidth = '540px';
+      } else {
+        step.textContent = 'still building textures ...';
+      }
+    }, 5000);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050608" />
+  <meta name="description" content="A detailed procedural Three.js study of the PlayStation 5 DualSense wireless controller." />
+  <title>DualSense — Interactive 3D Study</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Cpath d='M9 8v16l5 2V12c0-1 .4-1.5 1-1.3.8.2 1 1 1 2v6c3 1 5 0 5-3s-1.5-6-6-7.5C13 7.5 10 7 9 8z' fill='%2386e8ff'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preload" href="./vendor/three.module.min.js" as="script" crossorigin />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js",
+        "three/addons/": "./vendor/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene" aria-label="Interactive 3D model of the PlayStation 5 DualSense controller"></canvas>
+
+    <div class="chrome" aria-hidden="true">
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="corner corner--tl"></div>
+      <div class="corner corner--tr"></div>
+      <div class="corner corner--bl"></div>
+      <div class="corner corner--br"></div>
+    </div>
+
+    <header class="topbar hud">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <i class="mark-shape mark-tri"></i>
+          <i class="mark-shape mark-circle"></i>
+          <i class="mark-shape mark-cross"></i>
+          <i class="mark-shape mark-square"></i>
+        </div>
+        <div class="brand-copy">
+          <strong>DUALSENSE</strong>
+          <span>PRODUCT STUDY / 01</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="status"><i></i>REALTIME WEBGL</span>
+        <span class="topbar-sep"></span>
+        <span>SONY INTERACTIVE ENTERTAINMENT</span>
+      </div>
+    </header>
+
+    <section class="title-block hud" aria-label="Introduction">
+      <div class="eyebrow"><span class="index">01</span><span>PLAYSTATION®5 / WIRELESS CONTROLLER</span></div>
+      <h1>Dual<span>Sense</span><sup>™</sup></h1>
+      <p class="lede">Haptic feedback. Adaptive triggers.<br />Precision you can feel.</p>
+      <div class="title-rule"><i></i></div>
+      <div class="microline">CFI-ZCT1W <span>·</span> 160 × 66 × 106 MM <span>·</span> 280 G</div>
+    </section>
+
+    <aside class="panel hud" aria-label="Controller views and finish">
+      <div class="panel-head">
+        <span>MODEL / CFI-ZCT1W</span>
+        <span class="panel-head-right">PS5</span>
+      </div>
+
+      <div class="panel-section">
+        <span class="section-label">VIEWPOINT <em>01—06</em></span>
+        <div class="view-grid" role="group" aria-label="Camera viewpoints">
+          <button class="view-btn is-active" data-view="hero"><span>01</span><b>Hero</b></button>
+          <button class="view-btn" data-view="front"><span>02</span><b>Face</b></button>
+          <button class="view-btn" data-view="top"><span>03</span><b>Top</b></button>
+          <button class="view-btn" data-view="back"><span>04</span><b>Rear</b></button>
+          <button class="view-btn" data-view="sticks"><span>05</span><b>Sticks</b></button>
+          <button class="view-btn" data-view="trigger"><span>06</span><b>Trigger</b></button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <span class="section-label">FINISH <em>3 COLOURWAYS</em></span>
+        <div class="swatches" role="group" aria-label="Controller colourway">
+          <button class="swatch is-active" data-color="white" aria-label="Arctic White" title="Arctic White">
+            <i style="--swatch:#efefeb"></i><span>WHITE</span>
+          </button>
+          <button class="swatch" data-color="midnight" aria-label="Midnight Black" title="Midnight Black">
+            <i style="--swatch:#282a2e"></i><span>BLACK</span>
+          </button>
+          <button class="swatch" data-color="cosmic" aria-label="Cosmic Red" title="Cosmic Red">
+            <i style="--swatch:#a51f39"></i><span>RED</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="panel-section panel-toggles">
+        <button class="switch is-on" data-toggle="lightbar" aria-pressed="true">
+          <span><i class="switch-dot"></i>LIGHT BAR</span><b></b>
+        </button>
+        <button class="switch" data-toggle="turntable" aria-pressed="false">
+          <span><i class="switch-dot"></i>TURNTABLE</span><b></b>
+        </button>
+      </div>
+
+      <div class="panel-tech">
+        <div>
+          <span class="section-label">FEEL</span>
+          <p>Haptic feedback<br />Adaptive triggers<br />Motion sensing</p>
+        </div>
+        <div>
+          <span class="section-label">CONNECT</span>
+          <p>USB‑C®<br />Bluetooth® 5.1<br />3.5 mm headset</p>
+        </div>
+      </div>
+
+      <button class="reset-btn" data-reset>
+        <span>RESET VIEW</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.4 6.4A7 7 0 1 1 3 10" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.2 2.8v4h4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+    </aside>
+
+    <div class="hint hud"><span>DRAG TO ORBIT</span><i></i><span>SCROLL TO ZOOM</span><i></i><span>DOUBLE CLICK TO RESET</span></div>
+
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <div class="loader-brand"><span class="loader-shape"></span><span>DUALSENSE</span></div>
+        <div class="loader-track"><i id="loader-bar"></i></div>
+        <div class="loader-row"><span id="loader-status">CALIBRATING STUDIO</span><span id="loader-pct">00</span></div>
+      </div>
+    </div>
+
+    <div class="fallback" id="fallback" hidden>
+      <p>WebGL 2 is required to view this model.</p>
+      <span>Open this page in a recent version of Chrome, Edge, Firefox or Safari.</span>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="noscript">This interactive 3D study requires JavaScript.</div>
+  </noscript>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

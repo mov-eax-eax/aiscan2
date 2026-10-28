@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#04141b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304141b'/%3E%3Cpath d='M10 34c10-12 26-12 36 0-10 12-26 12-36 0z' fill='%23f0c47a'/%3E%3Ccircle cx='38' cy='31' r='2.5' fill='%2304141b'/%3E%3C/svg%3E">
+<title>Abyss Angler — a 3D deep-water fishing game</title>
+<link rel="stylesheet" href="css/style.css?v=18">
+</head>
+<body>
+<div id="stage">
+  <canvas id="scene" aria-label="3D ocean scene"></canvas>
+  <div id="vignette"></div>
+  <div id="flash"></div>
+
+  <!-- ============================ gameplay HUD ============================ -->
+  <div id="hud" class="hidden">
+    <header class="hud-top">
+      <div class="hud-block">
+        <button id="btn-pause" class="icon-btn" title="Pause (Esc)" aria-label="Pause">❚❚</button>
+        <div class="hud-title">
+          <div id="hud-level-name">Sunny Shallows</div>
+          <div id="hud-level-sub">DEPTH 20 M</div>
+        </div>
+      </div>
+      <div id="quota" class="quota" aria-label="Level quota"></div>
+      <div class="hud-block right">
+        <div class="coin-pill"><span class="coin-glyph">◈</span><span id="hud-coins">0</span></div>
+        <button id="btn-mute" class="icon-btn" title="Sound (M)" aria-label="Toggle sound">♪</button>
+      </div>
+    </header>
+
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+
+    <aside id="sonar-panel" class="panel sonar">
+      <div class="panel-top"><span>DEPTH SONAR</span><span id="sonar-tier" class="mini">TIER 0</span></div>
+      <canvas id="sonar" width="252" height="176"></canvas>
+      <div id="sonar-hint" class="sonar-hint">No sonar fitted. The water is a guess.</div>
+    </aside>
+
+    <div id="school-hint" class="pill hidden"><span class="dot"></span><span>SCHOOL</span><span id="school-dist">— m</span></div>
+
+    <div id="depth-control" class="panel depth-control hidden">
+      <div class="panel-top"><span>LURE DEPTH</span><span id="depth-max" class="mini">0 / 20 m</span></div>
+      <div class="layer-row">
+        <div id="feed-layer" class="feed-layer">FEEDING LAYER <b>—</b></div>
+        <button id="btn-recall" class="recall-btn hidden" title="Reel in and try another cast (R)">↩ RECALL <kbd>R</kbd></button>
+      </div>
+      <div id="lure-row" class="lure-row" role="group" aria-label="Lure selection"></div>
+      <div id="scan-line" class="scan-line">SONAR OFFLINE · BAND UNKNOWN</div>
+      <div class="depth-row">
+        <button id="depth-down" class="step" aria-label="Lure shallower">−</button>
+        <div class="depth-value"><span id="lure-depth">0</span><small>m</small></div>
+        <button id="depth-up" class="step" aria-label="Lure deeper">+</button>
+      </div>
+      <input id="depth-slider" type="range" min="1" max="20" step="1" value="6" aria-label="Lure depth">
+      <div id="depth-bands" class="depth-bands"></div>
+    </div>
+
+    <div id="prompt" class="prompt"></div>
+
+    <div id="cast-meter" class="cast-meter hidden">
+      <div class="cast-track">
+        <div id="cast-fill" class="cast-fill"></div>
+        <div id="cast-target" class="cast-target"></div>
+      </div>
+      <div class="cast-labels"><span id="cast-power">0%</span><span id="cast-range">0 m</span></div>
+      <div class="cast-hint">RELEASE TO CAST</div>
+    </div>
+
+    <section id="fight" class="panel fight-panel hidden" aria-label="Fish fight">
+      <div class="fight-top">
+        <div class="fight-id">
+          <span id="fight-rarity" class="rarity">COMMON</span>
+          <h3 id="fight-name">Something heavy</h3>
+          <span id="fight-weight" class="mini">?? kg</span>
+          <span id="fight-behavior" class="mini behavior-tag">STEADY</span>
+        </div>
+        <div class="fight-specs">
+          <span>DEPTH <b id="fight-depth">0.0 m</b></span>
+          <span>TIME <b id="fight-timer">0:00</b></span>
+        </div>
+      </div>
+      <div class="fight-main">
+        <div class="fight-left">
+          <div class="meter-label"><span>LINE TENSION</span><span id="tension-val">0%</span></div>
+          <div class="tension-track">
+            <div class="safe-zone" id="safe-zone"></div>
+            <div id="tension-fill" class="tension-fill"></div>
+          </div>
+          <div class="meter-label"><span>FISH STAMINA</span><span id="stamina-val">100%</span></div>
+          <div class="stamina-track"><div id="stamina-fill"></div></div>
+          <div id="fight-status" class="fight-status">HOLD TO REEL</div>
+        </div>
+        <div class="fight-right">
+          <div class="depth-scale" id="fight-depth-scale">
+            <div class="depth-ticks" id="depth-ticks"></div>
+            <div class="fish-marker" id="fish-marker"><i></i></div>
+            <div class="surface-mark"></div>
+          </div>
+          <div class="depth-caption">FISH DEPTH</div>
+        </div>
+      </div>
+      <div id="surge-warning" class="surge hidden">SURGE — EASE OFF OR GIVE LINE</div>
+    </section>
+
+    <div id="pip" class="hidden" aria-label="Underwater camera">
+      <div class="pip-label">UNDERWATER <span id="pip-depth">0.0 m</span></div>
+      <div class="pip-corner tl"></div><div class="pip-corner tr"></div><div class="pip-corner bl"></div><div class="pip-corner br"></div>
+    </div>
+
+    <div id="touch-controls">
+      <button id="btn-give" class="touch-btn small">GIVE LINE</button>
+      <button id="btn-action" class="touch-btn action">REEL</button>
+    </div>
+
+    <div class="key-hint">LMB / SPACE cast &amp; reel · ↑↓ depth · 1–3 lure · R recall &amp; recast · SHIFT give line · ESC pause · M sound</div>
+  </div>
+
+  <!-- ============================ screens ============================ -->
+  <div id="overlay">
+    <section id="screen-title" class="screen">
+      <div class="title-wrap">
+        <div class="kicker">A DEEP-WATER FISHING EXPEDITION</div>
+        <h1 class="logo"><span>ABYSS</span><span class="logo-2">ANGLER</span></h1>
+        <p class="title-line">Five waters. One line. All the way down.</p>
+        <div class="menu-actions">
+          <button id="btn-continue" class="btn primary">CONTINUE EXPEDITION</button>
+          <button id="btn-new" class="btn">NEW EXPEDITION</button>
+          <button id="btn-help" class="btn ghost">HOW TO PLAY</button>
+        </div>
+        <div id="title-save" class="title-save"></div>
+      </div>
+      <div class="title-foot">
+        <span>FIVE WATERS · 150 METRES · ONE LINE</span>
+        <span>BUILT WITH THREE.JS · NO NETWORK REQUIRED</span>
+      </div>
+    </section>
+
+    <section id="screen-harbor" class="screen wide">
+      <div class="screen-head">
+        <div>
+          <div class="kicker">THE LAST SAFE HARBOUR</div>
+          <h2>HARBOUR</h2>
+        </div>
+        <div class="head-right">
+          <div class="coin-pill big"><span class="coin-glyph">◈</span><span id="harbor-coins">0</span></div>
+          <div class="rank-pill"><span id="harbor-rank">Deckhand</span><span class="rank-bar"><i id="harbor-xp"></i></span></div>
+        </div>
+      </div>
+      <div class="harbor-grid">
+        <div class="col">
+          <div class="col-title">EXPEDITIONS <span class="mini">PICK A DEPTH</span></div>
+          <div id="level-list" class="level-list"></div>
+          <div class="fishing-log" id="fishing-log"></div>
+        </div>
+        <div class="col shop-col">
+          <div class="col-title">WORKSHOP <span id="shop-coins" class="mini"></span></div>
+          <div id="shop-list" class="shop-list"></div>
+          <div class="col-title spaced">CAPTAIN <span class="mini">THE LEDGER</span></div>
+          <div id="captain-card" class="captain-card"></div>
+          <div class="col-title spaced">SAVE DATA <span class="mini">LOCAL + BACKUP</span></div>
+          <div class="save-row">
+            <button id="btn-export-save" class="btn small-btn">EXPORT SAVE</button>
+            <button id="btn-import-save" class="btn small-btn ghost">IMPORT SAVE</button>
+            <input id="save-file" type="file" accept=".json,application/json" class="hidden">
+          </div>
+          <div class="save-note" id="save-note">Autosaved in this browser, with a backup slot. Export a file to carry progress across browsers or future releases.</div>
+        </div>
+      </div>
+      <div class="screen-foot">
+        <button id="btn-resume-run" class="btn small-btn primary hidden">RESUME RUN</button>
+        <button id="btn-bestiary" class="btn small-btn">BESTIARY <span id="bestiary-count" class="mini"></span></button>
+        <button id="btn-bounties" class="btn small-btn">BOUNTIES <span id="bounty-badge" class="mini"></span></button>
+        <button id="btn-help2" class="btn small-btn ghost">CONTROLS</button>
+        <button id="btn-ambience" class="btn small-btn ghost">ATMOSPHERE: OFF</button>
+        <button id="btn-mute2" class="btn small-btn ghost">SOUND: ON</button>
+        <button id="btn-quit" class="btn small-btn ghost">TITLE</button>
+      </div>
+    </section>
+
+    <section id="screen-bestiary" class="screen wide">
+      <div class="screen-head">
+        <div>
+          <div class="kicker">EVERYTHING THE DEEP HAS GIVEN UP</div>
+          <h2>BESTIARY <span id="bestiary-progress" class="mini"></span></h2>
+        </div>
+        <button class="icon-btn close-btn" data-close="screen-bestiary" aria-label="Close">✕</button>
+      </div>
+      <div id="bestiary-grid" class="bestiary-grid"></div>
+    </section>
+
+    <section id="screen-help" class="screen">
+      <div class="screen-head">
+        <div>
+          <div class="kicker">READ THIS BEFORE THE LINE SNAPS</div>
+          <h2>HOW TO FISH</h2>
+        </div>
+        <button class="icon-btn close-btn" data-close="screen-help" aria-label="Close">✕</button>
+      </div>
+      <div class="help-grid">
+        <div class="help-card">
+          <h3>1 · CAST</h3>
+          <p>Hold the action key to charge, release to throw. The ring on the water is a school — land within 3 m of it for double bites. The marker on the power bar shows the throw you need.</p>
+        </div>
+        <div class="help-card">
+          <h3>2 · SINK</h3>
+          <p>Set the lure depth with <b>↑ ↓</b>, the wheel or the slider. Each fish lives in a depth band, and a <b>feeding layer</b> drifts through the water — keep the lure inside it for faster bites. Pick a lure with <b>1–3</b>: the minnow is balanced, the jig sinks fast and loves the layer, the glow plug trades bites for rarer fish. Sonar shows blips; the scan line below the lure box names what is in the band.</p>
+        </div>
+        <div class="help-card">
+          <h3>3 · STRIKE</h3>
+          <p>When the bobber plunges, strike inside the window. Too slow and the fish takes the bait. A strike is a click, Space, or the REEL button. While waiting you can <b>jig</b> the lure with a click to stir a bite — but jigging during the cooldown spooks the school. Press <b>R</b> (or the RECALL button) to reel in and try another cast, depth or position.</p>
+        </div>
+        <div class="help-card">
+          <h3>4 · FIGHT</h3>
+          <p>Hold to reel: the fish rises, tension climbs. Let go to rest. When it surges, ease off or hold <b>SHIFT</b> to give line. Keep tension in the pale band; red for too long and the line snaps. Fish have behaviours — runners surge often, divers drop, thrashers jerk, deadweights grind.</p>
+        </div>
+        <div class="help-card">
+          <h3>5 · LAND</h3>
+          <p>Reel the fish all the way to the surface. Deep fish take longer and pay more. Fish stamina drains fastest in the ideal tension band — tiring it out stops the surges.</p>
+        </div>
+        <div class="help-card">
+          <h3>STARS &amp; SAVE</h3>
+          <p>One star for the quota, a second for finishing inside the cast limit, a third for losing nothing. Consecutive catches build a coin streak. Progress autosaves in this browser with a backup slot and a resumable run checkpoint; EXPORT SAVE in the harbour keeps a file for future releases.</p>
+        </div>
+      </div>
+      <div class="screen-foot center">
+        <button class="btn" data-close="screen-help">GOT IT</button>
+      </div>
+    </section>
+
+    <section id="screen-bounties" class="screen">
+      <div class="screen-head">
+        <div>
+          <div class="kicker">THE HARBOUR BROKER HAS WORK</div>
+          <h2>BOUNTY BOARD</h2>
+        </div>
+        <button class="icon-btn close-btn" data-close="screen-bounties" aria-label="Close">✕</button>
+      </div>
+      <div class="bounty-top">
+        <div class="bounty-stat"><span>RENOWN</span><b id="bounty-renown">0</b><em id="bounty-title">CONTRACT HAND</em></div>
+        <div class="bounty-stat"><span>TOKENS</span><b id="bounty-tokens">0</b><em>SPEND ON CHARMS</em></div>
+        <div class="bounty-stat"><span>CONTRACTS DONE</span><b id="bounty-done">0</b><em>ALL WATERS</em></div>
+        <div class="bounty-stat"><span>BEST STREAK</span><b id="bounty-streak">0</b><em>CONSECUTIVE CATCHES</em></div>
+      </div>
+      <div id="bounty-list" class="bounty-list"></div>
+      <div class="bounty-sub"><span>CHARMS</span><em>Permanent sidegrades bought with bounty tokens. One equipped at a time.</em></div>
+      <div id="charm-list" class="charm-list"></div>
+      <div class="screen-foot center">
+        <button class="btn ghost" data-close="screen-bounties">BACK TO HARBOUR</button>
+      </div>
+    </section>
+
+    <section id="screen-pause" class="screen center-screen">
+      <div class="dialog">
+        <div class="kicker">THE WATER WILL WAIT</div>
+        <h2>PAUSED</h2>
+        <div class="pause-stats" id="pause-stats"></div>
+        <div class="stack">
+          <button id="btn-resume" class="btn primary">RESUME</button>
+          <button id="btn-pause-help" class="btn ghost">CONTROLS</button>
+          <button id="btn-pause-sound" class="btn ghost">SOUND: ON</button>
+          <button id="btn-pause-ambience" class="btn ghost">ATMOSPHERE: OFF</button>
+          <button id="btn-pause-harbor" class="btn ghost">RETURN TO HARBOUR</button>
+        </div>
+        <p class="fine">Abandoning a run loses the fish in the creel, not your upgrades.</p>
+      </div>
+    </section>
+
+    <section id="screen-catch" class="screen center-screen">
+      <div class="dialog catch-dialog" id="catch-dialog">
+        <div class="catch-glow"></div>
+        <div class="catch-preview" id="catch-preview-wrap">
+          <canvas id="catch-preview"></canvas>
+          <span class="catch-preview-tag">LIVE SPECIMEN · 3D</span>
+        </div>
+        <div class="kicker" id="catch-kicker">CAUGHT</div>
+        <h2 id="catch-name">Silverfin</h2>
+        <div class="catch-meta"><span id="catch-rarity">COMMON</span><span id="catch-depth">8 m</span><span id="catch-length">—</span></div>
+        <div class="catch-weight"><span id="catch-weight">0.00</span><small>kg</small></div>
+        <div class="catch-badges" id="catch-badges"></div>
+        <p id="catch-desc" class="catch-desc"></p>
+        <div class="catch-value">◈ <span id="catch-value">0</span></div>
+        <button id="btn-catch-ok" class="btn primary">ADD TO CREEL</button>
+      </div>
+    </section>
+
+    <section id="screen-results" class="screen center-screen">
+      <div class="dialog results-dialog">
+        <div class="kicker" id="result-kicker">EXPEDITION COMPLETE</div>
+        <h2 id="result-title">Sunny Shallows</h2>
+        <div class="stars" id="result-stars"><span>★</span><span>★</span><span>★</span></div>
+        <div class="result-stats" id="result-stats"></div>
+        <div class="result-reward">◈ <span id="result-coins">0</span></div>
+        <div class="result-note" id="result-note"></div>
+        <div class="row">
+          <button id="btn-next-level" class="btn primary">NEXT DEPTH</button>
+          <button id="btn-replay" class="btn">DIVE AGAIN</button>
+          <button id="btn-result-harbor" class="btn ghost">HARBOUR</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-final" class="screen center-screen">
+      <div class="dialog final-dialog">
+        <div class="kicker">150 METRES · THE RIDGE IS QUIET</div>
+        <h2>RIDGE LEGEND</h2>
+        <p class="final-copy">The Leviathan is in the ledger. Every water has given up its secret, and the boat is still floating. There is nothing left below you — only the fishing.</p>
+        <div class="result-stats" id="final-stats"></div>
+        <div class="row">
+          <button id="btn-final-harbor" class="btn primary">BACK TO THE HARBOUR</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="boot" class="boot">
+    <div class="boot-inner">
+      <div class="boot-mark">◈</div>
+      <div class="boot-title">ABYSS ANGLER</div>
+      <div class="boot-sub">Rigging the boat · filling the livewell</div>
+      <div class="boot-bar"><i></i></div>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="js/data.js?v=12"></script>
+<script src="js/fishfactory.js?v=12"></script>
+<script src="js/catchlab.js?v=3"></script>
+<script src="js/audio.js?v=6"></script>
+<script src="js/world.js?v=10"></script>
+<script src="js/game.js?v=22"></script>
+</body>
+</html>

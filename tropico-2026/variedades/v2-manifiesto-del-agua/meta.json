@@ -1,0 +1,23 @@
+{
+  "id": "V2",
+  "title": "Manifiesto del Agua",
+  "style": "constructivist / Swiss poster, type-as-image",
+  "theme": "a water-rights manifesto for 2031",
+  "artist": "grabador",
+  "year": 2026,
+  "palette": {
+    "black": "#12100E",
+    "red": "#BE2A1D",
+    "cream": "#E7DDC4"
+  },
+  "techniques": [
+    "custom geometric alphabet drawn entirely as SVG path geometry (no text, no fonts)",
+    "letters as bars and diagonal polygons; evenodd counters for D/O",
+    "overprinting via black knockout stroke behind cream letterforms",
+    "red diagonal bar; cropped letterforms at frame edges",
+    "three-colour flat print (black / red / cream)",
+    "feDisplacementMap edge roughing (scale 3) + grain overlay last"
+  ],
+  "statement": "Water does not negotiate. In 2031 the argument is made in type: AGUA at the scale of a wall, VIDA driven through it, NO SE VENDE at the bottom like a stamp. Three icons, one bar, no illustration. A manifesto is a thing you can read from the street.",
+  "composition": "type-as-image constructivist poster: giant AGUA cropped at the left, vertical VIDA crossing it with a knockout, one red diagonal bar through the field, small line at top, three tiny icons, black field"
+}

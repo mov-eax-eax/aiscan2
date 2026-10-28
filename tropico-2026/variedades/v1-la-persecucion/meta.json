@@ -1,0 +1,24 @@
+{
+  "id": "V1",
+  "title": "La Persecución",
+  "style": "expressionist woodcut, two inks",
+  "theme": "a rooftop chase at 5am in an unnamed city",
+  "artist": "grabador",
+  "year": 2026,
+  "palette": {
+    "paper": "#E7DDC4",
+    "black": "#12100E",
+    "red": "#BE2A1D"
+  },
+  "techniques": [
+    "hand-authored SVG path geometry (no curves, no text, no fonts)",
+    "jagged polygonal contours instead of smooth vector edges",
+    "feDisplacementMap edge roughing (fractalNoise, scale 4)",
+    "paper-colour gouges and chips cut into the black masses",
+    "hatched roof plane with cut-break strokes",
+    "cast shadow: flat black running body cropped by the top edge + soft offset blur on the light side",
+    "grain overlay last (feTurbulence, 0.13)"
+  ],
+  "statement": "At 5am a man crosses a rooftop and does not look back. The city is tilted 20 degrees; the only thing upright is the chase. The pursuer never appears — only his shadow, headless, falling across the paper, its feet already on the parapet. Two inks, no comfort.",
+  "composition": "extreme diagonal (camera roll ~20 deg): roofline corner-to-corner rising right, chase running against it, runner cropped at the knee by the bottom-right corner, pursuer as a shadow crossing the frame from off-frame top-left, large empty upper-left broken by a water tower cropped by the left edge"
+}

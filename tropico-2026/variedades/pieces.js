@@ -1,0 +1,182 @@
+window.PIECES = [
+  {
+    "id": "V1",
+    "title": "La Persecución",
+    "style": "expressionist woodcut, two inks",
+    "theme": "a rooftop chase at 5am in an unnamed city",
+    "composition": "extreme diagonal (camera roll ~20 deg): roofline corner-to-corner rising right, chase running against it, runner cropped at the knee by the bottom-right corner, pursuer as a shadow crossing the frame from off-frame top-left, large empty upper-left broken by a water tower cropped by the left edge",
+    "artist": "grabador",
+    "year": 2026,
+    "file": "../variedades/renders/V1-la-persecucion.png",
+    "svg": "../variedades/v1-la-persecucion/la-persecucion.svg",
+    "palette": [
+      "#E7DDC4",
+      "#12100E",
+      "#BE2A1D"
+    ],
+    "statement": "At 5am a man crosses a rooftop and does not look back. The city is tilted 20 degrees; the only thing upright is the chase. The pursuer never appears — only his shadow, headless, falling across the paper, its feet already on the parapet. Two inks, no comfort."
+  },
+  {
+    "id": "V2",
+    "title": "Manifiesto del Agua",
+    "style": "constructivist / Swiss poster, type-as-image",
+    "theme": "a water-rights manifesto for 2031",
+    "composition": "type-as-image constructivist poster: giant AGUA cropped at the left, vertical VIDA crossing it with a knockout, one red diagonal bar through the field, small line at top, three tiny icons, black field",
+    "artist": "grabador",
+    "year": 2026,
+    "file": "../variedades/renders/V2-manifiesto-del-agua.png",
+    "svg": "../variedades/v2-manifiesto-del-agua/manifiesto-del-agua.svg",
+    "palette": [
+      "#12100E",
+      "#BE2A1D",
+      "#E7DDC4"
+    ],
+    "statement": "Water does not negotiate. In 2031 the argument is made in type: AGUA at the scale of a wall, VIDA driven through it, NO SE VENDE at the bottom like a stamp. Three icons, one bar, no illustration. A manifesto is a thing you can read from the street."
+  },
+  {
+    "id": "V3",
+    "title": "Delta",
+    "style": "cartographic realism / woodblock flat colour (aerial survey)",
+    "theme": "a drowned coastline, 2100",
+    "composition": "all-over aerial topography. Edge-to-edge ground plane, no horizon, no sky, four edge-bleeds; braided channel network, rotated field polygons and a distributed half-drowned town at unequal intervals; survey marks and traverses as connective tissue; deliberately no single focal point — the town is a dense passage, not a subject.",
+    "artist": "aereo",
+    "year": 2026,
+    "file": "../variedades/renders/V3-delta.png",
+    "svg": "../variedades/v3-delta/delta.svg",
+    "palette": [
+      "#efe4c6",
+      "#e9dfbc",
+      "#d7c287",
+      "#e4d6a8",
+      "#c69a4c",
+      "#a9a06a",
+      "#a34f2c",
+      "#9db5ab",
+      "#6d99a0",
+      "#3f7285",
+      "#3e4f53",
+      "#2c3c40",
+      "#1b2a2c"
+    ],
+    "statement": "I drew the coast as a survey plate and let the survey be the only thing still sure of itself: the polders have become a braid, the sea is in the streets of the town, and the north arrow still points. The picture has no horizon and no centre because a drowned plain has neither; the eye is meant to keep travelling along the channels and never arrive. The town is half under water and the roofs that break the surface are drawn the way a map draws a fact: flat, thin-lipped, exact."
+  },
+  {
+    "id": "V4",
+    "title": "Un Día",
+    "style": "monochrome photographic contact sheet",
+    "theme": "one day on one city block",
+    "composition": "4x6 contact-sheet grid. The grid is the composition: regular lattice, black frame borders, film-edge strips, margins as sheet; frame sequence (top-to-bottom = hours, left-to-right = minutes) carries the picture; no frame is individually hangable.",
+    "artist": "aereo",
+    "year": 2026,
+    "file": "../variedades/renders/V4-un-dia.png",
+    "svg": "../variedades/v4-un-dia/un-dia.svg",
+    "palette": [
+      "#0b0b0a",
+      "#050505",
+      "#161614",
+      "#1f1f1d",
+      "#2c2c28",
+      "#4d4b47",
+      "#6c6a66",
+      "#8b8983",
+      "#a3a19b",
+      "#c6c4be",
+      "#e4e0d7",
+      "#f8f6f0",
+      "#d8402a"
+    ],
+    "statement": "Twenty-four exposures of the same wall, and the only subject is the light leaving it. The frames are deliberately not pictures you could hang: each is a fragment of one pan, and the seams line up across the gutters so the block only exists as a sequence. The day is told as a value ladder — dawn, market, noon glare, a dog, rain, a lit window, night — and one frame is unexposed, so the sheet prints a black hole in the last hour. I marked that hole with the only colour on the sheet."
+  },
+  {
+    "id": "V5",
+    "title": "La Tormenta",
+    "style": "art nouveau + Mexican ex-voto / tarot card",
+    "theme": "a hurricane as a saint",
+    "composition": "Circular medallion inside a vertical card; concentric (frame > medallion > eye-wall > halo > family). Symmetrical, frontal, no horizon and no depth beyond the roundel.",
+    "artist": "colorista",
+    "year": 2026,
+    "file": "../variedades/renders/V5-la-tormenta.png",
+    "svg": "../variedades/v5-la-tormenta/la-tormenta.svg",
+    "palette": [
+      "#101733 indigo ground",
+      "#1a2344 card band",
+      "#243060 field",
+      "#0d2833 storm field",
+      "#0a2530 storm edge",
+      "#12323e storm dark",
+      "#1e4d59 storm",
+      "#3f7f88 storm light",
+      "#d9a441 gold",
+      "#efcf87 gold light",
+      "#9c6a17 gold deep",
+      "#b8342a vermillion roof",
+      "#7d211a roof shadow",
+      "#f2e4c4 bone / lightning core",
+      "#d8e2cf rain band",
+      "#0f0d18 ink"
+    ],
+    "statement": "A hurricane painted as a saint: the eye of the storm is the halo, the family is sheltering under the one roof that held, and the surge is already at their feet. The picture is a votive card, not a painting: frame, medallion, dedication plate, and two little scenes of before and after in the corners."
+  },
+  {
+    "id": "V6",
+    "title": "Ciudad / Selva",
+    "style": "1960s psychedelic screenprint, double exposure",
+    "theme": "the jungle growing through the city",
+    "composition": "All-over interference pattern with no horizon and no subject band; a full-bleed lattice of two tilted images, interrupted once by a large silhouette that acts as a mask and a phase boundary rather than as a character in front of wallpaper.",
+    "artist": "colorista",
+    "year": 2026,
+    "file": "../variedades/renders/V6-ciudad-selva.png",
+    "svg": "../variedades/v6-ciudad-selva/ciudad-selva.svg",
+    "palette": [
+      "#efe6cc bone",
+      "#1c1108 warm black",
+      "#ff2a6d hot pink",
+      "#a8c40c poison green"
+    ],
+    "statement": "The jungle growing through the city, printed as two images pulled out of register. A city of bars and mullions and a canopy of leaves cross until they beat into an interference pattern; a single faceless mass - jaguar head, stepped tower, piers - lies across the middle as the place where the plates change phase, its belly built out of the city in negative and green growing through its back."
+  },
+  {
+    "id": "V7",
+    "title": "Polilla",
+    "style": "photorealist macro painting",
+    "theme": "bio-digital — a moth whose scales are circuits",
+    "composition": "extreme macro: one wing fills the frame, no horizon, no background",
+    "artist": "lead",
+    "year": 2026,
+    "file": "../variedades/renders/V7-polilla.png",
+    "svg": "../variedades/v7-polilla/polilla.svg",
+    "palette": [
+      "#070905",
+      "#2a1c0c",
+      "#6b4a22",
+      "#a97b3c",
+      "#e8c184",
+      "#c98a3e",
+      "#2ec7c0",
+      "#d24a8a",
+      "#8a5cff"
+    ],
+    "statement": "I wanted the opposite of a landscape: no sky, no horizon, no place. The whole frame is one moth wing, and the scales carry circuit traces, so the closer you look the less natural it gets. The composition is a single diagonal edge and a field — the eye has nowhere to rest, which is the point of a macro."
+  },
+  {
+    "id": "V8",
+    "title": "Observatorio",
+    "style": "minimal symbolist poster",
+    "theme": "desert astronomy, 2040",
+    "composition": "silhouette against void: 85% sky, tiny subjects on the horizon line",
+    "artist": "lead",
+    "year": 2026,
+    "file": "../variedades/renders/V8-observatorio.png",
+    "svg": "../variedades/v8-observatorio/observatorio.svg",
+    "palette": [
+      "#0b0b1a",
+      "#33294a",
+      "#a05a4c",
+      "#f0b878",
+      "#fff8e6",
+      "#241521",
+      "#0b0709"
+    ],
+    "statement": "A dome, a dish and one person with a lamp, on a plain at the end of the day. The picture is almost all air; the subjects are small enough to be lost, and that is the subject — the scale of the sky against the smallness of the equipment we point at it."
+  }
+];

@@ -1,0 +1,38 @@
+{
+  "id": "e10",
+  "title": "Semilla",
+  "style": "lithographed seed-packet illustration",
+  "idiom": "seed packet: specimen plate, packet frame, growing instructions, legend",
+  "rule": "The plant grows through four network stages — seed, sprout, router, tower — and the packet's border vine and the specimen's root system are one module: the same scroll-and-curl path repeated at two scales and two orientations, the stages being that module mutating.",
+  "readings": {
+    "far": "A lithographed seed packet: cream card, teal title band, scroll border, a pale specimen with green leaves, a dark soil section, a small instrument panel and printer's colour bars. The idiom is immediate.",
+    "middle": "A plant whose stem is a lattice mast, whose leaves are solar panels with circuit veins, whose crown is a dish cluster; four growth-stage vignettes, a twelve-month calendar ring, a magnified seed with a chip, certification stamps, a lot block and colour bars.",
+    "near": "The packet's border vine and the root system are the same path; leaf veins carry red nodes; the seed's chip shows through its cut-away; stamps are rings of ticks; the lot block counts and the colour bars name the inks."
+  },
+  "palette": [
+    "#efe6cd",
+    "#f5eeda",
+    "#23231e",
+    "#2f6b63",
+    "#c2452d",
+    "#c99a3f",
+    "#9fb083",
+    "#c6d3a8",
+    "#6f6550",
+    "#8d8065"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "four-ink lithograph palette with printer's colour bars and lot block",
+    "specimen drawn as a mast with solar-panel leaves and a dish crown",
+    "one scroll-and-curl module reused as border ornament and as root system",
+    "magnified seed detail with a chip, led by a dotted leader",
+    "twelve-month calendar ring with weeks ticked and one month flagged",
+    "growth stages as four numbered vignettes (seed, sprout, router, tower)",
+    "frame and title band torn where the specimen leaves the packet",
+    "constructed-roman title lettering as paths",
+    "grain last"
+  ],
+  "statement": "A seed packet for a plant that is infrastructure, printed in four inks and registered at the corners. The packet promises four stages — seed, sprout, router, tower — and quietly does something else: its ornamental border and the specimen's roots are the same scroll, so the decoration the packet wraps itself in is what the plant is rooted in. The specimen has already broken the frame; the calendar ring still promises a season it may not get.",
+  "artist": "aereo"
+}

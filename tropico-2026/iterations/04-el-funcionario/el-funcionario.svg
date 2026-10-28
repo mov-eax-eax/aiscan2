@@ -1,0 +1,399 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1600 1200" width="1600" height="1200">
+<defs>
+<filter id="g1"  x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="1.2"/></filter>
+<filter id="g3"  x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="g7"  x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+<filter id="g14" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+<filter id="g26" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="26"/></filter>
+<filter id="g48" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="48"/></filter>
+<filter id="g90" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="90"/></filter>
+<filter id="paint" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.018 0.024" numOctaves="3" seed="5" result="t"/>
+  <feDisplacementMap in="SourceGraphic" in2="t" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+  <feGaussianBlur stdDeviation="0.9"/>
+</filter>
+<filter id="paintB" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.032 0.042" numOctaves="2" seed="13" result="t"/>
+  <feDisplacementMap in="SourceGraphic" in2="t" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+  <feGaussianBlur stdDeviation="1.3"/>
+</filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="3" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.36 0.36 0.36 0 0"/>
+</filter>
+<filter id="grainW" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="19" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.30 -0.30 -0.30 0 0.30"/>
+</filter>
+
+<linearGradient id="bgG" x1="0.1" y1="0" x2="0.7" y2="1">
+  <stop offset="0"    stop-color="#090b0d"/>
+  <stop offset="0.4"  stop-color="#10110e"/>
+  <stop offset="0.78" stop-color="#16150f"/>
+  <stop offset="1"    stop-color="#0b0a08"/>
+</linearGradient>
+<linearGradient id="beamG" x1="300" y1="110" x2="1100" y2="1080" gradientUnits="userSpaceOnUse">
+  <stop offset="0"    stop-color="#ffe2a8" stop-opacity="0.22"/>
+  <stop offset="0.35" stop-color="#f0c47e" stop-opacity="0.11"/>
+  <stop offset="0.75" stop-color="#c99a5c" stop-opacity="0.07"/>
+  <stop offset="1"    stop-color="#8a6a3c" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="deskG" x1="0.15" y1="0" x2="0.9" y2="1">
+  <stop offset="0"    stop-color="#6b5531"/>
+  <stop offset="0.4"  stop-color="#43351e"/>
+  <stop offset="0.82" stop-color="#221c11"/>
+  <stop offset="1"    stop-color="#0e0b07"/>
+</linearGradient>
+<linearGradient id="paperG" x1="0.1" y1="0" x2="0.85" y2="1">
+  <stop offset="0"    stop-color="#f6ecca"/>
+  <stop offset="0.45" stop-color="#ddcda4"/>
+  <stop offset="1"    stop-color="#9d8a60"/>
+</linearGradient>
+<linearGradient id="shirtG" x1="0.2" y1="0" x2="0.9" y2="1">
+  <stop offset="0"    stop-color="#33332a"/>
+  <stop offset="0.45" stop-color="#1d1e18"/>
+  <stop offset="1"    stop-color="#0a0b08"/>
+</linearGradient>
+<linearGradient id="skinG" x1="0.15" y1="0" x2="0.9" y2="1">
+  <stop offset="0"    stop-color="#b98a55"/>
+  <stop offset="0.45" stop-color="#7d5530"/>
+  <stop offset="1"    stop-color="#33200f"/>
+</linearGradient>
+<pattern id="ribs" width="46" height="100%" patternUnits="userSpaceOnUse">
+  <rect width="46" height="1200" fill="none"/>
+  <rect x="0" y="0" width="11" height="1200" fill="#05060a" opacity="0.55"/>
+  <rect x="11" y="0" width="4" height="1200" fill="#2b3238" opacity="0.26"/>
+  <rect x="42" y="0" width="4" height="1200" fill="#1a1f22" opacity="0.36"/>
+</pattern>
+</defs>
+
+<rect width="1600" height="1200" fill="#090806"/>
+
+<!-- ================= CONTAINER WALL ================= -->
+<g>
+  <rect x="0" y="0" width="1600" height="1000" fill="url(#bgG)"/>
+  <rect x="0" y="0"   width="1600" height="250" fill="#0a0c0e" opacity="0.75"/>
+  <rect x="0" y="250" width="1600" height="290" fill="#0f1110" opacity="0.62"/>
+  <rect x="0" y="540" width="1600" height="270" fill="#0c0e0f" opacity="0.7"/>
+  <rect x="0" y="810" width="1600" height="190" fill="#080908" opacity="0.75"/>
+  <!-- container seams: each band's lower lip catches a cold edge -->
+  <rect x="0" y="246" width="1600" height="5" fill="#31403f" opacity="0.26"/>
+  <rect x="0" y="536" width="1600" height="5" fill="#2b3838" opacity="0.20"/>
+  <rect x="0" y="806" width="1600" height="5" fill="#232b2a" opacity="0.16"/>
+  <rect x="0" y="0" width="1600" height="1000" fill="url(#ribs)" opacity="0.75"/>
+  <rect x="0" y="0" width="1600" height="1000" fill="#0a0b09" opacity="0.25"/>
+  <!-- a container mass, nearer, with a cold lip -->
+  <rect x="900" y="360" width="700" height="66" fill="#060808" opacity="0.65"/>
+  <rect x="900" y="360" width="700" height="4" fill="#3a4644" opacity="0.30"/>
+  <rect x="900" y="424" width="700" height="4" fill="#050606" opacity="0.5"/>
+  <!-- a container door: readable in the dark by its seam and hasp -->
+  <g>
+    <rect x="1130" y="600" width="330" height="400" fill="#080a0b" opacity="0.9"/>
+    <rect x="1130" y="600" width="330" height="400" fill="none" stroke="#2b3436" stroke-width="2" opacity="0.30"/>
+    <path d="M1295,604 L1295,996" stroke="#232b2d" stroke-width="3" opacity="0.38"/>
+    <rect x="1352" y="762" width="48" height="14" fill="#131618"/>
+    <rect x="1352" y="762" width="48" height="4" fill="#3b4341" opacity="0.35"/>
+    <path d="M1376,776 L1376,838" stroke="#101314" stroke-width="8" opacity="0.75"/>
+  </g>
+  <!-- forms taped to the steel: procedure continues past the man -->
+  <g opacity="0.42">
+    <rect x="1128" y="228" width="88" height="118" fill="#7d7050" transform="rotate(-2 1172 287)"/>
+    <rect x="1232" y="252" width="86" height="116" fill="#6d6246" transform="rotate(1.5 1275 310)"/>
+    <rect x="1338" y="236" width="84" height="112" fill="#756a4c" transform="rotate(-1 1380 292)"/>
+    <rect x="1444" y="270" width="82" height="110" fill="#635a42" transform="rotate(2 1485 325)"/>
+    <rect x="1156" y="368" width="86" height="114" fill="#6a6044" transform="rotate(1 1199 425)"/>
+    <rect x="1264" y="392" width="84" height="112" fill="#7d7050" transform="rotate(-1.5 1306 448)"/>
+    <rect x="1372" y="404" width="82" height="108" fill="#5e563e" transform="rotate(1 1413 458)"/>
+    <rect x="1478" y="390" width="80" height="106" fill="#6b6144" transform="rotate(-2 1518 443)"/>
+    <rect x="286" y="392" width="68" height="92" fill="#6b6144" transform="rotate(-3 320 438)"/>
+    <rect x="366" y="420" width="64" height="88" fill="#5c543e" transform="rotate(2 398 464)"/>
+  </g>
+</g>
+
+<!-- ================= FLOOR ================= -->
+<rect x="0" y="1000" width="1600" height="200" fill="#070605"/>
+
+<!-- ================= FLOODLIGHT, POLE, CABLE ================= -->
+<g>
+  <rect x="150" y="150" width="16" height="1050" fill="#0b0c0b"/>
+  <rect x="164" y="150" width="4" height="1050" fill="#3c3e35" opacity="0.30"/>
+  <g>
+    <path d="M196,116 L320,86 L336,160 L212,190 Z" fill="#14151a"/>
+    <path d="M320,86 L336,160 L352,154 L336,82 Z" fill="#23262a"/>
+    <ellipse cx="343" cy="122" rx="10" ry="36" fill="#ffe8ae" transform="rotate(16 343 122)"/>
+    <circle cx="345" cy="120" r="14" fill="#fff6d0" opacity="0.6" filter="url(#g7)"/>
+    <circle cx="345" cy="120" r="40" fill="#ffdd98" opacity="0.18" filter="url(#g26)"/>
+    <circle cx="345" cy="120" r="110" fill="#ffd88c" opacity="0.09" filter="url(#g48)"/>
+    <path d="M158,196 C150,320 168,430 156,560 C148,660 172,760 160,880 C152,960 186,1010 236,1046 C306,1092 386,1080 476,1096"
+          stroke="#090a09" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M158,194 C150,318 168,428 156,558 C148,658 172,758 160,878 C152,958 186,1008 236,1044 C306,1090 386,1078 476,1094"
+          stroke="#3b3b30" stroke-width="2" fill="none" opacity="0.32" stroke-linecap="round"/>
+  </g>
+</g>
+
+<!-- ================= THE SHAFT ================= -->
+<g>
+  <polygon points="230,110 1240,840 620,1180 150,150" fill="url(#beamG)" opacity="0.7" filter="url(#g26)"/>
+  <polygon points="234,114 1150,838 700,1130 190,156" fill="url(#beamG)" opacity="0.30" filter="url(#g14)"/>
+  <!-- the hood's hard edge: the one crisp diagonal in the picture -->
+  <path d="M176,140 L662,1160" stroke="#f4d79c" stroke-width="3" fill="none" opacity="0.16" filter="url(#g7)"/>
+  <g fill="#ffeac0">
+    <circle cx="500" cy="300" r="1.6" opacity="0.28"/><circle cx="640" cy="392" r="1.2" opacity="0.24"/>
+    <circle cx="720" cy="286" r="1.1" opacity="0.20"/><circle cx="880" cy="500" r="1.4" opacity="0.22"/>
+    <circle cx="980" cy="620" r="1.1" opacity="0.18"/><circle cx="1090" cy="712" r="1.5" opacity="0.20"/>
+    <circle cx="440" cy="580" r="1.3" opacity="0.18"/><circle cx="580" cy="700" r="1.5" opacity="0.20"/>
+    <circle cx="780" cy="840" r="1.2" opacity="0.16"/><circle cx="320" cy="228" r="1.4" opacity="0.22"/>
+  </g>
+  <!-- the figure's shadow thrown on the containers -->
+  <path d="M700,480 C960,520 1140,600 1290,720 C1380,796 1400,900 1330,1000 L980,1000 C980,900 900,780 790,700 C740,662 700,600 690,540 Z"
+        fill="#040404" opacity="0.55" filter="url(#g48)"/>
+</g>
+
+<!-- ================= FAN THAT HAS STOPPED ================= -->
+<g>
+  <path d="M196,1000 L196,760 M168,760 L224,760" stroke="#0d0f0e" stroke-width="10" fill="none"/>
+  <ellipse cx="196" cy="1002" rx="60" ry="14" fill="#0a0b0a"/>
+  <circle cx="196" cy="678" r="112" fill="#0a0c0b"/>
+  <circle cx="196" cy="678" r="112" fill="none" stroke="#2a3130" stroke-width="2.6" opacity="0.42"/>
+  <g stroke="#1d2324" stroke-width="1.5" fill="none" opacity="0.55">
+    <circle cx="196" cy="678" r="94"/><circle cx="196" cy="678" r="70"/><circle cx="196" cy="678" r="46"/>
+    <path d="M196,566 L196,790 M84,678 L308,678 M117,599 L275,757 M117,757 L275,599"/>
+  </g>
+  <ellipse cx="196" cy="678" rx="30" ry="30" fill="#22282a"/>
+  <g fill="#131718">
+    <path d="M196,662 C232,632 262,656 258,690 C254,724 220,730 196,708 Z"/>
+    <path d="M196,694 C160,724 132,700 136,668 C140,636 174,630 196,652 Z"/>
+    <path d="M180,678 C178,644 196,618 216,620 C238,622 246,652 232,678 Z" fill="#101415"/>
+  </g>
+  <path d="M282,600 C306,644 310,714 288,756" stroke="#414a44" stroke-width="2.4" fill="none" opacity="0.26"/>
+</g>
+
+<!-- ================= THE FIGURE ================= -->
+<g filter="url(#paint)">
+  <!-- shoulders + torso: he leans over the desk -->
+  <path d="M676,498 C664,552 658,640 656,720 C654,788 652,842 650,880 L930,880
+           C928,842 926,788 924,720 C922,640 916,552 904,498
+           C874,476 838,470 800,470 C762,470 706,476 676,498 Z" fill="url(#shirtG)"/>
+  <!-- lit rim down our left of the torso -->
+  <path d="M676,502 C666,550 660,620 658,690 C657,750 655,822 654,878 L666,878
+           C666,822 668,750 669,690 C671,620 677,552 686,508 Z" fill="#6a6140" opacity="0.45" filter="url(#g7)"/>
+  <!-- shirt folds -->
+  <g stroke="#080906" fill="none" opacity="0.45">
+    <path d="M700,600 C696,680 692,780 690,860" stroke-width="6" filter="url(#g7)"/>
+    <path d="M880,606 C886,684 890,780 892,860" stroke-width="6" filter="url(#g7)"/>
+    <path d="M788,540 C786,640 784,760 784,860" stroke-width="3" opacity="0.5" filter="url(#g7)"/>
+  </g>
+  <!-- ARMS: one continuous mass each; sleeve above the cuff, bare forearm below -->
+  <path d="M676,502 C654,532 638,572 628,616 C618,660 612,692 608,720 C600,764 590,806 580,842
+           C574,862 568,876 564,886 L610,898 C618,878 628,848 638,814 C648,778 656,740 662,706
+           C670,664 678,620 684,578 C690,540 694,514 694,504 Z" fill="url(#shirtG)"/>
+  <path d="M676,506 C656,534 640,574 630,618 C622,654 616,684 612,710 L626,714
+           C630,688 636,658 644,622 C654,580 670,540 690,514 Z" fill="#5e5538" opacity="0.40" filter="url(#g7)"/>
+  <path d="M904,502 C924,532 940,572 950,616 C960,660 966,692 970,720 C976,764 980,806 982,842
+           C984,862 984,876 982,886 L946,888 C946,868 944,842 940,812 C936,778 930,744 924,710
+           C916,668 908,620 900,578 C894,540 890,514 890,504 Z" fill="url(#shirtG)"/>
+  <path d="M904,506 C922,534 936,574 946,618" stroke="#2c2b22" stroke-width="4" fill="none" opacity="0.5" filter="url(#g7)"/>
+  <!-- sleeve cuffs -->
+  <path d="M606,712 C614,722 624,726 634,722 L640,736 C628,742 616,738 606,726 Z" fill="#0a0b08" opacity="0.8"/>
+  <path d="M970,712 C962,722 952,726 942,722 L936,736 C948,742 960,738 970,726 Z" fill="#0a0b08" opacity="0.7"/>
+
+  <!-- NECK -->
+  <path d="M744,412 C748,442 760,458 778,462 L800,464 C810,448 814,430 814,412 Z" fill="#3a2717"/>
+  <path d="M746,414 C750,444 762,458 778,462 L780,454 C766,448 756,430 754,412 Z" fill="#8a6238" opacity="0.45" filter="url(#g3)"/>
+
+  <!-- COLLAR: two points, our left one catching the light -->
+  <path d="M736,456 C752,474 772,486 794,486 C788,502 768,510 750,504 C736,498 726,480 722,466 Z" fill="#1e1d17"/>
+  <path d="M738,458 C752,476 772,486 790,486 L788,494 C766,494 748,482 734,464 Z" fill="#dcc79a" opacity="0.68" filter="url(#g3)"/>
+  <path d="M796,486 C808,488 816,494 820,504 L806,510 C804,500 800,492 792,490 Z" fill="#9c8c60" opacity="0.45" filter="url(#g3)"/>
+  <path d="M722,466 C734,480 748,488 762,490" stroke="#f0dca8" stroke-width="1.6" fill="none" opacity="0.35" filter="url(#g1)"/>
+
+  <!-- HEAD: bowed; light rakes the crown and the left temple, the face is shadow with weight -->
+  <path d="M730,352 C732,314 758,290 790,290 C822,290 846,314 846,352 C846,382 838,408 822,424
+           C806,440 780,446 758,438 C738,430 730,406 730,378 Z" fill="#2a1d12"/>
+  <path d="M730,362 C732,320 758,296 790,296 L788,312 C762,314 744,332 740,370 Z" fill="#7d6038" opacity="0.45" filter="url(#g7)"/>
+  <path d="M734,346 C744,314 766,298 792,298 C764,306 744,324 736,352 Z" fill="#a8865a" opacity="0.38" filter="url(#g7)"/>
+  <path d="M728,360 C728,314 756,286 790,286 C824,286 850,312 850,356 C850,344 842,330 828,322
+           C810,312 776,314 756,326 C742,334 732,346 728,360 Z" fill="#120e09"/>
+  <path d="M732,340 C740,312 764,292 794,290 C768,298 748,312 738,342 Z" fill="#5a482c" opacity="0.32" filter="url(#g3)"/>
+  <!-- the eye band: a soft hollow, not a mask; the brow ridge stays lit above it -->
+  <path d="M736,360 C752,350 772,348 790,352 C806,352 820,358 828,368 C818,392 800,398 780,396
+           C758,394 740,382 736,360 Z" fill="#0a0704" opacity="0.72" filter="url(#g7)"/>
+  <path d="M736,356 C752,346 772,344 790,348 L790,356 C772,352 754,354 740,364 Z" fill="#6b5233" opacity="0.45" filter="url(#g3)"/>
+  <!-- the cheekbone catches the rake, the eye-socket stays a hollow -->
+  <path d="M742,384 C756,394 774,398 792,394 C800,392 808,388 814,382 C808,396 792,404 774,404
+           C756,404 744,396 742,384 Z" fill="#8a683f" opacity="0.55" filter="url(#g7)"/>
+  <path d="M744,386 C756,394 770,398 784,396 C770,400 754,396 744,386 Z" fill="#b48a55" opacity="0.40" filter="url(#g3)"/>
+  <!-- nose: a soft ridge, its shadow under -->
+  <path d="M782,364 C784,378 786,388 790,396 C782,400 772,398 768,392 C772,382 774,372 774,364 Z" fill="#3e2a19" opacity="0.85" filter="url(#g3)"/>
+  <path d="M780,366 C782,378 784,387 787,394 L782,396 C779,387 777,377 776,367 Z" fill="#a87c48" opacity="0.45" filter="url(#g3)"/>
+  <path d="M766,398 C774,404 786,404 792,398 C788,406 770,406 766,398 Z" fill="#080503" opacity="0.65" filter="url(#g1)"/>
+  <path d="M760,410 C770,414 782,414 790,410 C782,418 768,418 760,410 Z" fill="#0a0604" opacity="0.7" filter="url(#g3)"/>
+  <path d="M748,418 C758,432 776,438 792,434 C808,430 820,418 826,404 C824,424 804,440 780,440 C758,440 744,432 748,418 Z" fill="#090604" opacity="0.45" filter="url(#g7)"/>
+  <path d="M752,418 C764,434 784,440 800,436 C788,444 762,440 752,418 Z" fill="#1e150d" opacity="0.3" filter="url(#g3)"/>
+  <path d="M842,376 C852,374 858,382 854,394 C850,404 842,406 838,398 C836,390 836,382 842,376 Z" fill="#402c1a"/>
+  <!-- the face sinks: only the contour and the rim carry it -->
+  <ellipse cx="784" cy="392" rx="56" ry="54" fill="#0a0805" opacity="0.42" filter="url(#g7)"/>
+  <ellipse cx="796" cy="404" rx="40" ry="34" fill="#080604" opacity="0.35" filter="url(#g14)"/>
+  <path d="M730,352 C732,314 758,292 790,292" stroke="#eace9a" stroke-width="4.5" fill="none" opacity="0.32" filter="url(#g3)"/>
+  <path d="M734,368 C738,336 754,314 778,302" stroke="#f4e0ac" stroke-width="2" fill="none" opacity="0.24" filter="url(#g1)"/>
+
+  <!-- LANYARD + ID -->
+  <path d="M752,506 C746,556 742,606 738,650 M792,504 C798,554 802,604 808,648" stroke="#12100c" stroke-width="5" fill="none"/>
+  <g transform="rotate(3 772 690)">
+    <rect x="726" y="646" width="84" height="108" rx="5" fill="#a08d66"/>
+    <rect x="734" y="658" width="68" height="50" fill="#5e5038"/>
+    <rect x="734" y="716" width="50" height="6" fill="#4a3e2a"/>
+    <rect x="734" y="728" width="40" height="5" fill="#4a3e2a"/>
+    <path d="M728,648 L808,652" stroke="#e6d6ac" stroke-width="2.4" fill="none" opacity="0.38" filter="url(#g1)"/>
+    <path d="M730,650 L730,750" stroke="#c9b78a" stroke-width="1.6" fill="none" opacity="0.28" filter="url(#g1)"/>
+  </g>
+
+  <!-- FOREARMS: skin; our left lit, our right in shadow -->
+  <path d="M612,700 C602,742 592,786 584,824 C578,850 572,870 568,882 L612,894
+           C620,870 630,836 640,800 C650,762 658,726 664,700 Z" fill="url(#skinG)"/>
+  <path d="M614,706 C604,746 594,788 586,824 L598,828 C606,792 616,750 626,712 Z" fill="#c19358" opacity="0.55" filter="url(#g3)"/>
+  <path d="M624,706 C616,744 606,782 598,818" stroke="#e6ba7c" stroke-width="2" fill="none" opacity="0.32" filter="url(#g1)"/>
+  <path d="M572,862 C584,866 598,864 608,856" stroke="#2a1a0e" stroke-width="2" fill="none" opacity="0.45"/>
+  <path d="M946,700 C958,742 968,786 976,824 C982,850 986,870 988,882 L946,890
+           C942,868 936,836 928,800 C918,762 910,726 904,700 Z" fill="#3a2818"/>
+  <path d="M952,708 C962,746 970,788 978,824" stroke="#8a6238" stroke-width="3" fill="none" opacity="0.30" filter="url(#g3)"/>
+</g>
+
+<!-- ================= DESK ================= -->
+<g>
+  <polygon points="236,864 1600,822 1600,1052 288,1062" fill="url(#deskG)"/>
+  <polygon points="288,1062 1600,1052 1600,1200 288,1200" fill="#0a0906"/>
+  <ellipse cx="620" cy="1075" rx="330" ry="26" fill="#6b512c" opacity="0.16" filter="url(#g48)"/>
+  <path d="M420,1086 L560,1080 L572,1128 L432,1134 Z" fill="#6b5f44" opacity="0.85"/>
+  <path d="M428,1090 L552,1085 L562,1124 L436,1129 Z" fill="#8a7c58" opacity="0.7"/>
+  <polygon points="288,1062 1600,1052 1600,1068 288,1078" fill="#5a4726" opacity="0.30"/>
+  <path d="M300,1062 L1200,1030" stroke="#cba868" stroke-width="3.2" fill="none" opacity="0.40" filter="url(#g3)"/>
+  <g stroke="#0c0a06" fill="none" opacity="0.5">
+    <path d="M320,930 C520,922 760,912 1000,900" stroke-width="1.4"/>
+    <path d="M360,968 C580,960 820,950 1060,938" stroke-width="1.1"/>
+    <path d="M700,908 C900,900 1120,890 1340,878" stroke-width="1"/>
+    <path d="M420,1010 C660,1002 920,992 1180,980" stroke-width="0.9" opacity="0.6"/>
+  </g>
+  <!-- the figure's shadow on the desk, thrown to the right -->
+  <path d="M690,880 L960,880 C1010,930 1030,990 1010,1062 L700,1062 Z" fill="#050402" opacity="0.55" filter="url(#g26)"/>
+
+  <!-- PAPERS: the brightest thing in the room -->
+  <g filter="url(#paintB)">
+    <path d="M470,876 L680,864 L700,932 L490,944 Z" fill="url(#paperG)"/>
+    <path d="M480,884 L672,872 L690,924 L498,936 Z" fill="#f8f0d4"/>
+    <path d="M476,890 L678,878 L696,928 L494,940 Z" fill="#cdbd93" opacity="0.55"/>
+    <path d="M330,916 L500,904 L524,962 L354,974 Z" fill="#b9a67a"/>
+    <path d="M356,906 L530,894 L554,950 L380,962 Z" fill="#dccca2"/>
+    <path d="M760,872 L960,860 L982,918 L782,930 Z" fill="#a89468"/>
+    <path d="M806,880 L1006,868 L1028,924 L828,936 Z" fill="#e2d4a8"/>
+    <path d="M590,946 L800,934 L826,996 L616,1008 Z" fill="#c2b184"/>
+    <path d="M860,938 L1070,926 L1096,982 L886,994 Z" fill="#a08d64"/>
+    <path d="M960,946 L1170,934 L1198,992 L988,1004 Z" fill="#cbb98c"/>
+    <!-- a sheet sliding over the edge -->
+    <path d="M1180,960 L1350,952 L1382,1030 L1210,1040 Z" fill="#8a7a56"/>
+    <path d="M1240,986 L1300,984 L1310,1024 L1248,1026 Z" fill="#7d6e4c"/>
+    <!-- clipboard -->
+    <g transform="rotate(-5 660 900)">
+      <rect x="596" y="846" width="150" height="92" fill="#241f14"/>
+      <rect x="604" y="854" width="134" height="78" fill="#c9b88c"/>
+      <rect x="652" y="846" width="34" height="11" fill="#4a4230"/>
+      <path d="M616,868 L740,862 M616,882 L730,876 M616,896 L700,890" stroke="#6b5e42" stroke-width="2.6" opacity="0.5"/>
+    </g>
+    <!-- the fall of light on the paper: one hot patch -->
+    <ellipse cx="700" cy="912" rx="210" ry="70" fill="#fff8dc" opacity="0.26" filter="url(#g14)"/>
+    <ellipse cx="640" cy="900" rx="120" ry="42" fill="#fffbee" opacity="0.22" filter="url(#g14)"/>
+  </g>
+
+  <!-- STAMP + INK PAD -->
+  <g>
+    <ellipse cx="690" cy="962" rx="52" ry="13" fill="#100c05" opacity="0.65" filter="url(#g3)"/>
+    <rect x="660" y="944" width="60" height="18" fill="#1c1a14"/>
+    <rect x="676" y="918" width="28" height="28" fill="#3c2b16"/>
+    <ellipse cx="690" cy="918" rx="16" ry="8" fill="#6e4f27"/>
+    <ellipse cx="690" cy="916" rx="16" ry="7" fill="#ab783d"/>
+    <ellipse cx="690" cy="914" rx="9" ry="4" fill="#d6a86a"/>
+    <rect x="736" y="950" width="46" height="12" fill="#241a12"/>
+    <rect x="736" y="950" width="46" height="3" fill="#5c3a2a" opacity="0.7"/>
+  </g>
+  <!-- WATER GALLON, left, in the light's edge -->
+  <g>
+    <path d="M290,860 L404,854 L418,958 L304,964 Z" fill="#333b32" opacity="0.85"/>
+    <path d="M296,864 L398,859 L410,954 L308,959 Z" fill="#66705c" opacity="0.5"/>
+    <path d="M302,868 C322,870 340,880 344,896 L340,954 L306,957 Z" fill="#c6c99e" opacity="0.42"/>
+    <path d="M352,862 L396,860 L404,954 L360,956 Z" fill="#8d9a78" opacity="0.26"/>
+    <rect x="336" y="836" width="34" height="24" fill="#2b3128"/>
+    <ellipse cx="353" cy="836" rx="17" ry="6" fill="#384033"/>
+    <path d="M298,864 L302,868 L306,956" stroke="#e0e0b4" stroke-width="2.4" fill="none" opacity="0.32" filter="url(#g1)"/>
+    <path d="M368,860 L370,952" stroke="#edefc8" stroke-width="2.6" fill="none" opacity="0.35" filter="url(#g3)"/>
+  </g>
+  <!-- DEAD MONITOR, right, outside the beam -->
+  <g>
+    <path d="M1216,884 L1416,872 L1430,964 L1230,976 Z" fill="#0e1112"/>
+    <path d="M1226,894 L1406,884 L1416,952 L1236,962 Z" fill="#161b1d"/>
+    <path d="M1226,894 L1406,884 L1410,916 L1230,926 Z" fill="#283234" opacity="0.42"/>
+    <path d="M1346,872 L1366,868 L1378,972 L1358,976 Z" fill="#080a0b" opacity="0.55"/>
+    <path d="M1232,930 C1286,926 1346,922 1404,918" stroke="#31403e" stroke-width="1.6" fill="none" opacity="0.30"/>
+    <rect x="1300" y="976" width="60" height="18" fill="#0a0c0d"/>
+  </g>
+</g>
+
+<!-- ================= HANDS ================= -->
+<!-- warm bounce off the lit papers, lifting the figure's lower body and the desk -->
+<g>
+  <g filter="url(#paint)" transform="translate(560,918) scale(1.16) translate(-560,-918)">
+    <ellipse cx="546" cy="944" rx="80" ry="22" fill="#0a0805" opacity="0.5" filter="url(#g7)"/>
+    <!-- the back of the hand, then four fingers laid on the sheet -->
+    <path d="M612,884 C594,890 574,898 560,908 C548,918 542,930 544,940 C548,952 562,958 578,954
+             C596,948 612,936 624,922 C634,908 636,894 632,886 Z" fill="#3a2412"/>
+    <path d="M612,888 C596,894 578,902 564,912 C554,920 548,930 550,938 L556,936
+             C554,928 560,920 570,912 C584,902 600,894 616,890 Z" fill="#d3a468" opacity="0.55" filter="url(#g3)"/>
+    <!-- fingers: four, splayed, lit on their upper planes -->
+    <path d="M556,912 C544,922 536,936 538,948 C540,958 552,960 558,950 C566,938 572,924 574,916 Z" fill="#3e2814"/>
+    <path d="M546,922 C536,932 530,944 532,954 L536,952 C535,942 540,932 550,924 Z" fill="#dcb076" opacity="0.50" filter="url(#g1)"/>
+    <path d="M578,904 C568,918 562,934 564,946 C566,956 578,958 584,948 C592,936 596,920 596,910 Z" fill="#37230f"/>
+    <path d="M580,908 C572,920 566,934 568,944 L572,942 C571,932 576,920 584,910 Z" fill="#d8aa70" opacity="0.45" filter="url(#g1)"/>
+    <path d="M600,898 C592,914 588,930 590,942 C592,952 604,954 610,944 C616,932 618,914 616,904 Z" fill="#33200e"/>
+    <path d="M602,902 C596,916 592,930 594,940 L598,938 C597,928 600,916 606,904 Z" fill="#d2a468" opacity="0.40" filter="url(#g1)"/>
+    <path d="M620,896 C616,910 614,924 616,934 C618,942 628,944 632,936 C636,924 636,908 634,898 Z" fill="#301d0c"/>
+    <path d="M622,900 C619,912 617,924 619,932 L622,930 C621,922 623,910 626,900 Z" fill="#c99a60" opacity="0.38" filter="url(#g1)"/>
+    <!-- finger shadows on the paper -->
+    <path d="M538,950 C548,958 560,956 570,948 M566,948 C576,956 588,954 596,946 M590,944 C600,952 612,950 620,942"
+          stroke="#3a2512" stroke-width="2.2" fill="none" opacity="0.45"/>
+    <!-- thumb -->
+    <path d="M588,888 C602,882 616,886 618,896 C620,908 608,916 596,914 C584,912 580,896 588,888 Z" fill="#4a2e18"/>
+    <path d="M592,890 C602,886 612,890 614,898 C604,892 596,892 590,896 Z" fill="#dcb076" opacity="0.5"/>
+    <path d="M510,958 C540,974 588,970 620,950 C626,966 610,982 578,986 C546,990 516,976 510,958 Z" fill="#080603" opacity="0.45" filter="url(#g3)"/>
+    <path d="M604,882 C584,888 560,900 542,916" stroke="#f0c890" stroke-width="2.2" fill="none" opacity="0.35" filter="url(#g1)"/>
+  </g>
+  <g filter="url(#paint)">
+    <path d="M938,878 C916,884 902,902 900,924 C898,948 914,966 938,968 C960,970 976,956 982,936
+             C988,914 980,890 962,880 Z" fill="#2a1a0e"/>
+    <path d="M942,882 C924,890 912,904 910,924 L924,926 C926,908 936,894 952,888 Z" fill="#94693c" opacity="0.48" filter="url(#g3)"/>
+    <path d="M906,908 C918,914 932,912 942,902 M904,928 C918,934 934,932 946,922 M908,948 C922,954 938,952 950,942"
+          stroke="#180f08" stroke-width="2.6" fill="none" opacity="0.55"/>
+    <ellipse cx="942" cy="868" rx="22" ry="11" fill="#6e4d28"/>
+    <ellipse cx="942" cy="863" rx="17" ry="9" fill="#a07440"/>
+    <ellipse cx="942" cy="860" rx="10" ry="4" fill="#cf9f62"/>
+    <path d="M936,876 C938,890 940,904 940,916" stroke="#c9a068" stroke-width="3" fill="none" opacity="0.30"/>
+    <path d="M926,916 L962,914 L966,948 L930,950 Z" fill="#241a10"/>
+    <path d="M922,946 L968,944 L972,958 L926,960 Z" fill="#14100a"/>
+    <path d="M924,946 L970,944 L970,949 L924,951 Z" fill="#6b4a26" opacity="0.55"/>
+    <ellipse cx="948" cy="962" rx="24" ry="6" fill="#0a0805" opacity="0.55" filter="url(#g3)"/>
+    <path d="M942,882 C928,890 918,902 914,916" stroke="#d8a870" stroke-width="2" fill="none" opacity="0.32" filter="url(#g1)"/>
+  </g>
+</g>
+
+<!-- ================= ATMOSPHERE ================= -->
+<g>
+  <ellipse cx="470" cy="640" rx="520" ry="440" fill="#d8b878" opacity="0.04" filter="url(#g90)"/>
+  <ellipse cx="1440" cy="280" rx="420" ry="360" fill="#040506" opacity="0.55" filter="url(#g90)"/>
+  <ellipse cx="260" cy="1120" rx="520" ry="200" fill="#030302" opacity="0.5" filter="url(#g90)"/>
+  <ellipse cx="720" cy="900" rx="380" ry="140" fill="#c99a54" opacity="0.10" filter="url(#g90)"/>
+  <ellipse cx="700" cy="880" rx="220" ry="70" fill="#e0b46a" opacity="0.07" filter="url(#g48)"/>
+  <rect width="1600" height="1200" fill="#181a16" opacity="0.06"/>
+</g>
+
+<rect width="1600" height="1200" filter="url(#grain)" opacity="0.17"/>
+<rect width="1600" height="1200" filter="url(#grainW)" opacity="0.05"/>
+</svg>

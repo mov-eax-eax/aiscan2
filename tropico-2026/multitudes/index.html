@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MULTITUDES — fourth room — TROPICO 2026</title>
+<style>
+  :root{--ink:#0c0a08;--paper:#e9dec8;--dim:#9c8f7b;--line:#2a251f;--accent:#e2643c}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--ink);color:var(--paper);font-family:Georgia,serif;-webkit-font-smoothing:antialiased}
+  body{background:radial-gradient(1100px 600px at 10% -8%,#221a11 0%,transparent 60%),radial-gradient(900px 500px at 100% 0%,#1a1510 0%,transparent 55%),var(--ink)}
+  a{color:inherit}
+  .wrap{max-width:1380px;margin:0 auto;padding:0 clamp(18px,4vw,60px)}
+  header{padding:clamp(52px,9vh,104px) 0 34px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+  h1{font-weight:400;font-size:clamp(40px,7.6vw,106px);line-height:.92;letter-spacing:-.02em;margin:.26em 0 .18em}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{max-width:56ch;font-size:clamp(15px,1.3vw,18px);line-height:1.65;color:#cfc2ab}
+  .meta-row{display:flex;flex-wrap:wrap;gap:26px;margin-top:28px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  .back{display:inline-block;margin-top:24px;margin-right:18px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid #e2643c55;padding-bottom:3px}
+  .wall{padding:42px 0 6px;display:grid;gap:16px}
+  .wall .num{font-family:'Courier New',monospace;color:var(--accent);font-size:12px;letter-spacing:.2em}
+  .wall p{max-width:70ch;line-height:1.75;color:#c9bda8;margin:0}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(22px,2.8vw,38px);padding:34px 0 90px;align-items:start}
+  figure{margin:0;grid-column:span 6}
+  @media(max-width:900px){figure{grid-column:span 12}}
+  .frame{overflow:hidden;background:#1a1611;cursor:zoom-in;box-shadow:0 30px 60px -30px #000,inset 0 0 0 1px #00000055}
+  .frame img{display:block;width:100%;height:auto;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .frame:hover img{transform:scale(1.015)}
+  .card{display:grid;grid-template-columns:auto 1fr;gap:3px 16px;padding-top:15px}
+  .id{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);padding-top:4px}
+  .title{font-size:clamp(18px,1.9vw,25px);line-height:1.15}
+  .idiom{grid-column:2;font-size:13px;font-style:italic;color:var(--dim)}
+  .scene{grid-column:1 / -1;margin-top:10px;font-size:13.5px;line-height:1.6;color:#b3a795}
+  .rule{grid-column:1 / -1;margin-top:10px;padding:11px 14px;border-left:2px solid #e2643c;background:#14110d;font-family:'Courier New',monospace;font-size:11px;line-height:1.6;color:#c8bba4}
+  .rule b{color:var(--accent);font-weight:400;letter-spacing:.16em;font-size:9.5px;display:block;margin-bottom:4px;text-transform:uppercase}
+  .find{grid-column:1 / -1;margin-top:8px;font-family:'Courier New',monospace;font-size:10.5px;line-height:1.6;letter-spacing:.03em;color:#8f8270}
+  .find b{color:#b8643c;font-weight:400;letter-spacing:.16em;font-size:9.5px;text-transform:uppercase;margin-right:8px}
+  .readings{grid-column:1 / -1;margin-top:10px;display:grid;gap:5px}
+  .readings div{display:grid;grid-template-columns:64px 1fr;gap:10px;font-size:12.5px;line-height:1.5;color:#b3a795}
+  .readings span{font-family:'Courier New',monospace;font-size:9.5px;letter-spacing:.16em;color:#6f6557;padding-top:3px}
+  .chips{grid-column:1 / -1;display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}
+  .chip{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px #ffffff22}
+  footer{border-top:1px solid var(--line);padding:34px 0 70px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-family:'Courier New',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  #lb{position:fixed;inset:0;background:#070605f5;display:none;align-items:center;justify-content:center;z-index:50;padding:3vh 3vw;cursor:zoom-out}
+  #lb.on{display:flex}
+  #lb img{max-width:100%;max-height:92vh;box-shadow:0 0 140px #000}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Fourth room · ten scenes · crowds, depth, simultaneous stories · 2026</div>
+    <h1>MULTI<em>TUDES</em></h1>
+    <p class="lede">The first three rooms built a subject, then an arrangement, then a system. This room
+      is about scenes: fifty-plus figures, four depth planes, three things happening at once, and a
+      small motif repeated seven to twelve times that nobody tells you to look for.</p>
+    <div class="meta-row">
+      <span><b id="count">0</b> scenes</span>
+      <span>idioms <b>bruegel · ukiyo-e · cutaway · babel · harbour · mughal · tapestry · bosch · mural · market</b></span>
+      <span>find-it <b>unannounced</b></span>
+    </div>
+    <a class="back" href="../gallery/index.html">← first room</a>
+    <a class="back" href="../variedades/index.html">← second</a>
+    <a class="back" href="../estratos/index.html">← third</a>
+  </header>
+
+  <section class="wall">
+    <div class="num">WALL TEXT / 04</div>
+    <p><b>The rule of the room.</b> Density is not clutter: every figure has a role, every cluster answers
+      to a stated crowd rule, and each scene must hold three simultaneous actions with no indication of
+      which one we are supposed to watch. At 400 px it is a place. At 1600 px it is several places at
+      once. At 100% it is individual people with things in their hands — and somewhere in there, a motif
+      repeated a fixed number of times. The card prints the rule and the count, so the claim is testable;
+      the caption never says where they are.</p>
+  </section>
+
+  <div class="grid" id="grid"></div>
+  <footer><span>MULTITUDES — fourth room</span><span>SVG · librsvg · 1600 px</span></footer>
+</div>
+<div id="lb"><img id="lbimg" alt=""></div>
+<script src="pieces.js"></script>
+<script>
+(function(){
+  var P = window.PIECES || [];
+  document.getElementById('count').textContent = P.length;
+  var grid = document.getElementById('grid');
+  if(!P.length){ grid.innerHTML = '<p style="color:#9c8f7b">Nothing rendered yet.</p>'; return; }
+  P.forEach(function(p){
+    var pal = Array.isArray(p.palette) ? p.palette : Object.values(p.palette || {});
+    var chips = pal.slice(0,8).map(function(c){return '<span class="chip" style="background:'+c+'"></span>';}).join('');
+    var r = p.readings || {};
+    var fig = document.createElement('figure');
+    fig.innerHTML =
+      '<div class="frame"><img loading="lazy" src="'+p.file+'" alt="'+p.title+'"></div>'+
+      '<div class="card"><div class="id">'+p.id+'</div><div class="title">'+p.title+'</div>'+
+      '<div class="idiom">'+p.idiom+(p.artist?' · '+p.artist:'')+'</div>'+
+      (p.scene ? '<div class="scene">'+p.scene+'</div>' : '')+
+      (p.crowdRule ? '<div class="rule"><b>crowd rule</b>'+p.crowdRule+'</div>' : '')+
+      (p.findIt ? '<div class="find"><b>find-it</b>'+p.findIt+'</div>' : '')+
+      '<div class="readings">'+
+        '<div><span>FAR 400</span>'+(r.far||'—')+'</div>'+
+        '<div><span>MIDDLE</span>'+(r.middle||'—')+'</div>'+
+        '<div><span>NEAR</span>'+(r.near||'—')+'</div>'+
+      '</div>'+
+      '<div class="chips">'+chips+'</div></div>';
+    fig.querySelector('.frame').addEventListener('click', function(){
+      document.getElementById('lbimg').src = p.file; document.getElementById('lb').classList.add('on');
+    });
+    grid.appendChild(fig);
+  });
+  var lb = document.getElementById('lb');
+  lb.addEventListener('click', function(){ lb.classList.remove('on'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') lb.classList.remove('on'); });
+})();
+</script>
+</body>
+</html>

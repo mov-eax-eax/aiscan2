@@ -1,0 +1,39 @@
+{
+  "id": "m3",
+  "title": "El Hotel",
+  "idiom": "cutaway / dollhouse",
+  "scene": "a six-storey hotel with the front wall removed: thirty rooms, twenty simultaneous lives, a lobby, a bar, a street",
+  "crowdRule": "Every room is lit from within and the light temperature alternates warm/cool floor by floor; the wedding is lit warmer than its floor; the ground floor splits warm lobby / cool bar.",
+  "findIt": "A black cat with pale eyes in eleven rooms, at eleven different heights (beds, sills, laps, tables, a bar stool).",
+  "readings": {
+    "far": "A cutaway hotel at night: dark frame, six bands of alternating warm and cool lit rooms, red canopy, yellow taxi, one pale line of water down the facade.",
+    "middle": "Thirty rooms with readable incidents (wedding, argument, burglary at an open window, overflowing bath, wake, party), a working lobby and bar, a roof with tank and laundry, and a leak running from the second floor to a puddle at the kerb.",
+    "near": "Figures with shoulders, hair and objects in hand; cats on sills and laps at eleven heights; puddle edges and wet reflections; bottles and bulbs at the bar."
+  },
+  "palette": [
+    "#1b2331",
+    "#20252c",
+    "#e6c28c",
+    "#d2a565",
+    "#a5713f",
+    "#ffe7b3",
+    "#b3c6d5",
+    "#98b0c2",
+    "#6b879b",
+    "#e0b03c",
+    "#7e2f2c",
+    "#2b2b2e"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "six-storey cutaway grid, 6x5 rooms plus ground floor and roof",
+    "light-temperature alternation as the crowd rule",
+    "procedural cast with hand-placed incidents",
+    "one continuous water leak crossing five floors",
+    "eleven repeated cats at eleven heights",
+    "wet-street reflections, canopy shadow, spill light",
+    "grain last"
+  ],
+  "statement": "A hotel is a machine for making strangers private in public, and the cutaway is the machine fantasy: every door open, every light on, no one speaking to anyone. The rule is the light - warm and cool alternating by floor - so the building reads as bands of living before it reads as people. The one line that crosses the floors is a leak, and the one thing that crosses the whole building is a cat.",
+  "artist": "aereo"
+}

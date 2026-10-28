@@ -1,0 +1,7 @@
+{
+  "name": "boeing-747-8-3d",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ultra-detailed procedural Boeing 747-8 Intercontinental in Three.js"
+}

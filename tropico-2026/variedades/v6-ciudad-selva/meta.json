@@ -1,0 +1,25 @@
+{
+  "id": "v6-ciudad-selva",
+  "title": "Ciudad / Selva",
+  "style": "1960s psychedelic screenprint, double exposure",
+  "theme": "the jungle growing through the city",
+  "artist": "colorista",
+  "year": 2026,
+  "palette": [
+    "#efe6cc bone",
+    "#1c1108 warm black",
+    "#ff2a6d hot pink",
+    "#a8c40c poison green"
+  ],
+  "techniques": [
+    "double exposure: a city lattice (+9.5 deg) and a canopy lattice (-26 deg) printed over each other on one sheet",
+    "one faceless hybrid silhouette (jaguar head + stepped tower + piers) used as the phase mask where the two images meet",
+    "the print inverts inside the mask: warm black field, the same city grid in bone (rotated a further 4 deg, narrower), the same foliage in solid green",
+    "ink density carries the double exposure; no opacity, no blend modes",
+    "deliberate misregistration: the pink city plate's offset varies across the sheet, every leaf fill sits (-5,+4) off its keyline, the mask's pink ghost is +13/+10",
+    "hand-drawn wobble generated as per-vertex jitter on the street and vine paths",
+    "four flat inks only; fractal-noise grain as the final layer (opacity 0.13)"
+  ],
+  "statement": "The jungle growing through the city, printed as two images pulled out of register. A city of bars and mullions and a canopy of leaves cross until they beat into an interference pattern; a single faceless mass - jaguar head, stepped tower, piers - lies across the middle as the place where the plates change phase, its belly built out of the city in negative and green growing through its back.",
+  "composition": "All-over interference pattern with no horizon and no subject band; a full-bleed lattice of two tilted images, interrupted once by a large silhouette that acts as a mask and a phase boundary rather than as a character in front of wallpaper."
+}

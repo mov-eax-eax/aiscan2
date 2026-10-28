@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><body>
+<div id="out">pending</div>
+<script>
+  try {
+    const cv = document.createElement('canvas');
+    const gl = cv.getContext('webgl2') || cv.getContext('webgl');
+    if (!gl) { document.getElementById('out').textContent = 'NOGL'; }
+    else {
+      const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+      document.getElementById('out').textContent =
+        'GL:' + (gl instanceof WebGL2RenderingContext ? '2' : '1') + '|' +
+        (dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER)) + '|maxtex:' +
+        gl.getParameter(gl.MAX_TEXTURE_SIZE);
+    }
+  } catch (e) { document.getElementById('out').textContent = 'ERR:' + e.message; }
+</script>
+</body></html>

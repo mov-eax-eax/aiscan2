@@ -1,0 +1,33 @@
+{
+  "id": "e2-beato-de-la-sequia",
+  "title": "Beato de la Sequía",
+  "style": "Romanesque illuminated manuscript page (Beatus)",
+  "idiom": "illuminated manuscript: miniature, two-column text block, calendar frieze, maze",
+  "rule": "One module - a marginal beast with a weather glyph - is drawn twelve times in fixed monthly order, each carrying the following month's weather (the fourth carries its own: the break); every other count on the page (12 sun rays, 12 month ticks, 52 border weeks) comes from the same twelve-month cycle.",
+  "readings": {
+    "far": "a Beatus page: red/gold frame, blue miniature with a full-width rainbow, two columns of script, a frieze of twelve boxes, a masonry maze strip",
+    "middle": "a rainbow round a lapis throne with a sealed book standing in a dry riverbed, four living creatures at the corners, the twelve months of a drought around the page, and a labyrinth below",
+    "near": "stroke-built letterforms; 52 gold week-diamonds and 12 red month-ticks countable in the border; each beast's belly carrying the next month's glyph at 6 px; the maze corridor's hatching; the April break in the weather sequence"
+  },
+  "palette": [
+    "#ead9b4 vellum",
+    "#f4e8c8 pale vellum",
+    "#c8862f ochre",
+    "#8f5c1c ochre dark",
+    "#b03a20 vermilion",
+    "#24418c lapis",
+    "#3f63b5 lapis light",
+    "#d9a53c gold",
+    "#3a2a1a ink"
+  ],
+  "techniques": [
+    "twelve-cell generative module: marginal beast + weather glyph, permuted one month forward",
+    "a deliberately broken permutation at April (the month the drought should break)",
+    "letterforms drawn as vector paths (no text element, no font)",
+    "a solvable maze whose solution corridor spells 2026, with masonry walls, dead ends and a hatched passage",
+    "nested counters: 12 sun rays, 12 border ticks, 52 week-diamonds, 12 roman numerals, 7 book seals",
+    "flat colour with a gold diaper pattern; grain as the final layer"
+  ],
+  "statement": "A Beatus page for a drought. The vision is the throne and the sealed book under the rainbow; the marginal beasts are the months, and every one of them carries the weather of the month after it, so the painted year runs one month ahead of the lived one - only April, the month the drought should break, carries its own weather. The date is not written: it is the route of the labyrinth in the lower margin.",
+  "artist": "colorista"
+}

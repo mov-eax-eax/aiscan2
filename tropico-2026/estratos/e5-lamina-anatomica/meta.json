@@ -1,0 +1,30 @@
+{
+  "id": "e5-lamina-anatomica",
+  "title": "Lámina Anatómica",
+  "style": "19th-century anatomical plate, engraving",
+  "idiom": "anatomical plate: specimen, numbered callouts, key, engraved hatching",
+  "rule": "One fitting-module is drawn forty times on a standing body that is never drawn, and the forty numbers are placed on an Archimedean spiral (r = 262 + 6.0i, theta = 0.62i) so the sequence is a rotation, not a list; fitting 21 is inverted (the break).",
+  "readings": {
+    "far": "a technical anatomical plate: a hatched field, a symmetric specimen, a ring of numbered stations, a key at the foot",
+    "middle": "an exploded heart-pump with filter lungs, a boiler skull, a flanged spine, ribs and a plinth, circled by a spiral of forty numbers",
+    "near": "seven-segment numerals as drawn paths; forty fittings whose leader terminals trace a standing body; the boiler's twelve rivets; the key's rectangular spiral of forty cells; the shadow cross-hatching"
+  },
+  "palette": [
+    "#efe6d2 paper",
+    "#2a2119 ink",
+    "#a9834f sepia wash",
+    "#a83a2c arterial red",
+    "#35597f venous blue"
+  ],
+  "techniques": [
+    "generative numbering: forty stations on an Archimedean spiral, not a list",
+    "callout leaders ending on a hidden standing body (head, arms, trunk, legs)",
+    "the parts are an exploded machine-organism: bellows heart, filter lungs, boiler skull, flanged spine",
+    "seven-segment numerals drawn as vector paths (no text element)",
+    "engraved ground: 150 rule lines, a nervous grid, cross-hatched shadow",
+    "the key as a second spiral (rectangular), forty cells",
+    "grain as the final layer"
+  ],
+  "statement": "A plate of a body made of its own instruments. Forty fittings are numbered on a widening spiral and sited on a standing frame that is never engraved: the heart is a pump, the lungs are filters, the skull is a boiler, and if you follow the leaders in order the fittings draw the man.",
+  "artist": "colorista"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "M2",
+  "title": "El Puente",
+  "idiom": "ukiyo-e crowd print",
+  "scene": "a wooden bridge in the rain, people crossing in both directions, boats and a fisherman below, a festival with lanterns on the far bank",
+  "crowdRule": "The bridge recedes in eight bays of five figures, scale falling with each bay; every umbrella takes the next colour in a fixed sequence (red, indigo, cream), so the umbrellas are a register running up the bridge.",
+  "findIt": "a small white heron appears 7 times, always at the edge of the frame, at different scales and in two poses (standing, flying)",
+  "readings": {
+    "far": "At 400 px: a diagonal bridge in rain, a dense band of red/indigo/cream umbrellas, indigo water below, a lit far bank.",
+    "middle": "At 1600 px: eight bays of five figures, the umbrella colour register, boats and a fisherman below, a festival crowd and lantern strings on the far bank.",
+    "near": "At 100%: robes, kasa hats, bundles, porter poles, the fisherman's net, the herons' legs and beaks, lantern reflections."
+  },
+  "palette": {
+    "paper": "#ece4d2",
+    "ink": "#1c1a18",
+    "sky": [
+      "#c6cdcc",
+      "#dcd9cb"
+    ],
+    "water": [
+      "#2b4a6b",
+      "#3d6084"
+    ],
+    "wood": [
+      "#8a6438",
+      "#5d4326"
+    ],
+    "red": "#b33a2a",
+    "indigo": "#2b4f7a",
+    "cream": "#e8dfc8"
+  },
+  "techniques": [
+    "procedural figure function (robe, kasa, umbrella, porter pole, samurai sword, monk staff)",
+    "eight bays of five with perspective scale",
+    "fixed red/indigo/cream umbrella sequence",
+    "rain overlay of 240 strokes",
+    "naturalistic heron module at seven frame edges"
+  ],
+  "statement": "A bridge in the rain: eight bays of five, umbrellas moving up the span in a fixed sequence of red, indigo and cream. Below, a fisherman works the water the bridge ignores; on the far bank the festival has already begun. Seven white herons keep to the edges of the frame.",
+  "artist": "grabador"
+}

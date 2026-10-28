@@ -1,0 +1,28 @@
+{
+  "id": "V8",
+  "slug": "observatorio",
+  "title": "Observatorio",
+  "style": "minimal symbolist poster",
+  "theme": "desert astronomy, 2040",
+  "artist": "lead",
+  "year": 2026,
+  "composition": "silhouette against void: 85% sky, tiny subjects on the horizon line",
+  "palette": [
+    "#0b0b1a",
+    "#33294a",
+    "#a05a4c",
+    "#f0b878",
+    "#fff8e6",
+    "#241521",
+    "#0b0709"
+  ],
+  "techniques": [
+    "seven-stop dusk gradient",
+    "moon halo",
+    "satellite trail",
+    "silhouette grouping",
+    "long cast shadow",
+    "grain"
+  ],
+  "statement": "A dome, a dish and one person with a lamp, on a plain at the end of the day. The picture is almost all air; the subjects are small enough to be lost, and that is the subject — the scale of the sky against the smallness of the equipment we point at it."
+}

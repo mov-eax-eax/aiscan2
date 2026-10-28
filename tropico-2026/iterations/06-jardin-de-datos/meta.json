@@ -1,0 +1,26 @@
+{
+  "id": "06",
+  "title": "Jardín de Datos",
+  "style": "cyber-botanical art nouveau / botanical plate",
+  "artist": "vectorista",
+  "year": 2026,
+  "palette": [
+    "#F3E8CA",
+    "#17140F",
+    "#153728",
+    "#2C5F44",
+    "#A6BC8C",
+    "#DE5B39",
+    "#C6933C",
+    "#E2BE74"
+  ],
+  "techniques": [
+    "one 48x56 border module repeated on all four sides with <use>",
+    "catmull-rom tubes for stems, vines and cable",
+    "local-space clipPaths so the solar-cell grid sits inside the leaf",
+    "two line weights throughout (contour 2.1, detail 0.8-1.2)",
+    "soft sky gradient, otherwise flat fills only",
+    "grain overlay at 10%"
+  ],
+  "statement": "I drew the hardware as the plant rather than beside it: the leaves are solar panels whose cell wiring is their venation, the flower is a satellite dish with its paraboloid rings and its LNB standing up out of the petals, the roots are a cable mat, and the seed in the third inset is a cut cable end whose strands splay like roots. The plate form — border, specimen, three details, cartouche — is the argument, not a frame: this is a plant catalogued by the same apparatus that catalogs the country. The gardener is half-eaten by the thing he maintains, which is the only sentence the picture needs."
+}

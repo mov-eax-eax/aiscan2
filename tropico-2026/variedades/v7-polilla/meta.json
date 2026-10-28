@@ -1,0 +1,30 @@
+{
+  "id": "V7",
+  "slug": "polilla",
+  "title": "Polilla",
+  "style": "photorealist macro painting",
+  "theme": "bio-digital — a moth whose scales are circuits",
+  "artist": "lead",
+  "year": 2026,
+  "composition": "extreme macro: one wing fills the frame, no horizon, no background",
+  "palette": [
+    "#070905",
+    "#2a1c0c",
+    "#6b4a22",
+    "#a97b3c",
+    "#e8c184",
+    "#c98a3e",
+    "#2ec7c0",
+    "#d24a8a",
+    "#8a5cff"
+  ],
+  "techniques": [
+    "scale pattern with circuit traces",
+    "banded iridescence",
+    "procedural fringe hairs",
+    "torn-scale damage",
+    "rim light",
+    "grain"
+  ],
+  "statement": "I wanted the opposite of a landscape: no sky, no horizon, no place. The whole frame is one moth wing, and the scales carry circuit traces, so the closer you look the less natural it gets. The composition is a single diagonal edge and a field — the eye has nowhere to rest, which is the point of a macro."
+}

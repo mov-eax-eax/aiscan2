@@ -1,0 +1,36 @@
+{
+  "id": "v3",
+  "title": "Delta",
+  "style": "cartographic realism / woodblock flat colour (aerial survey)",
+  "theme": "a drowned coastline, 2100",
+  "artist": "aereo",
+  "year": 2026,
+  "palette": [
+    "#efe4c6",
+    "#e9dfbc",
+    "#d7c287",
+    "#e4d6a8",
+    "#c69a4c",
+    "#a9a06a",
+    "#a34f2c",
+    "#9db5ab",
+    "#6d99a0",
+    "#3f7285",
+    "#3e4f53",
+    "#2c3c40",
+    "#1b2a2c"
+  ],
+  "techniques": [
+    "hand-authored SVG, 1600x1200",
+    "flat colour fields with one consistent ink keyline",
+    "nine rotated polder districts with independent survey grids",
+    "braided deep-water channels cut through tidal flats",
+    "shore waterlining (two offset ink rings)",
+    "tide-flooded town: roofs, wall-tops, waterlines, washed reflections, two fully submerged footprints",
+    "survey furniture drawn as graphics: north arrow, engraved scale bar, triangulation marks, dotted traverses, datum triangles",
+    "submerged field grid ghosts on the water",
+    "grain last"
+  ],
+  "statement": "I drew the coast as a survey plate and let the survey be the only thing still sure of itself: the polders have become a braid, the sea is in the streets of the town, and the north arrow still points. The picture has no horizon and no centre because a drowned plain has neither; the eye is meant to keep travelling along the channels and never arrive. The town is half under water and the roofs that break the surface are drawn the way a map draws a fact: flat, thin-lipped, exact.",
+  "composition": "all-over aerial topography. Edge-to-edge ground plane, no horizon, no sky, four edge-bleeds; braided channel network, rotated field polygons and a distributed half-drowned town at unequal intervals; survey marks and traverses as connective tissue; deliberately no single focal point — the town is a dense passage, not a subject."
+}

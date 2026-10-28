@@ -1,0 +1,35 @@
+{
+  "id": "m7-la-caza",
+  "title": "La Caza",
+  "idiom": "millefleurs tapestry",
+  "scene": "a hunt across a flowering field: riders and hounds in three depth bands, a stag at bay in the foreground, a falconer over the river, a picnic, a mill, a castle on the hill, animals hidden in the flowers",
+  "crowdRule": "The millefleurs module repeats on a 64 px lattice; figures are placed in three depth bands at a fixed scale ratio (1 : 0.62 : 0.40), and every third figure belongs to the hunt (hunter, hound or quarry).",
+  "findIt": "a white hare, 10 times, in ten poses; five half-hidden in the flowers",
+  "readings": {
+    "far": "a dark green tapestry field with flowers, a river band, a castle on the hill and a large pale animal at bay in the foreground",
+    "middle": "riders and hounds in three bands, the stag turning, the picnic, the mill and the falconer; three simultaneous actions",
+    "near": "ten hares in ten poses, fourteen hidden animals inside the module, the weave and the border"
+  },
+  "palette": [
+    "#1e3b35 field",
+    "#24453d field light",
+    "#e8dcc0 cream",
+    "#f2ecd8 white",
+    "#c46a6a rose",
+    "#c9a03c gold",
+    "#8a4a2a russet",
+    "#4e7a63 verdigris",
+    "#3d6a72 water",
+    "#241d18 ink"
+  ],
+  "techniques": [
+    "procedural millefleurs field on a 64 px lattice",
+    "three depth bands with a fixed scale ratio",
+    "hand-placed incidents (stag at bay, picnic, falconer, miller)",
+    "animal silhouettes built from body, neck, head and legs with corrected proportions",
+    "ten white hares as the find-it thread, five camouflaged",
+    "grain as the final layer"
+  ],
+  "statement": "A hunt laid on a tapestry field that does not care about it: the flowers repeat, the hunt is arranged in three depths, and the stag is at bay but not taken. Ten white hares are in the field, five of them inside the flowers.",
+  "artist": "colorista"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "05",
+  "title": "La Red",
+  "style": "post-digital / thermal / surveillance",
+  "artist": "colorist",
+  "year": 2026,
+  "palette": [
+    "#04060c",
+    "#0d1a2e",
+    "#16475f",
+    "#2f97a4",
+    "#8e3068",
+    "#c04a7e",
+    "#e0708f",
+    "#f79a4c",
+    "#ffc987",
+    "#fff4dc",
+    "#9fd7ea"
+  ],
+  "techniques": [
+    "false-colour thermal ramp",
+    "displacement warped heat edges",
+    "auto-gain organised values",
+    "blank glass (opaque to LWIR)",
+    "sensor grain and gain blotch",
+    "burned-in timestamp as unreadable marks"
+  ],
+  "statement": "I organised the frame by the sensor rather than painting a night street and laying a palette over it: the two people are the moving zero that every other value is measured against, and the coldest things are the roofs and the window the camera cannot see into. The marks are four and they are the state's, not mine. The dread is that it is a beautiful picture and nobody in it consented to be looked at."
+}

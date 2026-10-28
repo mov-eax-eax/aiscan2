@@ -1,0 +1,226 @@
+Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation
+{
+  "checks": [
+    {
+      "name": "all modules load in node",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "level data exists",
+      "ok": true,
+      "detail": {
+        "width": 6400,
+        "blocks": 35,
+        "enemies": 28
+      }
+    },
+    {
+      "name": "level3d builds",
+      "ok": true,
+      "detail": 54
+    },
+    {
+      "name": "water at spawn",
+      "ok": true,
+      "detail": {
+        "x": 100,
+        "y": 200
+      }
+    },
+    {
+      "name": "no water on beach plateau",
+      "ok": true,
+      "detail": false
+    },
+    {
+      "name": "water top at start is 900",
+      "ok": true,
+      "detail": 900
+    },
+    {
+      "name": "geometry: goal reachable from start by free-space flood fill",
+      "ok": true,
+      "detail": {
+        "startCell": {
+          "cx": 6,
+          "cy": 12
+        },
+        "goalCell": {
+          "cx": 380,
+          "cy": 56
+        },
+        "reachableCells": 19736
+      }
+    },
+    {
+      "name": "geometry: checkpoint 1 reachable (Gardens)",
+      "ok": true,
+      "detail": {
+        "x": 960,
+        "y": 640
+      }
+    },
+    {
+      "name": "geometry: checkpoint 2 reachable (Tunnel)",
+      "ok": true,
+      "detail": {
+        "x": 1700,
+        "y": 660
+      }
+    },
+    {
+      "name": "geometry: checkpoint 3 reachable (Gauntlet)",
+      "ok": true,
+      "detail": {
+        "x": 2360,
+        "y": 700
+      }
+    },
+    {
+      "name": "geometry: checkpoint 4 reachable (Ascent)",
+      "ok": true,
+      "detail": {
+        "x": 3900,
+        "y": 450
+      }
+    },
+    {
+      "name": "geometry: every column has a >=96px vertical opening",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "entities spawn from level data",
+      "ok": true,
+      "detail": 28
+    },
+    {
+      "name": "no enemy spawns inside a solid",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "water: idle player sinks slowly (not a rock) and does not fall through the floor",
+      "ok": true,
+      "detail": {
+        "minY": 40,
+        "sinkRate": 53,
+        "inWater": true
+      }
+    },
+    {
+      "name": "water: sustained strokes can ascend to the surface",
+      "ok": true,
+      "detail": {
+        "yHover": 500,
+        "hoverMin": 507,
+        "hoverMax": 1012
+      }
+    },
+    {
+      "name": "water: stroking gains height",
+      "ok": true,
+      "detail": {
+        "from": 300,
+        "to": 883
+      }
+    },
+    {
+      "name": "physics: swim controller makes large progress to the right",
+      "ok": true,
+      "detail": {
+        "maxX": 6032,
+        "goalX": 6150,
+        "ratio": 0.98,
+        "stuckFrames": 0
+      }
+    },
+    {
+      "name": "goal: walking to the flag emits goal",
+      "ok": true,
+      "detail": {
+        "x": 6107,
+        "y": 900
+      }
+    },
+    {
+      "name": "land: player falls and lands in the dry bonus room",
+      "ok": true,
+      "detail": {
+        "y": 1160,
+        "onGround": true
+      }
+    },
+    {
+      "name": "damage: big -> small, small -> dead",
+      "ok": true,
+      "detail": {
+        "afterDamage": "small",
+        "dead": true
+      }
+    },
+    {
+      "name": "items: coins present",
+      "ok": true,
+      "detail": 96
+    },
+    {
+      "name": "items: ? blocks present",
+      "ok": true,
+      "detail": 3
+    },
+    {
+      "name": "items: a frog suit exists",
+      "ok": true,
+      "detail": [
+        "frogsuit",
+        "oneup",
+        "starman"
+      ]
+    }
+  ],
+  "pass": 24,
+  "fail": 0,
+  "info": {
+    "threeRevision": "158",
+    "load_core.js": "ok",
+    "load_textures.js": "ok",
+    "load_level.js": "ok",
+    "load_level3d.js": "ok",
+    "load_player.js": "ok",
+    "load_entities.js": "ok",
+    "load_goal.js": "ok",
+    "level": {
+      "width": 6400,
+      "zones": 12,
+      "blocks": 35,
+      "blocks2": 3,
+      "pipes": 4,
+      "enemies": 28,
+      "items": 99,
+      "checkpoints": 4,
+      "solids": 54,
+      "rooms": 1
+    },
+    "floodFill": {
+      "reachableCells": 19736,
+      "totalCells": 26800,
+      "goalReachable": true,
+      "startCell": {
+        "cx": 6,
+        "cy": 12
+      },
+      "goalCell": {
+        "cx": 380,
+        "cy": 56
+      }
+    },
+    "entities": 28,
+    "swimRun": {
+      "maxX": 6032,
+      "t": 150,
+      "y": 1028
+    }
+  }
+}

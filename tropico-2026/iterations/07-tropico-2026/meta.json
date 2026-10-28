@@ -1,0 +1,28 @@
+{
+  "id": "07",
+  "slug": "tropico-2026",
+  "title": "Trópico 2026 (Retablo)",
+  "style": "three-ink screenprint / retablo",
+  "artist": "lead",
+  "year": 2026,
+  "palette": [
+    "#efe3c6",
+    "#1b120a",
+    "#bf4026",
+    "#2e6f6a",
+    "#c9954a"
+  ],
+  "techniques": [
+    "flat ink plates",
+    "halftone dots",
+    "hatch patterns",
+    "misregistration",
+    "paper grain"
+  ],
+  "statement": "The collection's argument made as an object: a cheap printed retablo, hung in the house it depicts. Three panels, three ways of knowing one street — the private room, the threshold, and the state's thermal eye — with the inventory printed underneath like a ledger of saints.",
+  "tags": [
+    "hero",
+    "synthesis",
+    "print"
+  ]
+}

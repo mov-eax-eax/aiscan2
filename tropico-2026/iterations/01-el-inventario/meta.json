@@ -1,0 +1,32 @@
+{
+  "id": "01",
+  "title": "El Inventario",
+  "style": "Spanish realism / bodegón",
+  "artist": "maestro",
+  "year": 2026,
+  "palette": [
+    "#0b0907",
+    "#14110d",
+    "#2c2820",
+    "#4a3d27",
+    "#7d693d",
+    "#a3895a",
+    "#c6a05c",
+    "#92441a",
+    "#7d350c",
+    "#3d2812",
+    "#8a8371",
+    "#5f6a5c",
+    "#0d1116"
+  ],
+  "techniques": [
+    "tenebrist wash",
+    "shutter-edge light pocket",
+    "cast silhouettes with userSpaceOnUse shadow fade",
+    "caustic through glass",
+    "concrete aggregate pattern",
+    "displacement edge break-up",
+    "double grain"
+  ],
+  "statement": "I built the picture around a single decision: the glass of water is the brightest thing in the room and the mango is second. The light is a pocket low on the wall through a shutter, so the three standing objects are silhouettes separated by their edges, and their shadows fall on the lit wall — which is what makes them sit in a room and not on a shelf. The counter's front edge and the dark under it hold the register line: everything above it is the household, everything below it is the rest of the house."
+}

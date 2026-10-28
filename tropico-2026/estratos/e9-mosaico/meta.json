@@ -1,0 +1,37 @@
+{
+  "id": "E9",
+  "title": "Mosaico",
+  "style": "Soviet mosaic panel, tesserae and cement joints",
+  "idiom": "Soviet mosaic panel (bus stop / palace of culture), heroic workers and agriculture",
+  "rule": "A 34x24 tessera grid with per-cell colour jitter; every 97th tessera is displaced and darkened, and the background jitter is biased toward warm red inside a five-point star, so a second image exists only at a distance.",
+  "readings": {
+    "far": "At 400 px: a bordered mosaic panel with a red star burned into the field behind a worker and a peasant woman.",
+    "middle": "At 1600 px: the heroic figure group (cream shirt, blue overalls, hammer; red dress, cream apron, gold sheaf), the sun, the border course, the tesserae.",
+    "near": "At 100%: grout joints, per-tile rotation and colour jitter, missing tiles, patina, and a diagonal thread of tesserae that are out of place every 97 tiles; the star dissolves into tile noise."
+  },
+  "palette": {
+    "field": [
+      "#b5763f",
+      "#c98d4f",
+      "#a86a3a"
+    ],
+    "star": "#5a1511",
+    "red": "#b8382a",
+    "deepred": "#8f2a20",
+    "cream": "#ede1c6",
+    "blue": "#2c4a6e",
+    "gold": "#e3c98e",
+    "skin": "#e0b48a",
+    "dark": "#20232a",
+    "grout": "#7e7568"
+  },
+  "techniques": [
+    "34x24 tessera grid, per-tile rotation and colour jitter",
+    "point-in-polygon figure composition rasterised to tesserae",
+    "hidden second image as a colour bias inside a five-point star",
+    "every 97th tessera displaced, rotated and darkened (diagonal thread)",
+    "border course, cement joints, missing tiles and patina"
+  ],
+  "statement": "A public wall carries two images: the commission (worker, woman, sun, harvest) and the one the field makes when you step back — a red star hidden in the tiles. Up close it is material, grout, repair and one tile in ninety-seven out of place.",
+  "artist": "grabador"
+}

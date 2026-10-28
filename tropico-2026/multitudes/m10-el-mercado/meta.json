@@ -1,0 +1,35 @@
+{
+  "id": "M10",
+  "slug": "el-mercado",
+  "title": "El Mercado",
+  "idiom": "night market scene",
+  "scene": "a market street at night: stalls, crowd, bulbs, wet ground",
+  "artist": "lead",
+  "year": 2026,
+  "crowdRule": "86 figures placed by depth; density peaks in the middle distance; stalls recede in bays of two per side, awnings alternating through a four-colour cycle; every figure faces along the street, never at the viewer.",
+  "findIt": "9 small red lanterns, one per depth band, never at the same height",
+  "readings": {
+    "far": "a lit street receding to a point: orange stalls either side, dark crowd, moon and wires above",
+    "middle": "three stories: an argument mid-left, a vendor pouring at a stall, a child chasing a cat lower right",
+    "near": "wet-ground reflections, goods as coloured dots, the nine red lanterns, foreground silhouettes cropping the frame"
+  },
+  "palette": [
+    "#06080f",
+    "#1d1610",
+    "#0a0705",
+    "#7e2a20",
+    "#8a5c26",
+    "#26504a",
+    "#ff9a4a",
+    "#ffe1b0"
+  ],
+  "techniques": [
+    "one-point perspective street",
+    "procedural crowd with pose variants",
+    "billboard stalls by depth",
+    "catenary light strings",
+    "wet-ground reflections",
+    "haze"
+  ],
+  "statement": "A night market is the densest social machine I could draw: eighty-six people, twenty stalls, and no protagonist. The light does the storytelling - each bulb is a small sun with its own pool on the wet ground."
+}

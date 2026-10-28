@@ -1,0 +1,33 @@
+{
+  "id": "m8-jardin-de-los-datos",
+  "title": "El Jardín de los Datos",
+  "idiom": "Boschian garden",
+  "scene": "a garden of devices in six beds: server racks grown as hedges, machines standing on roots, a fountain spouting cable, a pavilion walled with monitors, a tree fruiting routers, animals with antennae, and a procession carrying screens",
+  "crowdRule": "Six beds in a 3 x 2 grid; each bed grows one device species and every human belongs to a bed and serves it, except the procession, which is the only group allowed to cross beds. Every third gardener carries a tool.",
+  "findIt": "a small naked human, 9 times, in nine absurd acts (astride a cable, inside a rack, riding a router, screen on the head, bathing in the fountain, asleep in a bed, feeding an antenna-animal, measuring a machine, hanging from the pavilion)",
+  "readings": {
+    "far": "a pale garden divided into six beds, each with a different machine, with crowds of small figures and a pale horizon",
+    "middle": "the six species are distinguishable - rack hedges, root machines, cable fountain, monitor pavilion, router tree, antenna animals - the procession crosses the middle and the tug reads in the foreground",
+    "near": "rack rows with lights and leaves, the monitors, the routers, the nine naked figures and their absurd acts"
+  },
+  "palette": [
+    "#d9c9a3 ochre",
+    "#ede2c6 cream",
+    "#d8a8a0 pale pink",
+    "#a9c4b8 pale green",
+    "#9a5a3c russet",
+    "#8a8f88 device grey",
+    "#7aa8c8 screen",
+    "#3b2a20 ink"
+  ],
+  "techniques": [
+    "six device beds as a catalogue grid",
+    "one device species per bed, tended by its own gardeners",
+    "a procession that crosses the grid (the only cross-bed group)",
+    "nine naked figures in absurd acts as the find-it thread",
+    "flat Bosch palette with drawn device detail",
+    "grain as the final layer"
+  ],
+  "statement": "A garden where the beds grow machines and the gardeners tend them like relics: a fountain of cable, a pavilion of monitors, a tree fruiting routers, and a procession carrying screens out of the beds. Nine small naked people are loose in it, doing the only sensible things left.",
+  "artist": "colorista"
+}

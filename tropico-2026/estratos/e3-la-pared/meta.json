@@ -1,0 +1,32 @@
+{
+  "id": "E3",
+  "slug": "la-pared",
+  "title": "La Pared",
+  "style": "palaeolithic wall / painted limestone",
+  "idiom": "cave wall",
+  "artist": "lead",
+  "year": 2026,
+  "rule": "Fourteen clusters of five hands. Within each cluster the hands shrink one generation at a time and exactly one hand is inverted; the clusters are separated by empty rock.",
+  "readings": {
+    "far": "a wall of ochre and charcoal handprints: a census, a crowd, a population",
+    "middle": "clusters of five generations each, some sprayed, some stamped, a few so old they are nearly gone",
+    "near": "a quadcopter painted in the same ochre in the clearing; tallies in three corners; one inverted hand per cluster"
+  },
+  "palette": [
+    "#b78f63",
+    "#8a6a44",
+    "#a8461f",
+    "#8f3a1e",
+    "#2a211c",
+    "#c4a173"
+  ],
+  "techniques": [
+    "procedural hand stamps",
+    "spray displacement",
+    "diffuse-lit rock",
+    "pigment roughening",
+    "charcoal tallies",
+    "grain"
+  ],
+  "statement": "A wall of hands is the oldest census we have. I painted it as a count: fourteen clusters, five generations each, one hand in every cluster turned upside down - the one that did not survive the count. The only modern object on the wall is a drone, painted in the same ochre, in the one clearing."
+}

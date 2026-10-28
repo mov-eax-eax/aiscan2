@@ -1,0 +1,10 @@
+{
+  "name": "dualsense-3d-study",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A detailed procedural Three.js study of the PlayStation 5 DualSense controller.",
+  "scripts": {
+    "start": "node serve.mjs"
+  }
+}

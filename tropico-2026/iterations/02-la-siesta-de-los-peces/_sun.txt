@@ -1,0 +1,12 @@
+// ---- the sun event, top right (curator fix 3)
+P('<ellipse cx="1520" cy="30" rx="300" ry="220" fill="#ffffff" opacity="0.95" filter="url(#b26)"/>');
+P('<ellipse cx="1500" cy="10" rx="150" ry="120" fill="#ffffff" opacity="0.95" filter="url(#b8)"/>');
+P('<path d="M1370 0 L 1600 0 L 1600 250 L 1420 210 Z" fill="#fffdf4" opacity="0.55" filter="url(#b24)"/>');
+P('<path d="M1340 60 L 1600 30 L 1600 62 L 1350 96 Z" fill="#fff6dd" opacity="0.5" filter="url(#b14)"/>');
+// sunlight through the cloth: the tarp glows warm from behind, one bright fold
+P('<path d="M974 296 C 1040 322 1120 350 1200 376 C 1240 390 1280 400 1300 404 L 1330 420 L 1470 -40 L 980 -40 L 950 200 Z" fill="#ffd79a" opacity="0.30"/>');
+P('<path d="M1060 250 C 1140 290 1230 330 1310 366 L 1340 300 C 1250 262 1160 222 1080 180 Z" fill="#ffe8b8" opacity="0.40" filter="url(#b14)"/>');
+P('<path d="M1150 90 C 1200 170 1250 260 1290 350" stroke="#fffbe8" stroke-width="16" opacity="0.35" filter="url(#b14)"/>');
+// the pole's shadow on the underside of the cloth
+P('<path d="M1000 300 L 1044 120 L 1076 128 L 1014 306 Z" fill="#8a6a6a" opacity="0.22" filter="url(#b14)"/>');
+// ================= FIGURES =================

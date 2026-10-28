@@ -1,0 +1,11 @@
+{
+  "name": "eif3",
+  "private": true,
+  "type": "module",
+  "description": "Procedural Eiffel Tower + Paris in three.js. Modular src, single-file build.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "serve": "node tools/serve.mjs",
+    "shot": "node tools/shot.mjs"
+  }
+}

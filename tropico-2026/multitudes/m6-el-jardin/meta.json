@@ -1,0 +1,37 @@
+{
+  "id": "m6-el-jardin",
+  "title": "El Jardín",
+  "idiom": "Mughal miniature",
+  "scene": "a walled chahar-bagh durbar: a ruler on a marble terrace, courtiers, musicians, servants, two elephants with howdahs, water channels and fountains, cypresses, parterres",
+  "crowdRule": "Every figure stands in one of the four quadrants of the chahar bagh (read from the feet); three quadrants hold the durbar and the fourth holds exactly one person. Secondary rule: in every group of three courtiers one carries a fan.",
+  "findIt": "a drone painted as a bird, 8 times, at eight heights across the sky (x = 210, 430, 620, 790, 960, 1130, 1290, 1460; y from 70 to 300)",
+  "readings": {
+    "far": "a walled garden with a white pavilion, a cross of blue water, crowds in three quadrants and a bare fourth",
+    "middle": "the durbar: audience on the terrace, musicians on a carpet, servants with trays (one dropped), two elephants, guards on the wall; four depth planes with figures shrinking by ground line",
+    "near": "turban-jama-sash figure construction, the drone-birds rotor rings, the parterre flowers, the single gardener in the empty quadrant"
+  },
+  "palette": [
+    "#efdcb4 sky",
+    "#c9d6cf pale blue",
+    "#6f8f5a garden",
+    "#8fae74 parterre",
+    "#2e4f7a water",
+    "#f3ead6 marble",
+    "#c08a46 wall",
+    "#b23a2a vermilion",
+    "#d9a23c saffron",
+    "#c97a72 rose",
+    "#3a2a1e ink"
+  ],
+  "techniques": [
+    "chahar-bagh plan as compositional grid: four quadrants, cross of channels",
+    "single depth-scale function: figure height = 44 + (groundY - 520) x 0.175",
+    "four depth planes including a cropped foreground",
+    "procedural crowd with hand-placed incidents (dropped tray, bowing courtier, elephant loading)",
+    "flat Mughal palette, marble architecture, chhatri with plinth, pillars, cornice and dome",
+    "eight drone-as-bird motifs at varying heights",
+    "grain as the final layer"
+  ],
+  "statement": "A walled garden durbar planned as a chahar bagh: three quadrants full of court, music and service, the fourth empty except for one gardener, because the ruler procession has not arrived - and eight birds above the garden that are not birds.",
+  "artist": "colorista"
+}

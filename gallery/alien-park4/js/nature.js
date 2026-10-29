@@ -313,6 +313,12 @@ export function createNature() {
     tail.rotation.x = Math.PI / 2;
     ray.add(tail);
     ray.userData = { radius: range(rng, 34, 58), height: range(rng, 28, 52), angle: range(rng, 0, TAU), speed: range(rng, 0.03, 0.075), wings, phase: range(rng, 0, TAU) };
+    if (i === 0) {
+      ray.scale.setScalar(2.8);
+      ray.userData.radius = 36;
+      ray.userData.height = 38;
+      ray.userData.speed = 0.018;
+    }
     rays.add(ray);
   }
   updates.push((dt, time) => {

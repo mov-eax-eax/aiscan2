@@ -46,7 +46,8 @@ Build an impressive, modular HTML+JS alien park from scratch. Then improve it th
 
 ## Claims
 
-- Lead: ran cycles 00–15; wrote `gallery/alien-park4/`.
+- Lead: ran cycles 00–18; wrote `gallery/alien-park4/`.
 - Critic: independent pass complete in `cycles/critic-01.md`; reviewer saw only the cycle-01 render and did not touch app source.
 - Cycle 12 is deliberately recorded as a failed pass and was reverted in cycle 13.
-- The process archive is inside the app under **Process ↗** and contains all sixteen renders (base + fifteen RSI passes).
+- Phase II reframes the park as an entertainment park: scale is declared in `ALIENOLOGY.md` and the in-app **Park guide**, and the rides/ecology are part of the visitor promise.
+- The process archive is inside the app under **Process ↗** and contains all nineteen renders (base + eighteen RSI passes).

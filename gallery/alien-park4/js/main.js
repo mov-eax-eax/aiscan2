@@ -3,6 +3,8 @@ import { createSky } from './sky.js';
 import { createTerrain } from './terrain.js';
 import { createArchitecture } from './architecture.js';
 import { createNature } from './nature.js';
+import { createEcosystem } from './ecosystem.js';
+import { createAttractions } from './attractions.js';
 import { PROCESS } from './process.js';
 
 const params = new URLSearchParams(location.search);
@@ -16,6 +18,9 @@ const processButton = document.getElementById('process');
 const processOverlay = document.getElementById('processOverlay');
 const processBody = document.getElementById('processBody');
 const closeProcess = document.getElementById('closeProcess');
+const guideButton = document.getElementById('guide');
+const guideOverlay = document.getElementById('guideOverlay');
+const closeGuide = document.getElementById('closeGuide');
 const cycleNumber = document.getElementById('cycleNumber');
 const cycleNote = document.getElementById('cycleNote');
 const fpsEl = document.getElementById('fps');
@@ -29,20 +34,26 @@ const architecture = createArchitecture();
 world.scene.add(architecture.group);
 const nature = createNature();
 world.scene.add(nature.group);
+const ecosystem = createEcosystem();
+world.scene.add(ecosystem.group);
+const attractions = createAttractions();
+world.scene.add(attractions.group);
 for (const update of architecture.updates) world.addUpdate(update);
 for (const update of nature.updates) world.addUpdate(update);
+for (const update of ecosystem.updates) world.addUpdate(update);
+for (const update of attractions.updates) world.addUpdate(update);
 
 // The base view. Later cycles may move this; keep it centered on the bloom.
-world.setView({ theta: 0.86, phi: 0.30, radius: 120, targetY: 23 });
+world.setView({ theta: 0.86, phi: 0.32, radius: 125, targetY: 25 });
 const viewParam = (key, fallback) => {
   const value = Number(params.get(key));
   return Number.isFinite(value) && params.has(key) ? value : fallback;
 };
 world.setView({
   theta: viewParam('theta', 0.86),
-  phi: viewParam('phi', 0.30),
-  radius: viewParam('radius', 120),
-  targetY: viewParam('target', 23),
+  phi: viewParam('phi', 0.32),
+  radius: viewParam('radius', 125),
+  targetY: viewParam('target', 25),
 });
 if (params.get('orbit') === '0') world.setAutoOrbit(false);
 orbitButton.classList.toggle('on', world.getAutoOrbit());
@@ -79,6 +90,15 @@ closeProcess.addEventListener('click', () => {
 });
 processOverlay.addEventListener('click', (event) => {
   if (event.target === processOverlay) processOverlay.hidden = true;
+});
+guideButton.addEventListener('click', () => {
+  guideOverlay.hidden = false;
+});
+closeGuide.addEventListener('click', () => {
+  guideOverlay.hidden = true;
+});
+guideOverlay.addEventListener('click', (event) => {
+  if (event.target === guideOverlay) guideOverlay.hidden = true;
 });
 orbitButton.addEventListener('click', () => {
   const next = !world.getAutoOrbit();

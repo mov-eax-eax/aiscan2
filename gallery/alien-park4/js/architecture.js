@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { mulberry32, range, pick, chance } from './rng.js';
+import { bump } from './textures.js';
 
 const TAU = Math.PI * 2;
 const hsl = (h, s, l) => new THREE.Color().setHSL(((h % 360) + 360) % 360 / 360, s, l);
@@ -67,8 +68,10 @@ export function createArchitecture() {
   const rng = mulberry32(22061);
   const updates = [];
 
-  const metal = new THREE.MeshStandardMaterial({ color: 0x414a63, roughness: 0.4, metalness: 0.55, emissive: 0x111d2b, emissiveIntensity: 0.55, flatShading: true });
-  const dark = new THREE.MeshStandardMaterial({ color: 0x181f30, roughness: 0.8, metalness: 0.2, emissive: 0x060c16, emissiveIntensity: 0.5, flatShading: true });
+  const panelBump = bump('panel');
+  const organicBump = bump('organic');
+  const metal = new THREE.MeshStandardMaterial({ color: 0x4a5470, roughness: 0.38, metalness: 0.5, emissive: 0x111d2b, emissiveIntensity: 0.55, flatShading: false, bumpMap: panelBump, bumpScale: 0.11 });
+  const dark = new THREE.MeshStandardMaterial({ color: 0x1d2639, roughness: 0.76, metalness: 0.2, emissive: 0x060c16, emissiveIntensity: 0.5, flatShading: false, bumpMap: panelBump, bumpScale: 0.14 });
   const gold = new THREE.MeshBasicMaterial({ color: 0xffd18f, transparent: true, opacity: 0.82, blending: THREE.AdditiveBlending, depthWrite: false });
   const teal = new THREE.MeshBasicMaterial({ color: 0x76ffe2, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false });
   const pink = new THREE.MeshBasicMaterial({ color: 0xff77d8, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending, depthWrite: false });
@@ -137,7 +140,9 @@ export function createArchitecture() {
       roughness: 0.22,
       metalness: 0.24,
       side: THREE.DoubleSide,
-      flatShading: true,
+      flatShading: false,
+      bumpMap: organicBump,
+      bumpScale: 0.12,
     });
     petal.add(mesh(geo, petalMat));
     const vein = new THREE.CatmullRomCurve3([
@@ -313,6 +318,9 @@ export function createArchitecture() {
     p.add(mesh(new THREE.CylinderGeometry(8.2, 9.2, 0.9, 10), dark, 0, 0.5, 0));
     p.add(mesh(new THREE.TorusGeometry(7.6, 0.12, 4, 34), accent, 0, 1.1, 0, Math.PI / 2));
     const bodyMat = mat(hsl(180 + i * 33, 0.28, 0.23), hsl(180 + i * 33, 0.65, 0.1), 0.8);
+    bodyMat.flatShading = false;
+    bodyMat.bumpMap = panelBump;
+    bodyMat.bumpScale = 0.1;
     const style = styles[i];
     if (style === 'dome') {
       p.add(mesh(new THREE.CylinderGeometry(5.8, 6.7, 3.6, 10), bodyMat, 0, 2.8, 0));

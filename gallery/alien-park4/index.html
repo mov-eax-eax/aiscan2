@@ -20,11 +20,12 @@
     <div>
       <p class="eyebrow">Alien Park 04</p>
       <h1>Xenosphere</h1>
-      <p class="tagline">A garden built by argument.</p>
+      <p class="tagline">An entertainment park grown by argument.</p>
     </div>
   </div>
   <nav class="actions">
     <button id="orbit" type="button" class="on">Auto orbit</button>
+    <button id="guide" type="button">Park guide ↗</button>
     <button id="process" type="button">Process ↗</button>
   </nav>
 </header>
@@ -39,6 +40,53 @@
   <span>Drag to orbit · Wheel to zoom</span>
   <span id="fps">— fps</span>
 </footer>
+
+<div class="process-overlay" id="guideOverlay" hidden>
+  <div class="process-panel guide-panel">
+    <div class="process-head">
+      <div>
+        <p class="eyebrow">Field notes · Asterion-9</p>
+        <h2>Park guide</h2>
+      </div>
+      <button id="closeGuide" type="button">Close ✕</button>
+    </div>
+    <div class="process-body">
+      <p class="process-intro">Xenosphere is a neutral-ground entertainment park on a manufactured island above the cloud deck of Asterion-9. Entry is free; the island takes its payment in attention. Six biospheres maintain an embassy here, and each one has been asked the same question: what does play look like where you are from?</p>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <span class="guide-kicker">01 / Scale</span>
+          <h3>Everything is measured in metres</h3>
+          <p>One scene unit is one metre. The island is 310 m across; the bloom crown stands 162 m above the deck. Pavilions run 28–52 m. The visitors are 1.5–1.8 m humanoids, the grazers 6–11 m, the maintenance drones 0.7 m, and the Quiet Object is 18 m tall. The promenade is 5.4 m wide, because two species must be able to pass without touching.</p>
+        </article>
+        <article class="guide-card">
+          <span class="guide-kicker">02 / Attractions</span>
+          <h3>Rides for bodies that are not ours</h3>
+          <p><b>The Halo</b> — a 13 m wheel spinning at the crown’s shoulder, with ten sealed pods. <b>The Drop</b> — 33 m of controlled falling for species that enjoy fear. <b>Carousel of Six</b> — eight seats that reshape themselves to the rider’s body plan. <b>Skyway</b> — a slow cable loop around the whole island. <b>Resonance</b> — a stage where sound is projected as light. <b>The Quiet Object</b> — no sign, no queue, no explanation.</p>
+        </article>
+        <article class="guide-card">
+          <span class="guide-kicker">03 / Ecology</span>
+          <h3>The park is a habitat, not a zoo</h3>
+          <p>The terraces are grazed by six-legged <i>thal</i> herds. Mechanical pollinators keep the lantern flora alive. Sky mantas filter the upper atmosphere and occasionally land on the roof of the bloom. The mist between terraces is not weather; it is the respiration of the fungal mat under the stone. Nothing here is in a cage. Everything here is a resident, a employee, or a rumour.</p>
+        </article>
+        <article class="guide-card">
+          <span class="guide-kicker">04 / Materials</span>
+          <h3>Five ways to make a surface</h3>
+          <p><b>Grown stone</b> — the terraces, cultured around a seed lattice. <b>Living glass</b> — the domes, still warm. <b>Cable muscle</b> — the skyway and the bloom’s outer veins, under tension. <b>Embassy alloy</b> — the mechanical quarter, deliberately over-engineered. <b>Null matter</b> — the Quiet Object’s surface, which returns light in colours that were not in the source.</p>
+        </article>
+        <article class="guide-card">
+          <span class="guide-kicker">05 / House rules</span>
+          <h3>Six rules, translated badly</h3>
+          <p>1. Do not touch the Quiet Object. 2. Do not feed the grazers; they are on a diet. 3. Ride only in a pod that has accepted your body plan. 4. If the mist follows you, walk faster. 5. The park closes at second moonrise. 6. If a manta lands on your roof, you are now a landmark.</p>
+        </article>
+        <article class="guide-card wide">
+          <span class="guide-kicker">06 / What we do not know</span>
+          <h3>Open questions, kept open</h3>
+          <p>Why does the bloom keep the core hot at night? Who built the Quiet Object, and why does it cast a shadow that points the wrong way? What do the mantas eat, and why do they only arrive when the carousel is running? Why do the embassy nameplates translate differently each time they are read? The park does not answer these. An entertainment park is allowed to leave a few things unexplained — that is where the audience lives.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="process-overlay" id="processOverlay" hidden>
   <div class="process-panel">

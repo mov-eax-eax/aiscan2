@@ -186,6 +186,15 @@ button { font: inherit; cursor: pointer; }
   background: #05090e;
 }
 .cycle-visual img { display: block; width: 100%; height: auto; opacity: 0.86; }
+.guide-panel { width: min(760px, 94vw); }
+.guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.guide-card { border: 1px solid rgba(145,255,230,0.11); background: rgba(8,14,21,0.42); padding: 13px 14px; }
+.guide-card.wide { grid-column: 1 / -1; }
+.guide-kicker { display: block; font-family: var(--mono); font-size: 8px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.guide-card h3 { margin: 0 0 7px; font-size: 18px; font-weight: 500; line-height: 1.1; }
+.guide-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+.guide-card b { color: var(--paper); font-weight: 500; }
+@media (max-width: 720px) { .guide-grid { grid-template-columns: 1fr; } .guide-card.wide { grid-column: auto; } }
 
 /* ------------------------------------------------------------------ shot */
 body.shot-mode .hud,

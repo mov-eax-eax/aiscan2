@@ -96,4 +96,20 @@ export const PROCESS = [
     title: 'The archive',
     critique: 'The park is detailed and the world names now hang over the pavilions as billboards. The remaining weakness is not geometry but memory: the fifteen passes are invisible inside the park itself. The RSI record should be part of the artifact.',
     action: 'Add the process archive with every cycle render, billboard the six embassy names, freeze the final baseline and close the run.',
+  },  {
+    n: '16',
+    title: 'Alienology',
+    critique: 'The low-poly criticism is correct. Bump maps, smoother surfaces, grazers, drones and a first unknown object add depth, but the park is still legible as a garden with lights, not as an entertainment park. The scale is unstated and the ecology is only decoration.',
+    action: 'Write the alienologist brief, add procedural material detail, and place the first organic, mechanical and unknown residents. Next: give the park rides and a visitor promise.',
+  },
+  {
+    n: '17',
+    title: 'Entertainment district',
+    critique: 'The skyway, drop tower, carousel, resonance stage, ticket arch and fireworks make the entertainment claim visible. The rides are still thin and small relative to the island, and the park guide exists only as a design note. The frame rate fell to the mid 40s.',
+    action: 'Move the attractions to the camera-facing terraces, enlarge them, add a nightly light show, and write the park guide into the HUD. Next: one final scale and framing pass.',
+  },  {
+    n: '18',
+    title: 'The park guide',
+    critique: 'The park is now framed as an entertainment park, with a skyway, drop tower, carousel, stage, grazers, drones, sky mantas and the Quiet Object. The guide states the scale, the six body plans and the open questions. The low-poly silhouette is still the limiting factor: detail that exists in the guide is not yet visible enough at the default framing.',
+    action: 'Ship the park guide, the alienology notes and the entertainment district together, then verify. Next: upgrade the asset language rather than adding more props.',
   },];

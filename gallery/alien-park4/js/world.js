@@ -39,9 +39,9 @@ export function createWorld(container) {
 
   const state = {
     theta: 0.86,
-    phi: 0.30,
-    radius: 120,
-    targetY: 23,
+    phi: 0.32,
+    radius: 125,
+    targetY: 25,
     auto: true,
     dragging: false,
     lastX: 0,
@@ -127,8 +127,8 @@ export function createWorld(container) {
     getAutoOrbit() { return state.auto; },
     resetView() {
       state.theta = 0.86;
-      state.phi = 0.30;
-      state.radius = 120;
+      state.phi = 0.32;
+      state.radius = 125;
       placeCamera();
     },
     setView({ theta, phi, radius, targetY } = {}) {

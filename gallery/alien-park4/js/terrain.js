@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { mulberry32, range, pick, chance } from './rng.js';
+import { bump } from './textures.js';
 
 const TAU = Math.PI * 2;
 
@@ -12,10 +13,13 @@ export function createTerrain() {
   group.name = 'terrain';
   const rng = mulberry32(48119);
 
-  const rock = new THREE.MeshStandardMaterial({ color: 0x1d2334, roughness: 0.88, metalness: 0.12, flatShading: true });
-  const rockWarm = new THREE.MeshStandardMaterial({ color: 0x31283a, roughness: 0.9, metalness: 0.08, flatShading: true });
-  const topA = new THREE.MeshStandardMaterial({ color: 0x123e3a, roughness: 0.76, metalness: 0.08, emissive: 0x061c1b, emissiveIntensity: 0.8 });
-  const topB = new THREE.MeshStandardMaterial({ color: 0x182f4c, roughness: 0.72, metalness: 0.12, emissive: 0x071426, emissiveIntensity: 0.8 });
+  const stoneBump = bump('stone');
+  const organicBump = bump('organic');
+  const rock = new THREE.MeshStandardMaterial({ color: 0x232b3c, roughness: 0.88, metalness: 0.12, flatShading: false, bumpMap: stoneBump, bumpScale: 0.2 });
+  const rockWarm = new THREE.MeshStandardMaterial({ color: 0x3b3044, roughness: 0.9, metalness: 0.08, flatShading: false, bumpMap: stoneBump, bumpScale: 0.22 });
+  const rockShard = new THREE.MeshStandardMaterial({ color: 0x1d2433, roughness: 0.9, metalness: 0.1, flatShading: true });
+  const topA = new THREE.MeshStandardMaterial({ color: 0x123e3a, roughness: 0.76, metalness: 0.08, emissive: 0x061c1b, emissiveIntensity: 0.8, bumpMap: organicBump, bumpScale: 0.08 });
+  const topB = new THREE.MeshStandardMaterial({ color: 0x182f4c, roughness: 0.72, metalness: 0.12, emissive: 0x071426, emissiveIntensity: 0.8, bumpMap: stoneBump, bumpScale: 0.06 });
   const path = new THREE.MeshBasicMaterial({ color: 0xffc98a, transparent: true, opacity: 0.48, blending: THREE.AdditiveBlending, depthWrite: false });
   const pathDim = new THREE.MeshBasicMaterial({ color: 0x7dffe3, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false });
   const water = new THREE.MeshStandardMaterial({ color: 0x0a7a87, emissive: 0x07545d, emissiveIntensity: 1.5, transparent: true, opacity: 0.72, roughness: 0.13, metalness: 0.34 });
@@ -255,7 +259,7 @@ export function createTerrain() {
     const a = range(rng, 0, TAU);
     const r = range(rng, 47, 60);
     const s = range(rng, 1.2, 5.4);
-    const boulder = new THREE.Mesh(new THREE.DodecahedronGeometry(s, 0), chance(rng, 0.35) ? rockWarm : rock);
+    const boulder = new THREE.Mesh(new THREE.DodecahedronGeometry(s, 0), chance(rng, 0.35) ? rockWarm : rockShard);
     boulder.position.set(Math.sin(a) * r, range(rng, -4, 2.8) - s * 0.3, Math.cos(a) * r);
     boulder.rotation.set(range(rng, 0, TAU), range(rng, 0, TAU), range(rng, 0, TAU));
     boulder.castShadow = true;

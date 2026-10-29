@@ -5,7 +5,7 @@ window.MODEL_ROOM_CATALOG = [
     "collection": "curated",
     "collectionLabel": "Curated",
     "href": "./alien-park4/",
-    "thumb": "alien-park4/shots/cycle-15.png",
+    "thumb": "alien-park4/shots/cycle-18.png",
     "source": "alien-park4/index.html",
     "tags": [
       "World",

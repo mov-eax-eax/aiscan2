@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>The Model Room — procedural 3D studies</title>
+<meta name="description" content="A gallery of twelve browser-native procedural 3D experiments: architecture, aircraft, games, films, art and research." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d12'/%3E%3Cpath d='M6 25 16 5l10 20h-4L16 11 10 25z' fill='%23d9b25e'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="./gallery.css" />
+</head>
+<body>
+<header class="topbar">
+  <a class="mark" href="./" aria-label="The Model Room home"><span class="mark-glyph">◮</span><span>The Model Room</span></a>
+  <nav class="topnav">
+    <span class="topstat"><b>12</b> studies</span>
+    <span class="topstat"><b>12</b> folders</span>
+    <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia" target="_blank" rel="noopener">Source ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="kicker">A working collection · 2024—2026</p>
+    <h1>Made of<br /><em>code.</em></h1>
+    <p class="lede">Twelve browser-native experiments: a walkable basilica, aircraft, games, short films, vector paintings and a controller atlas. No imported artwork — every surface is generated at load time.</p>
+    <div class="hero-tools">
+      <div class="filters" role="group" aria-label="Filter studies">
+        <button class="filter is-on" data-filter="all">All <span>12</span></button>
+        <button class="filter" data-filter="architecture">Architecture <span>2</span></button>
+        <button class="filter" data-filter="aircraft">Aircraft <span>3</span></button>
+        <button class="filter" data-filter="games">Games <span>2</span></button>
+        <button class="filter" data-filter="film">Film <span>2</span></button>
+        <button class="filter" data-filter="studies">Studies <span>2</span></button>
+        <button class="filter" data-filter="art">Art <span>1</span></button>
+      </div>
+      <button class="random" id="random">Surprise me <span>↗</span></button>
+    </div>
+  </section>
+
+  <section class="grid" id="grid" aria-live="polite">
+    <a class="card featured" href="../sagrada-familia/" target="_blank" rel="noopener" data-cat="architecture" data-title="La Sagrada Família">
+      <div class="thumb"><img src="./thumbs/sagrada.jpg" alt="The Sagrada Família exterior at late afternoon" loading="eager" /><span class="cat">Architecture · Walkable</span><span class="open">Open ↗</span></div>
+      <div class="card-body">
+        <div class="num">01</div>
+        <div class="copy">
+          <h2>La Sagrada Família</h2>
+          <p>An extreme-detail procedural basilica at 1:1 scale. Walk the nave, free-fly the eighteen towers, take the guided tour, or open the Study views: mesh, section and isolate.</p>
+          <div class="tags"><span>Three.js</span><span>Walkable</span><span>Free fly</span><span>12 tour stops</span></div>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="../747/" target="_blank" rel="noopener" data-cat="aircraft" data-title="Boeing 747-400">
+      <div class="thumb"><img src="./thumbs/boeing747.jpg" alt="Boeing 747-400 three-quarter view" loading="lazy" /><span class="cat">Aircraft · Procedural</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">02</div><div class="copy"><h2>Boeing 747-400</h2><p>Every panel line, window, gear bay and engine surface generated in code. Orbit the airframe, lower the gear, open the cockpit.</p><div class="tags"><span>Three.js</span><span>Interactive</span></div></div></div>
+    </a>
+
+    <a class="card" href="../747_2/" target="_blank" rel="noopener" data-cat="aircraft" data-title="Boeing 747-8">
+      <div class="thumb"><img src="./thumbs/boeing748.jpg" alt="Boeing 747-8 Intercontinental" loading="lazy" /><span class="cat">Aircraft · Procedural</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">03</div><div class="copy"><h2>Boeing 747-8</h2><p>The longer Intercontinental, rebuilt from code: stretched fuselage, new wingtips, cockpit and a detailed undercarriage.</p><div class="tags"><span>Three.js</span><span>Interactive</span></div></div></div>
+    </a>
+
+    <a class="card" href="../eif3/dist/" target="_blank" rel="noopener" data-cat="architecture" data-title="La Tour Eiffel">
+      <div class="thumb"><img src="./thumbs/eiffel.jpg" alt="Eiffel Tower above a procedural Paris" loading="lazy" /><span class="cat">Architecture · Procedural</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">04</div><div class="copy"><h2>La Tour Eiffel</h2><p>300 metres of iron lattice generated from silhouette curves, standing in a procedural Paris with the Seine, blocks and landmarks.</p><div class="tags"><span>Three.js</span><span>Paris</span></div></div></div>
+    </a>
+
+    <a class="card" href="../dualsense-atlas/" target="_blank" rel="noopener" data-cat="studies" data-title="DualSense — Ontology Atlas">
+      <div class="thumb"><img src="./thumbs/dualsense-atlas.jpg" alt="DualSense ontology atlas projections" loading="lazy" /><span class="cat">Studies · SVG</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">05</div><div class="copy"><h2>DualSense Atlas</h2><p>A 208-entity ontology of the PlayStation 5 controller, rendered as linked SVG projections. No WebGL, no external assets.</p><div class="tags"><span>SVG</span><span>Research</span></div></div></div>
+    </a>
+
+    <a class="card" href="../ps5-dualsense/" target="_blank" rel="noopener" data-cat="studies" data-title="DualSense — 3D Study">
+      <div class="thumb"><img src="./thumbs/dualsense-study.jpg" alt="White DualSense controller 3D study" loading="lazy" /><span class="cat">Studies · Product</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">06</div><div class="copy"><h2>DualSense Study</h2><p>A fully procedural recreation of the PS5 DualSense — shell, sticks, triggers, materials, studio lighting and interface.</p><div class="tags"><span>Three.js</span><span>Product</span></div></div></div>
+    </a>
+
+    <a class="card" href="../fishing%20game/" target="_blank" rel="noopener" data-cat="games" data-title="Abyss Angler">
+      <div class="thumb"><img src="./thumbs/abyss-angler.jpg" alt="Abyss Angler title screen" loading="lazy" /><span class="cat">Game · Three.js</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">07</div><div class="copy"><h2>Abyss Angler</h2><p>A deep-water fishing game with five waters, a full fight system, a bestiary, a workshop and a working depth sonar.</p><div class="tags"><span>Game</span><span>Playable</span></div></div></div>
+    </a>
+
+    <a class="card" href="../mario-3-2/" target="_blank" rel="noopener" data-cat="games" data-title="Super Mario Bros. 3 — World 3-2">
+      <div class="thumb"><img src="./thumbs/mario-3-2.jpg" alt="Super Mario Bros. 3 World 3-2 title" loading="lazy" /><span class="cat">Game · Remake</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">08</div><div class="copy"><h2>World 3-2</h2><p>A 3D remake of the reef level: coral gardens, a tunnel, Boss Bass, the frog suit and a flagpole finish.</p><div class="tags"><span>Game</span><span>Remake</span></div></div></div>
+    </a>
+
+    <a class="card" href="../acts27-storm/" target="_blank" rel="noopener" data-cat="film" data-title="The Storm — Acts 27">
+      <div class="thumb"><img src="./thumbs/acts27.jpg" alt="The Storm title card" loading="lazy" /><span class="cat">Film · 3m 45s</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">09</div><div class="copy"><h2>The Storm</h2><p>A long-form 3D retelling of Acts 27 — the south wind, the Euroclydon, fourteen nights, the shipwreck and the escape to Melita.</p><div class="tags"><span>Three.js</span><span>Cinematic</span></div></div></div>
+    </a>
+
+    <a class="card" href="../revelation-3d/" target="_blank" rel="noopener" data-cat="film" data-title="The Four Horsemen">
+      <div class="thumb"><img src="./thumbs/revelation.jpg" alt="The Four Horsemen title card" loading="lazy" /><span class="cat">Film · 88s</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">10</div><div class="copy"><h2>The Four Horsemen</h2><p>The opening of the first four seals in an 88-second procedural sequence: scroll, wax, riders, horses, dust and embers.</p><div class="tags"><span>Three.js</span><span>Cinematic</span></div></div></div>
+    </a>
+
+    <a class="card" href="../tropico-2026/" target="_blank" rel="noopener" data-cat="art" data-title="TROPICO 2026">
+      <div class="thumb"><img src="./thumbs/tropico.jpg" alt="TROPICO 2026 vector painting" loading="lazy" /><span class="cat">Art · SVG</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">11</div><div class="copy"><h2>TROPICO 2026</h2><p>Seven vector paintings from a fictional Caribbean republic — one year, one country, seven ways of looking at it.</p><div class="tags"><span>SVG</span><span>Exhibition</span></div></div></div>
+    </a>
+
+    <a class="card" href="../hhib/" target="_blank" rel="noopener" data-cat="aircraft" data-title="HHIB — Boeing 747-400">
+      <div class="thumb"><img src="./thumbs/hhib.jpg" alt="Boeing 747-400 showcase preview" loading="lazy" /><span class="cat">Aircraft · Showcase</span><span class="open">Open ↗</span></div>
+      <div class="card-body"><div class="num">12</div><div class="copy"><h2>HHIB 747-400</h2><p>A self-contained WebGL 747-400 showcase. Every airframe surface is generated in code; the whole folder runs offline.</p><div class="tags"><span>WebGL</span><span>Offline</span></div></div></div>
+    </a>
+  </section>
+
+  <p class="empty" id="empty" hidden>No studies in this drawer yet.</p>
+</main>
+
+<footer class="foot">
+  <div><span class="foot-mark">◮</span> The Model Room</div>
+  <p>Each study is a self-contained folder served from this repository. Start it with <code>Open 3D Gallery.bat</code> or <code>node gallery/serve.mjs 8150</code>.</p>
+  <p class="foot-note">Procedural geometry, canvas textures, shader skies. Built with Three.js where the work needs it — and hand-written SVG where it does not.</p>
+</footer>
+
+<script src="./gallery.js"></script>
+</body>
+</html>

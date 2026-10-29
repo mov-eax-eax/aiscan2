@@ -1,0 +1,357 @@
+[
+ {
+  "title": "A Comprehensive Survey of Continual Learning: Theory, Method and Application",
+  "authors": [
+   "Liyuan Wang",
+   "Xingxing Zhang",
+   "Hang Su",
+   "Jun Zhu"
+  ],
+  "lab": "Tsinghua University (Dept. of Computer Science and Technology / BNRist)",
+  "chinese_institution": "Tsinghua University",
+  "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+  "year": 2024,
+  "date": "2024-02-26",
+  "arxiv_id": "2302.00487",
+  "url": "https://doi.org/10.1109/tpami.2024.3367329",
+  "citations": 1087,
+  "topic": "theory & taxonomy of continual learning",
+  "method_family": "benchmark",
+  "one_line": "The field's reference taxonomy: continual learning as a stability-plasticity plus intra/inter-task-generalizability trade-off under a resource budget.",
+  "contribution": "Reframes the continual-learning objective as three coupled desiderata - a stability-plasticity balance, intra-task and inter-task generalizability, and resource efficiency - and organizes regularization-, replay-, architecture- and optimization-based methods under that objective. It also consolidates the theoretical foundations (forgetting bounds, generalization analyses) and maps application-specific adaptations onto the same taxonomy.",
+  "why_it_matters": "With ~1.1k citations it is the most-cited CL survey carrying a Chinese lead institution, and it supplies the vocabulary (stability-plasticity-generalizability) that most subsequent Chinese CL papers position themselves against.",
+  "key_result": "n/a (survey; 1,087 citations in OpenAlex as of 2026-10-17)",
+  "basis": [
+   "https://api.openalex.org/works/W4392173735",
+   "https://doi.org/10.1109/tpami.2024.3367329",
+   "https://arxiv.org/abs/2302.00487"
+  ]
+ },
+ {
+  "title": "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-Tuning",
+  "authors": [
+   "Yun Luo",
+   "Zhen Yang",
+   "Fandong Meng",
+   "Yafu Li",
+   "Jie Zhou",
+   "Yue Zhang"
+  ],
+  "lab": "Westlake University (with Tencent WeChat AI)",
+  "chinese_institution": "Westlake University",
+  "venue": "IEEE Transactions on Audio, Speech and Language Processing (TASLP)",
+  "year": 2025,
+  "date": "2025-01-01",
+  "arxiv_id": "2308.08747",
+  "url": "https://doi.org/10.1109/taslpro.2025.3606231",
+  "citations": 132,
+  "topic": "scaling behaviour of forgetting in LLM continual instruction tuning",
+  "method_family": "theory",
+  "one_line": "Within 1B-7B, scaling an LLM up makes continual instruction tuning forget more, not less.",
+  "contribution": "Measures forgetting after continual instruction tuning along three axes - domain knowledge, reasoning and reading comprehension - and finds catastrophic forgetting across the 1B-7B range, with severity increasing with model scale (attributed to the stronger initial competence of larger models). Compares decoder-only BLOOMZ against encoder-decoder mT0 (BLOOMZ forgets less), checks the trend on Qwen-2.5-Inst 3B vs 14B, and shows that general instruction tuning before the sequential fine-tuning stage mitigates forgetting.",
+  "why_it_matters": "It is the empirical counterweight to the assumption that scale fixes forgetting, and it is the most-cited China-affiliated CL paper of the 2025-2026 OpenAlex window; almost every later LLM-CL method paper cites it as motivation.",
+  "key_result": "Forgetting severity rises monotonically with scale over 1B-7B (BLOOMZ, mT0, Qwen-2.5-Inst 3B/14B); no single aggregate percentage is reported in the abstract",
+  "basis": [
+   "https://api.openalex.org/works/W4414037010",
+   "https://doi.org/10.1109/taslpro.2025.3606231",
+   "https://arxiv.org/abs/2308.08747"
+  ]
+ },
+ {
+  "title": "Towards Lifelong Learning of Large Language Models: A Survey",
+  "authors": [
+   "Junhao Zheng",
+   "Shengjie Qiu",
+   "Chengming Shi",
+   "Qianli Ma"
+  ],
+  "lab": "South China University of Technology",
+  "chinese_institution": "South China University of Technology",
+  "venue": "ACM Computing Surveys",
+  "year": 2025,
+  "date": "2025-02-13",
+  "arxiv_id": "2406.06391",
+  "url": "https://doi.org/10.1145/3716629",
+  "citations": 48,
+  "topic": "lifelong learning for LLMs (survey)",
+  "method_family": "benchmark",
+  "one_line": "Splits LLM lifelong learning into internal-knowledge updating vs external-knowledge use, and enumerates 12 scenarios.",
+  "contribution": "Proposes a two-branch taxonomy: internal knowledge (continual pre-training and continual fine-tuning, i.e. weight updates) versus external knowledge (retrieval-based and tool-based lifelong learning that leaves parameters untouched). Under it, the survey partitions the literature into 12 scenarios, groups techniques within each scenario, and flags model expansion and data selection as techniques that were marginal before LLMs and are now central.",
+  "why_it_matters": "It is the canonical Chinese-authored map of the LLM-CL subfield and its internal/external split is the standard frame for deciding whether a new method is a training-time or an inference-time intervention.",
+  "key_result": "n/a (survey; taxonomy of 2 knowledge branches, 12 scenarios)",
+  "basis": [
+   "https://api.openalex.org/works/W4407542088",
+   "https://doi.org/10.1145/3716629",
+   "https://arxiv.org/abs/2406.06391"
+  ]
+ },
+ {
+  "title": "Model Merging in LLMs, MLLMs, and Beyond: Methods, Theories, Applications, and Opportunities",
+  "authors": [
+   "Enneng Yang",
+   "Li Shen",
+   "Guibing Guo",
+   "Xingwei Wang",
+   "Xiaochun Cao",
+   "Jie Zhang",
+   "Dacheng Tao"
+  ],
+  "lab": "Sun Yat-sen University (with Northeastern University)",
+  "chinese_institution": "Sun Yat-sen University",
+  "venue": "ACM Computing Surveys",
+  "year": 2026,
+  "date": "2026-01-10",
+  "arxiv_id": "2408.07666",
+  "url": "https://doi.org/10.1145/3787849",
+  "citations": 19,
+  "topic": "task arithmetic / model merging (survey with theory)",
+  "method_family": "merging",
+  "one_line": "Taxonomy plus theory of model merging, including merging as training-free continual learning.",
+  "contribution": "Proposes a new taxonomy over merging families (weight averaging, task-arithmetic/task-vector manipulation, subspace and alignment methods, routing/MoE-style composition) and collects the theoretical accounts of why merging works - task-vector interference, linear-mode connectivity and subspace alignment. It then surveys merging applications across more than ten subfields, explicitly including continual learning, multi-task learning and few-shot adaptation, and lists open theoretical questions.",
+  "why_it_matters": "Merging has become the cheap alternative to replay for sequential adaptation; this is the reference text that treats task arithmetic as a theory-bearing object rather than a trick, from a Chinese-led group.",
+  "key_result": "n/a (survey; >10 application subfields, continual learning among them)",
+  "basis": [
+   "https://api.openalex.org/works/W7121445788",
+   "https://doi.org/10.1145/3787849",
+   "https://arxiv.org/abs/2408.07666"
+  ]
+ },
+ {
+  "title": "Unleashing the Power of Continual Learning on Non-Centralized Devices: A Survey",
+  "authors": [
+   "Yichen Li",
+   "Haozhao Wang",
+   "Wenchao Xu",
+   "Tianzhe Xiao",
+   "Hong Liu",
+   "Minzhu Tu",
+   "Yuying Wang",
+   "Xin Yang",
+   "Rui Zhang",
+   "Shui Yu",
+   "Song Guo",
+   "Ruixuan Li"
+  ],
+  "lab": "Huazhong University of Science and Technology",
+  "chinese_institution": "Huazhong University of Science and Technology",
+  "venue": "IEEE Communications Surveys & Tutorials (COMST)",
+  "year": 2025,
+  "date": "2025-05-09",
+  "arxiv_id": "2412.13840",
+  "url": "https://doi.org/10.1109/comst.2025.3568279",
+  "citations": 25,
+  "topic": "federated / non-centralized continual learning (survey + benchmark)",
+  "method_family": "benchmark",
+  "one_line": "Distributed continual learning analysed jointly along the spatial (heterogeneity, privacy) and temporal (forgetting, drift) axes, plus a benchmark.",
+  "contribution": "Defines non-centralized continual learning (NCCL) as devices jointly facing spatial distribution shift across clients and temporal drift within each client, then reviews methods at three levels of forgetting/shift mitigation. Adds treatment of device and data heterogeneity, security and privacy, and three deployment scenarios, and builds a large-scale benchmark to re-evaluate state-of-the-art NCCL approaches under one protocol.",
+  "why_it_matters": "It is the survey that connects China's large federated-learning community to CL and it ships a benchmark, so it sets the evaluation convention for edge/federated CL work from Chinese labs.",
+  "key_result": "n/a (survey + benchmark; large-scale NCCL benchmark released with the paper)",
+  "basis": [
+   "https://api.openalex.org/works/W4410226390",
+   "https://doi.org/10.1109/comst.2025.3568279",
+   "https://arxiv.org/abs/2412.13840"
+  ]
+ },
+ {
+  "title": "Parameter-Efficient Fine-Tuning for Continual Learning: A Neural Tangent Kernel Perspective",
+  "authors": [
+   "Jingren Liu",
+   "Zhong Ji",
+   "Yunlong Yu",
+   "Jiale Cao",
+   "Yanwei Pang",
+   "Jungong Han",
+   "Xuelong Li"
+  ],
+  "lab": "Tianjin University (with Zhejiang University)",
+  "chinese_institution": "Tianjin University",
+  "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+  "year": 2026,
+  "date": "2026-03-06",
+  "arxiv_id": "2407.17120",
+  "url": "https://doi.org/10.1109/tpami.2026.3670952",
+  "citations": 1,
+  "topic": "theory of PEFT-based continual learning (NTK analysis)",
+  "method_family": "theory",
+  "one_line": "NTK analysis turns PEFT-CL forgetting into two measurable generalization gaps and names the three factors that control them.",
+  "contribution": "Uses Neural Tangent Kernel theory to analyse PEFT-CL dynamics, recasting test-time forgetting as quantifiable generalization gaps during training and identifying training-sample size, task-level feature orthogonality and regularization as the controlling factors. The analysis is instantiated as NTK-CL, which eliminates task-specific parameter storage, triples each sample's feature representation, and applies an adaptive exponential moving average plus task-level orthogonality constraints so that intra-task NTK forms are preserved while inter-task NTK forms are attenuated.",
+  "why_it_matters": "It is the clearest Chinese contribution to *why* LoRA-style CL works at all: the forgetting mechanism is stated as a bound on two gaps rather than as empirical interference, which makes hyperparameter choices (rank, sample count, orthogonality strength) derivable.",
+  "key_result": "n/a (no headline number in the abstract; reports state-of-the-art on established PEFT-CL benchmarks)",
+  "basis": [
+   "https://api.openalex.org/works/W7134112577",
+   "https://doi.org/10.1109/tpami.2026.3670952",
+   "https://arxiv.org/abs/2407.17120"
+  ]
+ },
+ {
+  "title": "A Theoretical Perspective on Streaming Noisy Data With Distribution Shift",
+  "authors": [
+   "Wenshui Luo",
+   "Shuo Chen",
+   "Tao Zhou",
+   "Chen Gong"
+  ],
+  "lab": "Shanghai Jiao Tong University (with Nanjing University, Nanjing University of Science and Technology)",
+  "chinese_institution": "Shanghai Jiao Tong University",
+  "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+  "year": 2025,
+  "date": "2025-12-11",
+  "arxiv_id": null,
+  "url": "https://doi.org/10.1109/tpami.2025.3643174",
+  "citations": 0,
+  "topic": "theory of forgetting under label noise + distribution shift",
+  "method_family": "theory",
+  "one_line": "First upper bound on cumulative generalization error for continual learning from noisy streams that explicitly couples label noise with temporal drift.",
+  "contribution": "Formalizes continual noisy-label learning on drifting data streams (CNLDD) and derives an upper bound on the cumulative generalization error that carries label noise and per-time distribution shift in the same expression. The bound motivates a framework replacing heuristic noise handling with objectives that follow the bound's terms, so that noise correction and drift adaptation are optimized jointly rather than staged.",
+  "why_it_matters": "Label noise is the dominant real-world failure mode of Chinese industrial CL deployments, and this is the first bound that treats noise and drift as one object instead of two literatures.",
+  "key_result": "n/a (theory; upper bound on cumulative generalization error, no empirical headline in the abstract)",
+  "basis": [
+   "https://api.openalex.org/works/W4417248868",
+   "https://doi.org/10.1109/tpami.2025.3643174"
+  ]
+ },
+ {
+  "title": "Towards understanding memory buffer based continual learning",
+  "authors": [
+   "Guodong Zheng",
+   "Peng Wang",
+   "Tao Sun",
+   "Li Shen"
+  ],
+  "lab": "Huazhong University of Science and Technology (with Sun Yat-sen University, National University of Defense Technology)",
+  "chinese_institution": "Huazhong University of Science and Technology",
+  "venue": "Neural Networks",
+  "year": 2025,
+  "date": "2025-12-26",
+  "arxiv_id": null,
+  "url": "https://doi.org/10.1016/j.neunet.2025.108522",
+  "citations": 0,
+  "topic": "theory of replay / memory-buffer continual learning",
+  "method_family": "theory",
+  "one_line": "A memory buffer does not by itself reduce forgetting: closed-form errors say when replay helps and when it hurts.",
+  "contribution": "Derives expressions for expected forgetting and generalization error in overparameterized linear models over an arbitrary number of tasks, and compares memory-buffer CL (MCL) against no-buffer CL (NCL) coefficient by coefficient. The comparison shows that a buffer does not inherently lower forgetting: when tasks are similar, enlarging the buffer must be matched by increasing model capacity to actually reduce forgetting, whereas when tasks are highly dissimilar MCL can forget more and generalize worse than NCL - i.e. wasted memory and compute.",
+  "why_it_matters": "Replay is the single most-used CL mechanism in the Chinese corpus (259 of 1577 records), and this paper is the sharpest statement of its limits: buffer size is coupled to capacity, not a free lunch.",
+  "key_result": "n/a (theory; qualitative separator - buffer helps only under task similarity plus capacity growth; validated on deep networks)",
+  "basis": [
+   "https://api.openalex.org/works/W7117309079",
+   "https://doi.org/10.1016/j.neunet.2025.108522",
+   "https://www.semanticscholar.org/paper/3670ef2bcaf1e7e8659f493c373444c671147ce5"
+  ]
+ },
+ {
+  "title": "Understanding the Role of Rehearsal Scale in Continual Learning under Varying Model Capacities",
+  "authors": [
+   "JinLi He",
+   "Liang Bai",
+   "Xian Yang"
+  ],
+  "lab": "Shanxi University",
+  "chinese_institution": "Shanxi University",
+  "venue": "arXiv preprint",
+  "year": 2026,
+  "date": "2026-02-24",
+  "arxiv_id": "2602.20791",
+  "url": "https://arxiv.org/abs/2602.20791",
+  "citations": 0,
+  "topic": "theory of rehearsal scale / scaling behaviour",
+  "method_family": "theory",
+  "one_line": "Closed-form rehearsal theory: more rehearsal can reduce adaptability, and memory error has a diminishing lower bound.",
+  "contribution": "Casts rehearsal-based CL as a multidimensional effectiveness-driven iterative optimization problem and derives closed-form expressions for adaptability, memorability and generalization as functions of rehearsal scale, giving one characterization that spans the usual metric zoo. Two counterintuitive consequences follow: rehearsal can impair a model's adaptability, and increasing rehearsal scale does not monotonically improve retention - when tasks are similar and noise low, memory error saturates at a diminishing lower bound. Both are checked in numerical simulations and on deep networks over several datasets.",
+  "why_it_matters": "It is the scaling-law-style statement the Chinese CL-theory literature had been missing: rehearsal budget is not monotonically beneficial, and the paper says where the knee is in terms of task similarity, noise and capacity.",
+  "key_result": "n/a (theory; closed-form saturation of memory error as rehearsal scale grows, validated on multiple real datasets)",
+  "basis": [
+   "https://api.openalex.org/works/W7131398840",
+   "https://arxiv.org/abs/2602.20791"
+  ]
+ },
+ {
+  "title": "ChainLoRA: Geometry-Preserving Task Vector Merging for Continual Learning in LLMs",
+  "authors": [
+   "Hang Yin",
+   "Haozhe Wang",
+   "Yuhua Luo",
+   "Zhangqi Pan",
+   "Xiaoxing Wang",
+   "Junchi Yan"
+  ],
+  "lab": "Shanghai Jiao Tong University (with Shanghai Innovation Institute)",
+  "chinese_institution": "Shanghai Jiao Tong University",
+  "venue": "arXiv preprint",
+  "year": 2026,
+  "date": "2026-09-30",
+  "arxiv_id": "2610.00431",
+  "url": "https://arxiv.org/abs/2610.00431",
+  "citations": 0,
+  "topic": "task arithmetic / merging theory for continual LLM fine-tuning",
+  "method_family": "merging",
+  "one_line": "Decomposes forgetting into directional overlap vs coefficient coupling of task vectors, then fixes each with one-sided orthogonality plus Procrustes SVD merging.",
+  "contribution": "Formulates a geometric account of forgetting from the parameter-merging side, separating directional overlap between successive task updates from coefficient coupling, and builds a replay-free merging scheme on it. Training uses initialization plus a one-sided orthogonality proxy anchored on the last carrier, so the historical-state footprint and regularization cost stay constant as the stream grows; post-stream Adaptive SVD extracts a shared carrier and aligns it with the newest task via a Procrustes step. The analysis shows Procrustes adaptation approximately separates shared from task-specific components, the one-sided proxy bounds inter-task interference, and an effective-rank penalty keeps the task subspace compact.",
+  "why_it_matters": "It is the newest (Sep 2026) Chinese attempt to give task arithmetic a measurable geometry rather than a norm heuristic, and it keeps the parameter budget constant - the property that makes merging deployable where replay is impossible.",
+  "key_result": "n/a (abstract reports state-of-the-art among evaluated replay-free methods on the Large and SuperNI benchmarks, competitive on Standard CL; no numbers in the abstract)",
+  "basis": [
+   "https://api.openalex.org/works/W7216251542",
+   "https://arxiv.org/abs/2610.00431"
+  ]
+ },
+ {
+  "title": "MemoryBench: A Benchmark for Memory and Continual Learning in LLM Systems",
+  "authors": [
+   "Qingyao Ai",
+   "Yichen Tang",
+   "Changyue Wang",
+   "Jianming Long",
+   "Weihang Su",
+   "Yiqun Liu"
+  ],
+  "lab": "Tsinghua University (THUIR)",
+  "chinese_institution": "Tsinghua University",
+  "venue": "arXiv preprint",
+  "year": 2025,
+  "date": "2025-10-20",
+  "arxiv_id": "2510.17281",
+  "url": "https://arxiv.org/abs/2510.17281",
+  "citations": 0,
+  "topic": "benchmark for memory / continual learning in deployed LLM systems",
+  "method_family": "benchmark",
+  "one_line": "Tests whether an LLM system learns from accumulated user feedback over service time, instead of long-context reading comprehension.",
+  "contribution": "Builds a user-feedback simulation framework plus a benchmark spanning multiple domains, languages and task types, and evaluates memory/continual-learning ability of LLM systems as they serve requests, rather than as long-form readers. It finds that the effectiveness and efficiency of state-of-the-art baselines are far from satisfying, arguing that memory architectures must be judged on service-time learning and cost, not on static long-context QA.",
+  "why_it_matters": "It moves the CL benchmark question from classification task streams to product-level LLM systems - the setting where Chinese labs actually ship continual adaptation - and provides a public harness (THUIR/MemoryBench).",
+  "key_result": "n/a (benchmark; headline finding is that SOTA baselines are 'far from satisfying' on effectiveness and efficiency)",
+  "basis": [
+   "https://api.openalex.org/works/W4415963275",
+   "https://arxiv.org/abs/2510.17281"
+  ]
+ },
+ {
+  "title": "CL-VISTA: Benchmarking Continual Learning in Video Large Language Models",
+  "authors": [
+   "Haiyang Guo",
+   "Yichen Shi",
+   "Fei Zhu",
+   "Wenzhuo Liu",
+   "Hongbo Zhao",
+   "Fanhu Zeng",
+   "Shijie Ma",
+   "Da-Han Wang",
+   "Xu-Yao Zhang"
+  ],
+  "lab": "Chinese Academy of Sciences, Institute of Automation",
+  "chinese_institution": "Chinese Academy of Sciences (Institute of Automation)",
+  "venue": "arXiv preprint",
+  "year": 2026,
+  "date": "2026-04-01",
+  "arxiv_id": "2604.00677",
+  "url": "https://arxiv.org/abs/2604.00677",
+  "citations": 0,
+  "topic": "benchmark for continual learning in Video-LLMs",
+  "method_family": "benchmark",
+  "one_line": "Eight genuinely shifted video tasks and six protocols show CL on Video-LLMs trades forgetting relief against generalization, compute and memory.",
+  "contribution": "Replaces the usual 'partition one dataset into sub-tasks' design with 8 diverse video tasks spanning perception, understanding and reasoning, chosen to induce substantial distribution shift and expose real forgetting in pre-trained Video-LLMs. Evaluates CL methods under 6 protocols covering performance, computational efficiency and memory footprint, and adds a general video-understanding assessment that detects whether a method improves foundational ability or merely overfits each task. Across 10 mainstream CL methods it finds no universal winner: methods that reduce forgetting tend to cost generalization or incur prohibitive compute/memory.",
+  "why_it_matters": "It is the benchmark that makes multimodal CL comparable against foundation models rather than toy backbones, and its 'forgetting vs general-ability' trade-off is the central open problem for Chinese multimodal-CL groups.",
+  "key_result": "8 tasks x 6 protocols x 10 CL methods; no method is best on all three dimensions (performance / compute / memory)",
+  "basis": [
+   "https://api.openalex.org/works/W7148410341",
+   "https://arxiv.org/abs/2604.00677"
+  ]
+ }
+]

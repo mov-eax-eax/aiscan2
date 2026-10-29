@@ -1,0 +1,52 @@
+{
+ "touchpad_center": [
+  112,
+  115,
+  122
+ ],
+ "shell_left": [
+  35,
+  35,
+  37
+ ],
+ "shell_right": [
+  29,
+  29,
+  31
+ ],
+ "lightbar_left": [
+  120,
+  125,
+  129
+ ],
+ "lightbar_bottom": [
+  43,
+  43,
+  51
+ ],
+ "button_triangle_center": [
+  160,
+  163,
+  170
+ ],
+ "cap_left_ring": [
+  122,
+  126,
+  135
+ ],
+ "touchpad_bbox": [
+  1150,
+  2849,
+  157,
+  899
+ ],
+ "touchpad_wpx": 1700,
+ "touchpad_hpx": 743,
+ "blue_count": 38363,
+ "blue_bbox": [
+  1212,
+  2687,
+  226,
+  1439
+ ]
+}

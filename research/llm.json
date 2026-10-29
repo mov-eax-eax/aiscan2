@@ -1,0 +1,416 @@
+[
+  {
+    "title": "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-Tuning",
+    "authors": [
+      "Yun Luo",
+      "Zhen Yang",
+      "Fandong Meng",
+      "Yafu Li",
+      "Jie Zhou",
+      "Yue Zhang"
+    ],
+    "lab": "Westlake University × Tencent",
+    "chinese_institution": "Westlake University; Tencent (China)",
+    "venue": "IEEE Transactions on Audio, Speech and Language Processing",
+    "year": 2025,
+    "date": "2025-01-01",
+    "arxiv_id": "2308.08747",
+    "url": "https://doi.org/10.1109/TASLPRO.2025.3606231",
+    "citations": 132,
+    "topic": "catastrophic forgetting in LLM continual instruction tuning (empirical analysis)",
+    "method_family": "other",
+    "one_line": "Continual instruction tuning makes LLMs forget, and — counter-intuitively — the bigger the model, the worse the forgetting.",
+    "contribution": "Evaluates forgetting under continual instruction tuning along three knowledge axes — domain knowledge, reasoning and reading comprehension — across 1B–7B LLMs plus a Qwen2.5-Inst 3B–14B sweep. Forgetting is universal in that range and its severity increases with model scale, which the authors attribute to larger models' higher initial performance rather than to larger parameter drift. A decoder-only model (BLOOMZ) forgets less than an encoder-decoder one (mT0) on the same stream, and prior general instruction tuning measurably reduces forgetting in later domain tuning.",
+    "why_it_matters": "This is the reference empirical baseline the Chinese PEFT/LoRA continual-learning literature argues against: it establishes that sequential instruction tuning is unsafe without structural protection, and that scale alone does not buy stability.",
+    "key_result": "Forgetting observed for every 1B–7B LLM tested and monotonically more severe with scale, replicating on Qwen2.5-Inst 3B→14B; abstract reports no single aggregate metric.",
+    "basis": [
+      "https://arxiv.org/abs/2308.08747",
+      "https://doi.org/10.1109/TASLPRO.2025.3606231",
+      "https://api.crossref.org/works/10.1109/taslpro.2025.3606231"
+    ]
+  },
+  {
+    "title": "CMT: A Memory Compression Method for Continual Knowledge Learning of Large Language Models",
+    "authors": [
+      "Dongfang Li",
+      "Zetian Sun",
+      "Xinshuo Hu",
+      "Baotian Hu",
+      "Min Zhang"
+    ],
+    "lab": "Harbin Institute of Technology",
+    "chinese_institution": "Harbin Institute of Technology",
+    "venue": "AAAI 2025",
+    "year": 2025,
+    "date": "2025-04-11",
+    "arxiv_id": "2412.07393",
+    "url": "https://doi.org/10.1609/aaai.v39i23.34619",
+    "citations": 4,
+    "topic": "continual knowledge learning via non-parametric memory",
+    "method_family": "other",
+    "one_line": "Refuses to touch the weights: new documents are compressed into a memory bank and aggregated at answer time.",
+    "contribution": "Compression Memory Training extracts and compresses information from newly arriving documents into a memory bank while every LLM parameter stays frozen during training and inference, so the catastrophic-forgetting channel is removed by construction rather than by regularisation. Three additional techniques — a memory-aware training objective, self-matching retrieval and top-k memory aggregation — improve how document memories are encoded, matched and fused before generation.",
+    "why_it_matters": "Represents the non-parametric pole of the field — treat adaptation as an external-memory problem and keep the base model intact — which is now the dominant alternative to LoRA expanding in serving stacks.",
+    "key_result": "+4.07 EM / +4.19 F1 on StreamingQA with Llama-2-7B; also evaluated on SQuAD and ArchivalQA across multiple base LLMs.",
+    "basis": [
+      "https://arxiv.org/abs/2412.07393",
+      "https://doi.org/10.1609/aaai.v39i23.34619",
+      "https://api.crossref.org/works/10.1609/aaai.v39i23.34619"
+    ]
+  },
+  {
+    "title": "Knowledge in Superposition: Unveiling the Failures of Lifelong Knowledge Editing for Large Language Models",
+    "authors": [
+      "Chenhui Hu",
+      "Pengfei Cao",
+      "Yubo Chen",
+      "Kang Liu",
+      "Jun Zhao"
+    ],
+    "lab": "Chinese Academy of Sciences, Institute of Automation",
+    "chinese_institution": "Chinese Academy of Sciences, Institute of Automation",
+    "venue": "AAAI 2025",
+    "year": 2025,
+    "date": "2025-04-11",
+    "arxiv_id": "2408.07413",
+    "url": "https://doi.org/10.1609/aaai.v39i22.34583",
+    "citations": 3,
+    "topic": "model editing vs continual learning (theory of lifelong editing failure)",
+    "method_family": "theory",
+    "one_line": "Lifelong model editing fails for a representational reason — knowledge superposition — not because the editors are badly optimised.",
+    "contribution": "Extends the closed-form linear-associative-memory solution underlying state-of-the-art editors from a single edit to an unbounded edit stream and derives an explicit interference term in the resulting solution. The term is controlled by superposition between knowledge representations: when superposition is absent the interference vanishes and editing becomes lossless. Across numerous LLMs superposition is measured as universal, zero-mean, heavy-tailed with clear scaling laws.",
+    "why_it_matters": "Converts 'sequential editors degrade' from an empirical complaint into a representational-geometry limit, which is why the field is shifting from ever-better editors toward subspace allocation, gating and merging.",
+    "key_result": "Closed-form interference term derived and tied to superposition; superposition measured as universal across the LLMs studied with heavy-tailed, near-zero-mean distributions and scaling laws; no single benchmark number in abstract.",
+    "basis": [
+      "https://arxiv.org/abs/2408.07413",
+      "https://doi.org/10.1609/aaai.v39i22.34583",
+      "https://api.crossref.org/works/10.1609/aaai.v39i22.34583"
+    ]
+  },
+  {
+    "title": "Continual Gradient Low-Rank Projection Fine-Tuning for LLMs",
+    "authors": [
+      "Chenxu Wang",
+      "Yilin Lyu",
+      "Zicheng Sun",
+      "Liping Jing"
+    ],
+    "lab": "Beijing Jiaotong University",
+    "chinese_institution": "Beijing Jiaotong University",
+    "venue": "ACL 2025 (Long Papers)",
+    "year": 2025,
+    "date": "2025-07-27",
+    "arxiv_id": "2507.02503",
+    "url": "https://doi.org/10.18653/v1/2025.acl-long.721",
+    "citations": 2,
+    "topic": "continual instruction tuning (LoRA expressiveness vs stability)",
+    "method_family": "lora",
+    "one_line": "GORP breaks LoRA's expressiveness ceiling by updating full-rank and low-rank weights inside one shared low-rank gradient subspace.",
+    "contribution": "GORP keeps LoRA's memory footprint but removes its rank bottleneck by maintaining both full-rank and low-rank parameters and updating them jointly inside a unified low-rank gradient subspace. Because every update is confined to the subspace spanned by the current gradient (the same O-LoRA-style containment that bounds interference), the model gains optimisation capacity without paying a forgetting penalty for it.",
+    "why_it_matters": "Directly attacks the standard trade-off the Chinese LoRA-CL line inherited from O-LoRA — stability bought by shrinking the update space — and shows containment and capacity are separable.",
+    "key_result": "Reported superior to prior state of the art on continual-learning benchmarks for LLMs; abstract states no single aggregate figure.",
+    "basis": [
+      "https://arxiv.org/abs/2507.02503",
+      "https://doi.org/10.18653/v1/2025.acl-long.721",
+      "https://api.crossref.org/works/10.18653/v1/2025.acl-long.721"
+    ]
+  },
+  {
+    "title": "Gated Integration of Low-Rank Adaptation for Continual Learning of Large Language Models",
+    "authors": [
+      "Yan-Shuo Liang",
+      "Jia-Rui Chen",
+      "Wu-Jun Li"
+    ],
+    "lab": "Nanjing University",
+    "chinese_institution": "Nanjing University",
+    "venue": "NeurIPS 2025",
+    "year": 2025,
+    "date": "2025-05-21",
+    "arxiv_id": "2505.15424",
+    "url": "https://doi.org/10.52202/085713-2310",
+    "citations": 2,
+    "topic": "continual instruction tuning (LoRA branch integration)",
+    "method_family": "lora",
+    "one_line": "GainLoRA stops pretending old and new LoRA branches matter equally: a learned gate decides, per input, how much of each to use.",
+    "contribution": "GainLoRA still expands a fresh LoRA branch per task but adds gating modules that integrate new and old branches with input-conditioned weights, instead of the usual equal-weight composition. The gate is trained to minimise the new branch's influence on old tasks, so interference is suppressed at the output level rather than by restricting where the new branch may live in parameter space.",
+    "why_it_matters": "Moves the LoRA-CL design axis from 'where may the update sit' (orthogonality) to 'when may the update be read' (gating) — a cheaper and now widely copied route to stability.",
+    "key_result": "Outperforms prior LoRA-based continual-learning state of the art on standard CL benchmarks; abstract reports no single aggregate number.",
+    "basis": [
+      "https://arxiv.org/abs/2505.15424",
+      "https://doi.org/10.52202/085713-2310",
+      "https://api.crossref.org/works/10.52202/085713-2310"
+    ]
+  },
+  {
+    "title": "TSRL: Trigger-based Supervised Reinforcement Learning for Continual Agent Training",
+    "authors": [
+      "Yuqian Fu",
+      "Kaiwen Jiang",
+      "Zijun Song",
+      "Jiawei Wang",
+      "Yuanheng Zhu",
+      "Dongbin Zhao"
+    ],
+    "lab": "Chinese Academy of Sciences, Institute of Automation × UCAS × USTC",
+    "chinese_institution": "Chinese Academy of Sciences, Institute of Automation; University of Science and Technology of China",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-10-13",
+    "arxiv_id": "2610.17726",
+    "url": "https://arxiv.org/abs/2610.17726",
+    "citations": 0,
+    "topic": "continual agent training / continual RL post-training",
+    "method_family": "other",
+    "one_line": "Use RL as the backbone and fire expert SFT only on the hard states where the policy fails — forgetting follows the supervised-update budget.",
+    "contribution": "TSRL keeps reinforcement learning as the optimisation backbone and activates expert supervised fine-tuning selectively at 'hard states' where the current policy demonstrably fails, with a trigger deciding per state. The authors prove that restricting supervision to failure states yields an upper bound on the cumulative parameter update, and therefore on forgetting, relative to full SFT on the same stream.",
+    "why_it_matters": "Reframes continual agent training as a supervision-budget allocation problem rather than a replay problem: a 7B and 32B agent keeps ~10 points of prior skill that SFT→RL pipelines lose.",
+    "key_result": "Retains up to +9.6 points on prior tasks versus SFT→RL baselines while matching or exceeding target-task performance on ALFWorld, WebShop and Deep Search at 7B and 32B.",
+    "basis": [
+      "https://arxiv.org/abs/2610.17726",
+      "https://doi.org/10.48550/arxiv.2610.17726",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2610.17726"
+    ]
+  },
+  {
+    "title": "EmbodiedCLBench: Evaluating Continual Learning for Self-Evolving Embodied Agents",
+    "authors": [
+      "Jie Huang",
+      "Yanan Chen",
+      "Ruixun Liu",
+      "Kaichen He",
+      "Xinyi He",
+      "Rui Huang",
+      "Zilong Zheng",
+      "Zhenliang Zhang",
+      "Yiwu Zhong"
+    ],
+    "lab": "Peking University × Beijing Institute for General Artificial Intelligence (BAAI)",
+    "chinese_institution": "Peking University; Beijing Institute for General Artificial Intelligence",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-10-09",
+    "arxiv_id": "2610.13021",
+    "url": "https://arxiv.org/abs/2610.13021",
+    "citations": 0,
+    "topic": "continual-learning benchmark for LLM-driven embodied agents",
+    "method_family": "benchmark",
+    "one_line": "First embodied-simulation benchmark where an agent must recombine skills learned from basic tasks to solve harder unseen ones.",
+    "contribution": "EmbodiedCLBench instantiates continual learning inside an embodied simulator with compositional generalisation as the evaluation principle: agents first learn basic tasks, then must recombine the acquired skills to solve advanced tasks never seen during learning. The benchmark is run across multiple agent harnesses and learning methods, giving a harness-agnostic protocol rather than a single-model leaderboard.",
+    "why_it_matters": "Extends LLM continual-learning evaluation from question answering and instruction following to acting, where the failure mode is not degraded logits but the inability to reuse a skill.",
+    "key_result": "Advanced tasks are near-unsolvable zero-shot; basic-task experience gives consistent gains that hold as complexity rises, but the gains do not scale with the number of learning samples — current agents cannot extract information from additional experience.",
+    "basis": [
+      "https://arxiv.org/abs/2610.13021",
+      "https://doi.org/10.48550/arxiv.2610.13021",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2610.13021"
+    ]
+  },
+  {
+    "title": "Monarch-MoE: Structured Experts for Multimodal Continual Instruction Tuning",
+    "authors": [
+      "Xi Zhang",
+      "Boyu Diao",
+      "Zesen Chen",
+      "Ruiqi Liu",
+      "Hui Liu",
+      "Yongjun Xu"
+    ],
+    "lab": "Chinese Academy of Sciences, Institute of Computing Technology × ShanghaiTech",
+    "chinese_institution": "Chinese Academy of Sciences, Institute of Computing Technology",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-10-09",
+    "arxiv_id": "2610.13215",
+    "url": "https://arxiv.org/abs/2610.13215",
+    "citations": 0,
+    "topic": "multimodal continual instruction tuning (structured expert architecture)",
+    "method_family": "architecture",
+    "one_line": "Block-diagonal Monarch factors inside LoRA experts give blockwise gradient isolation — one block-pair update can only move one output block.",
+    "contribution": "Monarch-MoE replaces the dense low-rank factors of multi-expert LoRA with block-diagonal factors connected by a fixed permutation. This yields blockwise gradient isolation: an update to one block-pair affects exactly one output block, while the permutation keeps every input block connected to every output block. Batched computation, fused forward operators and a custom backward pass make the compact experts trainable on memory-limited hardware.",
+    "why_it_matters": "Shows the MoE-for-continual-learning route can enforce interference bounds structurally (inside the adapter) instead of through orthogonal projections, and does it about 50–75% cheaper in adapter parameters.",
+    "key_result": "First-task forgetting as low as 0.52 pp on MLLM-DCL and 0.10 pp on UCIT with LLaVA-1.5-7B, with ~75% / ~50% fewer adapter parameters; fine-tuning and inference fit a single 24 GB RTX 4090.",
+    "basis": [
+      "https://arxiv.org/abs/2610.13215",
+      "https://doi.org/10.48550/arxiv.2610.13215",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2610.13215"
+    ]
+  },
+  {
+    "title": "PaLoRA: Paced Low-Rank Adaptation for Continual Learning",
+    "authors": [
+      "Yuxuan Li",
+      "Fanhu Zeng",
+      "Hao Tang"
+    ],
+    "lab": "Peking University × Chinese Academy of Sciences, Institute of Automation",
+    "chinese_institution": "Peking University; Chinese Academy of Sciences, Institute of Automation",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-10-03",
+    "arxiv_id": "2610.04226",
+    "url": "https://arxiv.org/abs/2610.04226",
+    "citations": 0,
+    "topic": "continual instruction tuning (nullspace LoRA, step-size theory)",
+    "method_family": "lora",
+    "one_line": "Even nullspace projection leaks in finite precision — so the safe step size must shrink as the rank of accumulated history grows, s* = sqrt(R/c).",
+    "contribution": "PaLoRA shows that under directional constraints such as nullspace projection, finite-precision updates still leak into the subspace of accumulated prior knowledge along multiple directions, and that a fixed small learning rate only attenuates the leak while forgetting keeps intensifying as the effective rank of history grows. Under an anisotropic leakage model the authors derive a pacing law s* = sqrt(R/c) for the admissible gradient magnitude, then implement it with adaptive SVD truncation of history plus nullspace projection and rank-aware pacing.",
+    "why_it_matters": "Explains why the standard 'just use a small learning rate' heuristic in O-LoRA-family methods degrades over long streams, and replaces it with a closed-form schedule — the theory the whole LoRA-CL line has been missing.",
+    "key_result": "Substantial gains in long-horizon settings, including +4 accuracy points on the 50-task ImageNet-A and ImageNet-R benchmarks.",
+    "basis": [
+      "https://arxiv.org/abs/2610.04226",
+      "https://doi.org/10.48550/arxiv.2610.04226",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2610.04226"
+    ]
+  },
+  {
+    "title": "ChainLoRA: Geometry-Preserving Task Vector Merging for Continual Learning in LLMs",
+    "authors": [
+      "Hang Yin",
+      "Haozhe Wang",
+      "Yuhua Luo",
+      "Zhangqi Pan",
+      "Xiaoxing Wang",
+      "Junchi Yan"
+    ],
+    "lab": "Shanghai Jiao Tong University × Shanghai Innovation Institute × HUST",
+    "chinese_institution": "Shanghai Jiao Tong University; Huazhong University of Science and Technology",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-09-30",
+    "arxiv_id": "2610.00431",
+    "url": "https://arxiv.org/abs/2610.00431",
+    "citations": 0,
+    "topic": "replay-free continual PEFT via task-vector merging",
+    "method_family": "merging",
+    "one_line": "ChainLoRA turns forgetting into a measurable geometric interaction between task vectors, then merges the stream with Procrustes-aligned SVD.",
+    "contribution": "ChainLoRA formulates forgetting as a geometric interaction between task updates, separating directional overlap from coefficient coupling. Training initialises from and orthogonalises against only the last carrier, so historical-state footprint and regularisation cost stay constant as the stream grows; at merging time adaptive SVD extracts a shared carrier realigned to the newest task by Procrustes adaptation, with an effective-rank penalty keeping the task subspace compact. Theory shows Procrustes adaptation approximately separates shared from task-specific components and the one-sided proxy bounds inter-task interference.",
+    "why_it_matters": "Represents the migration of the Chinese CL-for-LLM line from replay to PEFT-plus-merging: no stored data, constant per-task overhead, and a merging step that is geometry-aware instead of average-and-hope.",
+    "key_result": "State of the art among the evaluated replay-free methods on the Large and SuperNI benchmarks and nearly the average score of the evaluated replay-based method across Standard CL, Large and SuperNI.",
+    "basis": [
+      "https://arxiv.org/abs/2610.00431",
+      "https://doi.org/10.48550/arxiv.2610.00431",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2610.00431"
+    ]
+  },
+  {
+    "title": "ReCAP: Retrieval-Guided Capability Reuse for Multimodal Continual Instruction Tuning",
+    "authors": [
+      "Tao Hu",
+      "Zhinuo Zhou",
+      "Xialiang Tong",
+      "De-Chuan Zhan",
+      "Da-Wei Zhou"
+    ],
+    "lab": "Nanjing University × Huawei",
+    "chinese_institution": "Nanjing University; Huawei Technologies (China)",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-09-29",
+    "arxiv_id": "2609.37889",
+    "url": "https://arxiv.org/abs/2609.37889",
+    "citations": 0,
+    "topic": "multimodal continual instruction tuning (external knowledge + module reuse)",
+    "method_family": "replay",
+    "one_line": "ReCAP retrieves domain and reasoning knowledge to route reused capability modules, then recycles their subspaces so reuse survives the next stage.",
+    "contribution": "At each continual stage ReCAP uses external search plus an LLM to incrementally build a knowledge base of domain, reasoning and format knowledge from the current stage's data. Retrieved domain knowledge conditions generation, while retrieved reasoning knowledge selects and orders capability modules into an instance-specific capability path; because reused modules would otherwise be overwritten by later stages, adaptive subspace recycling parameterises them with shared bases and stage-specific cores that protect historically important directions.",
+    "why_it_matters": "Puts an external, retrievable knowledge store back into a PEFT pipeline — the replay instinct returning at the inference layer rather than the data layer, which is a distinctly Chinese-lab compromise between no-replay and full-replay camps.",
+    "key_result": "Reports state-of-the-art performance on multimodal continual instruction tuning benchmarks; abstract states no single aggregate figure.",
+    "basis": [
+      "https://arxiv.org/abs/2609.37889",
+      "https://doi.org/10.48550/arxiv.2609.37889",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2609.37889"
+    ]
+  },
+  {
+    "title": "Controlled Memory Interference in Continual LLM Agents",
+    "authors": [
+      "Ao Ding",
+      "Hongzong Li",
+      "Shiqin Tang",
+      "Li Zhang",
+      "Liang Chen",
+      "Xuyang Chen",
+      "Zi Liang"
+    ],
+    "lab": "China University of Geosciences (Beijing) × Northwestern Polytechnical University × CAS",
+    "chinese_institution": "China University of Geosciences (Beijing); Northwestern Polytechnical University; Chinese Academy of Sciences",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-08-07",
+    "arxiv_id": "2608.07622",
+    "url": "https://arxiv.org/abs/2608.07622",
+    "citations": 0,
+    "topic": "agent long-term memory / continual memory evolution",
+    "method_family": "benchmark",
+    "one_line": "Agent memory fails through interference between simultaneously-relevant memories, not through forgetting — and authority cues beat recency.",
+    "contribution": "CMI is a controlled diagnostic and data-generation framework that constructs memory-evolution scenarios in which new experiences reinforce, revise or interfere with stored ones, with memories differing in state, temporal validity or authority. It measures how agent memory systems update under each relation, finding that benign accumulation has limited effect while relationship-specific interference sharply suppresses update plasticity with little stability gain, that lexical and dense retrieval fail through distinct pathways, and that poisoning is more sensitive to update-authority cues than to recency. The generated examples are then used as targeted training data for interference-aware memory learning.",
+    "why_it_matters": "Shifts the agent-memory question from 'how much can we store' to 'which stored memory wins', which is the stability–plasticity debate reappearing in natural-language memory instead of weights.",
+    "key_result": "Relationship-specific interference sharply suppresses update plasticity with little stability gain across controlled settings; targeted CMI examples improve interference-aware memory learning while preserving original memory-task performance (no aggregate benchmark number in abstract).",
+    "basis": [
+      "https://arxiv.org/abs/2608.07622",
+      "https://doi.org/10.48550/arxiv.2608.07622",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2608.07622"
+    ]
+  },
+  {
+    "title": "Beyond Forgetting: Diagnosing and Harnessing Shared Reasoning in Continual RLVR",
+    "authors": [
+      "Lirui Luo",
+      "Guoxi Zhang",
+      "Hongming Xu",
+      "Rongqing Li",
+      "Cong Fang",
+      "Lifeng Fan"
+    ],
+    "lab": "Peking University × Beijing Institute for General Artificial Intelligence (BAAI) × Beijing Institute of Technology",
+    "chinese_institution": "Peking University; Beijing Institute for General Artificial Intelligence; Beijing Institute of Technology",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-08-19",
+    "arxiv_id": "2608.18574",
+    "url": "https://arxiv.org/abs/2608.18574",
+    "citations": 0,
+    "topic": "continual RLVR / continual alignment of reasoning models",
+    "method_family": "replay",
+    "one_line": "Sequential RLVR forgets only modestly — yet still loses to multitask RLVR, because forgetting is only half of the gap.",
+    "contribution": "The paper defines continual RLVR — updating the existing reasoning model as each task arrives — and builds Continual Reasoning Gym, which organises text and visual reasoning tasks into five task sequences. It decomposes final performance and shows that forgetting accounts for only part of the gap to multitask RLVR, while identifying 'shared reasoning': transferable reasoning structure that makes one task's training help others. Its method, Continual Prompt Replay, replays previous-task prompts and regenerates their responses with the current policy, so no old responses are stored.",
+    "why_it_matters": "Brings the continual-learning diagnosis apparatus to RL post-training and shows the field's forgetting-centric metric is insufficient: a model can forget little and still end up worse than joint training.",
+    "key_result": "Sequential RLVR forgets modestly but stays below multitask RLVR on all five Continual Reasoning Gym sequences; on average only Continual Prompt Replay reaches MTRL-level performance.",
+    "basis": [
+      "https://arxiv.org/abs/2608.18574",
+      "https://doi.org/10.48550/arxiv.2608.18574",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2608.18574"
+    ]
+  },
+  {
+    "title": "Estimating and Orthogonalizing Unknown Pre-training Gradients for Continual Fine-tuning of Large Language Models",
+    "authors": [
+      "Bing Wang",
+      "Changchun Li",
+      "Xin-Qiang Cai",
+      "Lin Yuanbo Wu",
+      "Ximing Li",
+      "Gang Niu",
+      "Masashi Sugiyama"
+    ],
+    "lab": "Jilin University × RIKEN AIP",
+    "chinese_institution": "Jilin University",
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "date": "2026-09-25",
+    "arxiv_id": "2609.30935",
+    "url": "https://arxiv.org/abs/2609.30935",
+    "citations": 0,
+    "topic": "continual fine-tuning while preserving pre-trained general knowledge",
+    "method_family": "regularization",
+    "one_line": "EoupCT reconstructs the pre-training gradient you were never given, then projects new-task updates orthogonally to it.",
+    "contribution": "Orthogonal-gradient continual learning protects previous fine-tuning tasks but cannot protect a model's general pre-trained knowledge, because the pre-training data and gradients are unavailable. EoupCT estimates the pre-training gradient by generating, through a learnable soft prompt with Gumbel-Softmax relaxation, the pseudo-data most susceptible to forgetting under the new task, then solves a multi-objective problem with a first-order efficient Pareto optimiser that jointly updates the LLM and the soft prompt while forcing new-task updates orthogonal to the estimated gradient.",
+    "why_it_matters": "Closes the gap between 'don't forget task 3' and 'don't forget how to be a language model' — the failure mode that matters for continual pretraining-style domain adaptation.",
+    "key_result": "Preserves both task-specific proficiency and general-purpose knowledge across multiple LLMs while mitigating forgetting (abstract reports qualitative gains, no single aggregate number).",
+    "basis": [
+      "https://arxiv.org/abs/2609.30935",
+      "https://doi.org/10.48550/arxiv.2609.30935",
+      "https://api.openalex.org/works?filter=doi:10.48550/arxiv.2609.30935"
+    ]
+  }
+]

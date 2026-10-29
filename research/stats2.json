@@ -1,0 +1,59 @@
+{
+ "famCounts": [
+  [
+   "arXiv preprint",
+   184
+  ],
+  [
+   "Pattern Recognition/Neurocomputing",
+   101
+  ],
+  [
+   "TIP/TNNLS/TCSVT",
+   42
+  ],
+  [
+   "AAAI",
+   25
+  ],
+  [
+   "TPAMI",
+   22
+  ],
+  [
+   "NeurIPS",
+   19
+  ],
+  [
+   "ACL/EMNLP/NAACL",
+   16
+  ],
+  [
+   "KDD/WWW",
+   16
+  ],
+  [
+   "CVPR",
+   15
+  ],
+  [
+   "ICCV",
+   9
+  ],
+  [
+   "ACM MM",
+   9
+  ],
+  [
+   "ICLR/ICML",
+   0
+  ]
+ ],
+ "byYear": {
+  "2025": 425,
+  "2026": 531
+ },
+ "arxiv": 184,
+ "surveys": 29,
+ "total": 956
+}

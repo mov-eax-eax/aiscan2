@@ -33,3 +33,7 @@ Desktop.ini
 *.swp
 .idea/
 .vscode/
+
+# Local browser profiles and session data produced by verification runs
+**/chrome-profile/
+

@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>La Tour Eiffel · three.js</title>
+<style>
+  :root {
+    --ink: #f2ede3;
+    --muted: rgba(242, 237, 227, 0.62);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #070a12; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  #app { position: fixed; inset: 0; }
+  canvas { display: block; }
+
+  /* ---------- overlay chrome ---------- */
+  .hud {
+    position: fixed; inset: 0; z-index: 2;
+    padding: clamp(18px, 3vw, 42px);
+    display: flex; flex-direction: column; justify-content: space-between;
+    pointer-events: none;
+  }
+  .brand h1 {
+    margin: 0;
+    font-weight: 200;
+    font-size: clamp(17px, 2vw, 28px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55);
+  }
+  .brand p {
+    margin: 11px 0 0;
+    font-size: clamp(9px, 0.8vw, 11px);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 18px; flex-wrap: wrap;
+  }
+  .hint {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  }
+  .hint b { font-weight: 600; color: var(--ink); }
+  .controls { display: flex; gap: 8px; pointer-events: auto; }
+  .controls button {
+    appearance: none;
+    display: flex; align-items: center; gap: 9px;
+    padding: 10px 16px;
+    border: 1px solid rgba(242, 237, 227, 0.22);
+    border-radius: 999px;
+    background: rgba(12, 16, 26, 0.42);
+    color: var(--ink);
+    font: inherit;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.25s, border-color 0.25s, transform 0.1s;
+  }
+  .controls button:hover { background: rgba(30, 38, 54, 0.6); border-color: rgba(242, 237, 227, 0.45); }
+  .controls button:active { transform: scale(0.97); }
+  .controls .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(242, 237, 227, 0.32);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .controls button.on .dot { background: #ffc06a; box-shadow: 0 0 9px #ffc06a; }
+
+  #vignette {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(120% 95% at 50% 42%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.45) 100%);
+  }
+
+  /* ---------- loader / error ---------- */
+  #loader {
+    position: fixed; inset: 0; z-index: 9;
+    display: grid; place-items: center;
+    background: radial-gradient(120% 120% at 50% 38%, #141a26 0%, #05070c 70%);
+    transition: opacity 0.8s ease;
+  }
+  #loader.hide { opacity: 0; pointer-events: none; }
+  #loader .inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  #loader .ring {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(242, 237, 227, 0.14);
+    border-top-color: #ffc06a;
+    animation: spin 1s linear infinite;
+  }
+  #loader span { font-size: 9px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--muted); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #error {
+    position: fixed; inset: 0; z-index: 10;
+    display: grid; place-items: center;
+    padding: 24px; text-align: center;
+    background: #070a12;
+  }
+  #error[hidden] { display: none; }
+  #error h2 { font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; font-size: 15px; }
+  #error p { font-size: 13px; line-height: 1.7; color: var(--muted); max-width: 420px; margin: 14px auto 0; }
+
+  @media (max-width: 640px) {
+    .brand h1 { letter-spacing: 0.3em; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="vignette"></div>
+
+<div class="hud">
+  <header class="brand">
+    <h1>La Tour Eiffel</h1>
+    <p>Gustave Eiffel · 1889 &nbsp;—&nbsp; procedural lattice</p>
+  </header>
+  <div class="bottom">
+    <div class="hint">drag to orbit &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; <b>300 m</b> of iron</div>
+    <div class="controls">
+      <button id="btn-night" aria-label="Toggle night lighting"><span class="dot"></span><span id="btn-night-label">Night</span></button>
+      <button id="btn-auto" class="on" aria-label="Toggle auto orbit"><span class="dot"></span><span>Orbit</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="loader"><div class="inner"><div class="ring"></div><span>assembling the iron</span></div></div>
+<div id="error" hidden><div><h2>WebGL unavailable</h2><p id="error-text">three.js could not be loaded.</p></div></div>
+
+<script type="module">
+/* 00-three.js — load three.js from a CDN with fallbacks.
+   This fragment runs first and its top-level await gates the whole bundle. */
+const CDNS = [
+  'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js',
+  'https://unpkg.com/three@0.160.1/build/three.module.js',
+  'https://esm.sh/three@0.160.1',
+];
+
+let THREE = null;
+for (const url of CDNS) {
+  try { THREE = await import(url); break; }
+  catch (err) { console.warn('[eiffel] three.js failed from', url); }
+}
+
+const loaderEl = document.getElementById('loader');
+const errorEl = document.getElementById('error');
+const errorText = document.getElementById('error-text');
+function fail(message) {
+  loaderEl.classList.add('hide');
+  errorEl.hidden = false;
+  errorText.textContent = message;
+}
+if (!THREE) {
+  fail('three.js could not be downloaded from any CDN. Check the connection and reload the page.');
+  throw new Error('three.js unavailable');
+}
+
+
+/* 10-utils.js — math helpers and the shared world constants.
+   Everything in src/ is concatenated into one module scope, so these are
+   simply in scope for every other fragment. */
+/* ------------------------------------------------------------------ */
+/*  small helpers                                                     */
+/* ------------------------------------------------------------------ */
+const TAU = Math.PI * 2;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const mix = (a, b, t) => a + (b - a) * t;
+
+/** Smooth Hermite interpolation through [y, value] anchors. */
+function smoothCurve(anchors) {
+  const n = anchors.length;
+  const slopes = new Array(n);
+  for (let i = 0; i < n; i++) {
+    if (i === 0) slopes[i] = (anchors[1][1] - anchors[0][1]) / (anchors[1][0] - anchors[0][0]);
+    else if (i === n - 1) slopes[i] = (anchors[n - 1][1] - anchors[n - 2][1]) / (anchors[n - 1][0] - anchors[n - 2][0]);
+    else slopes[i] = (anchors[i + 1][1] - anchors[i - 1][1]) / (anchors[i + 1][0] - anchors[i - 1][0]);
+  }
+  return function (y) {
+    if (y <= anchors[0][0]) return anchors[0][1];
+    if (y >= anchors[n - 1][0]) return anchors[n - 1][1];
+    let i = 0;
+    while (i < n - 2 && y > anchors[i + 1][0]) i++;
+    const y0 = anchors[i][0], v0 = anchors[i][1];
+    const y1 = anchors[i + 1][0], v1 = anchors[i + 1][1];
+    const h = y1 - y0;
+    const t = (y - y0) / h;
+    const t2 = t * t, t3 = t2 * t;
+    return (2 * t3 - 3 * t2 + 1) * v0
+         + (t3 - 2 * t2 + t) * h * slopes[i]
+         + (-2 * t3 + 3 * t2) * v1
+         + (t3 - t2) * h * slopes[i + 1];
+  };
+}
+
+/* Shared layout constants — keep the modules agreeing about the map. */
+const WORLD = {
+  cityInner: 760,       // radius where the grey city floor starts
+  cityOuter: 3400,      // radius of that floor
+  ringY: 0.6,           // city-floor height (above ground=0, avoids z-fighting)
+  riverZ: -330,         // Seine centre line (behind the tower)
+  riverWidth: 220,
+  waterY: 1.2,
+  mallWidth: 58,        // Champ de Mars allée
+  mallStart: 100,
+  mallEnd: 740,
+  groundY: 0,
+};
+
+/* Reserved landmark spots. The city fabric must leave these clearings empty;
+   the landmark module builds inside them. Coordinates are world x / z (metres). */
+const LANDMARK_SITES = {
+  ecoleMilitaire: { x: 0, z: 830, clearing: 170 },
+  trocadero:      { x: 0, z: -640, clearing: 210 },
+  montparnasse:   { x: 980, z: -260, clearing: 90 },
+  defense:        { x: -1280, z: -880, clearing: 200 },
+};
+
+
+/* 20-env.js — the day/night dial plus the tiny observer registry that lets each
+   module light and animate its own objects without editing the composition root.
+
+   - ENV.night / ENV.nightTarget : 0 = golden hour, 1 = night
+   - registerEnv(fn)             : fn(night) runs every frame after the dial eases
+   - registerUpdater(fn)         : fn(dt, elapsed) runs every frame before render
+   Keep side effects inside your own module; never mutate another module's state. */
+
+const ENV = { night: 0, nightTarget: 0 };
+// deep link straight to the night view: index.html#night
+if (location.hash === '#night') { ENV.night = 1; ENV.nightTarget = 1; }
+
+const PALETTE = {
+  skyTopDay: new THREE.Color(0x3f6fb8),
+  skyTopNight: new THREE.Color(0x02040c),
+  skyBotDay: new THREE.Color(0xf4d3a6),
+  skyBotNight: new THREE.Color(0x0e1a30),
+  fogDay: new THREE.Color(0xdfd2be),
+  fogNight: new THREE.Color(0x0a1120),
+  hemiSkyDay: new THREE.Color(0xc9dcff),
+  hemiSkyNight: new THREE.Color(0x1a2744),
+  hemiGroundDay: new THREE.Color(0x6b5942),
+  hemiGroundNight: new THREE.Color(0x0b0d14),
+};
+
+const envHandlers = [];
+const updaters = [];
+let envScene = null;
+
+function initEnv(scene) {
+  envScene = scene;
+  scene.fog = new THREE.Fog(0xdfd2be, 900, 3200);
+}
+
+function registerEnv(handler) {
+  envHandlers.push(handler);
+}
+
+function registerUpdater(fn) {
+  updaters.push(fn);
+}
+
+function tickEnv(dt) {
+  ENV.night += (ENV.nightTarget - ENV.night) * (1 - Math.exp(-dt * 2.2));
+  if (Math.abs(ENV.nightTarget - ENV.night) < 0.001) ENV.night = ENV.nightTarget;
+
+  for (let i = 0; i < envHandlers.length; i++) envHandlers[i](ENV.night);
+
+  if (envScene && envScene.fog) {
+    envScene.fog.color.copy(PALETTE.fogDay).lerp(PALETTE.fogNight, ENV.night);
+  }
+}
+
+function runUpdaters(dt, elapsed) {
+  for (let i = 0; i < updaters.length; i++) updaters[i](dt, elapsed);
+}
+
+
+/* 30-sky.js — gradient sky, stars and the sun/moon/fill rig.
+   Registers its own day/night behaviour with registerEnv. */
+function buildSky(scene) {
+/* ------------------------------------------------------------------ */
+/*  sky, stars                                                        */
+/* ------------------------------------------------------------------ */
+const skyMat = new THREE.ShaderMaterial({
+  side: THREE.BackSide,
+  depthWrite: false,
+  fog: false,
+  uniforms: {
+    uTop: { value: new THREE.Color(0x3f6fb8) },
+    uBot: { value: new THREE.Color(0xf4d3a6) },
+  },
+  vertexShader: /* glsl */`
+    varying vec3 vDir;
+    void main() {
+      vec4 wp = modelMatrix * vec4(position, 1.0);
+      vDir = wp.xyz - cameraPosition;
+      gl_Position = projectionMatrix * viewMatrix * wp;
+    }
+  `,
+  fragmentShader: /* glsl */`
+    uniform vec3 uTop;
+    uniform vec3 uBot;
+    varying vec3 vDir;
+    void main() {
+      float h = normalize(vDir).y;
+      float t = smoothstep(-0.02, 0.34, h);
+      vec3 c = mix(uBot, uTop, pow(t, 0.9));
+      gl_FragColor = vec4(c, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }
+  `,
+});
+const sky = new THREE.Mesh(new THREE.SphereGeometry(5000, 32, 20), skyMat);
+scene.add(sky);
+
+const starGeo = new THREE.BufferGeometry();
+{
+  const count = 2200;
+  const pos = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const a = Math.random() * TAU;
+    const y = 0.04 + Math.random() * 0.96;
+    const r = Math.sqrt(1 - y * y);
+    pos[i * 3 + 0] = Math.cos(a) * r * 4400;
+    pos[i * 3 + 1] = y * 4400;
+    pos[i * 3 + 2] = Math.sin(a) * r * 4400;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+}
+const starMat = new THREE.PointsMaterial({
+  color: 0xdfe8ff, size: 1.7, sizeAttenuation: false,
+  transparent: true, opacity: 0, depthWrite: false, fog: false,
+});
+const stars = new THREE.Points(starGeo, starMat);
+stars.frustumCulled = false;
+scene.add(stars);
+
+/* ------------------------------------------------------------------ */
+/*  lights                                                            */
+/* ------------------------------------------------------------------ */
+const hemi = new THREE.HemisphereLight(0xc9dcff, 0x6b5942, 1.05);
+scene.add(hemi);
+
+const sun = new THREE.DirectionalLight(0xfff0d8, 2.8);
+sun.position.set(330, 300, 220);
+sun.target.position.set(0, 120, 0);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.left = -320;
+sun.shadow.camera.right = 320;
+sun.shadow.camera.top = 300;
+sun.shadow.camera.bottom = -300;
+sun.shadow.camera.near = 60;
+sun.shadow.camera.far = 1600;
+sun.shadow.bias = -0.0004;
+sun.shadow.normalBias = 0.7;
+scene.add(sun);
+scene.add(sun.target);
+
+const moon = new THREE.DirectionalLight(0x9ab4ff, 0);
+moon.position.set(-420, 260, -300);
+moon.target.position.set(0, 120, 0);
+scene.add(moon);
+scene.add(moon.target);
+
+const fill = new THREE.DirectionalLight(0xbfd4ff, 0.5);
+fill.position.set(-300, 160, 260);
+fill.target.position.set(0, 120, 0);
+scene.add(fill);
+scene.add(fill.target);
+
+  registerEnv((t) => {
+    sun.intensity = mix(2.8, 0.04, t);
+    moon.intensity = mix(0, 0.6, t);
+    fill.intensity = mix(0.5, 0.12, t);
+    hemi.intensity = mix(1.05, 0.42, t);
+    hemi.color.copy(PALETTE.hemiSkyDay).lerp(PALETTE.hemiSkyNight, t);
+    hemi.groundColor.copy(PALETTE.hemiGroundDay).lerp(PALETTE.hemiGroundNight, t);
+    skyMat.uniforms.uTop.value.copy(PALETTE.skyTopDay).lerp(PALETTE.skyTopNight, t);
+    skyMat.uniforms.uBot.value.copy(PALETTE.skyBotDay).lerp(PALETTE.skyBotNight, t);
+    starMat.opacity = t * 0.95;
+  });
+}
+
+
+/* 40-terrain.js — ground, plaza, city floor, the Seine and Pont d'Iéna.
+   All near-coplanar surfaces are deliberately separated in Y; do not place
+   overlay planes on the same Y or they will flicker. */
+function buildTerrain(scene) {
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x444d36, roughness: 1 });
+  const plazaMat = new THREE.MeshStandardMaterial({ color: 0x9c9080, roughness: 0.92 });
+  const pathMat = new THREE.MeshStandardMaterial({ color: 0xa99e8b, roughness: 0.95 });
+  const waterMat = new THREE.MeshStandardMaterial({ color: 0x35697d, metalness: 0.35, roughness: 0.12 });
+  const stoneMat = new THREE.MeshStandardMaterial({ color: 0x968b7c, metalness: 0.02, roughness: 0.96 });
+
+/* ------------------------------------------------------------------ */
+/*  ground, plaza, river, bridge                                      */
+/* ------------------------------------------------------------------ */
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(12000, 12000), groundMat);
+ground.rotation.x = -Math.PI / 2;
+ground.receiveShadow = true;
+scene.add(ground);
+
+const plaza = new THREE.Mesh(new THREE.CircleGeometry(100, 72), plazaMat);
+plaza.rotation.x = -Math.PI / 2;
+plaza.position.y = 0.25;
+plaza.receiveShadow = true;
+scene.add(plaza);
+
+// the city floor, so the distant blocks don't float on a lawn
+const urban = new THREE.Mesh(
+  new THREE.RingGeometry(WORLD.cityInner, WORLD.cityOuter, 96),
+  new THREE.MeshStandardMaterial({ color: 0x4b4944, roughness: 1 })
+);
+urban.rotation.x = -Math.PI / 2;
+urban.position.y = WORLD.ringY;
+urban.receiveShadow = true;
+scene.add(urban);
+
+// Champ de Mars, stretching away from the tower, and the short walk to the river
+const mall = new THREE.Mesh(new THREE.PlaneGeometry(WORLD.mallWidth, WORLD.mallEnd - WORLD.mallStart), pathMat);
+mall.rotation.x = -Math.PI / 2;
+mall.position.set(0, 0.3, (WORLD.mallStart + WORLD.mallEnd) / 2);
+mall.receiveShadow = true;
+scene.add(mall);
+
+const riverWalk = new THREE.Mesh(new THREE.PlaneGeometry(46, 124), pathMat);
+riverWalk.rotation.x = -Math.PI / 2;
+riverWalk.position.set(0, 0.3, -162.5);
+riverWalk.receiveShadow = true;
+scene.add(riverWalk);
+
+// the Seine, crossing the scene behind the tower
+const river = new THREE.Mesh(new THREE.PlaneGeometry(9000, WORLD.riverWidth), waterMat);
+river.rotation.x = -Math.PI / 2;
+river.position.set(0, WORLD.waterY, WORLD.riverZ);
+scene.add(river);
+
+for (const z of [-220, -440]) {
+  const quay = new THREE.Mesh(new THREE.BoxGeometry(9000, 3.2, 4), stoneMat);
+  quay.position.set(0, 0.5, z);
+  scene.add(quay);
+}
+
+// Pont d'Iéna, on the tower's axis
+{
+  const deck = new THREE.Mesh(new THREE.BoxGeometry(40, 2.2, 224), stoneMat);
+  deck.position.set(0, 1.9, -330);
+  deck.castShadow = true;
+  scene.add(deck);
+
+  for (const x of [-19.5, 19.5]) {
+    const parapet = new THREE.Mesh(new THREE.BoxGeometry(0.9, 1.2, 224), stoneMat);
+    parapet.position.set(x, 3.6, -330);
+    scene.add(parapet);
+  }
+  for (const z of [-256, -330, -404]) {
+    const pier = new THREE.Mesh(new THREE.BoxGeometry(34, 4.6, 9), stoneMat);
+    pier.position.set(0, 0.4, z);
+    scene.add(pier);
+  }
+}
+}
+
+
+/* 50-tower.js — the iron lady. Everything is generated from the silhouette
+   curves below; no models. Registers night lighting + sparkle/beacon updaters. */
+function buildTower(scene, renderer) {
+  // deck surfaces sit slightly proud of the lattice ends so caps never z-fight
+  const DECK_LIFT = 0.22;
+
+  /* ---- materials ---- */
+  const ironMat = new THREE.MeshStandardMaterial({
+    color: 0x74604b, metalness: 0.5, roughness: 0.46,
+    emissive: 0xffa14a, emissiveIntensity: 0,
+  });
+  const slabMat = new THREE.MeshStandardMaterial({
+    color: 0x4d4238, metalness: 0.4, roughness: 0.65,
+    emissive: 0xff9a4a, emissiveIntensity: 0,
+  });
+  const glassMat = new THREE.MeshStandardMaterial({
+    color: 0x7fa6b2, metalness: 0.5, roughness: 0.2,
+    transparent: true, opacity: 0.45,
+    emissive: 0xffcf96, emissiveIntensity: 0.08,
+    side: THREE.DoubleSide,
+  });
+  const stoneMat = new THREE.MeshStandardMaterial({ color: 0x968b7c, metalness: 0.02, roughness: 0.96 });
+  const mastMat = new THREE.MeshStandardMaterial({ color: 0xd6d1c6, metalness: 0.85, roughness: 0.35 });
+
+  /* ---- night light rig ---- */
+  const upA = new THREE.DirectionalLight(0xffa552, 0);
+  upA.position.set(150, -90, 130);
+  upA.target.position.set(0, 260, 0);
+  scene.add(upA, upA.target);
+
+  const upB = new THREE.DirectionalLight(0xff9a4a, 0);
+  upB.position.set(-170, -70, -150);
+  upB.target.position.set(0, 220, 0);
+  scene.add(upB, upB.target);
+
+  const baseGlow = new THREE.PointLight(0xffb066, 0, 320, 1.8);
+  baseGlow.position.set(0, 26, 0);
+  scene.add(baseGlow);
+
+  const deckGlow = new THREE.PointLight(0xffbe7a, 0, 190, 1.8);
+  deckGlow.position.set(0, 118, 0);
+  scene.add(deckGlow);
+
+/* ================================================================== */
+/*  THE TOWER                                                         */
+/* ================================================================== */
+
+const TOWER_TOP = 300;
+const ANTENNA_TOP = 332;
+
+// how far the four corner pillars sit from the centre line
+const halfWidth = smoothCurve([
+  [0, 62.5], [57.6, 35.0], [115.7, 20.0], [200, 10.4], [276, 6.5], [300, 3.4],
+]);
+// the side of each corner pillar's square cross-section
+const pillarWidth = smoothCurve([
+  [0, 20.0], [57.6, 16.0], [115.7, 9.5], [200, 4.2], [276, 2.1], [300, 1.4],
+]);
+// radius of the main chords
+const chordRadius = smoothCurve([
+  [0, 1.0], [57.6, 0.58], [115.7, 0.42], [200, 0.34], [300, 0.26],
+]);
+
+// horizontal tiers: one panel per step
+const lin = (a, b, n) => Array.from({ length: n + 1 }, (_, i) => a + (b - a) * i / n);
+const levelsA = lin(0, 57.6, 18);
+const levelsB = lin(57.6, 115.7, 14);
+const levelsC = lin(115.7, 276, 34);
+const levelsD = lin(276, 300, 8);
+// the faces above the second floor get large X-braced panels, not a mesh
+const faceTiersC = lin(115.7, 276, 14);
+
+// the four faces: outward normal (nx, nz) and tangent (tx, tz)
+const frames = [
+  { nx: 0, nz: 1, tx: 1, tz: 0 },
+  { nx: 1, nz: 0, tx: 0, tz: -1 },
+  { nx: 0, nz: -1, tx: -1, tz: 0 },
+  { nx: -1, nz: 0, tx: 0, tz: 1 },
+];
+
+const segs = [];
+const member = (a, b, r) => segs.push({ a, b, r });
+
+/* --- one corner pillar: a square lattice column -------------------- */
+function pillarPoints(sx, sz, y) {
+  const w = halfWidth(y);
+  const c = pillarWidth(y);
+  return [
+    [sx * w, y, sz * w],
+    [sx * (w - c), y, sz * w],
+    [sx * (w - c), y, sz * (w - c)],
+    [sx * w, y, sz * (w - c)],
+  ];
+}
+
+function buildPillar(sx, sz, levels) {
+  const first = pillarPoints(sx, sz, levels[0]);
+  const r0 = chordRadius(levels[0]) * 0.7;
+  for (let k = 0; k < 4; k++) member(first[k], first[(k + 1) % 4], r0);
+
+  const lerp3 = (a, b, t) => [
+    a[0] + (b[0] - a[0]) * t,
+    a[1] + (b[1] - a[1]) * t,
+    a[2] + (b[2] - a[2]) * t,
+  ];
+
+  for (let i = 0; i < levels.length - 1; i++) {
+    const y0 = levels[i];
+    const y1 = levels[i + 1];
+    const p = pillarPoints(sx, sz, y0);
+    const q = pillarPoints(sx, sz, y1);
+    const r = chordRadius((y0 + y1) / 2);
+    const cells = clamp(Math.round(pillarWidth((y0 + y1) / 2) / 4.2), 1, 3);
+
+    for (let k = 0; k < 4; k++) {
+      const k2 = (k + 1) % 4;
+      const pv = [];
+      const qv = [];
+      for (let j = 0; j <= cells; j++) {
+        const t = j / cells;
+        pv.push(lerp3(p[k], p[k2], t));
+        qv.push(lerp3(q[k], q[k2], t));
+      }
+      // vertical lattice bars (the outer ones are the main chords)
+      for (let j = 0; j <= cells; j++) {
+        const isChord = j === 0 || j === cells;
+        member(pv[j], qv[j], isChord ? r : r * 0.68);
+      }
+      // X bracing inside every cell + rail along the top of the panel
+      for (let j = 0; j < cells; j++) {
+        member(pv[j], qv[j + 1], r * 0.48);
+        member(pv[j + 1], qv[j], r * 0.48);
+        member(qv[j], qv[j + 1], r * 0.6);
+      }
+    }
+  }
+}
+
+for (const levels of [levelsA, levelsB, levelsC, levelsD]) {
+  for (const sx of [-1, 1]) {
+    for (const sz of [-1, 1]) buildPillar(sx, sz, levels);
+  }
+}
+
+/* --- face lattice between two pillars ------------------------------ */
+function facePoint(fr, u, y) {
+  const w = halfWidth(y);
+  const c = pillarWidth(y);
+  const span = w - c;
+  const offset = w - c / 2;
+  return [
+    fr.tx * u * span + fr.nx * offset,
+    y,
+    fr.tz * u * span + fr.nz * offset,
+  ];
+}
+
+/* --- horizontal lattice girder band across a face ------------------- */
+function bandGirder(fr, y, depth, segments) {
+  const yT = y + depth / 2;
+  const yB = y - depth / 2;
+  const r = chordRadius(y);
+  const span = 2 * (halfWidth(y) - pillarWidth(y));
+  const n = Math.max(3, segments || Math.round(span / 3.6));
+
+  const top = [];
+  const bot = [];
+  for (let j = 0; j <= n; j++) {
+    const u = -1 + (2 * j) / n;
+    top.push(facePoint(fr, u, yT));
+    bot.push(facePoint(fr, u, yB));
+  }
+  for (let j = 0; j < n; j++) {
+    member(top[j], top[j + 1], r * 1.15);  // chords of the girder
+    member(bot[j], bot[j + 1], r * 1.15);
+    member(top[j], bot[j + 1], r * 0.45);  // zig-zag web
+    member(bot[j], top[j + 1], r * 0.45);
+  }
+  for (let j = 0; j <= n; j += Math.max(1, Math.round(n / 3))) {
+    member(top[j], bot[j], r * 0.55);      // posts
+  }
+}
+
+/* --- open bay between the first and second floors ------------------- */
+// The real tower is wide open here: on every face the four legs are tied
+// together only by the deep girder that carries the second floor.
+function buildOpenBay() {
+  for (const fr of frames) bandGirder(fr, 111.3, 4.8, 8);
+}
+
+/* --- large open X bracing on the faces above the second floor ------- */
+function buildFaceBracing(levels, girderDepth) {
+  for (const fr of frames) {
+    for (let i = 0; i < levels.length - 1; i++) {
+      const y0 = levels[i];
+      const y1 = levels[i + 1];
+      const r = chordRadius((y0 + y1) / 2);
+      member(facePoint(fr, -1, y0), facePoint(fr, 1, y1), r * 1.9);
+      member(facePoint(fr, 1, y0), facePoint(fr, -1, y1), r * 1.9);
+    }
+    for (let i = 1; i < levels.length; i++) bandGirder(fr, levels[i], girderDepth);
+  }
+}
+
+/* --- the small dense cage at the very summit ------------------------ */
+function buildDenseLattice(levels) {
+  for (const fr of frames) {
+    for (let i = 0; i < levels.length - 1; i++) {
+      const y0 = levels[i];
+      const y1 = levels[i + 1];
+      const h = y1 - y0;
+      const span = (halfWidth(y0) - pillarWidth(y0)) + (halfWidth(y1) - pillarWidth(y1));
+      const n = clamp(Math.round(span / (h * 1.9)), 1, 9);
+      const r = chordRadius((y0 + y1) / 2) * 0.78;
+
+      const at = (u, y) => facePoint(fr, u, y);
+
+      for (let j = 0; j <= n; j++) {
+        const u = -1 + 2 * j / n;
+        member(at(u, y0), at(u, y1), r * 0.72);
+      }
+      for (let j = 0; j < n; j++) {
+        const u0 = -1 + 2 * j / n;
+        const u1 = -1 + 2 * (j + 1) / n;
+        member(at(u0, y0), at(u1, y1), r);
+        member(at(u1, y0), at(u0, y1), r);
+        member(at(u0, y0), at(u1, y0), r * 0.9);
+      }
+    }
+  }
+}
+
+buildOpenBay();
+buildFaceBracing(faceTiersC, 1.8);
+buildDenseLattice(levelsD);
+
+/* --- the great arches under the first floor ------------------------ */
+function buildArch(fr) {
+  const N = 26;
+  const ySpring = 2.5;
+  const rise = 50;
+  const R = halfWidth(ySpring) - pillarWidth(ySpring);
+
+  const top = [];
+  const bot = [];
+  for (let i = 0; i <= N; i++) {
+    const th = Math.PI * (1 - i / N);
+    const sn = Math.sin(th);
+    const cs = Math.cos(th);
+    const x = R * cs;
+
+    const yT = ySpring + rise * sn;
+    const yB = ySpring + (rise - 5) * sn;
+
+    const wT = halfWidth(yT), cT = pillarWidth(yT);
+    const wB = halfWidth(yB), cB = pillarWidth(yB);
+
+    const zT = wT - cT / 2;
+    const zB = wB - cB / 2;
+
+    top.push([fr.tx * x + fr.nx * zT, yT, fr.tz * x + fr.nz * zT]);
+    bot.push([fr.tx * x * 0.985 + fr.nx * zB, yB, fr.tz * x * 0.985 + fr.nz * zB]);
+  }
+
+  for (let i = 0; i < N; i++) {
+    member(top[i], top[i + 1], 0.55);
+    member(bot[i], bot[i + 1], 0.45);
+    member(top[i], bot[i + 1], 0.34);
+    member(bot[i], top[i + 1], 0.34);
+  }
+  for (let i = 0; i <= N; i += 3) member(top[i], bot[i], 0.26);
+}
+
+for (const fr of frames) buildArch(fr);
+
+/* --- girder under the first floor ---------------------------------- */
+for (const y of [54.8, 56.6]) {
+  for (const fr of frames) {
+    const half = halfWidth(y) - pillarWidth(y);
+    const z = halfWidth(y) - pillarWidth(y) / 2;
+    const left = [-fr.tx * half + fr.nx * z, y, -fr.tz * half + fr.nz * z];
+    const right = [fr.tx * half + fr.nx * z, y, fr.tz * half + fr.nz * z];
+    member(left, right, 0.55);
+  }
+}
+
+/* --- platform railings (thin members, same instanced mesh) ---------- */
+function addRailing(y, half, height) {
+  const postR = 0.11;
+  for (const fr of frames) {
+    const n = Math.max(3, Math.round(2 * half / 5));
+    let prev = null;
+    for (let j = 0; j <= n; j++) {
+      const u = -1 + 2 * j / n;
+      const x = fr.tx * u * half + fr.nx * half;
+      const z = fr.tz * u * half + fr.nz * half;
+      member([x, y - 0.15, z], [x, y + height, z], postR * 1.5);
+      if (prev) {
+        member([prev[0], y + height, prev[2]], [x, y + height, z], postR * 1.1);
+        member([prev[0], y + height * 0.55, prev[2]], [x, y + height * 0.55, z], postR * 0.8);
+      }
+      prev = [x, y, z];
+    }
+  }
+}
+
+const platforms = [
+  { y: 57.6, half: 39.0, thickness: 2.8, rail: 2.7 },
+  { y: 115.7, half: 23.5, thickness: 2.4, rail: 2.4 },
+  { y: 276.0, half: 8.4, thickness: 2.2, rail: 2.0 },
+  { y: 300.0, half: 3.6, thickness: 1.5, rail: 1.6 },
+];
+
+for (const p of platforms) addRailing(p.y + DECK_LIFT, p.half - 0.8, p.rail);
+
+/* --- build the instanced ironwork ---------------------------------- */
+function buildStructure(list) {
+  const geo = new THREE.CylinderGeometry(1, 1, 1, 6, 1, false);
+  const mesh = new THREE.InstancedMesh(geo, ironMat, list.length);
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  mesh.frustumCulled = false; // instances span far beyond the unit geometry
+
+  const m4 = new THREE.Matrix4();
+  const q = new THREE.Quaternion();
+  const up = new THREE.Vector3(0, 1, 0);
+  const a = new THREE.Vector3();
+  const b = new THREE.Vector3();
+  const dir = new THREE.Vector3();
+  const mid = new THREE.Vector3();
+  const sc = new THREE.Vector3();
+
+  for (let i = 0; i < list.length; i++) {
+    const s = list[i];
+    a.fromArray(s.a);
+    b.fromArray(s.b);
+    dir.subVectors(b, a);
+    const len = dir.length();
+    if (len < 1e-4) {
+      mid.copy(a);
+      sc.set(1e-3, 1e-3, 1e-3);
+    } else {
+      dir.divideScalar(len);
+      q.setFromUnitVectors(up, dir);
+      mid.addVectors(a, b).multiplyScalar(0.5);
+      sc.set(s.r, len, s.r);
+    }
+    m4.compose(mid, q, sc);
+    mesh.setMatrixAt(i, m4);
+  }
+  mesh.instanceMatrix.needsUpdate = true;
+  mesh.name = 'ironwork';
+  scene.add(mesh);
+  return mesh;
+}
+
+buildStructure(segs);
+
+/* --- platform decks, pavilions, piers, summit, antenna -------------- */
+function addMesh(geo, mat, x, y, z, rotY = 0) {
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.set(x, y, z);
+  mesh.rotation.y = rotY;
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  scene.add(mesh);
+  return mesh;
+}
+
+for (const p of platforms) {
+  const slab = addMesh(new THREE.BoxGeometry(p.half * 2, p.thickness, p.half * 2), slabMat, 0, p.y + DECK_LIFT - p.thickness / 2, 0);
+  // The fine lattice shadow aliases into a shimmering dapple at shadow-map
+  // resolution, so decks stay out of the shadow lookup (fixes "floor flicker").
+  slab.receiveShadow = false;
+}
+
+// first floor: four glass pavilions around the perimeter
+for (let k = 0; k < 4; k++) {
+  const a = k * Math.PI / 2;
+  addMesh(new THREE.BoxGeometry(34, 6.5, 5.2), glassMat,
+    Math.sin(a) * 33.5, 57.6 + DECK_LIFT - 0.5 + 3.25, Math.cos(a) * 33.5, a);
+}
+// second floor: a slimmer ring of pavilions
+for (let k = 0; k < 4; k++) {
+  const a = k * Math.PI / 2;
+  addMesh(new THREE.BoxGeometry(16, 5.2, 4.2), glassMat,
+    Math.sin(a) * 19.5, 115.7 + DECK_LIFT - 0.5 + 2.6, Math.cos(a) * 19.5, a);
+}
+// third floor: the glazed cabin and the little lantern over it
+addMesh(new THREE.BoxGeometry(8, 6, 8), glassMat, 0, 276 + DECK_LIFT - 0.5 + 3, 0);
+addMesh(new THREE.BoxGeometry(4.4, 8, 4.4), glassMat, 0, 285.5, 0);
+
+// masonry piers under the four pillars
+for (const sx of [-1, 1]) {
+  for (const sz of [-1, 1]) {
+    addMesh(new THREE.BoxGeometry(18, 6.5, 18), stoneMat, sx * 55, 3.25, sz * 55);
+  }
+}
+
+// antenna mast on the summit
+addMesh(new THREE.CylinderGeometry(0.34, 0.95, 26, 10), mastMat, 0, 312.6, 0);
+addMesh(new THREE.CylinderGeometry(0.1, 0.34, 6, 8), mastMat, 0, 328.4, 0);
+for (const [y, w] of [[305, 3.6], [311, 2.9], [317, 2.4], [323, 1.9]]) {
+  addMesh(new THREE.BoxGeometry(w, 0.16, w * 0.32), mastMat, 0, y, 0);
+}
+
+const beaconMat = new THREE.MeshBasicMaterial({ color: 0xff3b2f, transparent: true, opacity: 0.2 });
+const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.55, 12, 10), beaconMat);
+beacon.position.set(0, 331.95, 0);
+scene.add(beacon);
+
+/* ------------------------------------------------------------------ */
+/*  sparkle: the tower's hourly shimmer                               */
+/* ------------------------------------------------------------------ */
+const sparkleMat = new THREE.ShaderMaterial({
+  transparent: true,
+  depthWrite: false,
+  depthTest: false,
+  blending: THREE.AdditiveBlending,
+  uniforms: {
+    uTime: { value: 0 },
+    uPixel: { value: 1 },
+    uOpacity: { value: 0 },
+  },
+  vertexShader: /* glsl */`
+    attribute float aPhase;
+    uniform float uTime;
+    uniform float uPixel;
+    varying float vAlpha;
+    void main() {
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      gl_Position = projectionMatrix * mv;
+      float tw = sin(uTime * 3.0 + aPhase * 6.2831853);
+      vAlpha = smoothstep(0.15, 1.0, tw);
+      gl_PointSize = (1.8 + 2.6 * tw) * uPixel * (460.0 / max(1.0, -mv.z));
+    }
+  `,
+  fragmentShader: /* glsl */`
+    uniform float uOpacity;
+    varying float vAlpha;
+    void main() {
+      float d = length(gl_PointCoord - 0.5);
+      float a = smoothstep(0.5, 0.0, d);
+      gl_FragColor = vec4(vec3(1.0, 0.82, 0.55), a * vAlpha * uOpacity);
+    }
+  `,
+});
+
+{
+  const count = 2600;
+  const pos = new Float32Array(count * 3);
+  const phase = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    let s = segs[(Math.random() * segs.length) | 0];
+    for (let tries = 0; tries < 6; tries++) {
+      if ((s.a[1] + s.b[1]) * 0.5 > 22) break;
+      s = segs[(Math.random() * segs.length) | 0];
+    }
+    const t = Math.random();
+    pos[i * 3 + 0] = s.a[0] + (s.b[0] - s.a[0]) * t;
+    pos[i * 3 + 1] = s.a[1] + (s.b[1] - s.a[1]) * t;
+    pos[i * 3 + 2] = s.a[2] + (s.b[2] - s.a[2]) * t;
+    phase[i] = Math.random();
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('aPhase', new THREE.BufferAttribute(phase, 1));
+  const sparkles = new THREE.Points(geo, sparkleMat);
+  sparkles.frustumCulled = false;
+  scene.add(sparkles);
+}
+
+  registerEnv((t) => {
+    upA.intensity = t * 3.2;
+    upB.intensity = t * 2.2;
+    baseGlow.intensity = t * 2600;
+    deckGlow.intensity = t * 900;
+    ironMat.emissiveIntensity = t * 0.38;
+    slabMat.emissiveIntensity = t * 0.12;
+    glassMat.emissiveIntensity = mix(0.08, 0.85, t);
+    sparkleMat.uniforms.uOpacity.value = t * 0.85;
+  });
+
+  registerUpdater((dt, elapsed) => {
+    const pulse = 0.5 + 0.5 * Math.sin(elapsed * 2.6);
+    beaconMat.opacity = (0.15 + 0.85 * ENV.night) * (0.35 + 0.65 * pulse);
+    beacon.scale.setScalar(0.85 + pulse * 0.3);
+    sparkleMat.uniforms.uTime.value = elapsed;
+    sparkleMat.uniforms.uPixel.value = renderer.getPixelRatio();
+  });
+}
+
+
+/* 60-city-blocks.js — the Paris urban fabric: Haussmann blocks, zinc mansard
+   roofs, diagonal boulevards radiating from the tower, tree allées along the
+   Champ de Mars and the river, and windows that warm up at night.
+   TEAM MODULE (owner: city-blocks).
+
+   Contract: buildCityBlocks(scene) adds content and may call registerEnv /
+   registerUpdater. Everything repeated is an InstancedMesh: roughly 8k blocks,
+   2k trees and 22k instances in total, about 300k triangles.
+
+   Map conventions (see 10-utils.js): +Z Champ de Mars, -Z the Seine, tower at
+   the origin, the grey city floor ring starts at radius WORLD.cityInner (760).
+   The fabric therefore re-uses that shared floor outside the ring and lays its
+   own thin pavement (a lower plane, so the mall and plaza stay on top) inside
+   it, while leaving the Champ de Mars, the tower gardens, the Seine and every
+   LANDMARK_SITES clearing empty. */
+function buildCityBlocks(scene) {
+  /* ------------------------------------------------------------------ */
+  /*  deterministic randomness (the city must look the same every load)  */
+  /* ------------------------------------------------------------------ */
+  let rng = 0x5eed1a7e;
+  function rnd() {
+    rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
+    return rng / 4294967296;
+  }
+  const rr = (a, b) => a + (b - a) * rnd();
+
+  /* ------------------------------------------------------------------ */
+  /*  map facts and the keep-out zones                                   */
+  /* ------------------------------------------------------------------ */
+  const BASE_Y = WORLD.ringY;      // city-floor height: all blocks sit on it
+  const STOREY = 3.4;              // one Haussmann storey, in metres
+  const FABRIC_R = 2600;           // fabric fades into the fog past this
+  const TOWER_GARDEN = 235;        // nothing built this close to the tower
+  const PAVE_Y = 0.22;             // our pavement, under plaza (0.25) / paths (0.3)
+  const PAVE_HALF = 800;           // pavement half-size; tucks under the floor ring
+  const GRID_HALF = 2760;          // the street grid covers the whole fabric
+  const RIVER_Z0 = -456;           // Seine + quays keep-out band (far edge)
+  const RIVER_Z1 = -204;           // Seine + quays keep-out band (near edge)
+  const PARK = { x0: -96, x1: 96, z0: 88, z1: 760 }; // Champ de Mars
+
+  const sites = [];
+  for (const key in LANDMARK_SITES) {
+    const s = LANDMARK_SITES[key];
+    sites.push({ x: s.x, z: s.z, r: s.clearing });
+  }
+
+  /** True when a footprint (centre + half extents) must stay empty. */
+  function blocked(cx, cz, hx, hz) {
+    const rad = Math.hypot(cx, cz);
+    if (rad > FABRIC_R || rad < TOWER_GARDEN) return true;
+    // Champ de Mars + its tree allées
+    if (cx + hx > PARK.x0 && cx - hx < PARK.x1 && cz + hz > PARK.z0 && cz - hz < PARK.z1) return true;
+    // the Seine: water plus the two quays
+    if (cz + hz > RIVER_Z0 && cz - hz < RIVER_Z1) return true;
+    // reserved landmark clearings
+    for (let i = 0; i < sites.length; i++) {
+      const s = sites[i];
+      const dx = Math.max(0, Math.abs(cx - s.x) - hx);
+      const dz = Math.max(0, Math.abs(cz - s.z) - hz);
+      if (dx * dx + dz * dz < s.r * s.r) return true;
+    }
+    return false;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  the radiating boulevards                                           */
+  /* ------------------------------------------------------------------ */
+  const AVENUES = [];
+  {
+    const angles = [18, -18, 47, -47, 76, -76, 120, -120, 150, -150, 180];
+    for (let i = 0; i < angles.length; i++) {
+      const a = (angles[i] * Math.PI) / 180;
+      AVENUES.push({
+        a,
+        dx: Math.sin(a),
+        dz: Math.cos(a),
+        w: angles[i] === 180 ? 42 : rr(22, 31),
+      });
+    }
+  }
+
+  /** True if a block would sit in a boulevard corridor. */
+  function onAvenue(cx, cz, hx, hz) {
+    for (let i = 0; i < AVENUES.length; i++) {
+      const av = AVENUES[i];
+      const reach = av.w * 0.5 + 40;                 // corridor includes the frontages
+      const centre = Math.abs(av.dx * cz - av.dz * cx);
+      if (centre > reach + Math.hypot(hx, hz)) continue;
+      for (let k = 0; k < 4; k++) {
+        const px = cx + ((k & 1) ? hx : -hx);
+        const pz = cz + ((k & 2) ? hz : -hz);
+        if (px * av.dx + pz * av.dz < 80) continue;
+        if (Math.abs(av.dx * pz - av.dz * px) < reach) return true;
+      }
+    }
+    return false;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  collecting the blocks, their roofs and the trees                   */
+  /* ------------------------------------------------------------------ */
+  const walls = [];
+  const roofs = [];
+  const trees = [];
+  const tint = new THREE.Color();
+
+  function limestone() {
+    tint.setHSL(0.075 + rnd() * 0.042, 0.10 + rnd() * 0.15, 0.42 + rnd() * 0.20, THREE.SRGBColorSpace);
+    return [tint.r, tint.g, tint.b];
+  }
+
+  function zinc(flat) {
+    if (flat) tint.setHSL(0.57 + rnd() * 0.05, 0.03 + rnd() * 0.06, 0.39 + rnd() * 0.13, THREE.SRGBColorSpace);
+    else tint.setHSL(0.55 + rnd() * 0.08, 0.03 + rnd() * 0.09, 0.33 + rnd() * 0.16, THREE.SRGBColorSpace);
+    return [tint.r, tint.g, tint.b];
+  }
+
+  /** Add one Haussmann block: walls + a mansard-ish cap. */
+  function addBuilding(x, z, sx, sz, height, rot) {
+    const c = Math.abs(Math.cos(rot));
+    const s = Math.abs(Math.sin(rot));
+    const hx = c * sx * 0.5 + s * sz * 0.5;
+    const hz = s * sx * 0.5 + c * sz * 0.5;
+    if (blocked(x, z, hx, hz)) return false;
+
+    walls.push({ x, z, sx, sy: height, sz, rot, col: limestone() });
+
+    const flat = height > 29 || rnd() < 0.14;      // tall infill / terraces
+    const rh = flat ? rr(0.6, 1.3) : rr(2.4, 4.4);
+    const inset = flat ? 0.45 : rr(0.6, 1.5);
+    roofs.push({
+      x, z, rot,
+      sx: Math.max(4, sx - inset * 2),
+      sy: rh,
+      sz: Math.max(4, sz - inset * 2),
+      y: BASE_Y + height + rh * 0.5,
+      col: zinc(flat),
+    });
+    return true;
+  }
+
+  /* ---- the orthogonal street grid (avenues parallel to the mall axis) ---- */
+  const cols = [];
+  {
+    let x = -GRID_HALF;
+    let n = 0;
+    while (x < GRID_HALF) {
+      const w = rr(48, 118);
+      cols.push({ x, w });
+      const wide = n++ % 4 === 1;
+      x += w + (wide ? rr(26, 34) : rr(13, 21));
+    }
+  }
+  const rows = [];
+  {
+    let z = -GRID_HALF;
+    let n = 0;
+    while (z < GRID_HALF) {
+      const d = rr(19, 35);
+      rows.push({ z, d });
+      const wide = n++ % 5 === 2;
+      z += d + (wide ? rr(22, 30) : rr(12, 21));
+    }
+  }
+
+  for (let j = 0; j < rows.length; j++) {
+    const row = rows[j];
+    const cornice = rr(19.5, 24.5);       // blocks in a row share the skyline
+    const cz = row.z + row.d * 0.5;
+    for (let i = 0; i < cols.length; i++) {
+      const col = cols[i];
+      const cx = col.x + col.w * 0.5;
+      if (Math.hypot(cx, cz) > FABRIC_R + 120) continue;
+      if (onAvenue(cx, cz, col.w * 0.5, row.d * 0.5)) continue;
+
+      const pieces = rnd() < 0.45 ? (rnd() < 0.4 ? 3 : 2) : 1;
+      let cursor = col.x;
+      let left = col.w;
+      for (let k = 0; k < pieces; k++) {
+        const share = k === pieces - 1 ? left : left * (k === 0 ? rr(0.4, 0.62) : 0.5);
+        const bw = share - 0.7;
+        if (bw > 9) {
+          let floors = clamp(Math.round((cornice + rr(-1.2, 1.2)) / STOREY), 5, 8);
+          const roll = rnd();
+          if (roll < 0.05) floors = 10 + ((rnd() * 4) | 0);   // 34-45 m infill
+          else if (roll < 0.16) floors = 5;
+          addBuilding(cursor + share * 0.5, cz, bw, row.d, floors * STOREY - 0.2, 0);
+        }
+        cursor += share;
+        left -= share;
+      }
+    }
+  }
+
+  /* ---- frontages lining the diagonal boulevards ---- */
+  for (let ai = 0; ai < AVENUES.length; ai++) {
+    const av = AVENUES[ai];
+    const halfW = av.w * 0.5;
+    const perpX = av.dz;
+    const perpZ = -av.dx;
+    const rot = av.a - Math.PI * 0.5;
+    for (let side = -1; side <= 1; side += 2) {
+      const cornice = rr(19.5, 23.5);
+      let t = 250;
+      while (t < 2450) {
+        const len = rr(14, 30);
+        const depth = rr(26, 34);
+        const off = halfW + 1.6 + depth * 0.5;
+        const along = t + len * 0.5;
+        const cx = av.dx * along + perpX * off * side;
+        const cz = av.dz * along + perpZ * off * side;
+        let floors = clamp(Math.round((cornice + rr(-1.0, 1.0)) / STOREY), 5, 9);
+        if (rnd() < 0.06) floors = 10 + ((rnd() * 3) | 0);
+        addBuilding(cx, cz, len - 0.5, depth, floors * STOREY - 0.2, rot);
+        t += len + rr(0.5, 1.3);
+      }
+    }
+  }
+
+  /* ---- trees ---- */
+  function treeFits(x, z) {
+    const rad = Math.hypot(x, z);
+    if (rad < 118 || rad > FABRIC_R + 40) return false;
+    if (z > -450 && z < -208) return false;          // the Seine
+    for (let i = 0; i < sites.length; i++) {
+      const s = sites[i];
+      if (Math.hypot(x - s.x, z - s.z) < s.r + 12) return false;
+    }
+    return true;
+  }
+  function addTree(x, z, s) {
+    if (!treeFits(x, z)) return;
+    trees.push({ x, z, s: s === undefined ? rr(1.05, 1.45) : s });
+  }
+
+  // Champ de Mars: the double allées on both flanks
+  for (const xx of [-76, -52, 52, 76]) {
+    let z = 118 + rr(0, 10);
+    while (z < 640) {
+      addTree(xx + rr(-1.4, 1.4), z, rr(1.1, 1.45));
+      z += rr(13, 18);
+    }
+  }
+  // a belt of trees along the park edge, in front of the flanking blocks
+  for (const xx of [-88, 88]) {
+    let z = 108;
+    while (z < 646) {
+      addTree(xx + rr(-1.2, 1.2), z, rr(1.1, 1.4));
+      z += rr(22, 27);
+    }
+  }
+  // the gardens around the tower
+  for (let i = 0; i < 26; i++) {
+    const a = rnd() * TAU;
+    const rad = rr(122, 182);
+    addTree(Math.sin(a) * rad, Math.cos(a) * rad, rr(1.15, 1.55));
+  }
+  // the boulevard allées
+  for (let ai = 0; ai < AVENUES.length; ai++) {
+    const av = AVENUES[ai];
+    const perpX = av.dz;
+    const perpZ = -av.dx;
+    const off = av.w * 0.5 - 2.8;
+    for (let side = -1; side <= 1; side += 2) {
+      let t = 258;
+      while (t < 2440) {
+        const x = av.dx * t + perpX * off * side;
+        const z = av.dz * t + perpZ * off * side;
+        addTree(x + rr(-1, 1), z + rr(-1, 1), rr(1.0, 1.4));
+        t += rr(26, 34);
+      }
+    }
+  }
+  // the quays
+  {
+    let x = -2530;
+    while (x < 2530) {
+      if (Math.abs(x) > 48) {
+        addTree(x + rr(-1.5, 1.5), -202 + rr(-2, 2), rr(1.1, 1.5));
+        addTree(x + rr(-1.5, 1.5), -458 + rr(-2, 2), rr(1.1, 1.5));
+      }
+      x += rr(26, 34);
+    }
+  }
+  // a garden belt around the reserved landmark clearings
+  {
+    const belts = [sites[0], sites[1], sites[3]];
+    for (let b = 0; b < belts.length; b++) {
+      const site = belts[b];
+      const n = Math.round(site.r * 0.5);
+      for (let i = 0; i < n; i++) {
+        const a = rnd() * TAU;
+        const rad = site.r + rr(14, 34);
+        addTree(site.x + Math.sin(a) * rad, site.z + Math.cos(a) * rad, rr(1.15, 1.5));
+      }
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  pavement inside the ring, with the park and gardens cut out        */
+  /* ------------------------------------------------------------------ */
+  {
+    const paveMat = new THREE.MeshStandardMaterial({
+      color: 0x565248, roughness: 1, metalness: 0,
+      polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2,
+    });
+
+    // south bank: from the near quay to well past the ring
+    const south = new THREE.Shape();
+    south.moveTo(-PAVE_HALF, -PAVE_HALF);
+    south.lineTo(PAVE_HALF, -PAVE_HALF);
+    south.lineTo(PAVE_HALF, 218);
+    south.lineTo(-PAVE_HALF, 218);
+    south.closePath();
+
+    // the Champ de Mars merges into the garden circle around the tower
+    const garden = new THREE.Path();
+    const gr = 190;
+    const a0 = Math.asin(92 / gr);
+    garden.moveTo(92, -752);
+    garden.lineTo(92, -166);
+    for (let i = 0; i <= 44; i++) {
+      const a = a0 + ((TAU - 2 * a0) * i) / 44;
+      garden.lineTo(gr * Math.sin(a), -gr * Math.cos(a));
+    }
+    garden.lineTo(-92, -752);
+    garden.closePath();
+    south.holes.push(garden);
+
+    const southMesh = new THREE.Mesh(new THREE.ShapeGeometry(south), paveMat);
+    southMesh.rotation.x = -Math.PI / 2;
+    southMesh.position.y = PAVE_Y;
+    southMesh.receiveShadow = true;
+    scene.add(southMesh);
+
+    // north bank: from the far quay to past the ring
+    const north = new THREE.Shape();
+    north.moveTo(-PAVE_HALF, 442);
+    north.lineTo(PAVE_HALF, 442);
+    north.lineTo(PAVE_HALF, PAVE_HALF);
+    north.lineTo(-PAVE_HALF, PAVE_HALF);
+    north.closePath();
+    const northMesh = new THREE.Mesh(new THREE.ShapeGeometry(north), paveMat);
+    northMesh.rotation.x = -Math.PI / 2;
+    northMesh.position.y = PAVE_Y;
+    northMesh.receiveShadow = true;
+    scene.add(northMesh);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  the stone walls and their roofs, batched as instanced boxes        */
+  /* ------------------------------------------------------------------ */
+  const night = { value: 0 };   // eased by registerEnv below
+
+  const wallGeo = new THREE.BoxGeometry(1, 1, 1);
+  const wallMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9, metalness: 0.0 });
+  wallMat.onBeforeCompile = (shader) => {
+    shader.uniforms.uNight = night;
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', `#include <common>
+        varying vec3 vFacade;
+        varying float vUpFace;`)
+      .replace('#include <begin_vertex>', `#include <begin_vertex>
+        vec3 iScale = vec3(length(instanceMatrix[0].xyz), length(instanceMatrix[1].xyz), length(instanceMatrix[2].xyz));
+        vec3 iPos = instanceMatrix[3].xyz;
+        float faceU = (abs(normal.x) > 0.5) ? position.z * iScale.z : position.x * iScale.x;
+        vFacade = vec3(faceU + iPos.x * 0.73 + iPos.z * 0.29,
+                       position.y * iScale.y + iPos.y - ${BASE_Y.toFixed(2)},
+                       iPos.x * 3.71 + iPos.z * 1.93);
+        vUpFace = step(0.5, abs(normal.y));`);
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', `#include <common>
+        uniform float uNight;
+        varying vec3 vFacade;
+        varying float vUpFace;
+        float cHash(vec2 p) {
+          p = fract(p * vec2(127.13, 311.77));
+          p += dot(p, p + 34.53);
+          return fract(p.x * p.y);
+        }`)
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        float wallMask = 1.0 - vUpFace;
+        float cellW = 3.05;
+        float cellH = ${STOREY.toFixed(2)};
+        vec2 fGrid = vec2(vFacade.x / cellW, vFacade.y / cellH);
+        vec2 fCell = floor(fGrid);
+        vec2 fLocal = fract(fGrid);
+        // tall French windows: narrow and high, one per bay
+        float winX = smoothstep(0.30, 0.37, fLocal.x) * (1.0 - smoothstep(0.63, 0.70, fLocal.x));
+        float winY = smoothstep(0.20, 0.28, fLocal.y) * (1.0 - smoothstep(0.79, 0.86, fLocal.y));
+        float win = winX * winY * wallMask * step(3.15, vFacade.y);
+        // ground floor: taller shopfront openings
+        float shopBand = (1.0 - smoothstep(2.9, 3.2, vFacade.y)) * wallMask;
+        float shopU = fract(vFacade.x / 4.8);
+        float shop = shopBand * smoothstep(0.15, 0.21, shopU) * (1.0 - smoothstep(0.76, 0.82, shopU));
+        float openings = max(win, shop);
+        // stone courses, a shaded ground floor and darker glass in daylight
+        diffuseColor.rgb *= 1.0 - 0.13 * (1.0 - smoothstep(0.0, 0.10, fLocal.y));
+        diffuseColor.rgb *= mix(0.80, 1.0, smoothstep(3.0, 3.7, vFacade.y));
+        diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * 0.55, openings);`)
+      .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+        float litFlat = step(0.60, cHash(fCell + vFacade.z * vec2(2.9, 8.1) + 17.0));
+        float bright = 0.35 + 0.95 * cHash(fCell + vFacade.z * vec2(5.1, 2.3) + 41.0);
+        float litShop = step(0.52, cHash(floor(vec2(vFacade.x / 4.8, 0.0)) + vFacade.z));
+        vec3 warm = mix(vec3(1.0, 0.55, 0.22), vec3(1.0, 0.86, 0.64), cHash(fCell + 3.7));
+        warm = mix(warm, vec3(0.82, 0.88, 1.0), step(0.88, cHash(fCell + 11.3)) * 0.75);
+        float glow = win * litFlat * bright + shop * litShop * 1.15;
+        totalEmissiveRadiance += warm * glow * uNight;`);
+  };
+
+  const wallMesh = new THREE.InstancedMesh(wallGeo, wallMat, walls.length);
+  wallMesh.castShadow = true;
+  wallMesh.receiveShadow = true;
+  wallMesh.frustumCulled = false;
+
+  const roofMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.78, metalness: 0.0 });
+  const roofGeo = new THREE.BoxGeometry(1, 1, 1);
+  const roofMesh = new THREE.InstancedMesh(roofGeo, roofMat, roofs.length);
+  roofMesh.castShadow = true;
+  roofMesh.receiveShadow = true;
+  roofMesh.frustumCulled = false;
+
+  {
+    const m4 = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    const up = new THREE.Vector3(0, 1, 0);
+    const p = new THREE.Vector3();
+    const s = new THREE.Vector3();
+    const c = new THREE.Color();
+
+    for (let i = 0; i < walls.length; i++) {
+      const b = walls[i];
+      q.setFromAxisAngle(up, b.rot);
+      p.set(b.x, BASE_Y + b.sy * 0.5, b.z);
+      s.set(b.sx, b.sy, b.sz);
+      m4.compose(p, q, s);
+      wallMesh.setMatrixAt(i, m4);
+      c.setRGB(b.col[0], b.col[1], b.col[2]);
+      wallMesh.setColorAt(i, c);
+    }
+    wallMesh.instanceMatrix.needsUpdate = true;
+    if (wallMesh.instanceColor) wallMesh.instanceColor.needsUpdate = true;
+
+    for (let i = 0; i < roofs.length; i++) {
+      const b = roofs[i];
+      q.setFromAxisAngle(up, b.rot);
+      p.set(b.x, b.y, b.z);
+      s.set(b.sx, b.sy, b.sz);
+      m4.compose(p, q, s);
+      roofMesh.setMatrixAt(i, m4);
+      c.setRGB(b.col[0], b.col[1], b.col[2]);
+      roofMesh.setColorAt(i, c);
+    }
+    roofMesh.instanceMatrix.needsUpdate = true;
+    if (roofMesh.instanceColor) roofMesh.instanceColor.needsUpdate = true;
+  }
+  scene.add(wallMesh, roofMesh);
+
+  /* ------------------------------------------------------------------ */
+  /*  the trees                                                          */
+  /* ------------------------------------------------------------------ */
+  const trunkGeo = new THREE.CylinderGeometry(0.8, 1.15, 1, 5, 1, true);
+  const trunkMat = new THREE.MeshStandardMaterial({ color: 0x4a392a, roughness: 1 });
+  const trunkMesh = new THREE.InstancedMesh(trunkGeo, trunkMat, trees.length);
+  trunkMesh.castShadow = true;
+  trunkMesh.frustumCulled = false;
+
+  const leafGeo = new THREE.IcosahedronGeometry(1, 0);
+  const leafMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.95, flatShading: true });
+  const leafMesh = new THREE.InstancedMesh(leafGeo, leafMat, trees.length * 2);
+  leafMesh.castShadow = true;
+  leafMesh.frustumCulled = false;
+
+  {
+    const m4 = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    const up = new THREE.Vector3(0, 1, 0);
+    const p = new THREE.Vector3();
+    const s = new THREE.Vector3();
+    const c = new THREE.Color();
+
+    for (let i = 0; i < trees.length; i++) {
+      const t = trees[i];
+      const h = 3.4 * t.s;
+      q.setFromAxisAngle(up, rnd() * TAU);
+
+      p.set(t.x, h * 0.5, t.z);
+      s.set((0.22 + 0.12 * t.s) * t.s, h, (0.22 + 0.12 * t.s) * t.s);
+      m4.compose(p, q, s);
+      trunkMesh.setMatrixAt(i, m4);
+
+      const lean = rnd() * 0.5;
+      c.setHSL(0.215 + rnd() * 0.06, 0.30 + rnd() * 0.18, 0.17 + rnd() * 0.13, THREE.SRGBColorSpace);
+      p.set(t.x, h + 1.7 * t.s, t.z);
+      s.set(2.9 * t.s, 2.4 * t.s, 2.9 * t.s);
+      m4.compose(p, q, s);
+      leafMesh.setMatrixAt(i * 2, m4);
+      leafMesh.setColorAt(i * 2, c);
+
+      p.set(t.x + Math.cos(lean) * 1.1 * t.s, h + 3.1 * t.s, t.z + Math.sin(lean) * 1.1 * t.s);
+      s.set(1.9 * t.s, 1.7 * t.s, 1.9 * t.s);
+      m4.compose(p, q, s);
+      leafMesh.setMatrixAt(i * 2 + 1, m4);
+      leafMesh.setColorAt(i * 2 + 1, c);
+    }
+    trunkMesh.instanceMatrix.needsUpdate = true;
+    leafMesh.instanceMatrix.needsUpdate = true;
+    if (leafMesh.instanceColor) leafMesh.instanceColor.needsUpdate = true;
+  }
+  scene.add(trunkMesh, leafMesh);
+
+  /* ------------------------------------------------------------------ */
+  /*  the city at night                                                  */
+  /* ------------------------------------------------------------------ */
+  registerEnv((t) => {
+    night.value = t;
+    // roofs fall into shadow at night so the lit windows read as the city
+    roofMat.color.setScalar(mix(1, 0.5, t));
+  });
+}
+
+
+/* 61-city-landmarks.js — the memorable Paris silhouettes on the horizon.
+   TEAM MODULE · owner: city-landmarks · file only you may edit.
+
+   Contract
+     buildCityLandmarks(scene) is called once after the terrain and the urban
+     fabric exist. Add meshes to `scene`, keep them stylised but recognisable and
+     in scale (1 unit = 1 metre). For anything that changes with the light or
+     moves, use registerEnv((night) => {...}) and registerUpdater((dt, elapsed)
+     => {...}) from 20-env.js.
+
+   Map conventions (shared with the other city modules)
+     +Z  Champ de Mars / École Militaire          (mall runs 100 → 740)
+     -Z  the Seine (z = -330) then Trocadéro
+     +X  Montparnasse side
+     -X  the far west / La Défense side
+     ground plane   y = 0
+     city floor     y = WORLD.ringY (0.6), radius WORLD.cityInner (760) outward
+     water          y = WORLD.waterY (1.2)
+
+   Landmarks built here (all inside their LANDMARK_SITES clearings):
+     École Militaire     (0, 830)     long classical range + pediment + dome, closes the mall
+     Palais de Chaillot  (0, -640)    two curved wings round the Trocadéro esplanade,
+                                      fountain basin + gardens toward the Seine
+     Tour Montparnasse   (980, -260)  dark glass slab, ~210 m
+     La Défense          (-1280,-880) Grande Arche (open ~110 m cube) + four towers
+     Les Invalides       (560, 720)   optional golden dome, peeking over the city roofs
+
+   Performance: everything is shared primitive geometry; the repeated parts (all
+   facade windows, the tower floor bands, the Chaillot wing bays, the garden
+   trees) are a handful of InstancedMeshes. No per-frame allocation: the night
+   handler only writes emissiveIntensity on materials created once here.
+   Do not edit any file other than this one. */
+
+function buildCityLandmarks(scene) {
+  /* Every base is sunk below ground (y = 0 … 0.6) so nothing floats and no
+     facade starts exactly on the city-floor plane. */
+  const BASE = -1;
+
+  /* ------------------------------------------------------------------ */
+  /*  shared materials — created once, shared by every mesh             */
+  /* ------------------------------------------------------------------ */
+  const stoneMat = new THREE.MeshStandardMaterial({ color: 0xa99b85, roughness: 0.95, metalness: 0.02, emissive: 0xffcf92, emissiveIntensity: 0 });
+  const stoneLightMat = new THREE.MeshStandardMaterial({ color: 0xc2b69f, roughness: 0.9, metalness: 0.02, emissive: 0xffdaa6, emissiveIntensity: 0 });
+  const stoneDarkMat = new THREE.MeshStandardMaterial({ color: 0x756b5c, roughness: 1.0, metalness: 0.02 });
+  const roofMat = new THREE.MeshStandardMaterial({ color: 0x565e68, roughness: 0.72, metalness: 0.3, emissive: 0x1b222b, emissiveIntensity: 0 });
+  const windowMat = new THREE.MeshStandardMaterial({ color: 0x332b23, roughness: 0.5, metalness: 0.15, emissive: 0xffc078, emissiveIntensity: 0 });
+  const glassMat = new THREE.MeshStandardMaterial({ color: 0x161d26, roughness: 0.2, metalness: 0.85, emissive: 0x22364e, emissiveIntensity: 0 });
+  const bandDimMat = new THREE.MeshStandardMaterial({ color: 0x1e262f, roughness: 0.4, metalness: 0.5, emissive: 0xffc98a, emissiveIntensity: 0 });
+  const bandLitMat = new THREE.MeshStandardMaterial({ color: 0x272e36, roughness: 0.35, metalness: 0.45, emissive: 0xffd09a, emissiveIntensity: 0 });
+  const towerMat = new THREE.MeshStandardMaterial({ color: 0x252c35, roughness: 0.45, metalness: 0.55, emissive: 0x162233, emissiveIntensity: 0 });
+  const archMat = new THREE.MeshStandardMaterial({ color: 0xd6d0c2, roughness: 0.6, metalness: 0.04, emissive: 0xffe2b4, emissiveIntensity: 0 });
+  const goldMat = new THREE.MeshStandardMaterial({ color: 0xc9a02c, roughness: 0.28, metalness: 0.92, emissive: 0xffcb52, emissiveIntensity: 0 });
+  const waterMat = new THREE.MeshStandardMaterial({ color: 0x2e6a80, roughness: 0.12, metalness: 0.35, emissive: 0x123a4a, emissiveIntensity: 0 });
+  const gardenMat = new THREE.MeshStandardMaterial({ color: 0x3c5933, roughness: 1 });
+  const leafMat = new THREE.MeshStandardMaterial({ color: 0x38512e, roughness: 1 });
+  const trunkMat = new THREE.MeshStandardMaterial({ color: 0x463629, roughness: 1 });
+
+  /* ------------------------------------------------------------------ */
+  /*  shared geometry                                                   */
+  /* ------------------------------------------------------------------ */
+  const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+  const planeGeo = new THREE.PlaneGeometry(1, 1);
+  // 4-sided frustum = a hipped / mansard roof: base square side 1.4142 after
+  // the 45° turn, top square 72 % of it. Scale x/z to the building footprint.
+  const hipGeo = new THREE.CylinderGeometry(0.72, 1, 1, 4, 1);
+  hipGeo.rotateY(Math.PI / 4);
+  const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 16);
+  const domeGeo = new THREE.SphereGeometry(1, 18, 10, 0, TAU, 0, Math.PI / 2);
+  const leafGeo = new THREE.IcosahedronGeometry(1, 0);
+
+  // triangular pediment prism (unit height / half-width / depth)
+  const pedShape = new THREE.Shape();
+  pedShape.moveTo(-1, 0);
+  pedShape.lineTo(1, 0);
+  pedShape.lineTo(0, 1.1);
+  pedShape.lineTo(-1, 0);
+  const pedGeo = new THREE.ExtrudeGeometry(pedShape, { depth: 1, bevelEnabled: false });
+  pedGeo.translate(0, 0, -0.5);
+
+  /* ------------------------------------------------------------------ */
+  /*  helpers — all scratch vectors are reused (no per-call garbage)    */
+  /* ------------------------------------------------------------------ */
+  const _m4 = new THREE.Matrix4();
+  const _q = new THREE.Quaternion();
+  const _e = new THREE.Euler();
+  const _p = new THREE.Vector3();
+  const _s = new THREE.Vector3();
+
+  /** Build one InstancedMesh from a list of {x,y,z,ry,sx,sy,sz}. */
+  function instanced(geo, mat, items) {
+    if (!items.length) return null;
+    const mesh = new THREE.InstancedMesh(geo, mat, items.length);
+    for (let i = 0; i < items.length; i++) {
+      const it = items[i];
+      _p.set(it.x, it.y, it.z);
+      _e.set(0, it.ry || 0, 0);
+      _q.setFromEuler(_e);
+      _s.set(it.sx, it.sy, it.sz);
+      _m4.compose(_p, _q, _s);
+      mesh.setMatrixAt(i, _m4);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    mesh.frustumCulled = false;
+    mesh.castShadow = false;
+    mesh.receiveShadow = false;
+    scene.add(mesh);
+    return mesh;
+  }
+
+  /** Box whose y argument is the BOTTOM height (bases stay level). */
+  function addBox(parent, mat, x, bottom, z, w, h, d, ry) {
+    const mesh = new THREE.Mesh(boxGeo, mat);
+    mesh.position.set(x, bottom + h * 0.5, z);
+    mesh.scale.set(w, h, d);
+    if (ry) mesh.rotation.y = ry;
+    mesh.castShadow = false;
+    mesh.receiveShadow = false;
+    parent.add(mesh);
+    return mesh;
+  }
+
+  function addHip(parent, mat, x, base, z, w, h, d, ry) {
+    const mesh = new THREE.Mesh(hipGeo, mat);
+    mesh.position.set(x, base + h * 0.5, z);
+    mesh.scale.set(w / 1.41421, h, d / 1.41421);
+    if (ry) mesh.rotation.y = ry;
+    mesh.castShadow = false;
+    mesh.receiveShadow = false;
+    parent.add(mesh);
+    return mesh;
+  }
+
+  function addCyl(parent, mat, x, bottom, z, r, h) {
+    const mesh = new THREE.Mesh(cylGeo, mat);
+    mesh.position.set(x, bottom + h * 0.5, z);
+    mesh.scale.set(r, h, r);
+    mesh.castShadow = false;
+    mesh.receiveShadow = false;
+    parent.add(mesh);
+    return mesh;
+  }
+
+  function addDome(parent, mat, x, base, z, r, squash) {
+    const mesh = new THREE.Mesh(domeGeo, mat);
+    mesh.position.set(x, base, z);
+    mesh.scale.set(r, r * (squash || 1), r);
+    mesh.castShadow = false;
+    mesh.receiveShadow = false;
+    parent.add(mesh);
+    return mesh;
+  }
+
+  function addWater(parent, x, y, z, w, d) {
+    const mesh = new THREE.Mesh(planeGeo, waterMat);
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.position.set(x, y, z);
+    mesh.scale.set(w, d, 1);
+    mesh.castShadow = false;
+    mesh.receiveShadow = false;
+    parent.add(mesh);
+    return mesh;
+  }
+
+  /** Group at (x,z) turned by ry: lets a rotated landmark use local coords. */
+  function addGroup(x, z, ry) {
+    const g = new THREE.Group();
+    g.position.set(x, 0, z);
+    g.rotation.y = ry;
+    scene.add(g);
+    return g;
+  }
+
+  /* ================================================================== */
+  /*  École Militaire — closes the Champ de Mars vista, at +Z            */
+  /* ================================================================== */
+  {
+    const x = LANDMARK_SITES.ecoleMilitaire.x;   // 0
+    const z = LANDMARK_SITES.ecoleMilitaire.z;   // 830
+    const front = z - 12;                        // main range facade, toward the tower
+
+    // terrace, long main range, cornice, mansard roof
+    addBox(scene, stoneDarkMat, x, BASE, z, 204, 3.0, 36);
+    // forecourt: carries the Champ de Mars paving up to the facade
+    addBox(scene, stoneDarkMat, x, BASE, 778, 190, 1.9, 84);
+    addBox(scene, stoneMat, x, BASE, z, 176, 17, 24);
+    addBox(scene, stoneLightMat, x, 15.7, z, 180, 1.1, 27);
+    addHip(scene, roofMat, x, 16.8, z, 178, 6.2, 26);
+
+    // end pavilions give the long facade its rhythm
+    for (const s of [-1, 1]) {
+      const px = x + s * 80;
+      addBox(scene, stoneMat, px, BASE, z, 26, 20, 28);
+      addBox(scene, stoneLightMat, px, 18.6, z, 28, 1.1, 30);
+      addHip(scene, roofMat, px, 19.7, z, 28, 4.6, 30);
+    }
+
+    // central pavilion, pediment and dome
+    addBox(scene, stoneMat, x, BASE, z - 1, 46, 18, 30);
+    addBox(scene, stoneLightMat, x, 16.6, z - 1, 49, 1.2, 32);
+    {
+      const ped = new THREE.Mesh(pedGeo, stoneLightMat);
+      ped.position.set(x, 17.8, front + 3);
+      ped.scale.set(20, 6.4, 6);
+      ped.castShadow = false;
+      ped.receiveShadow = false;
+      scene.add(ped);
+    }
+    addCyl(scene, stoneLightMat, x, 17.0, z + 1, 8.6, 6.0);          // drum
+    addDome(scene, roofMat, x, 23.0, z + 1, 8.6, 1.12);              // slate dome
+    addCyl(scene, stoneLightMat, x, 32.6, z + 1, 2.5, 5.8);          // lantern
+    addDome(scene, stoneLightMat, x, 38.4, z + 1, 2.5, 1.1);         // lantern cap
+    addCyl(scene, goldMat, x, 41.1, z + 1, 0.3, 3.0);                // finial
+
+    // windows: main range, central pavilion, end pavilions
+    const win = [];
+    for (const wy of [6.6, 11.8]) {
+      for (let wx = -76; wx <= 76.1; wx += 7.4) {
+        if (Math.abs(wx) < 27) continue;
+        win.push({ x: wx, y: wy, z: front - 0.16, ry: Math.PI, sx: 2.6, sy: 3.5, sz: 1 });
+      }
+    }
+    for (const wx of [-13.5, 0, 13.5]) {
+      for (const wy of [7.4, 12.6]) {
+        win.push({ x: wx, y: wy, z: z - 15 - 0.16, ry: Math.PI, sx: 3.4, sy: 4.4, sz: 1 });
+      }
+    }
+    for (const s of [-1, 1]) {
+      for (const wy of [8.2, 13.0]) {
+        win.push({ x: x + s * 80, y: wy, z: z - 14 - 0.16, ry: Math.PI, sx: 2.8, sy: 4.0, sz: 1 });
+      }
+    }
+    instanced(planeGeo, windowMat, win);
+  }
+
+  /* ================================================================== */
+  /*  Palais de Chaillot — two curved wings embracing the esplanade      */
+  /*  at -Z, with the fountain basin and gardens running to the Seine    */
+  /* ================================================================== */
+  {
+    const site = LANDMARK_SITES.trocadero;
+    const kx = site.x;
+    const kz = site.z + 100;              // centre of the wings' curvature
+    const R = 115;                        // radius of the arc of the wings
+    const a0 = 0.24, a1 = 1.31, N = 7;    // arc from ~14° … ~75°, seven bays each
+
+    const wingBoxes = [];
+    const wingRoofs = [];
+    const win = [];
+
+    for (const side of [-1, 1]) {
+      for (let i = 0; i < N; i++) {
+        const am = a0 + (a1 - a0) * (i + 0.5) / N;
+        const px = kx + side * R * Math.sin(am);
+        const pz = kz - R * Math.cos(am);
+        const ry = -side * am;
+        wingBoxes.push({ x: px, y: BASE + 7.5, z: pz, ry, sx: 19.4, sy: 15, sz: 16 });
+        wingRoofs.push({ x: px, y: 14.7, z: pz, ry, sx: 19.8, sy: 1.4, sz: 16.8 });
+
+        // windows on the concave inner facade, facing the parvis / tower
+        const rr = R - 8.15;
+        const wx = kx + side * rr * Math.sin(am);
+        const wz = kz - rr * Math.cos(am);
+        for (const wy of [5.4, 10.6]) {
+          win.push({ x: wx, y: wy, z: wz, ry, sx: 2.9, sy: 3.9, sz: 1 });
+        }
+      }
+
+      // a pavilion at each end of every wing
+      for (const p of [[a0 + 0.045, 24, 21, 24, 5.2], [a1 - 0.025, 27, 25, 28, 5.6]]) {
+        const pa = p[0];
+        const px = kx + side * R * Math.sin(pa);
+        const pz = kz - R * Math.cos(pa);
+        const ry = -side * pa;
+        addBox(scene, stoneMat, px, BASE, pz, p[1], p[2], p[3], ry);
+        addHip(scene, roofMat, px, BASE + p[2], pz, p[1] + 1.5, p[4], p[3] + 1.5, ry);
+      }
+    }
+
+    instanced(boxGeo, stoneMat, wingBoxes);
+    instanced(boxGeo, roofMat, wingRoofs);
+    instanced(planeGeo, windowMat, win);
+
+    // esplanade plateau behind the wings (Chaillot sits on its hill)
+    addBox(scene, stoneDarkMat, 0, BASE, -672, 232, 2.4, 96);
+
+    // fountain basin running toward the river, with garden beds and trees
+    addBox(scene, stoneDarkMat, -43, BASE, -560, 5, 2.6, 84);
+    addBox(scene, stoneDarkMat, 43, BASE, -560, 5, 2.6, 84);
+    addBox(scene, stoneDarkMat, 0, BASE, -600, 96, 2.6, 5);
+    addBox(scene, stoneDarkMat, 0, BASE, -520, 96, 2.6, 5);
+    addWater(scene, 0, 1.1, -560, 82, 78);
+
+    addBox(scene, gardenMat, -62, BASE, -560, 28, 1.6, 84);
+    addBox(scene, gardenMat, 62, BASE, -560, 28, 1.6, 84);
+
+    const trunks = [];
+    const leaves = [];
+    for (const side of [-1, 1]) {
+      for (let i = 0; i < 5; i++) {
+        const tx = side * 62;
+        const tz = -592 + i * 16;
+        trunks.push({ x: tx, y: 0.4, z: tz, ry: 0, sx: 0.7, sy: 2.8, sz: 0.7 });
+        leaves.push({ x: tx, y: 3.6, z: tz, ry: 0, sx: 3.4, sy: 3.2, sz: 3.4 });
+      }
+    }
+    instanced(boxGeo, trunkMat, trunks);
+    instanced(leafGeo, leafMat, leaves);
+  }
+
+  /* ================================================================== */
+  /*  Tour Montparnasse — the dark glass slab on the +X horizon          */
+  /* ================================================================== */
+  {
+    const site = LANDMARK_SITES.montparnasse;
+    const cx = site.x;
+    // NOTE: the reserved site (980, -260) lies inside the Seine band
+    // (z = -220 … -440; the river plane is 9000 m wide), so a tower built on
+    // the exact spot stands in the water. It is moved 88 m north to the dry
+    // bank, still just inside its 90 m clearing; nothing else occupies that
+    // strip because the city fabric skips z = -120 … -500.
+    const cz = site.z + 88;               // (980, -172), on the north bank
+    const ROT = -1.31;                    // broad face turned toward the tower
+
+    // podium, glazed slab, machine crown, antenna
+    addBox(scene, stoneDarkMat, cx, BASE, cz, 80, 13, 54, ROT);
+    addBox(scene, stoneLightMat, cx, 11.4, cz, 84, 1.2, 58, ROT);
+    addBox(scene, glassMat, cx, 12, cz, 50, 197, 32, ROT);          // top ≈ 209 m
+    addBox(scene, glassMat, cx, 208, cz, 46, 5.2, 28, ROT);
+    addBox(scene, stoneLightMat, cx, 212.8, cz, 34, 2.6, 22, ROT);
+    addCyl(scene, stoneLightMat, cx, 215.4, cz, 0.9, 8);
+    addCyl(scene, stoneLightMat, cx, 222.6, cz, 0.4, 6);
+
+    // floor lines: dark by day, a sparse grid of lit offices by night
+    const dim = [];
+    const lit = [];
+    let row = 0;
+    for (let y = 20; y <= 203; y += 5.6) {
+      const item = { x: cx, y, z: cz, ry: ROT, sx: 50.7, sy: 0.7, sz: 32.7 };
+      if (row % 3 === 1) lit.push(item); else dim.push(item);
+      row++;
+    }
+    instanced(boxGeo, bandDimMat, dim);
+    instanced(boxGeo, bandLitMat, lit);
+  }
+
+  /* ================================================================== */
+  /*  La Défense — the Grande Arche and four towers on the -X horizon    */
+  /* ================================================================== */
+  {
+    const site = LANDMARK_SITES.defense;
+
+    // ---- Grande Arche: a hollow ~110 m cube, white stone ----
+    const arche = addGroup(site.x + 20, site.z + 20, 0.97);
+    addBox(arche, archMat, 0, BASE, 0, 124, 8, 124);                 // podium
+    for (const s of [-1, 1]) {
+      addBox(arche, archMat, s * 46, 7, 0, 22, 100, 110);            // piers
+    }
+    addBox(arche, archMat, 0, 87, 0, 114, 20, 110);                  // lintel
+    // lit edges at night (the Arche is floodlit in reality)
+    for (const s of [-1, 1]) {
+      addBox(arche, bandLitMat, 0, 86.4, s * 55.2, 114, 0.8, 1.2);
+      addBox(arche, bandLitMat, 0, 6.2, s * 55.2, 114, 0.8, 1.2);
+    }
+
+    // ---- four towers of the business district ----
+    const towers = [
+      { x: -1400, z: -980, w: 44, d: 38, h: 196, ry: 0.25 },
+      { x: -1230, z: -1010, w: 40, d: 34, h: 232, ry: -0.10 },
+      { x: -1400, z: -800, w: 48, d: 36, h: 142, ry: 0.15 },
+      { x: -1150, z: -760, w: 42, d: 34, h: 168, ry: -0.30 },
+    ];
+    const dim = [];
+    const lit = [];
+    for (const t of towers) {
+      addBox(scene, towerMat, t.x, BASE, t.z, t.w, t.h, t.d, t.ry);
+      addBox(scene, glassMat, t.x, t.h - 7, t.z, t.w * 0.86, 6.5, t.d * 0.86, t.ry);   // crown
+      addBox(scene, towerMat, t.x, t.h - 1, t.z, t.w * 0.55, 3.4, t.d * 0.55, t.ry);   // roof box
+      let i = 0;
+      for (let y = 16; y < t.h - 12; y += 8.5) {
+        const item = { x: t.x, y, z: t.z, ry: t.ry, sx: t.w + 0.6, sy: 0.55, sz: t.d + 0.6 };
+        if (i % 4 === 2) lit.push(item); else dim.push(item);
+        i++;
+      }
+    }
+    instanced(boxGeo, bandDimMat, dim);
+    instanced(boxGeo, bandLitMat, lit);
+  }
+
+  /* ================================================================== */
+  /*  Les Invalides — optional golden dome over the rooftops             */
+  /* ================================================================== */
+  {
+    const ix = 560;
+    const iz = 720;
+    const irot = -0.32;
+
+    addBox(scene, stoneDarkMat, ix, BASE, iz, 68, 3, 88, irot);
+    addBox(scene, stoneMat, ix, BASE, iz, 46, 22, 72, irot);
+    addHip(scene, roofMat, ix, 21, iz, 48, 6.5, 74, irot);
+
+    addCyl(scene, stoneLightMat, ix, 20, iz, 15, 17);                // drum
+    addDome(scene, goldMat, ix, 37, iz, 15, 1.35);                   // golden dome
+    addCyl(scene, stoneLightMat, ix, 56.8, iz, 3.6, 8.5);            // lantern
+    addDome(scene, goldMat, ix, 65.3, iz, 3.6, 1.2);                 // lantern cap
+    addCyl(scene, goldMat, ix, 69.4, iz, 0.35, 5.5);                 // spire
+
+    const win = [];
+    // drum windows all the way round
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * TAU;
+      win.push({ x: ix + Math.sin(a) * 15.12, y: 28.5, z: iz + Math.cos(a) * 15.12, ry: a, sx: 2.6, sy: 5, sz: 1 });
+    }
+    // nave windows on the facade turned toward the tower
+    const c = Math.cos(irot);
+    const s = Math.sin(irot);
+    for (const wy of [6.8, 13.2]) {
+      for (let k = -2; k <= 2; k++) {
+        const lz = k * 9;
+        win.push({
+          x: ix - 23.15 * c + lz * s,
+          y: wy,
+          z: iz + 23.15 * s + lz * c,
+          ry: irot - Math.PI / 2,
+          sx: 3.2, sy: 4.6, sz: 1,
+        });
+      }
+    }
+    instanced(planeGeo, windowMat, win);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  day / night — floodlit stone, warm windows, golden dome            */
+  /* ------------------------------------------------------------------ */
+  registerEnv((t) => {
+    stoneMat.emissiveIntensity = t * 0.10;
+    stoneLightMat.emissiveIntensity = t * 0.15;
+    roofMat.emissiveIntensity = t * 0.10;
+    archMat.emissiveIntensity = t * 0.09;
+    windowMat.emissiveIntensity = t * 1.4;
+    bandDimMat.emissiveIntensity = t * 0.35;
+    bandLitMat.emissiveIntensity = t * 1.15;
+    glassMat.emissiveIntensity = t * 0.16;
+    towerMat.emissiveIntensity = t * 0.10;
+    goldMat.emissiveIntensity = mix(0.04, 0.9, t);
+    waterMat.emissiveIntensity = t * 0.5;
+  });
+}
+
+
+/* 62-city-life.js — the city moves: bateaux-mouches on the Seine, lamplight
+   along the Champ de Mars and Pont d'Iéna, a ribbon of night traffic on the
+   quays, and one slow balloon over the Trocadéro.
+   TEAM MODULE · owner: city-life · file only you may edit.
+
+   Contract
+     buildCityLife(scene) is called once after terrain, tower and the city
+     modules. All per-frame motion goes through registerUpdater((dt, elapsed)
+     => {...}) (delta-based) and all day/night response through
+     registerEnv((night) => {...}) from 20-env.js. No geometry or material is
+     created inside a frame loop, and the loops allocate nothing.
+
+   Budget: ~35 draw calls, 54 lamp instances, 280 traffic points, 3 boats. */
+
+function buildCityLife(scene) {
+  /* ------------------------------------------------------------------ */
+  /*  one shared soft-glow sprite for every light (canvas, built once)   */
+  /* ------------------------------------------------------------------ */
+  const glowTex = (() => {
+    const c = document.createElement('canvas');
+    c.width = c.height = 64;
+    const g = c.getContext('2d');
+    const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, 'rgba(255,255,255,1)');
+    grad.addColorStop(0.35, 'rgba(255,255,255,0.5)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 64, 64);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /*  materials — created once, shared by every instance                 */
+  /* ------------------------------------------------------------------ */
+  const hullMat = new THREE.MeshStandardMaterial({ color: 0x1d2733, metalness: 0.3, roughness: 0.6 });
+  const trimMat = new THREE.MeshStandardMaterial({ color: 0xd9d3c5, metalness: 0.1, roughness: 0.72 });
+  const cabinMat = new THREE.MeshStandardMaterial({
+    color: 0x2a3d47, metalness: 0.45, roughness: 0.25,
+    emissive: 0xffcf94, emissiveIntensity: 0.04,
+  });
+  // thin warm string lights along the boat roofs — they read from above at night
+  const boatLightMat = new THREE.MeshStandardMaterial({
+    color: 0x6e6656, emissive: 0xffd9a0, emissiveIntensity: 0.04, roughness: 0.6,
+  });
+
+  const lampPoleMat = new THREE.MeshStandardMaterial({ color: 0x1c2521, metalness: 0.55, roughness: 0.55 });
+  const globeMat = new THREE.MeshStandardMaterial({
+    color: 0xfff1cf, emissive: 0xffd08a, emissiveIntensity: 0.05, roughness: 0.35,
+  });
+  const poolMat = new THREE.MeshBasicMaterial({
+    map: glowTex, color: 0xffbd6e, transparent: true, opacity: 0,
+    blending: THREE.AdditiveBlending, depthWrite: false,
+    polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
+  });
+  const lampGlowMat = new THREE.PointsMaterial({
+    map: glowTex, color: 0xffc27a, size: 9, sizeAttenuation: true,
+    transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false,
+  });
+
+  const headMat = new THREE.PointsMaterial({
+    map: glowTex, color: 0xfff2d2, size: 7.5, sizeAttenuation: true,
+    transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false,
+  });
+  const tailMat = new THREE.PointsMaterial({
+    map: glowTex, color: 0xff4326, size: 6, sizeAttenuation: true,
+    transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false,
+  });
+
+  const balloonMat = new THREE.MeshStandardMaterial({
+    color: 0xe4d9c4, roughness: 0.85, emissive: 0xffb066, emissiveIntensity: 0,
+  });
+  const bandMat = new THREE.MeshStandardMaterial({ color: 0xb8493a, roughness: 0.8 });
+  const basketMat = new THREE.MeshStandardMaterial({ color: 0x6a4a2c, roughness: 1 });
+  const burnerMat = new THREE.MeshStandardMaterial({
+    color: 0xffb368, emissive: 0xff9a3c, emissiveIntensity: 0.2, roughness: 0.6,
+  });
+  const ropeMat = new THREE.LineBasicMaterial({ color: 0x2b2b2b, transparent: true, opacity: 0.7 });
+
+  /* ================================================================== */
+  /*  1. bateaux-mouches on the Seine                                    */
+  /* ================================================================== */
+  const hullGeo = new THREE.BoxGeometry(58, 2.6, 8.6);
+  const bowGeo = new THREE.BoxGeometry(8, 2.4, 6);
+  const rimGeo = new THREE.BoxGeometry(56, 0.45, 9);
+  const cabinGeo = new THREE.BoxGeometry(44, 3, 7.6);
+  const roofGeo = new THREE.BoxGeometry(45, 0.4, 8.2);
+  const deckLightGeo = new THREE.BoxGeometry(38, 0.16, 0.3);
+  const wheelGeo = new THREE.BoxGeometry(4.4, 1.5, 4.4);
+
+  const boats = [];
+  // loop the long way round, off screen: the two visible edges of the river
+  // are far outside the camera's view, so a wrap is never seen
+  const BOAT_MIN = -1700;
+  const BOAT_MAX = 1700;
+  const BOAT_SPAN = BOAT_MAX - BOAT_MIN;
+  // lanes inside the river (z -220…-440), clear of the bridge piers at
+  // z = -256 / -330 / -404; two sail east, one west, at different speeds.
+  const BOAT_LANES = [
+    { z: -282, dir: 1, speed: 6.4, phase: 0.0, x: -740 },
+    { z: -312, dir: -1, speed: 5.2, phase: 1.7, x: 880 },
+    { z: -394, dir: 1, speed: 7.3, phase: 3.1, x: -190 },
+  ];
+
+  function buildBoat(lane) {
+    const g = new THREE.Group();
+
+    const hull = new THREE.Mesh(hullGeo, hullMat);
+    hull.position.y = 0.25;
+    g.add(hull);
+
+    // a 45° box makes a plausible tapered bow without new vertex data
+    const bow = new THREE.Mesh(bowGeo, hullMat);
+    bow.position.set(26, 0.25, 0);
+    bow.rotation.y = Math.PI / 4;
+    g.add(bow);
+
+    const rim = new THREE.Mesh(rimGeo, trimMat);
+    rim.position.y = 1.62;
+    g.add(rim);
+
+    const cabin = new THREE.Mesh(cabinGeo, cabinMat);
+    cabin.position.set(-1.5, 3.2, 0);
+    g.add(cabin);
+
+    const roof = new THREE.Mesh(roofGeo, trimMat);
+    roof.position.set(-1.5, 4.85, 0);
+    g.add(roof);
+
+    for (const side of [-1, 1]) {
+      const strip = new THREE.Mesh(deckLightGeo, boatLightMat);
+      strip.position.set(-1.5, 5.13, side * 3.75);
+      g.add(strip);
+    }
+
+    const wheel = new THREE.Mesh(wheelGeo, trimMat);
+    wheel.position.set(24, 2.6, 0);
+    g.add(wheel);
+
+    g.position.set(lane.x, WORLD.waterY, lane.z);
+    g.rotation.y = lane.dir < 0 ? Math.PI : 0;
+    scene.add(g);
+    boats.push({ g: g, z: lane.z, dir: lane.dir, speed: lane.speed, phase: lane.phase, x: lane.x });
+  }
+  for (let i = 0; i < BOAT_LANES.length; i++) buildBoat(BOAT_LANES[i]);
+
+  /* ================================================================== */
+  /*  2. lamp posts — Champ de Mars allée + Pont d'Iéna                  */
+  /* ================================================================== */
+  const lampSpots = [];
+  for (let z = 120; z <= 720; z += 30) {
+    lampSpots.push({ x: -36, z: z, baseY: 0, s: 1 });
+    lampSpots.push({ x: 36, z: z, baseY: 0, s: 1 });
+  }
+  // the bridge: shorter posts standing on the deck (top y = 3.0)
+  for (let z = -240; z >= -420; z -= 36) {
+    lampSpots.push({ x: -18.5, z: z, baseY: 3.0, s: 0.72 });
+    lampSpots.push({ x: 18.5, z: z, baseY: 3.0, s: 0.72 });
+  }
+
+  const POLE_H = 5.2;
+  const nLamps = lampSpots.length;
+
+  const poleGeo = new THREE.CylinderGeometry(0.085, 0.14, POLE_H, 6);
+  poleGeo.translate(0, POLE_H / 2, 0); // base sits on the instance origin
+  const globeGeo = new THREE.SphereGeometry(0.36, 8, 6);
+  const poolGeo = new THREE.CircleGeometry(5.5, 18);
+
+  const poleMesh = new THREE.InstancedMesh(poleGeo, lampPoleMat, nLamps);
+  const globeMesh = new THREE.InstancedMesh(globeGeo, globeMat, nLamps);
+  const poolMesh = new THREE.InstancedMesh(poolGeo, poolMat, nLamps);
+  poleMesh.frustumCulled = false;
+  globeMesh.frustumCulled = false;
+  poolMesh.frustumCulled = false;
+
+  const glowPositions = new Float32Array(nLamps * 3);
+  {
+    const m4 = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    const qFlat = new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI / 2, 0, 0));
+    const p = new THREE.Vector3();
+    const sc = new THREE.Vector3();
+
+    for (let i = 0; i < nLamps; i++) {
+      const L = lampSpots[i];
+      const s = L.s;
+      const gy = L.baseY + (POLE_H + 0.32) * s;
+
+      p.set(L.x, L.baseY, L.z);
+      sc.set(s, s, s);
+      m4.compose(p, q, sc);
+      poleMesh.setMatrixAt(i, m4);
+
+      p.set(L.x, gy, L.z);
+      m4.compose(p, q, sc);
+      globeMesh.setMatrixAt(i, m4);
+
+      glowPositions[i * 3] = L.x;
+      glowPositions[i * 3 + 1] = gy;
+      glowPositions[i * 3 + 2] = L.z;
+
+      // flat warm pool of light on the ground / deck under each lamp
+      p.set(L.x, L.baseY + 0.06, L.z);
+      sc.set(s, s, 1);
+      m4.compose(p, qFlat, sc);
+      poolMesh.setMatrixAt(i, m4);
+    }
+    poleMesh.instanceMatrix.needsUpdate = true;
+    globeMesh.instanceMatrix.needsUpdate = true;
+    poolMesh.instanceMatrix.needsUpdate = true;
+  }
+
+  const lampGlowGeo = new THREE.BufferGeometry();
+  lampGlowGeo.setAttribute('position', new THREE.BufferAttribute(glowPositions, 3));
+  const lampGlow = new THREE.Points(lampGlowGeo, lampGlowMat);
+  lampGlow.frustumCulled = false;
+
+  poolMesh.visible = false;
+  lampGlow.visible = false;
+  scene.add(poleMesh, globeMesh, poolMesh, lampGlow);
+
+  /* ================================================================== */
+  /*  3. night traffic — head/tail light ribbon along both quays         */
+  /* ================================================================== */
+  const ROADS = [
+    { z: -206, dir: 1, y: 1.15, speed: 17 },  // near bank (Quai Branly side)
+    { z: -458, dir: -1, y: 1.05, speed: 15 }, // far bank, beyond the quay wall
+  ];
+
+  // a strip of asphalt under each lane so the lights belong to a road
+  const roadMat = new THREE.MeshStandardMaterial({ color: 0x2c2e31, roughness: 0.95 });
+  for (let r = 0; r < ROADS.length; r++) {
+    const roadMesh = new THREE.Mesh(new THREE.BoxGeometry(9000, 0.06, 24), roadMat);
+    roadMesh.position.set(0, 0.39, ROADS[r].z);
+    roadMesh.receiveShadow = true;
+    scene.add(roadMesh);
+  }
+
+  const CARS_PER_ROAD = 70;
+  const CAR_COUNT = ROADS.length * CARS_PER_ROAD; // 140 cars → 280 points
+  const WRAP_MIN = -2200;
+  const WRAP_MAX = 2200;
+  const WRAP_SPAN = WRAP_MAX - WRAP_MIN;
+
+  const carX = new Float32Array(CAR_COUNT);
+  const carSpeed = new Float32Array(CAR_COUNT);
+  const carRoad = new Uint8Array(CAR_COUNT);
+  const headPos = new Float32Array(CAR_COUNT * 3);
+  const tailPos = new Float32Array(CAR_COUNT * 3);
+
+  for (let i = 0; i < CAR_COUNT; i++) {
+    const r = i & 1; // interleave the two roads so both are always populated
+    const road = ROADS[r];
+    const z = road.z + (Math.random() - 0.5) * 3;
+    const x = WRAP_MIN + Math.random() * WRAP_SPAN;
+    carRoad[i] = r;
+    carX[i] = x;
+    carSpeed[i] = road.speed * (0.85 + Math.random() * 0.3);
+
+    const i3 = i * 3;
+    headPos[i3] = x;
+    headPos[i3 + 1] = road.y;
+    headPos[i3 + 2] = z;
+    tailPos[i3] = x - road.dir * 4.6;
+    tailPos[i3 + 1] = road.y - 0.1;
+    tailPos[i3 + 2] = z;
+  }
+
+  const headGeo = new THREE.BufferGeometry();
+  const headAttr = new THREE.BufferAttribute(headPos, 3);
+  headAttr.setUsage(THREE.DynamicDrawUsage);
+  headGeo.setAttribute('position', headAttr);
+  const headPoints = new THREE.Points(headGeo, headMat);
+  headPoints.frustumCulled = false;
+
+  const tailGeo = new THREE.BufferGeometry();
+  const tailAttr = new THREE.BufferAttribute(tailPos, 3);
+  tailAttr.setUsage(THREE.DynamicDrawUsage);
+  tailGeo.setAttribute('position', tailAttr);
+  const tailPoints = new THREE.Points(tailGeo, tailMat);
+  tailPoints.frustumCulled = false;
+
+  headPoints.visible = false;
+  tailPoints.visible = false;
+  scene.add(headPoints, tailPoints);
+
+  /* ================================================================== */
+  /*  4. one hot-air balloon, drifting over the Trocadéro               */
+  /* ================================================================== */
+  const balloon = new THREE.Group();
+
+  const envelope = new THREE.Mesh(new THREE.SphereGeometry(11, 18, 12), balloonMat);
+  envelope.position.y = 10;
+  envelope.scale.set(1, 1.16, 1);
+  balloon.add(envelope);
+
+  const band = new THREE.Mesh(new THREE.CylinderGeometry(11.06, 11.06, 2.6, 18, 1, true), bandMat);
+  band.position.y = 10;
+  balloon.add(band);
+
+  const basket = new THREE.Mesh(new THREE.BoxGeometry(3.2, 2.6, 3.2), basketMat);
+  basket.position.y = -6.3;
+  balloon.add(basket);
+
+  const burner = new THREE.Mesh(new THREE.SphereGeometry(0.7, 8, 6), burnerMat);
+  burner.position.y = -3.9;
+  balloon.add(burner);
+
+  {
+    const ropeGeo = new THREE.BufferGeometry();
+    const rv = new Float32Array(4 * 2 * 3);
+    const corners = [[1.5, 1.5], [-1.5, 1.5], [-1.5, -1.5], [1.5, -1.5]];
+    for (let i = 0; i < 4; i++) {
+      rv[i * 6 + 0] = corners[i][0];
+      rv[i * 6 + 1] = -5.0;
+      rv[i * 6 + 2] = corners[i][1];
+      rv[i * 6 + 3] = corners[i][0] * 0.55;
+      rv[i * 6 + 4] = -2.9;
+      rv[i * 6 + 5] = corners[i][1] * 0.55;
+    }
+    ropeGeo.setAttribute('position', new THREE.BufferAttribute(rv, 3));
+    balloon.add(new THREE.LineSegments(ropeGeo, ropeMat));
+  }
+
+  balloon.position.set(-60, 132, -700);
+  scene.add(balloon);
+
+  /* ================================================================== */
+  /*  5. night response                                                  */
+  /* ================================================================== */
+  registerEnv((night) => {
+    cabinMat.emissiveIntensity = mix(0.04, 1.15, night);
+    boatLightMat.emissiveIntensity = mix(0.04, 2.2, night);
+    globeMat.emissiveIntensity = mix(0.05, 2.6, night);
+    poolMat.opacity = night * 0.22;
+    lampGlowMat.opacity = night * 0.9;
+    headMat.opacity = night * 0.9;
+    tailMat.opacity = night * 0.8;
+
+    const lit = night > 0.02;
+    poolMesh.visible = lit;
+    lampGlow.visible = lit;
+    headPoints.visible = lit;
+    tailPoints.visible = lit;
+  });
+
+  /* ================================================================== */
+  /*  6. the single frame updater (boats → traffic → balloon)           */
+  /* ================================================================== */
+  registerUpdater((dt, elapsed) => {
+    /* boats */
+    for (let i = 0; i < boats.length; i++) {
+      const b = boats[i];
+      b.x += b.dir * b.speed * dt;
+      if (b.x > BOAT_MAX) b.x -= BOAT_SPAN;
+      else if (b.x < BOAT_MIN) b.x += BOAT_SPAN;
+      b.g.position.x = b.x;
+      b.g.position.y = WORLD.waterY + Math.sin(elapsed * 0.85 + b.phase) * 0.05;
+      b.g.position.z = b.z + Math.sin(elapsed * 0.13 + b.phase) * 1.1;
+      b.g.rotation.z = Math.sin(elapsed * 0.9 + b.phase) * 0.005;
+    }
+
+    /* night traffic: headlights + taillights, wrap-around far off screen */
+    for (let i = 0; i < CAR_COUNT; i++) {
+      const r = carRoad[i];
+      const road = ROADS[r];
+      let x = carX[i] + road.dir * carSpeed[i] * dt;
+      if (x > WRAP_MAX) x -= WRAP_SPAN;
+      else if (x < WRAP_MIN) x += WRAP_SPAN;
+      carX[i] = x;
+
+      const i3 = i * 3;
+      headPos[i3] = x;
+      tailPos[i3] = x - road.dir * 4.6;
+    }
+    headAttr.needsUpdate = true;
+    tailAttr.needsUpdate = true;
+
+    /* balloon: lazy circle, slow bob, occasional burner flash */
+    const a = elapsed * 0.0075;
+    balloon.position.x = -60 + Math.cos(a) * 180;
+    balloon.position.y = 132 + Math.sin(elapsed * 0.11) * 7;
+    balloon.position.z = -700 + Math.sin(a) * 180;
+    balloon.rotation.y = elapsed * 0.012;
+
+    const n = ENV.night;
+    const flash = Math.pow(Math.max(0, Math.sin(elapsed * 0.55 + 1.2)), 12);
+    burnerMat.emissiveIntensity = 0.25 + n * (1.4 + 5 * flash);
+    balloonMat.emissiveIntensity = n * (0.04 + 0.3 * flash);
+  });
+}
+
+
+/* 70-controls.js — damped orbit camera (pointer drag, wheel, pinch).
+   Returns { orbit, updateCamera }. */
+function createControls(renderer, camera, cameraTarget) {
+/* ------------------------------------------------------------------ */
+/*  lightweight orbit controls (damped, pointer + wheel + pinch)      */
+/* ------------------------------------------------------------------ */
+const orbit = {
+  radius: 555, phi: 1.44, theta: 0.63,
+  tr: 555, tphi: 1.44, ttheta: 0.63,
+  auto: true, dragging: false,
+  pointers: new Map(),
+  pinch: 0,
+};
+
+function updateCamera() {
+  camera.position.setFromSphericalCoords(orbit.radius, orbit.phi, orbit.theta).add(cameraTarget);
+  camera.lookAt(cameraTarget);
+}
+
+const dom = renderer.domElement;
+dom.addEventListener('contextmenu', (e) => e.preventDefault());
+
+function pinchDistance() {
+  const pts = [...orbit.pointers.values()];
+  if (pts.length < 2) return 0;
+  return Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+}
+
+dom.addEventListener('pointerdown', (e) => {
+  dom.setPointerCapture(e.pointerId);
+  orbit.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  orbit.dragging = true;
+  if (orbit.pointers.size === 2) orbit.pinch = pinchDistance();
+});
+
+dom.addEventListener('pointermove', (e) => {
+  const p = orbit.pointers.get(e.pointerId);
+  if (!p) return;
+  const dx = e.clientX - p.x;
+  const dy = e.clientY - p.y;
+  p.x = e.clientX;
+  p.y = e.clientY;
+
+  if (orbit.pointers.size === 1) {
+    orbit.ttheta -= dx * 0.0052;
+    orbit.tphi = clamp(orbit.tphi - dy * 0.0044, 0.3, 1.52);
+  } else if (orbit.pointers.size === 2) {
+    const d = pinchDistance();
+    if (orbit.pinch > 0 && d > 0) orbit.tr = clamp(orbit.tr * (orbit.pinch / d), 90, 1800);
+    orbit.pinch = d;
+  }
+});
+
+function endPointer(e) {
+  orbit.pointers.delete(e.pointerId);
+  if (orbit.pointers.size === 0) orbit.dragging = false;
+  if (orbit.pointers.size < 2) orbit.pinch = 0;
+}
+dom.addEventListener('pointerup', endPointer);
+dom.addEventListener('pointercancel', endPointer);
+
+dom.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  orbit.tr = clamp(orbit.tr * Math.exp(e.deltaY * 0.0011), 90, 1800);
+}, { passive: false });
+
+  updateCamera();
+  return { orbit, updateCamera };
+}
+
+
+/* 90-app.js — composition root. Owns the renderer, camera, the frame loop and
+   the HUD. It knows nothing about tower or city internals: builders register
+   their own env/updater callbacks. */
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+} catch (err) {
+  fail('WebGL could not be initialised in this browser.');
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.domElement.style.touchAction = 'none';
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+initEnv(scene);
+
+const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.8, 12000);
+const cameraTarget = new THREE.Vector3(0, 172, 0);
+const { orbit, updateCamera } = createControls(renderer, camera, cameraTarget);
+
+/* ---- scene assembly ---- */
+buildSky(scene);
+buildTerrain(scene);
+buildTower(scene, renderer);
+buildCityBlocks(scene);
+buildCityLandmarks(scene);
+buildCityLife(scene);
+
+/* ---- HUD buttons ---- */
+const nightBtn = document.getElementById('btn-night');
+const nightLabel = document.getElementById('btn-night-label');
+nightBtn.addEventListener('click', () => {
+  ENV.nightTarget = ENV.nightTarget > 0.5 ? 0 : 1;
+  const isNight = ENV.nightTarget > 0.5;
+  nightLabel.textContent = isNight ? 'Day' : 'Night';
+  nightBtn.classList.toggle('on', isNight);
+});
+
+const autoBtn = document.getElementById('btn-auto');
+autoBtn.addEventListener('click', () => {
+  orbit.auto = !orbit.auto;
+  autoBtn.classList.toggle('on', orbit.auto);
+});
+
+if (ENV.nightTarget > 0.5) {
+  nightLabel.textContent = 'Day';
+  nightBtn.classList.add('on');
+}
+
+/* ---- resize ---- */
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+});
+
+/* ---- frame loop ---- */
+let frameCount = 0;
+let last = performance.now();
+
+function animate(now) {
+  requestAnimationFrame(animate);
+
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+  const elapsed = now * 0.001;
+
+  tickEnv(dt);
+
+  if (orbit.auto && !orbit.dragging) orbit.ttheta += dt * 0.06;
+  const k = 1 - Math.exp(-dt * 7.0);
+  orbit.radius += (orbit.tr - orbit.radius) * k;
+  orbit.phi += (orbit.tphi - orbit.phi) * k;
+  orbit.theta += (orbit.ttheta - orbit.theta) * k;
+  updateCamera();
+
+  runUpdaters(dt, elapsed);
+  renderer.toneMappingExposure = mix(1.0, 1.15, ENV.night);
+
+  renderer.render(scene, camera);
+
+  frameCount++;
+  if (frameCount === 2) loaderEl.classList.add('hide');
+}
+
+requestAnimationFrame(animate);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js: Alien Park vs Neon City</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 8px 20px;
+            background: linear-gradient(90deg, #0a0015, #050510, #0a0015);
+            border-bottom: 2px solid #ff00ff;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+        .header h1 {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .header .left-title {
+            color: #00ffaa;
+            text-shadow: 0 0 10px #00ffaa;
+        }
+        .header .vs {
+            color: #ff00ff;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+        .header .right-title {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .scenes {
+            display: flex;
+            flex: 1;
+            min-height: 0;
+        }
+        .scene-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .scene-container:first-child {
+            border-right: 2px solid #ff00ff;
+        }
+        .scene-label {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.7);
+            padding: 4px 14px;
+            border-radius: 12px;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .scene-label.alien { border: 1px solid #00ffaa; color: #00ffaa; text-shadow: 0 0 8px #00ffaa; }
+        .scene-label.neon { border: 1px solid #00ffff; color: #00ffff; text-shadow: 0 0 8px #00ffff; }
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #000;
+        }
+        .footer {
+            text-align: center;
+            padding: 5px;
+            background: #000;
+            border-top: 1px solid #333;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+        .footer span {
+            color: #666;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+        @media (max-width: 768px) {
+            .scenes { flex-direction: column; }
+            .scene-container:first-child { border-right: none; border-bottom: 2px solid #ff00ff; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="left-title">Alien Theme Park</h1>
+        <span class="vs">VS</span>
+        <h1 class="right-title">Neon Cyber City</h1>
+    </div>
+    <div class="scenes">
+        <div class="scene-container">
+            <div class="scene-label alien">Alien Park</div>
+            <iframe src="alien-park/index.html" title="Alien Theme Park"></iframe>
+        </div>
+        <div class="scene-container">
+            <div class="scene-label neon">Neon City</div>
+            <iframe src="neon-city/index.html" title="Neon Cyber City"></iframe>
+        </div>
+    </div>
+    <div class="footer">
+        <span>Left: Alien Theme Park &bull; Right: Neon Cyber City &bull; Click into a scene to interact</span>
+    </div>
+</body>
+</html>

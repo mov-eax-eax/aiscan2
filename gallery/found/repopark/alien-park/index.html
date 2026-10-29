@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Theme Park - Three.js Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        
+        #critique-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(20,0,40,0.95) 100%);
+            border-top: 3px solid #00ffaa;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        #critique-panel.active {
+            transform: translateY(0);
+        }
+        
+        .critique-header {
+            color: #00ffaa;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 10px #00ffaa;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .team-member {
+            background: rgba(0,255,170,0.1);
+            border: 2px solid #00ffaa;
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .team-member h3 {
+            color: #ff00ff;
+            margin-bottom: 10px;
+        }
+        
+        .team-member .score {
+            font-size: 36px;
+            color: #00ffaa;
+            text-shadow: 0 0 10px #00ffaa;
+        }
+        
+        .team-member .critique {
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .critique-form {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        
+        .critique-form label {
+            display: block;
+            color: #00ffaa;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .critique-form select, 
+        .critique-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid #00ffaa;
+            color: #fff;
+            font-family: inherit;
+            border-radius: 5px;
+        }
+        
+        .critique-form textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .critique-form button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(180deg, #00ffaa 0%, #00aa77 100%);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .critique-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00ffaa;
+        }
+        
+        #status-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #ff00ff;
+            padding: 15px;
+            border-radius: 10px;
+            color: #fff;
+            z-index: 100;
+        }
+        
+        #status-display h2 {
+            color: #ff00ff;
+            margin-bottom: 10px;
+        }
+        
+        #status-display .overall-score {
+            font-size: 48px;
+            color: #00ffaa;
+            text-shadow: 0 0 10px #00ffaa;
+        }
+        
+        #status-display .remaining {
+            color: #ffaa00;
+            margin-top: 10px;
+        }
+        
+        #controls-hint {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #00ffaa;
+            font-size: 14px;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #00ffaa;
+            max-width: 280px;
+            z-index: 100;
+        }
+
+        #controls-hint h3 {
+            margin-bottom: 10px;
+            color: #ff00ff;
+            font-size: 16px;
+        }
+
+        #controls-hint p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        #controls-hint kbd {
+            background: rgba(0,255,170,0.2);
+            border: 1px solid #00ffaa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        #reset-view-btn {
+            position: fixed;
+            top: 20px;
+            left: 320px;
+            padding: 10px 20px;
+            background: linear-gradient(180deg, #ff00ff 0%, #aa00aa 100%);
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        #reset-view-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff00ff;
+        }
+        
+        #victory-banner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(180deg, #ff00ff 0%, #aa00aa 100%);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+            transition: transform 0.5s ease;
+        }
+        
+        #victory-banner.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        #victory-banner h1 {
+            color: #fff;
+            font-size: 48px;
+            text-shadow: 0 0 20px #fff;
+        }
+        
+        #victory-banner p {
+            color: #00ffaa;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        
+        .alien-text {
+            color: #00ffaa;
+            font-size: 14px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <div id="controls-hint">
+        <h3>🎮 Controls Guide</h3>
+        <p><kbd>Left Click + Drag</kbd> Rotate view</p>
+        <p><kbd>Scroll Wheel</kbd> Zoom in/out</p>
+        <p><kbd>Right Click + Drag</kbd> Pan view</p>
+        <p><kbd>Reset View</kbd> Button to reset camera</p>
+        <hr style="border-color: #00ffaa; opacity: 0.3; margin: 10px 0;">
+        <p style="color: #ffaa00; font-size: 12px;">💡 Tip: All attractions are interactive!</p>
+    </div>
+
+    <button id="reset-view-btn">🔄 Reset View</button>
+    
+    <div id="status-display">
+        <h2>🎢 ALIEN PARK</h2>
+        <div class="overall-score" id="overall-score">0.0</div>
+        <div class="remaining" id="remaining-members">Waiting for critiques...</div>
+    </div>
+    
+    <div id="critique-panel" class="active">
+        <div class="critique-header">👽 TEAM CRITIQUE SESSION 👽</div>
+        
+        <div class="team-members" id="team-members-container">
+            <!-- Team members will be rendered here -->
+        </div>
+        
+        <div class="critique-form">
+            <label for="critic-name">Select Team Member:</label>
+            <select id="critic-name">
+                <option value="Zorg">👽 Zorg - Lead Designer</option>
+                <option value="Xyloph">🪐 Xyloph - Architecture Expert</option>
+                <option value="Nebula">🌟 Nebula - Experience Lead</option>
+                <option value="Cosmo">🌌 Cosmo - Technical Advisor</option>
+                <option value="Orion">⭐ Orion - Creative Director</option>
+            </select>
+            
+            <label for="critique-score">Rate the Alien Park (1-10):</label>
+            <select id="critique-score">
+                <option value="1">1 - Needs major improvements</option>
+                <option value="2">2 - Below expectations</option>
+                <option value="3">3 - Poor execution</option>
+                <option value="4">4 - Not quite there</option>
+                <option value="5">5 - Average</option>
+                <option value="6">6 - Decent work</option>
+                <option value="7">7 - Good job</option>
+                <option value="8">8 - Very good</option>
+                <option value="9">9 - Excellent!</option>
+                <option value="10">10 - Perfect! 👽</option>
+            </select>
+            
+            <label for="critique-text">Your Critique:</label>
+            <textarea id="critique-text" placeholder="Share your thoughts on the alien park design, geometry usage, colors, atmosphere, and overall experience..."></textarea>
+            
+            <button id="submit-critique">Submit Critique</button>
+        </div>
+    </div>
+    
+    <div id="victory-banner">
+        <h1>🎉 PERFECT SCORES! 🎉</h1>
+        <p>All team members gave 10/10!<br>Alien Park is officially approved!</p>
+    </div>
+    
+    <div class="alien-text" id="alien-text">𐍃𐍄𐍂𐍉𐍂𐍉𐍄 𐍆𐍉𐍂 𐍂𐍉𐍄𐍉𐍄𐍉𐍂</div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Team members data
+        const teamMembers = [
+            { name: 'Zorg', role: 'Lead Designer', score: 0, critiques: [], color: '#ff00ff' },
+            { name: 'Xyloph', role: 'Architecture Expert', score: 0, critiques: [], color: '#00ffaa' },
+            { name: 'Nebula', role: 'Experience Lead', score: 0, critiques: [], color: '#ffaa00' },
+            { name: 'Cosmo', role: 'Technical Advisor', score: 0, critiques: [], color: '#00aaff' },
+            { name: 'Orion', role: 'Creative Director', score: 0, critiques: [], color: '#ff5500' }
+        ];
+        
+        // Three.js scene setup
+        let scene, camera, renderer, controls;
+        let parkGroup;
+        let customGeometries = [];
+        
+        function init() {
+            // Scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0015);
+            scene.fog = new THREE.FogExp2(0x0a0015, 0.008);
+            
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(50, 30, 50);
+            
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+            
+            // Controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.maxPolarAngle = Math.PI / 2.1;
+            controls.minDistance = 10;
+            controls.maxDistance = 150;
+            
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0x6666aa, 0.8);
+            scene.add(ambientLight);
+
+            const moonLight = new THREE.DirectionalLight(0x8888ff, 1.2);
+            moonLight.position.set(50, 100, 50);
+            moonLight.castShadow = true;
+            moonLight.shadow.mapSize.width = 2048;
+            moonLight.shadow.mapSize.height = 2048;
+            scene.add(moonLight);
+
+            // Add colorful point lights for alien atmosphere
+            const lights = [
+                { color: 0xff00ff, position: [0, 30, 0], intensity: 2 },
+                { color: 0x00ffaa, position: [-40, 25, -40], intensity: 1.5 },
+                { color: 0xffaa00, position: [40, 25, 40], intensity: 1.5 },
+                { color: 0x00aaff, position: [-40, 25, 40], intensity: 1.5 },
+                { color: 0xff5500, position: [40, 25, -40], intensity: 1.5 },
+                { color: 0x00ff88, position: [0, 15, -60], intensity: 1.5 },
+                { color: 0xff0088, position: [0, 15, 60], intensity: 1.5 }
+            ];
+
+            lights.forEach(light => {
+                const pointLight = new THREE.PointLight(light.color, light.intensity, 150);
+                pointLight.position.set(...light.position);
+                scene.add(pointLight);
+            });
+            
+            // Create the alien park
+            createAlienPark();
+            
+            // Create ground
+            createGround();
+            
+            // Create stars
+            createStars();
+            
+            // Start animation
+            animate();
+            
+            // Update UI
+            updateTeamDisplay();
+        }
+        
+        function createGround() {
+            const groundGeometry = new THREE.PlaneGeometry(200, 200, 50, 50);
+            const groundMaterial = new THREE.MeshStandardMaterial({
+                color: 0x1a0a2e,
+                roughness: 0.8,
+                metalness: 0.2,
+                wireframe: false
+            });
+            const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+            ground.rotation.x = -Math.PI / 2;
+            ground.receiveShadow = true;
+            scene.add(ground);
+            
+            // Add glowing grid
+            const gridHelper = new THREE.GridHelper(200, 40, 0x00ffaa, 0x00ffaa);
+            gridHelper.position.y = 0.1;
+            gridHelper.material.opacity = 0.3;
+            gridHelper.material.transparent = true;
+            scene.add(gridHelper);
+        }
+        
+        function createStars() {
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsCount = 2000;
+            const positions = new Float32Array(starsCount * 3);
+            
+            for (let i = 0; i < starsCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 400;
+                positions[i + 1] = Math.random() * 200 + 50;
+                positions[i + 2] = (Math.random() - 0.5) * 400;
+            }
+            
+            starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const starsMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 0.5,
+                transparent: true,
+                opacity: 0.8
+            });
+            const stars = new THREE.Points(starsGeometry, starsMaterial);
+            scene.add(stars);
+        }
+        
+        function createAlienPark() {
+            parkGroup = new THREE.Group();
+            
+            // Create all attractions
+            createCentralSpire();
+            createFlyingSaucers();
+            createCrystalTowers();
+            createSpiralSlide();
+            createUFO bumperCars();
+            createAlienTrees();
+            createPortalGateway();
+            createSpaceCoaster();
+            createNebulaFountain();
+            createMeetingHub();
+            
+            scene.add(parkGroup);
+        }
+        
+        function createCustomGeometry(type, params) {
+            let geometry;
+            switch(type) {
+                case 'dodecahedron':
+                    geometry = new THREE.DodecahedronGeometry(params.radius);
+                    break;
+                case 'torusknot':
+                    geometry = new THREE.TorusKnotGeometry(params.radius, params.tube, params.tubularSegments, params.radialSegments);
+                    break;
+                case 'icosahedron':
+                    geometry = new THREE.IcosahedronGeometry(params.radius, params.detail);
+                    break;
+                case 'octahedron':
+                    geometry = new THREE.OctahedronGeometry(params.radius, params.detail);
+                    break;
+                case 'tetrahedron':
+                    geometry = new THREE.TetrahedronGeometry(params.radius, params.detail);
+                    break;
+                case 'customPyramid':
+                    geometry = createPyramidGeometry(params.radius, params.height);
+                    break;
+                case 'customRing':
+                    geometry = createRingGeometry(params.innerRadius, params.outerRadius, params.thetaSegments);
+                    break;
+                case 'customSpiral':
+                    geometry = createSpiralGeometry(params.radius, params.height, params.turns);
+                    break;
+                case 'customStar':
+                    geometry = createStarGeometry(params.outerRadius, params.innerRadius, params.points);
+                    break;
+                case 'customPlanet':
+                    geometry = createPlanetGeometry(params.radius, params.rings);
+                    break;
+                default:
+                    geometry = new THREE.BoxGeometry(1, 1, 1);
+            }
+            return geometry;
+        }
+        
+        function createPyramidGeometry(radius, height) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const indices = [];
+            
+            // Base vertices
+            const basePoints = 5;
+            for (let i = 0; i < basePoints; i++) {
+                const angle = (i / basePoints) * Math.PI * 2;
+                vertices.push(Math.cos(angle) * radius, 0, Math.sin(angle) * radius);
+            }
+            
+            // Center of base
+            vertices.push(0, 0, 0);
+            const centerIndex = basePoints;
+            
+            // Top vertex
+            vertices.push(0, height, 0);
+            const topIndex = basePoints + 1;
+            
+            // Create faces
+            for (let i = 0; i < basePoints; i++) {
+                const next = (i + 1) % basePoints;
+                indices.push(i, next, topIndex);
+                indices.push(i, centerIndex, next);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setIndex(indices);
+            geometry.computeVertexNormals();
+            
+            return geometry;
+        }
+        
+        function createRingGeometry(innerRadius, outerRadius, thetaSegments) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const indices = [];
+            
+            for (let i = 0; i <= thetaSegments; i++) {
+                const angle = (i / thetaSegments) * Math.PI * 2;
+                const cos = Math.cos(angle);
+                const sin = Math.sin(angle);
+                
+                vertices.push(cos * innerRadius, 0, sin * innerRadius);
+                vertices.push(cos * outerRadius, 0, sin * outerRadius);
+            }
+            
+            for (let i = 0; i < thetaSegments; i++) {
+                const base = i * 2;
+                indices.push(base, base + 1, base + 3);
+                indices.push(base, base + 3, base + 2);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setIndex(indices);
+            geometry.computeVertexNormals();
+            
+            return geometry;
+        }
+        
+        function createSpiralGeometry(radius, height, turns) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const indices = [];
+            const segments = 200;
+            
+            for (let i = 0; i <= segments; i++) {
+                const t = i / segments;
+                const angle = t * Math.PI * 2 * turns;
+                const y = t * height;
+                
+                vertices.push(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
+            }
+            
+            const tubeRadius = 0.5;
+            const radialSegments = 8;
+            
+            for (let i = 0; i < segments; i++) {
+                for (let j = 0; j <= radialSegments; j++) {
+                    const v = j / radialSegments * Math.PI * 2;
+                    const cos = Math.cos(v);
+                    const sin = Math.sin(v);
+                    
+                    const x = Math.cos(angle) * radius;
+                    const z = Math.sin(angle) * radius;
+                    
+                    vertices.push(x, y, z);
+                }
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setIndex(indices);
+            geometry.computeVertexNormals();
+            
+            return geometry;
+        }
+        
+        function createStarGeometry(outerRadius, innerRadius, points) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const indices = [];
+            
+            for (let i = 0; i < points * 2; i++) {
+                const radius = i % 2 === 0 ? outerRadius : innerRadius;
+                const angle = (i / (points * 2)) * Math.PI * 2 - Math.PI / 2;
+                vertices.push(Math.cos(angle) * radius, 0, Math.sin(angle) * radius);
+            }
+            
+            const centerIndex = points * 2;
+            vertices.push(0, 2, 0);
+            
+            for (let i = 0; i < points * 2; i++) {
+                const next = (i + 1) % (points * 2);
+                indices.push(i, next, centerIndex);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setIndex(indices);
+            geometry.computeVertexNormals();
+            
+            return geometry;
+        }
+        
+        function createPlanetGeometry(radius, hasRings) {
+            const geometry = new THREE.SphereGeometry(radius, 32, 32);
+            return geometry;
+        }
+        
+        function createCentralSpire() {
+            const group = new THREE.Group();
+            
+            // Main spire - custom dodecahedron
+            const spireGeometry = createCustomGeometry('dodecahedron', { radius: 5 });
+            const spireMaterial = new THREE.MeshStandardMaterial({
+                color: 0x00ffaa,
+                emissive: 0x00ffaa,
+                emissiveIntensity: 0.3,
+                metalness: 0.8,
+                roughness: 0.2
+            });
+            const spire = new THREE.Mesh(spireGeometry, spireMaterial);
+            spire.position.y = 15;
+            spire.castShadow = true;
+            group.add(spire);
+            
+            // Floating crystals around spire
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2;
+                const crystalGeometry = createCustomGeometry('octahedron', { radius: 1.5, detail: 0 });
+                const crystalMaterial = new THREE.MeshStandardMaterial({
+                    color: 0xff00ff,
+                    emissive: 0xff00ff,
+                    emissiveIntensity: 0.5,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const crystal = new THREE.Mesh(crystalGeometry, crystalMaterial);
+                crystal.position.set(
+                    Math.cos(angle) * 8,
+                    10 + Math.sin(i) * 3,
+                    Math.sin(angle) * 8
+                );
+                crystal.rotation.set(Math.random(), Math.random(), Math.random());
+                group.add(crystal);
+                customGeometries.push(crystal);
+            }
+            
+            // Base platform
+            const baseGeometry = createCustomGeometry('customRing', { innerRadius: 6, outerRadius: 10, thetaSegments: 32 });
+            const baseMaterial = new THREE.MeshStandardMaterial({
+                color: 0x1a0a2e,
+                emissive: 0x00ffaa,
+                emissiveIntensity: 0.2,
+                metalness: 0.5,
+                roughness: 0.5
+            });
+            const base = new THREE.Mesh(baseGeometry, baseMaterial);
+            base.rotation.x = -Math.PI / 2;
+            base.position.y = 0.5;
+            group.add(base);
+            
+            parkGroup.add(group);
+        }
+        
+        function createFlyingSaucers() {
+            const group = new THREE.Group();
+            
+            for (let i = 0; i < 5; i++) {
+                const saucerGroup = new THREE.Group();
+                
+                // Main disc
+                const discGeometry = new THREE.CylinderGeometry(3, 4, 1, 32);
+                const discMaterial = new THREE.MeshStandardMaterial({
+                    color: 0xcccccc,
+                    metalness: 0.9,
+                    roughness: 0.1
+                });
+                const disc = new THREE.Mesh(discGeometry, discMaterial);
+                saucerGroup.add(disc);
+                
+                // Dome
+                const domeGeometry = new THREE.SphereGeometry(2, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+                const domeMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x00aaff,
+                    transparent: true,
+                    opacity: 0.6,
+                    emissive: 0x00aaff,
+                    emissiveIntensity: 0.3
+                });
+                const dome = new THREE.Mesh(domeGeometry, domeMaterial);
+                dome.position.y = 0.5;
+                saucerGroup.add(dome);
+                
+                // Lights ring
+                const lightGeometry = new THREE.TorusGeometry(3.5, 0.2, 8, 32);
+                const lightMaterial = new THREE.MeshStandardMaterial({
+                    color: 0xffaa00,
+                    emissive: 0xffaa00,
+                    emissiveIntensity: 1
+                });
+                const lightsRing = new THREE.Mesh(lightGeometry, lightMaterial);
+                lightsRing.rotation.x = Math.PI / 2;
+                lightsRing.position.y = 0.3;
+                saucerGroup.add(lightsRing);
+                
+                saucerGroup.position.set(
+                    Math.cos((i / 5) * Math.PI * 2) * 25,
+                    20 + Math.sin(i * 2) * 5,
+                    Math.sin((i / 5) * Math.PI * 2) * 25
+                );
+                
+                saucerGroup.userData = { 
+                    baseY: saucerGroup.position.y,
+                    speed: 0.5 + Math.random() * 0.5,
+                    offset: i * Math.PI * 2
+                };
+                
+                group.add(saucerGroup);
+                customGeometries.push(saucerGroup);
+            }
+            
+            parkGroup.add(group);
+        }
+        
+        function createCrystalTowers() {
+            const group = new THREE.Group();
+            
+            const towerPositions = [
+                { x: -20, z: -20 },
+                { x: 20, z: -20 },
+                { x: -20, z: 20 },
+                { x: 20, z: 20 }
+            ];
+            
+            towerPositions.forEach((pos, index) => {
+                const towerGroup = new THREE.Group();
+                
+                // Custom pyramid geometry for tower
+                const towerGeometry = createCustomGeometry('customPyramid', { radius: 3, height: 15 + index * 2 });
+                const towerMaterial = new THREE.MeshStandardMaterial({
+                    color: [0xff00ff, 0x00aaff, 0xffaa00, 0x00ffaa][index],
+                    emissive: [0xff00ff, 0x00aaff, 0xffaa00, 0x00ffaa][index],
+                    emissiveIntensity: 0.4,
+                    metalness: 0.6,
+                    roughness: 0.3,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                const tower = new THREE.Mesh(towerGeometry, towerMaterial);
+                tower.position.y = (15 + index * 2) / 2;
+                tower.castShadow = true;
+                towerGroup.add(tower);
+                
+                // Rotating rings
+                for (let i = 0; i < 3; i++) {
+                    const ringGeometry = createCustomGeometry('customRing', { innerRadius: 4 + i, outerRadius: 4.5 + i, thetaSegments: 32 });
+                    const ringMaterial = new THREE.MeshStandardMaterial({
+                        color: 0xffffff,
+                        emissive: [0xff00ff, 0x00aaff, 0xffaa00][i],
+                        emissiveIntensity: 0.8,
+                        transparent: true,
+                        opacity: 0.7
+                    });
+                    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+                    ring.rotation.x = Math.PI / 2;
+                    ring.rotation.y = Math.random() * Math.PI;
+                    ring.position.y = 5 + i * 5;
+                    ring.userData = { rotationSpeed: 0.01 + i * 0.005 };
+                    towerGroup.add(ring);
+                    customGeometries.push(ring);
+                }
+                
+                towerGroup.position.set(pos.x, 0, pos.z);
+                group.add(towerGroup);
+            });
+            
+            parkGroup.add(group);
+        }
+        
+        function createSpiralSlide() {
+            const group = new THREE.Group();
+            
+            // Spiral structure using tube geometry
+            const spiralPath = new THREE.CurvePath();
+            const spiralCurve = new THREE.Curve();
+            const turns = 3;
+            const radius = 8;
+            const height = 12;
+            
+            spiralCurve.getPoint = function(t) {
+                const angle = t * Math.PI * 2 * turns;
+                return new THREE.Vector3(
+                    Math.cos(angle) * radius,
+                    t * height,
+                    Math.sin(angle) * radius
+                );
+            };
+            
+            const tubeGeometry = new THREE.TubeGeometry(spiralCurve, 100, 1.5, 16, false);
+            const tubeMaterial = new THREE.MeshStandardMaterial({
+                color: 0xff00ff,
+                emissive: 0xff00ff,
+                emissiveIntensity: 0.4,
+                metalness: 0.3,
+                roughness: 0.6
+            });
+            const tube = new THREE.Mesh(tubeGeometry, tubeMaterial);
+            tube.castShadow = true;
+            group.add(tube);
+            
+            // Support pillars
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2;
+                const pillarGeometry = new THREE.CylinderGeometry(0.3, 0.3, height, 8);
+                const pillarMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x00ffaa,
+                    metalness: 0.8,
+                    roughness: 0.2
+                });
+                const pillar = new THREE.Mesh(pillarGeometry, pillarMaterial);
+                pillar.position.set(
+                    Math.cos(angle) * (radius + 2),
+                    height / 2,
+                    Math.sin(angle) * (radius + 2)
+                );
+                group.add(pillar);
+            }
+            
+            group.position.set(-35, 0, 0);
+            parkGroup.add(group);
+        }
+        
+        function createUFObumperCars() {
+            const group = new THREE.Group();
+            
+            const arenaGeometry = createCustomGeometry('customRing', { innerRadius: 12, outerRadius: 15, thetaSegments: 48 });
+            const arenaMaterial = new THREE.MeshStandardMaterial({
+                color: 0x1a0a2e,
+                emissive: 0x00aaff,
+                emissiveIntensity: 0.3,
+                metalness: 0.5,
+                roughness: 0.5
+            });
+            const arena = new THREE.Mesh(arenaGeometry, arenaMaterial);
+            arena.rotation.x = -Math.PI / 2;
+            arena.position.y = 0.5;
+            group.add(arena);
+            
+            // Bumper cars
+            for (let i = 0; i < 6; i++) {
+                const carGroup = new THREE.Group();
+                
+                // UFO shape
+                const bodyGeometry = new THREE.SphereGeometry(1.5, 16, 16);
+                const bodyMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x00ffaa,
+                    emissive: 0x00ffaa,
+                    emissiveIntensity: 0.4,
+                    metalness: 0.7,
+                    roughness: 0.3
+                });
+                const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+                body.scale.y = 0.5;
+                carGroup.add(body);
+                
+                // Dome
+                const domeGeometry = new THREE.SphereGeometry(0.8, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+                const domeMaterial = new THREE.MeshStandardMaterial({
+                    color: 0xffaa00,
+                    transparent: true,
+                    opacity: 0.7,
+                    emissive: 0xffaa00,
+                    emissiveIntensity: 0.3
+                });
+                const dome = new THREE.Mesh(domeGeometry, domeMaterial);
+                dome.position.y = 0.3;
+                carGroup.add(dome);
+                
+                const angle = (i / 6) * Math.PI * 2;
+                carGroup.position.set(
+                    Math.cos(angle) * 8,
+                    1.5,
+                    Math.sin(angle) * 8
+                );
+                carGroup.userData = {
+                    baseX: carGroup.position.x,
+                    baseZ: carGroup.position.z,
+                    angle: angle,
+                    speed: 0.02 + Math.random() * 0.02
+                };
+                
+                group.add(carGroup);
+                customGeometries.push(carGroup);
+            }
+            
+            group.position.set(35, 0, 0);
+            parkGroup.add(group);
+        }
+        
+        function createAlienTrees() {
+            const group = new THREE.Group();
+            
+            for (let i = 0; i < 12; i++) {
+                const treeGroup = new THREE.Group();
+                
+                // Trunk
+                const trunkGeometry = new THREE.CylinderGeometry(0.5, 0.8, 5, 8);
+                const trunkMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x2a1a4e,
+                    metalness: 0.3,
+                    roughness: 0.7
+                });
+                const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
+                treeGroup.add(trunk);
+                
+                // Custom star-shaped top
+                const topGeometry = createCustomGeometry('customStar', { 
+                    outerRadius: 3, 
+                    innerRadius: 1.5, 
+                    points: 5 
+                });
+                const topMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x00ffaa,
+                    emissive: 0x00ffaa,
+                    emissiveIntensity: 0.5,
+                    metalness: 0.4,
+                    roughness: 0.5
+                });
+                const top = new THREE.Mesh(topGeometry, topMaterial);
+                top.position.y = 4;
+                top.rotation.y = Math.random() * Math.PI;
+                treeGroup.add(top);
+                
+                // Floating orbs around tree
+                for (let j = 0; j < 3; j++) {
+                    const orbGeometry = new THREE.SphereGeometry(0.3, 8, 8);
+                    const orbMaterial = new THREE.MeshStandardMaterial({
+                        color: 0xff00ff,
+                        emissive: 0xff00ff,
+                        emissiveIntensity: 1
+                    });
+                    const orb = new THREE.Mesh(orbGeometry, orbMaterial);
+                    const angle = (j / 3) * Math.PI * 2;
+                    orb.position.set(
+                        Math.cos(angle) * (2 + j * 0.5),
+                        4 + j,
+                        Math.sin(angle) * (2 + j * 0.5)
+                    );
+                    orb.userData = { floatOffset: j * Math.PI / 3 };
+                    treeGroup.add(orb);
+                    customGeometries.push(orb);
+                }
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const radius = 10 + Math.random() * 15;
+                treeGroup.position.set(
+                    Math.cos(angle) * radius,
+                    0,
+                    Math.sin(angle) * radius
+                );
+                treeGroup.scale.setScalar(0.8 + Math.random() * 0.4);
+                
+                group.add(treeGroup);
+            }
+            
+            parkGroup.add(group);
+        }
+        
+        function createPortalGateway() {
+            const group = new THREE.Group();
+            
+            // Main portal ring - custom torus knot
+            const portalGeometry = createCustomGeometry('torusknot', {
+                radius: 4,
+                tube: 0.5,
+                tubularSegments: 100,
+                radialSegments: 16
+            });
+            const portalMaterial = new THREE.MeshStandardMaterial({
+                color: 0xff00ff,
+                emissive: 0xff00ff,
+                emissiveIntensity: 0.8,
+                metalness: 0.5,
+                roughness: 0.2
+            });
+            const portal = new THREE.Mesh(portalGeometry, portalMaterial);
+            portal.position.y = 5;
+            portal.rotation.x = Math.PI / 2;
+            group.add(portal);
+            
+            // Portal surface
+            const surfaceGeometry = new THREE.CircleGeometry(3.5, 32);
+            const surfaceMaterial = new THREE.MeshStandardMaterial({
+                color: 0x6600ff,
+                transparent: true,
+                opacity: 0.6,
+                emissive: 0x6600ff,
+                emissiveIntensity: 0.5,
+                side: THREE.DoubleSide
+            });
+            const surface = new THREE.Mesh(surfaceGeometry, surfaceMaterial);
+            surface.position.y = 5;
+            group.add(surface);
+            
+            // Energy particles
+            const particleCount = 50;
+            const particleGeometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.random() * 3;
+                positions[i] = Math.cos(angle) * radius;
+                positions[i + 1] = Math.random() * 10;
+                positions[i + 2] = Math.sin(angle) * radius;
+            }
+            
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x00ffaa,
+                size: 0.3,
+                transparent: true,
+                opacity: 0.8
+            });
+            const particles = new THREE.Points(particleGeometry, particleMaterial);
+            particles.position.y = 5;
+            group.add(particles);
+            
+            // Support arches
+            for (let i = 0; i < 4; i++) {
+                const angle = (i / 4) * Math.PI * 2 + Math.PI / 4;
+                const archGeometry = new THREE.TorusGeometry(5, 0.3, 8, 16, Math.PI);
+                const archMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x00aaff,
+                    emissive: 0x00aaff,
+                    emissiveIntensity: 0.4,
+                    metalness: 0.6,
+                    roughness: 0.4
+                });
+                const arch = new THREE.Mesh(archGeometry, archMaterial);
+                arch.position.set(
+                    Math.cos(angle) * 3,
+                    2.5,
+                    Math.sin(angle) * 3
+                );
+                arch.rotation.z = Math.cos(angle) * Math.PI / 2;
+                group.add(arch);
+            }
+            
+            group.position.set(0, 0, -40);
+            parkGroup.add(group);
+        }
+        
+        function createSpaceCoaster() {
+            const group = new THREE.Group();
+            
+            // Coaster track using curves
+            const trackCurve = new THREE.CatmullRomCurve3([
+                new THREE.Vector3(0, 5, 0),
+                new THREE.Vector3(10, 15, 10),
+                new THREE.Vector3(20, 25, 0),
+                new THREE.Vector3(10, 35, -10),
+                new THREE.Vector3(0, 30, -20),
+                new THREE.Vector3(-10, 20, -10),
+                new THREE.Vector3(-20, 15, 0),
+                new THREE.Vector3(-10, 10, 10),
+                new THREE.Vector3(0, 5, 0)
+            ]);
+            
+            const trackGeometry = new THREE.TubeGeometry(trackCurve, 100, 0.5, 8, true);
+            const trackMaterial = new THREE.MeshStandardMaterial({
+                color: 0xffaa00,
+                emissive: 0xffaa00,
+                emissiveIntensity: 0.5,
+                metalness: 0.8,
+                roughness: 0.2
+            });
+            const track = new THREE.Mesh(trackGeometry, trackMaterial);
+            group.add(track);
+            
+            // Support pillars
+            const supportPositions = trackCurve.getPoints(20);
+            supportPositions.forEach((pos, index) => {
+                if (index % 2 === 0 && pos.y > 3) {
+                    const pillarGeometry = new THREE.CylinderGeometry(0.3, 0.5, pos.y, 8);
+                    const pillarMaterial = new THREE.MeshStandardMaterial({
+                        color: 0x444444,
+                        metalness: 0.7,
+                        roughness: 0.3
+                    });
+                    const pillar = new THREE.Mesh(pillarGeometry, pillarMaterial);
+                    pillar.position.set(pos.x, pos.y / 2, pos.z);
+                    group.add(pillar);
+                }
+            });
+            
+            // Train
+            const trainGroup = new THREE.Group();
+            const carGeometry = new THREE.BoxGeometry(2, 1.5, 3);
+            const carMaterial = new THREE.MeshStandardMaterial({
+                color: 0xff00ff,
+                emissive: 0xff00ff,
+                emissiveIntensity: 0.4,
+                metalness: 0.6,
+                roughness: 0.3
+            });
+            
+            for (let i = 0; i < 3; i++) {
+                const car = new THREE.Mesh(carGeometry, carMaterial);
+                car.position.z = -i * 4;
+                trainGroup.add(car);
+            }
+            
+            trainGroup.userData = { curve: trackCurve };
+            group.add(trainGroup);
+            customGeometries.push(trainGroup);
+            
+            group.position.set(50, 0, -30);
+            parkGroup.add(group);
+        }
+        
+        function createNebulaFountain() {
+            const group = new THREE.Group();
+            
+            // Base pool
+            const poolGeometry = createCustomGeometry('customRing', { innerRadius: 5, outerRadius: 8, thetaSegments: 48 });
+            const poolMaterial = new THREE.MeshStandardMaterial({
+                color: 0x0066ff,
+                transparent: true,
+                opacity: 0.6,
+                emissive: 0x0066ff,
+                emissiveIntensity: 0.3,
+                metalness: 0.3,
+                roughness: 0.1
+            });
+            const pool = new THREE.Mesh(poolGeometry, poolMaterial);
+            pool.rotation.x = -Math.PI / 2;
+            group.add(pool);
+            
+            // Central sculpture - custom icosahedron
+            const sculptureGeometry = createCustomGeometry('icosahedron', { radius: 2, detail: 0 });
+            const sculptureMaterial = new THREE.MeshStandardMaterial({
+                color: 0x00ffaa,
+                emissive: 0x00ffaa,
+                emissiveIntensity: 0.6,
+                metalness: 0.7,
+                roughness: 0.2
+            });
+            const sculpture = new THREE.Mesh(sculptureGeometry, sculptureMaterial);
+            sculpture.position.y = 4;
+            group.add(sculpture);
+            
+            // Water jets
+            const jetCount = 12;
+            for (let i = 0; i < jetCount; i++) {
+                const angle = (i / jetCount) * Math.PI * 2;
+                const jetGroup = new THREE.Group();
+                
+                const jetGeometry = new THREE.CylinderGeometry(0.1, 0.2, 1, 8);
+                const jetMaterial = new THREE.MeshStandardMaterial({
+                    color: 0x00ffff,
+                    emissive: 0x00ffff,
+                    emissiveIntensity: 1,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const jet = new THREE.Mesh(jetGeometry, jetMaterial);
+                jetGroup.add(jet);
+                
+                jetGroup.position.set(
+                    Math.cos(angle) * 6,
+                    0.5,
+                    Math.sin(angle) * 6
+                );
+                jetGroup.userData = { 
+                    baseHeight: 8 + Math.random() * 4,
+                    offset: i * Math.PI / 6 
+                };
+                
+                group.add(jetGroup);
+                customGeometries.push(jetGroup);
+            }
+            
+            group.position.set(-40, 0, 30);
+            parkGroup.add(group);
+        }
+        
+        function createMeetingHub() {
+            const group = new THREE.Group();
+            
+            // Circular platform with custom geometry
+            const platformGeometry = createCustomGeometry('customRing', { innerRadius: 8, outerRadius: 12, thetaSegments: 48 });
+            const platformMaterial = new THREE.MeshStandardMaterial({
+                color: 0x2a1a4e,
+                emissive: 0xff00ff,
+                emissiveIntensity: 0.2,
+                metalness: 0.4,
+                roughness: 0.6
+            });
+            const platform = new THREE.Mesh(platformGeometry, platformMaterial);
+            platform.rotation.x = -Math.PI / 2;
+            group.add(platform);
+            
+            // Central structure - custom tetrahedrons
+            for (let i = 0; i < 4; i++) {
+                const tetraGeometry = createCustomGeometry('tetrahedron', { radius: 2, detail: 0 });
+                const tetraMaterial = new THREE.MeshStandardMaterial({
+                    color: [0xff00ff, 0x00ffaa, 0xffaa00, 0x00aaff][i],
+                    emissive: [0xff00ff, 0x00ffaa, 0xffaa00, 0x00aaff][i],
+                    emissiveIntensity: 0.5,
+                    metalness: 0.6,
+                    roughness: 0.3
+                });
+                const tetra = new THREE.Mesh(tetraGeometry, tetraMaterial);
+                const angle = (i / 4) * Math.PI * 2;
+                tetra.position.set(
+                    Math.cos(angle) * 3,
+                    3,
+                    Math.sin(angle) * 3
+                );
+                tetra.rotation.set(Math.random(), Math.random(), Math.random());
+                group.add(tetra);
+            }
+            
+            // Seating rings
+            for (let ring = 0; ring < 2; ring++) {
+                const ringRadius = 6 + ring * 3;
+                const seatCount = 6 + ring * 4;
+                
+                for (let i = 0; i < seatCount; i++) {
+                    const angle = (i / seatCount) * Math.PI * 2;
+                    const seatGeometry = new THREE.BoxGeometry(1, 1, 1);
+                    const seatMaterial = new THREE.MeshStandardMaterial({
+                        color: 0x444466,
+                        metalness: 0.5,
+                        roughness: 0.5
+                    });
+                    const seat = new THREE.Mesh(seatGeometry, seatMaterial);
+                    seat.position.set(
+                        Math.cos(angle) * ringRadius,
+                        0.5,
+                        Math.sin(angle) * ringRadius
+                    );
+                    group.add(seat);
+                }
+            }
+            
+            group.position.set(0, 0, 30);
+            parkGroup.add(group);
+        }
+        
+        function updateTeamDisplay() {
+            const container = document.getElementById('team-members-container');
+            container.innerHTML = '';
+            
+            let totalScore = 0;
+            let perfectCount = 0;
+            
+            teamMembers.forEach(member => {
+                const div = document.createElement('div');
+                div.className = 'team-member';
+                div.style.borderColor = member.color;
+                div.innerHTML = `
+                    <h3 style="color: ${member.color}">👽 ${member.name}</h3>
+                    <div class="score">${member.score.toFixed(1)}/10</div>
+                    <div class="critique">${member.critiques.length > 0 ? member.critiques[member.critiques.length - 1] : 'No critique yet'}</div>
+                `;
+                container.appendChild(div);
+                
+                totalScore += member.score;
+                if (member.score === 10) perfectCount++;
+            });
+            
+            const overallScore = teamMembers.reduce((sum, m) => sum + m.score, 0) / teamMembers.length;
+            document.getElementById('overall-score').textContent = overallScore.toFixed(1);
+            
+            const remaining = teamMembers.filter(m => m.score < 10).length;
+            document.getElementById('remaining-members').textContent = 
+                remaining > 0 ? `${remaining} team members still need to give 10/10` : 'All members gave perfect scores!';
+            
+            // Check for victory
+            if (perfectCount === teamMembers.length) {
+                document.getElementById('victory-banner').classList.add('active');
+                document.getElementById('critique-panel').classList.remove('active');
+            }
+        }
+        
+        function submitCritique() {
+            const name = document.getElementById('critic-name').value;
+            const score = parseInt(document.getElementById('critique-score').value);
+            const text = document.getElementById('critique-text').value;
+            
+            const member = teamMembers.find(m => m.name === name);
+            if (member) {
+                member.score = score;
+                member.critiques.push(text || `Rated ${score}/10`);
+                updateTeamDisplay();
+                
+                // Clear form
+                document.getElementById('critique-text').value = '';
+                
+                // Update alien text
+                const alienMessages = [
+                    '𐍃𐍄𐍂𐍉𐍂𐍉𐍄 𐍆𐍉𐍂 𐍂𐍉𐍄𐍉𐍄𐍉𐍂',
+                    '𐍉𐍀𐍄𐍉𐍂 𐍂𐍉𐍄 𐍄𐍉𐍂𐍉𐍂 𐍃𐍄𐍉𐍂𐍉',
+                    '𐍂𐍉𐍄𐍉𐍄 𐍉𐍂 𐍄𐍉𐍂𐍉 𐍃𐍄𐍉𐍂',
+                    '𐍃𐍄𐍉𐍂 𐍉𐍂 𐍄𐍉𐍂𐍉 𐍂𐍉𐍄𐍉𐍄',
+                    '𐍉𐍂𐍃𐍄 𐍂𐍉𐍄𐍉𐍄 𐍄𐍉𐍂𐍉'
+                ];
+                document.getElementById('alien-text').textContent = alienMessages[Math.floor(Math.random() * alienMessages.length)];
+            }
+        }
+        
+        // Animation loop
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            time += 0.016;
+            
+            // Animate custom geometries
+            customGeometries.forEach(obj => {
+                if (obj.userData && obj.userData.rotationSpeed) {
+                    obj.rotation.y += obj.userData.rotationSpeed;
+                }
+                
+                // Floating animation for crystals and orbs
+                if (obj.userData && obj.userData.floatOffset !== undefined) {
+                    obj.position.y += Math.sin(time * 2 + obj.userData.floatOffset) * 0.01;
+                }
+                
+                // Bumper car movement
+                if (obj.userData && obj.userData.angle !== undefined) {
+                    obj.userData.angle += obj.userData.speed;
+                    obj.position.x = Math.cos(obj.userData.angle) * 8;
+                    obj.position.z = Math.sin(obj.userData.angle) * 8;
+                }
+                
+                // Flying saucer movement
+                if (obj.userData && obj.userData.baseY !== undefined) {
+                    obj.position.y = obj.userData.baseY + Math.sin(time * obj.userData.speed + obj.userData.offset) * 3;
+                    obj.rotation.y += 0.01;
+                }
+                
+                // Water jets
+                if (obj.userData && obj.userData.baseHeight !== undefined) {
+                    const scale = 1 + Math.sin(time * 3 + obj.userData.offset) * 0.3;
+                    obj.scale.setScalar(scale);
+                }
+                
+                // Train coaster
+                if (obj.userData && obj.userData.curve) {
+                    const t = (time * 0.02) % 1;
+                    const pos = obj.userData.curve.getPointAt(t);
+                    const tangent = obj.userData.curve.getTangentAt(t);
+                    obj.position.copy(pos);
+                    obj.lookAt(pos.clone().add(tangent));
+                }
+            });
+            
+            // Rotate central spire
+            parkGroup.children[0].children[0].rotation.y += 0.005;
+            
+            // Animate portal particles
+            const portalParticles = scene.children.find(c => c.type === 'Points' && c.position.z === -40);
+            if (portalParticles) {
+                portalParticles.rotation.y += 0.02;
+            }
+            
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        
+        // Event listeners
+        document.getElementById('submit-critique').addEventListener('click', submitCritique);
+
+        document.getElementById('reset-view-btn').addEventListener('click', () => {
+            camera.position.set(50, 30, 50);
+            controls.target.set(0, 0, 0);
+            controls.update();
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>

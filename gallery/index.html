@@ -4,186 +4,69 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
-<title>The Model Room — procedural 3D studies</title>
-<meta name="description" content="A gallery of twelve browser-native procedural 3D experiments: architecture, aircraft, games, films, art and research." />
+<title>The Model Room — complete index of generations</title>
+<meta name="description" content="All 45 models, films, games and studies in one index, with source-file timestamps and the model file for every generation." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d12'/%3E%3Cpath d='M6 25 16 5l10 20h-4L16 11 10 25z' fill='%23d9b25e'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="./gallery.css" />
 </head>
 <body>
 <header class="topbar">
-  <a class="mark" href="./" aria-label="The Model Room home"><span class="mark-glyph">◮</span><span>The Model Room</span></a>
+  <a class="mark" href="./" aria-label="The Model Room index"><span class="mark-glyph">◮</span><span>The Model Room</span></a>
   <nav class="topnav">
-    <span class="topstat"><b>12</b> studies</span>
-    <span class="topstat"><b>12</b> found</span>
-    <a href="./repod2.html">Batch 01</a>
-    <a href="./repotest2.html">Batch 02</a>
-    <a href="./repoai.html">Batch 03</a>
+    <span class="topstat"><b>45</b> generations</span>
+    <a href="./curated.html">Curated shelf</a>
     <a href="./source.html">Source vault</a>
     <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia" target="_blank" rel="noopener">GitHub ↗</a>
   </nav>
 </header>
 
-<main>
-  <section class="hero">
-    <p class="kicker">A working collection · 2024—2026</p>
-    <h1>Made of<br /><em>code.</em></h1>
-    <p class="lede">Twelve finished browser-native experiments: a walkable basilica, aircraft, games, short films, vector paintings and a controller atlas. Below them, a <a class="drawer-peek" href="#drawer">scrap drawer of twelve recovered 747 and Eiffel generations ↓</a> — some half-finished, included as found.</p>
-    <div class="hero-tools">
-      <div class="filters" role="group" aria-label="Filter studies">
-        <button class="filter is-on" data-filter="all">All <span>12</span></button>
-        <button class="filter" data-filter="architecture">Architecture <span>2</span></button>
-        <button class="filter" data-filter="aircraft">Aircraft <span>3</span></button>
-        <button class="filter" data-filter="games">Games <span>2</span></button>
-        <button class="filter" data-filter="film">Film <span>2</span></button>
-        <button class="filter" data-filter="studies">Studies <span>2</span></button>
-        <button class="filter" data-filter="art">Art <span>1</span></button>
-      </div>
-      <button class="random" id="random">Surprise me <span>↗</span></button>
+<main class="catalog-main">
+  <section class="catalog-hero">
+    <p class="kicker">Complete index · curated + recovered batches</p>
+    <h1>Every<br /><em>generation.</em></h1>
+    <p class="lede">One room for all of it: the curated shelf, every recovered 747 and Eiffel iteration, the bow workshop, the HTML/JS skeletons, and the alien park. Each card carries its model name, source file and the date that source file was last written.</p>
+    <div class="catalog-stats">
+      <span><b>45</b> works</span>
+      <span><b>5</b> collections</span>
+      <span><b>2025-09-02</b> earliest</span>
+      <span><b>2026-10-18</b> latest</span>
     </div>
+    <p class="catalog-note">Dates are source-file <b>last-modified</b> timestamps, not release dates; recovered copies preserve their original mtimes wherever possible. Dark cards with missing assets are included as found.</p>
   </section>
 
-  <section class="grid" id="grid" aria-live="polite">
-    <a class="card featured" href="../sagrada-familia/" target="_blank" rel="noopener" data-cat="architecture" data-title="La Sagrada Família">
-      <div class="thumb"><img src="./thumbs/sagrada.jpg" alt="The Sagrada Família exterior at late afternoon" loading="eager" /><span class="cat">Architecture · Walkable</span><span class="open">Open ↗</span></div>
-      <div class="card-body">
-        <div class="num">01</div>
-        <div class="copy">
-          <h2>La Sagrada Família</h2>
-          <p>An extreme-detail procedural basilica at 1:1 scale. Walk the nave, free-fly the eighteen towers, take the guided tour, or open the Study views: mesh, section and isolate.</p>
-          <div class="tags"><span>Three.js</span><span>Walkable</span><span>Free fly</span><span>12 tour stops</span></div>
-        </div>
-      </div>
-    </a>
-
-    <a class="card" href="../747/" target="_blank" rel="noopener" data-cat="aircraft" data-title="Boeing 747-400">
-      <div class="thumb"><img src="./thumbs/boeing747.jpg" alt="Boeing 747-400 three-quarter view" loading="lazy" /><span class="cat">Aircraft · Procedural</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">02</div><div class="copy"><h2>Boeing 747-400</h2><p>Every panel line, window, gear bay and engine surface generated in code. Orbit the airframe, lower the gear, open the cockpit.</p><div class="tags"><span>Three.js</span><span>Interactive</span></div></div></div>
-    </a>
-
-    <a class="card" href="../747_2/" target="_blank" rel="noopener" data-cat="aircraft" data-title="Boeing 747-8">
-      <div class="thumb"><img src="./thumbs/boeing748.jpg" alt="Boeing 747-8 Intercontinental" loading="lazy" /><span class="cat">Aircraft · Procedural</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">03</div><div class="copy"><h2>Boeing 747-8</h2><p>The longer Intercontinental, rebuilt from code: stretched fuselage, new wingtips, cockpit and a detailed undercarriage.</p><div class="tags"><span>Three.js</span><span>Interactive</span></div></div></div>
-    </a>
-
-    <a class="card" href="../eif3/dist/" target="_blank" rel="noopener" data-cat="architecture" data-title="La Tour Eiffel">
-      <div class="thumb"><img src="./thumbs/eiffel.jpg" alt="Eiffel Tower above a procedural Paris" loading="lazy" /><span class="cat">Architecture · Procedural</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">04</div><div class="copy"><h2>La Tour Eiffel</h2><p>300 metres of iron lattice generated from silhouette curves, standing in a procedural Paris with the Seine, blocks and landmarks.</p><div class="tags"><span>Three.js</span><span>Paris</span></div></div></div>
-    </a>
-
-    <a class="card" href="../dualsense-atlas/" target="_blank" rel="noopener" data-cat="studies" data-title="DualSense — Ontology Atlas">
-      <div class="thumb"><img src="./thumbs/dualsense-atlas.jpg" alt="DualSense ontology atlas projections" loading="lazy" /><span class="cat">Studies · SVG</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">05</div><div class="copy"><h2>DualSense Atlas</h2><p>A 208-entity ontology of the PlayStation 5 controller, rendered as linked SVG projections. No WebGL, no external assets.</p><div class="tags"><span>SVG</span><span>Research</span></div></div></div>
-    </a>
-
-    <a class="card" href="../ps5-dualsense/" target="_blank" rel="noopener" data-cat="studies" data-title="DualSense — 3D Study">
-      <div class="thumb"><img src="./thumbs/dualsense-study.jpg" alt="White DualSense controller 3D study" loading="lazy" /><span class="cat">Studies · Product</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">06</div><div class="copy"><h2>DualSense Study</h2><p>A fully procedural recreation of the PS5 DualSense — shell, sticks, triggers, materials, studio lighting and interface.</p><div class="tags"><span>Three.js</span><span>Product</span></div></div></div>
-    </a>
-
-    <a class="card" href="../fishing%20game/" target="_blank" rel="noopener" data-cat="games" data-title="Abyss Angler">
-      <div class="thumb"><img src="./thumbs/abyss-angler.jpg" alt="Abyss Angler title screen" loading="lazy" /><span class="cat">Game · Three.js</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">07</div><div class="copy"><h2>Abyss Angler</h2><p>A deep-water fishing game with five waters, a full fight system, a bestiary, a workshop and a working depth sonar.</p><div class="tags"><span>Game</span><span>Playable</span></div></div></div>
-    </a>
-
-    <a class="card" href="../mario-3-2/" target="_blank" rel="noopener" data-cat="games" data-title="Super Mario Bros. 3 — World 3-2">
-      <div class="thumb"><img src="./thumbs/mario-3-2.jpg" alt="Super Mario Bros. 3 World 3-2 title" loading="lazy" /><span class="cat">Game · Remake</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">08</div><div class="copy"><h2>World 3-2</h2><p>A 3D remake of the reef level: coral gardens, a tunnel, Boss Bass, the frog suit and a flagpole finish.</p><div class="tags"><span>Game</span><span>Remake</span></div></div></div>
-    </a>
-
-    <a class="card" href="../acts27-storm/" target="_blank" rel="noopener" data-cat="film" data-title="The Storm — Acts 27">
-      <div class="thumb"><img src="./thumbs/acts27.jpg" alt="The Storm title card" loading="lazy" /><span class="cat">Film · 3m 45s</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">09</div><div class="copy"><h2>The Storm</h2><p>A long-form 3D retelling of Acts 27 — the south wind, the Euroclydon, fourteen nights, the shipwreck and the escape to Melita.</p><div class="tags"><span>Three.js</span><span>Cinematic</span></div></div></div>
-    </a>
-
-    <a class="card" href="../revelation-3d/" target="_blank" rel="noopener" data-cat="film" data-title="The Four Horsemen">
-      <div class="thumb"><img src="./thumbs/revelation.jpg" alt="The Four Horsemen title card" loading="lazy" /><span class="cat">Film · 88s</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">10</div><div class="copy"><h2>The Four Horsemen</h2><p>The opening of the first four seals in an 88-second procedural sequence: scroll, wax, riders, horses, dust and embers.</p><div class="tags"><span>Three.js</span><span>Cinematic</span></div></div></div>
-    </a>
-
-    <a class="card" href="../tropico-2026/" target="_blank" rel="noopener" data-cat="art" data-title="TROPICO 2026">
-      <div class="thumb"><img src="./thumbs/tropico.jpg" alt="TROPICO 2026 vector painting" loading="lazy" /><span class="cat">Art · SVG</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">11</div><div class="copy"><h2>TROPICO 2026</h2><p>Seven vector paintings from a fictional Caribbean republic — one year, one country, seven ways of looking at it.</p><div class="tags"><span>SVG</span><span>Exhibition</span></div></div></div>
-    </a>
-
-    <a class="card" href="../hhib/" target="_blank" rel="noopener" data-cat="aircraft" data-title="HHIB — Boeing 747-400">
-      <div class="thumb"><img src="./thumbs/hhib.jpg" alt="Boeing 747-400 showcase preview" loading="lazy" /><span class="cat">Aircraft · Showcase</span><span class="open">Open ↗</span></div>
-      <div class="card-body"><div class="num">12</div><div class="copy"><h2>HHIB 747-400</h2><p>A self-contained WebGL 747-400 showcase. Every airframe surface is generated in code; the whole folder runs offline.</p><div class="tags"><span>WebGL</span><span>Offline</span></div></div></div>
-    </a>
-  </section>
-
-  <p class="empty" id="empty" hidden>No studies in this drawer yet.</p>
-
-  <section class="drawer" id="drawer">
-    <div class="drawer-head">
-      <div>
-        <p class="kicker">Found objects · recovered from F:\repod2</p>
-        <h2>The scrap drawer</h2>
-        <p class="drawer-lede">There was no root index in the source folder — only loose pages, experiments and iterations. These twelve were pulled out as-is: early 747 loft studies, Eiffel generational attempts, a pair of self-contained games, and one UI shell with no renderer left in it. Some need network access for Three.js; some are complete; one is honestly a stub.</p>
-      </div>
-      <span class="drawer-count">12 recovered</span>
+  <div class="catalog-toolbar">
+    <div class="collection-filters" role="group" aria-label="Filter by collection">
+      <button class="filter is-on" data-collection="all">All <span>45</span></button>
+      <button class="filter" data-collection="curated">Curated <span>12</span></button>
+      <button class="filter" data-collection="repod2">Batch 01 <span>12</span></button>
+      <button class="filter" data-collection="repotest2">Batch 02 <span>14</span></button>
+      <button class="filter" data-collection="repoai">Batch 03 <span>4</span></button>
+      <button class="filter" data-collection="repopark">Batch 04 <span>3</span></button>
     </div>
-    <div class="archive-grid">
-      <a class="archive-card" href="./found/747-structural.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-structural.jpg" alt="Boeing 747 structural study" loading="lazy" /><span class="a-badge">CDN · structural</span></div>
-        <div class="a-body"><h3>747 — Structural</h3><p>An early airframe as structure: tube, wing box, tail.</p><span class="a-foot">found · 747.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/747-catmull.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-catmull.jpg" alt="Boeing 747 Catmull-Rom loft" loading="lazy" /><span class="a-badge">CDN · loft</span></div>
-        <div class="a-body"><h3>747 — Catmull-Rom</h3><p>Lofted fuselage and wings from Catmull-Rom curves.</p><span class="a-foot">found · b747-catmull.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/747-engineering.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-engineering.jpg" alt="Boeing 747 engineering model" loading="lazy" /><span class="a-badge">CDN · engineering</span></div>
-        <div class="a-body"><h3>747 — Engineering Loft</h3><p>A more measured pass at the same airframe, with panels and callouts.</p><span class="a-foot">found · boeing747-accurate.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/747-standalone.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-standalone.jpg" alt="Boeing 747 standalone build" loading="lazy" /><span class="a-badge">offline · 1.3 MB</span></div>
-        <div class="a-body"><h3>747-400 — Standalone</h3><p>The self-contained build: everything embedded, no network needed.</p><span class="a-foot">found · boeing747-standalone.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/747-procedural.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-procedural.jpg" alt="Boeing 747 procedural airframe" loading="lazy" /><span class="a-badge">CDN · early</span></div>
-        <div class="a-body"><h3>747-400 — Procedural</h3><p>An earlier generation in the line — same silhouette, different code.</p><span class="a-foot">found · boeing747.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/747-v2.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-v2.jpg" alt="Boeing 747 v2 loft" loading="lazy" /><span class="a-badge">CDN · v2</span></div>
-        <div class="a-body"><h3>747-400 — V2</h3><p>The second pass at the loft: house livery, environmental light.</p><span class="a-foot">found · boeing747-v2.html</span></div>
-      </a>
-      <a class="archive-card is-stub" href="./found/747-ultra.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/747-ultra.jpg" alt="Boeing 747 ultra stub" loading="lazy" /><span class="a-badge">stub · no renderer</span></div>
-        <div class="a-body"><h3>747-400 — Ultra</h3><p>A UI shell with the buttons wired to nothing. Kept as a cautionary specimen.</p><span class="a-foot">found · boeing747-ultra.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/aurora-protocol.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/aurora-protocol.jpg" alt="Aurora Protocol title screen" loading="lazy" /><span class="a-badge">offline · game</span></div>
-        <div class="a-body"><h3>Aurora Protocol</h3><p>A deep-space defence game; press Enter to launch.</p><span class="a-foot">found · aurora-protocol.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/eiffel-simple.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/eiffel-simple.jpg" alt="Simple Eiffel Tower study" loading="lazy" /><span class="a-badge">offline · simple</span></div>
-        <div class="a-body"><h3>Eiffel — Simple</h3><p>The stripped-back tower study, reduced to silhouette and light.</p><span class="a-foot">found · eiffel-simple.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/eiffel-tower.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/eiffel-tower.jpg" alt="Eiffel Tower Champ de Mars" loading="lazy" /><span class="a-badge">offline · GLSL</span></div>
-        <div class="a-body"><h3>Eiffel — Champ de Mars</h3><p>A later generation with a shader sky, Paris blocks and the Champ de Mars.</p><span class="a-foot">found · eiffel-tower.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/tour-eiffel.html" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/tour-eiffel.jpg" alt="Tour Eiffel sunset view" loading="lazy" /><span class="a-badge">offline · tour</span></div>
-        <div class="a-body"><h3>Tour Eiffel</h3><p>A cinematic visit to the same Paris, at sunset.</p><span class="a-foot">found · tour-eiffel.html</span></div>
-      </a>
-      <a class="archive-card" href="./found/sky-runner-3d/" target="_blank" rel="noopener">
-        <div class="a-thumb"><img src="./found-thumbs/sky-runner.jpg" alt="Sky Runner 3D menu" loading="lazy" /><span class="a-badge">CDN · game</span></div>
-        <div class="a-body"><h3>Sky Runner 3D</h3><p>A small endless runner: dodge rocks, collect coins. Press Start.</p><span class="a-foot">found · 3d-game/</span></div>
-      </a>
+    <div class="catalog-actions">
+      <label class="catalog-search"><span>Search</span><input id="search" type="search" placeholder="model, batch, source file…" autocomplete="off" /></label>
+      <label class="catalog-sort"><span>Order</span><select id="sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label>
     </div>
-    <p class="source-cta"><a href="./source.html">Browse the full source vault — 350 files, 96 MB of build scripts, iteration renders and research →</a></p>
-    <p class="source-cta"><a href="./repotest2.html">Batch 02 — 14 bow, crossbow and Eiffel studies from F:\repotest2 →</a></p>
-    <p class="source-cta"><a href="./repoai.html">Batch 03 — 4 HTML/JS-only experiments from F:\repoai →</a></p>
-  </section>
+  </div>
+
+  <div class="catalog-meta">
+    <span id="resultCount">45 works</span>
+    <span id="resultRange">2025-09-02 → 2026-10-18</span>
+  </div>
+
+  <section class="model-grid" id="modelGrid" aria-live="polite"></section>
+  <p class="catalog-empty" id="catalogEmpty" hidden>No generation matches that search.</p>
+
+  <p class="source-cta"><a href="./source.html">Browse the full source vault →</a></p>
 </main>
 
 <footer class="foot">
-  <div><span class="foot-mark">◮</span> The Model Room</div>
-  <p>Each study is a self-contained folder served from this repository. Start it with <code>Open 3D Gallery.bat</code> or <code>node gallery/serve.mjs 8150</code>.</p>
-  <p class="foot-note">Procedural geometry, canvas textures, shader skies. Built with Three.js where the work needs it — and hand-written SVG where it does not.</p>
+  <div><span class="foot-mark">◮</span> The Model Room · complete index</div>
+  <p>Curated originals, plus the recovered batches from <code>F:\repod2</code>, <code>F:\repotest2</code>, <code>F:\repoai</code> and <code>F:\repopark</code>. Batch pages: <a href="./repod2.html">01</a> · <a href="./repotest2.html">02</a> · <a href="./repoai.html">03</a>; batch 04 is in this index.</p>
+  <p class="foot-note">One index, one timestamp per generation. The source file is named on every card.</p>
 </footer>
 
-<script src="./gallery.js"></script>
+<script src="./catalog.js"></script>
+<script src="./catalog-page.js"></script>
 </body>
 </html>

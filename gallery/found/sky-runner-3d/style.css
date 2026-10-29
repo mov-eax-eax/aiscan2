@@ -1,0 +1,76 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { width: 100%; height: 100%; overflow: hidden; }
+
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0b0b22; }
+
+canvas { display: block; width: 100vw; height: 100vh; }
+
+#ui { position: fixed; inset: 0; pointer-events: none; z-index: 10; }
+
+#hud {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  letter-spacing: 1px;
+}
+
+#hud div { background: rgba(0,0,0,0.35); padding: 8px 18px; border-radius: 20px; backdrop-filter: blur(4px); }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 40, 0.75);
+  color: #fff;
+  text-align: center;
+  gap: 16px;
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+}
+
+.overlay.hidden { display: none; }
+
+.overlay h1 { font-size: 56px; letter-spacing: 4px; text-transform: uppercase;
+  background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.overlay p { font-size: 20px; opacity: 0.9; }
+
+.controls { display: flex; flex-direction: column; gap: 8px; font-size: 16px; opacity: 0.9; }
+
+kbd { background: #222; border: 1px solid #555; border-radius: 6px; padding: 3px 8px; font-size: 15px; }
+
+button {
+  pointer-events: auto;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 16px 46px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  box-shadow: 0 6px 20px rgba(255, 180, 0, 0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px rgba(255, 180, 0, 0.7); }
+button:active { transform: scale(0.97); }
+
+#gameover h1 { background: linear-gradient(90deg, #ff4444, #ff8800, #ff4444);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+#bestText, #newBest { color: #ffd700; font-weight: 700; }
+#newBest { font-size: 24px; }

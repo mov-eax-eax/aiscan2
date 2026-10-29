@@ -1,5 +1,20 @@
 window.MODEL_ROOM_CATALOG = [
   {
+    "id": "xenosphere",
+    "title": "Xenosphere — Alien Park 04",
+    "collection": "curated",
+    "collectionLabel": "Curated",
+    "href": "./alien-park4/",
+    "thumb": "alien-park4/shots/cycle-15.png",
+    "source": "alien-park4/index.html",
+    "tags": [
+      "World",
+      "RSI",
+      "Critics"
+    ],
+    "date": "2026-10-29 06:00"
+  },
+  {
     "id": "sagrada",
     "title": "La Sagrada Família",
     "collection": "curated",

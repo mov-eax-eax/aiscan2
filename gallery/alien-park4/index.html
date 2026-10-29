@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Xenosphere — Alien Park 04</title>
+<meta name="description" content="A modular Three.js alien park, refined through recursive self-improvement cycles and dispassionate critique." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23060810'/%3E%3Cpath d='M16 3c7 0 12 5.5 12 13 0 7.5-5 13-12 13S4 23.5 4 16C4 8.5 9 3 16 3z' fill='%236dffdd' opacity='.9'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='%23ff75da'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+<div id="stage"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<header class="hud top">
+  <div class="brand">
+    <span class="brand-glyph">◮</span>
+    <div>
+      <p class="eyebrow">Alien Park 04</p>
+      <h1>Xenosphere</h1>
+      <p class="tagline">A garden built by argument.</p>
+    </div>
+  </div>
+  <nav class="actions">
+    <button id="orbit" type="button" class="on">Auto orbit</button>
+    <button id="process" type="button">Process ↗</button>
+  </nav>
+</header>
+
+<div class="cycle">
+  <span class="cycle-label">RSI</span>
+  <strong id="cycleNumber">CYCLE 00</strong>
+  <span id="cycleNote">base render · first critique pending</span>
+</div>
+
+<footer class="hud foot">
+  <span>Drag to orbit · Wheel to zoom</span>
+  <span id="fps">— fps</span>
+</footer>
+
+<div class="process-overlay" id="processOverlay" hidden>
+  <div class="process-panel">
+    <div class="process-head">
+      <div>
+        <p class="eyebrow">Recursive self-improvement</p>
+        <h2>The process</h2>
+      </div>
+      <button id="closeProcess" type="button">Close ✕</button>
+    </div>
+    <div class="process-body" id="processBody"></div>
+  </div>
+</div>
+
+<div id="loader">
+  <div class="loader-mark"><i></i><i></i><i></i></div>
+  <p>Growing the park</p>
+  <span>terraces · bloom · atmosphere</span>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.min.js"
+  }
+}
+</script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

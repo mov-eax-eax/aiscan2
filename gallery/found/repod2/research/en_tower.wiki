@@ -1,0 +1,762 @@
+{{Short description|Tower in Paris, France}}
+{{About|the landmark in Paris, France|other uses|Eiffel Tower (disambiguation)}}
+{{redirect-multi|2|300-metre tower|Tour Eiffel|other tall towers|List of tallest towers|other uses|Tour Eiffel (disambiguation)}}
+<!--per [[Wikipedia:Redirects for discussion/Log/2019 May 2#300-metre tower]]-->
+{{pp-semi-indef|small=yes}}
+{{pp-move}}
+{{Use British English|date=June 2022}}<!-- This article is written in British English, and some terms used in it may be different or absent from other varieties of English. This should not be changed without broad consensus. See [[WP:CONSISTENCY]]: "...&nbsp;within a given article the conventions of one particular variety should be followed consistently."-->
+{{Use dmy dates|date=March 2021}}
+{{Infobox building
+ | name                    = Eiffel Tower
+ | native_name             = {{nowrap|{{big|{{native name|fr|Tour Eiffel}}}}}}
+ | logo                    = Eiffel Tower logo.svg
+ | logo_size               = 120
+ | image                   = Tour Eiffel Wikimedia Commons (cropped).jpg
+ | caption                 = Seen from the [[Champ de Mars]], 2009
+ | highest_start           = 1889
+ | highest_end             = 1930
+ | highest_prev            = [[Washington Monument]]
+ | highest_next            = [[Chrysler Building]]
+ | location                = [[7th arrondissement of Paris]], France<!-- Do not link France here per MOS:GEOLINK -->
+<!--
+ | latd                    = 48.8583
+ | longd                   = 2.2945
+-->
+ | coordinates             = {{coord|48|51|29.6|N|2|17|40.2|E|region:FR-75|display=inline,title}}
+ | mapframe-zoom           = 16
+ | construction_start_date = {{Start date and age|1887|01|28|df=yes}}
+ | completion_date         = {{Start date and age|1889|03|31|df=yes}}<ref name=Bachman>{{cite book |url=https://books.google.com/books?id=9eGEDwAAQBAJ |last=Bachman |first=Leonard R. |title=Constructing the Architect: An Introduction to Design, Research, Planning, and Education |year=2019 |isbn=9781351665421 |page=80|publisher=Routledge }}</ref>
+ | opening_date            = {{Start date and age|1889|05|15|df=yes}}<ref name=Bachman />
+ | building_type           = Observation tower<br />Broadcasting tower
+ | architectural           = {{convert|300|m|ft|0|abbr=on}}<ref name=CTBUH>{{ctbuh|id=9410|title=Eiffel Tower}}</ref>
+ | tip                     = {{convert|330|m|ft|0|abbr=on}}
+ | antenna_spire           = 
+ | roof                    = 
+ | top_floor               = {{convert|276|m|ft|0|abbr=on}}<ref name=CTBUH />
+ | floor_count             = 4 (3 accessible, 1 residual)<ref>{{cite web | url=https://www.wonders-of-the-world.net/Eiffel-Tower/Intermediate-floor.php | title=Intermediate floor of the Eiffel tower }}</ref>
+ | elevator_count          = 8<ref name=Emporis>{{Cite web |url=https://www.emporis.com/buildings/110508 |archive-url=https://web.archive.org/web/20160422170104/https://www.emporis.com/buildings/110508 |url-status=usurped |archive-date=22 April 2016 |title=Eiffel Tower |work=[[Emporis]]}}</ref>
+ | cost                    = 
+ | floor_area              = 
+ | architect               = [[Stephen Sauvestre]]
+ | structural_engineer     = [[Maurice Koechlin]]<br />[[Émile Nouguier]]
+ | main_contractor         = [[Gustave Eiffel|Compagnie des Etablissements Eiffel]]
+ | developer               = 
+ | owner                   = [[Paris|City of Paris]], France
+ | operator                = {{lang|fr|Société d'Exploitation de la Tour Eiffel}} (SETE)
+ | website                 = {{URL|https://www.toureiffel.paris/en|toureiffel.paris}}
+ | references              = I. {{note|talleststatus}}{{Cite web |url=https://www.emporis.com/buildings/110508 |archive-url=https://web.archive.org/web/20160422170104/https://www.emporis.com/buildings/110508 |url-status=usurped |archive-date=22 April 2016 |title=Eiffel Tower |work=[[Emporis]]}}
+{{Infobox UNESCO World Heritage Site
+ |part_of  = [[Paris, Banks of the Seine]]
+ |criteria = Cultural: i, ii, iv
+ |ID       = 600
+ |year     = 1991
+ |child    = yes
+}}
+ | embedded                = {{Infobox designation list
+|embed=yes
+|designation1=Monument historique
+|designation1_offname=Tour Eiffel
+|designation1_type=Classé
+|designation1_number= 
+|designation1_date=1964
+}}
+}}
+
+The '''Eiffel Tower''' ({{IPAc-en|ˈ|aɪ|f|əl|audio=En-us-Eiffel.oga}} {{respell|EYE|fəl}}; {{langx|fr|links=yes|Tour Eiffel}} {{IPA|fr|tuʁ ɛfɛl||Tour Eiffel Pronunciation.ogg}})<!--Note: French does not have tonic accents, so do not add stress marks to this pronunciation--> is a [[lattice tower]] on the [[Champ de Mars]] in [[Paris]], France<!-- Do not link France here per MOS:GEOLINK -->. It is named after the engineer [[Gustave Eiffel]], whose company designed and built the tower from 1887 to 1889.
+
+Locally nicknamed "''La dame de fer''" (French for "Iron Lady") for its use of [[wrought iron]], it was constructed as the centrepiece of the [[Exposition Universelle (1889)|1889 World's Fair]], and to crown the centennial anniversary of the [[French Revolution]]. Although initially criticised by some of France's leading artists and intellectuals for its design, it has since become a global [[cultural icon]] of France and one of the most recognisable structures in the world.<ref name=Key_figures>{{cite web |url=http://www.toureiffel.paris/en/everything-about-the-tower/the-eiffel-tower-at-a-glance.html |title=The Eiffel Tower at a glance |author=SETE |website=Official Eiffel Tower website |access-date=15 April 2016 |url-status=dead |archive-url=https://web.archive.org/web/20160414130600/http://www.toureiffel.paris/en/everything-about-the-tower/the-eiffel-tower-at-a-glance.html |archive-date=14 April 2016 }}</ref> The tower received 5,889,000 visitors in 2022.<ref>Tourism Statistics, "Visit Paris Region" site of the Paris Ile de France Visitors Bureau, retrieved 22 March 2022.</ref> The Eiffel Tower is the most visited monument with an entrance fee in the world:<ref name=":0" /> 6.91&nbsp;million people ascended it in 2015. It was designated a {{Lang|fr|[[monument historique]]}} in 1964, and was named part of a [[UNESCO World Heritage Site]] ("Paris, Banks of the Seine") in 1991.<ref>{{Citation|last=Clayson|first=S. Hollis|chapter=Eiffel Tower|date=2020-02-26|chapter-url=https://oxfordbibliographies.com/view/document/obo-9780190922467/obo-9780190922467-0014.xml|title=Architecture, Planning, and Preservation|publisher=Oxford University Press|language=en|doi=10.1093/obo/9780190922467-0014|isbn=978-0-19-092246-7|access-date=2021-11-14|chapter-url-access=subscription}}</ref><!-- All cited within article body -->
+
+The tower is {{convert|330|m|ft|0}} tall,<ref>{{Cite news |date=2022-03-15 |title=Eiffel Tower grows six metres after new antenna attached |language=en |work=Reuters |url=https://www.reuters.com/world/europe/eiffel-tower-grows-six-metres-after-new-antenna-attached-2022-03-15/ |access-date=2022-03-15}}</ref> about the same height as an 81-{{Not a typo|storey}}<!-- This is the British English spelling. --> building, and the [[List of tallest buildings and structures in the Paris region|tallest structure in Paris]]. Its base is square, measuring {{convert|125|m|ft|0}} on each side. During its construction, the Eiffel Tower surpassed the [[Washington Monument]] to become by far the [[List of tallest freestanding structures in the world#Timeline of world's tallest freestanding structures|tallest human-made structure]] in the world, a title it held for 41 years until the [[Chrysler Building]] in New York City was finished in 1930. It was the first structure in the world to surpass both the 200-metre and 300-metre mark in height. Due to the addition of a broadcasting [[Aerial (radio)|aerial]] at the top of the tower in 1957, it is now taller than the Chrysler Building by {{convert|11|m|ft}}. Excluding transmitters, the Eiffel Tower is the [[List of tallest structures in France|second tallest free-standing structure in France]] after the [[Millau Viaduct]].
+
+The tower has three levels for visitors, with restaurants on the first and second levels. The top level's upper platform is {{convert|276|m|abbr=on}} above the ground—the highest public [[observation deck]] in the [[European Union]]. Tickets can be purchased to ascend by stairs or [[elevator|lift]] to the first and second levels. The climb from ground level to the first level is over 300 steps, as is the climb from the first level to the second, making the entire ascent a 600-step climb. Although there is a staircase to the top level, it is usually accessible only by lift. On this top, third level, is a private apartment built for Gustave Eiffel, who decorated it with furniture made by Jean Lachaise and invited friends such as [[Thomas Edison]].
+
+==History==
+===Origin===
+The design of the Eiffel Tower is attributed to [[Maurice Koechlin]] and [[Émile Nouguier]], two senior engineers working for the [[Gustave Eiffel|Compagnie des Établissements Eiffel]]. It was envisaged after discussion about a suitable centrepiece for the proposed [[Exposition Universelle (1889)|1889 Exposition Universelle]], a [[world's fair]] to celebrate the centennial of the [[French Revolution]]. In May 1884, working at home, Koechlin made a sketch of their idea, described by him as "a great pylon, consisting of four lattice girders standing apart at the base and coming together at the top, joined together by metal [[truss]]es at regular intervals".<ref>Harvie, 2006 p. 78.</ref> Eiffel initially showed little enthusiasm, but he did approve further study, and the two engineers then asked [[Stephen Sauvestre]], the head of the company's architectural department, to contribute to the design. Sauvestre added decorative arches to the base of the tower, a glass pavilion to the first level, and other embellishments.{{citation needed|date=September 2024}}
+
+[[File:Maurice koechlin pylone.jpg|thumb|left|upright|First drawing of the Eiffel Tower by Maurice Koechlin including size comparison with other Parisian landmarks such as [[Notre Dame de Paris]], the [[Île aux Cygnes#Statue of Liberty replica|Statue of Liberty]], and the [[Vendôme Column]]]]
+
+The new version gained Eiffel's support: he bought the rights to the patent on the design which Koechlin, Nouguier, and Sauvestre had taken out, and the design was put on display at the Exhibition of Decorative Arts in the autumn of 1884 under the company name. On 30 March 1885, Eiffel presented his plans to the {{lang|fr|Société des Ingénieurs Civils}}; after discussing the technical problems and emphasising the practical uses of the tower, he finished his talk by saying the tower would symbolise {{blockquote|style=text-align:justify|text=[n]ot only the art of the modern engineer, but also the century of Industry and Science in which we are living, and for which the way was prepared by the great scientific movement of the eighteenth century and by the Revolution of 1789, to which this monument will be built as an expression of France's gratitude.<ref name=loyrette116>Loyrette, p. 116.</ref>}}
+
+Little progress was made until 1886, when [[Jules Grévy]] was re-elected as president of France and [[Édouard Lockroy]] was appointed as minister for trade. A budget for the exposition was passed and, on 1 May, Lockroy announced an alteration to the terms of the open competition being held for a centrepiece to the exposition, which effectively made the selection of Eiffel's design a foregone conclusion, as entries had to include a study for a {{convert|300|m|ft|abbr=on}} four-sided metal tower on the Champ de Mars.<ref name=loyrette116/> (A 300-metre tower was then considered a herculean engineering effort.) On 12 May, a commission was set up to examine Eiffel's scheme and its rivals, which, a month later, decided that all the proposals except Eiffel's were either impractical or lacking in details.{{citation needed|date=September 2024}}
+
+After some debate about the exact location of the tower, a contract was signed on 8 January 1887. Eiffel signed it acting in his own capacity rather than as the representative of his company, the contract granting him 1.5 million [[French franc|francs]] toward the construction costs: less than a quarter of the estimated 6.5 million francs. Eiffel was to receive all income from the commercial exploitation of the tower during the exhibition and for the next 20 years. He later established a separate company to manage the tower, putting up half the necessary capital himself.<ref>Loyrette, 1985 p. 121.</ref>
+
+A French bank, the ''[[Crédit Industriel et Commercial]]'' (CIC), helped finance the construction of the Eiffel Tower. During the period of the tower's construction, the CIC was acquiring funds from [[Predatory lending|predatory loans]] to the [[National Bank of Haiti]], some of which went towards the financing of the tower. These loans were connected to [[Haiti indemnity controversy|an indemnity controversy]] that saw France force Haiti's government to financially compensate French slaveowners for lost income as a result of the [[Haitian Revolution]], and required Haiti to pay the CIC and its partner nearly half of all taxes collected on exports, "effectively choking off the nation's primary source of income". According to ''[[The New York Times]]'', "[at] a time when the [CIC] was helping finance one of the world's best-known landmarks, the Eiffel Tower, as a monument to French liberty, it was choking Haiti's economy, taking much of the young nation's income back to Paris and impairing its ability to start schools, hospitals and the other building blocks of an independent country."<ref name=":6">{{Cite news|first1=Matt|last1=Apuzzo|first2=Constant|last2=Méheut|first3=Selam|last3=Gebrekidan|first4=Catherine|last4=Porter|title=How a French Bank Captured Haiti|website=[[The New York Times]]|url=https://www.nytimes.com/2022/05/20/world/french-banks-haiti-cic.html|date=20 May 2022|access-date=24 May 2022|issn=0362-4331}}</ref>
+
+===Artists' protest===
+[[File:Caricature Gustave Eiffel.png|thumb|upright|Caricature of Gustave Eiffel comparing the Eiffel tower to the [[Egyptian pyramids|Pyramids]], published in ''[[Le Temps (Paris)|Le Temps]]'', 14 February 1887]]
+
+The proposed tower had been a subject of controversy, drawing criticism from those who did not believe it was feasible and those who objected on artistic grounds. Prior to the Eiffel Tower's construction, no structure had ever been constructed to a height of 300&nbsp;m, or even 200&nbsp;m for that matter,<ref>{{Cite web|url=https://skyscraperpage.com/diagrams/?searchID=91724959|title=Diagrams - SkyscraperPage.com|website=skyscraperpage.com}}</ref> and many people believed it was impossible. These objections were an expression of a long-standing debate in France about the relationship between architecture and engineering. It came to a head as work began at the Champ de Mars: a "Committee of Three Hundred" (one member for each metre of the tower's height) was formed, led by the prominent architect [[Charles Garnier (architect)|Charles Garnier]] and including some of the most important figures of the arts, such as [[William-Adolphe Bouguereau]], [[Guy de Maupassant]], [[Charles Gounod]] and [[Jules Massenet]]. A petition called "Artists against the Eiffel Tower" was sent to the Minister of Works and Commissioner for the Exposition, [[Adolphe Alphand]], and it was published by ''[[Le Temps (Paris)|Le Temps]]'' on 14 February 1887:
+
+{{blockquote|style=text-align:justify|We, writers, painters, sculptors, architects and passionate devotees of the hitherto untouched beauty of Paris, protest with all our strength, with all our indignation in the name of slighted French taste, against the erection{{nbsp}}... of this useless and monstrous Eiffel Tower{{nbsp}}... To bring our arguments home, imagine for a moment a giddy, ridiculous tower dominating Paris like a gigantic black smokestack, crushing under its barbaric bulk Notre Dame, the Tour Saint-Jacques, the Louvre, the Dome of les Invalides, the Arc de Triomphe, all of our humiliated monuments will disappear in this ghastly dream. And for twenty years{{nbsp}}... we shall see stretching like a blot of ink the hateful shadow of the hateful column of bolted sheet metal.<ref>Loyrette, 1985 p. 174.</ref><ref>{{cite web |last1=Ross |first1=Greg |title=Plea |url=https://www.futilitycloset.com/2021/05/18/plea-3/ |website=Futility Closet |date=18 May 2021}}</ref>}}
+
+[[File:Guillaume Apollinaire Calligramme.JPG|thumb|left|upright|A 1918 [[calligram]] by [[Guillaume Apollinaire]]: {{lang|fr|Salut monde dont je suis la langue éloquente que sa bouche Ô Paris tire et tirera toujours aux allemands}} ("Hello world, of which I am the eloquent tongue which your mouth, O Paris, will forever stick out at the Germans").]]
+
+Gustave Eiffel responded to these criticisms by comparing his tower to the [[Egyptian pyramids]]: "My tower will be the tallest edifice ever erected by man. Will it not also be grandiose in its way? And why would something admirable in Egypt become hideous and ridiculous in Paris?"<ref name=Souriau>{{cite book|author1=Paul Souriau|author2=Manon Souriau|title=The Aesthetics of Movement|url=https://books.google.com/books?id=7CzUTXhzDb8C&pg=PR7|year=1983|publisher=University of Massachusetts Press|isbn=0-87023-412-9|page=100}}</ref> These criticisms were also dealt with by Édouard Lockroy in a letter of support written to Alphand, sardonically saying,<ref>Harvie, 2006 p. 99.</ref> "Judging by the stately swell of the rhythms, the beauty of the metaphors, the elegance of its delicate and precise style, one can tell this protest is the result of collaboration of the most famous writers and poets of our time", and he explained that the protest was irrelevant since the project had been decided upon months before, and construction on the tower was already under way.
+
+Garnier was a member of the Tower Commission that had examined the various proposals, and had raised no objection. Eiffel pointed out to a journalist that it was premature to judge the effect of the tower solely on the basis of the drawings, that the Champ de Mars was distant enough from the monuments mentioned in the protest for there to be little risk of the tower overwhelming them, and putting the aesthetic argument for the tower: "Do not the laws of natural forces always conform to the secret laws of harmony?"<ref>Loyrette, 1985 p. 176.</ref>
+
+Some of the protesters changed their minds when the tower was built; others remained unconvinced.<ref name=times1_4_89 >{{Cite newspaper The Times|title=The Eiffel Tower|department=News|date=1 April 1889|page=5|issue=32661|column=B|url=http://find.galegroup.com/ttda/infomark.do?&prodId=TTDA&userGroupName=wes_ttda&tabID=T003&docPage=article&searchType=&docId=CS84463745&type=multipage&contentSet=LTO&version=1.0}}</ref> [[Guy de Maupassant]] supposedly ate lunch in the tower's restaurant every day because it was the one place in Paris where the tower was not visible.<ref name=Jonnes>{{cite book|author=Jill Jonnes|title=Eiffel's Tower: And the World's Fair where Buffalo Bill Beguiled Paris, the Artists Quarreled, and Thomas Edison Became a Count|url=https://archive.org/details/eiffelstowerworl00jonn|url-access=registration|year=2009|publisher=Viking|isbn=978-0-670-02060-7|pages=[https://archive.org/details/eiffelstowerworl00jonn/page/163 163]–64}}</ref>
+
+By 1918, it had become a symbol of Paris and of France after Guillaume Apollinaire wrote a nationalist poem in the shape of the tower (a [[calligram]]) to express his feelings about the war against Germany.<ref name=Greet>{{cite book|author=Guillaume Apollinaire|editor=Anne Hyde Greet|title=Calligrammes: Poems of Peace and War (1913–1916)|url=https://books.google.com/books?id=7FviP1Cl3jcC|year=1980|publisher=University of California Press|isbn=978-0-520-01968-3|pages=411–414}}</ref> Today, it is widely considered to be a remarkable piece of [[structural art]], and is often featured in films and literature.
+
+===Construction===
+[[File:Les fondations de la Tour Eiffel, maçonneries.jpg|thumb|right|[[Foundation (engineering)|Foundations]] of the Eiffel Tower, photographed in 1887]]
+
+Work on the foundations started on 28 January 1887.<ref name=origins>{{cite web |url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/69.html |title=Origins and construction of the Eiffel Tower |author=SETE |website=Official Eiffel Tower website |access-date=1 January 2014 |url-status=dead |archive-url=https://web.archive.org/web/20150731073057/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/69.html |archive-date=31 July 2015 }}</ref> Those for the east and south legs were straightforward, with each leg resting on four {{convert|2|m|ft|abbr=on}} concrete slabs, one for each of the principal girders of each leg. The west and north legs, being closer to the river [[Seine]], were more complicated: each slab needed two [[deep foundation|piles]] installed by using compressed-air [[caisson (engineering)|caisson]]s {{convert|15|m|ft|abbr=on}} long and {{convert|6|m|ft|abbr=on}} in diameter driven to a depth of {{convert|22|m|ft|abbr=on}}<ref>Loyrette, 1985 p. 123.</ref> to support the concrete slabs, which were {{convert|6|m|ft|abbr=on}} thick. Each of these slabs supported a block of [[limestone]] with an inclined top to bear a supporting shoe for the ironwork.
+
+Each shoe was anchored to the stonework by a pair of bolts {{convert|10|cm|in|round=0.5|abbr=on}} in diameter and {{convert|7.5|m|ft|abbr=on}} long. The foundations were completed on 30 June, and the erection of the ironwork began. The visible work on-site was complemented by the enormous amount of exacting preparatory work that took place behind the scenes: the drawing office produced 1,700 general drawings and 3,629 detailed drawings of the 18,038 different parts needed.<ref>Loyrette, 1985 p. 148.</ref> The task of drawing the components was complicated by the complex angles involved in the design and the degree of precision required: the position of rivet holes was specified to within {{convert|1|mm|in|2|abbr=on}} and angles worked out to one [[arcsecond|second of arc]].<ref>Eiffel, G; The Eiffel TowerPlate X</ref> The finished components, some already riveted together into sub-assemblies, arrived on horse-drawn carts from a factory in the nearby Parisian suburb of [[Levallois-Perret]] and were first bolted together, with the bolts being replaced with rivets as construction progressed. No drilling or shaping was done on site: if any part did not fit, it was sent back to the factory for alteration. In all, 18,038 pieces were joined using 2.5&nbsp;million rivets.<ref name=origins/>
+
+At first, the legs were constructed as [[cantilever]]s, but about halfway to the first level construction was paused to create a substantial timber [[scaffold]]. This renewed concerns about the structural integrity of the tower, and sensational headlines such as "Eiffel Suicide!" and "Gustave Eiffel Has Gone Mad: He Has Been Confined in an Asylum" appeared in the tabloid press.<ref>Harvie, 2006 p. 110.</ref> Multiple famous artists of that time, [[Charles Garnier (architect)|Charles Garnier]] and [[Alexandre Dumas fils|Alexandre Dumas]], thought poorly of the newly made tower. Charles Garnier thought it was a "truly tragic street lamp". Alexandre Dumas said that it was like "Odius shadow of the odious column built of rivets and iron plates extending like a black blot". There were multiple protests over the style and the reasoning of placing it in the middle of Paris.<ref>{{Cite web |date=2017-10-30 |title=Eiffel Tower history, architecture, design & construction |url=https://www.toureiffel.paris/en/the-monument/history |access-date=2023-11-13 |website=www.toureiffel.paris |language=en-US}}</ref> At this stage, a small "creeper" [[crane (machine)|crane]] designed to move up the tower was installed in each leg. They made use of the guides for the lifts which were to be fitted in the four legs. The critical stage of joining the legs at the first level was completed by the end of March 1888.<ref name=origins/> Although the metalwork had been prepared with the utmost attention to detail, provision had been made to carry out small adjustments to precisely align the legs; [[hydraulic]] [[Jack (device)|jacks]] were fitted to the shoes at the base of each leg, capable of exerting a force of 800 tonnes, and the legs were intentionally constructed at a slightly steeper angle than necessary, being supported by [[Sand box (civil engineering)|sandboxes]] on the scaffold. Although construction involved 300 on-site employees,<ref name=origins/> due to Eiffel's safety precautions and the use of movable gangways, guardrails and screens, only one person died.<ref>{{cite web|url=https://www.wonders-of-the-world.net/Eiffel-Tower/Construction-of-the-Eiffel-tower.php|work=wonders-of-the-world.net|title=Construction of the Eiffel Tower}}</ref>
+
+{{Clear}}
+<gallery mode="packed" heights="125px">
+File:Construction tour eiffel.JPG|18 July 1887:<br />The start of the erection of the metalwork
+File:Construction tour eiffel2.JPG|7 December 1887:<br />Construction of the legs with scaffolding
+File:Construction tour eiffel3.JPG|20 March 1888:<br />Completion of the first level
+File:Construction tour eiffel4.JPG|15 May 1888:<br />Start of construction on the second stage
+File:Construction tour eiffel5.JPG|{{nowrap|21 August 1888:}}<br />Completion of the second level
+File:Construction tour eiffel6.JPG|26 December 1888:<br />Construction of the upper stage
+File:Construction tour eiffel7.JPG|{{nowrap|15 March 1889:}}<br />Construction of the [[cupola]]
+</gallery>
+
+===Inauguration and the 1889 exposition===
+[[File:Exposition Universelle de Paris 1889 - Universitäts- und Landesbibliothek Darmstadt.jpg|thumb|View of the 1889 World's Fair]]
+
+The main structural work was completed at the end of March 1889 and, on 31 March, Eiffel celebrated by leading a group of government officials, accompanied by representatives of the press, to the top of the tower.<ref name=times1_4_89 /> Because the lifts were not yet in operation, the ascent was made by foot, and took over an hour, with Eiffel stopping frequently to explain various features. Most of the party chose to stop at the lower levels, but a few, including the structural engineer, Émile Nouguier, the head of construction, Jean Compagnon, the President of the City Council, and reporters from ''[[Le Figaro]]'' and ''[[Le Monde Illustré]]'', completed the ascent. At 2:35&nbsp;pm, Eiffel hoisted a large [[Flag of France|Tricolour]] to the accompaniment of a 25-gun salute fired at the first level.<ref>Harvie, 2006 pp. 122–23.</ref>
+
+There was still work to be done, particularly on the lifts and facilities, and the tower was not opened to the public until nine days after the opening of the exposition on 6 May; even then, the lifts had not been completed. The tower was an instant success with the public, and nearly 30,000 visitors made the 1,710-step climb to the top before the lifts entered service on 26 May.<ref name=Exposition>{{cite web|url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/70.html |title=The Eiffel Tower during the 1889 Exposition Universelle |author=SETE |website=Official Eiffel Tower website |access-date=16 April 2016 |url-status=dead |archive-url=https://web.archive.org/web/20160425081036/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/70.html |archive-date=25 April 2016 }}</ref> Tickets cost 2 francs for the first level, 3 for the second, and 5 for the top, with half-price admission on Sundays,<ref>Harvie, 2006 pp. 144–45.</ref> and by the end of the exhibition there had been 1,896,987 visitors.<ref name=Key_figures/>
+
+After dark, the tower was lit by hundreds of gas lamps, and a beacon sent out three beams of red, white and blue light. Two searchlights mounted on a circular rail were used to illuminate various buildings of the exposition. The daily opening and closing of the exposition were announced by a cannon at the top.<ref>Harriss, 1975 p. 114</ref>
+
+[[File:Georges Garen embrasement tour Eiffel.jpg|thumb|left|upright|Illumination of the tower at night during the exposition; painted by {{ill|Georges Garen|fr}}, 1889]]
+
+On the second level, the French newspaper ''Le Figaro'' had an office and a printing press, where a special souvenir edition, ''Le Figaro de la Tour'', was made.<ref>Harriss 1975, p. 115</ref>
+
+At the top, there was a post office where visitors could send letters and postcards as a memento of their visit. [[Graffiti]]sts were also catered for: sheets of paper were mounted on the walls each day for visitors to record their impressions of the tower. Gustave Eiffel described the collection of responses as "truly curious".<ref>{{cite book|url=http://gallica.bnf.fr/ark:/12148/bpt6k106381w/f335.image|page=335|title=La Tour de Trois Cents Mètres|author=Eiffel, Gustave|publisher=Lemercier|location=Paris|year=1900|language=fr|quote=On avait disposé sur certains points des parois des feuilles de papier qui étaient enlevées chaque jour, après avoir été complètement recouvertes d’inscriptions de toute nature. La collection en était vraiment curieuse.|trans-quote=Paper sheets had been set up on the walls on various points. Those sheets were removed each day, after having been covored by inscriptions of all nature. It made for a very curious collection.}}</ref>
+
+Famous visitors to the tower included the [[Edward VII|Prince of Wales]], [[Sarah Bernhardt]], [[William Cody|"Buffalo Bill" Cody]] (his Wild West show was an attraction at the exposition) and [[Thomas Edison]].<ref name=Exposition/> Eiffel invited Edison to his private apartment at the top of the tower, where Edison presented him with one of his [[phonograph]]s, a new invention and one of the many highlights of the exposition.<ref>{{cite web|url=http://www.wondersandmarvels.com/2009/05/thomas-edison-at-eiffel-tower.html|author=Jill Jonnes|publisher=Wonders and Marvels|title=Thomas Edison at the Eiffel Tower|access-date=2 January 2014|date=23 May 2009}}</ref> Edison signed the [[guestbook]] with this message on September 10, 1889: {{blockquote|style=text-align:justify|To M Eiffel the Engineer the brave builder of so gigantic and original specimen of modern Engineering from one who has the greatest respect and admiration for all Engineers including the Great Engineer the Bon Dieu, Thomas Edison.}}
+
+Eiffel made use of his apartment at the top of the tower to carry out [[meteorology|meteorological observations]], and also used the tower to perform experiments on the action of air resistance on falling bodies.<ref>Watson, 1992 p. 829.</ref>
+
+===Subsequent events===
+[[File:Vue Lumière No 992 - Panorama pendant l'ascension de la Tour Eiffel (1898).ogv|thumb|Panoramic view during ascent of the Eiffel Tower by the [[Auguste and Louis Lumière|Lumière brothers]], 1898]]
+
+Originally commissioned as a temporary structure for the [[Exposition Universelle (1889)|1889 Exposition Universelle]], Eiffel was slated for dismantling in 1909, at which point ownership would have reverted to the [[Paris|City of Paris]]. While the original design contest necessitated that the tower be easily disassembled, the structure was spared from scheduled demolition due to its demonstrated utility in early 20th-century scientific and technological advancements, specifically [[radio telegraphy]]. Following the expiration of the original concession, the tower was permitted to remain, subsequently becoming an integral part of the International Time Service in 1910.<ref>{{cite book |title=Michelin Paris: Tourist Guide |date=1985 |publisher=Michelin Tyre Public Limited |isbn=9782060135427 |page=52 |edition=5 }}</ref>
+
+For the [[Exposition Universelle (1900)|1900 ''Exposition Universelle'']], the lifts in the east and west legs were replaced by lifts running as far as the second level constructed by the French firm Fives-Lille. These had a compensating mechanism to keep the floor level as the angle of ascent changed at the first level, and were driven by a similar hydraulic mechanism as the Otis lifts, although this was situated at the base of the tower. Hydraulic pressure was provided by pressurised accumulators located near this mechanism.<ref name="vogel_23-4"/> At the same time the lift in the north pillar was removed and replaced by a staircase to the first level. The layout of both first and second levels was modified. The original lift in the south pillar was removed 13 years later.{{citation needed|date=March 2021}}
+
+[[File:Santos-Dumont flight around the Eiffel Tower.jpg|thumbnail|upright|Santos-Dumont No. 5; 13 July 1901]]
+
+On 19 October 1901, [[Alberto Santos-Dumont]], flying his [[Santos-Dumont number 6|No.6 airship]], won a 100,000-franc prize offered by [[Henri Deutsch de la Meurthe]] for the first person to make a flight from [[Saint-Cloud|St. Cloud]] to the Eiffel Tower and back in less than half an hour.<ref>{{Cite newspaper The Times |title= M. Santos Dumont's Balloon |date=21 October 1901 |page=4 |issue=36591 |column=A |department=News}}</ref>
+
+From 1910, the [[astronomical clock]]s of the [[Paris Observatory]] sent the time to sea daily through the Eiffel Tower within a radius of 5 000&nbsp;km.<ref name=":110">{{Cite web |title=Revivre notre histoire {{!}} Les 350 ans de l'Observatoire de Paris |url=http://350ans.obspm.fr/fr/exposition-virtuelle/revivre-notre-histoire |access-date=January 12, 2021 |website=350ans.obspm.fr}}</ref> The development of [[wireless telegraphy]] allowed unifying [[Universal Time]].<ref name=":110" /> On 9 March 1911, France adopted [[Greenwich Mean Time]] by law. However, the law did not refer to [[Prime meridian (Greenwich)|Greenwich Prime Meridian]], but to the [[local mean time]] of Paris delayed by 9 [[minute]]s and 21 [[second]]s.<ref>{{Cite journal |last=Giret |first=A. |date=December 1, 1964 |title=Quelle heure est-il ? Rappel des textes définissant l'heure légale en France |url=http://adsabs.harvard.edu/abs/1964LAstr..78..465G |journal=L'Astronomie |volume=78 |page=465 |bibcode=1964LAstr..78..465G |issn=0004-6302}}</ref> In 1912, following a report by [[Gustave-Auguste Ferrié|Gustave Ferrié]], the [[Bureau des Longitudes]] organized at the Paris Observatory a ''Conférence internationale de l'heure radiotélégraphique'' (International Radiotelegraph Time Conference). The [[International Time Bureau]] was created and installed in the premises of the Paris Observatory. However, due to [[World War I]], the International Convention was never ratified.<ref name=":272">{{Cite journal |last1=Guinot |first1=B. |year=2000 |title=History of the Bureau International de l'Heure |url=http://adsabs.harvard.edu/full/2000ASPC..208..175G |journal=IAU Colloq. 178: Polar Motion: Historical and Scientific Problems |volume=208 |page=175 |bibcode=2000ASPC..208..175G |access-date=January 12, 2021}}</ref> In 1919, the existence of the International Time Bureau was formalized under the authority of an International Time Commission, under the aegis of the [[International Astronomical Union]], created by [[Benjamin Baillaud]].<ref name=":110" />
+
+In 1910, [[Priest|Father]] [[Theodor Wulf]] measured [[radiant energy]] at the top and bottom of the tower. He found more at the top than expected, incidentally discovering what are known today as [[cosmic ray]]s.<ref name=Wulf>Theodor Wulf. ''Physikalische Zeitschrift''. Contains results of the four-day-long observation done by Theodor Wulf at the top of the Eiffel Tower in 1910.</ref> Two years later, on 4 February 1912, Austrian tailor [[Franz Reichelt]] died after jumping from the first level of the tower (a height of 57 m) to demonstrate his [[parachute]] design.<ref>{{cite news| title =L'inventeur d'un parachute se lance de le tour Eiffel et s'écrase sur le sol | work =Le Petit Parisien | date =5 February 1912 | url =http://gallica.bnf.fr/ark:/12148/bpt6k564237v.r=.langfr | page = 1| language = fr |access-date = 26 November 2009}}</ref> In 1914, at the outbreak of [[World War&nbsp;I]], a radio transmitter located in the tower [[radio jamming|jammed]] German radio communications, seriously hindering their advance on Paris and contributing to the Allied victory at the [[First Battle of the Marne]].<ref name="Tuchman1994">{{cite book|author=Barbara Wertheim Tuchman|title=August 1914|url=https://books.google.com/books?id=uU9sQgAACAAJ|year=1994|publisher=Papermac|isbn=978-0-333-30516-4|page=236}}</ref>
+
+During [[World War I]], the Eiffel Tower's wireless station played a crucial role in intercepting enemy communications from Berlin. In 1914, French forces successfully launched a counter-attack during the Battle of the Marne after gaining critical intelligence on the German Army's movements. In 1917, the station intercepted a coded message between Germany and Spain that referenced 'Operative H-21.' This information contributed to the arrest, conviction, and execution of [[Mata Hari]], the famous dancer accused of working for Germany as a spy.<ref>{{Cite web |title=10 Things You May Not Know About the Eiffel Tower - HISTORY |url=https://www.history.com/news/10-things-you-may-not-know-about-the-eiffel-tower |access-date=2024-08-28 |website=History.com|date=August 2023 }}</ref>
+
+From 1925 to 1934, illuminated signs for [[Citroën]] adorned three of the tower's sides, making it the tallest advertising space in the world at the time.<ref>{{cite news |last1=Smith |first1=Oliver |title=40 fascinating facts about the Eiffel Tower |url=https://www.telegraph.co.uk/travel/destinations/europe/france/paris/articles/Eiffel-Tower-facts/ |access-date=14 November 2019 |work=[[The Daily Telegraph]] |date=31 March 2018}} {{subscription required}}, (free trial)</ref> In April 1935, the tower was used to make experimental low-resolution television transmissions, using a [[shortwave]] transmitter of 200 watts power. On 17 November, an improved 180-line transmitter was installed.<ref name="Herbert2004">{{cite book|author=Stephen Herbert|title=A History of Early Television|url=https://books.google.com/books?id=BlZF20ggFhsC&pg=PA40|volume=2|year=2004|publisher=Taylor & Francis|isbn=978-0-415-32667-4|page=40}}</ref>
+
+[[File:Delaunay - Tour Eiffel.jpeg|thumb|upright=0.78|The Eiffel Tower has been a subject of art, as in ''[[Champs de Mars: The Red Tower]]'', a 1911 [[Cubism|cubist]] painting by [[Robert Delaunay]].]]
+
+On two separate but related occasions in 1925, the con artist [[Victor Lustig]] "sold" the tower for scrap metal.<ref name="Letcher2003">{{cite book|author=Piers Letcher|title=Eccentric France: The Bradt Guide to Mad, Magical and Marvellous France|url=https://books.google.com/books?id=5_7IRHZGyzMC|year=2003|publisher=Bradt Travel Guides|isbn=978-1-84162-068-8|page=105}}</ref> A year later, in February 1926, pilot Leon Collet was killed trying to fly under the tower. His aircraft became entangled in an aerial belonging to a wireless station.<ref>{{cite news|url=http://nla.gov.au/nla.news-article58237145 |title = An air tragedy | newspaper= The Sunday Times | date= 28 February 1926|location=Perth, WA |access-date=2 January 2012}}</ref> A [[bust (sculpture)|bust]] of Gustave Eiffel by [[Antoine Bourdelle]] was unveiled at the base of the north leg on 2 May 1929.<ref>Harriss, 1976 p. 178.</ref> In 1930, the tower lost the title of the [[List of tallest freestanding structures in the world#Timeline of world's tallest freestanding structures|world's tallest structure]] when the [[Chrysler Building]] in New York City was completed.<ref>{{cite news |title=The Silver Spire: How two men's dreams changed the skyline of New York |author=Claudia Roth Pierpont |url=http://www.jayebee.com/discoveries/criticism/silver_spire.htm |magazine=The New Yorker |date=18 November 2002 |archive-url=https://web.archive.org/web/20120227015047/http://www.jayebee.com/discoveries/criticism/silver_spire.htm|archive-date=27 February 2012}}</ref> In 1938, the decorative arcade around the first level was removed.<ref>Harriss, 1976 p. 195.</ref>
+
+Upon the [[Military Administration in France (Nazi Germany)|German occupation]] of Paris in 1940, the lift cables were [[sabotage|cut]] by the French. The tower was  restricted to German visitors during the occupation and the lifts were not repaired until 1946.<ref name="Harriss_80_4">Harriss, 1976 pp. 180–84.</ref> In 1940, German soldiers had to climb the tower to hoist a swastika-centred [[Reichskriegsflagge]],<ref>{{cite web|url=http://www.criticalpast.com/video/65675021843_Battle-of-France_unfurl-Nazi-flag_Palace-of-Versailles_Eiffel-Tower_Place-de-la-Concorde|title=HD Stock Video Footage – The Germans unfurl Nazi flags at the captured Palace of Versailles and Eiffel Tower during the Battle of France.|website=www.criticalpast.com}}</ref> but the flag was so large it blew away just a few hours later, and was replaced by a smaller one.<ref>{{cite news|url=https://www.telegraph.co.uk/travel/destinations/europe/france/paris/articles/Eiffel-Tower-facts/|title=Eiffel Tower: 40 fascinating facts|first=Oliver|last=Smith|date=4 February 2016|via=www.telegraph.co.uk|newspaper=The Telegraph}}</ref> When visiting Paris, Hitler chose to stay on the ground. When the [[Allies of World War II|Allies]] were nearing Paris in August 1944, Hitler ordered General [[Dietrich von Choltitz]], the military governor of Paris, to demolish the tower along with the rest of the city. Von Choltitz disobeyed the order.<ref name="D'Este2003">{{cite book|author=Carlo D'Este|title=Eisenhower: A Soldier's Life|url=https://books.google.com/books?id=RCeteK7LEiYC&pg=PA574|year=2003|publisher=Henry Holt and Company|isbn=978-0-8050-5687-7|page=574}}</ref> On 25 August, before the Germans had been [[Liberation of Paris|driven out of Paris]], the German flag was replaced with a Tricolour by two men from the [[Musée national de la Marine|French Naval Museum]], who narrowly beat three men led by Lucien Sarniguet, who had lowered the Tricolour on 13 June 1940 when Paris fell to the Germans.<ref name="Harriss_80_4"/>
+
+A fire started in the television transmitter on 3 January 1956, damaging the top of the tower. Repairs took a year, and in 1957, the present radio aerial was added to the top.<ref name=events>{{cite web|url=http://www.toureiffel.paris/en/everything-about-the-tower/the-major-events.html|author=SETE|website=Official Eiffel Tower website|title=The major events|access-date=13 March 2014|url-status=dead|archive-url=https://web.archive.org/web/20150331214620/http://www.toureiffel.paris/en/everything-about-the-tower/the-major-events.html|archive-date=31 March 2015}}</ref> In 1964, the Eiffel Tower was officially declared to be a historical monument by the Minister of Cultural Affairs, [[André Malraux]].<ref>Harriss, 1976 p. 215.</ref> A year later, an additional lift system was installed in the north pillar.<ref name="official-website-lifts"/>
+
+According to interviews, in 1967, [[Montreal]] Mayor [[Jean Drapeau]] negotiated a secret agreement with [[Charles de Gaulle]] for the tower to be dismantled and temporarily relocated to Montreal to serve as a landmark and tourist attraction during [[Expo 67]]. The plan was allegedly vetoed by the company operating the tower out of fear that the French government could refuse permission for the tower to be restored in its original location.<ref>{{cite news |title=How this city nearly got the Eiffel Tower |author=Nick Auf der Maur |url=https://news.google.com/newspapers?id=eJckAAAAIBAJ&pg=1682%2C2718377 |newspaper=The Montreal Gazette |date=15 September 1980 |access-date=29 May 2013}}</ref>
+
+In 1982, the original lifts between the second and third levels were replaced after 97 years in service. These had been closed to the public between November and March because the water in the hydraulic drive tended to freeze. The new cars operate in pairs, with one counterbalancing the other, and perform the journey in one stage, reducing the journey time from eight minutes to less than two minutes. At the same time, two new emergency staircases were installed, replacing the original spiral staircases. In 1983, the south pillar was fitted with an electrically driven Otis lift to serve the [[Le Jules Verne|Jules Verne]] restaurant.<ref>Harvie, 2006 p. 130.</ref> The Fives-Lille lifts in the east and west legs, fitted in 1899, were extensively refurbished in 1986. The cars were replaced, and a computer system was installed to completely automate the lifts. The [[Power (physics)|motive power]] was moved from the water hydraulic system to a new electrically driven oil-filled hydraulic system, and the original water hydraulics were retained solely as a counterbalance system.<ref name="official-website-lifts">{{cite web |url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/98.html |title=The Eiffel Tower's lifts |author=SETE |website=Official Eiffel Tower website |access-date=15 April 2016 |url-status=dead |archive-url=https://web.archive.org/web/20160407014958/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/98.html |archive-date=7 April 2016 }}</ref> A service lift was added to the south pillar for moving small loads and maintenance personnel three years later.{{citation needed|date=March 2021}}
+
+[[Robert Moriarty]] flew a [[Beechcraft Bonanza]] under the tower on 31 March 1984.<ref>{{cite web|url=http://proairshow.com/Eiffel.htm|access-date=4 April 2008|title=A Bonanza in Paris|author=Robert J. Moriarty|work=Air & Space Magazine}}</ref> In 1987, [[A. J. Hackett]] made one of his first [[Bungee jumping|bungee jumps]] from the top of the Eiffel Tower, using a special cord he had helped develop. Hackett was arrested by the police.<ref>{{cite web|url=http://www.smh.com.au/news/world/extreme-bid-to-stretch-bungy-record/2007/02/27/1172338606150.html |author=Gibson, Jano |title=Extreme bid to stretch bungy record|work=Sydney Morning Herald |date=27 February 2007 |access-date=24 May 2010}}</ref> On 27 October 1991, Thierry Devaux, along with mountain guide Hervé Calvayrac, performed a series of acrobatic figures while bungee jumping from the second floor of the tower. Facing the Champ de Mars, Devaux used an electric winch between figures to go back up to the second floor. When firemen arrived, he stopped after the sixth jump.<ref>{{Cite web|url=http://www.thierrydevaux.com/tour-eiffel.html|title=Tour Eiffel|website=Thierry Devaux|language=fr|access-date=19 March 2019}}</ref>
+
+[[File:2013 Fireworks on Eiffel Tower 11.jpg|thumb|left|The tower is a focal point for New Year's Eve and [[Bastille Day]] celebrations.]]
+
+For its "Countdown to the Year 2000" celebration on 31 December 1999, flashing lights and high-powered [[searchlight]]s were installed on the tower. During the last three minutes of the year, the lights were turned on starting from the base of the tower and continuing to the top to welcome 2000 with a huge fireworks show. An exhibition above a cafeteria on the first floor commemorates this event. The searchlights on top of the tower made it a beacon in Paris's night sky, and 20,000 flashing bulbs gave the tower a sparkly appearance for five minutes every hour on the hour.<ref>{{cite web |title=The Eiffel Tower's illuminations |url=http://www.toureiffel.paris/en/everything-about-the-tower/the-illuminations.html |author=SETE |website=Official Eiffel Tower website |access-date=31 May 2014 |url-status=dead |archive-url=https://web.archive.org/web/20150822233206/http://www.toureiffel.paris/en/everything-about-the-tower/the-illuminations.html |archive-date=22 August 2015 }}</ref>
+
+The lights sparkled blue for several nights to herald the new millennium on 31 December 1999. The sparkly lighting continued for 18 months until July 2001. The sparkling lights were turned on again on 21 June 2003, and the display was planned to last for 10 years before they needed replacing.<ref name="allyouneed"/>
+
+The tower received its {{Formatnum:200000000}}th guest on 28 November 2002.<ref>{{cite web|url=http://www.france.com/editorials/eiffel_tower/|title=The Eiffel Tower|publisher=France.com|date=23 October 2003|access-date=16 April 2016}}</ref> The tower has operated at its maximum capacity of about 7&nbsp;million visitors per year since 2003.<ref>{{cite news|url=https://www.theguardian.com/world/2014/apr/21/paris-eiffel-tower-renovation-profits-higher|title=Eiffel Tower renovation work aims to take profits to new heights|work=The Guardian|date=21 April 2014|access-date=14 April 2016|author=Cosnard, Denis}}</ref> In 2004, the Eiffel Tower began hosting a seasonal ice rink on the first level.<ref name="PorterPrince2006">{{cite book|author1=Porter, Darwin |author2=Danforth Prince|author3=G. McDonald|author4=H. Mastrini|author5=S. Marker|author6=A. Princz|author7=C. Bánfalvy|author8=A. Kutor|author9=N. Lakos|author10=S. Rowan Kelleher|title=Frommer's Europe|url=https://books.google.com/books?id=lNuTMgEACAAJ|edition=9th|year=2006|publisher=Wiley|isbn=978-0-471-92265-0|page=318}}</ref> A [[glass floor]] was installed on the first level during the 2014 refurbishment.<ref>{{cite news|url=https://www.bbc.co.uk/news/av/world-europe-29512762|title=Eiffel Tower gets glass floor in refurbishment project|work=BBC News|date=6 October 2014|access-date= 6 October 2014}}</ref>{{Clear}}
+
+==Design==
+===Material===
+[[File:Sous la Tour Eiffel 1.jpg|thumb|The Eiffel Tower from below]]
+
+The [[Puddling (metallurgy)|puddle iron]] (wrought iron) of the Eiffel Tower weighs 7,300 [[tonne]]s,<ref name="Hanser2006">{{cite book|author=David A. Hanser|title=Architecture of France|url=https://books.google.com/books?id=zojzUU976h0C&pg=PA66|year=2006|publisher=Greenwood Publishing Group|isbn=978-0-313-31902-0|page=66}}</ref> and the addition of lifts, shops and antennae have brought the total weight to approximately 10,100&nbsp;tonnes.<ref>{{cite book|title=DK Eyewitness Travel Guide: Europe|url=https://books.google.com/books?id=AiYCSa4U6UYC&pg=PA163|year=2012|publisher=Dorling Kindersley|isbn=978-1-4093-8577-6|page=163}}</ref> As a demonstration of the economy of design, if the 7,300&nbsp;tonnes of metal in the structure were melted down, it would fill the square base, {{convert|125|m|ft}} on each side, to a depth of only {{convert|6.25|cm|in|abbr=on}} assuming the density of the metal to be 7.8&nbsp;tonnes per cubic metre.<ref>Harriss, 1976 p.60.</ref> Additionally, a cubic box surrounding the tower (324&nbsp;m&nbsp;×&nbsp;125&nbsp;m&nbsp;×&nbsp;125&nbsp;m) would contain {{Formatnum:6200}}&nbsp;tonnes of air, weighing almost as much as the iron itself. Depending on the [[Room temperature|ambient temperature]], the top of the tower may shift away from the sun by up to {{convert|18|cm|in|round=0.5|abbr=on}} due to [[thermal expansion]] of the metal on the side facing the sun.<ref>Harriss, 1976 p. 231.</ref>
+
+===Wind and weather considerations===
+[[File:Lightning striking the Eiffel Tower - NOAA.jpg|thumb|upright=0.8|left|Lightning striking the Eiffel Tower in 1902]]
+When it was built, Eiffel was accused of trying to create something artistic with no regard to the principles of engineering. However, Eiffel and his team were experienced bridge builders. In an interview with the newspaper ''[[Le Temps (Paris)|Le Temps]]'' published on 14 February 1887, Eiffel said:
+
+{{blockquote|style=text-align:justify|Is it not true that the very conditions which give strength also conform to the hidden rules of harmony?{{nbsp}}... Now to what phenomenon did I have to give primary concern in designing the Tower? It was wind resistance. Well then! I hold that the curvature of the monument's four outer edges, which is as mathematical calculation dictated it should be{{nbsp}}... will give a great impression of strength and beauty, for it will reveal to the eyes of the observer the boldness of the design as a whole.<ref name=debate>{{cite web|url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/71.html |title=Debate and controversy surrounding the Eiffel Tower |author=SETE |website=Official Eiffel Tower website |access-date=2 January 2013 |url-status=dead |archive-url=https://web.archive.org/web/20150908052239/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/71.html |archive-date=8 September 2015 |df=dmy }}</ref>}}
+
+He used graphical methods to determine the strength of the tower and [[empirical evidence]] to account for the effects of wind, rather than a mathematical formula. Close examination of the tower reveals a basically [[Exponential function|exponential]] shape.<ref name="sciencedaily2005">{{cite web|url=https://www.sciencedaily.com/releases/2005/01/050106111209.htm |title=Elegant shape of Eiffel Tower solved mathematically by University of Colorado professor |website=Science Daily |date=7 January 2005 |access-date=24 May 2010}}</ref> All parts of the tower were overdesigned to ensure maximum resistance to wind forces. The top half was assumed to have no gaps in the latticework.<ref>Watson, 1992 p. 807.</ref> After it was completed, some have put forward various mathematical hypotheses in an attempt to explain the success of the design. A one devised in 2004 after letters sent by Eiffel to the French Society of Civil Engineers in 1885 were translated into English described it as a non-linear integral equation based on counteracting the wind pressure on any point of the tower with the tension between the construction elements at that point.<ref name="sciencedaily2005"/>
+
+The Eiffel Tower sways by up to {{convert|9|cm|in|abbr=on|frac=4}} in the wind.<ref>{{cite web|url=http://www.toureiffel.paris/en/faq/115.html |title=FAQ: History/Technical |author=SETE |website=Official Eiffel Tower website |access-date=16 April 2016 |url-status=dead |archive-url=https://web.archive.org/web/20160408210156/http://www.toureiffel.paris/en/faq/115.html |archive-date=8 April 2016 }}</ref>
+
+{{Clear left}}
+
+===Floors===
+====Ground floor====
+[[File:Paris Eiffel 092.JPG|thumb|Base of the Eiffel Tower]]
+The four columns of the tower each house access stairs and lifts to the first two floors, while at the south column only the lift to the second floor restaurant is publicly accessible.{{clarification needed|reason=Sentence appears to be internally contradictory about whether access is available to first floor from south column|date=June 2025}}
+
+====1st floor====
+The first floor is publicly accessible by lift or stairs. When originally built, the first level contained three restaurants—one French, one Russian and one [[Flemish Region|Flemish]]—and an "Anglo-American Bar". After the exposition closed, the Flemish restaurant was converted to a 250-seat theatre. Today there is the {{lang|fr|Le 58 Tour Eiffel}} restaurant and other facilities.
+
+[[File:La Tour Eiffel - terrasse de la première plate-forme.jpg|thumb|A promenade {{convert|2.6|m|adj=on}} wide ran around the outside of the first level]]
+
+====2nd floor====
+The second floor is publicly accessible by lift or stairs and has a restaurant called {{lang|fr|[[Le Jules Verne]]}}, a [[gourmet]] restaurant with its own lift going up from the south column to the second level. This restaurant has one star in the [[Michelin Guide|Michelin Red Guide]]. It was run by the multi-[[Michelin star]] chef [[Alain Ducasse]] from 2007 to 2017.<ref>{{cite web|author=Dali Wiederhoft|url=http://www.bonjourparis.com/story/eiffel-tower-sightseeing-restaurants-links-transit/|title=Eiffel Tower: Sightseeing, restaurants, links, transit|publisher=Bonjour Paris|archive-url=https://web.archive.org/web/20140106040320/http://www.bonjourparis.com/story/eiffel-tower-sightseeing-restaurants-links-transit/|archive-date=6 January 2014}}</ref> As of May 2019, it is managed by three-star chef [[Frédéric Anton]].<ref name=ParisDigest>{{Cite web |url=https://www.parisdigest.com/monument/tour-eiffel.htm |title=Eiffel Tower in Paris | year=2018 |publisher=Paris Digest |access-date=14 September 2018}}</ref> It owes its name to the famous science-fiction writer [[Jules Verne]].
+
+====3rd floor====
+The third floor is the top floor, publicly accessible by lift.
+
+Originally there were laboratories for various experiments, and a small apartment reserved for Gustave Eiffel to entertain guests, which is now open to the public, complete with period decorations and lifelike [[mannequin]]s of Eiffel and some of his notable guests.<ref name=Morton>{{cite web|author=Caitlin Morton|title=There is a secret apartment at the top of the Eiffel Tower|url=http://www.architecturaldigest.com/story/eiffel-tower-paris-secret-apartment?sp&sp|website=Architectural Digest|publisher=Conde Nast|access-date=30 June 2015|date=31 May 2015}}</ref><ref>{{Cite web |title=RFI - Towering scientists {{!}} Académie des sciences |url=https://www.academie-sciences.fr/en/rfi-towering-scientists |access-date=2026-03-28 |website=www.academie-sciences.fr}}</ref>
+
+[[File:Gustaves Apartment - Eiffel (3384390462).jpg|thumb|Gustave Eiffel's apartment at the third floor]]
+
+From 1937 until 1981, there was a restaurant near the top of the tower. It was removed due to structural considerations; engineers had determined it was too heavy and was causing the tower to sag.<ref>{{cite news |last= Marcus|first= Frances Frank|date= 10 December 1986|title= New Orleans's 'Eiffel Tower'|url= https://www.nytimes.com/1986/12/10/garden/new-orleans-s-eiffel-tower.html|work=[[The New York Times]] |access-date= 22 November 2018}}</ref> This restaurant was sold to an American restaurateur and transported to New York and then New Orleans. It was rebuilt on the edge of [[Garden District, New Orleans|New Orleans' Garden District]] as a restaurant and later event hall.<ref>{{cite web |url= https://wgno.com/2015/09/15/where-can-you-find-pieces-of-the-eiffel-tower-in-new-orleans/|title= Where you can find pieces of the Eiffel Tower in New Orleans|last= Thomas|first= Jabari|work= WGNO|date= 15 September 2015|publisher= [[WGNO]]|access-date= 22 November 2018}}</ref>
+
+Today there is a champagne bar on the third floor of the Eiffel Tower.<ref>{{cite web|url=https://www.toureiffel.paris/en/news/visit/champagne-bar|title=CHAMPAGNE BAR|date=December 13, 2010|access-date=August 25, 2025|website=toureiffel.paris}}</ref>
+
+===Lifts===
+The arrangement of the lifts has been changed several times during the tower's history. Given the elasticity of the cables and the time taken to align the cars with the landings, each lift, in normal service, takes an average of 8 minutes and 50 seconds to do the round trip, spending an average of 1 minute and 15 seconds at each level. The average journey time between levels is 1 minute. The original hydraulic mechanism is on public display in a small museum at the base of the east and west legs. Because the mechanism requires frequent lubrication and maintenance, public access is often restricted. The rope mechanism of the north tower can be seen as visitors exit the lift.{{citation needed|date=February 2024}}
+
+[[File:Tour Eiffel Ascenseur Roux, Combaluzier et Lepape.jpg|thumb|The Roux, Combaluzier & Lepape lifts during construction]]
+
+Equipping the tower with adequate and safe passenger lifts was a major concern of the government commission overseeing the Exposition. Although some visitors could be expected to climb to the first level, or even the second, lifts had to be the main means of ascent.<ref name=vogel_20>Vogel, pp. 20–21.</ref>
+
+Constructing lifts to reach the first level was done by making the legs wide enough at the bottom and so nearly straight that they could contain a straight track. A contract was given to the French company Roux, Combaluzier & Lepape for two lifts to be fitted in the east and west legs.<ref name=vogel_28>Vogel, p. 28.</ref> Roux, Combaluzier & Lepape used a pair of endless chains with rigid, articulated links to which the car was attached. Lead weights on some links of the upper or return sections of the chains counterbalanced most of the car's weight. The car was pushed up from below, not pulled up from above: to prevent the chain buckling, it was enclosed in a conduit. At the bottom of the run, the chains passed around {{convert|3.9|m|ftin|abbr=on}} diameter [[sprocket]]s. Smaller sprockets at the top guided the chains.<ref name=vogel_28/>
+
+[[File:Eiffel-Otis lift-poyet.jpg|thumb|left|upright|The Otis lifts originally fitted in the north and south legs.]]
+
+Installing lifts to the second level was more of a challenge because a straight track was impossible. No French company wanted to undertake the work. The European branch of [[Otis Elevator Company|Otis Brothers & Company]] submitted a proposal, but this was rejected: the fair's charter ruled out the use of any foreign material in the construction of the tower. The deadline for bids was extended, but still no French companies put themselves forward, and eventually the contract was given to Otis in July 1887.<ref name="vogel_23-4">Vogel, pp. 23–24.</ref> Otis were confident they would eventually be given the contract and had already started creating designs.<ref>Harriss 1976, p. 93</ref>
+
+The car was divided into two superimposed compartments, each holding 25 passengers, with the lift operator occupying an exterior platform on the first level. [[Power (physics)|Motive power]] was provided by an inclined hydraulic ram {{convert|12.67|m|ftin|abbr=on}} long and {{convert|96.5|cm|in|abbr=on}} in diameter in the tower leg with a stroke of {{convert|10.83|m|ftin|abbr=on}}: this moved a carriage carrying six sheaves. Five fixed sheaves were mounted higher up the leg, producing an arrangement similar to a [[block and tackle]] but acting in reverse, multiplying the stroke of the piston rather than the force generated. The hydraulic pressure in the driving cylinder was produced by a large open reservoir on the second level. After being exhausted from the cylinder, the water was pumped back up to the reservoir by two pumps in the machinery room at the base of the south leg. This reservoir also provided power to the lifts to the first level.<ref>Harriss 1975, p. 93</ref>
+
+The original lifts for the journey between the second and third levels were supplied by Léon Edoux. A pair of {{convert|81|m|ft|abbr=on}} hydraulic rams were mounted on the second level, reaching nearly halfway up to the third level. One lift car was mounted on top of these rams: cables ran from the top of this car up to sheaves on the third level and back down to a second car. Each car travelled only half the distance between the second and third levels and passengers were required to change lifts halfway by means of a short gangway. The 10-ton cars each held 65 passengers.<ref>{{cite book|url=http://gallica.bnf.fr/ark:/12148/bpt6k106381w/f187.image|title=La Tour de Trois Cents Mètres|author=Eiffel, Gustave|year=1900|publisher=Société des imprimeries Lemercier|location=Paris|language=fr|pages=171–3}}</ref>
+
+===Engraved names===
+{{Main|List of the 72 names on the Eiffel Tower}}
+[[File:Les savants de la Tour Eiffel.jpg|thumb|right|Names engraved on the tower]]
+
+Gustave Eiffel engraved on the building of the tower the names of 72 French scientists, engineers and mathematicians as a recognition of their contributions. Eiffel chose this "invocation of science" because of his concern over the artists' protest. At the beginning of the 20th century, the engravings were painted over, but they were restored in 1986–87 by the {{lang|fr|Société Nouvelle d'exploitation de la Tour Eiffel}}, a company operating the tower.<ref name="lab&names">{{cite web |author=SETE |title=The Eiffel Tower Laboratory |url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/88.html |website=Official Eiffel Tower website |date=2010 |access-date=25 January 2017 |url-status=dead |archive-url=https://web.archive.org/web/20170212232554/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/88.html |archive-date=12 February 2017 }}</ref>
+
+===Aesthetics===
+[[File:Eiffel Tower plans 21.jpg|thumb|Some original architectural details]]
+The tower is painted in three shades: lighter at the top, getting progressively darker towards the bottom to complement the Parisian sky.<ref name=paintingcolor>{{cite web|title=The Eiffel Tower gets beautified|url=http://www.toureiffel.paris/images/actualites/PDF/how_the_eiffel_tower_gets_beautified.pdf|author=SETE|website=Official Eiffel Tower website|access-date=8 November 2015|url-status=dead|archive-url=https://web.archive.org/web/20151121090936/http://www.toureiffel.paris/images/actualites/PDF/how_the_eiffel_tower_gets_beautified.pdf|archive-date=21 November 2015}}</ref> It was originally reddish brown; this changed in 1968 to a bronze colour known as "Eiffel Tower Brown".<ref name=painting>{{cite web |title=Painting the Eiffel Tower |url=http://www.toureiffel.paris/everything-about-the-tower/themed-files/97 |author=SETE |website=Official Eiffel Tower website |access-date=25 January 2017 |url-status=dead |archive-url=https://archive.today/20161026114502/http://www.toureiffel.paris/everything-about-the-tower/themed-files/97 |archive-date=26 October 2016 }}</ref> In 2010 the tower was re-painted yellow-brown.<ref>{{Cite web|url=https://www.toureiffel.paris/en/the-monument/painting-eiffel-tower|title=Painting and color of the Eiffel Tower - OFFICIAL Website|date=30 October 2017|website=www.toureiffel.paris}}</ref><ref>{{Cite web |last=Oliver |first=Huw |title=The Eiffel Tower is being painted gold for the 2024 Olympics |url=https://www.timeout.com/news/the-eiffel-tower-is-getting-a-golden-makeover-ahead-of-the-2024-olympics-020821 |access-date=2022-11-30 |website=Time Out Worldwide |date=8 February 2021 |language=en-GB}}</ref><ref>{{Cite web |date=2021-02-03 |title=Eiffel Tower receives €50m makeover to make it look more golden for the Olympics |url=https://www.independent.co.uk/news/world/europe/eiffel-tower-olympics-makeover-2024-paris-b1796893.html |access-date=2022-11-30 |website=The Independent |language=en}}</ref>
+
+Following the 2024 Summer Olympics held in Paris, Mayor [[Anne Hidalgo]] proposed keeping the [[Olympic symbols|Olympic rings]] on the tower permanently. The rings, which measure {{Convert|95|ft|m}} wide and {{Convert|43|ft|m}} high, were initially installed for the Games and were scheduled for removal after the [[2024 Summer Paralympics|Paralympics]]. Hidalgo's decision faced criticism from the Eiffel family and some residents concerned about altering the protected monument. The original 30-ton rings would be replaced with lighter versions for long-term display.<ref>{{Cite web | last=Kennedy | first=Niamh  | last2=Edwards | last3=Vandoorne | first3=Saskya  |date=2024-09-04 |title=Paris mayor plans to keep Olympic rings on the Eiffel Tower. But not everyone is happy |url=https://edition.cnn.com/2024/09/04/travel/paris-mayor-olympic-rings-eiffel-tower-scli-intl/index.html |access-date=2024-09-06 |website=CNN |language=en}}</ref>
+
+The only non-structural elements are the four decorative grill-work arches, added in Sauvestre's sketches, which served to make the tower look more substantial and to make a more impressive entrance to the exposition.<ref>{{cite web |url=http://www.corusconstruction.com/en/reference/teaching_resources/architectural_studio_reference/history/development_of_the_clear_span_building/exhibition_buildings/ |title=History: Development of clear span buildings – Exhibition buildings |work=Architectural Teaching Resource |publisher=Tata Steel Europe, Ltd |access-date=4 January 2014 |archive-url=https://web.archive.org/web/20131005073648/http://www.tatasteelconstruction.com/en/reference/teaching_resources/architectural_studio_reference/history/development_of_the_clear_span_building/exhibition_buildings/ |archive-date=5 October 2013}}</ref>
+
+A pop-culture movie cliché is that the view from a Parisian window always includes the tower.<ref>{{cite web|url=https://www.france.com/editorials/eiffel_tower/|title=The Eiffel Tower|publisher=France.com|access-date=27 January 2018}}</ref> In reality, since zoning restrictions limit the height of most buildings in Paris to seven storeys, only a small number of tall buildings have a clear view of the tower.<ref>{{Cite web|title=Eiffel Tower (Paris ( 7 th ), 1889)|url=https://structurae.net/en/structures/eiffel-tower|access-date=27 February 2021|website=Structurae|language=en}}</ref>
+
+[[File:Eiffel Tower Drone 4k-Qx c1X3zfEc-313-251.webm|thumb|[[Bird's-eye view]] of the Eiffel Tower]]
+
+===Maintenance===
+Maintenance of the tower includes applying 60&nbsp;tons of paint every 7 years to prevent it from [[rust]]ing. The tower has been completely repainted at least 19 times<!-- as of 2024 --> since it was built, with the most recent being in 2010. [[Lead paint]] was still being used as recently as 2001 when the practice was stopped out of concern for the environment.<ref name="allyouneed">{{cite web|url=http://www.eiffel-tower.com/images/PDF/about_the_Eiffel_Tower.pdf|title=All you need to know about the Eiffel Tower|author=SETE|website=Official Eiffel Tower website|access-date=15 April 2016}}</ref><ref>{{Cite news|last=Bavelier|first=Ariane|url=https://www.lefigaro.fr/culture/2009/03/28/03004-20090328ARTFIG00210-coup-de-pinceau-sur-la-tour-eiffel-.php|title=Coup de pinceau sur la tour Eiffel|date=3 December 2013|work=Lefigaro|access-date=28 March 2009}}</ref><ref>{{Cite news|url=https://www.france24.com/en/live-news/20240524-eiffel-tower-ticket-prices-to-rise-by-20-percent|title=Eiffel Tower ticket prices to rise by 20 percent |date=24 May 2024 |work=France 24 |access-date=25 May 2024}}</ref>
+
+==Communications==
+[[File:Tour Eiffel le sommet 08-2015 (cropped).jpg|thumb|right|upright|Top of the Eiffel Tower with antennas]]
+
+The tower has been used for making radio transmissions since the beginning of the 20th century. Until the 1950s, sets of aerial wires ran from the [[cupola]] to anchors on the [[Avenue de Suffren]] and Champ de Mars. These were connected to [[longwave]] transmitters in small bunkers. In 1909, a permanent underground radio centre was built near the south pillar, which still exists today. On 20 November 1913, the [[Paris Observatory]], using the Eiffel Tower as an aerial, exchanged wireless signals with the [[United States Naval Observatory]], which used an aerial in [[Arlington County, Virginia]]. The object of the transmissions was to measure the difference in longitude between Paris and Washington, D.C.<ref>{{cite news |title=Paris time by wireless |newspaper=The New York Times |date=22 November 1913 |url=https://query.nytimes.com/gst/abstract.html?res=9801E2D71E3BE633A25751C2A9679D946296D6CF |page=1}}</ref> Today, radio and digital television signals are transmitted from the Eiffel Tower.
+
+===FM radio===
+{| class="wikitable sortable"
+!Frequency
+!kW
+!Service
+|-
+|87.8&nbsp;MHz
+|10
+|[[France Inter]]
+|-
+|89.0&nbsp;MHz
+|10
+|[[Radio France Internationale|RFI]]
+|-
+|89.9&nbsp;MHz
+|10
+|[[TSF Jazz]]
+|-
+|90.4&nbsp;MHz
+|10
+|[[Nostalgie]]
+|-
+|90.9&nbsp;MHz
+|4
+|[[Chante France]]
+|-
+|91.3&nbsp;MHz
+|10
+|[[Chérie 25]]
+|-
+|91.7&nbsp;MHz
+|10
+|[[France Musique]]
+|-
+|91.2&nbsp;MHz
+|10
+|[[Mouv']]
+|-
+|93.5&nbsp;MHz
+|10
+|[[France Culture]]
+|-
+|94.3&nbsp;MHz
+|4
+|[[Radio Orient]]
+|-
+|96.0&nbsp;MHz
+|10
+|[[Skyrock (radio station)|Skyrock]]
+|-
+|96.4&nbsp;MHz
+|4
+|[[BFM Business]]
+|-
+|96.9&nbsp;MHz
+|4
+|Voltage
+|-
+|97.4&nbsp;MHz
+|10
+|[[Rire & Chansons]]
+|-
+|99.9&nbsp;MHz
+|4
+|[[Sud Radio]]
+|-
+|100.3&nbsp;MHz
+|10
+|[[NRJ]]
+|-
+|100.7&nbsp;MHz
+|10
+|Radio Notre Dame
+|-
+|101.1&nbsp;MHz
+|10
+|[[Radio Classique]]
+|-
+|101.5&nbsp;MHz
+|10
+|[[Radio Nova (France)|Radio Nova]]
+|-
+|101.9&nbsp;MHz
+|10
+|[[Fun Radio (France)|Fun Radio]]
+|-
+|102.3&nbsp;MHz
+|4
+|[[Oüi FM]]
+|-
+|102.7&nbsp;MHz
+|10
+|[[M Radio]]
+|-
+|103.1&nbsp;MHz
+|10
+|[[RMC (France)|RMC]]
+|-
+|103.5&nbsp;MHz
+|10
+|[[Europe 2]]
+|-
+|103.9&nbsp;MHz
+|10
+|[[RFM (French radio station)|RFM]]
+|-
+|104.3&nbsp;MHz
+|10
+|[[RTL (French radio)|RTL]]
+|-
+|104.7&nbsp;MHz
+|10
+|[[Europe 1]]
+|-
+|105.9&nbsp;MHz
+|10
+|[[RTL2 (France)|RTL2]]
+|-
+|105.1&nbsp;MHz
+|10
+|[[FIP (radio station)|FIP]]
+|-
+|107.1&nbsp;MHz
+|10
+|[[Ici (radio network)|Ici Paris Île-de-France]]
+|}
+
+===Analogue television===
+A television antenna was first installed on the tower in 1957, increasing its height by {{convert|18.7|m|ft|abbr=on}}. Work carried out in 2000 added a further {{convert|5.3|m|ft|abbr=on}}, giving a total height of {{convert|324|m|ft|abbr=on}}.<ref name="allyouneed"/> Analogue television signals from the Eiffel Tower ceased on 8 March 2011.
+{| class="wikitable sortable"
+!Frequency
+!VHF
+!UHF
+!kW
+!Service
+|-
+|182.25&nbsp;MHz
+|6
+|{{n/a}}
+|100
+|[[Canal+ (French TV channel)|Canal+]]
+|-
+|479.25&nbsp;MHz
+|{{n/a}}
+|22
+|500
+|[[France 2]]
+|-
+|503.25&nbsp;MHz
+|{{n/a}}
+|25
+|500
+|[[TF1]]
+|-
+|527.25&nbsp;MHz
+|{{n/a}}
+|28
+|500
+|[[France 3]]
+|-
+|543.25&nbsp;MHz
+|{{n/a}}
+|30
+|100
+|[[France 5]]
+|-
+|567.25&nbsp;MHz
+|{{n/a}}
+|33
+|100
+|[[Métropole Télévision|M6]]
+|}
+
+===Digital Television===
+Since 31 March 2005, digital terrestrial television (DTT) has been broadcast from the Eiffel Tower.
+{| class="wikitable sortable"
+!Frequency
+!UHF
+!kW
+!Multiplex
+!Service
+|-
+|498&nbsp;MHz
+|24
+|13
+|R9
+|[[France 2|France 2 UHD]]
+|-
+|506&nbsp;MHz
+|25
+|51
+|R2
+|[[Gulli]]<br>[[BFM TV]]<br>[[CNews]]<br>[[CStar]]<br>[[T18 (TV channel)|T18]]<br>[[Novo 19]]
+|-
+|530&nbsp;MHz
+|28
+|5
+|R15
+|[[:fr:Canal 31|Canal 31]]<br>[[:fr:20 Minutes TV Île-de-France|20 Minutes TV Île-de-France]]<br>[[:fr:Le Figaro TV Île-de-France|Le Figaro TV Île-de-France]]
+|-
+|546&nbsp;MHz
+|30
+|51
+|R4
+|[[France 5]]<br>[[M6 (TV channel)|M6]]<br>[[Arte]]<br>[[W9 (TV channel)|W9]]<br>[[6ter]]<br>[[Paris Première]]
+|-
+|562&nbsp;MHz
+|32
+|50
+|R6
+|[[TF1]]<br>[[La Chaîne parlementaire|LCP]]<br>[[TMC (TV channel)|TMC]]<br>[[TFX (TV channel)|TFX]]<br>[[La Chaîne Info|LCI]]
+|-
+|586&nbsp;MHz
+|35
+|50
+|R1
+|[[France 2]]<br>[[France 3]]<br>[[France 4]]<br>[[France Info (TV channel)|France Info]]
+|-
+|642&nbsp;MHz
+|42
+|50
+|R7
+|[[TF1 Séries Films]]<br>[[L'Équipe (TV channel)|L'Équipe]]<br>[[RMC Story]]<br>[[RMC Découverte]]<br>[[RMC Life]]
+|}
+
+==Dimensions==
+[[File:Dimensions Eiffel Tower.svg|thumb|Current dimensions of the tower]]
+
+===Height changes===
+The pinnacle height of the Eiffel Tower has changed multiple times over the years as described in the chart below.<ref>{{Cite web|url=http://skyscraperpage.com/cities/?buildingID=79|title=Eiffel Tower, Paris - SkyscraperPage.com|website=skyscraperpage.com}}</ref>
+{| class="wikitable sortable" style="font-size: 90%;"
+|-
+! From
+! To
+! Height (m)
+! Height (ft)
+! Type of addition
+! Remarks
+|-
+| 1889
+| 1956
+| 312.27
+| 1,025
+| Flagpole
+| Architectural height of {{convert|300|m|ft|abbr=on}} Tallest freestanding structure in the world until surpassed by the [[Chrysler Building]] in 1930. Tallest tower in the world until surpassed by the [[KCTV Broadcast Tower]] in 1956.
+|-
+| 1957
+| 1991
+| 320.75
+| 1,052
+| Antenna
+| Broadcast antenna added in 1957 which made it the tallest tower in the world until the [[Tokyo Tower]] was completed the following year in 1958.
+|-
+| 1991
+| 1994
+| 317.96
+| 1,043
+| rowspan="4" | Antenna change
+| 
+|-
+| 1994
+| 2000
+| 318.7
+| 1,046
+| 
+|-
+| 2000
+| 2022
+| 324
+| 1,063
+| 
+|-
+| 2022
+| Current
+| 330
+| 1,083
+| [[Digital radio]] antenna hoisted on March 15, 2022.<ref>{{Cite news|url=https://www.reuters.com/world/europe/eiffel-tower-grows-six-metres-after-new-antenna-attached-2022-03-15/|title=Eiffel Tower grows six metres after new antenna attached|website=reuters.com|date=15 March 2022 }}</ref>
+|}
+
+{{Panorama
+| image   = File:Tour Eiffel 360 Panorama.jpg
+| height  = 300
+| alt     = Panorama of Paris from the Tour Eiffel
+| caption = Panorama of Paris and its suburbs from the top of the Eiffel Tower
+}}
+
+==Taller structures==
+The Eiffel Tower was the world's tallest structure when completed in 1889, a distinction it retained until 1929 when the [[Chrysler Building]] in New York City was topped out.<ref>{{cite web |url=http://www.cbsforum.com/cgi-bin/articles/partners/cbs/search.cgi?template=display&dbname=cbsarticles&key2=chrysler&action=searchdbdisplay |title=Chrysler Building – Piercing the Sky |work=[[CBS]] Forum |access-date=21 May 2017 |date=14 June 2004 |author=Chrysler |publisher=CBS Team |archive-date=28 December 2008 |archive-url=https://web.archive.org/web/20081228043902/http://www.cbsforum.com/cgi-bin/articles/partners/cbs/search.cgi?template=display&dbname=cbsarticles&key2=chrysler&action=searchdbdisplay |url-status=dead }}</ref> The tower also lost its standing as the world's tallest tower to the [[Tokyo Tower]] in 1958 but retains its status as the tallest freestanding (non-guyed) structure in France.
+
+===Lattice towers taller than the Eiffel Tower===
+{{Further|List of tallest towers in the world|Lattice tower|Observation deck}}
+
+{| class="wikitable"
+|-
+! Name
+! Pinnacle height
+! Year
+! Country
+! Town
+! Remarks
+|-
+| [[Tokyo Skytree]] || {{convert|634|m|abbr=on}} || 2011 || Japan || Tokyo ||
+|-
+| [[Kyiv TV Tower]] || {{convert|385|m|abbr=on}} || 1973 || Ukraine || Kyiv ||
+|-
+| [[Dragon Tower]] || {{convert|336|m|abbr=on}} || 2000 || China || Harbin ||
+|-
+| [[Tokyo Tower]] || {{convert|333|m|abbr=on}} || 1958 || Japan || Tokyo ||
+|-
+| [[WITI TV Tower]] || {{convert|329.4|m|abbr=on}} || 1962 || United States || Shorewood, Wisconsin ||
+|-
+| [[St. Petersburg TV Tower]] || {{convert|326|m|abbr=on}} || 1962 || Russia || Saint Petersburg ||
+|}
+
+===Structures in France taller than the Eiffel Tower===
+{{Further|List of tallest structures in France}}
+
+{| class="wikitable"
+|-
+! Name
+! Pinnacle height
+! Year
+! Structure type
+! Town
+! Remarks
+|-
+| [[Longwave transmitter Allouis]]
+| {{convert|350|m|abbr=on}}
+| 1974
+| Guyed mast
+| Allouis
+|
+|-
+| [[HWU transmitter]]
+| {{convert|350|m|abbr=on}}
+| 1971
+| Guyed mast
+| Rosnay
+| Military VLF transmitter; multiple masts
+|-
+| [[Viaduc de Millau]]
+| {{convert|343|m|abbr=on}}
+| 2004
+| Bridge pillar
+| Millau
+|
+|-
+| [[TV Mast Niort-Maisonnay]]
+| {{convert|330|m|abbr=on}}
+| 1978
+| Guyed mast
+| Niort
+|
+|-
+| [[Transmitter Le Mans-Mayet]]
+| {{convert|342|m|abbr=on}}
+| 1993
+| Guyed mast
+| Mayet
+|
+|-
+| La Regine transmitter
+| {{convert|330|m|abbr=on}}
+| 1973
+| Guyed mast
+| Saissac
+| Military VLF transmitter
+|-
+| [[Transmitter Roumoules]]
+| {{convert|330|m|abbr=on}}
+| 1974
+| Guyed mast
+| Roumoules
+| Spare transmission mast for longwave; insulated against ground
+|}
+
+==Tourism==
+===Transport===
+The nearest [[Paris Metro]] station is [[Bir-Hakeim station|Bir-Hakeim]] and the nearest [[Réseau Express Régional|RER]] station is [[Champ de Mars–Tour Eiffel station|Champ de Mars-Tour Eiffel]].<ref>{{cite web|url=http://www.toureiffel.paris/en/preparing-your-visit/getting-to-the-eiffel-tower.html |title=Getting to the Eiffel Tower |author=SETE |website=Official Eiffel Tower website |access-date=16 April 2016 |url-status=dead |archive-url=https://web.archive.org/web/20160414225056/http://www.toureiffel.paris/en/preparing-your-visit/getting-to-the-eiffel-tower.html |archive-date=14 April 2016 }}</ref> The tower itself is located at the intersection of the quai Branly and the [[Pont d'Iéna]].
+
+===Popularity===
+[[File:Eiffel Tower Visitors.svg|thumb|Number of visitors per year between 1889 and 2004]]
+
+More than 300&nbsp;million people have visited the tower since it was completed in 1889.<ref>{{cite web | url=https://www.toureiffel.paris/en/news/events/300-million-visitors-eiffel-tower-1889-tower-celebrates-28th-september | title=300 million visitors to the Eiffel Tower since 1889. The Tower celebrates on 28th September! | date=21 September 2017 }}</ref><ref name=Key_figures/> In 2015, there were 6.91&nbsp;million visitors.<ref>{{cite news|url=http://www.france24.com/en/20160119-eiffel-tower-visitors-dip-paris-attacks-terrorism|title=Number of Eiffel Tower visitors falls in wake of Paris attacks|date=20 January 2016|access-date=15 April 2016|publisher=France 24}}</ref> The tower is the most-visited paid monument in the world.<ref name=":0">{{cite news|url=http://www.lemonde.fr/idees/article/2007/07/23/tour-eiffel-et-souvenirs-de-paris-par-jean-michel-normand_938349_3232.html|title=Tour Eiffel et souvenirs de Paris |work=Le Monde|author=Jean-Michel Normand|location=France|date=23 July 2007|access-date=24 May 2010}}</ref> An average of 25,000 people ascend the tower every day (which can result in long queues).<ref>{{cite web|url=https://www.foxnews.com/world/eiffel-tower-reopens-to-tourists-after-rare-closure-for-2-day-strike/|title=Eiffel Tower reopens to tourists after rare closure for 2-day strike|agency=Associated Press|publisher=Fox News|date=27 June 2013|access-date=16 April 2016}}</ref>
+
+==Illumination copyright==
+{{Further|Freedom of panorama#France}}
+[[File:1000 Eiffel tower night illumination by Pierre Bideau in Paris Photo by Giles Laurent.jpg|alt=The Eiffel Tower illuminated in 2024|thumb|The Eiffel Tower illuminated in 2024]]
+The tower and its image have been in the [[public domain]] since 1993, 70 years after Eiffel's death.<ref>{{cite web|url=https://www.thejakartapost.com/travel/2017/12/08/why-its-actually-illegal-to-take-pictures-of-eiffel-tower-at-night.html|work=[[The Jakarta Post]]|title=Why it's actually illegal to take pictures of Eiffel Tower at night|date=9 December 2017}}</ref> In June 1990, a French court ruled that a special lighting display on the tower in 1989 to mark the tower's 100th anniversary was an "original visual creation" protected by copyright. The [[Court of Cassation (France)|Court of Cassation]], France's judicial court of last resort, upheld the ruling in March 1992.<ref>{{cite web |url=http://www.lexeek.com/jus-luminum/decision-cass-03-03-1992,523975.htm |title=Cour de cassation 3 mars 1992, Jus Luminum n°J523975 |publisher=Jus Luminum |archive-url=https://web.archive.org/web/20091116234240/http://www.lexeek.com/jus-luminum/decision-cass-03-03-1992,523975.htm |archive-date=16 November 2009|language=fr}}</ref> The {{lang|fr|Société d'Exploitation de la Tour Eiffel}} (SETE) now considers any illumination of the tower to be a separate work of art that falls under copyright.<ref>{{cite news|url=https://www.theguardian.com/commentisfree/2015/jul/03/sharing-photos-freedom-of-panorama|title= If you want to keep sharing photos for free, read this|author=Jimmy Wales|work=The Guardian|date=3 July 2015|access-date=15 April 2016}}</ref> As a result, the SNTE alleges that it is illegal to publish contemporary photographs of the lit tower at night without permission in France and some other countries for commercial use.<ref>{{cite web|url=http://www.toureiffel.paris/the-eiffel-tower-image-and-brand/filming-at-the-eiffel-tower.html#img4|title=The Eiffel Tower image rights|date=31 March 2021|publisher=Société d'Exploitation de la Tour Eiffel}}</ref><ref>{{cite news|url=https://www.telegraph.co.uk/travel/news/Freedom-of-panorama-EU-proposal-could-mean-holiday-snaps-breach-copyright/ |archive-url=https://ghostarchive.org/archive/20220110/https://www.telegraph.co.uk/travel/news/Freedom-of-panorama-EU-proposal-could-mean-holiday-snaps-breach-copyright/ |archive-date=10 January 2022 |url-access=subscription |url-status=live|title=Freedom of panorama: EU proposal could mean holiday snaps breach copyright|work=The Telegraph|date=24 June 2015|access-date=15 April 2016|author=Hugh Morris}}{{cbignore}}</ref> For this reason, it is often rare to find images or videos of the lit tower at night on stock image sites,<ref name=petapixeleiffel>{{cite web |url=https://petapixel.com/2017/10/14/photos-eiffel-tower-night-illegal/ |title=Why Photos of the Eiffel Tower at Night are Illegal |last=Nicholls |first=Will |date=14 October 2017 |access-date=24 February 2021 |website=PetaPixel}}</ref> and media outlets rarely broadcast images or videos of it.<ref name=thecultureeiffel>{{cite web |url=https://theculturetrip.com/europe/france/paris/articles/why-its-illegal-to-take-pictures-of-the-eiffel-tower-at-night/ |title=Why Photos of the Eiffel Tower at Night are Illegal |last=Cuttle |first=Jade |date=1 July 2019 |access-date=24 February 2021 |website=The Culture Trip |archive-date=20 January 2021 |archive-url=https://web.archive.org/web/20210120235259/https://theculturetrip.com/europe/france/paris/articles/why-its-illegal-to-take-pictures-of-the-eiffel-tower-at-night/ |url-status=dead }}</ref>
+
+The imposition of copyright has been controversial. The Director of Documentation for what was then called the {{lang|fr| Société Nouvelle d'exploitation de la Tour Eiffel}} (SNTE), Stéphane Dieu, commented in 2005: "It is really just a way to manage commercial use of the image, so that it isn't used in ways [of which] we don't approve".<ref name="fastco">{{cite magazine|url=http://www.fastcompany.com/668174/eiffel-tower-repossessed|date=2 February 2005|magazine=Fast Company|title=Eiffel Tower: Repossessed|access-date=15 April 2016}}</ref> SNTE made over €1&nbsp;million from copyright fees in 2002.<ref>{{cite news|url=https://news.bbc.co.uk/2/hi/business/3029993.stm|title=Are things looking up for the Eiffel Tower?|date=16 May 2003|access-date=16 April 2016|work=BBC News|author=James Arnold}}</ref> However, it could also be used to restrict the publication of tourist photographs of the tower at night, as well as hindering non-profit and semi-commercial publication of images of the illuminated tower.<ref name="artjournal">{{cite web|url=https://alj.artrepreneur.com/night-photos-eiffel-tower-violate-copyright/|title=Do night photos of the Eiffel Tower violate copyright?|publisher=Artrepreneur Art Law Journal|author=Steve Schlackman|date=16 November 2014|access-date=13 July 2020}}</ref>
+
+The copyright claim itself has never been tested in courts to date, according to a 2014 article in the ''Art Law Journal'', and there has never been an attempt to track down millions of people who have posted and shared their images of the illuminated tower on the Internet worldwide. However, the article adds that commercial uses of such images, like in a magazine, on a film poster, or on product packaging, may require prior permission.<ref>{{cite web |url=https://www.snopes.com/fact-check/photographs-of-eiffel-tower-at-night/ |title=Is it Illegal to Take Photographs of the Eiffel Tower at Night? |date=13 March 2017 |last=Larsen |first=Stephanie |access-date=24 February 2021 |website=[[Snopes]]}}</ref>
+
+French doctrine and jurisprudence allows pictures incorporating a copyrighted work as long as their presence is incidental or accessory to the subject being represented,<ref>{{cite book|title=Notions Fondamentales Du Droit D'auteur|url=https://books.google.com/books?id=M6w3991thgsC&pg=PA277|year=2002|publisher=World Intellectual Property Organization|language=fr|isbn=978-92-805-1013-3|page=277|quote=La représentation d'une œuvre située dans un lieu public n'est licite que lorsqu'elle est accessoire par rapport au sujet principal représenté ou traité}}</ref> a reasoning akin to the ''[[de minimis]]'' rule. Therefore, SETE may be unable to claim copyright on photographs of Paris which happen to include the lit tower.
+
+The author of the 1989 lighting display, lighting director Pierre Bideau, died in 2021; this makes the said display under artistic copyright until 2092, 70 full years after the director's death.<ref>{{cite web |url=https://www.rd.com/article/eiffel-tower-illegal-photos/ |title=Is It Illegal to Take Photos of the Eiffel Tower at Night? |date=22 May 2025 |last=Alexander |first=Brooke Nelson |access-date=13 June 2025 |work=Reader's Digest}}</ref>
+
+==Replicas==
+{{Main|List of Eiffel Tower replicas}}
+[[File:Paris hotel (Las Vegas)1.JPG|thumb|right|Replica at the [[Paris Las Vegas]] Hotel, Nevada, United States]]
+
+As one of the most famous landmarks in the world, the Eiffel Tower has been the inspiration for the creation of many replicas and similar towers. An early example is [[Blackpool Tower]] in England. The mayor of Blackpool, Sir John Bickerstaffe, was so impressed on seeing the Eiffel Tower at the 1889 exposition that he commissioned a similar tower to be built in his town.<!--Blackpool is not a city.--> It opened in 1894 and is {{convert|158.1|m|ft|abbr=on}} tall.<ref>{{cite web|title=The Blackpool Tower|url=http://www.historyextra.com/blackpool|publisher=History Extra|access-date=6 March 2014}}</ref> [[Tokyo Tower]] in Japan, built as a communications tower in 1958, was also inspired by the Eiffel Tower.<ref>{{cite web|url=https://www.klm.com/destinations/pl/pl/article/the-red-and-white-eiffel-tower-of-tokyo|title=The red and white Eiffel Tower of Tokyo|publisher=KLM|access-date=16 April 2016}}</ref> Well known is the [[Petřín Lookout Tower]] in [[Prague]] too.<ref>{{cite web | url=https://english.radio.cz/petrin-tower-open-visitors-again-8060021 | title=Petrin tower open for visitors again | date=25 March 2002 }}</ref>
+
+There are various scale models of the tower in the United States, including a half-scale version at the [[Paris Las Vegas]], Nevada, one in Paris, Texas built in 1993, and two 1:3 scale models at [[Kings Island]], located in [[Cincinnati, Ohio]], and [[Kings Dominion]], located in [[Richmond, Virginia]], amusement parks opened in 1972 and 1975 respectively. Two 1:3 scale models can be found in China, one in [[Durango, Durango|Durango, Mexico]] that was donated by the local French community, and several across Europe.<ref>{{cite news|url=http://www.huffingtonpost.com/2014/08/28/replicas-eiffel-tower_n_3721294.html|title=The most legit Eiffel Tower replicas you didn't know existed|date=19 August 2013|publisher=Huffpost Travel|author=Todd van Luling|access-date=16 April 2016}}</ref>
+
+In 2011, the TV show ''Pricing the Priceless'' on the [[National Geographic Channel]] speculated that a full-size replica of the tower would cost approximately US$480&nbsp;million to build.<ref>{{cite episode|title=Eiffel Tower|series=Pricing the Priceless|station=National Geographic Channel (Australia)|date=9 May 2011|season=1|number=3}}</ref> This would be more than ten times the cost of the original (nearly 8 million in 1890 francs; around US$40&nbsp;million in 2018 dollars).
+
+==See also==
+{{Portal|France}}
+* [[List of tallest buildings and structures in the Paris region]]
+* [[List of tallest buildings and structures]]
+* [[List of tourist attractions in Paris]]
+* [[List of tallest towers]]
+* [[List of tallest freestanding structures]]
+* [[List of tallest freestanding steel structures]]
+* [[List of tallest structures built before the 20th century]]
+* [[List of transmission sites]]
+* [[List of the 72 names on the Eiffel Tower]]
+* [[Lattice tower]]
+* ''[[Eiffel Tower (Delaunay series)|Eiffel Tower]]'', 1909–1928 painting series by [[Robert Delaunay]]
+* ''[[Panorama of the Paris Exhibition No. 3]]'' (1900), silent film depicting Paris and the Eiffel Tower
+
+==References==
+===Notes===
+{{Reflist}}
+
+===Bibliography===
+* {{cite book|last1=Chanson|first1=Hubert|year=2009|chapter=Hydraulic engineering legends Listed on the Eiffel Tower|editor=Jerry R. Rogers|title=Great Rivers History: Proceedings and Invited Papers for the EWRI Congress and Great Rivers History Symposium|url=https://books.google.com/books?id=cnPj2qB2aW4C|publisher=American Society of Civil Engineers|isbn=978-0-7844-1032-5}}
+* {{cite book|first1=Dominique|last1=Frémy|title=Quid de la tour Eiffel|url=https://books.google.com/books?id=WI7TGwAACAAJ|year=1989|publisher=R. Laffont|isbn=978-2-221-06488-7}}
+* {{cite book|title=The Engineer: The Paris Exhibition|date=3 May 1889|volume=XLVII|location=London|publisher=Office for Advertisements and Publication}}
+* {{cite book|last1=Harriss|first1=Joseph|year=1975|title=The Tallest Tower: Eiffel and the Belle Epoque|location=Boston|publisher=Houghton Mifflin|isbn=978-0-39520-440-5}}
+* {{cite book|last1=Harriss|first1=Joseph|year=1976|title=The Eiffel Tower: Symbol of an Age|location=London|publisher=Paul Elek|isbn=978-0-23640-036-2}}
+* {{cite book|first1=David I.|last1=Harvie|title=Eiffel: The Genius Who Reinvented Himself|year=2006|publisher=Sutton|location=Stroud, Gloucestershire|isbn=0-7509-3309-7}}
+* {{cite book|first1=Jill|last1=Jonnes|title=Eiffel's Tower: The Thrilling Story Behind Paris's Beloved Monument …|url=https://books.google.com/books?id=qqiPzCDMqSoC|year=2009|publisher=Penguin|isbn=978-1-101-05251-8}}
+* {{cite book|first1=Henri|last1=Loyrette|title=Eiffel, un Ingenieur et Son Oeuvre|url=https://books.google.com/books?id=uHlRAAAAMAAJ|year=1985|publisher=Rizzoli|isbn=978-0-8478-0631-7}}
+* {{cite book|author=Musée d'Orsay|title=1889: la Tour Eiffel et l'Exposition Universelle|url=https://books.google.com/books?id=fFrXOwAACAAJ|year=1989|publisher=Editions de la Réunion des Musées Nationaux, Ministère de la Culture, de la Communication, des Grands Travaux et du Bicentenaire|isbn=978-2-7118-2244-7}}
+* {{cite journal |url=http://www.scientificlib.com/en/Technology/Literature/RobertMVogel/ElevatorSystemsEiffelTower.html |journal=United States National Museum Bulletin |volume=228 |publisher=Smithsonian Institution |location=Washington, D.C. |title=Elevator Systems of the Eiffel Tower, 1889 |year=1961 |pages=20–21 |last1=Vogel|first1=Robert M.}}
+* {{cite book|last1=Watson|first1=William|title=Paris Universal Exposition: Civil Engineering, Public Works, and Architecture|location=Washington, D.C.|publisher=Government Publishing Office|year=1892|url=https://archive.org/details/civilengineering00wats}}
+
+==External links==
+{{sister project links|d=Q243|voy=Paris/7th arrondissement|commonscat=yes|n=no|b=no|v=no|m=no|mw=no|species=no|q=no}}
+* {{Official website}}
+* {{Structurae|id=20000021|title=Eiffel Tower}}
+* {{usurped|1=[https://web.archive.org/web/20230605194659/https://infraviewer.net/mapObject/bf7ce4d5-1f20-4d26-a163-9ded97e42c59 List of radio services using today Eiffel Tower]}}
+
+{{S-start}}
+{{S-ach|rec}}
+{{s-bef|rows=3|before=[[Washington Monument]]}}
+{{s-ttl|title=[[History of the world's tallest structures|World's tallest structure]]|years=1889–1930<br>{{small|{{convert|312|m|ft|0|abbr=on}}}}}}
+{{S-aft|after=[[Chrysler Building]]}}
+{{s-ttl|title=[[History of the world's tallest structures|World's tallest tower]]|years=1889–1933}}
+{{S-aft|after=[[Lakihegy Tower]]}}
+{{S-ttl|title=[[History of the world's tallest structures#Freestanding towers|World's tallest freestanding tower]]|years=1889–1956}}
+{{S-aft|after=[[KCTV Broadcast Tower]]}}
+{{s-bef|before=[[KCTV Broadcast Tower]]}}
+{{S-ttl|title=[[History of the world's tallest structures#Freestanding towers|World's tallest freestanding tower]]|years=1957–1958<br>{{small|{{convert|320|m|ft|0|abbr=on}} with addition}}}}
+{{S-aft|after=[[Tokyo Tower]]}}
+{{S-end}}
+
+{{7th arrondissement of Paris}}
+{{Visitor attractions in Paris}}
+{{Supertall}}
+{{1889 Paris Universal Exposition}}
+{{1900 Paris Exposition}}
+{{1937 Paris International Exposition of Arts and Techniques Applied to Modern Life}}
+{{2024 Summer Olympic Venues}}
+{{Olympic venues volleyball}}
+{{Skyscrapers in France}}
+{{Names on the Eiffel Tower}}
+{{Women proposed to be added to the Eiffel Tower}}
+{{Authority control}}
+{{Portal bar|France|Architecture}}
+
+[[Category:Eiffel Tower| ]]
+[[Category:Articles containing video clips]]
+[[Category:Buildings and structures in the 7th arrondissement of Paris]]
+[[Category:Former world's tallest buildings]]
+[[Category:Historic Civil Engineering Landmarks]]
+[[Category:Landmarks in France]]
+[[Category:Michelin-starred restaurants in France]]
+[[Category:Observation towers in France]]
+[[Category:Restaurant towers]]
+[[Category:Tourist attractions in Paris]]
+[[Category:Towers in Paris]]
+[[Category:Towers completed in 1889]]
+[[Category:Venues of the 2024 Summer Olympics]]
+[[Category:Olympic volleyball venues]]
+[[Category:Lattice towers]]
+[[Category:Architectural controversies]]
+[[Category:1889 establishments in France]]
+[[Category:Exposition Universelle (1889)]]
+[[Category:World's fair architecture in Paris]]
+[[Category:Monuments historiques in the 7th arrondissement of Paris]]

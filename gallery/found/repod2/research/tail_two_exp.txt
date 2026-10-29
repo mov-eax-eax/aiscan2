@@ -1,0 +1,22 @@
+TEMAS DE LA REUNION 
+ The Eiffel tower: 
+A tail of two exponentials 
+ Dr. Patrick 
+Weidman 
+ University 
+of Colorado, USA 
+ Model 
+equations for the shape of the Eiffel Tower are investigated. One model 
+purported to be based on Eiffel's writing does not give a tower with the correct 
+curvature. A second popular model not connected with Eiffel's writings provides 
+a fair approximation to the tower's skyline profile of 29 contiguous panels. 
+Reported here is a third model derived from Eiffel's concern about wind loads on 
+the tower, as documented in his communication to the French Civil Engineering 
+Society on March 30, 1885. The result is a nonlinear, integro-differential 
+equation which is solved to yield an exponential tower profile. It is further 
+verified that, as Eiffel wrote, "in reality the curve exterior of the tower 
+reproduces, at a determined scale, the same curve of the moments produced by the 
+wind.'' An analysis of the actual tower profile shows that it is composed of two 
+piecewise continuous exponentials with different growth rates. This is 
+explained by specific safety factors for wind loading that Eiffel & Company 
+incorporated in the design of the free-standing tower.

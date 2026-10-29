@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>La Tour Eiffel · 1:1 procedural 3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23d8a94b' d='M16 2l3 8h-2l1.5 5h-3.5v4h2.5v4H19l1 5h-8l1-5h1.5v-4H17v-4h-3.5L15 10h-2z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="src/style.css">
+<!-- three.js r169 is vendored in ./vendor so the page works offline.
+     Swap these two lines for the CDN if you prefer:
+       "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+       "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/" -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js",
+    "three/addons/": "./vendor/three/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div id="hud">
+  <div class="panel" id="panel">
+    <header>
+      <h1>La Tour Eiffel</h1>
+      <p class="sub">Gustave Eiffel &middot; 1887&ndash;1889 &middot; 330 m &middot; 1&nbsp;unit&nbsp;=&nbsp;1&nbsp;m</p>
+    </header>
+
+    <div class="group">
+      <h2>Light</h2>
+      <div class="btns" id="skies"></div>
+    </div>
+
+    <div class="group">
+      <h2>Viewpoint</h2>
+      <div class="btns" id="views"></div>
+    </div>
+
+    <div class="group">
+      <h2>Model</h2>
+      <div class="btns" id="toggles">
+        <button data-toggle="filigree" class="on">Filigree</button>
+        <button data-toggle="shadows" class="on">Shadows</button>
+        <button data-toggle="lifts" class="on">Lifts</button>
+        <button data-toggle="spin">Auto-orbit</button>
+        <button data-toggle="glass">Glass floors</button>
+        <button data-toggle="wire">Wireframe</button>
+      </div>
+    </div>
+
+    <div class="group facts">
+      <h2>Key figures</h2>
+      <dl>
+        <div><dt>1st floor</dt><dd>57.63 m</dd></div>
+        <div><dt>2nd floor</dt><dd>115.73 m</dd></div>
+        <div><dt>Summit</dt><dd>276.13 m</dd></div>
+        <div><dt>Antenna tip</dt><dd>330.00 m</dd></div>
+        <div><dt>Base square</dt><dd>124.9 m</dd></div>
+        <div><dt>Iron parts</dt><dd>18,038</dd></div>
+        <div><dt>Rivets</dt><dd>2,500,000</dd></div>
+        <div><dt>Puddled iron</dt><dd>7,300 t</dd></div>
+        <div><dt>Steps to summit</dt><dd>1,665</dd></div>
+        <div><dt>Projectors</dt><dd>336</dd></div>
+        <div><dt>Sparkle bulbs</dt><dd>20,000</dd></div>
+        <div><dt>Engraved names</dt><dd>72</dd></div>
+      </dl>
+    </div>
+
+    <p class="hint">drag&nbsp;= orbit &middot; wheel&nbsp;= zoom &middot; right-drag&nbsp;= pan</p>
+  </div>
+
+  <div class="readout">
+    <span id="alt">—</span>
+    <span id="dist">—</span>
+    <span id="stats">—</span>
+  </div>
+</div>
+
+<div id="loader">
+  <div class="wrap">
+    <div class="tower"></div>
+    <p id="loadmsg">forging 18,038 iron parts…</p>
+    <div class="bar"><i id="loadbar"></i></div>
+  </div>
+</div>
+
+<div id="error" hidden>
+  <h2>Something stopped the renderer</h2>
+  <p>Open the browser console for the full stack. Most common cause: WebGL is
+     disabled or blocked, or the page was opened from <code>file://</code>
+     instead of over http.</p>
+  <pre id="errmsg"></pre>
+</div>
+
+<script>
+  function showError(text) {
+    if (window.__APP_READY) return;
+    var box = document.getElementById('error');
+    var msg = document.getElementById('errmsg');
+    if (msg && text) msg.textContent = String(text).slice(0, 400);
+    box.hidden = false;
+    document.getElementById('loader').style.display = 'none';
+  }
+  window.addEventListener('error', function (e) {
+    if (e && e.target && e.target.tagName) {
+      showError('failed to load ' + (e.target.src || e.target.href) + '  [stage: ' + window.__STAGE + ']');
+    } else {
+      showError(((e && e.message) || 'unknown error') + '  [stage: ' + window.__STAGE + ']');
+    }
+  }, true);
+  window.addEventListener('unhandledrejection', function (e) {
+    showError(((e && e.reason && (e.reason.stack || e.reason.message)) || e.reason || 'rejection') + '  [stage: ' + window.__STAGE + ']');
+  });
+  setTimeout(function () {
+    showError('timed out after 20 s, last stage: ' + window.__STAGE);
+  }, 20000);
+</script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

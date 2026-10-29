@@ -1,0 +1,460 @@
+Calcul des forces dûes au vent que subit la tour Eiffel 
+ Menu 
+ Découvrir 
+ Description 
+ Tourisme 
+ Histoire 
+ Construction 
+ Sciences 
+ Boutique 
+ Sommaire 
+ Plan 
+ FAQ 
+ Monuments 
+ Monuments 
+ Tour Eiffel 
+ Construction 
+ Calcul des forces 
+ Forces dûes du vent 
+ -->
+ La tour Eiffel
+ Type
+ Tour autoportante en fer
+ Auteur
+ Gustave Eiffel
+ Inauguration
+ 31 mars 1889
+ Intérêt
+ Symbole du savoir-faire français
+ Propriétaire
+ Mairie de Paris
+ Inscription
+ Patrimoine mondial de l'UNESCO depuis 1991
+ Visiteurs
+ 7 millions/an
+ Situation : Paris, France
+ GPS : 48° 51' 30.13'' Nord / 2° 17' 40.13'' Est
+ Menu
+ Sommaire 
+ Description 
+ Ses dimensions 
+ Histoire 
+ Gustave Eiffel 
+ Contexte 
+ Comment la visiter ? 
+ Toutes les pages 
+ Autres monuments 
+ Rechercher
+ Calcul des forces dûes aux vents
+ Principe de la construction
+ Supposons, pour un instant, que nous ayons disposé dans les faces un treillis simple formant une paroi résistant aux efforts tranchants du vent, 
+ dont les composantes sont P', P", P''', P"" (fig. 8). On sait que pour calculer les efforts agissant dans trois pièces coupées par un plan NM, il 
+ suffit de déterminer la résultante P de toutes les forces extérieures agissant au-dessus de la section et de décomposer cette résultante en trois 
+ forces passant par les trois barres coupées.
+ Si la forme du système est telle que, pour chaque coupe horizontale MN, les deux 
+ arbalétriers prolongés ont leur intersection sur la direction 
+ de la force extérieure P, l'effort dans la barre de treillis sera nul et l'on pourra supprimer cette barre. C'est l'application de ce principe qui 
+ constitue une des particularités du système employé pour la construction de la Tour, au moins dans sa moitié inférieure, et qui en détermine la 
+ forme extérieure. Elle permet, en supprimant tout treillis dans la plus grande partie de sa hauteur, de la constituer par quatre montants isolés, 
+ simplement reliés au niveau du 1 er et du 2 e étage par des ceintures horizontales. On est conduit ainsi à infléchir la direction 
+ de chacun des éléments des montants suivant une courbe qui doit se confondre avec la courbe des pressions, si l'on se propose d'avoir des efforts 
+ tranchants nuls; maïs cela n'est réalisable que pour une hypothèse unique.
+ Comme nous nous proposons d'examiner plusieurs hypothèses sur la répartition du vent, nous aurons à tracer une fibre moyenne se rapprochant de la 
+ moyenne des courbes de pression, de manière à réduire à leur minimum les moments fléchissants qui peuvent se produire suivant l'une ou l'autre 
+ hypothèse. Remarquons que la courbe des pressions correspondant à un vent d'une intensité constante sur toute la hauteur de la Tour est indépendante 
+ de la valeur absolue de cette intensité et par suite que cette intensité n'a pas d'influence sur la forme même de la Tour. Comme les courbes de 
+ pression ne passent pas exactement au centre des montants, c'est-à-dire ne se confondent pas complètement avec la fibre moyenne, il en résulte des 
+ moments fléchissants et des efforts tranchants qu'il y a lieu de calculer.
+ Intensité du vent
+ Nous avons admis plusieurs hypothèses :
+ a. La première donne lieu, en général, aux fatigues maxima : c'est celle d'un vent de 300Kg par mètre carré agissant uniformément 
+ sur toute la hauteur de la Tour. D'après la formule généralement admise, P = 0,12V 2 , dans laquelle P est la pression par mètre carré et V 
+ la vitesse, cette pression de 300Kg correspond à une vitesse de 50 mètres par seconde, qui est celle d'un grand ouragan. Quelle que soit l'incertitude 
+ qui règne sur la mesure même de pareilles vitesses, on peut être assuré qu'il n'en a jamais été observé de semblables dans nos régions, au moins aux 
+ environs du sol ; si elles se réalisaient, elles donneraient lieu à de véritables désastres. Une pression de 150Kg renverse les trains de chemin de 
+ fer, ainsi que cela a été observé à Rivesaltes , et celle de 270Kg est le 
+ maximum admis par la circulaire ministérielle du 29 août 1891, pour le calcul des ouvrages d'art. Ce dernier chiffre est celui qui est généralement 
+ adopté dans ces calculs.
+ Nous devons dire cependant que des rafales de 40 mètres de vitesse ont déjà été indiquées par les instruments placés au sommet de la Tour, toutes 
+ réserves faites sur la justesse de ces indications. Elles correspondent, d'après la formule, à des pressions de 200Kg par mètre carré. Mais, ainsi 
+ qu'il sera dit plus loin, nous avons des raisons de penser, d'après des expériences directes de pression, que la formule ci-dessus donne des résultats 
+ trop élevés et que le coefficient de 0,12 devrait se réduire à 0,09, ce qui donnerait en réalité pour des vents de 50 mètres, 225Kg de pression par 
+ mètre carré et pour des vents de 40 mètres, 150Kg de pression. Notre hypothèse de 300Kg correspondrait à un vent de 60 mètres par seconde ou 216 
+ kilomètres à l'heure, lequel n'a jamais été observé. En admettant qu'il se produise à un certain moment au sommet, il diminuerait rapidement en se 
+ rapprochant du sol.
+ b. Cette considération nous a conduit à examiner une seconde hypothèse qui est également excessive quoique plus voisine de la 
+ réalité : c'est celle d'un vent atteignant 400Kg au sommet et diminuant progressivement pour se réduire à 200Kg à la surface du sol. En un point 
+ quelconque, situé à une hauteur h au-dessus du sol, l'intensité du vent sera de 200Kg +— x h.
+ Avec le coefficient de 0.12 les vitesses respectives correspondantes sont de 58 mètres au sommet et 40 mètres à la base; avec le coefficient de 0,09, 
+ les vitesses seraient de 66 mètres et de 47 mètres. Ces deux hypothèses conduisent aux extrêmes limites des coefficients de travail et ce sont elles qui 
+ nous ont servi à déterminer les sections des divers éléments de la Tour. Néanmoins, une fois les sections déterminées il nous a paru utile, pour rentrer 
+ dans les probabilités maxima de la pratique, de rechercher ce que deviennent les coefficients extrêmes dans le cas d'un vent variant de 300Kg au sommet 
+ à 100 kilos à la surface du sol.
+ Surfaces offertes au vent
+ Les surfaces présentées au vent sont déterminées en supposant que le vent agisse normalement aux faces, dans une direction horizontale ; ce qui 
+ revient à les évaluer en les comptant dans leur projection verticale. Les surfaces pleines (planchers, galeries, restaurants, etc.) ont été naturellement 
+ comptées dans leur totalité. Pour la détermination des surfaces évidées, nous avons admis que la première paroi normale au vent est entièrement frappée 
+ par celui-ci avec sa pleine intensité et que les parois voisines qu'elle protège partiellement sont aussi frappées entièrement, mais par un vent dont 
+ l'intensité est diminuée dans le rapport des vides aux pleins de la paroi antérieure. Cela revient à dire que pour une même intensité du vent, si 
+ s 1 , et s 2 représentent les surfaces des pièces rencontrées par le vent sur la première et la deuxième face, S 1 la 
+ surface de la première face supposée entièrement pleine, nous aurons à compter pour la seconde face une surface de 
+ S 2 = s 2 x (S 1 - s 1 ) / S 1 .
+ Nous avons appliqué la même méthode pour déterminer les surfaces offertes au vent par les barres de treillis et les entretoises qui sont en forme de 
+ caisson et dont les 4 cornières d'angle sont réunies entre elles par un petit treillis. Cette hypothèse n'est plus exacte quand la distance entre la 
+ première surface frappée et celle qui est derrière devient grande ; car, par suite de cette distance, le vent reprend son intensité première. Aussi dans 
+ la partie intermédiaire entre la première et la deuxième plate-forme, nous avons admis que le vent frappait également tous les montants. A la base de la 
+ Tour, en raison du grand nombre et de l'importance des pièces de liaison qui réunissent les arbalétriers, nous avons été encore plus loin : nous avons 
+ admis que les quatre montants étaient pleins ou plus exactement qu'ils étaient remplacés par leur projection pleine sur le plan vertical et qu'en outre ils 
+ étaient tous également frappés. Ce mode de calcul conduit à peu près aux mêmes résultats que l'application des règles précédentes, ainsi que nous avons pu 
+ nous en rendre compte, mais il est plus simple.
+ Division en éléments
+ Dans la suite des calculs, nous admettrons que l'action du vent se trouve concentrée en un certain nombre de points convenablement répartis sur toute 
+ la hauteur de la Tour. Nous avons, à cet effet, divisé la Tour par des plans horizontaux en 28 éléments ou surfaces frappées. A chacune d'elles correspond 
+ un effort du vent que nous appliquerons au centre de l'élément.
+ Cette division de la Tour en éléments est indiquée dans la planche XXXIII . 
+ Chaque élément courant comprend deux demi-panneaux adjacents et comme les hauteurs de deux panneaux successifs ne diffèrent jamais beaucoup l'une de l'autre, 
+ le centre d'action du vent sur un élément peut être considéré comme situé sur l'entretoise horizontale qui sépare les deux panneaux; ainsi sur chacune de 
+ ces entretoises se trouve concentrée la moitié des efforts qui agissent sur les deux panneaux adjacents
+ Surfaces des éléments, efforts du vent par élément et moments de renversement correspondants
+ Nous avons reporté dans un appendice le calcul détaillé des surfaces de chacun des panneaux et nous donnons dans le tableau ci-dessous les surfaces 
+ correspondant à chacun des éléments 0 à 28, ainsi que les efforts P dus au vent dans les deux hypothèses, obtenus en multipliant les surfaces par 300Kg et 
+ 200 + 200/300 x h Kilos. Nous inscrirons dans le même tableau les hauteurs k du centre des éléments au dessus de la base ainsi que le moment de renversement 
+ PA correspondant.
+ Il résulte de ce tableau que l'ensemble de la Tour présente au vent une surface de 8515,19, que le vent, dans les deux hypothèses, y exerce des efforts 
+ qui sont respectivement de 2554 tonnes et 2185 tonnes, enfin que les moments de renversement totaux sont respectivement de 216.866 tonnes-mètres et 215.588 
+ tonnes-mètres; c'est-à-dire qu'au point de vue de cet effet, les deux hypothèses sont à peu près équivalentes. Dans la première hypothèse, le centre d'action 
+ du vent est situé à une hauteur de 216 866 / 2 554 = 84,9m au-dessus des appuis; dans la deuxième 215 388 / 2 185 = 98,55m
+ Nous allons maintenant, étant connus les efforts, en examiner l'effet sur chacune des parties de la Tour. Mais il faut pour cela considérer successivement, 
+ soit la partie supérieure, c'est-à-dire celle située au-dessus du 2 e étage, dans laquelle tous les montants sont solidairement réunis ; soit la 
+ partie inférieure, c'est-à-dire celle allant du 2 e étage au sol, dans laquelle les quatre montants sont distincts et ne sont plus réunis que par 
+ les ceintures du 1 er et du 2 e étage.
+ Calcul des efforts moléculaires dus au vent dans la partie supérieure
+ Arbalétriers
+ Les arbalétriers de chacune des faces étant rendus solidaires par leurs treillis, 
+ le calcul des efforts se fait simplement à l'aide des moments fléchissants.
+ Soit M le moment fléchissant de tous les efforts du vent agissant au-dessus de la section MN, &omega; la section des 3 arbalétriers de la face cc frappée 
+ par le vent ou celle de la face opposée c'c'; e l'écartement horizontal des centres des faces opposées, et E l'effort dans une face; la valeur de ce dernier 
+ sera M/e et le coefficient de travail R 1 = E / &omega; en admettant que les arbalétriers soient sensiblement verticaux et que les arbalétriers b'd', 
+ voisins de la fibre neutre, aient un moment de résistance négligeable. En faisant le calcul pour la région voisine du 2 e étage, dans laquelle les 
+ arbalétriers bd sont séparés et en y introduisant le moment d'inertie exact, tenant compte de ces arbalétriers, il serait facile de reconnaître que, même en 
+ ces points, leur influence est négligeable et n'affecte le coefficient de travail que de 0,2Kg environ.
+ La courbe des moments fléchissants est tracée dans la planche XXXIII , fig. 3, 
+ pour chacune de ces deux hypothèses, à l'aide des polygones des forces, figures 1 et 2. L'échelle des longueurs étant de 0,002 par mètre et les distances 
+ polaires étant de 800 000 kilos, il en résulte pour les moments une échelle de 0,002 / 800 000 = 0,0025 pour 1 000 000 kgm. Ils peuvent être directement lus 
+ sur l'épure.
+ Pour les calculer numériquement, on se sert de la considération suivante : Soient deux sections S n et S n+1 , séparées par la hauteur 
+ h n du panneau, dans lesquelles M n , et M n+1 sont les moments fléchissants, T n et T n+1 sont les efforts 
+ tranchants et soit P n l'effort du vent dans la section S n .
+ On a M n+1 = M n + (T n + P n ) n n ou M n+1 = M n + T n + h n ce 
+ qui permet de déduire chaque moment du moment précédent, en y ajoutant le produit de l'effort tranchant au point considéré par la hauteur du panneau. C'est 
+ ainsi que l'on a établi les chiffres inscrits dans le tableau qui va suivre de la section I jusqu'à la section XVII. Comme vérification, nous avons aussi 
+ déterminé directement pour cette section XVII,le moment fléchissant correspondant à chacune des deux hypothèses; il est la somme de tous les moments partiels 
+ dus aux efforts du vent agissant au-dessus de cette section; nous donnerons d'abord ce tableau.
+ Calcul du moment fléchissant dans la section XVII
+ Les moments dans cette section sont ainsi de 50 923 218m. kg. dans la 1 ere hypothèse et de 59 745 250m. kg. dans la deuxième. Dans le tableau 
+ ci-dessous nous avons résumé les éléments du calcul pour chacune des sections, comme moments fléchissants et comme efforts tranchants, ainsi que les efforts 
+ dans les faces et les coefficients de travail dans les arbalétriers.
+ Calcul du moment fléchissant, de l'effort tranchant et du coefficient de travail dans les arbalétriers pour chacune des actions au-dessus de la section XVII
+ Le travail maximum dû au vent dans les arbalétriers a lieu dans la section XVII 
+ où il atteint 7,4Kg et 8,8Kg par millimètre carré.
+ Treillis
+ Nous admettrons que les efforts des treillis coupés par une même section horizontale MN se répartissent également entre toutes les barres des parois 
+ résistantes. On calculera donc l'effort F suivant ces barres comme si l'une d'elles, AD par exemple, était seule, et comme le nombre des barres résistantes 
+ est de 8, soit 4 par paroi, on admettra que l'effort pour chacune des barres est de F/8.
+ L'effort F s'obtient en décomposant la force extérieure en 3 forces passant par les arbalétriers A'A, BB' et par les barres A'D.
+ Il suffit pour cela (fig. 11) de prolonger les directions AA', BB' jusqu'à leur point de rencontre O, et la direction A'D jusqu'au point de rencontre C 
+ avec celle de la résultante des forces extérieures P, puis de joindre CO et de construire le polygone des forces de la figure 12; sa ligne de fermeture 
+ parallèle à A'D donne l'effort F cherché. La position de la force extérieure P elle-même est obtenue pour chaque section MN, au moyen du polygone funiculaire 
+ des moments fléchissants dus au vent (fig. 11), en déterminant l'intersection K de son premier élément vertical avec la prolongement de l'élément coupé.
+ On aurait pu prendre la barre DB' et on aurait obtenu le même effort d'une façon semblable, en raison de la symétrie des barres A'D et DB'. Quant aux barres 
+ AE ou EB, on obtiendrait des efforts légèrement supérieurs, mais assez peu différents pour qu'il y ait lieu d'en tenir compte; c'est pour ce motif que nous 
+ avons considéré seulement la barre A'D et que nous avons donné aux autres la même section. Pour la clarté de la figure d'ensemble, 
+ planche XXXIII , nous avons rabattu la force F sur la direction de la force P. 
+ (fig. 12). Le tableau ci-dessous donne pour chaque section, dans les deux hypothèses, la valeur de l'effort F, F celle de l'effort dans chaque barre, la 
+ section de celle-ci et le travail correspondant.
+ Calcul des efforts et des coefficients de travail dans les barres de treillis au-dessus de la section XVII
+ Le coefficient de travail moyen est aux environs de 5 à 6 kilos.
+ Calcul des efforts moléculaires dus au vent dans la partie inférieure
+ Principes des calculs
+ Soient P 1 , P 2 , P 3 ,... les différentes composantes du vent agissant sur la Tour à des hauteurs h 1 , h 2 , 
+ h 3 ,... au-dessus de la base AA'.
+ Supposons tracé le polygone funiculaire de ces forces, pour la partie inférieure seulement (fig. 13), à l'aide du polygone des forces (fig. 14) dans 
+ lequel les efforts sont portés horizontalement et dont la distance polaire est V'.
+ Soit M = &Sigma;P n h n le moment de renversement total de tous les efforts du vent P 1 , P 2 , P 3 , ... 
+ par rapport à la base AA' de la Tour. Le moment dans une section quelconque MN est M n = x n V', à la base il est M = xV', expressions 
+ dans lesquelles x n , et x représentent les abscisses du polygone funiculaire dans la section MN et à la base (fig. 13). Quant à la distance polaire V, 
+ elle est arbitraire : pour avoir celle correspondant au polygone funiculaire passant par les appuis, il suffît de poser M = 50,7 V, 50,7 étant l'abscisse du 
+ centre des montants à la base; d'où l'on tire V = M / 50,7. Ce polygone funiculaire est alors en même temps la courbe des pressions des efforts du vent.
+ Comme nous ne déterminons les efforts que pour un seul montant, il est plus simple de porter dans le polygone des forces, au lieu des efforts totaux P, 
+ le quart de ces efforts pour obtenir directement l'effort dans un montant.
+ La courbe des pressions correspondant à ces efforts &rho; 1 = P 1 / 4, &rho; 2 = P 2 / 4, etc., est à tracer avec 
+ une distance polaire v = V / 4 (fig. 15 et 16).
+ Pour une section MN (fig. 15) la force extérieure q sur un montant est donnée dans le polygone des forces (fig. 16). Les efforts dans les montants sont 
+ des efforts de tension q dans les deux premiers montants A' et B' frappés par le vent, et des efforts symétriques de compression q dans les deux autres 
+ montants A et B (fig. 17). Nous ne considérons que les montants où le vent produit des efforts de compression qui viennent s'ajouter à ceux qui sont produits 
+ par le poids propre de la construction. La force extérieure q produit dans la section MN :
+ Un effort de compression N agissant dans la fibre moyenne du montant
+ Un effort tranchant T normal à cette fibre moyenne.
+ Des moments fléchissants provenant de ce que la courbe des pressions ne passe pas dans cette section au même point que la fibre moyenne, c'est-à-dire par l'axe du montant.
+ Efforts de compression et efforts tranchants
+ Ces efforts s'obtiennent pour chaque section en décomposant dans le polygone des forces (fig. 18) la force extérieure q en deux forces, l'une OC parallèle 
+ à la direction de la fibre moyenne dans la section MN, l'autre CD normale à cette même direction.
+ Cet effort CD est l'effort tranchant T que l'on décomposera suivant les directions des barres de treillis du panneau coupé par la section MN ; on aura ainsi 
+ l'effort produit par le vent dans ces barres.
+ Quant à l'effort de compression OC, comme le montant est incliné suivant le plan diagonal de la Tour, cet effort qui agit dans un plan vertical est encore 
+ à décomposer suivant la direction du montant dans la face perpendiculaire à la figure (fig. 18). Cette décomposition peut se faire très simplement de la 
+ manière suivante :
+ Du pôle O du polygone des forces comme centre, on trace un arc de cercle quelconque allant du point 1 situé sur la verticale du pôle jusqu'au point de 
+ rencontre K avec OC. Du point K, on élève une perpendiculaire KL à OC et du point I, une perpendiculaire IL à KL; on obtient ainsi le point L, intersection 
+ de ces deux lignes. En décomposant la composante OC suivant la direction de OL, on obtient l*effort de compression N*=OE dans le montant. L'angle CEO est en 
+ effet égal à l'inclinaison en rabattement de la fibre moyenne dans l'une des faces du montant.
+ En effet, MN étant un plan horizontal (fig. 20), pour avoir OL, connaissant OK, il suffit d'avoir la longueur KL = KG et de la porter sur une perpendiculaire 
+ à OK élevée au point K. Or, comme nous l'avons démontré précédemment, à propos des charges verticales, G est sur l'horizontale menée par K, et KG ramenée en KL 
+ donne le point L cherché (fig. 18). On voit de suite que la construction indiquée ci-dessus, au moyen des perpendiculaires KL et IL, se ramène à celle-ci ; elle 
+ définit graphiquement le point L très exactement. Cet effort N qui agit au centre O du montant dans la section MN, se répartit également entre les quatre 
+ arbalétriers a, b, c et d (fig. 21) et donne dans chacun d'eux un effort de compression E 1 = N / 4.
+ Les courbes de pression qui correspondent aux deux cas de surcharge du vent ont été tracées dans l'épure de la 
+ Planche XXXII , fig. 3, à l'aide des polygones des forces fig. 1 et fig. 2, qui n'ont été 
+ déterminés que pour les sections de la partie inférieure. La distance polaire de chacun d'eux est égale au quart du moment de renversement M divisé par le 
+ demi-écartement des montants à la base, soit 50,70m. Dans la première hypothèse, nous avons vu que le moment de renversement est de 216 866 479 m. k. On a donc 
+ v n = I / 4 x 2l6 866 479 / 70,70 = 1 069 350 Kg.
+ Dans la deuxième hypothèse, le moment de renversement est de 215 388 260 m. k. et la distance polaire est de v n =I / 4 x 215 388 260 / 50,70 = 1 062 050 Kg. 
+ Les efforts tranchants sont également déterminés dans les mêmes polygones.
+ Moments fléchissants
+ Le couple qui les produit peut se décomposer en deux; l'un &mu; qui agit dans un plan parallèle à la direction du vent XY, l'autre transversal &mu;' qui agit 
+ dans un plan perpendiculaire ZU (fig. 22). Le premier est dû au désaxement de la force extérieure dans le sens de la direction du vent, et le second au désaxement 
+ dans le sens normal à la direction du vent, ainsi que l'indiquent les figures 23, 24, 25 et 26 ci-dessous.
+ Détermination des moments parallèles a la direction du vent
+ Pour la détermination de ces moments, il faut avoir les projections de la courbe de pression sur les plans XY et ZU. La première est donnée par le polygone 
+ funiculaire (fig. 15, p. 34) correspondant aux forces horizontales de renversement 
+ ( Planche XXXII , fig. 3). En appelant e l'écartement horizontal de cette courbe de pression 
+ par rapport à la fibre moyenne pour une section quelconque MM' (fig. 27), le moment fléchissant de la force extérieure F est égal à F&theta;, &theta; étant la 
+ distance normale : par suite de triangles semblables formés avec le polygone des forces, e / &theta; = F / v, donc F&theta; = ve. Nous désignerons ce moment 
+ dans le plan vertical par &mu;, on aura ainsi &mu; = ve.
+ Ce moment doit être projeté suivant la face du montant. Pour cela, il suffit de représenter le moment &mu;, agissant dans le plan XY, par son axe représentatif 
+ et de le composer avec le moment &mu; cherché, dont l'axe est perpendiculaire au plan de la face B du montant; on a ainsi &mu; 1 = &mu; / sin &alpha;, 
+ &alpha; étant l'inclinaison de la face du montant sur l'horizontale (fig. 28).
+ Il est facile de calculer l'expression &mu; / sin &alpha;. En effet e = a - d (fig. 23), c'est-à-dire la différence entre l'abscisse de la fibre moyenne, par 
+ rapport à l'axe vertical dans le plan vertical des montants, donnée par le diagramme de l'élévation 
+ ( Planche XXXI ) et l'abscisse de la courbe de pression qui se calcule à l'aide des moments 
+ de renversement. Comme M = dv, on en tire d = M / v.
+ Les valeurs de M sont calculées numériquement à l'aide du tableau précédent, comme nous l'avons fait pour la partie supérieure, par les mêmes formules 
+ M n+1 = M n + T n+1 + h n . Quant aux angles &alpha;, ils sont déterminés sur le même diagramme de l'élévation par 
+ leur tangente (fig. 29) : h étant la hauteur du panneau dont d et d' sont les abscisses, tg &alpha; = h / (d - d') d'où l'on tire les valeurs de sin &alpha;.
+ Enfin v est la distance polaire, égale à V / 4, des polygones des forces ( Planche XXXII , fig. 1 et 2).
+ Quant à l'effort produit dans les arbalétriers sous l'action du moment &mu; il est égal pour une face à E = I / 2 x &mu; / i, i désignant l'écartement normal 
+ des arbalétriers dans leurs faces rabattues (fig. 30). Le tableau ci-dessous résume tous les éléments pour les deux hypothèses.
+ Calcul des efforts dans les arbalétriers dus aux moments fléchissants agissant dans le plan parallèle àla direction du vent.
+ En ce qui concerne les signes, nous donnons toujours le signe positif aux couples qui tournent autour du centre O du montant dans le sens des aiguilles d'une 
+ montre. Pour une valeur positive de &mu;, cette valeur de E, est une compression sur l'arbalétrier a et un effort de tension sur l'arbalétrier c, aussi bien quand 
+ le vent agît dans la direction XY que quand il agit dans la direction UZ.
+ Au contraire, pour les arbalétriers b et d, l'effort E n représente, soit de la tension, soit de la compression, suivant que le vent agit dans l'une 
+ ou l'autre de ces directions. On a donc, en supposant positifs les efforts de compression :
+ Dans l'arbalétrier a, un effort + E = &mu; / 2i
+ Dans l'arbalétrier c, un effort - E = &mu; / 2i
+ Quand le vent agit suivant la direction XY, on a :
+ Dans l'arbalétrier b, un effort + E = &mu; / 2i
+ Dans l'arbalétrier d, un effort - E = &mu; / 2i
+ Quand il agit dans la direction UZ, les efforts dans ces deux arbalétriers 
+ changent de signe.
+ Détermination des moments normaux à la direction du vent
+ Les efforts dus aux moments fléchissants transversaux se déterminent d'une manière analogue.
+ Le moment fléchissant &mu; de la section MN, produit par le désaxement de la force extérieure dans le plan vertical UZ normal au vent, est égal au produit de la 
+ distance polaire v du polygone des forces par l'écartement horizontal e' de la fibre moyenne et de la corde (fig. 26); c'est-à-dire que l'on a &mu; = ve'; ce moment 
+ agit dans le plan vertical UZ.
+ Pour obtenir le moment correspondant rabattu dans la face, on fera une décomposition analogue à celle qui a déjà été faite pour le couple &mu; du plan XY parallèle 
+ à la direction du vent. On trouve ainsi dans la face du montant un moment qui est égal à &mu; n ' = &mu; n ' / sin &alpha; r et qui produit 
+ dans les arbalétriers a, b, c, d des efforts E &alpha; = &mu;' / 2i. Ces efforts sont toujours positifs pour l'arbalétrier a, et négatifs pour l'arbalétrier 
+ c, en supposant &mu;' positif. C'est-à-dire qu'on a :
+ Dans l'arbalétrier a, un effort + E = &mu; / 2i
+ Dans l'arbalétrier c, un effort - E = &mu; / 2i
+ Quand le vent agit suivant la direction XY, on a :
+ Dans l'arbalétrier b, un effort + E = &mu; / 2i
+ Dans l'arbalétrier d, un effort - E = &mu; / 2i
+ Quand il agit dans là direction UZ, les efforts dans ces deux derniers arbalétriers changent de signe. Ces moments ont été calculés pour les sections XIX, XX, XXI 
+ et XXII dans le tableau ci-dessous par la méthode que nous venons d'indiquer. Dans toutes les autres sections, ils sont nuls. Dans le sens normal au vent, les efforts 
+ se transmettent suivant la corde de la fibre moyenne entre deux ceintures. Les abscisses d de cette corde, ainsi que les abscisses a de la fibre moyenne, sont indiquées 
+ dans la figure 31 ci-dessus et se trouvent dans le tableau qui donne aussi les valeurs e' = a — d' celles de sin &alpha;, de i, ainsi que les moments &mu;' = e'v et 
+ &mu;' = &mu;' / sin &alpha; n qui correspondent aux deux hypothèses de surcharge du vent, et les efforts E n = &mu;' / 2i.
+ Calcul des efforts dans les arbalétriers dus aux moments transversaux.
+ Calcul des efforts totaux dus au vent dans les arbalétriers et coefficients de travail maximums
+ Nous avons maintenant tous les éléments pour résumer les efforts totaux dans les arbalétriers, c'est-à-dire les efforts longitudinaux suivant la fibre moyenne et 
+ les efforts dus au couple de désaxement. Ces efforts, en supposant les moments &mu; n et &mu; n ' positifs, sont :
+ Dans l'arbalétrier a, un effort E 4 = E 1 + E 2 + E 3 
+ Dans l'arbalétrier c, un effort E 4 = E 1 - E 2 - E 3 
+ Quand le vent agit suivant la direction XY, on a :
+ Dans l'arbalétrier b, un effort E 4 = E 1 + (E 2 - E 3 )
+ Dans l'arbalétrier d, un effort E 4 = E 1 - (E 2 - E 3 )
+ Quand le vent agit suivant la direction UZ, on a :
+ Dans l'arbalétrier b, un effort E 4 = E 1 +-(E 2 - E 3 )
+ Dans l'arbalétrier d, un effort E 4 = E 1 + (E 2 - E 3 )
+ Comme le vent peut agir soit sur une face soit sur l'autre, nous choisirons le cas qui donne sur les arbalétriers b ou d les plus grands efforts, lesquels sont 
+ ainsi de :
+ E N = E 1 + (E 2 - E 3 ) si E 2 - E 3 > 0
+ E N = E 1 - (E 2 - E 3 ) si E 2 - E 3 
+ Ces efforts sont résumés dans le tableau ci-dessous pour les deux hypothèses.
+ Calcul des efforts totaux dus au vent dans les arbalétriers.
+ U est facile d'en déduire le coefficient de travail des arbalétriers, dont la section est connue; c'est ce que nous donne le tableau ci-dessous :
+ Calcul des coefficients maximums de travail dus au vent dans les arbalétriers.
+ Ces coefficients devront être ajoutés à ceux dus aux poids propres.
+ Calcul des efforts dûs au vent dans les barres de treillis et coefficients de travail correspondants
+ Ces efforts, ainsi que les coefficients de travail correspondants, sont résumés dans le tableau ci-dessous :
+ Nous avons admis dans les calculs précédents l'hypothèse d'un vent frappant la Tour normalement à l'une de ses faces; nous allons examiner maintenant le cas d'un 
+ vent agissant dans une direction quelconque et montrer que les efforts qu'il produit sont égaux ou inférieurs à ceux déjà calculés. Dans ce but, considérons un prisme 
+ quadrangulaire ABCD de largeur a, et d'une hauteur égale à l'unité (fig. 52).
+ Si un vent d'une intensité p agit normalement à l'une de ses faces, il produit sur le prisme un effort pa. Quand, au contraire, le vent rencontre la face AB du 
+ prisme sous un angle &alpha;, il produit sur cette face un effort normal qui a pour valeur pa sin &alpha;. L'effort correspondant du vent sur la face 
+ CB est égal à pa cos &alpha;.
+ Donc, si P 1 , P 2 , ... P n représentent les efforts du vent agissant sur la Tour normalement à l'une de ses faces, un vent de même 
+ intensité, venant frapper la face AB sous un angle &alpha;, produira sur cette face des efforts P 1 sin &alpha;, P 2 sin &alpha;, etc. et sur la 
+ face normale CB des efforts P 1 cos 2 &alpha;, P 2 cos 2 &alpha;, ... P n cos 2 &alpha;.
+ Il suffira, par conséquent, d'examiner séparément les efforts produits par les forces P 2 sin &alpha; normales à la face AB et ceux que donnent les 
+ forces P cos 2 &alpha; normales à la face BC, d'en faire ensuite la somme pour avoir les efforts totaux dus au vent.
+ Voir aussi :
+ Tous les calculs 
+ Histoire de la tour Eiffel 
+ &times; 
+ Arbaletrier (terme d'architecture)
+ Un arbalétrier, en architecture, est la pièce structurante d'un édifice. Dans le cas de la tour Eiffel, il s'agit des longues 
+ poutres partant des maçonneries, au niveau du sol, et se joignant au sommet. Il y a 4 arbalétriers par pilier, 3 d'entre eux se 
+ joignant deux à deux au niveau du 2e étage, le 4e joignant les autres au sommet.
+ Fermer 
+ &times; 
+ Caisson (terme d'architecture)
+ Un caisson est 
+ un élément métallique ressemblant à un dé n'ayant que les arrêtes, c'est à dire un cube formé à partir de poutrelles. Les faces d'un 
+ caisson sont la plupart du temps renforcées par des entretoises, d'autres poutrelles plus petites qui relient les angles d'une face. Un 
+ caisson a pour caractéristique de pouvoir travailler aussi bien à la compression qu'à l'extension avec une exceptionnelle résistance. Si 
+ les parois du caisson sont évidées, on dit qu'il est en treillis, c'est ce genre de caissons en treillis qui a été utilisé pour la tour 
+ Eiffel. Les caissons en treillis n'opposent au vent que le minimum de surface.
+ Si vous observez la tour Eiffel, vous constaterez qu'elle est formée de 29 rangées de caissons superposés.
+ Fermer 
+ &times; 
+ Contreventement (terme d'architecture)
+ Un contreventement est un système statique destiné à assurer la stabilité globale d'un ouvrage vis-à-vis des effets 
+ horizontaux issus des éventuelles actions sur celui-ci. La plupart du temps, il s'agit de contrer les effets du vent, 
+ surtout en ce qui concerne la tour Eiffel. Il sert également à stabiliser localement certaines parties de l'ouvrage.
+ Fermer 
+ &times; 
+ Gousset (terme d'architecture)
+ Le gousset est une pièce de charpente, jambage ou plaque en bois ou en fer, posé obliquement selon un angle d’environ 45° 
+ reliant par assemblage un poteau vertical et une poutre horizontale tout en maintenant l’écartement et en donnant de la 
+ rigidité à cet ensemble.
+ Fermer 
+ &times; 
+ Massif (terme d'architecture)
+ Un massif est un ouvrage compact de stabilité faisant partie de la structure d'un bâtiment ou d'un pont (ouvrage d'art). 
+ Il est fabriqué en béton plein ou est constitué avec des blocs de pierre taillée et des moellons. La tour Eiffel possède 
+ quatre massifs, c'est le coeur des 4 piliers.
+ Fermer 
+ &times; 
+ Pile (terme d'architecture)
+ La pile, généralement d'un pont, est un appui intermédiaire supportant un tablier (une route, une voie de chemin de fer, etc). 
+ Il s’agit d’un appui permanent, autrefois systématiquement en maçonnerie, puis passés à la révolution industrielle en métal 
+ (fonte, fer), avant d'être en béton, comme c'est la plupart du temps fait de nos jours.
+ Fermer 
+ La tour Eiffel
+ Découvrir 
+ Photos 
+ Emplacement 
+ Taille 
+ Poids 
+ La tour en chiffres 
+ Symbolisme 
+ Peinture 
+ Histoire de l'art 
+ Oeuvres artistiques 
+ Chansons 
+ Littérature 
+ Peintures 
+ Cinéma 
+ Théâtre 
+ Publicité 
+ Description 
+ Rez-de-chaussée 
+ 1er étage 
+ 2e étage 
+ Etage intermédiaire 
+ 3e étage 
+ Les 72 savants 
+ Ascenseurs 
+ Escaliers 
+ Machinerie 
+ Eclairage 
+ Copies et répliques 
+ Watkin's tower 
+ Ascenseurs Fives-Lille 
+ Visibilité 
+ La tour en 1900 
+ Histoire 
+ Chronologie 
+ Contexte technologique 
+ Les autres projets 
+ Réticences des artistes 
+ Construction 
+ Inauguration 
+ Medaille commémorative 
+ Rénovations 
+ Procés droit de reproduction 
+ Arnaques diverses 
+ Imprimerie du figaro 
+ La tour et l'expo 
+ Les entreprises Eiffel 
+ Société d'exploitation 
+ Biographies 
+ Gustave Eiffel 
+ Maurice Koechlin 
+ Emile Nouguier 
+ Stephen Sauvestre 
+ Jean Compagnon 
+ Adolphe Salles 
+ Jean Gobert 
+ Edouard Lockroy 
+ Franz Reichelt 
+ Construction 
+ Contrat de concession 
+ Plans 
+ Planches techniques 
+ Calculs des forces 
+ Calcul dûs au poids 
+ Calcul dûs au vent 
+ Calcul du poids des visiteurs 
+ Travail en atelier 
+ Planning 
+ Personnel 
+ Fondations 
+ Socles 
+ Piliers 
+ Etages 
+ Rivetage 
+ Grues 
+ Coût 
+ Rentabilité 
+ Fer utilisé 
+ Génie civil 
+ Tourisme 
+ Tarifs 
+ Horaires 
+ A voir sur la tour 
+ Récit d'une visite 
+ Images d'une visite 
+ Visiteurs célèbres 
+ Sciences 
+ Observations météo 1889 
+ Observations météo 1890 
+ Résistance de l'air 
+ Pression de l'air 
+ Manomètre hautes pressions 
+ Spectre solaire 
+ Absorptions des radiations 
+ Navigation aérienne 
+ Radiodiffusion 
+ Téléphotographie 
+ Télégraphie optique 
+ Phénomènes naturels 
+ Effets de la foudre 
+ Oscillations du sommet 
+ Effets de la montée 
+ Tous les monuments
+ Copyright 2013 - 2026 - Toute reproduction interdite sans l'autorisation de l'auteur. Ce site Internet est un site privé, non officiel, issu du travail de compilation des oeuvres de différents auteurs. Sauf mention contraire, les photos sont la propriété du webmaster. Toute utilisation des textes, photos ou autres éléments de ce site internet sont interdits sans accord du webmaster. Pour le contacter, utilisez le lien sur la page crédits . Sources documentaires : cliquez ici . Pour consulter la politique de confidentialité du site veuillez cliquer ici : Politique de confidentialité . 
+ Sites Internet du même auteur : Les Pyrénées-Orientales , Marguerite Duras , Merveilles du monde , Empereurs romains .

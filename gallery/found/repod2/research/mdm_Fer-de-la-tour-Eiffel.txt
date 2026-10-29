@@ -1,0 +1,289 @@
+Choix du fer pour construire la tour Eiffel 
+ Menu 
+ Découvrir 
+ Description 
+ Tourisme 
+ Histoire 
+ Construction 
+ Sciences 
+ Boutique 
+ Sommaire 
+ Plan 
+ FAQ 
+ Monuments 
+ Monuments 
+ Tour Eiffel 
+ Construction 
+ Choix du fer 
+ -->
+ La tour Eiffel
+ Type
+ Tour autoportante en fer
+ Auteur
+ Gustave Eiffel
+ Inauguration
+ 31 mars 1889
+ Intérêt
+ Symbole du savoir-faire français
+ Propriétaire
+ Mairie de Paris
+ Inscription
+ Patrimoine mondial de l'UNESCO depuis 1991
+ Visiteurs
+ 7 millions/an
+ Situation : Paris, France
+ GPS : 48° 51' 30.13'' Nord / 2° 17' 40.13'' Est
+ Menu
+ Sommaire 
+ Description 
+ Ses dimensions 
+ Histoire 
+ Gustave Eiffel 
+ Contexte 
+ Comment la visiter ? 
+ Toutes les pages 
+ Autres monuments 
+ Rechercher
+ Le fer de la tour Eiffel
+ Cette page a pour but de donner une réponse aux deux questions "Pourquoi la tour Eiffel est-elle en fer ?" et "D'où vient le 
+ fer la tour Eiffel ?". En y réfléchissant on peut se poser la première question car ce choix ne va pas sans problème. On sait par 
+ exemple que le fer est un métal plus souple que la moyenne, et qu'il s'oxyde facilement. Pourquoi donc le choisir pour un bâtiment 
+ extérieur de grande taille, donc difficile à entretenir, alors que d'autres métaux comme l'acier aurait été plus pratique ? En 
+ fait il y a plusieurs réponses à cette question. Mais pour y venir, il faut remonter un peu le temps.
+ Choix du métal : Pourquoi du fer ?
+ Tout d'abord il faut prendre en compte le périmètre d'action de ce choix. Le but est de construire une tour de 300m (1000 pieds) 
+ de hauteur. Toutes les constructions jusqu'au milieu du XIXe siècle sont en pierre ou, de façon plus fréquente, en maçonnerie. Les 
+ avantages sont multiples : solidité, facilité de mise en oeuvre, modularité, mais la maçonnerie fait face à un problème majeur : 
+ son poids. Plus en monte la construction, plus cette dernière est lourde. Il en résulte que les parties supérieures appuient sur les 
+ parties inférieures à un tel point que le matériel utilisé fini par se fracturer. Il en résulte un effondrement de l'édifice qui 
+ arrive en fonction de la quantité de matériel utilisé et du poids que les parties basses doivent supporter. Pour la pierre la plus 
+ solide, une pression de 30 Kg par centimètre carré est considéré comme la limite à ne pas dépasser. En encore, il faut que 
+ l'appareillage des pierres soit d'une grande qualité pour que le bâtiment puisse tenir à de telle pression.
+ Exemple du monument de Washington
+ Dans son livre "La tour de 300 mètres", Gustave Eiffel prend exemple sur le monument de Washington pour étayer son choix du fer pour 
+ la tour. Il indique que celui-ci mesure 169,25 m pour une base carrée de 16,75 m seulement qui va en se rétrécissant jusqu'à 10,50 m. Il 
+ est vide, avec une épaisseur des murs à la base de 4,50 m allant en se rétrécissant eux aussi jusqu'à n'avoir que 50 cm au sommet. Il 
+ est fait en granit avec revêtement en marbre, ce qui lui donne un poids de 45 000 tonnes au-dessus des fondations. Ce poids, répartie 
+ sur une base de 223 mètres carrés, donne un coefficient à la compression de 20 kg par centimètre carré. En prenant en compte la force du 
+ vent, ce coefficient monte à 26,5 Kg, ce qui se rapproche dangereusement de la limite que peut supporter la pierre. Et encore, le 
+ monument de Washington avait été conçu initialement sur des plans montant le bâtiment à 183 mètres de hauteur, entourée d'un Panthéon 
+ avec une colonnade formant un péristyle, mais arrivés à 46 m de hauteur les ouvriers constatèrent qu'il penchait dangereusement et on dû 
+ le revoir sa taille à la baisse, en même tant que l'on consolida les fondations.
+ Les difficultés rencontrées pour la construction de cet obélisque, commençé en 1840 et inauguré en 1884, tendent à prouver que la 
+ maçonnerie n'a pas vocation à être utilisé pour des bâtiments de hautes taille. Aussi fallait-il trouver un autre matériau.
+ Comparaison des métaux
+ Gustave Eiffel a fait des calculs approximatifs pour faire une tour de 300 m de haut en maçonnerie. Vu l'exemple du monument de 
+ Washington on se doute bien que ce n'a été fait que pour prouver l'impossibilité de faire un tel monument ainsi. D'ailleurs ses calculs 
+ ont montré qu'il faudrait un cube de maçonnerie de 70 000 m 3 , plus 38 000 m 3 de fondation, ce qui est un peu trop 
+ quand même...
+ Du coup c'est le métal qui fut choisi. Pourquoi ? Tout d'abord parce que c'était un matériau nouveau, quelque chose que personne 
+ n'avait pu utiliser dans les constructions puisque l'industrie métallurgique en était à ses débuts. C'est donc fort de nouvelles 
+ découvertes que l'on prouva la possibilité d'utiliser du métal pour des constructions. Ensuite il fallut faire un choix :
+ Plaque Fould-Dupont
+ &times; Fermer 
+ Plaque Fould-Dupont
+ Plaque de présentation de l'origine du fer de la tour Eiffel
+ La fonte était intéressante mais si ce métal résiste bien à la compression, ce n'est pas le cas des autres 
+ contraintes, comme l'étirement. L'acier aurait pu être choisi mais ce métal est trop rigide pour une structure qui 
+ nécessite autant de souplesse que de résistance. De plus à cette époque l'acier coûtait très cher à fabriquer, ce n'est que durant le 
+ XXe siècle que ce métal s'est démocratisé, avec l'utilisation de nouvelles méthodes de production. Il restait le fer , 
+ dont les propriétés de résistance et de souplesse s'accordaient bien avec ce projet. Reste qu'à la fin du XIXe siècle les méthodes de 
+ traitement des métaux étaient en pleine expansion. Ayant l'habitude d'utiliser la fonte dans ses premiers projets de ponts métalliques, 
+ Gustave Eiffel s'est penché sur le "fer puddlé", qui est un matériau issu de la fonte. C'est lui qui sera utilisé pour la construction 
+ de la tour Eiffel.
+ Voici ce qu'en disait Gustave Eiffel , une fois la tour terminée.
+ C’est en premier lieu sa résistance. Au point de vue des charges que l’on peut faire supporter avec sécurité à l’un ou l’autre 
+ de ces matériaux, on sait que, à surface égale, le fer est dix fois plus résistant que le bois et vingt fois plus résistant que 
+ la pierre. C’est dans les grandes constructions surtout que la résistance du métal le rend supérieur aux autres matériaux. La 
+ légèreté relative des constructions métalliques permet en même temps de diminuer l’importance des supports et des fondations.
+ Il conclut ainsi :
+ Pour ne citer qu’un exemple, celui de la Tour de l’Exposition, j’ai étonné plus d’une personne qui s’inquiétait de la charge sur 
+ le sol des fondations, en disant qu’il ne serait pas plus chargé que celui d’une maison de Paris.
+ Qu'est ce que le fer puddlé ?
+ Le puddlage consiste à traiter la fonte pour lui faire perdre une partie de son carbone, le rendant moins sujet à la corrosion. 
+ C'est un procédé d'affinage qui utilise des déchets de l'industrie métallurgique appelés "scories" (des blocs métalliques plus ou 
+ moins gros rejetés par les techniques précédentes et qui sont ici utilisés pour absorber le carbone). On parle de "décarburation".
+ Un puddleur
+ &times; Fermer 
+ Un puddleur
+ Ouvrier en train de puddler du fer, à l'usine.
+ La technique consiste à faire chauffer la fonte à très haute température et à la mélanger aux scories de la façon la plus homogène 
+ possible, même si le résultat obtenu sera partiellement remis en cause lors du forgeage, qui va étirer le fer obtenu et donc modifier 
+ la concentration de carbone dans chaque pièce. Le mélange est effectué par un puddleur, en charge de cette tache. Il a à sa disposition 
+ un crochet très allongé, le "ringard", pour faire le mélange. Quand il estime avoir suffisament traité la fonte il en ressort du fer 
+ en fusion, dit "fer puddlé". Ce fer est ensuite forgé et remis aux industriels pour leurs travaux. Dans le cas de la tour Eiffel un des 
+ intérêt était que la faible teneur en carbone rendait le fer moins sujette à la corrosion.
+ Le mot 'Puddlage' est une françisation du verbe anglais 'to puddle', 'brasser'. Le processus de puddlage est mis au point par 
+ Henry Cort en 1784, puis significativement améliorée par Samuel Baldwin Rogers et Joseph Hall au XIXe siècle. Il disparaîtra au fil 
+ du temps face à l'arrivée des processus de traitement de l'acier, plus performant et moins cher.
+ Voici un petit texte expliquant, avec des mots de l'époque, l'intérêt du fer puddlé.
+ L'acier puddlé se produit dans les fours à réverbères, en y chauffant, au moyen de la houille, les fonte aciéreuses, déposéees 
+ sur un lit de scories, jusqu'à ce qu'elles entrent en fusion et commencent à s'affiner. On brasse fréquemment, en ajoutant encore des 
+ scories, ou peroxyde de fer, ou peroxyde de manganèse, ou sous-carbonate de soude ou sel, etc., et on sort la matière pâteuse par 
+ lopins de 40 à 50 Kg qu'on étire ensuite successivement sous le marteau. Il faut environ deux heures pour chaque opération. On fait 
+ 5 à 6 charges de 200 Kg par jour. Un four à puddler peut donc produire mensuellement de 30 à 40 tonnes d'acier, il y en a qui produisent 
+ jusqu'à 50 tonnes. 
+ Les aciers puddlés ainsi obtenus peuvent être employés, non corroyés, à la fabrication de beaucoup d'objets, en les ressuant 
+ convenablement dans le même four dans lequel on les puddle et en les étirant ensuite aux dimensions voulues sous le martinet ou sous le 
+ laminoir. Mais si l'on veut les rendre encore plus homogènes, il faut les soumettre au corroyage, comme les aciers bruts naturels 
+ obtenus par l'ancien procédé. 
+ Origine du fer
+ Le fer qui a servi à la construction de la tour n'est pas n'importe lequel, bien sûr. Il a fait l'objet d'un choix minutieux. Il a 
+ été acheté à une usine de Meurthe-et-Moselle et vient de mines locales, en Lorraine. La question de l'origine du fer de la tour Eiffel 
+ nous amène donc en voyage, mais pas bien loin...
+ Pompey, en Meurthe-et-Moselle
+ Gustave Eiffel, lorsqu'il décida définitivement de construire sa tour, s'est rapproché de Mr Prégre, le représentant parisien d'un 
+ fournisseur habituel de ses ateliers, les Forges et Usines de Pompey "Fould-Dupont", qui se trouvent en Lorraine. Pompey est une ville 
+ de 5000 habitants située en Meurthe-et-Moselle, à proximité de Nancy. En 1871 Auguste Dupont, fondateur des acieries d'Ars-sur-Moselle, 
+ se voit contraint de déménager son usine pour éviter qu'elle ne passe sur le territoire prussien, suite à la perte de l'Alsace-Lorraine 
+ en 1870. Il choisit Pompey, c'est la raison de la présence de cette usine dans ce petit village viticole.
+ Lorsque Gustave Eiffel passe commande pour 8 500 tonnes de fer puddlé, et 2,5 millions de rivets 
+ ce dernier se tourne vers ses fournisseurs de minerai. La qualité demandée par Eiffel est à récupérer dans des mines locales, en Lorraine. 
+ Rappelons que tout l'Est et le Nord de la France étaient couverts de mines de fer, charbon et minerais divers. Le fer de la tour Eiffel 
+ provient donc de France.
+ Plaque Fould-Dupont
+ &times; Fermer 
+ Plaque Fould-Dupont
+ Plaque de présentation de l'origine du fer de la tour Eiffel
+ La légende des mines algériennes
+ Il y a une légende, une rumeur du moins, qui circule. Et votre site préféré est tombé dans le panneau en faisant confiance à cette 
+ information, à tort, avant de rectifier ici. Il paraîtrait que le fer de la tour Eiffel provient des mines de Zaccar et de Rouïna, deux 
+ sites distincts, en Algérie. Et bien c'est faux.
+ Les mines du Zaccar sont en Algérie, à Miliana. C'est une ville au Nord de l'Algérie, proche de la mer et en plein Atlas. La mine 
+ est surprenante, son entrée n'est qu'un simple trou de deux mètres de diamètre, à flanc de coteaux de la montagne. On y descend par 
+ une échelle raide, et au fond part une galerie éclairée par des lampes à faible éclairage. L'étaiement laisse à désirer, la galerie 
+ finit par arriver à un puits de plus de 10m de profondeur. C'est au fond de ce puits que commencent les galeries d'extraction. Ces 
+ galeries sont équipées de chemin de fer et de wagonnets dans lesquels sont versés les roches. Tirés à main d'hommes, ils sont ensuite 
+ vidés dans une fosse qui tombe sur des terrasses à ciel ouverts. C'est de ces terrasses que l'on récupérait les pierres avant chargement 
+ et envoi en Lorraine.
+ Il faut signaler que ce site n'est pas un site industriel, c'est la raison pour laquelle il n'y a aucun équipement comme des 
+ hauts-fourneaux. C'est juste un site d'extraction. Ca explique aussi pourquoi la mine est peu indiquée, il n'y a pas d'intérêt de nos 
+ jours à y aller, mais il faut savoir qu'elle a employé jusqu'à 1 800 personnes, soit un quart de la population de la ville. Toutefois 
+ aucun minerai n'est sorti pour construire la tour Eiffel, non.
+ Mine de Zaccar
+ &times; Fermer 
+ Mine de Zaccar
+ Mine de Zaccar
+ Mine de Zaccar
+ &times; Fermer 
+ Mine de Zaccar
+ Mine de Zaccar
+ Mine de Zaccar
+ &times; Fermer 
+ Mine de Zaccar
+ Mine de Zaccar
+ Mine de Zaccar
+ &times; Fermer 
+ Mine de Zaccar
+ Mine de Zaccar
+ Quand à Rouïna c'est une ville d'Algérie, assez proche de Miliana. Elle a de nos jours plus de 20 000 habitants. Les montagnes qui 
+ se trouvent à proximité sont chargées d'un fer particulièrement pur. Durant l'occupation française la mine de Rouïna était 
+ équipée d'infrastructure sidérurgique de pointe, avec entre autre un haut-fourneau à moyene température. Le minerai qui en 
+ était extrait était broyé et acheminé dans ces fonderies d'Algérie ou de France. De nos jours le site est à l'abandon.
+ Voir aussi :
+ Histoire de la tour Eiffel 
+ La tour Eiffel
+ Découvrir 
+ Photos 
+ Emplacement 
+ Taille 
+ Poids 
+ La tour en chiffres 
+ Symbolisme 
+ Peinture 
+ Histoire de l'art 
+ Oeuvres artistiques 
+ Chansons 
+ Littérature 
+ Peintures 
+ Cinéma 
+ Théâtre 
+ Publicité 
+ Description 
+ Rez-de-chaussée 
+ 1er étage 
+ 2e étage 
+ Etage intermédiaire 
+ 3e étage 
+ Les 72 savants 
+ Ascenseurs 
+ Escaliers 
+ Machinerie 
+ Eclairage 
+ Copies et répliques 
+ Watkin's tower 
+ Ascenseurs Fives-Lille 
+ Visibilité 
+ La tour en 1900 
+ Histoire 
+ Chronologie 
+ Contexte technologique 
+ Les autres projets 
+ Réticences des artistes 
+ Construction 
+ Inauguration 
+ Medaille commémorative 
+ Rénovations 
+ Procés droit de reproduction 
+ Arnaques diverses 
+ Imprimerie du figaro 
+ La tour et l'expo 
+ Les entreprises Eiffel 
+ Société d'exploitation 
+ Biographies 
+ Gustave Eiffel 
+ Maurice Koechlin 
+ Emile Nouguier 
+ Stephen Sauvestre 
+ Jean Compagnon 
+ Adolphe Salles 
+ Jean Gobert 
+ Edouard Lockroy 
+ Franz Reichelt 
+ Construction 
+ Contrat de concession 
+ Plans 
+ Planches techniques 
+ Calculs des forces 
+ Calcul dûs au poids 
+ Calcul dûs au vent 
+ Calcul du poids des visiteurs 
+ Travail en atelier 
+ Planning 
+ Personnel 
+ Fondations 
+ Socles 
+ Piliers 
+ Etages 
+ Rivetage 
+ Grues 
+ Coût 
+ Rentabilité 
+ Fer utilisé 
+ Génie civil 
+ Tourisme 
+ Tarifs 
+ Horaires 
+ A voir sur la tour 
+ Récit d'une visite 
+ Images d'une visite 
+ Visiteurs célèbres 
+ Sciences 
+ Observations météo 1889 
+ Observations météo 1890 
+ Résistance de l'air 
+ Pression de l'air 
+ Manomètre hautes pressions 
+ Spectre solaire 
+ Absorptions des radiations 
+ Navigation aérienne 
+ Radiodiffusion 
+ Téléphotographie 
+ Télégraphie optique 
+ Phénomènes naturels 
+ Effets de la foudre 
+ Oscillations du sommet 
+ Effets de la montée 
+ Tous les monuments
+ Copyright 2013 - 2026 - Toute reproduction interdite sans l'autorisation de l'auteur. Ce site Internet est un site privé, non officiel, issu du travail de compilation des oeuvres de différents auteurs. Sauf mention contraire, les photos sont la propriété du webmaster. Toute utilisation des textes, photos ou autres éléments de ce site internet sont interdits sans accord du webmaster. Pour le contacter, utilisez le lien sur la page crédits . Sources documentaires : cliquez ici . Pour consulter la politique de confidentialité du site veuillez cliquer ici : Politique de confidentialité . 
+ Sites Internet du même auteur : Les Pyrénées-Orientales , Marguerite Duras , Merveilles du monde , Empereurs romains .

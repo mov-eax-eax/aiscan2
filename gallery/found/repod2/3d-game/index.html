@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky Runner 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="ui">
+    <div id="hud">
+      <div id="score">Score: 0</div>
+      <div id="coins">Coins: 0</div>
+      <div id="speed">Speed: 1.0x</div>
+    </div>
+    <div id="menu" class="overlay">
+      <h1>Sky Runner 3D</h1>
+      <p>Dodge the floating rocks, collect coins!</p>
+      <div class="controls">
+        <div><kbd>&larr;</kbd> <kbd>&rarr;</kbd> Move left / right</div>
+        <div><kbd>&uarr;</kbd> / <kbd>Space</kbd> Jump</div>
+        <div><kbd>&darr;</kbd> Slide / Duck</div>
+      </div>
+      <button id="startBtn">Start Game</button>
+      <p id="bestText"></p>
+    </div>
+    <div id="gameover" class="overlay hidden">
+      <h1>Game Over</h1>
+      <p id="finalScore"></p>
+      <p id="newBest"></p>
+      <button id="restartBtn">Play Again</button>
+    </div>
+  </div>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

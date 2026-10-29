@@ -1,0 +1,30 @@
+{
+  "name": "dsh-image-tools",
+  "version": "0.1.0",
+  "description": "Image viewing and processing tools for the DeepSeek Harness: preview, inspect, resize, convert, crop, and rotate images with inline image results in the web UI.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-tool"
+      ]
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-attachment": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-fs": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
+    "sharp": "^0.35.0"
+  },
+  "license": "MIT"
+}

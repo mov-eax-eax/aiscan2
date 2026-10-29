@@ -1,0 +1,247 @@
+{{Voir homonymes|Champ de Mars}}
+{{Infobox Espace vert
+|nom            = Champ-de-Mars
+|image          = Champ de Mars from the Eiffel Tower - July 2006 edit.jpg
+|légende        = Vue du Champ-de-Mars depuis le sommet de la [[tour Eiffel]].
+|latitude       = 48.856111
+|longitude      = 2.298333
+|géolocalisation = <!-- recherche automatique par Module:Carte -->
+|pays           = {{France}}
+|ville          = [[Paris]]
+|quartier       = [[Quartier du Gros-Caillou|Gros-Caillou]]
+|arrondissement = [[7e arrondissement de Paris|7{{e}}]] 
+|alt            =
+|superficie     = 24.3
+| gare={{RER/correspondances avec intitulé|C}} [[Gare du Champ de Mars - Tour Eiffel|''Champ de Mars - Tour Eiffel'']]
+| métro={{Métro de Paris/correspondances avec intitulé|8}} [[École Militaire (métro de Paris)|''École Militaire'']] 
+{{Métro de Paris/correspondances avec intitulé|6}} [[Bir-Hakeim (métro de Paris)|Bir-Hakeim]], [[Dupleix (métro de Paris)|Dupleix]].
+|eau            =
+|date           = 1770
+|type           =
+|essences       =
+|fréquentation  =
+|intérêt        =
+|classement     =
+|lien           =     
+}}
+Le '''Champ-de-Mars''' est un vaste [[jardin public]] entièrement ouvert, situé à [[Paris]] dans le [[quartier du Gros-Caillou]] du [[7e arrondissement de Paris|{{7e|arrondissement}}]], entre la [[tour Eiffel]] au nord-ouest et l'[[École militaire (France)|École militaire]] au sud-est. D'une superficie de {{unité|24,3|ha}}, le jardin du Champ-de-Mars est l'un des plus grands espaces verts de Paris.
+
+Site prestigieux par son histoire et sa qualité paysagère exceptionnelle, le Champ-de-Mars est un [[Site classé ou inscrit en France|site classé]] depuis 1956 et fait partie du site Paris - Rives de la Seine inscrit en 1991 au [[Patrimoine mondial|patrimoine mondial de l'Unesco]]<ref>{{Lien web |langue=fr |prénom=UNESCO Centre du patrimoine |nom=mondial |titre=Paris, rives de la Seine |url=https://whc.unesco.org/fr/list/600/ |site=UNESCO Centre du patrimoine mondial |consulté le=2022-08-13}}</ref>. Il est environné par plusieurs espaces paysagers et monuments bénéficiant de protections patrimoniales : [[palais de Chaillot]], [[jardins du Trocadéro|jardins du palais de Chaillot]], [[pont d'Iéna]], [[tour Eiffel]], [[École militaire (France)|École militaire]].
+
+== Origine du nom ==
+Son nom vient du [[Champ de Mars (Rome)|Champ de Mars]] [[Rome|romain]] (et donc du dieu romain de la guerre, [[Mars (mythologie)|Mars]], en écho avec l'École militaire voisine). « [[Champ de Mars]] » désignait à l'origine, dans une ville, un vaste espace destiné aux manœuvres et aux parades militaires ; c'est pourquoi on trouvait un champ de Mars dans beaucoup de villes de garnison.
+
+== Historique ==
+
+=== Ancien Régime ===
+
+==== Terrain de manœuvre militaire ====
+Jusqu'au milieu du {{s-|XVIII}}, l'emplacement du Champ-de-Mars était une partie de la [[plaine de Grenelle]], également marais de la Grenouillère, consacrée à la [[culture maraîchère]].
+La comédienne [[Adrienne Lecouvreur]] y est enterrée en 1730<ref>[https://books.google.fr/books?id=3UlU85_eNm0C&pg=PT95&lpg=PT95&dq=marais+de+la+Grenouill%C3%A8re+champs+de+mars&source=bl&ots=XjrjOQyBeF&sig=ACfU3U3o5zg8aqYJuNKdBaR5yAiwWxA_Tw&hl=fr&sa=X&ved=2ahUKEwiUgane7uzuAhVQxhoKHUegBso4ChDoATACegQIBRAC#v=onepage&q=Grenouill%C3%A8re&f=false Marie Laurence Netter : ''Du Théâtre à la Liberté: Dans les coulisses des Lumières''].</ref>.
+
+La construction de l'[[École militaire (France)|École militaire]], par [[Ange-Jacques Gabriel|Gabriel]], entraîne en 1765 sa destination de champ de manœuvre militaire. D'abord prévu au sud de l'École, à l'emplacement actuel de la [[place de Fontenoy]], le terrain militaire de l'École est finalement aménagé au nord et Gabriel décide d'orienter vers lui la façade noble de l'École militaire qui ferme encore aujourd'hui le Champ-de-Mars.
+
+Bordé au sud par la façade de Gabriel, à l'est et à l'ouest par des champs cultivés, au nord par la [[Seine]] dominée par les [[Colline de Chaillot|collines de Chaillot]] et de [[Passy (Seine)|Passy]], le Champ-de-Mars mesurait à l'origine près de 900 m de longueur sur 400 m de largeur{{Note|texte=Exactement 916 m sur 394 m (soit 470 toises sur 202), sans comprendre les fossés.}}. Les [[Avenue de La Bourdonnais|avenues de La Bourdonnais]] et de [[avenue de Suffren|Suffren]] sont tracées en 1770 pour le délimiter et il était plus étendu avant le lotissement de terrains réalisé en 1907. Il débouchait au nord sur la rive gauche de la Seine face à l'[[île des Cygnes (ancienne île de Paris)|île des Cygnes]] (emplacement actuel du pilier nord-est de la tour Eiffel)<ref>[[Pierre Thomas Nicolas Hurtaut]], [https://books.google.com/books?id=8fwHAAAAQAAJ&hl=fr&pg=PP9 ''Dictionnaire historique de la ville de Paris et de ses environs''], 1779 (en collaboration avec Pierre Magny).</ref>.
+
+Le Champ-de-Mars était entouré d'un [[Fossé (infrastructure)|fossé]] sec maçonné de 10 m de largeur et 2 m de profondeur bordé de deux murets d'appui<ref>{{Ouvrage|langue=français|titre=L'Avant-coureur|passage=p. 802-803|lieu=Paris|éditeur=Ch. J. Panckoucke|numéro dans collection=51|date=22 décembre 1766|lire en ligne=https://gallica.bnf.fr/ark:/12148/bpt6k3060539t|consulté le=13 août 2022}}</ref>. On pouvait le franchir par cinq entrées accessibles par des [[Ponceau (architecture)|ponceaux]], chaque entrée étant gardée par deux guérites en pierre surmontées d'une fleur de lys et par une grille en fer forgé à deux vantaux. Deux entrées donnaient sur les longs côtés vers Paris et [[Grenelle (quartier parisien)|Grenelle]] et la cinquième ouvrait vers la Seine dans l'axe du pont d'Iéna actuel. Cette dernière entrée disparut avec la construction du [[pont d'Iéna]] en 1806 et les quatre autres en 1856. Les longs côtés étaient bordés intérieurement et extérieurement par une terrasse de 40 mètres de largeur. Chacune des deux terrasses était plantée de quatre rangées d'[[Orme champêtre|ormes]] en [[quinconce]]. Sur les longs côtés, la terrasse extérieure, bordée par deux haies vives, s'élevait en amphithéâtre pour recevoir le public assistant aux [[Revue militaire|revues]].
+
+Terrain de manœuvre militaire, le Champ-de-Mars servait aux revues de la [[Maison militaire du roi de France|Maison du Roi]], ainsi qu'aux exercices des [[Compagnie des Mousquetaires du Roi|Mousquetaires du roi]], des [[Régiment des Gardes françaises|Gardes françaises]], des [[Gardes suisses (France)|Gardes suisses]] et des élèves de l'École militaire. Il pouvait recevoir aisément dix mille soldats rangés en bataille.
+
+==== Expériences d'aérostation (1783-1784) ====
+Le {{Date|27|août|1783}}, après quatre jours de gonflage près de la [[place des Victoires]], le premier [[aérostat]] gonflé à l'[[Dihydrogène|hydrogène]], construit par le physicien [[Jacques Charles]], s'envole du Champ-de-Mars avant de retomber à [[Gonesse]].
+
+Le {{Date|2|mars|1784}}, la foule rassemblée sur le [[Champ de Mars (Paris)|Champ-de-Mars]] assiste à l’ascension de l'aérostat à hydrogène de [[Jean-Pierre Blanchard]]. Le ballon de 27 pieds de diamètre est muni d'une hélice, d'un parasol et de deux rames garnies de plumes mues à la force des bras. Le « bateau volant » emporte Blanchard au-delà de la Seine, avant d'être chassé vers l'ouest et d'atterrir à [[Billancourt (Hauts-de-Seine)|Billancourt]].
+
+=== Sous la Révolution ===
+
+==== Camp du Champ-de-Mars (1789) ====
+Face aux troubles révolutionnaires, le [[Pierre-Victor de Besenval de Brünstatt|baron de Besenval]], commandant militaire de l'Île-de-France, rassemble des troupes à partir du {{Date|5|juillet|1789}} afin de maintenir l'ordre dans Paris. Il établit son quartier général à l'École militaire tandis que les régiments suisses de [[Régiment de Salis-Samade|Salis-Samade]], [[Régiment de Châteauvieux|Châteauvieux]] et [[Régiment de Diesbach|Diesbach]] cantonnent sur le Champ-de-Mars. Le [[régiment de Vigier]] est attendu pour le {{date|17 juillet}} et celui de [[Régiment de Castellas|Castellas]], venant à [[marche forcée]] de Metz, pour le 19. Harassé par les activités de surveillance des quartiers de Paris et du ravitaillement en blé de la ville, Besenval laisse le [[prince de Lambesc]] et le [[Régiment Royal-Allemand cavalerie|Royal Allemand]] charger sur la [[Place de la Concorde|place Louis-XV]] le {{date|12 juillet}}, transformant « en insurrection ce qui n’était encore qu’une manifestation »<ref>{{Ouvrage|auteur1=Jacques Godechot|titre=La prise de la Bastille|passage=247|lieu=Paris|éditeur=Gallimard|date=1965|pages totales=440}}</ref>. Les troupes, dispersées dans Paris pour empêcher les troubles, reçoivent l'ordre de regagner le Champ-de-Mars le {{date|13 juillet}} à 1 heure du matin. Coupé de Versailles, avec sous ses ordres des soldats gagnés par l'insubordination, laissé sans directive par le [[Victor-François de Broglie (1718-1804)|maréchal de Broglie]] sinon d'éviter toute effusion de sang, Besenval ne sait empêcher le pillage des [[Hôtel des Invalides|Invalides]] et la [[prise de la Bastille]] le {{Date|14|juillet|1789}}. Les troupes du Champ-de-Mars, « tristes, mornes, abattues, enfermées depuis quinze jours dans un espace assez étroit »<ref>{{Ouvrage|auteur1=Mathieu Dumas|titre=Souvenirs du lieutenant général comte Mathieu Dumas|tome=1|passage=431|lieu=Paris|éditeur=C. Gosselin|date=1839}}</ref>, sont menacées le {{date|15 juillet}} par des canons postés sur la rive droite et servis par des [[Régiment des Gardes françaises|Gardes françaises]]. Le même jour, le baron de Besenval fait retirer les troupes du camp et leur fait rejoindre Sèvres.
+
+Le Champ-de-Mars fut témoin et cadre d'apparat de quelques-unes des plus grandes fêtes de la Révolution. Il prit le nom de « Champ-de-la-Fédération », puis celui de « Champ-de-la-Réunion<ref name="NHP">Julien De Gaulle, ''Nouvelle histoire de Paris et de ses environs'', 1839, {{p.|392}} et suiv.</ref> ».
+
+==== Fête de la Fédération (1790) ====
+{{Article détaillé|Fête de la Fédération}}
+[[Fichier:Federation.jpg|thumb|upright=1.3| {{nombre|100000|fédérés}} de province parmi entre {{formatnum:400000}} et {{nombre|600000|Parisiens}}<ref>[http://www.histoire-en-questions.fr/revolution-1789/1789-roi-gagne-perd-federes.html « Les {{unité|100000|fédérés}} »], ''www.histoire-en-questions.fr''.</ref>{{,}}<ref>[[Max Gallo]], [http://www.lefigaro.fr/lefigaromagazine/2008/08/02/01006-20080802ARTFIG00011--la-fete-de-la-federation-.php « La Fête de la Fédération »], ''Le Figaro'', {{1er|janvier}} 1970, ''www.lefigaro.fr''.</ref> au Champ-de-Mars pour la [[fête de la Fédération]].]]
+La fête de la Fédération, le {{date|14 juillet 1790}}, fut une grande fête révolutionnaire. Elle fut peut-être le seul moment où la foule eut le sentiment de constituer un corps uni, une nation « une, indivisible ». Devant {{unité|300000|spectateurs}}, [[Charles-Maurice de Talleyrand-Périgord]] officia, entouré d'une myriade de prêtres et d'une cohorte de soldats. [[Louis XVI de France]] prêta serment sur la Constitution et [[Gilbert du Motier de La Fayette|La Fayette]] lut celle-ci. On y bénit, on y discourut et on y glorifia la Nation.
+==== Cérémonie funèbre (1790) ====
+La cérémonie funèbre relative au [[massacre de Nancy]] du {{date|31 août}} où [[André Désilles]] perdit la vie y eut lieu le {{date|20|septembre|1790}}.
+==== Fusillade du Champ-de-Mars (1791) ====
+{{Article détaillé|Fusillade du Champ-de-Mars}}
+Un massacre y eut lieu pendant la [[Révolution française]], le {{Date|17|juillet|1791}}. La pétition des Cordeliers du {{date|15 juillet 1791}} est portée sur l'[[autel de la Patrie]] qui fut élevé pour le {{Date|14|juillet|1790}}. Une foule s'y était rassemblée pour y signer une pétition. Elle fut d'abord rédigée pour revenir sur les décrets du 15 et {{date|16 juillet}} qui redonnent au roi tous ses droits car elle n'exigeait pas formellement la fin de la monarchie. L'[[Assemblée constituante de 1789|Assemblée constituante]] ordonne de la disperser. [[Jean Sylvain Bailly|Bailly]], maire de Paris, décrète la [[loi martiale]] dont la mise en vigueur est signalée par le [[drapeau rouge]]. Cette loi permet aux forces de l'ordre de faire usage de leurs armes après sommation. Alors que [[Gilbert du Motier de La Fayette|La Fayette]] tentait vainement de disperser la foule, Bailly donne l'ordre de, sans sommation, tirer sur le peuple, ce qui fit 50 morts et des centaines de blessés. Une charge de cavalerie dispersa la foule.
+
+Le massacre du Champ-de-Mars aggrave la scission entre républicains et mouvement populaire et monarchistes.
+
+À la suite de ce massacre, les [[sans-culottes]] vouèrent une haine tenace à [[Jean Sylvain Bailly]], qui y fut guillotiné le {{date|12 novembre 1793}}.
+
+==== Fête de l'Être suprême (1794) ====
+{{Article détaillé|Culte de la Raison et de l'Être suprême}}
+Le 20 prairial an II ({{date|8 juin 1794}}), [[Jacques-Louis David]] organisa la fête de l'Être suprême au Champ-de-Mars. Cette fête marque l'apothéose de la Révolution. On y élève pour l'occasion une sorte de rocher artificiel au sommet duquel s’élèvent un [[arbre de la liberté]], symbole de l’unité et de l’adhésion collective à la Révolution, ainsi qu'une colonne antique surmontée d’une statue qui brandit un flambeau. [[Maximilien de Robespierre]] présida cette fête, qui avait débuté au [[jardin des Tuileries]]. Sa chute intervient moins de deux mois plus tard.
+
+==== Directoire ====
+[[Fichier:Olympiade de la République 1796, Musée de la Révolution française - Vizille.jpg|vignette|upright=1.3|Olympiade de la République le 22 septembre 1796, ([[musée de la Révolution française]]).]]
+Sous le [[Directoire]], d'autres fêtes, qualifiées de ridicules<ref name="NHP" />, se donnèrent au Champ-de-Mars, dont la fête de l'Agriculture du {{date|14 juillet}} et du 9 [[thermidor]], la fête du {{date|10 août}}, la fête de la vieillesse…
+
+Le {{date|30 décembre 1793}}, la fête des Victoires en l'honneur de la [[Siège de Toulon (1793)|prise de Toulon]].
+
+L'anniversaire de la fondation de la République fut solennisé le {{date|22 septembre 1796}} par la première fête de l'[[Olympiade de la République]] qui devait se reproduire en 1797 et 1798. Ces fêtes étaient accompagnées de courses à pied, à cheval, en chars, de luttes, de joutes et des dizaines d'orchestres faisaient danser les citoyens.
+
+Le [[22 septembre|{{1er|vendémiaire}}]] [[1798|an VII]], on y fit la première [[exposition des produits de l'industrie française]]<ref name="NHP" />.
+
+=== Premier Empire ===
+Le {{date|3|décembre|1804}}, le lendemain du [[Sacre de Napoléon Ier|couronnement de Napoléon {{Ier}}]], l'[[Napoléon Ier|Empereur]] fit au Champ-de-Mars la « distribution des aigles ».
+
+Le chenal nommé « petite Seine », qui séparait l'[[Île des Cygnes (ancienne île de Paris)|île des Cygnes]] de la terre ferme, est comblé en 1812, ce qui étend le Champ-de-Mars à l'emplacement actuel de la tour Eiffel. Ces travaux sont contemporains de la construction du [[pont d'Iéna]] et des projets, abandonnés en 1815 après la chute de l'[[Premier Empire|Empire]], du [[Palais du roi de Rome|Palais du Roi de Rome]] sur la rive gauche face au Champ-de-Mars et des bâtiments des Archives et de l'Université sur le [[quai d'Orsay]].
+  
+Le {{date|1|juin|1815}}, on y proclame l'[[Acte additionnel aux constitutions de l'Empire de 1815|acte additionnel aux constitutions de l'Empire]]. Dans cette cérémonie connue sous le nom de « [[Champ de mai (1815)|Champ-de-mai]] », Napoléon y passe en revue toute sa [[Garde impériale (Premier Empire)|Garde]] et environ {{unité|60000|hommes}} de la [[Garde nationale de Paris]].
+
+=== Au {{s-|XIX}} ===
+{{Article détaillé|Exposition universelle de 1867|Exposition universelle de 1889|Tour Eiffel}}
+Les {{date|27 mars}} et {{date|2|mai|1831}}, le roi [[Louis-Philippe Ier|Louis-Philippe]] y distribue solennellement les drapeaux et étendards tricolores aux troupes de ligne et à la [[Garde nationale de Paris|garde nationale parisienne]].
+
+En {{date|juin 1837}}, pour célébrer le mariage du [[Ferdinand-Philippe d'Orléans|duc d'Orléans]], le Champ-de-Mars sert de scène pour représenter le simulacre de la [[Siège de la citadelle d'Anvers (1832)|prise de la citadelle d'Anvers de 1832]]. Le {{date|15 juin 1837}}, à la suite d'un mouvement de foule, 24 personnes périssent, pressées, foulées, écrasées contre des grilles.
+
+Le {{date|21 mai 1848}}, le Champ-de-Mars accueille la [[Fête de la Concorde]].
+
+C'est là que se tinrent les [[Expositions universelles]] de Paris des années [[Exposition universelle de 1867|1867]], [[Exposition universelle de 1878|1878]], [[Exposition universelle de 1889|1889]], [[Exposition universelle de 1900|1900]] et [[Exposition universelle de 1937|1937]].
+
+Lors de l'[[Exposition universelle de 1889]] – et pour célébrer le centenaire de la [[Révolution française]] –, [[Gustave Eiffel]] érigea la [[tour Eiffel]] sur l'esplanade du Champ-de-Mars. Pendant l'[[Exposition universelle de 1900]], il accueille sur sa partie sud le palais de l'Électricité<ref>{{lien web|url = https://www.worldfairs.info/expopavillondetails.php?expo_id=8&pavillon_id=67 |titre = Palais de l'Electricité et le Château d'Eau |auteur = |date = |site =worldfairs.info|consulté le = 13 septembre 2020}}</ref>. L'ingénieur [[Victor Contamin]], ainsi que les architectes [[Ferdinand Dutert]] et [[Stephen Sauvestre|Charles Léon Stephen Sauvestre]], construisirent à la même occasion, au fond du Champ-de-Mars, devant l'[[École militaire (France)|École militaire]], la [[galerie des Machines]], démolie en 1909.
+
+<gallery>
+Fichier:Revue passée au Champ-de-Mars en l'honneur d'Ibrahim Pacha, 25 mai 1846.jpg|Une revue militaire au Champ-de-Mars en 1846 en l'honneur d'[[Ibrahim Pacha]], un dignitaire égyptien.
+Fichier:Fête de la Concorde, arrivée des corporations au Champ-de-Mars.jpg|Fête de la Concorde, 21 mai 1848.<br /><small>Arrivée des corporations au Champ-de-Mars.</small>
+Fichier:Exposition universelle de 1867.png|Palais de l'Exposition universelle de 1867, immense bâtiment occupant tout le Champ-de-Mars.
+Fichier:Façade principale du Palais du Champ-de-Mars, en face du pont d'Iéna.jpg|Palais du Champ-de-Mars de 1878.
+Fichier:CLC 528 - PARIS - Galerie des Machines.JPG|La [[Galerie des Machines]] (1889) à l'extrémité sud-est du Champ-de-Mars, par [[Victor Contamin]] et Ferdinand Dutert
+</gallery>.
+
+=== Au {{s-|XX}} ===
+Le Champ-de-Mars accueillit également les épreuves de [[Fleuret (arme)|fleuret]] et de [[Sabre (arme)|sabre]] des [[Jeux olympiques d'été de 1900]].
+
+La surface du Champ-de-Mars est réduite en 1907 par lotissement des terrains entre l'[[Avenue de La Bourdonnais|avenue de la Bourdonnais]] et l'[[allée Adrienne-Lecouvreur]] au nord-est et entre l'[[avenue de Suffren]] et l'[[allée Thomy-Thierry]] au sud-ouest, sur lesquels se construisent de magnifiques immeubles résidentiels au cours des années précédant la Première Guerre mondiale.
+
+Le [[Bombardements de Paris et de sa banlieue durant la Première Guerre mondiale|27 juin 1918]], durant la [[Première Guerre mondiale]], une bombe explose sur le Champ-de-Mars, à l'angle de l'[[avenue Silvestre-de-Sacy]] et de l'[[allée Adrienne-Lecouvreur]] lors d'un [[Raid militaire|raid]] effectué par des [[Avion militaire|avions]] allemands<ref>[https://gallica.bnf.fr/ark:/12148/bpt6k46057963/f1.item.zoom    Excelsior du 8 janvier 1919 : Carte et liste officielles des bombes d'avions et de zeppelins lancées sur Paris et la banlieue et numérotées suivant leur ordre et leur date de chute]</ref>.
+
+=== Ère contemporaine ===
+Le Champ-de-Mars est devenu un vaste jardin public, avec des allées centrales en pelouse. Il est le lieu de nombreuses représentations et activités que ce soit des concerts, des expositions ou des feux d'artifice, tous gratuits.
+
+Du {{date|21 décembre 1985}} au {{date|4 janvier 1986}}, [[Dorothée (animatrice)|Dorothée]] s'y produit pour sa comédie musicale ''On va faire du cinéma''.
+
+Le {{date|14 juillet 1995}}, [[Jean-Michel Jarre]] célèbre le cinquantenaire de l'[[Organisation des Nations unies pour l'éducation, la science et la culture|UNESCO]] en faisant un « concert pour la tolérance » et attire {{unité|1.5|million}} de spectateurs, en rassemblant instruments et musiciens de cultures différentes.
+
+Le {{date|10 juin 2000}}, [[Johnny Hallyday]] y a réalisé un concert au pied de la [[tour Eiffel]] devant plus de {{unité|600000|personnes}} et {{unité|10|millions}} de téléspectateurs.
+
+Le {{date|14 juillet 2007}}, le concert de la Fraternité, inauguré par le président de la République [[Nicolas Sarkozy]], a rassemblé plus de {{unité|600000|personnes}}. Y ont joué [[Michel Polnareff]], [[Nelly Furtado]], [[Bob Sinclar]], [[Tokio Hotel]] et [[Laura Pausini]]. Deux ans plus tard, le {{date|14 juillet 2009}}, {{unité|1|million}} de personnes assistent au concert de [[Johnny Hallyday]], suivi d'un [[feu d'artifice]] réalisé par le [[Groupe F]] et célébrant les 120 ans de la [[tour Eiffel]]. Le {{date|14 juillet 2011}}, SOS Racisme donne un concert devant une assistance de plus d'un million de personnes.
+
+L’association Les amis du Champ-de-Mars, créée le {{date|9 novembre 1995}} et dénommée « Association de défense des usagers et des riverains du Champ-de-Mars » jusqu'en 2005<ref>{{Lien web
+   |url=http://www.journal-officiel.gouv.fr/association/index.php?ACTION=Rechercher&HI_PAGE=1&HI_COMPTEUR=0&original_method=get&WHAT=les+amis+du+champ+de+mars&JTH_ID=&JAN_BD_CP=&JRE_ID=&JAN_LIEU_DECL=&JTY_ID=&JTY_WALDEC=&JTY_SIREN=&JPA_D_D=&JPA_D_F=&rechercher.x=0&rechercher.y=0&rechercher=Rechercher
+   |titre= annonces publiées au JO Associations
+   |date= 6 août 2005
+   |site= www.journal-officiel.gouv.fr
+   |consulté le= 5 juillet 2010}}.</ref>, a pour objectif de contribuer à la protection et à la promotion de ce site exceptionnel qu’est le Champ-de-Mars, non seulement en luttant contre toutes les nuisances qui concourent à sa dégradation, mais en proposant une vision pour son avenir<ref>{{Lien web
+   |url=http://www.amisduchampdemars.fr/
+   |titre= Accueil
+   |date= 29 juin 2010
+   |site= www.amisduchampdemars.fr
+   |consulté le= 5 juillet 2010}}.</ref>.
+
+Pour la première fois après les Expositions universelles de 1900 et 1937, l'espace situé directement au pied de la tour Eiffel a été utilisé à l'automne 2012 pour une manifestation de plusieurs semaines. À cet endroit fut commémorée la signature du [[traité de l'Élysée]] le {{date|22 janvier 1963}}. L'exposition des [[United Buddy Bears]] en octobre et {{date|novembre 2012}} à Paris a rappelé la pierre angulaire de l'[[amitié franco-allemande]].
+[[Fichier:Grand Palais Éphémère (from left).jpg|vignette|[[Grand Palais éphémère]] vu du Champ-de-Mars.]]
+Le [[dimanche]] {{date|13|janvier|2013}}, [[La Manif pour tous]] organise sur le Champ-de-Mars un rassemblement de {{unité|1000000|personnes}} selon les organisateurs, {{unité|340000}} selon la police<ref>[http://www.liberation.fr/societe/2013/01/18/le-prefet-de-police-defend-son-comptage-de-la-manif-pour-tous_874962 « Le préfet de police défend son comptage de la Manif pour tous »], ''Libération'', 18 janvier 2013.</ref>.
+
+Le dimanche {{date|15 juillet 2018}}, {{nombre|90000|personnes}} sont présentes pour assister à la [[Finale de la Coupe du monde de football de 2018|finale de la Coupe du monde de football]], qui voit la France s'imposer face à la Croatie<ref>{{Lien web|langue=fr|nom1=BFMTV|titre=Coupe du monde: à Paris, la fan zone du Champ-de-Mars déjà pleine|url=https://www.bfmtv.com/societe/finale-de-la-coupe-du-monde-a-paris-deja-90-000-personnes-a-la-fan-zone-du-champs-de-mars-1489867.html|site=BFMTV|consulté le=2020-02-21}}</ref>.
+
+Chaque année, le soir du {{date+|14 juillet}}, des milliers de personnes viennent assister au grand feu d'artifice de {{Heure|23}}. Il est précédé depuis 2013 par un grand concert de musique classique, assisté par le [[chœur de Radio France]] et dont la retransmission est assurée sur France 2.
+
+Au début des années 2020, le [[Grand Palais (Paris)|Grand Palais]] subit des travaux de rénovation. Une structure provisoire est donc bâtie au sud-est du Champ-de-Mars, un {{citation|[[Grand Palais éphémère]]}}, conçu par [[Jean-Michel Wilmotte]] et géré par [[GL Events]], qui est inauguré début 2021<ref>[https://www.grandpalais.fr/fr/le-grand-palais-ephemere Page de présentation du projet] sur le site du Grand Palais. Consulté le {{date|1er novembre 2019}}.</ref>. Il accueillera plusieurs évènements, dont certaines épreuves des [[Jeux olympiques d'été de 2024]]<ref>{{Lien web|url=https://www.leparisien.fr/paris-75/paris-voici-a-quoi-ressemblera-le-grand-palais-ephemere-09-10-2019-8169564.php |titre=Paris : voici à quoi ressemblera le Grand Palais éphémère |date=9 octobre 2019|auteur=Éric Le Mitouard|consulté le=5 octobre 2020|site=[[Le Parisien]]}}.</ref>.
+[[Fichier:Stade Tour Eiffel - Paris VII (FR75) - 2024-09-02 - 17.jpg|vignette|Le ''Stade Tour Eiffel'', installée sur le Champ-de-Mars en 2024.]]
+Le {{date|24 avril 2022}}, [[Emmanuel Macron]] prononce son discours de victoire à l'[[élection présidentielle française de 2022|élection présidentielle]] sur le Champ-de-Mars<ref>{{Lien web|url=https://www.bfmtv.com/politique/elections/presidentielle/presidentielle-comme-en-2017-macron-marche-sur-l-ode-a-la-joie-avant-son-discours-de-victoire_AV-202204240352.html |titre= Présidentielle : comme en 2017, macron marche sur l'ode à la joie avant son discours de victoire |date=24 avril 2022|auteur=Pauline Boutin |consulté le=25 avril 2022|site=[[BFM TV|bfmtv.com]]}}.</ref>.
+
+À partir de {{date|mars 2024}} y est construit un stade éphémère, « Stade Tour Eiffel », dans le but d'accueillir des épreuves des [[Jeux olympiques d'été de 2024]] ainsi que des [[Jeux paralympiques d'été de 2024|Jeux paralympiques de 2024]]. Le stade, d'une capacité de {{unité|12 000|places}}, accueille le volleyball de plage (beach volley) du {{date|27 juillet}} au {{date|10 août 2024}}, puis le [[cécifoot]] pour les Jeux paralympiques. Structure éphémère, il est démonté en {{date|septembre 2024}}<ref>{{Lien web |langue=fr |auteur=Céline Penicaud et Margerie de La Rochefoucauld |titre=Paris 2024 : Stade Tour Eiffel, Arena Champ-de-Mars, Trocadéro… Découvrez les sites qui éblouissent la Tour Eiffel |url=https://olympics.com/fr/infos/paris-2024-stade-tour-eiffel-arena-champ-de-mars-trocadero-decouvrez-sites-eblouissent-tour-eiffel |site=Site officiel des Jeux Olympiques |date=28 juin 2024 |consulté le=12 septembre 2024}}.</ref>.
+
+Le 31 mai 2026, le Paris Saint-Germain célèbre sur le Champ de Mars sa deuxième victoire consécutive en Ligue des champions devant près de 100 000 personnes.
+
+== Activités ==
+=== Fréquentation ===
+Le Champ-de-Mars est extrêmement fréquenté les week-ends toute l'année par les Parisiens et par les visiteurs.
+
+=== Structures ===
+[[Fichier:Champ-de-Mars, Paris - OSM 2020.svg|600px|thumb|center|<center>Plan du Champ-de-Mars.</center>]]
+* Monuments et statues : [[Buste de Gustave Eiffel par Antoine Bourdelle|buste de Gustave Eiffel]] par [[Antoine Bourdelle]] (1927), buste de [[Lucien Guitry]] par Paul Röthlisberger (1931), buste du général [[Gustave Ferrié]] par Sicard (1933), statue équestre du [[Joseph Joffre|maréchal Joffre]] par [[Maxime Real del Sarte]] (1939), [[monument des Droits de l'homme]] d'[[Ivan Theimer]] (1989), [[Mur pour la Paix]] (2000, détruit en 2020) ;
+* deux jardins d'enfants avec des jeux, l'un contenant un manège ;
+* deux petits terrains de sport sur dur, pour football en salle ou basketball ;
+* un [[kiosque|kiosque à musique]] ;
+* le [[théâtre guignol du Champ de Mars]].
+
+Le Champ-de-Mars est traversé par plusieurs voies, la plupart étant piétonnes (voir la carte ci-haut) :
+{{Colonnes|nombre=2|
+* [[Allée Adrienne-Lecouvreur]]
+* [[Allée Jean-Paulhan]]
+* [[Allée Léon-Bourgeois]]
+* [[Allée Maurice-Baumont]]
+* [[Allée Paul-Deschanel]]
+* [[Allée des Refuzniks]]
+* [[Allée Thomy-Thierry]]
+* [[Avenue Anatole-France (Paris)|Avenue Anatole-France]]
+* [[Avenue Barbey-d'Aurevilly]]
+* [[Avenue Charles-Risler]]
+* [[Avenue du Docteur-Brouardel]]
+* [[Avenue Émile-Pouvillon]]
+* [[Avenue du Général-Ferrié]]
+* [[Avenue du Général-Marguerite]]
+* [[Avenue du Général-Tripier]]
+* [[Avenue Gustave-Eiffel]]
+* [[Avenue Joseph-Bouvard]]
+* [[Avenue Pierre-Loti]]
+* [[Esplanade des Ouvriers-de-la-Tour-Eiffel]]
+* [[Place Jacques-Rueff]]
+}}
+
+=== Événements ===
+Le site de la tour Eiffel et du Champ-de-Mars a été sélectionné pour accueillir une ''fan zone'' lors du [[championnat d'Europe de football 2016]], d'une capacité de {{unité|92000|places}}<ref>{{Lien web|url=https://www.francetvinfo.fr/sports/foot/euro/cartes-ou-se-trouvent-les-fan-zones-et-les-stades-de-l-euro-2016_1453297.html|titre=Cartes. Où se trouvent les “fan zones” et les stades de l'Euro 2016 ?|auteur=Louis Boy|site=franceinfo.fr|date=4 juin 2016|consulté le=7 juin 2016}}.</ref>.
+
+Pour le 14 Juillet, le Champ-de-Mars accueille chaque année depuis 2013 ''[[Le Concert de Paris]]'', concert de musique classique qui s'ensuit du traditionnel tir de feux d'artifice.
+
+== Dimensions ==
+Entre l'avenue [[Gustave-Eiffel]], qui sépare le parc de la [[tour Eiffel]] au nord-ouest et l'avenue de [[La Motte-Picquet]] qui le borde au sud-est, le Champ-de-Mars mesure {{Unité|780|mètres}} de long. En largeur, il y a {{Unité|220|mètres}} entre l'[[allée Thomy-Thierry]] au sud-ouest et l'[[allée Adrienne-Lecouvreur]] au nord-est.
+
+Les nombreux coureurs qui s'entraînent autour du Champ-de-Mars font donc 2 kilomètres à chaque tour.
+
+== Étymologies populaires ==
+{{section à sourcer|date=mars 2017}}
+La popularité du nom « Champ-de-Mars » suscite de nombreuses étymologies populaires, reconstructions ''a posteriori'' qui ne reposent sur aucune référence attestée. Ces spéculations intellectuelles relèvent davantage de ces rumeurs contemporaines qu'on nomme  [[légende urbaine|légendes urbaines]]. En voici un exemple :
+* À la fin du {{s-|XVI}}, les conquistadors ramènent la [[pomme de terre]] des Amériques. L'Europe, à cette époque, connaît une importante [[famine]]. Il faudra attendre 1748 pour que le Parlement autorise la culture de ce tubercule pour combler les besoins alimentaires de la France. Les premiers lieux de culture auraient été situés sur l'actuel emplacement du Champ-de-Mars, les pommes de terre étant plantées aux alentours du mois de mars.
+<!-- plus besoin de référence pour la date, c'est bien expliqué dans l'article Pomme de terre -->
+
+* Une théorie confirmée a aussi été émise : à l'époque gallo-romaine, les troupes romaines écrasèrent des résistants gaulois sur la plaine de Garanella (plaine de Grenelle) qu'ils rebaptisèrent Champ-de-Mars en l'honneur de cette victoire.
+
+== Au cinéma ==
+* Les derniers plans du générique du film ''[[Les 400 coups]]'' (1959) de [[François Truffaut]] ont été filmés passant dans une allée du Champ-de-Mars, en conservant une vue vers la [[tour Eiffel]].
+* Dans le film ''[[Les Sous-doués en vacances]]'' (1981), Bébel ([[Daniel Auteuil]]) essaie, en vain, de planter sa tente sur le Champ-de-Mars.
+* ''[[Le Promeneur du Champ-de-Mars]]'' (2005) est un film français de Robert Guédiguian sorti en salle le {{date|16 février 2005}}. Il retrace la fin de la vie de [[François Mitterrand]], lorsqu’il habitait au 9, [[avenue Frédéric-Le-Play]] et avait l’occasion de se promener dans le Champ-de-Mars tout proche.
+* Une scène du film ''[[L'Affaire SK1]]'' (2014) est tournée au Champ-de-Mars.
+
+== Notes et références ==
+{{Références}}
+
+== Annexes ==
+=== Articles connexes ===
+* [[7e arrondissement de Paris|{{7e|arrondissement}} de Paris]]
+* [[Liste des espaces verts de Paris]]
+
+=== Liens externes ===
+{{Autres projets
+|commons=Category:Champ-de-Mars (Paris)
+|commons titre=Champ-de-Mars
+}}
+* [https://www.paris.fr/equipements/parc-du-champ-de-mars-1807 Jardin du Champ-de-Mars] sur le site de la [[mairie de Paris]]
+* [https://www.saemes.fr/fr/parking/parking-quai-branly-tour-eiffel Parking Quai branly-Tour Eiffel]
+
+{{Palette|Espaces verts du 7e arrondissement de Paris|Espaces verts parisiens|Paris}}
+{{Portail|Révolution française|espaces verts|protection du patrimoine|Paris}}
+
+[[Catégorie:Champ-de-Mars (Paris)|*]]
+[[Catégorie:Géographie de la Révolution française|Champ-de-Mars]]
+[[Catégorie:Paris pendant la Révolution française]]
+[[Catégorie:Site des Jeux olympiques de 1900]]
+[[Catégorie:Championnat d'Europe de football 2016]]
+[[Catégorie:Site des Jeux olympiques et paralympiques d'été de 2024]]

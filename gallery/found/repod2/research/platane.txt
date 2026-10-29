@@ -1,0 +1,219 @@
+{{Sous-titre/Taxon|ns1=Platanus}}
+{{Voir homonymes|Platane (homonymie)}}
+{{Taxobox début|végétal|''Platanus''|Fruits of Platanus orientalis.jpg|''Platanus orientalis'', le [[Platane d'Orient]].|classification=Tropicos}}
+{{Taxobox plage|106.3|0|[[Albien supérieur]] du [[Crétacé inférieur]] au [[Holocène|présent]]|collections=287}}
+{{Taxobox|classe|Equisetopsida}}
+{{Taxobox|sous-classe|Magnoliidae}}
+{{Taxobox|super-ordre|Proteanae}}
+{{Taxobox|ordre|Proteales}}
+{{Taxobox|famille|Platanaceae}}
+{{Taxobox taxon|végétal|genre|Platanus|[[Carl von Linné|L.]], [[1753]]}}
+{{Taxobox synonymes|* ''[[Platanos]]'' St.-Lag.{{Bioref|GBIF|18 septembre 2021|ref}}}}
+{{Taxobox fin}}
+[[Fichier:Platanus x Acerifolia.jpg|vignette|[[Platane commun|Platanes à feuilles d'érable]] (''Platanus'' ×''acerifolia'') âgés, au début du mois de mai, en compagnie d'un [[Aesculus hippocastanum|marronnier commun]] en pleine floraison (à droite) et d'un autre platane à feuilles d'érable coupé à sa base qui repousse (à droite).]]
+
+Les {{Dfn|platanes}} {{prononciation|LL-Q150 (fra)-Fabricio Cardenas (Culex)-platane.wav}} (''{{Dfn|Platanus}}'') sont un [[genre (biologie)|genre]] de [[plante]]s à fleurs de la [[famille (biologie)|famille]] des ''[[Platanaceae]]'' qui comprend une dizaine d'[[espèce]]s d'[[arbre]]s. La plus répandue est un [[hybride]], le [[platane commun]] largement utilisé comme [[arbre d'alignement]] pour orner les places, les rues et certaines routes.
+
+Étymologie : du nom grec {{Grec ancien|πλάτανος|plátanos}}, « platane », dérivé de l'adjectif {{Grec ancien|πλατύς|platús}}, « large »<ref>{{lien web |auteur=Anatole Bailly ; 2020 : Hugo Chávez, Gérard Gréco, André Charbonnet, Mark De Wilde, Bernard Maréchal & contributeurs|titre=Le Bailly |date=2020 |url=https://bailly.app/platanos |champ libre= « Étym. p.-ê. pré-grec ; son association avec πλατύς est secondaire. » |consulté le=9 juin 2024}}.</ref>.
+== Caractéristiques générales ==
+[[Fichier:Soignies AR1bJPG.jpg|vignette|gauche|Platane à feuilles d’érable (''Platanus'' ×''hispanica'' synonyme ''Platanus'' ×''acerifolia'') de [[Soignies]] ({{unité|11|m}} de circonférence à {{unité|50|cm}} du sol, pour {{unité|18|m}} de haut en 1999).]]
+[[Fichier:Foglia di platanus orientalis.jpg|vignette|gauche|alt=Feuille de Platanus orientalis.|Feuille de ''[[Platane d'Orient|Platanus orientalis]].'']]
+Les platanes sont de grands [[arbre]]s, pouvant atteindre de 25 à {{unité|55|m}} de haut, dont les caractéristiques générales diffèrent peu d'une espèce à l'autre. Ils ont une durée de vie assez longue (plusieurs centaines d'années, voire dix siècles et plus). Dans un sol suffisamment humide, le platane peut vivre jusqu'à {{formatnum:4000}} ans.
+
+Leur écorce caractéristique se fissure en écailles appelées [[rhytidome]]s dégageant des zones jaunâtres laissant apparaître le liège. L'aspect de peau de serpent de l'écorce est assez particulier.
+
+Les feuilles sont [[Glossaire botanique#C|caduques]], [[alterne]]s, assez grandes (de 15 à {{unité|25|cm}} de long), presque aussi larges que longues et de consistance assez ferme, voire coriace. Elles sont à nervation pédalée et comptent trois, cinq ou sept lobes aigus plus ou moins profondément séparés. Ces feuilles rappellent celles de certains [[érable]]s, mais la distinction est facile à faire, les feuilles d'érables étant toujours [[Glossaire botanique#O|opposées]] sur la tige et possédant une nervation palmée.
+
+Les fleurs, très petites sont dépourvues de calice et de corolle. Elles sont réunies en chatons ou capitules globuleux. Elles fleurissent assez tôt (en [[mai]] dans l'hémisphère Nord).
+
+Les fruits sont des [[akène]]s, généralement velus réunis en boules pendantes qui murissent à l'automne.
+
+Le bois est dur et lourd, de couleur brun rosé.
+
+== Distribution ==
+[[Fichier:Platanus × hispanica (Platane commun) - 20150430 10h12 (10124).jpg|vignette|redresse=0.7|''Platanus'' ×''acerifolia'' (Platane commun) élagué à [[Roussillon (Isère)|Roussillon]], en [[Isère (département)|Isère]], en France.]]
+
+Les différentes espèces de platanes sont originaires des régions tempérées subtropicales de l'hémisphère Nord.
+
+
+Il y avait déjà des platanes dans la région de Marseille il y a un million d'années, quand [[Homo Erectus]] est arrivé<ref>
+{{Lien web |langue=fr |auteur=Valérie Andrieu |titre=Marseille il y a un million d’années : un jardin d’Eden ? |url=https://www.insu.cnrs.fr/fr/cnrsinfo/marseille-il-y-un-million-dannees-un-jardin-deden |date=04 septembre 2024 |site=https://www.insu.cnrs.fr/ |consulté le=7 septembre 2024}}.
+</ref>.
+
+Des preuves ([[fossile]]s) de leur présence dans l'actuelle [[Hongrie]] existent pour l'[[Tertiaire (géologie)|époque tertiaire]]<ref>[[Gábor Andreánszky (botaniste)|Gabor Andreanszky]], ''La répartition des forêts de platanes en Hongrie à l'époque tertiaire''. - Acta biologica Academiae, 1952 - Magyar Tudományos Akadémia.</ref>.
+
+Le platane d'Occident et le platane d'Orient, très proches par leurs caractéristiques morphologiques, ont des aires de répartition bien distinctes (Amérique du Nord pour le premier, Balkans et Turquie pour le second).
+
+Ce sont des espèces dites [[Vicariance|vicariantes]].
+
+== Histoire du platane ==
+Le ''Plataniste'' était dans l'[[Antiquité grecque]] une plaine ombragée de platanes sous lesquels les jeunes [[Sparte|Spartiates]] pratiquaient leurs exercices de gymnastique<ref>Quand elle parut [Cymodocée], la foule qu'attiroit cette cérémonie poussa un cri d'admiration. Les païens disoient: {{Citation|C'est la fille de Tyndare, couronnée des fleurs du plataniste (...)» (Chateaubr., ''Martyrs'', t. 2, 1810, p.197)}}, cité par [http://www.cnrtl.fr/definition/platane CNRTL, CNRS Lexicographie]</ref>.
+
+Le mot latin ''Platanus'' a notamment donné plaitoine, plantoine, ''ca'' 1150 (''Le Conte de Floire et Blancheflor'', éd. J. L. Leclanche, 1863 et 1986) et platan, fin {{S mini-|XII|e}}-début {{s-|XIII|e}}<ref>''Flore et Blancheflor'', I, éd. M. M. Pelan, 1671). Fréq. abs. littér.: 462. Fréq. rel. littér.: XIXes.: a) 463, b) 611; XXes.: a) 798, b) 761</ref>.
+<br />En 1298, ''[[Le Livre de Marco Polo]]'' le décrit : « Il est moult grand et moult gros, ses feuilles sont d'une part vertes et de l'autre blanches. Il fait (des) bogues (''ricci'') semblables aux bogues de châtaigne, mais (il) n'y a rien dedans<ref>Chapitre 39 de l'édition de Mario Eusebi et Eugenio Burgio, ''Le Devisement dou monde'', Venise: Ca'Foscari, 2018, p. 63.</ref> ».
+<br>En 1718 et 1740, le dictionnaire de l'Académie précise que plane (s.m.) est une {{Citation|sorte d'arbre appelé autrement platane}}. En 1762, platane renvoie aussi à plane<ref>[http://atilf.atilf.fr/dendien/scripts/tlfiv5/advanced.exe?8;s=2456663115; Platane, subst. masc.], Trésors de la langue française</ref>.
+
+Le Platane d'Orient a aussi autrefois été appelé plane ; mot qui a pu être source de confusion car on parlait aussi d'érable plane et d'érable-platane ou d'érable faux platane (les feuilles de l'un rappelant celles de l'autre).
+
+Pour le ''Dictionnaire Godefroy''<ref>{{Lien web |titre=Platanier dans le dictionnaire Godefroy |url=http://micmap.org/dicfro/chercher/dictionnaire-godefroy/platanus |site=micmap.org |consulté le=26 août 2026}}.</ref>, {{Citation|le platanier est un arbres qui est ainsy appellé<!--orth d'époque--> pour ses feuilles qui sont plates et larges (Corbichon, ''Propriét. des choses'', XVII, 117, Richel. 22533, (287), Var., Plantanier (éd. 1486) : Des plantaniers qui obumbration Font aux bourgeons, ruisseaulx et fontaines (Guill. Michel, {{4e}} liv. des ''Georg''., (66v, éd. 1540)}}
+
+Au Royaume-Uni, dans le comté du [[Dorset (comté)|Dorset]], à environ 80 kilomètres à l'ouest de Southampton, dans le parc de l'école privée Bryanston School, vit encore un platane hybride « London Plane » et planté en 1749 {{Citation|pour commémorer le centenaire de la mort tragique du roi Charles I<sup>er</sup>, la tête tranchée par le bourreau (…) croisement entre un platane occidental et un platane oriental}}. Il est présenté par le ''Guiness Book of the Records'' comme ayant une circonférence à hauteur d'homme de {{unité|6.95|m}} et une hauteur totale de {{unité|51|m}}.
+
+La notion de ''Platanaie'' (plantation de platanes ou lieu planté de platanes) apparaît dans le dictionnaire au {{s-|XIX}}<ref>{{Lien web |titre=CNRTL, CNRS Lexicographie |url=http://www.cnrtl.fr/definition/platane |site=cnrtl.fr |consulté le=26 août 2026}}.</ref>.
+
+Ces arbres sont appréciés des urbanistes depuis la fin du {{s-|XIX}} en raison de l’ombre généreuse qu’ils procurent<ref>{{Article|langue=Fr|auteur1=Guillaume Delacroix|titre=A Barcelone, le règne des platanes touche à sa fin|périodique=Le Monde|date=26 mai 2026|lire en ligne=https://www.lemonde.fr/planete/article/2026/05/24/a-barcelone-le-regne-des-platanes-touche-a-sa-fin_6693201_3244.html}}</ref>. Ils sont aussi largement utilisés comme arbres d'alignement.
+
+== Platane et biodiversité ==
+Les platanes sont appréciés en ville notamment pour leur résistance à la [[Taille (arboriculture)|taille]] et à la [[pollution de l'air]].
+
+Hors des espaces urbains et de leur zone d'origine, ce sont des arbres particulièrement pauvres en [[épiphyte|épiphytes]] et en biodiversité hébergée<ref>Ouvrage du Certu sur l'écologie urbaine</ref>.
+
+Les platanes ont un potentiel allergisant fort. Ils produisent une quantité importante de grains de pollens, qui se dispersent bien. Les fibres du fruit provoquent des irritations qui touchent aussi les personnes non allergiques<ref>{{Lien web |langue=fr-FR |titre=Arbres & Arbustes – Le Réseau National de Surveillance Aérobiologique (R.N.S.A.) |url=https://www.vegetation-en-ville.org/arbres-arbustes/ |consulté le=2024-07-09}}</ref>. Sa plantation abondante en ville qui participe au problème de santé publique. En France 10 à 20% de la population est allergique au pollen. Les allergies respiratoires sont au premier rang des maladies chroniques de l’enfant<ref>{{Lien web |langue=fr-FR |titre=Le Réseau National de Surveillance Aérobiologique (R.N.S.A.) |url=https://www.vegetation-en-ville.org/ |consulté le=2024-07-09}}</ref>.
+
+== Liste des espèces ==
+[[Fichier:Normandie Calvados Bayeux1 tango7174.jpg|vignette|droite|Platane datant de 1797, à Bayeux,<br />en Normandie, en France.]]
+[[Fichier:OrtoBotPadova Platanus orientalis 1.jpg|vignette|droite|Le platane du [[jardin botanique de Padoue]], planté en 1680.]]
+[[Fichier:Platane commun en automne à Arles (13).jpg|vignette|[[Platane commun]] en [[automne]] à [[Arles]] ([[Bouches-du-Rhône]]).]]
+[[Fichier:Platane Saone et loire.jpg|vignette|Platane remarquable en Saône-et-Loire]]
+* [[Platanus ×acerifolia|''Platanus'' ×''acerifolia'']] (Aiton) Willd., le [[Platane commun]]
+* ''Platanus occidentalis'' L., le [[Platane d'Occident]]
+* ''Platanus orientalis'' L., le [[Platane d'Orient]]
+* ''[[Platanus racemosa]]'' Nutt., le [[Platane de Californie]]
+
+Selon {{Bioref|GBIF|18 septembre 2021}} :
+{{Colonnes|taille=25|
+* ''[[Platanus appendiculata]]'' Lesquereux, 1878
+* ''[[Platanus bella]]'' Kvacek et al., 2001
+* ''[[Platanus coloradensis]]'' Knowlton, 1930
+* ''[[Platanus gentryi]]'' Nixon & J.M.Poole
+* ''[[Platanus guillelmae]]'' Goeppert
+* ''[[Platanus hispanica]]'' Ten.
+* ''[[Platanus kerrii]]'' Gagnep.
+* ''[[Platanus lindeniana]]'' S.Watson
+* ''[[Platanus mexicana]]'' Moric.
+* ''[[Platanus montana]]'' Knowlton, 1899
+* ''[[Platanus neptuni]]'' Buzek et al., 1967
+* ''[[Platanus nobilis]]'' Newberry, 1868
+* ''[[Platanus occidentalis]]'' L.
+* ''[[Platanus orientalis]]'' L.
+* ''[[Platanus paucidentata]]'' Dorf, 1930
+* ''[[Platanus racemosa]]'' Nutt.
+* ''[[Platanus raynoldsii]]'' Newberry
+* ''[[Platanus rzedowskii]]'' Nixon & J.M.Poole
+* ''[[Platanus wrightii]]'' S.Watson
+* [[Platanus ×hybrida|''Platanus ''×''hybrida'']] Brot.}}
+
+Selon {{Bioref|POWO|18 septembre 2021}} :
+* ''[[Platanus gentryi]]'' Nixon & J.M.Poole
+* ''[[Platanus kerrii]]'' Gagnep.
+* ''[[Platanus ×hispanica]]'' Mill. ex Münchh.
+* ''[[Platanus lindeniana]]'' M.Martens & Galeotti
+* ''[[Platanus mexicana]]'' Moric.
+* ''[[Platanus occidentalis]]'' L.
+* ''[[Platanus orientalis]]'' L.
+* ''[[Platanus palmeri]]'' (Kuntze) ined.
+* ''[[Platanus racemosa]]'' Nutt.
+* ''[[Platanus rzedowskii]]'' Nixon & J.M.Poole
+* ''[[Platanus wrightii]]'' S.Watson
+
+== Utilisation ==
+* Usage médicinal : un ouvrage arabe du {{s-|XII|e}}, le Traité d'Abou Hamid Mohammed ben Ali Omar, dit Al Samarkandi (car né à Samarcande la seconde moitié du {{s-|XII|e}}) dit que la feuille de platane peut être utilisée comme pansement contre les tumeurs chaudes et graves<ref>[http://www.persee.fr/web/revues/home/prescript/article/pharm_0035-2349_1955_num_43_147_11394_t1_0218_0000_3?_Prescripts_Search_tabs1=standard& Un ouvrage arabe du {{s-|XII|e}}], in ''Une œuvre arabe du {{s-|XII|e}} : Tarabein Chérif, Contribution à l'histoire de la pharmacie arabe : étude particulière du manuscrit intitulé : Al- Nadjibiate Al-Samarkandiate'', Collard Édouard, [[Revue d'histoire de la pharmacie]], année 1955, volume 43, n° 147, pp. 218-219</ref>.
+* Arbre d'ornement : plusieurs espèces sont plantées comme [[arbre d'ornement]] urbain et d'[[Arbre d'alignement|alignement]] le long des rues et des routes. Selon la tradition, beaucoup auraient été plantés sous le [[Premier Empire]] afin de protéger les soldats de la [[Grande Armée]] du soleil pendant leurs trajets vers les champs de bataille. Ce sont des arbres qui supportent bien l'[[élagage]] et les conditions de vie en milieu urbain.
+* Production de bois : le bois des platanes, clair, dur et ferme, peut être utilisé en [[menuiserie]]. Certains bois de platane coupés obliquement par rapport au fil du bois prennent un aspect moiré<ref>{{Citation|Les bois clairs, plus rares, ne sont employés que si leurs veines sont une parure suffisante pour de vastes panneaux dépourvus de toute autre ornementation. On rencontre ainsi du hêtre ponctué, du platane moiré, du frêne tacheté}} P. méton. Viaux, Meuble Fr., 1962, p. 130.</ref> quand ils sont polis. Il ressemble au bois du hêtre et résiste mieux que le bois de hêtre à l'humidité, mais est plus facilement attaqué par les insectes. L'[[aubier]] se distingue peu du cœur.
+
+Considéré comme étant difficile à travailler, il est peu employé, sauf en Orient : on peut en faire des travaux d'ébénisterie, de menuiserie, de charronnage. En Europe, il sert surtout pour les intérieurs de meubles (casiers, tiroirs).
+
+== Légendes et traditions ==
+Dans la mythologie grecque, le platane est un symbole de la régénération (l'écorce se régénérant par plaques). Il aurait servi à construire le [[cheval de Troie]]. Les [[noces]] de platane symbolisent les 61 ans de [[mariage]].
+
+
+
+== Le platane dans la culture ==
+* ''Les Grands Platanes'', par [[Vincent van Gogh]], huile sur toile de [[1889]], {{Dunité|73,4|91,8|cm}}, au [[Cleveland Museum of Art]], don du [[Hanna Fund]]. [[File:The Large Plane Trees (Road Menders at Saint-Rémy), by Vincent van Gogh, Cleveland Museum of Art, 1947.209.jpg|thumb|Les Grands Platanes de Vincent van Gogh]]
+*C'est sous un platane que discutent Socrate et Phèdre dans le ''[[Phèdre (Platon)|Phèdre]]'' de [[Platon]]<ref>{{Ouvrage|auteur1=Platon|traducteur=Victor Cousin|titre=Œuvres de Platon|tome=VI|titre volume=Phèdre ou De la Beauté|éditeur=|année=|isbn=|lire en ligne=https://fr.wikisource.org/wiki/Ph%C3%A8dre_(Platon,_trad._Cousin)}}{{Citation bloc|Par Junon, le charmant lieu de repos ! Comme ce platane est large et élevé ! Et cet agnus-castus, avec ses rameaux élancés et son bel ombrage, ne dirait-on pas qu’il est là tout en fleur pour embaumer l’air ? Quoi de plus gracieux, je te prie, que cette source qui coule sous ce platane, et dont nos pieds attestent la fraîcheur ? ce lieu pourrait bien être consacré à quelques nymphes et au fleuve Achéloüs, à en juger par ces figures et ces statues[9]. Goûte un peu l’air qu’on y respire : est-il rien de si suave et de si délicieux ? Le chant des cigales a quelque chose d’animé et qui sent l’été. J’aime surtout cette herbe touffue qui nous permet de nous étendre et de reposer mollement notre tête sur ce terrain légèrement incliné. Mon cher Phèdre, tu ne pouvais mieux me conduire.}}</ref>. Phèdre jure par le platane qui se trouve sur les lieux pour convaincre Socrate de déployer son discours sur l'amour<ref>{{Ouvrage|auteur1=Platon|traducteur=Victor Cousin|titre=Œuvres de Platon|tome=VI|titre volume=Phèdre ou De la Beauté|éditeur=|année=|isbn=|lire en ligne=https://fr.wikisource.org/wiki/Ph%C3%A8dre_(Platon,_trad._Cousin)}}{{Citation bloc|Je jure, voyons, par quel dieu ? par ce platane, si tu veux ; oui, je jure par ce platane que si tu ne me satisfais ici même en sa présence, jamais il ne m’arrivera de te lire ni de te réciter aucun autre discours de qui que ce soit.}}</ref>.
+
+== Maladies des platanes ==
+[[Fichier:Endoterapia.jpg|vignette|gauche|De nouvelles techniques sont développées pour soigner les maladies qui s'étendent facilement dans les populations clonales, obtenues par multiplication végétative.]]
+[[Fichier:Tapis de racines de platane sous trottoir Platanus root mat under sidewalk Lille northern France 01.jpg|vignette|Ce « tapis de racine » (plus de {{unité|20|cm}} d'épaisseur sur plusieurs mètres carrés) s’est développé entre une couche de goudron (surface du trottoir) et une couche de [[Béton à contenu recyclé|ternaire]] (visiblement phytotoxique).]]
+
+Les platanes de Provence sont sérieusement menacés par un micro-champignon, ''[[Ceratocystis platani]]'', responsable de la maladie du [[chancre coloré]]. Cousin de l'ennemi des [[orme]]s, ce parasite est originaire des États-Unis, où il a été décelé dès 1929. Il a très probablement été introduit sur la façade européenne de la Méditerranée lors des opérations militaires de la fin de la [[Seconde Guerre mondiale]], avec les caisses en bois d'armement américain<ref>[http://www.inra.fr/dpenv/vigouc06.htm Le point sur la recherche d'une résistance à la maladie du chancre coloré du platane], par A. Vigouroux, Laboratoire de biologie et de pathologie végétales, INRA - Montpellier.</ref>.
+Si le parasite est d’abord resté latent pendant près de 15 ans, il touche au début du {{s-|XXI|e}} toute l’Italie, la Suisse (Tessin et canton de Genève), le Sud de la Grèce ainsi que le Sud de la France, avec un front avancé en région lyonnaise (Bourg-en-Bresse, Chambéry) et dans le Sud-Ouest ([[canal du Midi]], [[Saint-Gaudens]], Toulouse). Quelques spores du champignon introduites dans une blessure, même minime, suffisent à infecter l’arbre tout entier qui ne résistera pas plus de quatre à six ans selon l’endroit de la contamination. En France, près de {{nombre|50000|arbres}} ont déjà péri ainsi (chiffrage en 2010)<ref>{{article|texte=http://www.laprovence.com/article/cavaillon/45-000-platanes-tues-par-un-champignon-en-bord-de-riviere|auteur=Florent BONNEFOI|éditeur=Syndicat mixte du bassin des Sorgues|revue=La Provence|date=2010-10-29|titre=45 000 platanes tués par un champignon en bord de rivière}}.</ref>.
+
+Par croisement entre des platanes américains et des platanes d’orient, des chercheurs de l’INRA ont obtenu des plants résistants à la maladie du chancre coloré. De cette sélection est née la variété ''Platanor (R) Vallis clausa''. Cette nouvelle variété présente toutes les caractéristiques ornementales du platane commun, lui-même [[hybride]]. Elle est également très résistante à l’[[anthracnose]] et à un degré moindre à l’[[oïdium]] et au [[Tingidae]]<ref>{{Lien web |titre=Fiche détaillée sur le platane résistant au chancre coloré |url=http://www.inra.fr/presse/platanor_vallis_clausa_platane_resistant_chancre_colore/ |site=inra.fr |consulté le=26 août 2026}}.</ref>.
+{{clr}}
+
+== Ravageurs des platanes ==
+[[Fichier:Corytucha ciliata.jpg|vignette|Tigre du platane ''(Corythucha ciliata)'']]
+* [[Tigre du platane]] une punaise exotique envahissante : pullule, affecte les feuilles.
+* ''[[Arocatus longiceps]]'' une punaise exotique de la famille des [[Lygaeidae]], mais qui ne cause pas de dégâts.
+{{clr}}
+* [[Xylella fastidiosa]] peut affecter les platanes d'ornement. C'est une bactérie très dangereuse qui menace plus de 300 espèces de plantes dont notamment les oliviers. Elle est souvent transmise d'un sujet à l'autre lors des travaux d'élagages des arbres d'ornement en ville, forçant une attention particulière au nettoyage du matériel d'élagage.
+
+== Vocabulaire et risque de confusion ==
+Le mot ''platane'' a parfois désigné le [[bananier]], d'où le mot ''plantain'' de [[banane plantain]], banane se disant ''plátano'' en espagnol ; ainsi dans la relation qu'il fait de sa visite de l'île de [[Tenerife]], [[Jean-Baptiste Gaby]], en [[1689]], explique que les bananes ''{{Citation|sont les fruits de l'arbre '''Platane'''. Ils entroient pour lors dans leur maturité ; c'est un fruit de la grosseur & longueur de nos petits cocombres, il est d'un goust fort douçastre & un peu sauvage, quand on n'y est pas accoûtumé. Les espagnols y voyent, disent-ils, au milieu l'image d'un crucifix, quand on les coupe en biaisant ; les plus crédules de nos françois pensoient l'y voir : mais quelque soin que nous prission à l'examiner, nous en pûmes jamais l'y voir}}''<ref>[[Jean-Baptiste Gaby]], supérieur du [[couvent de l'observance de Saint-François de Loches]] (1689), ''« Relation de la Nigritie, contenant une exacte description de ses Royaumes & de leurs Gouvernements, la Religion, les Mœurs, Coustumes & raretez de ce Païs. Avec la découverte de la Rivière du Senega, dont on a fait une Carte particulière »'' ; Ed: E. Couterot, 92 pages ([https://books.google.fr/books?id=X2HPxit0cfwC&printsec=frontcover&dq=nigritie&hl=fr&sa=X&ei=NLqxUIP5K-SA0AX8mIDICA&ved=0CDwQ6AEwAg livre numérisé par Google])</ref>.
+
+== Bibliographie ==
+* ''Le Platane - Portrait, botanique, maladies'' - André Vigouroux, éditions Édisud - 2007 {{ISBN|978-2-7449-0704-3}} - 128 p.
+* ''Le Platane'' - Alain Pontopidan, Actes Sud (Le nom de l'arbre) éd., 1 vol., 95 p.
+
+== Voir aussi ==
+* [[Érable sycomore|Faux platane]], qui est en fait un érable.
+* Des platanes remarquables en France : [[Arbre de Diane (biologie)|Arbre de Diane]], [[platane géant de Lamanon]], [[platane de Robillard]] et [[platanes du Roi de Rome]].
+* [[Arbre d'Hippocrate]], sur l'île grecque de [[Cos (Dodécanèse)|Cos]], serait le descendant d'un platane sous lequel [[Hippocrate]] aurait enseigné à ses élèves la [[médecine]]. Avec un tronc d'une circonférence d'environ {{unité|12|m}}, il est réputé être le plus grand platane d'Europe.
+
+== Galerie ==
+<gallery mode="packed">
+Fichier:PlatanusFL568.jpg|Le pédoncule qui retient l'akène à l'arbre se délite au cours de l'hiver.
+Fichier:PlatanusPédonculeAkeneFL.jpg|Pédoncule à demi dégradé.
+Fichier:PlatanusAkeneFL2.jpg|Graines de l'akène.
+Fichier:PlatanusGraineAkeneFL.jpg|Détail d'une graine.
+Fichier:Akène2.png|Akène en coupe.
+Fichier:Akène.png|Noyau de l'akène séparé des graines.
+Fichier:Le Platane Géant De Provence à Lamanon.JPG|Le platane géant de Provence à Lamanon.
+Fichier:2018-04-29 - Écorce de platane.jpg|Écorce.
+Fichier:1111LoupePlataneLePuy.jpg|[[Loupe (botanique)|Loupe]] remarquable sur Platane au [[Puy-en-Velay]].
+</gallery>
+
+== Divers ==
+Dans le [[calendrier républicain]] français, le {{2e|jour}} du mois de [[germinal]], est officiellement dénommé '''jour du Platane'''.
+
+== Notes et références ==
+{{Références}}
+
+== Voir aussi ==
+=== Articles connexes ===
+* [[Glossaire de botanique]]
+* [[Arbre d'alignement]]
+
+=== Liens externes ===
+{{Autres projets
+|commons=Category:Platanus
+|species=Platanus
+|wiktionary=platane
+}}
+* {{CatalogueofLife|6RKR|''Platanus'' L.|consulté le=18 septembre 2021}}
+* {{eFloras|2|125747|Platanus|consulté le=18 septembre 2021}}
+* {{eFloras|1|125747|Platanus|consulté le=18 septembre 2021}}
+* {{eFloras|5|125747|Platanus|consulté le=18 septembre 2021}}
+* {{GBIF|3152811|''Platanus'' L.|consulté le=18 septembre 2021}}
+* {{GRIN genre|9494|''Platanus'' L.|consulté le=18 septembre 2021}}
+* {{INPN|196366|''Platanus'' L., 1753|consulté le=18 septembre 2021}}
+* {{IPNI|32120-1|Platanus|L.|consulté le=18 septembre 2021}}
+* {{IRMNG|1333608|''Platanus'' Linnaeus, 1753|consulté le=18 septembre 2021}}
+* {{ITIS|19019|''Platanus'' L.|consulté le=18 septembre 2021}}
+* {{NCBI|4402|''Platanus''|consulté le=18 septembre 2021}}
+* {{OEPP|1PLTG|''Platanus''|Linnaeus|consulté le=18 septembre 2021}}
+* {{POWO|32120-1|Platanus|L.|consulté le=18 septembre 2021}}
+* {{Tela-métro|87019|''Platanus'' L.|consulté le=18 septembre 2021}}
+* {{TPDB|53335|''Platanus'' Linnaeus|consulté le=18 septembre 2021}}
+* {{Tolweb|Platanus|consulté le=18 septembre 2021}}
+* {{Tropicos|40010355|Platanus|L.|consulté le=18 septembre 2021}}
+* {{WCVP|32120-1|Platanus|L.|consulté le=18 septembre 2021}}
+* {{WFO|4000030059|Platanus|L.|consulté le=18 septembre 2021}}
+
+{{Portail|botanique}}
+
+[[Catégorie:Platanaceae|+]]
+[[Catégorie:Genre de Dicotylédones (nom vernaculaire)]]
+[[Catégorie:Genre de feuillus (nom vernaculaire)]]
+[[Catégorie:Arbre d'ornement|+]]

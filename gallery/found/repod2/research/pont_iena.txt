@@ -1,0 +1,141 @@
+{{Voir homonymes|Iéna (homonymie)}}
+{{Infobox Pont
+ | nom               = Pont d’Iéna
+ | image             = Pont d'Iéna 2447x742.jpg
+ | légende           = Le pont d'Iéna.
+ | pays              = {{France}}
+ | subdivision1      = [[Île-de-France]]
+ | lien subdivision1 = [[Région française|Région]]
+ | subdivision2      = [[Paris]]
+ | lien subdivision2 = [[Département français|Département]]
+ | subdivision3      = 
+ | ville             = [[Paris]]
+ | latitude          = 48.859722
+ | longitude         = 2.292222
+ | franchit          = la [[Seine]]
+ | fonction          = piétons et cyclistes
+ | itinéraire        = 
+ | type              = [[Pont en arc]]
+ | longueur          = 155
+ | portée            = 
+ | largeur           = 35 (depuis {{date|1935}})
+ | hauteur           = 
+ | hauteur libre     = 
+ | matériau          = [[Pierre (matériau)|Pierre]]
+ | dates             = 1808-1814
+ | démolition        = 
+ | inauguration      = 
+ | mise en service   = 
+ | maître d'ouvrage  = 
+ | propriétaire      = 
+ | concessionnaire   = 
+ | concepteur        = 
+ | architecte        = Gaspard, [[Corneille Lamandé|C. Lamandé]],<br />[[Jacques Mallet|J. Mallet]], J. Morane
+ | maître d'oeuvre   = 
+ | ingénieur         = 
+ | fin du service    = 
+ | entreprises       = 
+ | noms              = 
+ | protection        = {{Inscrit MH|1975}}<br/>{{Patrimoine mondial|1991||au titre de Paris, rives de la Seine}}<ref name="Paris, rives de la Seine">{{Lien web |langue=fr |titre=Paris, rives de la Seine |url=http://whc.unesco.org/fr/list/600/ |date=2024|éditeur=[[Organisation des Nations unies pour l'éducation, la science et la culture|UNESCO]] |site=whc.unesco.org |consulté le=18 novembre 2024}}.</ref>
+ | type carte1       = 
+ | géolocalisation   = <!-- recherche automatique par Module:Carte -->
+}}
+Le '''pont d'Iéna''' est un [[Liste des ponts de Paris|pont parisien]] franchissant la [[Seine à Paris|Seine]]. Le pont est réservé aux piétons et cyclistes depuis les [[Jeux olympiques d'été de 2024|Jeux olympiques de 2024]].
+
+Il fait l’objet d’une inscription au titre des [[Monument historique (France)|monuments historiques]] depuis le {{date|12|juin|1975}}<ref>{{Base Mérimée|PA00088800|Pont d’Iéna}}.</ref>.
+
+== Situation et accès ==
+Le pont d’Iéna relie la [[tour Eiffel]] au [[Jardins du Trocadéro|Trocadéro]]. Sur la rive droite, il donne accès à l'[[avenue de New-York]]. Sur la rive gauche, il sépare le [[port de La Bourdonnais]] du [[port de Suffren]] et croise le [[quai Jacques-Chirac]], au niveau de l'[[esplanade des Ouvriers-de-la-Tour-Eiffel]].
+
+Ce site est desservi par la [[Liste des stations du métro de Paris|station de métro]] [[Trocadéro (métro de Paris)|''Trocadéro'']].
+
+== Origine du nom ==
+Ce pont a été baptisé en l'honneur de la [[Bataille d'Iéna|victoire d'Iéna]] en date du {{date|14 octobre 1806}}, qui opposa les [[Grande Armée|armées Napoléoniennes]] aux forces [[Royaume de Prusse|prussiennes]].
+
+== Historique ==
+L'empereur {{Napoléon Ier}} fit construire un pont faisant face à l’[[École militaire (France)|École militaire]] et le baptisa, par un décret daté de [[Varsovie]] en 1807, du nom de la [[bataille d'Iéna]] en lieu et place des propositions initialement envisagées : « pont du Champ-de-Mars » ou « pont de l'École-Militaire ».
+
+Sa construction est permise par le comblement en 1812 du chenal qui séparait l'[[Île des Cygnes (ancienne île de Paris)|île des Cygnes]] de la terre ferme du [[quartier du Gros-Caillou]], comprenant la partie du [[Champ-de-Mars (Paris)|Champ-de-Mars]] où est établie la [[tour Eiffel]].
+
+Le pont était destiné à relier la [[colline de Chaillot]], où la construction du [[palais du roi de Rome]] était projetée sur la rive droite au Champ-de-Mars et aux bâtiments des Archives et de l'Université également en projet sur la rive gauche sur le territoire compris entre les actuels [[quai Branly]], [[avenue Rapp]], [[Rue de l'Université (Paris)|rue de l'Université]] et [[avenue Bosquet]]. Ces projets sont abandonnés à la chute de l'[[Premier Empire|Empire]].
+<gallery caption="" widths="300px" heights="100px">
+Projet pour le quartier de Gros Caillou en 1814.png|Projet pour le quartier de Gros Caillou en 1814.
+</gallery>
+
+Sa construction, d'abord confiée à [[Jacques Dillon]], disparu prématurément, échut à l'ingénieur [[Corneille Lamandé]]<ref>{{ouvrage|auteur=J.- A. Dulaure|titre=Histoire physique et morale de Paris |lire en ligne=https://books.google.com/books?id=mSACAAAAYAAJ&printsec=frontcover&hl=fr#v=onepage&q=&f=false| passage=203}}.</ref> et s'étala de 1808 à 1814, les travaux étant exécutés par l'entrepreneur poitevin Zacharie Guillé dit Galland<ref>{{Article |auteur1=Yves-Jean Riou |titre=L'étonnant parcours d'un entrepreneur poitevin, Zacharie Guillié dit Galland (1760-1821) |périodique=Revue historique du Centre-Ouest|volume=XIX |année=2020 |pages=7-71 }}.</ref>.
+
+En 1815, lors de la seconde occupation de Paris par les puissances alliées, le maréchal [[Gebhard Leberecht von Blücher|Blücher]] voulut détruire le pont d'Iéna. Malgré l'intervention, de [[Louis XVIII]], de [[Charles-Maurice de Talleyrand-Périgord|Talleyrand]] et de [[Laurent de Gouvion-Saint-Cyr|Gouviont-Saint-Cyr]] auprès du [[Frédéric-Guillaume III|roi de Prusse]], le maréchal refusa de renoncer à son projet et l'intervention du tsar en personne fut nécessaire pour lui faire entendre raison, le tsar Alexandre menaçant de se rendre sur le pont pour empêcher cet acte de vandalisme<ref>{{Ouvrage|auteur1=Frédéric Naulet|titre=Iéna et Auerstedt|sous-titre=La Prusse humiliée (14 octobre 1806)|lieu=Paris|éditeur=[[Economica]]|collection=Campagnes & stratégies|année=2019|passage=244|isbn=}}.</ref>. L'ouvrage fut finalement sauvé et rebaptisé « pont de l'École-Militaire »<ref>Emmanuel de Waresquiel, ''Talleyrand. Le prince immobile'', Fayard, 2003, {{nb p.|796}} {{ISBN| 978-2213613260}}, {{p.|509}}.</ref>. On fit également disparaître les aigles qui le décoraient. Il ne recouvrira son nom et ses atours que sous le règne de [[Louis-Philippe Ier|Louis-Philippe]].
+
+En 1853, quatre sculptures sont mises en place aux extrémités du pont<ref name="Le Parisien">{{Lien web|url=https://www.leparisien.fr/jo-paris-2024/jo-de-paris-2024-face-a-la-tour-eiffel-les-statues-du-pont-diena-se-font-un-lifting-avant-les-festivites-27-01-2024-ZVK7UMQTZNC35NJSO2ALNNYXFU.php |titre=JO de Paris 2024 : face à la tour Eiffel, les statues du pont d’Iéna se font un lifting avant les festivités |date= 27 janvier 2024 |auteur=Élie Julien |consulté le=3 février 2024|site=[[Le Parisien|leparisien.fr]]}}.</ref> :
+* rive gauche :
+** un ''Cavalier [[Peuples gaulois|gaulois]]'' par [[Auguste Préault]] ;
+** un ''Cavalier [[Rome antique|romain]]'' par [[Louis-Joseph Daumas]] ;
+* rive droite :
+** un ''Cavalier [[Civilisation islamique|arabe]]'' par [[Jean-Jacques Feuchère]] ;
+** un ''Cavalier [[Grèce antique|grec]]'' par [[François Théodore Devaulx]].
+
+Le pont est [[Pont couvert|couvert]] lors de l'[[exposition universelle de 1889]].
+
+Durant l'[[Exposition universelle de 1900]], il était réservé à l'usage de l'exposition, la circulation de la ville étant détournée vers d'autres voies, et il fut élargi à {{unité|24|mètres}} à cette occasion par l'adjonction de passerelles métalliques reposant sur les piles originales ([[Jean Résal]] et Lion pour le dessin, [[Daydé & Pillé]] pour la réalisation). Trop fragiles pour la circulation, elles ne supportaient que des trottoirs élargis. Sur une carte postale de 1906, la chaussée a été rétrécie, et, sur une autre de 1907, les ailes semblent condamnées par des rambardes métalliques. On trouve trace de cet élargissement au moins jusqu'en 1913 (survol par le dirigeable ''La République'').
+
+L'élargissement provisoire a été détruit vers 1920, comme l'atteste la carte postale ci-dessous, de 1923.
+
+En 1935, le pont fut réélargi ensuite de 14 à environ {{unité|35|mètres}}<ref>{{Article|langue=francais|auteur1=|titre=Élargissement du pont d'Iéna à Paris|périodique=L'Ossature métallique|volume=5|mois=12|date=1936|lire en ligne=|résumé=http://lib.ugent.be/fulltxt/RUG01/000/013/457/RUG01-000013457-1936-12_2015_0001_AC.pdf|passage=551-553}}.</ref> en prévision de l'[[Exposition universelle de 1937]] par l'adjonction de deux éléments de béton de part et d'autre de la structure initiale (chacune des anciennes piles est renforcée par ajout d'une pile en amont et d'une pile en aval).
+
+D'une longueur de {{unité|155|mètres}}, l'ouvrage présente 5 arches de {{unité|28|mètres}} en arc de cercle, quatre piles intermédiaires et des [[Tympan (architecture)|tympans]] sont décorés d'[[Aigle (héraldique)|aigles impériales]] dessinées par le [[Lyonnais célèbres|Lyonnais]] [[François-Frédéric Lemot]] et sculptés par [[Jean-François Mouret]].
+
+En vue des [[Jeux olympiques d'été de 2024]], la majorité de la maire PS [[Anne Hidalgo]] présente un projet d'{{Citation|amphithéâtre végétal}} pour la [[Place du Trocadéro-et-du-11-Novembre|place du Trocadéro]], dans le cadre d'un réaménagement du quartier allant jusqu'à la [[tour Eiffel]] et proposant la piétonnisation du pont d'Iéna et la transformation du croisement avec le [[quai Jacques-Chirac]] en promenade plantée. Malgré l'opposition des participants à une consultation publique et celle d'élus LR, LREM et LFI, le [[Conseil de Paris]] adopte le projet en {{date|février 2022}}<ref>{{Lien web|url=https://www.francetvinfo.fr/culture/patrimoine/paris-2024-feu-vert-pour-le-reamenagement-du-secteur-de-la-tour-eiffel-mais-sans-le-champ-de-mars_4951464.html |titre= Paris 2024 : feu vert pour le réaménagement du secteur de la Tour Eiffel, mais sans le Champ-de-Mars |date=9 février 2022|consulté le={{1er}} mars 2022|site=[[France Info (offre globale)|francetvinfo.fr]]}}.</ref>. Mais le préfet de police de Paris y met son met son veto, arguant des « reports de circulation importants » et une difficulté d'accès pour les secours qui pourraient s'ensuivre ; les recours de la ville de Paris sont rejetés par la justice en {{date|octobre 2022}} et en {{date|avril 2023}}. En {{date|février 2024}}, Anne Hidalgo annonce toutefois vouloir relancer les négociations sur ce projet après les JO<ref>{{Lien web|url=https://www.lefigaro.fr/politique/apres-les-jeux-olympiques-les-voitures-ne-reviendront-pas-devant-la-tour-eiffel-jure-anne-hidalgo-20240205 |titre=Après les Jeux olympiques, «les voitures ne reviendront pas devant la Tour Eiffel», jure Anne Hidalgo |date=5 février 2024|auteur= |consulté le=30 mars 2024|site=[[Le Figaro|lefigaro.fr]]}}.</ref>. En {{date|septembre 2024}}, la municipalité publie un arrêté interdisant définitivement la circulation motorisée sur le pont<ref>Paul Abran,  Élie Julien et Pauline Darvey, [https://www.leparisien.fr/paris-75/traverser-la-seine-en-toute-securite-les-vehicules-motorises-officiellement-interdits-sur-le-pont-diena-17-09-2024-OJXM3YJUNVDZVKX3ND52ZMLHZY.php « « Traverser la Seine en toute sécurité » : les véhicules motorisés officiellement interdits sur le pont d’Iéna »], leparisien.fr, 17 septembre 2024.</ref>.
+
+Début 2024, les quatre statues du pont sont rénovées<ref name="Le Parisien"/>.
+
+<gallery mode="packed" heights="150"> 
+Fichier:Charles Marville, Champ de Mars, 1878.jpg|En 1878, les cavaliers gaulois et romain sont présents.
+Fichier:Tour_Eiffel,_July_1888.jpg|Pendant la construction de la [[tour Eiffel]].
+Fichier:Eiffel Tower and general view of the grounds, Exposition Universal, 1900, Paris, France.jpg|Durant l'[[Exposition universelle de 1889]].
+Fichier:The environs of the Trocadero, Exposition Universal, 1900, Paris, France.jpg|Durant l'[[Exposition universelle de 1900]].
+Fichier:Paris_expo_1937.jpg|Durant l'[[Exposition universelle de 1937]].
+Fichier:75-Paris-Entrée du Trocadéro-1905.JPG|En 1905.
+Fichier:75-Paris-Trocadéro et le Pont d'Iéna-ND.JPG|Vue prise en 1923 a minima.
+Fichier:Cavalier Gaulois Pont D'Iena RG am.jpg|[[Auguste Préault]], ''Cavalier gaulois'' (1853).
+Fichier:Cavalier arabe pont d'Iena RD am.jpg|[[Jean-Jacques Feuchère]], ''Cavalier arabe'' (1853).
+Fichier:Guerrier romain par Louis Daumas, October 12, 2012.jpg|[[Louis-Joseph Daumas]], ''Cavalier romain'' (1853).
+Fichier:Cavalier Grec pont d'Iena RD av.jpg|[[François Théodore Devaulx]], ''Cavalier grec'' (1853).
+Fichier:Paris pont iena.jpg|Le pont d’Iéna de nuit.
+File:Crue de la Seine au Pont d'Iéna, janvier 2018 (6).jpg|Crue de la [[Seine]], janvier 2018.
+</gallery>
+
+== Notes et références ==
+{{Références}}
+
+== Bibliographie ==
+* A. L'Esprit, « Le pont d'Iéna », ''Bulletin de la [[Société historique d'Auteuil et de Passy]]'', 1917, tome 9, {{p.|147}} [https://gallica.bnf.fr/ark:/12148/bpt6k65031332/f161.item.r=.zoom (lire en ligne)].
+* [[Paul Marmottan]], ''Le Pont d'Iéna'', Paris : P. Chéronnet, 1917, 64 p.
+* {{Ouvrage | auteur1=Félix Lazare | auteur2=Louis Lazare | titre=Dictionnaire historique des rues et monuments de Paris [en] 1855 | sous-titre=avec les plans des 48 quartiers | éditeur=Maisonneuve & Larose | année=2003 | pages totales=796 | isbn=978-2-86877-184-1 | isbn2=2-86877-184-X}}.
+
+== Annexes ==
+{{…}}
+
+== Voir aussi ==
+=== Liens externes ===
+{{Autres projets|Commons=Category:Pont d'Iéna|commons titre=Le pont d’Iéna}}
+* {{Bases}}
+* [http://www.peniche.com/21ptiena.htm peniche.com]
+* [http://lefildutemps.free.fr/paris/pont_iena.htm Photos du pont initial et du nouveau pont]
+* [http://www.paris.fr/portail/deplacements/Portal.lut?page_id=240 Site de la Mairie de Paris]
+* [http://cnum.cnam.fr/CGI/fpage.cgi?4XAE69.1/497/100/522/215/521 Élargissement temporaire du pont en 1900]
+
+{{Palette|Ponts de Paris}}
+{{Portail|ponts|route|monuments historiques|patrimoine mondial|Paris}}
+
+[[Catégorie:Architecture du XIXe siècle en Île-de-France]]
+[[Catégorie:Pont sur la Seine à Paris|Iéna]]
+[[Catégorie:Pont monument historique à Paris|Iéna]]
+[[Catégorie:Iéna]]
+[[Catégorie:Odonyme se référant à une bataille|Iena]]
+[[Catégorie:Monument historique dans le 7e arrondissement de Paris]]
+[[Catégorie:Monument historique dans le 16e arrondissement de Paris]]
+[[Catégorie:Monument historique inscrit en 1975]]
+[[Catégorie:Patrimoine du XIXe siècle]]
+[[Catégorie:Pont dans le 7e arrondissement de Paris|Iéna]]
+[[Catégorie:Pont dans le 16e arrondissement de Paris|Iéna]]
+[[Catégorie:Réalisation sous l'ère napoléonienne]]

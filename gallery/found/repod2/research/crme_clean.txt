@@ -1,0 +1,188 @@
+Model equations for the Eiffel Tower profile: historical perspective and new results
+ À propos
+ Notre revue 
+ Équipe éditoriale 
+ Référencement et archivage 
+ Articles et numéros
+ Nos derniers articles 
+ Numéros thématiques 
+ Collections transverses 
+ Articles et numéros antérieurs à 2002 
+ Science ouverte
+ Les CR Mécanique en libre accès diamant 
+ Politique de libre accès 
+ Politique de données ouvertes 
+ Le plurilinguisme dans les Comptes Rendus 
+ Intégrité scientifique
+ Code d&#x27;éthique et bonnes pratiques 
+ Usage de l&#x27;intelligence artificielle 
+ Commenter les articles des CR Mécanique 
+ Outils auteurs
+ Procédure de soumission 
+ Instructions aux auteurs 
+ Formater vos références bibliographiques 
+ Propriété intellectuelle 
+ Traduisez un de nos articles ! 
+ Soumettre votre manuscrit 
+ Impression et réutilisation 
+ Mathématique 
+ Mécanique 
+ Physique 
+ Géoscience 
+ Palevol 
+ Chimie 
+ Biologies 
+ Vie des sciences 
+ À propos
+ Notre revue 
+ Équipe éditoriale 
+ Référencement et archivage 
+ Articles et numéros
+ Nos derniers articles 
+ Numéros thématiques 
+ Collections transverses 
+ Articles et numéros antérieurs à 2002 
+ Science ouverte
+ Les CR Mécanique en libre accès diamant 
+ Politique de libre accès 
+ Politique de données ouvertes 
+ Le plurilinguisme dans les Comptes Rendus 
+ Intégrité scientifique
+ Code d&#x27;éthique et bonnes pratiques 
+ Usage de l&#x27;intelligence artificielle 
+ Commenter les articles des CR Mécanique 
+ Outils auteurs
+ Procédure de soumission 
+ Instructions aux auteurs 
+ Formater vos références bibliographiques 
+ Propriété intellectuelle 
+ Traduisez un de nos articles ! 
+ Soumettre votre manuscrit 
+ Impression et réutilisation 
+ Consulter
+ Tout
+ Tout 
+ Auteur 
+ Titre 
+ Bibliographie 
+ Mots-clés 
+ Résumé 
+ Affiliation 
+ Plein texte 
+ Rechercher 
+ NOT 
+ -->
+ -->
+ Entre 
+ et 
+ Auteur
+ Tout 
+ Auteur 
+ Titre 
+ Date 
+ Bibliographie 
+ Mots-clés 
+ Résumé 
+ Affiliation 
+ Plein texte 
+ Précédent 
+ Consulter 
+ Volume 332 (2004) 
+ no. 7 
+ p. 571-584 
+ Suivant 
+ no. 7 
+ × 
+ History, old problems and new solutions / Histoire, vieux problèmes et nouveaux résultats
+ Model equations for the Eiffel Tower profile: historical perspective and new results
+ [Mise en équations du profil de la Tour Eiffel : rétrospective et nouveautés] 
+ Évariste Sanchez-Palencia
+ Patrick Weidman 1 ; Iosif Pinelis 2 1 Department of Mechanical Engineering, University of Colorado, Boulder, CO 80301-0427, USA 2 Department of Mathematical Sciences, Michigan Technological University, Houghton, MI 49931-1295, USA 
+Comptes Rendus. Mécanique, Volume 332 (2004) no. 7, pp. 571-584
+ Abstract
+ (VO)
+ Résumé
+ Model equations for the shape of the Eiffel Tower are investigated. One model purported to be based on Eiffel's writing does not give a tower with the correct curvature. A second popular model not connected with Eiffel's writings provides a fair approximation to the tower's skyline profile of 29 contiguous panels. Reported here is a third model derived from Eiffel's concern about wind loads on the tower, as documented in his communication to the French Civil Engineering Society on 30 March 1885. The result is a nonlinear, integro-differential equation which is solved to yield an exponential tower profile. It is further verified that, as Eiffel wrote, “in reality the curve exterior of the tower reproduces, at a determined scale, the same curve of the moments produced by the wind”. An analysis of the actual tower profile shows that it is composed of two piecewise continuous exponentials with different growth rates. This is explained by specific safety factors for wind loading that Eiffel & Company incorporated in the design of the free-standing tower. 
+ La mise en équation de la forme de la Tour Eiffel est ici étudiée. Un model supposé être basé sur les écrits d'Eiffel abouti à une tour possédant une courbure incorrecte. Il existe également un second model populaire, non déduit des notes d'Eiffel, produisant une bonne approximation du profile de la tour en vingt-neuf panneaux successifs. Ici est présenté un troisième model dérivé des préoccupations d'Eiffel concernant les effets du vent décrits dans sa communication a la Société Française des Ingénieurs Civils datée du 30 mars 1885. Il en résulte une équation non-linéaire intégro-différentielle dont la solution produit un profil de tour de type exponentiel. Il a été par ailleurs vérifié, comme Eiffel l'a noté, « en réalité la courbe extérieure de la tour reproduit, à une échelle déterminée, la courbe même des moments fléchissant dus au vent ». Une analyse du profil actuel de la tour montre qu'il est composé de deux parties continues exponentielles à taux d'accroissement différents. Cela s'explique par des facteurs de sûreté spécifiques, liés à la charge du vent, inclus par Eiffel & Compagnie dans le plans d'une tour auto supportée. 
+ Détail 
+ Citer cet article 
+ Reçu le : 2003-10-29 
+ Accepté le : 2004-02-18 
+ Publié le : 2004-05-14 
+ 2024-03-10 -->
+ DOI : 
+ 10.1016/j.crme.2004.02.021 
+Keywords: 
+Solids and structures, History of sciences, Eiffel Tower, Model equations, Wind loads, Nonlinear integral equations
+Mots-clés : 
+Solides et structures, Histoire des sciences, Modélisation mathématique, Charge due au vent, Équations intégrales non-linéaires
+ Affiliations des auteurs :
+ Patrick Weidman&hairsp;
+ 1
+ ;
+ Iosif Pinelis&hairsp;
+ 2
+ 1 
+ Department of Mechanical Engineering, University of Colorado, Boulder, CO 80301-0427, USA
+ 2 
+ Department of Mathematical Sciences, Michigan Technological University, Houghton, MI 49931-1295, USA
+ Patrick Weidman; Iosif Pinelis. Model equations for the Eiffel Tower profile: historical perspective and new results. Comptes Rendus. Mécanique, Volume 332 (2004) no. 7, pp. 571-584. doi: 10.1016/j.crme.2004.02.021 
+ BibTeX 
+ RIS 
+ EndNote 
+ @article{CRMECA_2004__332_7_571_0,
+ author = {Patrick Weidman and Iosif Pinelis},
+ title = {Model equations for the {Eiffel} {Tower} profile: historical perspective and new results},
+ journal = {Comptes Rendus. M\&#x27;ecanique},
+ pages = {571--584},
+ year = {2004},
+ publisher = {Elsevier},
+ volume = {332},
+ number = {7},
+ doi = {10.1016/j.crme.2004.02.021},
+ language = {en},
+} 
+ TY - JOUR
+AU - Patrick Weidman
+AU - Iosif Pinelis
+TI - Model equations for the Eiffel Tower profile: historical perspective and new results
+JO - Comptes Rendus. Mécanique
+PY - 2004
+SP - 571
+EP - 584
+VL - 332
+IS - 7
+PB - Elsevier
+DO - 10.1016/j.crme.2004.02.021
+LA - en
+ID - CRMECA_2004__332_7_571_0
+ER - 
+ %0 Journal Article
+%A Patrick Weidman
+%A Iosif Pinelis
+%T Model equations for the Eiffel Tower profile: historical perspective and new results
+%J Comptes Rendus. Mécanique
+%D 2004
+%P 571-584
+%V 332
+%N 7
+%I Elsevier
+%R 10.1016/j.crme.2004.02.021
+%G en
+%F CRMECA_2004__332_7_571_0 
+ Bibliographie 
+ Cité par 
+ [1] D.G. Zill; M.R. Cullen Advanced Engineering Mathematics , Jones and Bartlett, Boston, 2000
+ [2] http://wwwusers.imaginet.fr/~chouard/equation_eiffel_tower.html (Website)
+ [3] E. Heinle; F. Leonhardt Towers: A Historical Survey , Rizzoli International, New York, 1989 (p. 216)
+ [4] A. Deroy, engraving published in Revue Illustrée, July 1 (1888) p. 38
+ [5] R. Lakes Materials with structural hierarchy , Nature , Volume 361 (1993), pp. 511-515
+ [6] R.B. Banks Towing Icebergs, Falling Dominoes, and Other Adventures in Applied Mathematics , Princeton University Press, Princeton, 1998 (pp. 150–156)
+ [7] P. Puig-Adam Curso Teórico-Práctico de Ecuaciones Diferenciales , Nuevas Gráficas, Madrid, 1951 (p. 14)
+ [8] H. Loyrette Gustave Eiffel , Rizzoli International, New York, 1985 (p. 211, Translation of Eiffel's Biographie, vol. 2, p. 3)
+ [9] J. Harriss The Tallest Tower , Houghton Mifflin, Boston, 1975 (p. 25, Translation... (line truncated to 2000 chars)
+ Cité par Sources : 
+ Commentaires 
+ - 
+ Politique
+ <div id="suggestedArticles"

@@ -1,0 +1,42 @@
+<noinclude><pagequality level="3" user="Ganjidvd" /></noinclude><section begin="s1"/>{{em|2}}Immédiatement au-dessus de cette partie couverte, se trouve une 
+terrasse que j’avais tenu à me réserver ; le centre en est occupé par des 
+laboratoires scientifiques et par une pièce servant aux réceptions. 
+
+Au-dessus de ce bâtiment central, sont disposées les poutres en 
+croix supportant les poulies de transmission de l’ascenseur vertical du 
+sommet. Ces poutres sont surmontées des quatre grands arceaux à 
+jour supportant la lanterne du phare. C’est sur la coupole supérieure 
+de ce phare que s’appuie la petite plate-forme de {{unité|1.70|m}} de diamètre, 
+qui est exactement à la hauteur de {{unité|300|m}} au-dessus du sol.
+ 
+On peut y accéder facilement par des échelles intérieures, et l’on n’a 
+plus au-dessus de soi que le paratonnerre. 
+
+L’axe du Champ-de-Mars étant très sensiblement incliné à 45° sur le 
+méridien, la Tour se trouve orientée de telle façon que ses pieds sont 
+situés aux quatre points cardinaux. 
+
+Les piliers ont été numérotés en prenant pour origine celui qui est 
+placé près de la Seine du côté du centre de Paris. Ce pilier, qui porte le 
+numéro 1 est le pilier Nord. L’ordre des numéros ayant été établi suivant 
+le sens des aiguilles d’une montre, les autres piliers portent les 
+désignations : 2 ou Est, 3 ou Sud, 4 ou Ouest. 
+
+Comme principe de construction, j’ai admis, au point de vue de la 
+matière, l’emploi à peu près exclusif du fer de préférence à l’acier, qui 
+a une rigidité moindre ; au point de vue de la forme des éléments, j’ai 
+adopté celle que j’ai toujours préconisée dans les constructions sorties 
+de mes ateliers et notamment dans les piles de nos viaducs : c’est-à-dire 
+celle en caissons, qui, avec le minimum de section, donne le maximum de 
+résistance longitudinale et transversale, et permet aux pièces ainsi constituées 
+de travailler aussi bien à la compression qu’à l’extension. 
+
+L’emploi de cette forme en caissons, avec parois pleines pour les 
+pièces d’exceptionnelle résistance, et avec parois évidées en treillis pour 
+toutes les autres, beaucoup plus nombreuses, est une des caractéristiques 
+du système de construction de la Tour. 
+
+Cet emploi presque général des caissons en treillis s’impose d’autant 
+plus ici qu’il permet, pour une résistance déterminée, de n’opposer au 
+vent que le minimum de surface.<section end="s1"/><noinclude>
+<references/></noinclude>

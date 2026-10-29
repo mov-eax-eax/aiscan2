@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boeing 747-400 — Interactive 3D Model</title>
+<style>
+  :root {
+    --panel-bg: rgba(14, 20, 30, 0.72);
+    --panel-border: rgba(255, 255, 255, 0.12);
+    --accent: #4da3ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #0b1220;
+    color: #e8eef5;
+  }
+  #app { position: fixed; inset: 0; }
+  #app canvas { display: block; }
+
+  #panel {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 260px;
+    padding: 16px 14px 14px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    user-select: none;
+  }
+  #panel h1 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  #panel .sub {
+    margin: 3px 0 12px;
+    font-size: 11.5px;
+    color: #9fb0c3;
+    letter-spacing: 0.4px;
+  }
+  .buttons { display: flex; flex-direction: column; gap: 7px; }
+  button {
+    appearance: none;
+    border: 1px solid var(--panel-border);
+    background: rgba(255, 255, 255, 0.06);
+    color: #e8eef5;
+    font: inherit;
+    font-size: 12.5px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  button:hover { background: rgba(255, 255, 255, 0.12); }
+  button.active {
+    background: rgba(77, 163, 255, 0.16);
+    border-color: rgba(77, 163, 255, 0.55);
+    color: #d9ecff;
+  }
+  .specs {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--panel-border);
+    font-size: 11px;
+    color: #a9b8ca;
+    line-height: 1.55;
+  }
+  .specs b { color: #dfe8f2; font-weight: 600; }
+
+  #hint {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(14, 20, 30, 0.55);
+    border: 1px solid var(--panel-border);
+    padding: 6px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) {
+    #panel { width: 220px; }
+    #hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div id="panel">
+  <h1>Boeing 747-400</h1>
+  <div class="sub">INTERACTIVE 3D MODEL</div>
+  <div class="buttons">
+    <button id="btnRotate" class="active">Auto-Rotate: On</button>
+    <button id="btnEngines" class="active">Engines: Spinning</button>
+    <button id="btnGear" class="active">Landing Gear: Down</button>
+    <button id="btnWire">Wireframe: Off</button>
+    <button id="btnLivery">Livery: <span id="liveryName">Boeing Blue</span></button>
+    <button id="btnReset">Reset View</button>
+  </div>
+  <div class="specs">
+    <b>Length</b> 70.7 m &nbsp; <b>Span</b> 64.4 m<br>
+    <b>Power</b> 4 × high-bypass turbofans<br>
+    <b>Range</b> ~13,450 km<br>
+    <b>Capacity</b> ~416 (3-class)
+  </div>
+</div>
+
+<div id="hint">Drag to orbit &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Right-drag to pan</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ---------------------------------------------------------------------------
+// Core scene
+// ---------------------------------------------------------------------------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x9cc4e4);
+scene.fog = new THREE.Fog(0x9cc4e4, 42, 150);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+document.getElementById('app').appendChild(renderer.domElement);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 400);
+const CAM_POS = new THREE.Vector3(12, 5, 15);
+camera.position.copy(CAM_POS);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0.6, 0);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.minDistance = 4;
+controls.maxDistance = 46;
+controls.maxPolarAngle = Math.PI * 0.52;
+controls.update();
+
+// ---------------------------------------------------------------------------
+// Lighting
+// ---------------------------------------------------------------------------
+scene.add(new THREE.HemisphereLight(0xbfdcff, 0x6c6a54, 0.85));
+scene.add(new THREE.AmbientLight(0xffffff, 0.22));
+
+const sun = new THREE.DirectionalLight(0xffffff, 2.1);
+sun.position.set(11, 16, 9);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.left = -14;
+sun.shadow.camera.right = 14;
+sun.shadow.camera.top = 14;
+sun.shadow.camera.bottom = -14;
+sun.shadow.camera.near = 1;
+sun.shadow.camera.far = 70;
+sun.shadow.bias = -0.0004;
+sun.shadow.normalBias = 0.02;
+scene.add(sun);
+
+const fill = new THREE.DirectionalLight(0xdfe9ff, 0.5);
+fill.position.set(-8, 4, -10);
+scene.add(fill);
+
+const rim = new THREE.DirectionalLight(0xffffff, 0.55);
+rim.position.set(0, 2, -14);
+scene.add(rim);
+
+// ---------------------------------------------------------------------------
+// Shared materials + livery
+// ---------------------------------------------------------------------------
+const liveryColor = new THREE.Color(0x17497a);
+
+const mats = {
+  fuselage: new THREE.MeshStandardMaterial({ color: 0xf4f6f8, roughness: 0.35, metalness: 0.05 }),
+  belly:    new THREE.MeshStandardMaterial({ color: 0xc4cad1, roughness: 0.5,  metalness: 0.08, side: THREE.DoubleSide }),
+  wing:     new THREE.MeshStandardMaterial({ color: 0xd8dcdf, roughness: 0.55, metalness: 0.12, side: THREE.DoubleSide }),
+  tail:     new THREE.MeshStandardMaterial({ color: 0x17497a, roughness: 0.4,  metalness: 0.08, side: THREE.DoubleSide }),
+  stripe:   new THREE.MeshStandardMaterial({ color: 0x17497a, roughness: 0.35, metalness: 0.1,  side: THREE.DoubleSide }),
+  engine:   new THREE.MeshStandardMaterial({ color: 0xf1f3f5, roughness: 0.35, metalness: 0.12 }),
+  engineAccent: new THREE.MeshStandardMaterial({ color: 0x17497a, roughness: 0.3, metalness: 0.15 }),
+  glass:    new THREE.MeshStandardMaterial({ color: 0x0a141d, roughness: 0.12, metalness: 0.6 }),
+  tire:     new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.9 }),
+  strut:    new THREE.MeshStandardMaterial({ color: 0x878e96, roughness: 0.5, metalness: 0.55 }),
+  metal:    new THREE.MeshStandardMaterial({ color: 0x707780, roughness: 0.4, metalness: 0.7 }),
+  darkMetal:new THREE.MeshStandardMaterial({ color: 0x22262c, roughness: 0.4, metalness: 0.6, side: THREE.DoubleSide }),
+};
+
+const LIVERIES = [
+  { name: 'Boeing Blue', primary: 0x17497a },
+  { name: 'Crimson',     primary: 0xc0392b },
+  { name: 'Emerald',     primary: 0x1e8449 },
+  { name: 'Midnight',    primary: 0x27324a },
+  { name: 'Teal',        primary: 0x0e7c86 },
+];
+let liveryIndex = 0;
+
+function applyLivery(cfg) {
+  liveryColor.set(cfg.primary);
+  mats.tail.color.set(cfg.primary);
+  mats.stripe.color.set(cfg.primary);
+  mats.engineAccent.color.set(cfg.primary);
+  document.getElementById('liveryName').textContent = cfg.name;
+}
+
+// ---------------------------------------------------------------------------
+// Small helpers
+// ---------------------------------------------------------------------------
+// Cylinder whose axis runs along X (top +Y maps to +X "forward").
+function cylX(rTop, rBottom, height, mat, openEnded = false, seg = 40) {
+  const geo = new THREE.CylinderGeometry(rTop, rBottom, height, seg, 1, openEnded);
+  const m = new THREE.Mesh(geo, mat);
+  m.rotation.z = -Math.PI / 2;
+  m.castShadow = true;
+  return m;
+}
+
+// ---------------------------------------------------------------------------
+// Fuselage + upper deck + belly + stripes + windows
+// ---------------------------------------------------------------------------
+const FUS_PROFILE = [
+  [0.03, -7.00], [0.20, -6.75], [0.38, -6.35], [0.55, -5.85],
+  [0.68, -5.20], [0.71, -4.00], [0.71, 3.40], [0.70, 4.60],
+  [0.66, 5.20], [0.57, 5.70], [0.45, 6.15], [0.28, 6.50],
+  [0.12, 6.80], [0.03, 7.00],
+].map(([r, l]) => new THREE.Vector2(r, l));
+
+function buildFuselage() {
+  const g = new THREE.Group();
+
+  const lathe = new THREE.Mesh(new THREE.LatheGeometry(FUS_PROFILE, 72), mats.fuselage);
+  lathe.rotation.z = -Math.PI / 2; // length -> X axis
+  lathe.castShadow = true;
+  lathe.receiveShadow = true;
+  g.add(lathe);
+
+  // Upper-deck "hump"
+  const hump1 = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 28), mats.fuselage);
+  hump1.scale.set(2.7, 0.5, 0.72);
+  hump1.position.set(2.9, 0.42, 0);
+  hump1.castShadow = true;
+  g.add(hump1);
+
+  const hump2 = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 28), mats.fuselage);
+  hump2.scale.set(1.7, 0.46, 0.68);
+  hump2.position.set(4.8, 0.36, 0);
+  hump2.castShadow = true;
+  g.add(hump2);
+
+  // Cockpit glass
+  const cockpit = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 22), mats.glass);
+  cockpit.scale.set(0.62, 0.36, 0.55);
+  cockpit.position.set(5.9, 0.72, 0);
+  g.add(cockpit);
+
+  // Belly band (lower half, light gray)
+  const belly = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.714, 0.714, 9.0, 64, 1, true, 0, Math.PI),
+    mats.belly
+  );
+  belly.rotation.z = -Math.PI / 2;
+  belly.position.set(0, 0, 0);
+  g.add(belly);
+
+  // Cheatline stripes (livery) — curved bands hugging each side at the window line
+  const stripeGeo = new THREE.CylinderGeometry(0.716, 0.716, 11.6, 64, 1, true, -0.62, 0.62);
+  const stripeR = new THREE.Mesh(stripeGeo, mats.stripe);
+  stripeR.rotation.z = -Math.PI / 2;
+  stripeR.position.y = 0.16;
+  g.add(stripeR);
+
+  const stripeGeo2 = new THREE.CylinderGeometry(0.716, 0.716, 11.6, 64, 1, true, Math.PI - 0.62, 0.62);
+  const stripeL = new THREE.Mesh(stripeGeo2, mats.stripe);
+  stripeL.rotation.z = -Math.PI / 2;
+  stripeL.position.y = 0.16;
+  g.add(stripeL);
+
+  // Windows
+  g.add(buildWindows());
+
+  return g;
+}
+
+function buildWindows() {
+  const g = new THREE.Group();
+  const main = [];
+  for (let x = -4.0; x <= 3.6; x += 0.38) {
+    main.push([x, 0.32, 0.64], [x, 0.32, -0.64]);
+  }
+  const upper = [];
+  for (let x = 2.3; x <= 3.6; x += 0.3) {
+    upper.push([x, 0.74, 0.5], [x, 0.74, -0.5]);
+  }
+  g.add(windowInstances(main, [0.16, 0.2, 0.03]));
+  g.add(windowInstances(upper, [0.13, 0.15, 0.03]));
+
+  // Passenger door outlines (subtle darker panels)
+  const doorGeo = new THREE.BoxGeometry(0.42, 0.78, 0.02);
+  const doorMat = new THREE.MeshStandardMaterial({ color: 0x8d949c, roughness: 0.5, metalness: 0.2 });
+  [-3.2, -1.1, 1.6, 3.1].forEach((x) => {
+    const d1 = new THREE.Mesh(doorGeo, doorMat);
+    d1.position.set(x, 0.05, 0.68);
+    g.add(d1);
+    const d2 = new THREE.Mesh(doorGeo, doorMat);
+    d2.position.set(x, 0.05, -0.68);
+    g.add(d2);
+  });
+  return g;
+}
+
+function windowInstances(list, size) {
+  const geo = new THREE.BoxGeometry(size[0], size[1], size[2]);
+  const inst = new THREE.InstancedMesh(geo, mats.glass, list.length);
+  const dummy = new THREE.Object3D();
+  list.forEach(([x, y, z], i) => {
+    dummy.position.set(x, y, z);
+    dummy.rotation.set(0, 0, 0);
+    dummy.updateMatrix();
+    inst.setMatrixAt(i, dummy.matrix);
+  });
+  inst.instanceMatrix.needsUpdate = true;
+  inst.frustumCulled = false;
+  return inst;
+}
+
+// ---------------------------------------------------------------------------
+// Wings + engines + winglets
+// ---------------------------------------------------------------------------
+function nacaAirfoil(m, p, t, n) {
+  const upper = [], lower = [];
+  for (let i = 0; i <= n; i++) {
+    const beta = Math.PI * i / n;
+    const x = (1 - Math.cos(beta)) / 2;
+    const yt = 5 * t * (0.2969 * Math.sqrt(x) - 0.1260 * x - 0.3516 * x * x + 0.2843 * x * x * x - 0.1015 * x * x * x * x);
+    let yc, dyc;
+    if (x < p) {
+      yc = m / (p * p) * (2 * p * x - x * x);
+      dyc = m / (p * p) * (2 * p - 2 * x);
+    } else {
+      yc = m / ((1 - p) * (1 - p)) * ((1 - 2 * p) + 2 * p * x - x * x);
+      dyc = m / ((1 - p) * (1 - p)) * (2 * p - 2 * x);
+    }
+    const th = Math.atan(dyc);
+    upper.push([x - yt * Math.sin(th), yc + yt * Math.cos(th)]);
+    lower.push([x + yt * Math.sin(th), yc - yt * Math.cos(th)]);
+  }
+  return { upper, lower };
+}
+
+function airfoilLoop(m, p, t, n) {
+  const { upper, lower } = nacaAirfoil(m, p, t, n);
+  const loop = [];
+  for (let i = 0; i < upper.length; i++) loop.push(upper[i]);
+  for (let i = lower.length - 1; i >= 0; i--) loop.push(lower[i]);
+  return loop;
+}
+
+// Lofted wing: tapered, swept, cambered airfoil with dihedral baked in.
+function buildWingGeometry(side) {
+  const s = side;
+  const stations = [
+    { z: 0.0, chord: 2.7,  t: 0.135, xLE: 1.2,  y: 0.0 },
+    { z: 3.0, chord: 2.3,  t: 0.12,  xLE: 0.55, y: 0.1 },
+    { z: 5.5, chord: 1.85, t: 0.105, xLE: -0.05, y: 0.33 },
+    { z: 7.4, chord: 1.5,  t: 0.09,  xLE: -1.1,  y: 0.6 },
+  ];
+  const N = 40;
+  const loops = stations.map((st) => {
+    const loop = airfoilLoop(0.022, 0.4, st.t, N);
+    return loop.map(([x, y]) => new THREE.Vector3(st.xLE - x * st.chord, st.y + y * st.chord, st.z * s));
+  });
+
+  const positions = [];
+  const nSt = loops.length;
+  const nP = loops[0].length;
+  const flip = s < 0;
+  for (let i = 0; i < nSt - 1; i++) {
+    for (let j = 0; j < nP; j++) {
+      const j2 = (j + 1) % nP;
+      const a = loops[i][j], b = loops[i][j2], c = loops[i + 1][j], d = loops[i + 1][j2];
+      if (!flip) {
+        positions.push(a.x, a.y, a.z, b.x, b.y, b.z, c.x, c.y, c.z);
+        positions.push(b.x, b.y, b.z, d.x, d.y, d.z, c.x, c.y, c.z);
+      } else {
+        positions.push(a.x, a.y, a.z, c.x, c.y, c.z, b.x, b.y, b.z);
+        positions.push(b.x, b.y, b.z, c.x, c.y, c.z, d.x, d.y, d.z);
+      }
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.computeVertexNormals();
+  return geo;
+}
+
+function dihedralY(z) {
+  const t = Math.abs(z) / 7.4;
+  return 0.6 * t * t;
+}
+
+function buildWinglet(s) {
+  const shape = new THREE.Shape();
+  shape.moveTo(-0.1, 0.0);
+  shape.lineTo(-0.38, 0.64);
+  shape.quadraticCurveTo(-0.56, 0.68, -0.72, 0.58);
+  shape.lineTo(-0.72, 0.0);
+  shape.closePath();
+
+  const geo = new THREE.ExtrudeGeometry(shape, {
+    depth: 0.07,
+    bevelEnabled: true,
+    bevelThickness: 0.02,
+    bevelSize: 0.02,
+    bevelSegments: 2,
+  });
+  geo.translate(0, 0, -0.035);
+
+  const winglet = new THREE.Mesh(geo, mats.engineAccent);
+  winglet.position.set(-1.55, 0.6, 7.4 * s);
+  winglet.rotation.x = 0.12 * s; // cant outward
+  winglet.castShadow = true;
+  return winglet;
+}
+
+function buildWing(side) {
+  const s = side;
+  const group = new THREE.Group();
+
+  const wingMesh = new THREE.Mesh(buildWingGeometry(side), mats.wing);
+  wingMesh.castShadow = true;
+  wingMesh.receiveShadow = true;
+  group.add(wingMesh);
+
+  // Flap / aileron accents on the trailing edge (lower surface)
+  const flapMat = new THREE.MeshStandardMaterial({ color: 0xb8bdc2, roughness: 0.55, metalness: 0.15, side: THREE.DoubleSide });
+  const flap = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.05, 0.6), flapMat);
+  flap.position.set(-1.7, dihedralY(2.4) - 0.1, 2.4 * s);
+  flap.rotation.y = 0.22 * s;
+  flap.castShadow = true;
+  group.add(flap);
+
+  const aileron = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.05, 0.45), flapMat);
+  aileron.position.set(-2.0, dihedralY(5.6) - 0.1, 5.6 * s);
+  aileron.rotation.y = 0.28 * s;
+  aileron.castShadow = true;
+  group.add(aileron);
+
+  // Flap-track (canoe) fairings under the trailing edge
+  const fairingMat = new THREE.MeshStandardMaterial({ color: 0xc3c7cb, roughness: 0.5, metalness: 0.15 });
+  [2.5, 5.0].forEach((fz) => {
+    const fairing = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 16), fairingMat);
+    fairing.scale.set(0.75, 0.16, 0.11);
+    fairing.position.set(-1.75, dihedralY(fz) - 0.12, fz * s);
+    fairing.castShadow = true;
+    group.add(fairing);
+  });
+
+  // Engines
+  const fans = [];
+  const engines = [
+    { ex: 0.5, ez: 1.85 },
+    { ex: -0.3, ez: 4.35 },
+  ];
+  engines.forEach((e) => {
+    const eng = buildEngine();
+    eng.group.position.set(e.ex, dihedralY(e.ez) - 0.6, e.ez * s);
+    group.add(eng.group);
+    fans.push(eng.fan);
+  });
+
+  // Blended winglet
+  group.add(buildWinglet(s));
+
+  // Navigation light (steady red/green) at winglet tip
+  const navColor = s > 0 ? 0x22e060 : 0xff3040;
+  const nav = new THREE.Mesh(
+    new THREE.SphereGeometry(0.055, 14, 14),
+    new THREE.MeshStandardMaterial({ color: 0x000000, emissive: navColor, emissiveIntensity: 2.0 })
+  );
+  nav.position.set(-1.55, 1.22, 7.4 * s);
+  group.add(nav);
+
+  // Wingtip strobe (white, blinking)
+  const strobe = new THREE.Mesh(
+    new THREE.SphereGeometry(0.06, 14, 14),
+    new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffffff, emissiveIntensity: 0.4 })
+  );
+  strobe.position.set(-2.25, 0.62, 7.4 * s);
+  group.add(strobe);
+  strobeLights.push({ mat: strobe.material, type: 'strobe' });
+
+  group.position.y = -0.05;
+  return { group, fans };
+}
+
+function buildEngine() {
+  const g = new THREE.Group();
+
+  // Nacelle
+  g.add(cylX(0.42, 0.40, 1.55, mats.engine));
+
+  // Intake lip (livery accent)
+  const lip = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.05, 16, 48), mats.engineAccent);
+  lip.rotation.y = Math.PI / 2;
+  lip.position.x = 0.74;
+  g.add(lip);
+
+  // Fan face disc
+  const disc = new THREE.Mesh(
+    new THREE.CircleGeometry(0.36, 40),
+    new THREE.MeshStandardMaterial({ color: 0x101418, roughness: 0.5, metalness: 0.3 })
+  );
+  disc.rotation.y = Math.PI / 2;
+  disc.position.x = 0.72;
+  g.add(disc);
+
+  // Fan blades (spinning)
+  const fan = new THREE.Group();
+  const bladeGeo = new THREE.BoxGeometry(0.03, 0.34, 0.1);
+  const bladeMat = new THREE.MeshStandardMaterial({ color: 0x9aa3ad, metalness: 0.85, roughness: 0.25 });
+  for (let i = 0; i < 14; i++) {
+    const b = new THREE.Mesh(bladeGeo, bladeMat);
+    b.position.y = 0.16;
+    b.rotation.x = (i / 14) * Math.PI * 2;
+    fan.add(b);
+  }
+  fan.position.x = 0.7;
+  g.add(fan);
+
+  // Spinner cone
+  const spinner = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.24, 24), bladeMat);
+  spinner.rotation.z = -Math.PI / 2;
+  spinner.position.x = 0.72;
+  g.add(spinner);
+
+  // Exhaust nozzle (open convergent duct)
+  g.add(cylX(0.13, 0.34, 0.4, mats.darkMetal, true));
+  const nozzle = g.children[g.children.length - 1];
+  nozzle.position.x = -0.62;
+
+  // Turbine face inside the nozzle
+  const turb = new THREE.Mesh(
+    new THREE.CircleGeometry(0.27, 32),
+    new THREE.MeshStandardMaterial({ color: 0x0a0c0e, roughness: 0.5, metalness: 0.3 })
+  );
+  turb.rotation.y = -Math.PI / 2;
+  turb.position.x = -0.42;
+  g.add(turb);
+
+  // Exhaust lip
+  const exhLip = new THREE.Mesh(new THREE.TorusGeometry(0.34, 0.035, 12, 40), mats.darkMetal);
+  exhLip.rotation.y = Math.PI / 2;
+  exhLip.position.x = -0.82;
+  g.add(exhLip);
+
+  // Cowl stripe (livery)
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.405, 0.03, 12, 48), mats.engineAccent);
+  ring.rotation.y = Math.PI / 2;
+  ring.position.x = -0.05;
+  g.add(ring);
+
+  // Pylon
+  const pylon = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.34, 0.16), mats.wing);
+  pylon.position.set(0, 0.5, 0);
+  pylon.castShadow = true;
+  g.add(pylon);
+
+  return { group: g, fan };
+}
+
+// ---------------------------------------------------------------------------
+// Tail (fin + horizontal stabilizers + fin title)
+// ---------------------------------------------------------------------------
+function buildTail() {
+  const g = new THREE.Group();
+
+  // Vertical fin
+  const finShape = new THREE.Shape();
+  finShape.moveTo(-4.4, 0.1);
+  finShape.lineTo(-5.5, 2.6);
+  finShape.lineTo(-6.8, 2.6);
+  finShape.lineTo(-6.8, 0.1);
+  finShape.closePath();
+  const finGeo = new THREE.ExtrudeGeometry(finShape, {
+    depth: 0.12,
+    bevelEnabled: true,
+    bevelThickness: 0.03,
+    bevelSize: 0.03,
+    bevelSegments: 2,
+  });
+  finGeo.translate(0, 0, -0.06);
+  const fin = new THREE.Mesh(finGeo, mats.tail);
+  fin.castShadow = true;
+  g.add(fin);
+
+  // Horizontal stabilizers
+  [-1, 1].forEach((s) => g.add(buildHStab(s)));
+
+  // Tail strobe
+  const strobe = new THREE.Mesh(
+    new THREE.SphereGeometry(0.06, 14, 14),
+    new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffffff, emissiveIntensity: 0.4 })
+  );
+  strobe.position.set(-6.15, 2.72, 0);
+  g.add(strobe);
+  strobeLights.push({ mat: strobe.material, type: 'strobe' });
+
+  g.position.y = 0.35;
+  return g;
+}
+
+function buildHStab(side) {
+  const s = side;
+  const span = 3.0;
+  const shape = new THREE.Shape();
+  shape.moveTo(-5.1, 0);
+  shape.lineTo(-6.1, span * s);
+  shape.lineTo(-6.7, span * s);
+  shape.lineTo(-6.6, 0);
+  shape.closePath();
+
+  const geo = new THREE.ExtrudeGeometry(shape, {
+    depth: 0.1,
+    bevelEnabled: true,
+    bevelThickness: 0.04,
+    bevelSize: 0.04,
+    bevelSegments: 2,
+  });
+  geo.translate(0, 0, -0.05);
+
+  const mesh = new THREE.Mesh(geo, mats.wing);
+  mesh.rotation.x = Math.PI / 2;
+  mesh.castShadow = true;
+
+  const grp = new THREE.Group();
+  grp.add(mesh);
+  grp.rotation.x = -0.07 * s;
+  grp.position.y = 0.05;
+  return grp;
+}
+
+function makeFinTitle() {
+  const c = document.createElement('canvas');
+  c.width = 512; c.height = 256;
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, 512, 256);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 150px "Segoe UI", Arial, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('747', 256, 130);
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+
+  const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true });
+  const g = new THREE.Group();
+  const p1 = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.8), mat);
+  p1.position.set(-5.7, 1.5, 0.075);
+  g.add(p1);
+  const p2 = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.8), mat);
+  p2.position.set(-5.7, 1.5, -0.075);
+  p2.rotation.y = Math.PI;
+  g.add(p2);
+  return g;
+}
+
+// ---------------------------------------------------------------------------
+// Landing gear
+// ---------------------------------------------------------------------------
+function buildLandingGear() {
+  const g = new THREE.Group();
+  const wheelGeo = new THREE.CylinderGeometry(0.17, 0.17, 0.1, 26);
+  wheelGeo.rotateX(Math.PI / 2);
+  const hubGeo = new THREE.CylinderGeometry(0.07, 0.07, 0.12, 16);
+  hubGeo.rotateX(Math.PI / 2);
+
+  function wheel(x, y, z) {
+    const grp = new THREE.Group();
+    const tire = new THREE.Mesh(wheelGeo, mats.tire);
+    const hub = new THREE.Mesh(hubGeo, mats.metal);
+    grp.add(tire, hub);
+    grp.position.set(x, y, z);
+    grp.castShadow = true;
+    return grp;
+  }
+
+  // Nose gear
+  const noseStrut = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.55, 12), mats.strut);
+  noseStrut.position.set(3.7, -0.72, 0);
+  noseStrut.castShadow = true;
+  g.add(noseStrut);
+  g.add(wheel(3.7, -1.03, 0.13));
+  g.add(wheel(3.7, -1.03, -0.13));
+
+  // Main gear: 4 bogies (2 body + 2 wing), 4 wheels each
+  const bogies = [
+    { x: 0.2, z: 0.95 },
+    { x: 0.2, z: -0.95 },
+    { x: -0.1, z: 2.35 },
+    { x: -0.1, z: -2.35 },
+  ];
+  bogies.forEach((b) => {
+    const strut = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.5, 12), mats.strut);
+    strut.position.set(b.x, -0.68, b.z);
+    strut.castShadow = true;
+    g.add(strut);
+
+    const beam = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.09, 0.12), mats.strut);
+    beam.position.set(b.x, -0.86, b.z);
+    beam.castShadow = true;
+    g.add(beam);
+
+    [-0.4, 0.4].forEach((dx) => {
+      const axle = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.34, 10), mats.metal);
+      axle.rotation.x = Math.PI / 2;
+      axle.position.set(b.x + dx, -0.86, b.z);
+      g.add(axle);
+      g.add(wheel(b.x + dx, -1.03, b.z + 0.11));
+      g.add(wheel(b.x + dx, -1.03, b.z - 0.11));
+    });
+  });
+
+  return g;
+}
+
+// ---------------------------------------------------------------------------
+// Beacon / strobe bookkeeping (animated in the loop)
+// ---------------------------------------------------------------------------
+const strobeLights = [];
+const beaconLights = [];
+
+function makeBeacon(pos, light) {
+  const mat = new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xff2020, emissiveIntensity: 0.6 });
+  const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.07, 14, 14), mat);
+  mesh.position.copy(pos);
+  beaconLights.push({ mat, light });
+  return mesh;
+}
+
+// ---------------------------------------------------------------------------
+// Ground (grass + runway + edge lights)
+// ---------------------------------------------------------------------------
+const GROUND_Y = -1.2;
+
+function makeRunwayTexture() {
+  const c = document.createElement('canvas');
+  c.width = 2048; c.height = 512;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#3a3d42';
+  ctx.fillRect(0, 0, c.width, c.height);
+  for (let i = 0; i < 6000; i++) {
+    ctx.fillStyle = 'rgba(255,255,255,' + (Math.random() * 0.035).toFixed(3) + ')';
+    ctx.fillRect(Math.random() * c.width, Math.random() * c.height, 2, 2);
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.fillRect(0, 12, c.width, 9);
+  ctx.fillRect(0, c.height - 21, c.width, 9);
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  const dashW = 130, gap = 64;
+  for (let x = 0; x < c.width; x += dashW + gap) ctx.fillRect(x, c.height / 2 - 4, dashW, 8);
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  for (let i = 0; i < 6; i++) {
+    ctx.fillRect(30, 60 + i * 72, 90, 18);
+    ctx.fillRect(c.width - 120, 60 + i * 72, 90, 18);
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  return tex;
+}
+
+function buildGround() {
+  const g = new THREE.Group();
+
+  const grass = new THREE.Mesh(
+    new THREE.PlaneGeometry(160, 160),
+    new THREE.MeshStandardMaterial({ color: 0x55764a, roughness: 1 })
+  );
+  grass.rotation.x = -Math.PI / 2;
+  grass.position.y = GROUND_Y;
+  grass.receiveShadow = true;
+  g.add(grass);
+
+  const runway = new THREE.Mesh(
+    new THREE.PlaneGeometry(40, 7),
+    new THREE.MeshStandardMaterial({ map: makeRunwayTexture(), roughness: 0.9 })
+  );
+  runway.rotation.x = -Math.PI / 2;
+  runway.position.y = GROUND_Y + 0.012;
+  runway.receiveShadow = true;
+  g.add(runway);
+
+  // Runway edge lights
+  const edgeMat = new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xfff0c0, emissiveIntensity: 1.6 });
+  for (let x = -18; x <= 18; x += 2.5) {
+    [-3.35, 3.35].forEach((z) => {
+      const light = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.12, 8), edgeMat);
+      light.position.set(x, GROUND_Y + 0.02, z);
+      g.add(light);
+    });
+  }
+  return g;
+}
+
+// ---------------------------------------------------------------------------
+// Assemble the aircraft
+// ---------------------------------------------------------------------------
+const plane = new THREE.Group();
+
+const fuselage = buildFuselage();
+plane.add(fuselage);
+
+const tailGroup = buildTail();
+plane.add(tailGroup);
+plane.add(makeFinTitle());
+
+const wingR = buildWing(1);
+const wingL = buildWing(-1);
+plane.add(wingR.group);
+plane.add(wingL.group);
+
+const gear = buildLandingGear();
+plane.add(gear);
+
+// Beacons (top + bottom) and a shared red light
+const beaconLight = new THREE.PointLight(0xff2020, 0, 40, 2);
+plane.add(makeBeacon(new THREE.Vector3(1.6, 1.0, 0), beaconLight));
+plane.add(makeBeacon(new THREE.Vector3(-1.0, -0.73, 0), null));
+plane.add(beaconLight);
+
+scene.add(plane);
+scene.add(buildGround());
+
+// Keep references for animation
+const fans = wingR.fans.concat(wingL.fans);
+
+// ---------------------------------------------------------------------------
+// UI wiring
+// ---------------------------------------------------------------------------
+const btnRotate = document.getElementById('btnRotate');
+const btnEngines = document.getElementById('btnEngines');
+const btnGear = document.getElementById('btnGear');
+const btnWire = document.getElementById('btnWire');
+const btnLivery = document.getElementById('btnLivery');
+const btnReset = document.getElementById('btnReset');
+
+let autoRotate = true;
+let enginesOn = true;
+let gearDown = true;
+let wireframe = false;
+
+btnRotate.addEventListener('click', () => {
+  autoRotate = !autoRotate;
+  btnRotate.textContent = 'Auto-Rotate: ' + (autoRotate ? 'On' : 'Off');
+  btnRotate.classList.toggle('active', autoRotate);
+});
+
+btnEngines.addEventListener('click', () => {
+  enginesOn = !enginesOn;
+  btnEngines.textContent = 'Engines: ' + (enginesOn ? 'Spinning' : 'Idle');
+  btnEngines.classList.toggle('active', enginesOn);
+});
+
+btnGear.addEventListener('click', () => {
+  gearDown = !gearDown;
+  gear.visible = gearDown;
+  btnGear.textContent = 'Landing Gear: ' + (gearDown ? 'Down' : 'Up');
+  btnGear.classList.toggle('active', gearDown);
+});
+
+const wireframeMats = [
+  mats.fuselage, mats.belly, mats.wing, mats.tail, mats.stripe,
+  mats.engine, mats.engineAccent, mats.glass, mats.tire, mats.strut,
+  mats.metal, mats.darkMetal,
+];
+btnWire.addEventListener('click', () => {
+  wireframe = !wireframe;
+  wireframeMats.forEach((m) => (m.wireframe = wireframe));
+  btnWire.textContent = 'Wireframe: ' + (wireframe ? 'On' : 'Off');
+  btnWire.classList.toggle('active', wireframe);
+});
+
+btnLivery.addEventListener('click', () => {
+  liveryIndex = (liveryIndex + 1) % LIVERIES.length;
+  applyLivery(LIVERIES[liveryIndex]);
+});
+
+btnReset.addEventListener('click', () => {
+  camera.position.copy(CAM_POS);
+  controls.target.set(0, 0.6, 0);
+  controls.update();
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ---------------------------------------------------------------------------
+// Animation loop
+// ---------------------------------------------------------------------------
+const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = Math.min(clock.getDelta(), 0.1);
+  const t = clock.elapsedTime;
+
+  if (autoRotate) plane.rotation.y += dt * 0.25;
+  if (enginesOn) fans.forEach((f) => (f.rotation.x += dt * 38));
+
+  // Red beacons: steady pulse
+  beaconLights.forEach((b) => {
+    const on = Math.sin(t * 7.5) > 0.2;
+    b.mat.emissiveIntensity = on ? 2.6 : 0.08;
+    if (b.light) b.light.intensity = on ? 4.5 : 0;
+  });
+
+  // White strobes: double flash
+  strobeLights.forEach((s) => {
+    const phase = (t * 1.25) % 1;
+    const on = phase < 0.07 || (phase > 0.14 && phase < 0.19);
+    s.mat.emissiveIntensity = on ? 4.5 : 0.08;
+  });
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+applyLivery(LIVERIES[0]);
+animate();
+</script>
+</body>
+</html>

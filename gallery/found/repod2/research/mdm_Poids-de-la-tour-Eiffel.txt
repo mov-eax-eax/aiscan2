@@ -1,0 +1,307 @@
+Poids de la tour Eiffel 
+ Menu 
+ Découvrir 
+ Description 
+ Tourisme 
+ Histoire 
+ Construction 
+ Sciences 
+ Boutique 
+ Sommaire 
+ Plan 
+ FAQ 
+ Monuments 
+ Monuments 
+ Tour Eiffel 
+ Découvrir 
+ Poids 
+ -->
+ La tour Eiffel
+ Type
+ Tour autoportante en fer
+ Auteur
+ Gustave Eiffel
+ Inauguration
+ 31 mars 1889
+ Intérêt
+ Symbole du savoir-faire français
+ Propriétaire
+ Mairie de Paris
+ Inscription
+ Patrimoine mondial de l'UNESCO depuis 1991
+ Visiteurs
+ 7 millions/an
+ Situation : Paris, France
+ GPS : 48° 51' 30.13'' Nord / 2° 17' 40.13'' Est
+ Menu
+ Sommaire 
+ Description 
+ Ses dimensions 
+ Histoire 
+ Gustave Eiffel 
+ Contexte 
+ Comment la visiter ? 
+ Toutes les pages 
+ Autres monuments 
+ Rechercher
+ Poids de la tour Eiffel
+ Quel poids fait la tour Eiffel ? A priori ça semble assez simple à trouver puisqu'il suffit de faire la somme des poids de 
+ tous les composants de la structure. Et en pratique, c'est effectivement le cas, mais il faut quand même à ne pas être redondant. 
+ Pour calculer le poids total de la tour Eiffel il faut prendre en compte :
+ Le poids le la structure métallique
+ Le poids des ascenseurs
+ Le poids des installations diverses, sur les plates-formes
+ Alors, c'est quoi, son poids ?
+ 10 100 tonnes
+ De nos jours, c'est un peu moins car elle a été allégée dans les années 80, mais c'est un chiffre approchant. A ce poids il faut 
+ ajouter les soubassements, les fondations et les maçonneries. La répartition se fait ainsi.
+ Poids de la structure métallique
+ Les différentes pièces métalliques ont été fournies pour une très grande partie par les 
+ ateliers de Levallois-Perret, ce qui 
+ facilite leur comptabilisation. Les bordereaux d'expédition des fers et des fontes indiquent un poids de 6 360 667 Kg. Le reste 
+ est issu de divers fournisseurs, ça fait 981 147 Kg pour divers petits équipements et surtout les rivets , 
+ qui mine de rien font leurs poids. Ca nous fait un poids total de 7 341 214 Kg, soit plus de 7 300 tonnes.
+ Pour être plus précis il faut répartir le poids des rivets sur les pièces dont ils doivent assurer l'assemblage, on peut donc 
+ indiquer la répartition suivante :
+ Appuis et ancrage : 165 628 Kg
+ Soubassements des piles : 164 492 Kg
+ Charpente spéciale dans la pile 3 : 42 831 Kg
+ Poutres de support des cylindres de l'ascenseur Otis : 56 461 Kg
+ Structure métallique : 6 911 862 Kg
+ On a même le détail des divers éléments de la structure, poids par poids. Ainsi on sait que les panneaux 1 à 4 qui constituent les 4 
+ piliers, du sol au dernier niveau avant le 1er étage, font un total de 1 570 948 Kg. Le panneau 5 qui supporte le premier étage, et qui 
+ est constitué de lourdes poutres, fait à lui seul 1 512 609 Kg, plancher et galerie compris. A ce niveau il y a aussi les arcs décoratifs 
+ à prendre en compte, ils pèsent quand même 770 217 Kg. Vient ensuite les panneau 6 à 10, qui correspondent à la suite de l'élévation des 
+ piliers jusqu'au niveau précédant le 2e étage. Ils font, tous ensemble, 1 213 204 Kg. Le panneau 11, avec le plancher du 2e étage, fait 
+ 482 955 Kg, soit plus de 3 fois moins que pour le 1er étage. Les panneaux 12 à 18 constituent l'élévation finale de la tour, lorsque les 
+ 4 piliers sont réunis en un seul élément. Ils font 695 364 Kg. Le panneau 19 supporte le plancher intermédiaire, il a un poids de 92 654. 
+ C'est le permier élément a avoir moins de 100 tonnes. Au-dessus se trouvent les panneaux 20 à 28 menant au 3e étage, ils font 389 394 Kg.
+ Enfin, le panneau 29, le dernier, pèse 114 614 Kg avec le plancher du 3e étage. Ne manque plus que le campanile, à l'époque où il existait, 
+ il faisait un poids de 68 816 Kg près de 69 tonnes.
+ La structure métallique fait donc la somme de tous ces poids ci, soit un total de : 7 341 214 Kg . Tout ces chiffres 
+ correspondent au poids de la tour au moment de sa construction, de nos jours la tour est donc un peu plus légère.
+ Poids des ascenseurs
+ Ascenseurs Otis
+ Dans son livre, 'La tour de 300m', Gustave Eiffel décrit de façon beaucoup plus précision le poids de la plupart des éléments constituant 
+ son monument. Ainsi peut on lire le détail des éléments des ascenseurs , qui sont, pour les 
+ ascenseurs Otis :
+ Cylindre hydraulique : 20 000 Kg
+ Pistons, tiges et leur support : 4 500 Kg
+ Chariot des poulies voyageuses : 10 000 Kg
+ Distributeurs et leviers de manoeuvre : 800 Kg
+ Tuyaux de circulation et distributeur supérieur : 1 500 Kg
+ Poulies fixe du mouflage, arbre et paliers : 6 300 Kg
+ Chariots de contrepoids, galets et appareils de sûreté : 4 500 Kg
+ Châssis de cabine et galet : 4 500 Kg
+ Appareils de sûreté de ce chassis : 1 500 Kg
+ Poulies auxiliaires et partie fixe du contrepoids : 1 200 Kg
+ Mécanismes divers et appareils de manoeuvre : 5 750 Kg
+ Soit un total de 64 750 Kg, près de 65 tonnes.
+ Ca, c'est le poids des pièces fournies par la société Otis. Il faut y ajouter les éléments ci-dessous, qui ont été fournis par diverses 
+ entreprises pour le compte de ces ascenseurs. Il y a :
+ Poutres de support des cylindres : 27 362 Kg
+ Appuis des poutres de support : 3 952 Kg
+ Supports en fonte des cylindres : 1 773 Kg
+ Poulies automatiques et de guidage : 8 881 Kg
+ Poulies diverses : 4 636 Kg
+ Rails de la voie : 13 389 Kg
+ Coussinets de la voie : 3 475 Kg
+ Réservoir rectangulaire au pied de l'ascenseur : 1 285 Kg
+ Grand réservoir cylindrique du 2e étage : 3 471 Kg
+ Canalisation spéciale : 734 Kg
+ Câbles : 2 750 Kg
+ Supports des galets : 1 009 Kg
+ Contrepoids en fonte : 16 192 Kg
+ Riblons 5 680 Kg
+ Bennes d'approvisionnement et leurs chaines : 1 032 Kg
+ Tuyauterie en cuivre : 250 Kg
+ Canalisation générale : 9 000 Kg
+ Caisse de cabine : 5 000 Kg
+ Soit un total de : 109 859 Kg
+ C'est en additionnant les deux poids que l'on trouve le poids total d'un ascenseur Otis : 174 609 Kg. Vu qu'il y en a deux, le poids attribué 
+ à ce type d'ascenseur est de 249 218 Kg, presque 250 tonnes.
+ Ascenseurs Roux, Combaluzier et Lepape
+ De la même façon on a une trace écrite du détail du poids des différents éléments qui constituaient les ascenseurs Roux, Combaluzier et Lepape. 
+ Ces ascenseurs ont été démontés en 1910, mais ces chiffres donnent une idée du poids des ascenseurs les ayant remplacé.
+ 2 cylindres en tôle et plongeurs en fonte : 24 275 Kg
+ 2 support des cylindres : 8 775 Kg
+ 2 chapes à la tête des plongeurs et poulies de mouflage : 8 988 Kg
+ 2 sommiers du fond des cylindres : 2 817 Kg
+ 2 glissières des plongeurs : 5 476 Kg
+ 2 boîtes à pignons Galle : 3 365 Kg
+ 2 roues motrices : 7 936 Kg
+ 2 arbres moteurs : 3 995 Kg
+ 24 dents des roues motrices et boulons : 1 628 Kg
+ 2 poulies de renvoi supérieures : 3 976 Kg
+ Gaines enveloppant les roues motrices et les poulies de renvoi : 26 270 Kg
+ Tubulures d'arrivée d'eau aux cylindres : 108 Kg
+ Divers : 2 088 Kg
+ Soit un total de 99 697 Kg (Près de 100 tonnes) auquel il faut ajouter 576 Kg de mécanismes divers, ce qui donne 100 273 Kg. Mais ce poids ne 
+ représente réellement que la moitié du poids de ces ascenseurs, car comme pour les Otis il faut ajouter le matériel de fournisseurs divers, qui 
+ se détaille ainsi :
+ Gaines courantes : 40 610 Kg
+ Pistons et tendeurs : 14 565 Kg
+ Chaine Galle : 11 237 Kg
+ Boîtes à graisse et essieux : 1 750 Kg
+ Tuyaux divers : 2 367 Kg
+ Mécanisme de manoeuvre et de distribution : 3 000 Kg
+ Mécanisme d'arrêt automoteur : 1 618 Kg
+ Une cabine double : 6 400 Kg
+ Rails de la voie : 2 016 Kg
+ Moitié de la canalisation générale : 9 000 Kg
+ Moitié des réservoirs en tôle, supports de tuyaux, etc. : 4 304 Kg
+ Boulons et pièces diverses : 1 551 Kg
+ Ce qui donne un total de 98 418 Kg
+ On peut en déduire qu'un ascenseur Roux, Combaluzier et Lepape pèse 198 418 Kg, soit près de 200 tonnes, ce qui est 1/5 e plus 
+ léger qu'un ascenseur Otis.
+ En conclusion, le poids total des ascenseurs, avec leurs équipements, fait 1 036 777 Kg 
+ Installations diverses et plates-formes
+ Le reste du poids de la tour se trouve dans divers éléments installés au fil de l'eau. Commençons par un élément qui a disparu, de 
+ nos jours : le campanile. Il contenait pour 34 070 Kg de matériel divers, dont un plancher en madriers, 7 cloisons, ou couverture en zinc 
+ et le phare et les lanternes qui s'y trouvaient.
+ Au 3e étage, il faut compter le plancher, les cloisons extérieures et les boutiques, pour un poids de 33 290 Kg. Le plancher 
+ intermédiaire, qui est inutilisé de nos jours, pèse 2 600 Kg. Le 2e étage est beaucoup plus lourd, il y a 225 330 Kg de garde-coprs, 
+ de planchers, de mats, de couverture de galeries, et d'abris et boutiques diverses. Et bien sûr c'est le premier étage qui est le plus 
+ lourd, question aménagements externes : Il pesait 1 455 401 Kg, pour tous les restaurants et boutiques qui s'y trouvaient, pour les 
+ arcardes, les mats, les couvertures, les chéneaux, etc. Bien sûr de nos jours ce poids est largement minorés car le premier étage a 
+ été grandement épurés, il ne reste plus que les 3 pavillons modernes, peu lourds, et quelques éléments architecturaux relativement 
+ légers, comme les gardes d'ascenseurs ou les kiosques de présentation de l'histoire de la tour.
+ Le total de ces installations diverses fait 1 750 911 Kg .
+ Récapitulatif
+ Au final, la tour fait donc 6 911 802 + 1 036 777 + 1 750 911 = 9 699 490 Kg, soit 9 700 tonnes !
+ C'est maintenant que le calcul se complique, car ce poids de 9700 tonnes admis, on s'aperçoit qu'on n'a pas compté les 
+ soubassements, ni les fondations, et pas plus la maçonnerie des piles. En y regardant de plus près il n'y a pas non plus les sabots 
+ et contre-sabots qui relient la structure métallique aux maçonneries (C'est une sorte de joint gigantesque) et diverses autres choses. 
+ Heureusement ces poids sont connus :
+ Caissons métalliques des fondations : 216 152 Kg
+ Tuyaux en fonte pour l'électricité : 31 450 Kg
+ Appui en fonte : 165 628 kg
+ Organes mécaniques des ascenseurs : 916 000 kg
+ Poutres des cylindres Otis : 50 463 Kg
+ Soubassements des piles : 161 492 Kg
+ Charpente de la pile 3 : 42 831 Kg
+ Pression au sol
+ L'intérêt de connaître le poids de la tour Eiffel, mis à part accroitre nos connaissances, est de calculer la pression qu'elle exerce sur 
+ le sol. Cette pression est justement l'un des principaux griefs que l'on a fait à la tour, avant sa construction. 
+ Le point de jonction arbalétrier-maçonnerie
+ &times; Fermer 
+ Le point de jonction arbalétrier-maçonnerie
+ Le point de jonction arbalétrier-maçonnerie
+ Ca a même été un argument de 
+ "poids" pour tenter de s'opposer à sa construction, les riverains s'inquiétant des déformations du sol que la tour allait inévitablement engendrer, 
+ provoquant des fissures voire des effondrements des immeubles alentours. Gustave Eiffel les rassura en leur certifiant que la pression au sol ne 
+ sera pas plus importante qu'un immeuble classique, ce qui a été vérifié par la suite. En effet, les 9700 tonnes de la tour à la quelle il faut 
+ ajouter le poids des maçonnerie, des massifs et des fondations, donne un total de 10 100 tonnes, qu'il faut répartir sur les 4 piliers. Sachant 
+ que chaque pilier a 4 massifs supportant les arbalétriers (Pièce de structure reliant les fondations au 1er étage, ce sont les 4 arrêtes des 
+ piliers), il faut diviser 10 100 par 16 pour avoir la pression sur un massif, soit 631.25 tonne.
+ Un massif mesure approximativement 5,5 x 3,5m au sol, soit 19,25 m2. Convertissons. 631,25 tonnes = 631 250 Kg et 19.25 m2 = 192 500 cm2. On a 
+ donc 631 250 / 192 500 = 3,28 Kg au cm2.
+ La pression sur le sol est de 3,28 kg/cm2, ce qui est tout à fait acceptable et très proche de la pression normale d'un immeuble
+ Voir aussi :
+ Hauteur de la tour Eiffel 
+ Calcul des forces 
+ La tour Eiffel
+ Découvrir 
+ Photos 
+ Emplacement 
+ Taille 
+ Poids 
+ La tour en chiffres 
+ Symbolisme 
+ Peinture 
+ Histoire de l'art 
+ Oeuvres artistiques 
+ Chansons 
+ Littérature 
+ Peintures 
+ Cinéma 
+ Théâtre 
+ Publicité 
+ Description 
+ Rez-de-chaussée 
+ 1er étage 
+ 2e étage 
+ Etage intermédiaire 
+ 3e étage 
+ Les 72 savants 
+ Ascenseurs 
+ Escaliers 
+ Machinerie 
+ Eclairage 
+ Copies et répliques 
+ Watkin's tower 
+ Ascenseurs Fives-Lille 
+ Visibilité 
+ La tour en 1900 
+ Histoire 
+ Chronologie 
+ Contexte technologique 
+ Les autres projets 
+ Réticences des artistes 
+ Construction 
+ Inauguration 
+ Medaille commémorative 
+ Rénovations 
+ Procés droit de reproduction 
+ Arnaques diverses 
+ Imprimerie du figaro 
+ La tour et l'expo 
+ Les entreprises Eiffel 
+ Société d'exploitation 
+ Biographies 
+ Gustave Eiffel 
+ Maurice Koechlin 
+ Emile Nouguier 
+ Stephen Sauvestre 
+ Jean Compagnon 
+ Adolphe Salles 
+ Jean Gobert 
+ Edouard Lockroy 
+ Franz Reichelt 
+ Construction 
+ Contrat de concession 
+ Plans 
+ Planches techniques 
+ Calculs des forces 
+ Calcul dûs au poids 
+ Calcul dûs au vent 
+ Calcul du poids des visiteurs 
+ Travail en atelier 
+ Planning 
+ Personnel 
+ Fondations 
+ Socles 
+ Piliers 
+ Etages 
+ Rivetage 
+ Grues 
+ Coût 
+ Rentabilité 
+ Fer utilisé 
+ Génie civil 
+ Tourisme 
+ Tarifs 
+ Horaires 
+ A voir sur la tour 
+ Récit d'une visite 
+ Images d'une visite 
+ Visiteurs célèbres 
+ Sciences 
+ Observations météo 1889 
+ Observations météo 1890 
+ Résistance de l'air 
+ Pression de l'air 
+ Manomètre hautes pressions 
+ Spectre solaire 
+ Absorptions des radiations 
+ Navigation aérienne 
+ Radiodiffusion 
+ Téléphotographie 
+ Télégraphie optique 
+ Phénomènes naturels 
+ Effets de la foudre 
+ Oscillations du sommet 
+ Effets de la montée 
+ Tous les monuments
+ Copyright 2013 - 2026 - Toute reproduction interdite sans l'autorisation de l'auteur. Ce site Internet est un site privé, non officiel, issu du travail de compilation des oeuvres de différents auteurs. Sauf mention contraire, les photos sont la propriété du webmaster. Toute utilisation des textes, photos ou autres éléments de ce site internet sont interdits sans accord du webmaster. Pour le contacter, utilisez le lien sur la page crédits . Sources documentaires : cliquez ici . Pour consulter la politique de confidentialité du site veuillez cliquer ici : Politique de confidentialité . 
+ Sites Internet du même auteur : Les Pyrénées-Orientales , Marguerite Duras , Merveilles du monde , Empereurs romains .

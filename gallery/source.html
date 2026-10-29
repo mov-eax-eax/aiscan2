@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Source vault — F:\repod2 · The Model Room</title>
+<meta name="description" content="The full source behind the recovered F:\repod2 experiments: Eiffel generation engines, build scripts, iteration renders, reference scans and research." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d12'/%3E%3Cpath d='M6 25 16 5l10 20h-4L16 11 10 25z' fill='%23d9b25e'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="./gallery.css" />
+</head>
+<body>
+<header class="topbar">
+  <a class="mark" href="./" aria-label="Back to The Model Room"><span class="mark-glyph">◮</span><span>The Model Room</span></a>
+  <nav class="topnav">
+    <a href="./">← Gallery</a>
+    <span class="topstat"><b>350</b> files</span>
+    <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</header>
+
+<main class="source-main">
+  <section class="source-hero">
+    <p class="kicker">Source vault · F:\repod2</p>
+    <h1>The full<br /><em>workshop.</em></h1>
+    <p class="lede">The complete source tree behind the recovered experiments: Eiffel generation engines, build and measurement scripts, iteration renders, reference scans and the research notes that seeded them. Copied 1:1 from the working folder, with dependency trees and the unrelated PDF library left behind.</p>
+    <div class="source-stats">
+      <span><b>350</b> files</span>
+      <span><b>96 MB</b> copied</span>
+      <span><b>5</b> projects</span>
+      <span><b>12</b> loose generations</span>
+    </div>
+    <p class="source-note">Left out on purpose: all <code>node_modules/</code> dependency trees and the separate 266 MB <code>_pdf/</code> document library. The source itself — <code>src/</code>, <code>build.mjs</code>, <code>shots/</code>, <code>ref/</code>, <code>dist/</code> — is untouched.</p>
+  </section>
+
+  <section class="source-grid" aria-label="Full source projects">
+    <article class="source-card">
+      <div class="a-thumb"><img src="./source-thumbs/source-eiffel.jpg" alt="Eiffel production render" loading="lazy" /><span class="a-badge">31.3 MB · 62 files</span></div>
+      <div class="source-body">
+        <p class="source-kicker">Generational engine · Three.js + GLSL</p>
+        <h2>Eiffel — Production</h2>
+        <p>The main Eiffel experiment: source fragments, a build pipeline, diagnostics, performance probes, screenshot tooling, a self-contained dist build, and the iteration renders.</p>
+        <div class="source-meta"><span><code>src/</code> <code>build.mjs</code> <code>dist/</code> <code>shots/</code> <code>ref/</code></span></div>
+        <div class="source-actions">
+          <a class="source-primary" href="./found/repod2/eiffel/dist/eiffel.dev.html" target="_blank" rel="noopener">Open the build ↗</a>
+          <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia/gallery/found/repod2/eiffel" target="_blank" rel="noopener">Source tree ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="source-card">
+      <div class="a-thumb"><img src="./source-thumbs/source-eiffel2.jpg" alt="Eiffel variant render" loading="lazy" /><span class="a-badge">39.7 MB · 80 files</span></div>
+      <div class="source-body">
+        <p class="source-kicker">Variant lab · Three.js + GLSL</p>
+        <h2>Eiffel — Variant Lab</h2>
+        <p>The second branch of the Eiffel generation: another source tree, a different build, comparison/profiling scripts, reference crops and a full set of test renders.</p>
+        <div class="source-meta"><span><code>src/</code> <code>compare.mjs</code> <code>measure.mjs</code> <code>dist/</code> <code>shots/</code></span></div>
+        <div class="source-actions">
+          <a class="source-primary" href="./found/repod2/eiffel2/dist/tower.dev.html" target="_blank" rel="noopener">Open the build ↗</a>
+          <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia/gallery/found/repod2/eiffel2" target="_blank" rel="noopener">Source tree ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="source-card">
+      <div class="a-thumb"><img src="./source-thumbs/source-tower.jpg" alt="Tower iteration render" loading="lazy" /><span class="a-badge">13.5 MB · 57 files</span></div>
+      <div class="source-body">
+        <p class="source-kicker">Iteration bench · Three.js</p>
+        <h2>Tower — Iteration Bench</h2>
+        <p>The zoomed-in workbench: crop, debug, tune and measure scripts, plus the render series used to calibrate the lattice. The entry shell is unfinished; the screenshots are the usable output.</p>
+        <div class="source-meta"><span><code>src/</code> <code>crop.mjs</code> <code>tune.mjs</code> <code>zoom.mjs</code> <code>shots/</code></span></div>
+        <div class="source-actions">
+          <a class="source-primary" href="./found/repod2/tower/shots/three.png" target="_blank" rel="noopener">View latest render ↗</a>
+          <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia/gallery/found/repod2/tower" target="_blank" rel="noopener">Source tree ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="source-card">
+      <div class="a-thumb"><img src="./source-thumbs/source-eiffel-tower.jpg" alt="Eiffel Tower 1:1 project preview" loading="lazy" /><span class="a-badge">2.4 MB · 46 files</span></div>
+      <div class="source-body">
+        <p class="source-kicker">Interactive study · vendored Three.js</p>
+        <h2>Eiffel Tower — 1:1 Project</h2>
+        <p>A cleaner, standalone 1:1 tower study with vendored Three.js, build tools and preview renders. Runs offline from its own folder.</p>
+        <div class="source-meta"><span><code>index.html</code> <code>src/</code> <code>tools/</code> <code>vendor/</code> <code>preview/</code></span></div>
+        <div class="source-actions">
+          <a class="source-primary" href="./found/repod2/eiffel-tower/" target="_blank" rel="noopener">Open the study ↗</a>
+          <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia/gallery/found/repod2/eiffel-tower" target="_blank" rel="noopener">Source tree ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="source-card">
+      <div class="a-thumb"><img src="./source-thumbs/source-sky-runner.jpg" alt="Sky Runner 3D source project" loading="lazy" /><span class="a-badge">Three files</span></div>
+      <div class="source-body">
+        <p class="source-kicker">Game source · Three.js</p>
+        <h2>Sky Runner 3D</h2>
+        <p>A tiny complete game source folder: one module, one stylesheet, one shell. The whole thing is 20 KB and runs straight from the browser.</p>
+        <div class="source-meta"><span><code>index.html</code> <code>game.js</code> <code>style.css</code></span></div>
+        <div class="source-actions">
+          <a class="source-primary" href="./found/repod2/3d-game/" target="_blank" rel="noopener">Play it ↗</a>
+          <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia/gallery/found/repod2/3d-game" target="_blank" rel="noopener">Source tree ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="source-card">
+      <div class="a-thumb"><img src="./source-thumbs/source-reference.jpg" alt="Eiffel reference drawing" loading="lazy" /><span class="a-badge">5.1 MB · 78 files</span></div>
+      <div class="source-body">
+        <p class="source-kicker">Reference & research · raw material</p>
+        <h2>Reference Library</h2>
+        <p>The inputs behind the Eiffel work: a ten-step construction tutorial, historical plates, and 67 research text extracts on the tower, the Champ de Mars and Paris.</p>
+        <div class="source-meta"><span><code>ref-tutorial/</code> <code>research/</code></span></div>
+        <div class="source-actions">
+          <a class="source-primary" href="./found/repod2/ref-tutorial/Draw-the-Eiffel-Tower-Step-1-Version-3.jpg" target="_blank" rel="noopener">View reference ↗</a>
+          <a href="https://github.com/mov-eax-eax/aiscan2/tree/sagrada-familia/gallery/found/repod2/research" target="_blank" rel="noopener">Research tree ↗</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <p class="source-cta"><a href="./">← Return to The Model Room</a> &nbsp;·&nbsp; <a href="./#drawer">12 loose generations →</a></p>
+</main>
+
+<footer class="foot">
+  <div><span class="foot-mark">◮</span> Source vault · F:\repod2</div>
+  <p>The complete copied tree lives under <code>gallery/found/repod2/</code>. It is served read-only by the gallery server alongside the curated pieces.</p>
+  <p class="foot-note">Some builds need a network connection for Three.js; the vendored and self-contained ones run offline. Half-finished things are kept exactly as found.</p>
+</footer>
+</body>
+</html>

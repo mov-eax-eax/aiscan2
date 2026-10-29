@@ -1,0 +1,14 @@
+{
+  "name": "eiffel-tower-threejs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Procedural, dimensionally accurate Eiffel Tower built with three.js (instanced lattice).",
+  "scripts": {
+    "serve": "npx --yes http-server . -p 8080 -c-1",
+    "check": "node tools/validate.mjs"
+  },
+  "devDependencies": {
+    "three": "^0.169.0"
+  }
+}

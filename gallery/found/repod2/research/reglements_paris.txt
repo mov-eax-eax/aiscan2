@@ -1,0 +1,152 @@
+[[Fichier:Chapelle_International_en_cours_de_construction.jpg|vignette|[[Chapelle international]], nouveau quartier du [[18e arrondissement de Paris|{{18e|arrondissement}} de Paris]].]]
+
+Le développement de l'architecture et de l'urbanisme à [[Paris]] a été soumis au cours des siècles à plusieurs '''règlements d'architecture et d'urbanisme''' successifs qui visaient à limiter en particulier la hauteur des immeubles, leur disposition par rapport à la rue, la largeur des rues ou l'orientation générale donnée au développement de Paris.
+
+En fournissant un cadre à la construction de nouveaux immeubles et de nouveaux axes, les règlements ont participé à la mise en place du Paris actuel. On peut toutefois considérer qu'ils sont aussi le résultat de l'évolution des mentalités.
+
+La connaissance des principales dispositions de ces plans permet souvent de deviner la période de construction d'un immeuble. Ainsi un [[oriel]] ou ''bow window'' en brique ne peut avoir été construit avant 1895 tandis que certaines tours s'inscrivent dans le cadre fixé par le [[planification urbaine|Plan d'urbanisme directeur]] de 1967.
+
+== Généralités sur les règlements d'urbanismes ==
+Les règlements définissent en particulier l'[[épannelage (architecture)|épannelage]] pour les immeubles, c'est-à-dire la hauteur de la façade et des combles, en fonction par exemple de la largeur de la rue ou du quartier.
+
+Ils peuvent aussi réglementer les saillies sur rues (balcons, [[corniche|corniches]]...), pour des raisons de sécurité ou d'esthétique.
+
+Alors que les règlements anciens se contentaient d'encadrer les initiatives privées, les règlements modernes participent au lancement de vastes opérations d'urbanisme dirigées par les autorités publiques. Ils se placent à une échelle beaucoup plus large : ils envisagent la ville dans son ensemble en définissant des règles différentes selon les zones considérées.
+
+Paris n'est pas la seule ville à s'être dotée de règlements d'urbanisme. [[Manhattan]], par exemple, s'est développée sur un quadrillage de rues et d'avenues défini par une commission en [[1811]]. Plus tard, la loi de zonage de [[1916]], en autorisant la construction de très grande hauteur en milieu de parcelle mais pas au bord de la rue, a encouragé l'édification de gratte-ciels à redents tels que l'[[Empire State Building]].
+
+== Les règlements d'urbanisme de Paris au cours des siècles ==
+=== Depuis Henri IV jusqu'à la période haussmannienne ===
+L'un des premiers règlements d'architecture et d'urbanisme est l''''édit de [[1607]]''', promulgué par [[Henri IV de France|Henri IV]]. Par crainte des incendies, l'article 4 de cet édit interdit les constructions en [[pan de bois]], les surplombs et limite les saillies<ref>Édit sur les attributions du grand voyer, décembre 1607, article 4 ({{Gallica|id=bpt6k97370772}}) :
+''Deffendons à nostredict grand-voyer ou ses commis de permettre qu'il soit faict aucunes saillies, avances et pans de bois aux batimens neufs, et mesme à ceux où il y en a à présent, de contraindre les réédifier, n'y faire ouvrages qui les puissent conforter, conserver et soutenir, n'y faire aucun encorbellement en avance pour porter aucun mur, pan de bois ou autres choses en saillie, et porter à faux sur lesdictes rues ...''</ref>.
+
+Soixante ans plus tard, l''''ordonnance du {{Date|18 août 1667}}''' fixe la hauteur maximale à la hauteur des corniches parisiennes à 8 toises (15,6 mètres) : cette limitation, l'[[épannelage (architecture)|épannelage]], n'a guère varié depuis cette époque dans le centre de Paris en ce qui concerne la façade sur rue. L'ordonnance se place dans la continuité de l'édit de 1607 en interdisant les [[encorbellement]]s et en introduisant, un an après le [[grand incendie de Londres]], l'obligation de recouvrir de plâtre à la [[Chaux (matière)|chaux]] les pans de bois.
+Ainsi, les pans de bois des deux maisons Renaissance du 11 et 13, [[rue François-Miron]], ont été plâtrés du début du {{XVIIe siècle}} jusqu'en 1967.
+
+La '''déclaration royale du {{Date|10 avril 1783}}''' et les '''lettres patentes du {{Date|28 août 1784}}''' poursuivent dans cette voie. Elles interviennent de plus en plus au niveau urbanistique et plus seulement architectural. D'une part ces textes font dépendre pour la première fois la hauteur des immeubles de la largeur de la rue, pour des raisons d'hygiène :
+{| class=wikitable
+|Largeur de la rue
+|Hauteur maximale de la façade
+|-
+|inférieure à 7,80 m (quatre toises)
+|11,70 m (six toises)
+|-
+|entre 7,80 m et 9,75 m
+|14,62 m (sept toises trois pieds)
+|-
+|supérieure à 9,75 m (cinq toises)
+|17,55 m (neuf toises)
+|-
+|
+|align="right"|''<small>Source des chiffres: Bernard Landau<ref>{{Lien archive|titre=La fabrication des rues de Paris au {{s-|XIX}}|url=http://www.urbanisme.equipement.gouv.fr/cdu/datas/annales/landau.htm|horodatage archive=20010123184400|auteur=Bernard Landau|consulté le=26 mai 2018}}.</ref></small>''
+|}
+
+[[Fichier:Paris1890s1.jpg|thumb|Les lignes filantes horizontales d'une avenue haussmannienne : le carrefour de l'Opéra en 1890.]]
+D'autre part les textes de 1783-1784 réglementent la hauteur des combles qui n'était pas traitée par l'ordonnance de 1667, au risque de laisser construire des étages supérieurs peu esthétiques et dangereux. Les combles doivent désormais s'inscrire en dessous d'une diagonale à 45 degrés partant de l'égout du toit, avec une hauteur maximale.
+
+Les règlements des années 1850 précisent encore l'aspect des façades. Le préfet [[Georges Eugène Haussmann|Haussmann]] recommande ainsi de s'assurer que, au sein d'un même îlot, les lignes des balcons et des séparations d'étages forment des lignes continues d'un immeuble à l'autre. Sur les grandes artères, l'utilisation de la pierre de taille est fortement recommandée. Ainsi se met en place la physionomie des avenues et [[boulevards parisiens|boulevards]] haussmanniens, caractérisée par les lignes horizontales.
+
+Quant à la fixation du l'[[épannelage (architecture)|épannelage]], le '''règlement du {{Date|27 juillet 1859}}''' complète les règlements de 1783-1784 pour les nouvelles voies de grande largeur que l'on est en train de percer dans Paris. Dans les rues de plus de 20 mètres de largeur, les façades peuvent désormais atteindre 20 mètres de hauteur. Les combles restent limités par une diagonale à 45 degrés.
+
+Haussmann fixe aussi, pour des raisons d'hygiène, des règles d'architecture relatives à la hauteur minimale des étages (2,60 m), à la taille de la cour intérieure et à la hauteur de l'immeuble sur cour.
+
+{{Clr}}
+
+=== Le Règlement de 1884 ===
+[[Fichier:Rivoli-combles.jpg|right|thumb|350px|Rue de Rivoli : les réglementations de la fin du {{s-|XIX}} maintiennent la ligne de corniche mais permettent à certains propriétaires de surélever les combles.]]
+Ce règlement résulte d'un décret promulgué le {{Date|23 juillet 1884}}. L'un de ses principaux promoteurs est [[Adolphe Alphand]], l'un des anciens collaborateurs d'[[Baron Haussmann|Haussmann]]. Il fait suite au décret du {{Date|22 juillet 1882}}.
+
+* '''L'épannelage'''. Le décret de 1884 élève légèrement la hauteur autorisée :
+
+{| class=wikitable
+|Largeur de la rue
+|Hauteur maximale de la façade
+|-
+|inférieure à 7,80 m
+|12 m
+|-
+|entre 7,80 m et 9,74 m
+|15 m
+|-
+|entre 9,75 m et 20 m
+|18 m
+|-
+|supérieure à 20 m
+|20 m
+|-
+|
+|align="right"|''<small>Source des chiffres: C. Mignot</small>''
+|}
+
+Les combles sont désormais inscrits non dans une diagonale à 45 degrés, mais dans un arc de cercle dont le rayon dépend de la largeur de la voie. Cette disposition permet de construire un étage supplémentaire en retrait de la façade.
+
+* '''L'hygiène'''. Les cours intérieures sur lesquelles donnent des pièces habitées doivent avoir une superficie au moins égale à 30 m{{2}}.
+
+Dès 1882, un règlement autorise la construction d'[[oriel|oriels]] alors que les saillies étaient interdites sur les maisons parisiennes depuis plusieurs siècles. Il ne doit toutefois commencer qu'à l'étage noble, c'est-à-dire en général le deuxième, et il ne peut se poursuivre au-dessus de la corniche. Enfin, sa largeur maximale est de 40 cm et on doit pouvoir le démonter. Les [[oriel|oriels]] en métal et en bois se multiplient.
+
+En 1893, la ville de Paris autorise la construction d'oriels en brique ou en pierre de taille. Cette nouvelle possibilité permettra aux façades de certains immeubles de prendre une forme de plus en plus ondulée.
+
+=== Le Règlement de 1902 ===
+[[Fichier:Bld-italiens-combles.jpg|right|thumb|300px|Boulevard des Italiens : rotonde monumentale et [[oriel]]s surplombant la corniche.]]
+Le [[règlement de voirie]] sur les hauteurs et saillies dans la ville de Paris est promulgué dans un décret du {{Date|13 août 1902}}. Son principal auteur est [[Louis Bonnier]], [[architecte-voyer]] de la ville de Paris.
+
+* '''l'épannelage'''. Lorsque la rue a une largeur supérieure à 20 mètres, la hauteur autorisée sur rue peut dépasser celle qui est traditionnelle dans certaines limites. Les [[oriel|oriels]] et divers autres types de saillies peuvent se poursuivre au-dessus de la corniche. Enfin, au-dessus de la corniche, on peut désormais ajouter des combles s'inscrivant dans un arc d'un huitième de cercle se prolongeant par une oblique à 45°. Dans le cas d'une grande parcelle, la hauteur au centre peut donc être très élevée. [[Henri Sauvage]] met à profit cette disposition dans des immeubles à gradins tels que celui de la [[rue Vavin]] dans le [[6e arrondissement de Paris|{{6e|arrondissement}}]].
+* '''L'hygiène'''. Le règlement impose le respect d'une proportion entre la hauteur des immeubles et le volume des parties non bâties (rues, cours intérieures). Il s'agit de favoriser la circulation de l'air et de lutter contre l'insalubrité dénoncée par plusieurs études dans certains îlots de Paris.
+
+Le règlement de 1902 a permis aux architectes de donner plus de fantaisie aux toits parisiens. Ils ont pu ajouter des corniches et des combles aux formes les plus diverses au sommet des immeubles, en accord avec les conceptions esthétiques de l'époque et en particulier celles de l'[[Art nouveau]]. À cet égard le règlement marque un pas supplémentaire dans l'abandon progressif de l'alignement uniforme des immeubles, caractéristique de l'époque haussmannienne.
+
+=== Le Plan d'urbanisme directeur de 1967 (PUD) ===
+Le règlement de 1902 n'a été officiellement remplacé que le {{Date|6 février 1967}} par l'adoption d'une loi validant le Plan d'Urbanisme Directeur. En pratique ce plan était déjà appliqué depuis [[1961]]. Rédigé dès [[1959]], il résultait de la réflexion menée dans les années 50 par des architectes-urbanistes comme [[Raymond Lopez]] et [[Michel Holley]], sous la direction du président du conseil municipal [[Bernard Lafay]].
+
+Un siècle après Haussmann, le PUD semble retrouver les mêmes ambitions et les mêmes moyens. Le Plan ne concerne pas le centre de Paris, mais veut réorganiser les arrondissements périphériques par la construction d'axes de circulation automobile rapide. Les boulevards intérieurs qui occupent la place de l'ancien [[mur des Fermiers généraux]], par exemple, deviendraient une véritable rocade.
+
+Le PUD distingue plusieurs zones d'activités dans Paris{{sfn|id=PUD1960|texte=Plan d'Urbanisme Directeur de Paris|p=[http://50ans.apur.org/data/b4s3_home/fiche/65/02_plan_directeur_urbanisme_1959_appa170_7c090.pdf#page=3 3]}} : zones d'affaires, zones administratives, zones universitaires, zones d'habitation…
+
+L'épannelage est en principe limité à 31 mètres dans le centre et 37 mètres en périphérie. Toutefois le PUD permettra aussi la construction des quartiers de tours du [[Front-de-Seine]] et du [[13e arrondissement de Paris|XIII{{e}} arrondissement]].
+
+Le PUD prévoit enfin de rénover les îlots insalubres ou « mal utilisés » qui seront transformés en espaces verts, en terrains de sport ou en quartiers de tours ou de barres.
+
+=== Le Plan d'occupation des sols de 1977 (POS) ===
+Dès 1974, le PUD est révisé. Le {{Date|28 février 1977}}, la ville de Paris approuve un [[Plan d'occupation des sols]] qui, en réalité, est déjà appliqué depuis 1974. Ce plan est complété par le [[Schéma directeur d'aménagement et d'urbanisme de la région Île-de-France]] (SDAURIF).
+
+Le POS de 1977 a été révisé en 1984 et en 1989. Il a fait l'objet d'une révision majeure portant notamment sur la rédaction des règlements des zones urbaines les plus importantes par une délibération du {{date|21 novembre 1994}}.
+
+=== Le Plan local d'urbanisme (PLU) ===
+Le [[plan local d'urbanisme]], dont l'élaboration a été prescrite en 2001 par la nouvelle municipalité, a été adopté le {{date|12 juin 2006}} par le [[Conseil de Paris]]. Cette nouvelle mouture doit orienter l'évolution de la ville pour les années à venir.
+
+Le PLU couvre l'ensemble de l'espace parisien à l'exception de deux zones protégées par l'État (le [[Le Marais (Paris)#Le secteur sauvegardé|Marais]] et le quartier des ministères du [[7e arrondissement de Paris|VII{{e}} arrondissement]]) et du [[jardin du Luxembourg]] que la loi Urbanisme et habitat du {{Date|2 juillet 2003}} a placé hors du périmètre du PLU. Il comprend donc les [[ZAC|zones d'aménagement concerté (ZAC)]] qui n'étaient pas traitées dans le plan d'occupation des sols.
+
+Il a fait l'objet de plusieurs contentieux devant les juridictions administratives. Notamment, les articles 6 et 7 des règlements des zones UV et N ont été annulés par un arrêt du Conseil d'État du {{date|18 juin 2010}}<ref>{{Lien web|titre=CE 18 juin 2010, Ville de Paris, requête n° 326 708|url=https://www.legifrance.gouv.fr/ceta/id/CETATEXT000022364613/|site=[[Légifrance]]|consulté le=26 mai 2018}}.</ref>. Ce sont donc les articles 6 et 7 des règlements issus de la révision de 1994 qui sont actuellement applicables aux terrains compris dans ces deux zones du PLU.
+
+* '''Le zonage'''. Le PLU définit quatre zones principales, dotées de règlements spécifiques : 
+** la ''zone urbaine générale'', qui couvre la plus grande partie de la ville, sur laquelle s'applique la règle du [[coefficient d'occupation des sols]] (COS). Le COS est désormais limité à 3 dans la zone urbaine générale, contre 3,25 précédemment. Le plan favorise la construction en alignement le long de la rue.
+** la ''zone urbaine de grands services urbains'', qui correspond aux « équipements et services nécessaires au fonctionnement de la ville qui nécessitent des aménagements spécifiques, afin de les pérenniser et de favoriser leur développement harmonieux et durable ».
+** la ''zone urbaine verte'' : espaces verts, récréatifs et de loisirs.
+** la ''zone naturelle et forestière'' : [[bois de Boulogne]] et [[bois de Vincennes]].
+
+* '''L'épannelage'''. Il dépend de la largeur de la rue<ref>{{Lien web|url=http://www.v2asp.paris.fr/fr/Urbanisme/PLU/Reglement/Reglement_Figures.pdf|archive-url=https://web.archive.org/web/20051017211409/http://www.v2asp.paris.fr/fr/Urbanisme/PLU/Reglement/Reglement_Figures.pdf|titre=Figures des principes d'implantation|brisé le=26 mai 2018|archive-date=17 octobre 2005}}, 25 pages.</ref>. Pour une rue de largeur P, la hauteur autorisée sera de P + 2 à P + 3 mètres sur la façade et de P + 6 à P + 8 mètres au-dessus des combles, sauf dans certaines rues où la façade sur rue ne pourra dépasser 18 mètres. Cet épannelage concerne la zone E, c'est-à-dire une bande de terrain occupant une profondeur de 20 mètres entre la rue et le milieu de la parcelle. À la règle s'ajoute une limitation de la hauteur des bâtiments dépendant non de la largeur de la rue mais du quartier. Définie dans le plan des hauteurs<ref>{{Lien archive|url=http://www.v2asp.paris.fr/fr/urbanisme/PLU/Atlas_PLU/HAUT.PDF|titre=Plan des hauteurs|horodatage archive=20051018044000|format=pdf|consulté le=26 mai 2018}}.</ref>, cette hauteur maximale est en général de 25 mètres dans les arrondissements centraux et de 31 mètres dans les arrondissements périphériques, avec un maximum de 37 mètres dans certains quartiers. Des dépassements ne peuvent être autorisés que par dérogation.
+
+=== Projet de PLU Bioclimatique ===
+Le Plan local d'urbanisme bioclimatique (PLU bioclimatique) de Paris est un projet stratégique, adopté en {{date|juin 2023}} par le Conseil de Paris, visant à adapter la capitale aux défis climatiques tout en améliorant le cadre de vie. Parmi ses objectifs figurent l'ouverture de 300 hectares d'espaces verts supplémentaires et la désimperméabilisation de 40 % de l'espace public d'ici 2050. En matière de logement, le plan vise à atteindre 40 % de logements publics d’ici 2035, favorisant ainsi la [[Mixité sociale en France|mixité sociale]]. Le PLU encourage également la mixité fonctionnelle en imposant aux grands projets immobiliers de réserver 10 % de leur surface à des logements. Après un avis favorable en {{date|juillet 2024}}, une entrée en vigueur est prévue début 2025<ref>{{Lien web |langue=fr |titre=Plan local d'urbanisme bioclimatique : vers un Paris plus vert et plus solidaire |url=https://www.paris.fr/pages/plan-local-d-urbanisme-bioclimatique-vers-un-paris-plus-vert-et-plus-solidaire-23805 |site=www.paris.fr |consulté le=2024-11-12}}</ref>.
+
+== Voir aussi ==
+* [[Histoire de l'urbanisme parisien]]
+* [[Plan local d'urbanisme]]
+ 
+=== Liens externes===
+* {{Lien archive|titre=La fabrication des rues de Paris au {{s-|XIX}}|url=http://www.urbanisme.equipement.gouv.fr/cdu/datas/annales/landau.htm|horodatage archive=20010123184400|auteur=Bernard Landau}}
+* [https://www.paris.fr/pages/le-plan-local-d-urbanisme-plu-2329 Textes et cartes de référence du PLU] sur le site Web de la ville de Paris.
+
+=== Bibliographie ===
+* {{Ouvrage|langue=fr|auteur1=[[Préfecture de la Seine]]|auteur2=Commissariat à la construction et à l'urbanisme pour la région parisienne|auteur3=Direction de l'urbanisme|titre=Plan d'Urbanisme Directeur de Paris|sous-titre=Règlement|volume=2|lieu=Paris|éditeur=Imp. Municipale. [[Hôtel de ville de Paris|Hôtel de ville]]|année=1960|pages totales=br., 36|format livre=In-4°|oclc=494218397|sudoc=10642033X|présentation en ligne=https://bibliotheques-specialisees.paris.fr/ark:/73873/pf0001028776|lire en ligne=http://50ans.apur.org/data/b4s3_home/fiche/65/02_plan_directeur_urbanisme_1959_appa170_7c090.pdf|format électronique=pdf|consulté le=26 mai 2018|id=PUD1960}}
+* {{Ouvrage|langue=fr|auteur1=[[Claude Mignot]]|photographe=[[Jacques Lebar]]|titre=Grammaire des immeubles parisiens|sous-titre=six siècles de façades du Moyen Âge à nos jours|lieu=Paris|éditeur=[[Éditions Parigramme|Parigramme]]|année=2004|année première édition=2004|réimpression=2005, 2006, 2007, 2009 et 2011|pages totales=ill. en noir et en coul., couv. ill. en coul., 205|format livre={{Unité|21|cm}}|isbn=978-2-84096-175-8|isbn2=2-84096-175-X|oclc=419651091|bnf=39250922s|sudoc=082588724|présentation en ligne={{Google Livres|KcsVAQAAIAAJ}}|consulté le=26 mai 2018}}
+* {{Ouvrage|langue=fr|auteur1=Simon Texier|titre=Paris contemporain|sous-titre=architecture et urbanisme de Haussmann à nos jours, une capitale à l'ère des métropoles|lieu=Paris|éditeur=[[Éditions Parigramme|Parigramme]]|année=2005|pages totales=ill. en noir et en coul., photogr., cartes, couv. ill. en coul., 239|format livre={{Unité|27|cm}}|isbn=2-84096-306-X|isbn2=9782840963066|oclc=492555842|bnf=39958940v|sudoc=085917982|présentation en ligne={{Google Livres|7cZJAQAAIAAJ}}|consulté le=26 mai 2018}}
+
+=== Notes et références ===
+{{Références}}
+{{Portail|droit français|architecture et urbanisme|Paris}}
+
+{{DEFAULTSORT:Règlements urbanisme de Paris}}
+[[Catégorie:Urbanisme à Paris]]
+[[Catégorie:Droit de l'urbanisme en France]]
+[[Catégorie:Règlement]]

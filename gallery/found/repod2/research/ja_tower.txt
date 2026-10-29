@@ -1,0 +1,304 @@
+{{Infobox building
+| name                = エッフェル塔
+| native_name         = {{Lang|fr|Tour Eiffel}}
+| native_name_lang    = fr
+| image               = File:Tour Eiffel Wikimedia Commons (cropped).jpg
+| caption             = [[シャン・ド・マルス公園]]から見たエッフェル塔（向こう側は[[イエナ橋]]が架かる[[セーヌ川]]対岸の[[シャイヨ宮]]）
+| highest_start       = 1889
+| highest_end         = 1930
+| location            = {{FRA}}・[[パリ]][[7区 (パリ)|7区]]
+<!--
+| latd                = 48.8583
+| longd               = 2.2945
+-->
+| map_type            = France Paris#7th arrondissement of Paris
+| coordinates         = {{coord|48|51|29.6|N|2|17|40.2|E|region:FR-75|display=inline,title}}
+| start_date          = 1887年1月28日
+| completion_date     = 1889年3月15日
+| opening             = 1889年3月31日 ({{Time ago|1889-03-31}})
+| building_type       = 展望塔<br />電波塔
+| architectural       = {{convert|300|m|ft|0|abbr=on}}<ref name=CTBUH>{{ctbuh|id=9410|title=Eiffel Tower}}</ref>
+| tip                 = {{convert|330|m|ft|0|abbr=on}}<ref name=CTBUH />
+| antenna_spire       = 
+| roof                = 
+| top_floor           = {{convert|276|m|ft|0|abbr=on}}<ref name=CTBUH />
+| floor_count         = 3<ref name=Emporis>{{Emporis|id=110508|name=Eiffel Tower}}</ref>
+| elevator_count      = 8<ref name=Emporis />
+| cost                =
+| floor_area          =
+| architect           = [[ステファン・ソーヴェストル]]
+| structural_engineer = [[モーリス・ケクラン]]<br />[[エミール・ヌーギエ]]
+| main_contractor     = [[エファージュ (フランスの企業)|エッフェル社]]<ref>{{Cite web |url=http://www.eiffage.com/history |title=HISTORY |publisher=EIFFAGE |date=2013 |accessdate=2017-11-30}}</ref>
+| developer           =
+| owner               = {{FRA}}・[[パリ]] (100%)
+| management          = {{lang|fr|Société d'exploitation de la tour Eiffel (SETE)}}
+| url                 = {{URL|1=https://www.toureiffel.paris/jp|2=エッフェル塔公式サイト}}
+| references          = I. {{note|talleststatus}}{{Emporis |id=110508 |name=Eiffel Tower}}
+}}
+[[File:Eiffel Tower Drone 4k-Qx c1X3zfEc-313-251.webm|thumb|エッフェル塔]]
+'''エッフェル塔'''（エッフェルとう、{{Lang-fr-short|La tour Eiffel}}、{{Lang-en-short|Eiffel Tower}}）は、[[フランス]]の[[首都]]・[[パリ]]の象徴的な名所となっている[[塔]]である。[[7区 (パリ)|パリ7区]]、[[シャン・ド・マルス公園]]の北西に位置する。[[パリ万国博覧会 (1889年)|パリ万国博覧会]]に際して建設され<ref name="日経20220417">天に架ける橋エッフェル塔(上)工学とアート「鉄の貴婦人」『[[日本経済新聞]]』朝刊2022年4月17日14－15面</ref>、名称は設計および建設者である[[ギュスターヴ・エッフェル]]に由来する。
+
+== 歴史 ==
+=== 高層建築ブーム ===
+[[19世紀]]後半、建築技術の進歩や新素材の開発、[[産業革命]]による工業力の増加や総体としての富の増大によって、先進各国において相次いで高層建築が建設され、国家の威信をかけて高さ競争が繰り広げられていた。[[1647年]]から200年以上にわたって世界で最も高い建築物は同じフランスの[[ストラスブール]]にある[[ストラスブール大聖堂]]（高さ142m）であったが、[[1874年]]には[[ドイツ帝国]]の[[ハンブルク]]に建てられた聖ニコライ教会が147mとなって取って代わり、それ以降、この地位は数年ごとに交代を繰り返すようになった。[[1876年]]にはフランス・[[ルーアン]]の[[ルーアン大聖堂]]が151m、[[1880年]]にはドイツ帝国[[ケルン]]の[[ケルン大聖堂]]が完成して157mとなった。ここまでの高さ競争は全て[[キリスト教会]]の尖塔であったが、[[1884年]]には[[アメリカ合衆国]][[ワシントンD.C.]]に高さ169mの[[ワシントン記念塔]]が完成し、これが世界で最も高い建造物となっていた。しかしいずれの建造物も高さは140mから160m台にすぎなかった。
+
+=== コンペティション開催 ===
+[[1889年]]の[[フランス革命]]100周年を記念してパリで[[パリ万国博覧会 (1889年)|第4回万国博覧会]]が開催されることが[[1884年]]に決定したものの、当初はそれほど目玉となるプランがあるわけではなかった。そうしたなか、[[橋梁]]建設、特に[[鉄橋]]において高い評価を得ていた建設会社エッフェル社の技師である[[モーリス・ケクラン]]とエミール・ヌーギエは[[1884年]]5月に、高さ300mの鉄の塔を建てて万博のシンボルとする案を立てた。この案に同じく社員である[[ステファン・ソーヴェストル]]が修正を加え、現在みられるエッフェル塔とほぼ同じ計画案を作成した。この案は社長である[[ギュスターヴ・エッフェル]]の賛同と強力な支援を受け、各方面に売り込みが行われた<ref>ケネス・パウエル編、井上廣美訳『世界の建築家図鑑』（[[原書房]]ヴィジュアル歴史人物シリーズ、2012年10月15日第1刷）pp.143-144</ref>。先行する160m級建築物群を大きく超える高さとなるが、基礎となる技術は、エッフェルが手掛けた[[ポルトガル]]の[[マリア・ピア橋]]（1877年完成）、フランス国内の[[ガラビ橋|ガラビ高架橋]]（1884年完成）、アメリカ合衆国[[ニューヨーク市]]の「[[自由の女神像 (ニューヨーク)|自由の女神像]]」（1886年完成）を内部で支える鉄製支柱で実証されていた<ref name="日経20220417"/>。
+
+[[1886年]]、万博の目玉となる大建造物を選定するための[[コンペティション]]が開かれると、エッフェルはソーヴェストルおよびケクランと連名で計画案を提出した。1886年6月3日、コンペティション最優秀作品として委員会が選んだのは3案あり、フェルディナン・デュテルとジャン・カミーユ・ルミジュの作品（美術館など）と、エッフェル、ソーヴェストル、ケクランらの設計図であった。エッフェルらの案は満場一致で採択され{{Sfn|『エッフェル塔ものがたり』|1983|p=12}}、講評は「1889年の万国博覧会用に建てられる塔は決定的な特徴をもち、金属産業の独創的傑作として出現しなければならない。この目的に充分適うのはエッフェル塔のみと思われる」であった。
+
+建設候補地となったのは[[セーヌ川]]を挟んだシャン・ド・マルスと[[トロカデロ広場|トロカデロ]]の2つの地区であったが、トロカデロは地下に空洞があったために地盤が不安視され、シャン・ド・マルスへの建設が決まった。7月には仮契約が締結され、1889年3月31日を工期の期限とすること、20年後の[[1909年]]には塔をパリ市に引き渡すこと、および工期中に政府からの補助金150万[[フランス・フラン|フラン]]が交付されることとなった。これは予想される総工費650万フランの4分の1以下にすぎず、残りはエッフェル自身の金策によって調達されることとなった{{Sfn|『エッフェル塔ものがたり』|1983|p=39-40}}。1887年1月8日には本契約が締結された。エッフェル塔の入場料は上記契約により1909年まではエッフェル自身の収入となり、これによってエッフェル塔の建設費を返済していくこととなった。彼はその後、エッフェル塔を管理するための新会社を設立し、資本金の半分を自ら拠出した<ref>Loyrette, p.121.</ref>。
+
+=== 建設 ===
+1887年1月28日に起工式が行われ、エッフェル塔建設が開始された<ref name=origins>{{cite web |url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/69.html |title=Origins and construction of the Eiffel Tower |author=SETE |website=Official Eiffel Tower website |accessdate=1 January 2014 |deadurl=yes |archiveurl=https://web.archive.org/web/20150731073057/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/69.html |archivedate=31 July 2015 |df=dmy }}</ref>。まず基礎工事が開始され、[[潜函工法]]によって6月11日には基礎が完成した。ついで4本の脚から塔本体の建設が始まり、1888年3月には1階の展望台が完成して4本の脚がつながった{{Sfn|『エッフェル塔ものがたり』|1983|p=51}}。同年8月14日には2階展望台が完成し{{Sfn|『エッフェル塔ものがたり』|1983|p=37}}、1889年2月24日には3階展望台の工事が着工{{Sfn|『エッフェル塔ものがたり』|1983|p=58}}。1889年3月31日に竣工した<ref>{{Cite web|title=エッフェル塔｜第1部 1900年までに開催された博覧会｜博覧会―近代技術の展示場|website=1889年第4回パリ万博  フランス革命100周年|url=https://www.ndl.go.jp/exposition/s1/1889-1.html|access-date=2026-03-31|publisher=[[国立国会図書館]]}}</ref><ref>{{Cite web |url=https://transit.jp/regular/france/on-this-day-0331/|title=#今日は何の日？ パリにあの建造物が誕生した日！ 3月31日|access-date=2026-03-31|publisher=euphoria-factory|date=2026-03-31|website=TRANSIT}}</ref>{{Refnest|group="注"|『エッフェル塔ものがたり』によると、竣工は3月30日{{Sfn|『エッフェル塔ものがたり』|1983|p=64}}。}}。3月31日には[[フランスの首相#フランス第三共和政|首相]]ピエール・ティラールらを招いて竣工式が行われた{{Sfn|『エッフェル塔ものがたり』|1983|p=65}}。竣工式でエッフェルは自らの手で先端に[[フランス国旗]]を掲げ、「300メートルの旗竿に国旗を掲げる唯一の国」と語った<ref name="日経20220417"/>。
+
+建設は万博に間に合わせるため2年2カ月5日という驚異的な速さで完成した<ref name="日経20220417"/><ref>{{Cite book|和書 |author= ジョン・バクスター|authorlink=ジョン・バクスター |year = 2013 |title = 二度目のパリ 歴史歩き |publisher = [[ディスカヴァー・トゥエンティワン]] |page = 87 |isbn = 978-4-7993-1314-5}}</ref>。5300枚のデッサンを描いて、1万8000の部品を工場で生産して送り出し、常時150～300人が現場で組み立てる[[プレハブ]]工法を採用した<ref name="日経20220417"/>。またエッフェルは熟練作業員による少数精鋭主義をとるとともに工事中の安全対策には特に注意を払い、工事期間中の死者は1人にとどまった{{Sfn|『エッフェル塔ものがたり』|1983|p=57}}。総工費は650万フランであった<ref>『国民百科事典1』（[[平凡社]]、1961年2月1日初版発行）p.423</ref>。
+
+<gallery>
+ファイル:Construction tour eiffel2.JPG|塔の建設（1887年）
+ファイル:Construction tour eiffel4.JPG|塔の建設（1888年）
+ファイル:Construction tour eiffel8.JPG|エッフェル塔（1889年）
+ファイル:Tour Eiffel Ascenseur Roux, Combaluzier et Lepape.jpg|1889年万博当時のエッフェル塔エレベーター
+</gallery>
+
+
+=== 当時の評価 ===
+{{See also|#エッフェル塔をめぐる論争}}
+後世では「鉄の貴婦人（La Dame de fer）」と称えられる<ref name="日経20220417"/>エッフェル塔であるが、建設当時としては奇抜な外見のため、賛否両論に分かれた。1887年2月には、建設反対派の芸術家たちが連名で陳情書を提出している<ref>アンドレ・ヴァルノ著、北澤真木訳『パリ風俗史』（[[講談社]]、1999年11月10日第1刷）pp.331-332</ref>。反対派の文学者[[ギ・ド・モーパッサン]]は、エッフェル塔1階の[[レストラン]]によく通ったが<ref>{{cite book| last=Jonnes | first=Jill | title=Eiffel's Tower: And the World's Fair Where Buffalo Bill Beguiled Paris, the Artists Quarreled, and Thomas Edison Became a Count | publisher=Viking Adult | year=2009 | pages=163–64 | url = | id = | isbn=978-0670020607}}</ref>、その理由として「ここがパリの中で、いまいましいエッフェル塔を見なくてすむ唯一の場所だから」と言っている。ここから、「エッフェル塔が嫌いなやつは、エッフェル塔に行け」という[[ことわざ]]も生まれた。
+
+[[ファイル:Tour Eiffel, École militaire, Champ-de-Mars, Palais de Chaillot, La Défense - 01.jpg|thumb|260px|エッフェル塔と[[ラ・デファンス]]の超高層ビル街]]
+
+=== パリ万博 ===
+1889年5月6日に開幕したパリ万博においてエッフェル塔は目玉となり、パリのみならず世界中から観光客が押し寄せた。ただし開幕時にはいまだエレベーターが完成しておらず、エッフェルがエレベーターなしでの一般公開に反対したこともあって、観光客の入場はできなかった{{Sfn|『エッフェル塔ものがたり』|1983|p=82}}。エレベーター自体は5月15日に完成したものの、テストが必要なためしばらく商業運行は不可能だった。しかし来場者や市民からの不満の声が高まったため、同日エッフェルは塔の一般公開に踏み切り、観光客は階段で展望台へと向かった{{Sfn|『エッフェル塔ものがたり』|1983|p=85}}。エレベーター運行までの9日間にエッフェル塔に入場し、1,710段の階段を昇った入場客の数は約30,000人にのぼった<ref name=Exposition>{{cite web|url=http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/70.html |title=The Eiffel Tower during the 1889 Exposition Universelle |author=SETE |website=Official Eiffel Tower website |accessdate=16 April 2016 |deadurl=yes |archiveurl=https://web.archive.org/web/20160425081036/http://www.toureiffel.paris/en/everything-about-the-tower/themed-files/70.html |archivedate=25 April 2016 |df=dmy }}</ref>。エレベーターは5月26日に運行を開始した{{Sfn|『エッフェル塔ものがたり』|1983|p=86}}。エレベーター料金は1階までが2フラン、2階までが3フラン、最上階までが5フラン、日曜日は半額となっていた<ref>Harvie, pp. 144–45.</ref>。
+
+展望台の上にある塔の最上階には来客用のサロンを備えたエッフェルの小さな私室が設けられた。この私室は現在では一般公開されており、当時の内装がそのまま保存され、またエッフェルおよび著名なゲストたちを模した[[マネキン人形]]が展示されている<ref name=Morton>{{cite web|author=Caitlin Morton|title=There is a secret apartment at the top of the Eiffel Tower|url=http://www.architecturaldigest.com/story/eiffel-tower-paris-secret-apartment?sp&sp|website=Architectural Digest|publisher=Conde Nast|accessdate=30 June 2015|date=31 May 2015}}</ref>。私室の隣には、様々な実験を行うための研究室も設けられた。この研究室においては、気象観測や空気抵抗の実験などが行われていた<ref>Watson, p.829.</ref>。
+
+万博の会期中には、2階に『[[フィガロ (新聞)|フィガロ]]』紙の編集室と印刷機が設けられ、毎日『{{Lang|fr|Le Figaro de la Tour}}（フィガロ・エッフェル塔版）』を発行していた{{Sfn|『エッフェル塔ものがたり』|1983|p=86}}。会期中にエッフェル塔を訪れた著名人としては、[[プリンス・オブ・ウェールズ|イギリス皇太子]]である[[エドワード7世 (イギリス王)|エドワード]]王子や、大女優[[サラ・ベルナール]]、[[バッファロー・ビル]]（彼の『[[ワイルド・ウェスト・ショー]]』は博覧会の目玉の一つだった）、[[トーマス・エジソン]]などがいた<ref name=Exposition/>。エッフェルはエジソンを塔最上階の私室に招き、エジソンは彼の発明した[[蓄音機]]をエッフェルへと贈った。これはこの博覧会におけるハイライトの一つだった<ref>{{cite web|url=http://www.wondersandmarvels.com/2009/05/thomas-edison-at-eiffel-tower.html|author=Jill Jonnes|publisher=Wonders and Marvels|title=Thomas Edison at the Eiffel Tower|accessdate=2 January 2014}}</ref>。塔の1階には[[フランス料理]]、フランドル料理、[[ロシア料理]]の3軒のレストランおよび[[アングロ・アメリカ|アングロ・アメリカン]]・[[スナックバー (飲食店)|バー]]が設けられていた。
+
+エッフェル塔は大盛況となり、11月8日の博覧会終了までの入場者数は1,896,987人<ref name=Key_figures>{{cite web |url=http://www.toureiffel.paris/en/everything-about-the-tower/the-eiffel-tower-at-a-glance.html |title=The Eiffel Tower at a glance |author=SETE |website=Official Eiffel Tower website |accessdate=15 April 2016 |deadurl=yes |archiveurl=https://web.archive.org/web/20160414130600/http://www.toureiffel.paris/en/everything-about-the-tower/the-eiffel-tower-at-a-glance.html |archivedate=14 April 2016 |df=dmy }}</ref>、1889年の入場者数は200万人を記録した{{Sfn|『エッフェル塔ものがたり』|1983|p=102}}。
+
+=== 万博終了後 ===
+[[ファイル:Prince Hirohito going up Eiffel Tower 1921-6.jpg|サムネイル|[[皇太子裕仁親王の欧州訪問]]時のエッフェル塔観覧（1921年）]]
+万博終了後、エッフェル塔の来訪者は減少していったが、なおも年間10万から20万人台の入場者数は保っていた。[[1900年]]に再度パリで[[パリ万国博覧会 (1900年)|万国博覧会]]が開催されることが決定すると、エッフェル塔は再び万博のパビリオンとして多くの観光客を集めたが、その後の入場者数は低迷を続けた。こうしたことから、塔の権利がパリ市に移る[[1909年]]には解体されることが確実視されていた。しかし[[1904年]]、[[フランス軍]]で通信を担当していたギュスターヴ・フェリエが[[軍事]]用の[[無線通信|無線電波]]をエッフェル塔で送受信することを提案し、そのため国防上重要な建築物ということで、取り壊しを免れることとなった。この電波塔としての役割は非常に重要なもので、現代に至るまでエッフェル塔の主目的の一つとなっている。
+
+[[第一次世界大戦]]が始まると、エッフェル塔の入場は[[1915年]]から1919年まで中止された。大戦中には塔から[[通信妨害|ジャミング]]を出して、[[ドイツ帝国軍]]を悩ませた。[[1919年]]に大戦が終わると入場は再開され、[[1921年]]にはエッフェル塔から[[ラジオ放送]]が開始された。[[1925年]]には[[シトロエン]]がエッフェル塔に巨大な照明看板を出し、[[1936年]]までの11年間この広告は続いた{{Sfn|『エッフェル塔ものがたり』|1983|p=124}}。1930年にはアメリカのニューヨークで[[クライスラー・ビルディング]]が完成し、エッフェル塔は世界一高い建造物の地位を失った<ref>{{cite news |title=The Silver Spire: How two men's dreams changed the skyline of New York |author=Claudia Roth Pierpont |url=http://www.jayebee.com/discoveries/criticism/silver_spire.htm |magazine=The New Yorker |date=18 November 2002 |archiveurl=https://web.archive.org/web/20120227015047/http://www.jayebee.com/discoveries/criticism/silver_spire.htm|archivedate=27 February 2012}}</ref>。[[第二次世界大戦]]が始まり、[[1940年]]にパリが[[ナチス・ドイツ]]によって[[ナチス・ドイツによるフランス占領|占領]]されるとエッフェル塔も閉鎖された。[[パリの解放]]（[[1944年]]）後、塔は入場を再開した。2002年11月28日にはエッフェル塔の通算入場者数が2億人に達した<ref>{{cite web|url=http://www.france.com/editorials/eiffel_tower/|title=The Eiffel Tower|publisher=France.com|date=23 October 2003|accessdate=16 April 2016|archiveurl=https://web.archive.org/web/20160424214241/http://www.france.com/editorials/eiffel_tower/|archivedate=2018-04-24}}</ref>。
+
+[[2011年]]12月に日刊紙『フィガロ』で、建築家グループが期間限定で塔を樹木で覆う緑化計画を立てていると報道されたが、パリ市や塔運営会社は否定している<ref>{{Cite web|url=http://www.jiji.com/jc/a?g=afp_soc&rel=j7&k=20111202028003a |title=【こぼれ話】エッフェル塔に‘緑化’計画？＝仏紙報道、当局は否定 |date=2011-12-02|publisher=[[時事通信|時事ドットコム]]|accessdate=2011-12-02}}{{リンク切れ|date=2017年10月}}</ref>。
+
+== 構造 ==
+[[File:Dimensions Eiffel Tower-fr.svg|200px|thumb|right|エッフェル塔の構造]]
+[[File:Paris Eiffel 092.JPG|thumb|right|塔脚基礎]]
+エッフェル塔は[[鋼鉄|鋼]]製ではなく、鋼よりも[[炭素]]含有量が少なく、強度の低い[[錬鉄]]でできている<ref>{{cite book|title=Inventing the Modern World: Technology since 1750|last1=Bud|first1=Robert|last2=Niziol|first2=Simon|last3=Boon|first3=Timothy|last4=Nahum|first4=Andrew| year =2000|publisher=Dorling Kindersley |location =London |isbn = | page=95}}</ref>。エッフェル塔本体の錬鉄の重さは7,300トンで<ref name="Hanser2006">{{cite book|author=David A. Hanser|title=Architecture of France|url=https://books.google.com/books?id=zojzUU976h0C&pg=PA66|year=2006|publisher=Greenwood Publishing Group|isbn=978-0-313-31902-0|page=66}}</ref>、これにエレベーターや店舗、アンテナを加えた総重量は約10,100トンとなっている<ref>{{cite book|title=DK Eyewitness Travel Guide: Europe|url=https://books.google.com/books?id=AiYCSa4U6UYC&pg=PA163|year=2012|publisher=Dorling Kindersley|isbn=978-1-4093-8577-6|page=163}}</ref>。展望台は簡単な[[柵]]あるいは[[金網]]が設置されているだけの吹きさらしである。展望台は3つあり、高さは第1展望台が57.6m、第2展望台が115.7m、最も高い第3展望台が276.1mである。第2展望台までは階段でも昇ることが可能。水圧[[エレベーター]]など、当時の基本構造は今でも現役で稼動している<ref>{{Cite book|和書 |author = 新建築社 |year = 2008 |title = NHK 夢の美術館 世界の名建築100選 |publisher = [[新建築社]] |page = 42 |isbn = 978-4-7869-0219-2}}</ref>。塔の支点の下には、水平に保つための[[ジャッキ]]がある。
+{{節スタブ}}
+<gallery>
+File:Tour Eiffel pic11.jpg|塔の下部アーチ
+File:Different view of the Eiffel Tower 2010.jpg|塔脚の内部
+File:Eiffel Tower spire, 10 October 2010.jpg|塔の先端
+</gallery>
+
+===高さ===
+建設当時の高さは312.3m（旗部を含む）で、1930年に米国ニューヨークに[[クライスラー・ビルディング]]が完成するまでは世界一高い建造物であった。1957年、アンテナなどを設置して約321mとなった。2000年に放送用アンテナを設置して約324mとなった。
+
+2022年3月15日、[[ヘリコプター]]を使って新たに地上デジタルラジオ放送用アンテナが設置され、約330mとなった<ref>[https://www.sankei.com/article/20220316-PGV7T52SIZM2PIGIX3JSCVGEUA/ 「鉄の貴婦人」まだ成長 エッフェル塔、330m][[産経デジタル|産経新聞ニュース]]2022年3月16日配信の[[共同通信]]記事（2022n3n4月30日閲覧）</ref>。
+
+=== 塗装 ===
+エッフェル塔は錬鉄で作られているため、防[[錆]]のためにも塗装は欠かせない。[[2019年]]からスタートした20回目の塗装工事では、[[2023年]]のギュスターヴ・エッフェル没後100年、[[2024年]]の[[2024年パリオリンピック|パリオリンピック]]という記念すべき年を控えていることもあり、過去19回の塗装による塗膜の層を全て剥離して、ギュスターヴ・エッフェルが望んでいたブラウンイエロー（jaune brun）で塗装するという大がかりな工事を予定していた<ref name="afpbb">{{Cite web |url=https://www.afpbb.com/articles/-/3330028 |title=エッフェル塔、過去最大の塗装工事 五輪に向けやや金色に |date=2021-02-04 |publisher=AFPBB News |accessdate=2024-07-24|}}</ref>。しかし、剥離した塗膜の層から基準値を上回る[[鉛]]が検出され工事が中断した。[[2022年]]の完工を予定していたが<ref name="afpbb" />、パリオリンピックにも間に合わないことが確実となった。
+
+塗装の色はこれまで6度変更され、20回目の塗装工事が完工すれば7度目の変更となる。
+
+* [[1887年]] - [[1888年]]：ベネチアンレッド（rouge Venise）
+* [[1889年]] - [[1891年]]：レッドブラウン（brun rouge）
+* [[1892年]] - [[1898年]]：ブラウンオーカー（ocre brun）
+* [[1899年]] - [[1906年]]：ベースのオレンジイエロー（jaune orange）からトップのクリアイエロー（jaune clair）まで5色のグラデーション
+* [[1907年]] - [[1953年]]：ブラウンイエロー（jaune brun）
+* [[1954年]] - [[1967年]]：ブラウンレッド（rouge brun）
+* [[1968年]] - 未定：エッフェル塔ブラウン（brun Tour Eiffel）
+* 未定 - ：ブラウンイエロー（jaune brun）
+
+※ エッフェル塔公式サイトより抜粋<ref>[https://www.toureiffel.paris/fr/le-monument/peinture-tour-eiffel La peinture de la tour Eiffel - La Tour Eiffel site OFFICIEL]（2024年7月24日閲覧）</ref>。
+
+現行のエッフェル塔ブラウン（brun Tour Eiffel）の塗装は、下から上へ向けて明るくなる3つのトーンで塗分けられている。塗料の総重量は50tにも達し、7年ごとの塗り替え作業には40万[[人月|人時]]の工数を要する<ref>中嶋 一史「塔の構造材の変遷:エッフェル塔の以前と以後」[[日本建築学会]].1990:105(1305):40-41</ref>。
+
+== 観光 ==
+[[File:Tour eiffel at sunrise from the trocadero.jpg|thumb|150px|夜明けのエッフェル塔]]
+[[File:Eiffel Tower and Pont Alexandre III at night.jpg|thumb|セーヌ川とエッフェル塔]]
+[[File:Eiffel Tower Visitors.svg|thumb|1889年の開業から2004年までの入場者数の推移]]
+[[File:Paris, Eiffelturm, Teleskop -- 2014 -- 1272.jpg|thumb|展望台の望遠鏡。]]
+現代では、パリを代表するシンボルとなっている。[[1991年]]、この塔を含むパリの[[セーヌ川]]周辺は[[世界遺産]]として登録された。1889年の完成から2006年までに、2億人以上の観光客がエッフェル塔を訪れた<ref>{{cite web|url=http://www.tour-eiffel.fr/teiffel/uk/documentation/chiffres/page/frequentation.html |title=Number of visitors since 1889 |language={{Fr icon}} |publisher=Tour-eiffel.fr |accessdate=24 May 2010}}</ref>。この数字は、2006年に塔を訪れた6,719,200人を含んでいる<ref name="fdkfke">{{cite web|url=http://www.tour-eiffel.fr/teiffel/uk/documentation/structure/page/chiffres.html |title=A few statistics |language={{Fr icon}} |publisher=Tour-eiffel.fr |accessdate=24 May 2010}}</ref>。この数字はさらに増大しており、2017年9月には通算来場者数が3億人を突破して記念式典が開催された<ref>[https://www.afpbb.com/articles/-/3144856　「パリのエッフェル塔、来場者3億人突破 音楽祭で祝う」][[フランス通信社|AFPBB]]（2017年9月29日）2018年1月1日閲覧</ref>。エッフェル塔は、世界で最も多くの人が訪れた有料建造物である<ref>{{cite web|url=http://www.lemonde.fr/web/article/0,1-0@2-3232,36-938349,0.html |title=Tour Eiffel et souvenirs de Paris |work=Le Monde  |location=France |accessdate=24 May 2010}}</ref>。一日平均で25,000人が塔にのぼるため、入場待ちの行列が長くなる場合がある<ref>{{cite web|url=http://www.foxnews.com/world/2013/06/27/eiffel-tower-reopens-to-tourists-after-rare-closure-for-2-day-strike/|title=Eiffel Tower reopens to tourists after rare closure for 2-day strike|work=Associated Press|publisher=Fox News|date=27 June 2013|accessdate=16 April 2016}}</ref>。
+
+エッフェル塔内部には1階の「{{Lang|fr|Le 58 Tour Eiffel}}」と、2階の「ジュール・ヴェルヌ」の2軒のレストランが開業している。ジュール・ヴェルヌはスター[[シェフ]]として知られる[[アラン・デュカス]]の店で、[[2007年]]に開業し<ref>[https://www.afpbb.com/articles/-/2330439　「アラン・デュカス氏、エッフェル塔内のレストランを新装オープン」]AFPBB（2007年12月28日）2018年1月1日閲覧</ref>、専用のエレベーターを持ち、[[ミシュランガイド]]でも1つ星を獲得している<ref>{{cite web|author=Dali Wiederhoft|url=http://www.bonjourparis.com/story/eiffel-tower-sightseeing-restaurants-links-transit/|title=Eiffel Tower: Sightseeing, restaurants, links, transit|publisher=Bonjour Paris|archiveurl=https://web.archive.org/web/20140106040320/http://www.bonjourparis.com/story/eiffel-tower-sightseeing-restaurants-links-transit/|archivedate=6 January 2014|accessdate=2018年1月1日}}</ref>。
+
+エッフェル塔の最寄り駅は、[[メトロ (パリ)|地下鉄]]（{{Lang|fr|Métro}}）利用の場合は[[パリメトロ6号線|6号線]][[ビラケム駅]]（{{Lang|fr|Bir Hakeim}}）、または[[パリメトロ8号線|8号線]]のエコール・ミリテール駅となる。[[RER (イル＝ド＝フランス)|RER]]（近郊鉄道）利用の場合は[[RER C線|C線]] [[シャン・ド・マルス＝トゥール・エッフェル駅]]（{{Lang|fr|Champs de Mars - Tour Eiffel}}）で下車する<ref>[http://jp.france.fr/ja/discover/30160　エッフェル塔] フランス観光 公式サイト（フランス観光開発機構）2018年1月1日閲覧</ref>。バスの場合は42、69、82、87番を利用する。
+
+エッフェル塔のバルコニーの下には、エッフェル自身が選んだ72人の偉大なフランスの科学者のリストが、各面18人ずつ刻まれている（「[[エッフェル塔に名前を刻まれた72人のフランスの科学者の一覧]]」参照）。
+
+{{Center|<gallery caption="万博">
+File:Brooklyn Museum - Paris Exposition-Eiffel Tower and Celestial Globe, Paris, France, 1900 (pd).jpg|[[パリ万国博覧会 (1900年)|1900年万博]]でのエッフェル塔。
+File:Tour Eiffel Citroen.jpg|[[パリ万国博覧会 (1925年)|1925年パリ万博]]から1934年までのエッフェル塔は、夜には[[シトロエン]]の社名の広告電飾が灯った。
+|[[パリ万国博覧会 (1937年)|1937年万博]]、[[ソ連館]]とドイツ館に挟まれたエッフェル塔。
+</gallery>}}
+
+=== 眺望 ===
+{{wide image|Tour Eiffel 360 Panorama.jpg|1400px|エッフェル塔からの眺望}}
+
+== エッフェル塔をめぐる論争 ==
+先に述べた通り、エッフェル塔は建設当時その奇抜な外観から批判を受けた。特に芸術家からの批判が多く、[[1887年]][[2月14日]]の『ル・タン（Le Temps）』紙には芸術家たちの抗議声明が掲載された。著名な署名者には、画家の[[エルネスト・メソニエ]]と[[ウィリアム・アドルフ・ブグロー|ウィリアム・ブーグロー]]、作曲家の[[シャルル・グノー]]、建築家の[[シャルル・ガルニエ]]、作家のモーパッサン（前述）や[[アレクサンドル・デュマ・フィス]]、[[シャルル＝マリ＝ルネ・ルコント・ド・リール]]らがいる。以下はその文書の一部である。
+[[File:Eiffel Tower Monochrome Photograph.JPG|right|thumb|150px|エッフェル塔]]
+[[File:Eiffel Tower (9275419675).jpg|right|thumb|150px|250万個のリベット接合]]
+{{Quote|「われわれ作家、画家、彫刻家、建築家ならびに、これまで無傷に保持されてきたパリの美を熱愛する愛好家たちは、わが首都の真ただ中に、無用にして醜悪なるエッフェル塔、良識と正しい理性を持つ辛酸なる大衆の多くがすでに「[[バベルの塔]]」と名指したエッフェル塔の建築に対し、無視されたフランスの趣味の名において、また危機に瀕したフランスの芸術と歴史の名において、あらん限りの力と憤りを込め、ここに抗議するものである。
+われわれはいたずらな[[愛国主義]]に陥る事なく、パリは世界に並ぶ物のない街である事を高らかに宣言する権利を有する。（中略）
+エッフェル塔が、黒く巨大な工場の煙突のごとく、目が眩むような馬鹿げた塔が[[パリ]]を見下ろし、野蛮な塊で[[ノートルダム大聖堂 (パリ)|ノートルダム]]や[[サント・シャペル]]やサン・ジャックの塔や[[ルーヴル宮殿|ルーヴル宮]]や[[オテル・デ・ザンヴァリッド|廃兵院のドーム]]や[[エトワール凱旋門|凱旋門]]といった[[建築]]を圧倒し、われらがすべての記念建造物を辱め、すべての建築を矮小化して、唖然とさせるような夢幻の中に消滅せしめることを想像すれば、われわれの主張を納得するに十分である。これから20年間ものあいだ、幾世紀も前からその精気を沸き立たせてきたパリ市全域に、[[ボルト (部品)|ボルト]]締めされた鉄製の醜悪な円柱の影が、まるでインクのシミのように長々と横たわるのを見る事になるだろう。パリを愛しその美化に努め、行政の手になる破壊や産業界の蛮行から幾度もこれを守ってきた皆さん、皆さんこそは今一度、このパリを守る栄誉の担い手なのです。」<ref>{{cite book|first1=Henri|last1=Loyrette|title=Eiffel, un Ingenieur et Son Oeuvre|url=https://books.google.com/books?id=uHlRAAAAMAAJ|year=1985|publisher=Rizzoli|isbn=978-0-8478-0631-7}}p174</ref>}}
+
+[[ファイル:Paris 75007 Rue de Buenos Aires 20070709 Eiffel Tower.jpg|right|150px|thumb|近くの街角から見上げるエッフェル塔]]
+これに対し、[[ギュスターヴ・エッフェル]]は、これから建設されるエッフェル塔を芸術的な観点と実利的な有用性の側面から同紙にて反論している。以下はその文書の一部である。
+{{Quote|「塔というものに独特の美がある。われわれ技師が、建築物の耐久性のみを考え、優美なものを作ろうとしていないと考えるのは誤りである。この塔について考慮したのは[[風圧]]に対する抵抗である。巨大な基礎部分から発している塔の四つの稜曲線は、塔の頂点にいくに従って細くなっているが、そこには力強い美しさが感じられると思う。（中略）
+今回の塔は人類史上最高の建造物となるであろう。壮大なものだ。[[エジプト]]で讃えられているものが、なぜパリでは醜悪だと言われるのか理解できない。」<ref name="SouriauSouriau1983">{{cite book|author1=Paul Souriau|author2=Manon Souriau|title=The Aesthetics of Movement|url=https://books.google.com/books?id=7CzUTXhzDb8C&pg=PR7|year=1983|publisher=University of Massachusetts Press|isbn=0-87023-412-9|page=100}}</ref>}}
+
+また、塔の有用性に関しては以下のように述べている。
+{{Quote| 「塔は、[[天文現象|天文]]、[[気象]]、[[物理]]の観測・研究に寄与するものとみられるし、戦時には監視塔として役立つ。つまりこれは、今世紀における工業技術の進歩を輝かしく証明するものとなろう。われわれの時代になって初めてかなり精密に[[鉄]]を加工できるようになったことで、かくも大きな事業が実現されるのである。この現代科学の精華といえるものが、パリ市内に聳えたつことがパリの栄光と無縁だというのであろうか。」}}
+
+== 影響 ==
+エッフェル塔の建設は世界に大きな衝撃を与えた。それまで世界最高だったワシントン記念塔の高さ169mの2倍近くにもなる巨塔の建設によって高さ競争は鎮静化し、以後巨大建造物の高さ競争は教会や高層ビルなど、エッフェル塔を除いた各部門別によって争われるようになった<ref>河村英和『タワーの文化史』（[[丸善]]出版、平成25年8月30日発行）p.98</ref>。[[1930年]]にニューヨークにクライスラー・ビルディングが完成するまでの41年間にわたってエッフェル塔は世界最高の建築物であり続けた。またエッフェル塔によって実現された鉄の[[トラス構造]]の塔というコンセプトも広がり、[[東京タワー]]を始め後の鉄塔のデザインに大きな影響を与えた。さらに[[エッフェル塔のレプリカ一覧|エッフェル塔のレプリカ]]<ref>河村英和『タワーの文化史』（丸善出版、平成25年8月30日発行）p.155</ref>は世界各地に見られ、特に米国[[ラスベガス]]の[[パリス (ホテル)|もの]]は有名である。
+
+== 電波塔としてのエッフェル塔 ==
+エッフェル塔は電波塔としても使用され、[[周波数]]は以下のようになっている。
+===FMラジオ===
+{| class="wikitable sortable"
+!周波数
+!kW
+!局名
+|-
+|87.8 [[MHz]]
+|10
+|France Inter
+|-
+|89.0&nbsp;MHz
+|10
+|RFI Paris
+|-
+|89.9&nbsp;MHz
+|6
+|TSF Jazz
+|-
+|90.4&nbsp;MHz
+|10
+|Nostalgie
+|-
+|90.9&nbsp;MHz
+|4
+|Chante France
+|}
+
+===デジタルテレビ===
+[[1957年]]にテレビアンテナが初めて塔に設置され、エッフェル塔は18.7m高くなった。[[2000年]]に実施された追加工事によって塔はさらに5.3m高くなり、その後は324mに、[[2022年]]3月15日に上端へ新たなアンテナが設置されて330メートルに伸びた<ref name="allyouneed">{{cite web|url=http://www.eiffel-tower.com/images/PDF/about_the_Eiffel_Tower.pdf|title=All you need to know about the Eiffel Tower|author=SETE|website=Official Eiffel Tower website|accessdate=15 April 2016}}</ref>。エッフェル塔からのアナログテレビ信号は2011年3月8日に停波した。
+{| class="wikitable sortable"
+!周波数
+!VHF
+!UHF
+!kW
+!局名
+|-
+|182.25&nbsp;MHz
+|6
+|—
+|100
+|[[Canal+]]
+|-
+|479.25&nbsp;MHz
+|—
+|22
+|500
+|[[フランス2]]
+|-
+|503.25&nbsp;MHz
+|—
+|25
+|500
+|[[TF1]]
+|-
+|527.25&nbsp;MHz
+|—
+|28
+|500
+|[[フランス3]]
+|-
+|543.25&nbsp;MHz
+|—
+|30
+|100
+|[[フランス5]]
+|-
+|567.25&nbsp;MHz
+|—
+|33
+|100
+|[[M6 (テレビ局)|M6]]
+|}
+
+== 塔の著作権 ==
+{{Center|<gallery caption="ライトアップされたエッフェル塔" widths="200px" heights="100px">
+File:エッフェル塔 PICT0281.JPG|夜のエッフェル塔
+File:Blue Eiffel Tower in dusk.jpg|青いエッフェル塔（フランスの[[欧州連合理事会議長国]]が始まった時：2008年7月）
+File:Tour Eiffel - 20150801 15h30 (10621).jpg
+File:View of Paris from Eiffel Tower 1, 2.18.2013.jpg|エッフェル塔からの眺望
+</gallery>}}
+
+== 関連人物 ==
+; [[モーリス・ケクラン]]
+: 23歳でエッフェル社鉄骨構造物研究部長となり、技師のエミール・ヌーギエや、建築家のステファン・ソーウェストルとともに、エッフェル塔の設計案や鉄骨構造の計算に協力した。また、エッフェルのあとを継いで、ルヴァロワ・ベレ鉄骨構造物建設会社社長、エッフェル塔会社社長に任命された。ケクランが手がけたエッフェル塔設計図面は、母校の[[チューリッヒ工科大学]]（ETH）に飾られている。
+; ステファン・ソーヴェストル
+: [[1846年]]生まれ。1868年、エコール・デ・ボザール建築科卒業。翌年、[[モン・サン=ミッシェル]][[修道院]]建築に関する研究で受賞（シャルル・アルペール・ゴーティエと共同研究）。22歳でプレスト劇場改造の監督に任命され、次第に建築家として認められるようになる。パリの新開地プレーヌ・モンソー地区に、多数の別荘や邸宅を建設。エッフェルとの最初の仕事は、[[パリ万国博覧会 (1878年)|1878年パリ万博]]のガス・パビリオン建造だった。のちエッフェル社の建築部長となり、モーリス・ケクランやエミール・ヌーギエらと協力して、エッフェル塔の設計監理に従事。その後、ムニエ一家をパトロンとして建築作品を残す。1905年には、ノワジエルのチョコレート工場近代化に貢献。1919年死去。
+; [[フランツ・ライヒェルト]]
+: [[発明家]]。パラシュートと同じ原理で地上に降りる外套を開発し、[[1912年]]2月4日、エッフェル塔のデッキから飛び降りたものの、外套は開かず地上に墜落死した。彼の死はエッフェル塔最古の事故死の[[ドキュメンタリー|記録映像]]として残されている。
+
+== その他 ==
+* [[チャールズ・リンドバーグ]]の「翼よ、あれがパリの灯だ」という名言の「パリの灯」とは、[[1925年]]から[[1936年]]まで自動車メーカーの[[シトロエン]]がエッフェル塔に掲げていた巨大な電飾広告の事だと言われることもあるが、「翼よ、あれがパリの灯だ」という台詞は日本でのみ広まっている後世の脚色である（リンドバーグの項を参照）。
+* エッフェル塔に「正面」はない（[[東京タワー]]にはある）。このことは[[1985年]]に行われた第9回[[アメリカ横断ウルトラクイズ]]の国内第1次予選で第1問として出された。この年のみ決勝がパリで行われることに伴う問題である。
+* [[モーパッサン]]はしばしば塔のレストランで昼食をとった。とはいえ彼は塔を好きではなかった。「パリで塔が見えないのはこの場所だけだ」と彼は言ったものだった。（[[ロラン・バルト]]『エッフェル塔』）　→「§ 当時の評価」の補足
+
+== 脚注 ==
+{{脚注ヘルプ}}
+=== 注釈 ===
+{{Reflist|group=注}}
+=== 出典 ===
+{{Reflist|2}}
+
+== 参考文献 ==
+* {{Cite|和書|author= [[倉田保雄]] |title= エッフェル塔ものがたり |year= 1983 |publisher= [[岩波書店]]  |series= [[岩波新書]] |isbn= 978-4-00-420228-8 |ref={{SfnRef|『エッフェル塔ものがたり』|1983}}}}
+* 松浦寿輝『エッフェル塔試論』[[筑摩書房]]
+* 和田章男『フランス表象文化史 美のモニュメント』[[大阪大学出版会]]
+* {{Kotobank}}
+
+== 関連項目 ==
+{{ウィキポータルリンク|パリ|[[画像:Blason_paris_75.svg|34px|Portal:パリ]]}}
+* [[エッフェル塔に名前を刻まれた72人のフランスの科学者の一覧]]
+* [[エッフェル塔のレプリカと派生作品]]
+* [[世界一高い建築物の変遷]]（1889年から1930年までの間、エッフェル塔は世界一高い建築物だった）
+* [[フランツ・ライヒェルト]]
+* [[松川るい]]（[[自由民主党 (日本)|自民党]][[参議院議員]]、2023年、フランスへの海外研修でエッフェル塔を背景にポーズを取った記念写真をSNSに掲載。これに多くの批判が寄せられ、「'''エッフェル姉さん'''」と呼ばれた。）
+
+== 外部リンク ==
+{{Commons&cat|Tour Eiffel|Eiffel Tower}}
+
+* {{Official website|https://www.toureiffel.paris/jp}} {{Ja icon}}
+* {{URL|1=https://www.youtube.com/watch?v=OzYp4NRZlwQ|2=エッフェル塔のウェブカム}}
+
+{{S-start}}
+{{s-ach|rec}}
+{{succession box|title=[[世界一高い建築物]]|before=[[ワシントン記念塔]]|after=[[クライスラー・ビルディング]]|years= 1889 – 1930年}}
+{{S-end}}
+{{パリの観光地}}
+{{超高層建築物}}
+{{Normdaten}}
+
+{{デフォルトソート:えつふえるとう}}
+[[Category:1889年竣工の建築物]]
+[[Category:各国の塔]]
+[[Category:パリ7区]]
+[[Category:パリの観光地]]
+[[Category:パリの建築物]]
+[[Category:パリのセーヌ河岸]]
+[[Category:パリ万国博覧会]]
+[[Category:ギュスターヴ・エッフェル]]
+[[Category:人名を冠した建築物]]
+[[Category:国際博覧会の建築物]]

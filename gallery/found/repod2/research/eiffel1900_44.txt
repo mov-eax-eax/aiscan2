@@ -1,0 +1,40 @@
+<noinclude><pagequality level="3" user="Ganjidvd" /></noinclude>{{T4|'''§3. — Description sommaire des trois systèmes d’ascenseurs.'''}} 
+<br />
+{{T5|a) ''Ascenseurs Roux, Combaluzier et Lepape.''}} 
+<br />
+
+Ces deux ascenseurs ont été étudiés par M.{{lié}}Guyenet, ingénieur, 
+d’après le principe du brevet de MM.{{lié}}Roux, Combaluzier et Lepape. Les 
+pièces principales ont été exécutées par MM.{{lié}}Carion et Delmotte, d’Anzin. 
+
+Le système est basé sur le principe suivant : si l’on constitue une 
+chaîne au moyen de bielles articulées entre elles et si on l’oblige à se 
+déplacer dans l’intérieur d’une gaine rigide, cette chaîne sera susceptible 
+de travailler soit à la traction, soit à la compression, et elle pourra fonctionner 
+à la façon d’un piston unique par l’intermédiaire duquel se produira 
+le mouvement de la cabine. Celle-ci d’ailleurs restera, en tous les 
+points de sa course, soutenue par un appui susceptible de s’opposer à sa 
+chute, comme cela se produit dans les ascenseurs hydrauliques du 
+système Edoux. De plus, ce piston articulé peut se déplacer suivant un 
+chemin courbe, ce qui le différencie du système précédent. 
+
+Le chemin de roulement sur lequel se déplace la cabine comprend 
+deux rails placés sur les semelles supérieures de deux poutres fixées à 
+l’ossature de la Tour. De chaque côté de ce chemin est installée la chaîne 
+des pistons articulés sous forme de chaîne sans fin, qui engrène à la 
+partie inférieure avec une roue motrice à empreintes{{lié}}R (voir schéma, fig.{{lié}}1) et passe sur une poulie de renvoi lisse{{lié}}R’, placée au-dessus du {{1er|étage}}. 
+
+Le brin inférieur de chacune des deux chaînes est fixé à la cabine, 
+laquelle est portée par des galets roulant sur une file de rails placés sur 
+les poutres du chemin de roulement. 
+
+Chacun des circuits est enfermé dans une gaine continue qui entoure 
+la roue motrice et la poulie de renvoi. Dans la portion correspondante à 
+la course de la cabine, les deux parties de cette gaine sont juxtaposées. 
+
+L’attache de la cabine se fait au moyen d’une traverse en fer{{lié}}P{{ind|1}}, 
+faisant partie du circuit (voir fig.{{lié}}1). Pour lui livrer passage pendant la 
+marche de la cabine, la gaine inférieure est ouverte latéralement. Les 
+pistons courants{{lié}}P sont formés de barres de {{unité|1|m}} de longueur, articulées 
+entre elles à leurs extrémités. Chacune de ces articulations, porte deux<noinclude>
+<references/></noinclude>

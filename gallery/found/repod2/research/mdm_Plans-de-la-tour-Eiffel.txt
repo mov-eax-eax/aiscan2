@@ -1,0 +1,430 @@
+Plans techniques de la tour Eiffel 
+ Menu 
+ Découvrir 
+ Description 
+ Tourisme 
+ Histoire 
+ Construction 
+ Sciences 
+ Boutique 
+ Sommaire 
+ Plan 
+ FAQ 
+ Monuments 
+ Monuments 
+ Tour Eiffel 
+ Construction 
+ Plans 
+ -->
+ La tour Eiffel
+ Type
+ Tour autoportante en fer
+ Auteur
+ Gustave Eiffel
+ Inauguration
+ 31 mars 1889
+ Intérêt
+ Symbole du savoir-faire français
+ Propriétaire
+ Mairie de Paris
+ Inscription
+ Patrimoine mondial de l'UNESCO depuis 1991
+ Visiteurs
+ 7 millions/an
+ Situation : Paris, France
+ GPS : 48° 51' 30.13'' Nord / 2° 17' 40.13'' Est
+ Menu
+ Sommaire 
+ Description 
+ Ses dimensions 
+ Histoire 
+ Gustave Eiffel 
+ Contexte 
+ Comment la visiter ? 
+ Toutes les pages 
+ Autres monuments 
+ Rechercher
+ Plans techniques de la tour Eiffel
+ Rappel du contexte
+ Quand Gustave Eiffel reçu de la part de ses deux collaborateurs, Maurice Koechlin (chef du bureau d'étude de l'entreprise Eiffel) et 
+ Émile Nouguier (chef du bureau des méthodes, en charge d'établir des moyens réels de construction) le plan d'une tour de 300m, il 
+ ne fut pas enthousiasmé, mais l'idée générale étant bonne et le défi intéressant, il les laissa améliorer leur idée et proposer un 
+ plan plus réaliste. Quelques mois plus tard c'était chose faite, et les croquis étaient suffisament intéressants pour être étudiés 
+ en profondeur. Du coup, Eiffel se mit en tête de construire cette tour, l'exposition universelle de 1889, à Paris, tombant à pic.
+ C'est à ce moment, en 1884, que sont faits les plans définitifs. Eiffel avait déjà prit des contacts pour la réalisation de sa 
+ tour, le concours d'architecte allait être lancé pour savoir qui érigerait la plus haute tour du Monde à Paris. Les plans sont 
+ terminés en septembre 1884 et sont déposés au nom d'Eiffel, Koechlin et Nouguier, mais rapidement Eiffel rachètera les droits de ses 
+ employés, ce qui lui donnera le droit d'intituler la tour "tour Eiffel", faisant oublier les véritables personnes qui ont créés la 
+ tour. Les plans sont déposés sous le titre suivant :
+ Disposition nouvelle permettant de construire des piles et des pylônes métalliques d’une hauteur pouvant dépasser 300 mètres 
+ En 1900, soit plus de 10 ans après la fin de la construction Gustave Eiffel écrira un livre dans lequel il relate tout ce qu'il 
+ faut savoir sur la tour, à commencer par les techniques de construction, mais aussi rappelant le concours initial, les clauses de 
+ son financement, etc. Ce document, très technique, est augmenté d'un second livre contenant les planches servant de support au 
+ texte. C'est ce second livre qui représente, à lui seul, les plans techniques de la tour Eiffel, repris ici. A noter qu'ils sont 
+ en accès public, disponible sur le site gallica.bnf.fr .
+ Composition des planches descriptives
+ "La tour de 300m - Planches" est l'annexe de la description technique de la tour Eiffel. Ce livre se divise en deux parties. La 
+ première donne les plans techniques de la tour Eiffel tels qu'ils ont été faits pour l'exposition universelle de 1889, ce sont 
+ donc les plans initiaux, les plus intéressants. La seconde partie concerne les améliorations faites à la tour pour l'exposition 
+ universelle de 1900, il y a moins de choses à décrire évidemment.
+ Voici ci-dessous les fameuses planches descriptives, classées selon l'ordre décidé par Gustave Eiffel, en 1900. Elles proviennent 
+ du site de la Bibliothèque Nationale de France, la BNF, à travers leur site Internet Galliga.bnf.net. Par suite d'une erreur de 
+ pagination lors de la création du livre, les planches XXVI et XXVII n'existent pas. D'autres planches ont été doublé, triplé, voire 
+ quadruplé.
+ PREMIÈRE SÉRIE RELATIVE A L'EXPOSITION DE 1889
+ CHAPITRE 1. DESSIN D'ENSEMBLE
+ I. Elévations. diagrammes. Emplacement dans l'exposition de 1889
+ Comme souvent dans ce genre de planches techniques la première est consacrée à une étude générale 
+ du bâtiment concerné ainsi qu'à son emplacement. On y trouve son dessin, son altimétrie, les 
+ indications de découpage vertical, qui servent de référence à la description technique de l'ouvrage, 
+ ainsi que les plans horizontaux des arbalétriers. C'est également sur cette planche qu'est dessiné 
+ le champs de Mars, avec l'emplacement de la tour.
+ CHAPITRE 2. FONDATIONS ET BASES 
+ II. Nature du sol. Déblais à l'air libre. Déblais à air comprimé. Maçonneries de béton
+ Cette seconde planche concerne les fouilles et la nature des sols. Sur la partie gauche il y a la 
+ nature des sols au niveau des fouilles, c'est à dire la répartition du type de sol en fonction de la 
+ profondeur. C'est complété par le dessin des puits, qui donne également la nature des sols sur une 
+ profondeur supérieure à celle des fouilles. La partie droite montre les fouilles telles qu'elles sont, 
+ avec les blocs de béton. Tout est côté, bien sûr, très précisément. Comme il y a 4 piliers, le plan 
+ montre 8 schémas, pour chaque pilier il y a la vue de dessus et celle en coupe.
+ III. Plan général des fouilles. Maçonneries de fondations
+ Le troisième plan technique concerne la maçonnerie, ce qui est logique puisque ça vient juste après les 
+ fouilles. Ce plan montre bien l'implantation des blocs de maçonnerie par rapport aux fouilles. Comme il y 
+ en a 4, le schéma se compose de 4 parties. C'est la qu'on voit que la pile 3, celle située au Sud, contient 
+ un sous-sol creux utilisé pour diverses choses. Il y a un accès, sur le côté Ouest.
+ IV. Maçonneries de fondations (suite)
+ La 4e planche technique est la suite de la 3e, elle contient les plans de la maçonnerie venant par-dessus 
+ les fondations. Alors que la 3e se consacre aux vues en hauteur, cette planche montre les vues de coupe. On y 
+ voit bien la forme de la maçonnerie. Il y a également le détail des cheminées, des tunnels et autres couloirs.
+ V. Murs de pourtour des fondations des piles et soubassements
+ Cette cinquième planche montre le mur de finition de la maçonnerie. Sur la droite on voit la coupe de ce 
+ qui a été fait, et c'est à peut près la première fois dans ces plans que l'on reconnait de visu un élément 
+ de la tour, concrètement. Jusque là tout était enterré ou très technique, alors qu'à partir de maintenant 
+ on voit la forme extérieurs des piliers telle qu'elle a été prévu, et on constate que c'est bien la même forme 
+ que ce qui existe de nos jours. Ce plan montre aussi les murs faisant le tour des fondations, et surprise, 
+ toutes les piles ne sont pas logées à la même enseigne, les murs sont différents.
+ VI. Appuis des piles métalliques sur les maçonneries. Vérins hydrauliques. Pompes
+ La sixième planche est intéressante dans la mesure où elle décrit la prise de la partie métallique 
+ sur la maçonnerie. C'est l'appui des arbalétriers, dont la description est très complète. Il s'agit de 
+ la première étude de pièces métalliques de la tour Eiffel, celles de la partie la plus basse. Curieusement 
+ c'est aussi sur cette planche que sont dessinées les pompes et vérins hydrauliques ayant servies à 
+ l'ajustement des piles, lors de la mise en place du premier étage.
+ CHAPITRE 3. OSSATURE
+ VII. Ossature métallique en rabattement
+ La planche 7 est relativement importante, c'est celle qui décrit les 29 sections verticales de la tour Eiffel. 
+ Elles sont côtées, c'est à dire qu'on peut y lire les dimensions de chaque section. Il y a aussi une description 
+ précise de l'arc de soubassement et des entretoises inférieures. Ce plan se termine avec le dessin de la section 
+ sommitale, celle du campanile. On voit bien qu'il a complètement été modifié depuis l'époque de la construction, 
+ il n'a plus du tout la même forme.
+ VIII. Ossature métallique en élévation. Entretoises, contreventements et planchers
+ Cette planche concerne la partie métallique. Eiffel y décrit précisément les entretoises de chaque section 
+ ainsi que les contreventements. Les entretoises sont les barres en diagonale, pour chaque section. Les 
+ contreventements sont des dispositifs conçus pour reprendre les efforts du vent dans la structure et les 
+ descendre au sol, le long des arbalétriers. Ce plan montre aussi la structure des 3 planchers.
+ IX. Partie inférieure. Ensemble et détails
+ Avec la planche 9 on entre assez loin dans le détail technique. Cette planche décrit un grand nombre d'éléments, 
+ c'est pour ça qu'elle parait "fouilli". Mais on y regardant de plus près on voit qu'elle décrit les jonctions entre 
+ les arbalétriers et les poutres de section ou les entretoises, ainsi que les goussets, (des pièces plates desquelles 
+ partent des tiges de renforts). Il y a aussi un dessin assez impressionnant de la projection verticale du premier 
+ étage. Ce dessin a probablement été très complexe à faire.
+ X. Entretoise inférieure et grandes poutres du premier étage
+ La planche 10 concerne la description détaillée de l'assemblage des entretoises, des contreventements et de la 
+ poutre principale du 1er étage. Il y a un grand nombre de schéma technique, mais tout ça est assez peu intéressant 
+ , sauf pour ceux qui s'intéressent de très près au montage de la tour. Mais il faut aller loin dans le détail pour 
+ apprécier cette planche. Ce qui est plus accessible au grand public c'est le détail de la poutre qui soutient le 
+ premier étage, assez détaillée.
+ XI. Arcs décoratifs, poutres des arcs et poutres du premier étage
+ Cette planche est la suite de la planche X, elle décrit la suite des détails techniques d'assemblage des différents 
+ éléments de la tour Eiffel. Il y a aussi le détail des décors du premier étage, ça permet d'avoir une vue sur ce qui 
+ avait été installé initialement. Il faut savoir que ces décors ont été partiellement refaits depuis.
+ XII. Panneaux 9 à 13 du deuxième étage
+ Cette planche montre les schémas d'assemblage des panneaux 9 à 13, c'est à dire ceux montant au 2e étage. Il s'agit 
+ de descriptifs très techniques, il n'y a pas de place pour les représentations artistiques des décors, par exemple. On 
+ doit comment sont cotés les poutrelles formant un caisson, car cette partie n'est qu'une succession de caisson de plus 
+ en plus petits.
+ XII bis. Panneaux 16 à 18
+ Les panneaux 16 à 18 sont ceux de la jonction des 4 piles en un seul pylone, ils doivent être calculés indépendamment 
+ du reste, c'est la raison de la présence de cette planche. On y trouve, outre les plans de coupe, un grand nombre de 
+ détails techniques d'assemblage, mais aussi la description de l'escalier du 2e étage et la façon dont il est accroché 
+ aux arbalétriers.
+ XIII. Galerie du premier étage
+ Cette planche est intéressante dans la mesure où elle montre comment a été monté la galerie du premier étage. Il faut 
+ savoir que cette galerie n'existe plus, elle a été remplacé au fil de l'histoire de la tour par des bâtiments épars, 
+ comme ceux qui existent de nos jours. Cette galerie faisait le tour du premier étage, il y avait un décor du style de 
+ l'époque, à la fin du XIXe siècle. On voit bien sur ce plan la forme arrondie de chaque panneau.
+ XIII bis. Galerie du deuxième étage
+ Bien que semblant être un gros fouillis, cette planche est un élément essentiel dans les plans de la tour Eiffel. Elle 
+ représente les schémas d'assemblage détaillés entre les divers éléments de structures, mais contient aussi un plan du 
+ 2e étage. Cette planche est très technique.
+ XIV. Panneau 29 et troisième étage
+ Encore une planche décrivant un 'Détail d'assemblage'. Ici, Gustave Eiffel décrit les techniques pour assembler 
+ la partie haute de sa tour. On y voit la description de la poutre du 3e étage, celle qui support les poulies de 
+ l'ascenseur, ainsi que toute la galerie du 3e étage. Il y a même, au-dessus du 3e étage, une pièce réservée à 
+ l'ingénieur. La partie de gauche de cette planche donne les dimensions de diverses poutres de cette partie haute, 
+ ainsi que le descriptif du garde-corps, etc.
+ XV. Partie supérieure
+ Cette planche est assez intéressante dans la mesure où elle décrit la partie sommitale de la tour Eiffel, l'ancien 
+ campanile, aujourd'hui détruit. Les plans montrent, mesures à l'appui, la forme de kiosque qu'avait la tour Eiffel 
+ avant les transformations successives qui l'a rendu comme elle est aujourd'hui. La partie de droite est très technique, 
+ c'est l'ensemble des assemblages du sommet, il n'y a pas un grand intérêt à la détailler.
+ XVI. Ensembles des planchers des divers étages
+ Cette planche détaille les différents planchers que la tour compte. Il y a le plancher de la pile 3, au niveau du 
+ sol, celui du 2e étage, celui de la machinerie, celui du 3e étage, etc., plus divers éléments de structures 
+ associés à ces planchers. Il y a aussi une grande quantité de poutres, poutrelles et solives destinées à supporter 
+ ces planchers. Cette planche technique est donc assez intéressante.
+ XVII. Détails
+ Cette planche est très brouillonne, elle contient énormément de petits schémas. Le but est de décrire les 
+ assemblages des différents planchers, elle est donc en relation avec la planche précédente qui décrit ces 
+ planchers. On y trouve essentiellement des systèmes d'attache du plancher sur la structure métallique de la 
+ tour.
+ CHAPITRE 4. AMÉNAGEMENTS
+ XVIII. Rez-de-chaussée et premier étage
+ La planche XVIII est probablement la plus intéressante de toutes. Elle contient les aménagements intérieurs des piliers 
+ et du premier étage, c'est sur cette planche que l'on voit où se trouvait le théâtre, les deux restaurants (l'un français, 
+ l'autre russe, les vestiaires, locaux du gardien de nuit, etc.). C'est une planche peu technique, malgré le fait qu'il y 
+ ai quand même des côtes, bien sûr.
+ XIX. Étages et parties supérieures. Élévations extérieures et aménagements
+ Cette planche, la 19e, est très intéressante aussi. Elle montre les 1er et 2e étage de la tour tels qu'ils étaient 
+ à l'époque de la construction de la tour. On voit bien la forme des pavillons, les pavillons, les décors. La partie 
+ sommitale est aussi bien décrite. Ces éléments dessinés sont moins des éléments techniques qu'une représentation 
+ générale avec des mentions sur ce dont il s'agit. Il y a d'ailleurs peu de côtes.
+ CHAPITRE 5. ASCENSEURS
+ XX. Ensemble des ascenseurs Otis et Edoux. Coupe verticale suivant la diagonale de la pile l (Nord) à la pile 3 (Sud)
+ Cette planche est la première qui montre les entrailles de la tour. Elle décrit les ascenseurs Otis et Edoux, qui étaient 
+ actionnés par un système d'eau repoussé par des pompes. Il y avait donc besoin de réservoirs, qui sont également décrits ici. 
+ Ce plan est plutôt général, il montre plus l'implantation de ces éléments qu'il ne les décrit, ce qui sera fait dans les 
+ planches suivantes.
+ XXI. Plan général des ascenseurs
+ Ce plan, le 21e, est la suite du précédent. il montre aussi l'implantation des ascenseurs, mais en vue de dessus. Il 
+ contient aussi une grosse légende, qui explique point par point les différents éléments de ces ascenseurs d'où on peut 
+ comprendre leur mode de fonctionnement. Il s'agit d'ascenseurs à eau, qui nécessite des pompes, des réservoirs et des 
+ canalisations.
+ XXII. Ascenseur Otis. Moteur
+ Cette planche technique est complexe mais uniforme : Elle contient toutes les informations nécessaires pour la 
+ fabrication de l'ascenseur Otis, de la pompe aux canalisations, de l'implantation dans la tour aux cables.
+ XXII bis. Moteur (suite) et transmission
+ Encore plus complète et complexe que la planche précédente, elle en est la suite. Elle contient la description 
+ de l'ascenseur Otis, qui a pas mal d'éléments, comme le plan le montre.
+ XXIIter. Poutre de l'ascenseur, voie, cabine, appareils de sûreté
+ Cette planche concerne l'ascenseur Otis, celui qui monte du 2e au 3e étage. Très complexe, elle contient un très grand 
+ nombre de description technique des divers éléments qui compose cet ascenseur. Cette planche est peut être la moins intéressante 
+ de toutes car elle est trop technique, justement.
+ XXII quater. Contrepoids de la cabine, chariot, sûreté, poulies diverses
+ Ce plan est la suite du précédent, il concerne l'installation de l'ascenseur Otis. On y lit la description des 
+ contrepoids, du chariot, des système de sûreté et des éléments de maintien de la cabine, comme les poulies. Il y 
+ a aussi une description écrite du système de sécurité, qui réagit dans le cas où un cable se rompt ou si la 
+ cabine prend trop de vitesse. C'est d'ailleurs rassurant de constater que Gustave Eiffel y avait pensé, dès la 
+ construction de sa tour.
+ XXIII. Ascenseurs à pistons articulés, système Roux Combaluzier et Lepape. Partie inférieure. Mécanisme
+ Cette planche technique explique les différents composants et la façon dont est implanté l'ascenseur Roux, 
+ Combaluzier et Lepape. si ce plan est assez complexe, il n'est pas nécessaire de la comprendre pour savoir 
+ comment a été faite la tour Eiffel.
+ XXIII bis. Partie supérieure et suite du mécanisme
+ Cette planche technique explique les différents composants et la façon dont est implanté l'ascenseur Roux, 
+ Combaluzier et Lepape. si ce plan est assez complexe, il n'est pas nécessaire de la comprendre pour savoir 
+ comment a été faite la tour Eiffel. Il s'agit de la suite de la planche précédente.
+ XXIII ter. Ascenseur Edoux. Deuxième étage et étage intermédiaire. Ensemble, détails
+ Cette planche concerne l'ascenseur Edoux, celui qui monte du 2e au 3e étage. On y lit la description technique 
+ de l'appareil de montée, une grosse pompe et son réservoir. Il y a décrit aussi un grand nombre de petits 
+ appareillages liés à cet ascenseur, comme un embrayage.
+ XXIII quater. Troisième étage. Ensemble et suite des détails
+ encore une planche explicative sur le fonctionnement de l'ascenseur Edoux qui monte du 2e au 3e étage. Cette planche 
+ contient plus de texte, les schéma sont un peu plus rares. il y est décrit comment fonctionne cet ascenseur, et il y a 
+ les dessins des pièces techniques, toutes avec des côtes.
+ CHAPITRE 6. MONTAGE
+ XXIV. Diagramme du montage - Grue
+ Cette planche descriptive est intéressante car elle montre comment la tour a été construite, d'un point de vue élévation. 
+ en fait on voit les grues qui progressaient dans le ciel en même temps que la tour, et leurs systèmes d'accroche à la 
+ structure. Il y a aussi des explications par texte sur ce mode de montage.
+ XXV. Montage de la partie inférieure. Pylônes et échafaudages
+ Cette planche a été réalisée par le bureau des méthodes, comme toutes celles de ce chapitre. Elle montre comment 
+ va être assemblée la tour Eiffel, à partir du sol jusqu'au 1er étage. On y voit l'échafaudage central, les échafaudages 
+ des piles, et les schémas qui y sont associés.
+ CHAPITRE 7. ESCALIERS INFÉRIEURS
+ XXVIII. Escalier du rez-de-chaussée au premier étage
+ Cette planche montre comment a été implanté l'escalier qui va du sol au premier étage. Il s'agit d'un plan général, 
+ qui décrit la montée dans les piles plus que d'un plan précis de cotation.
+ CHAPITRE 8. BATIMENTS DE LA PLATE-FORME DU PREMIER ÉTAGE 
+ XXIX. Restaurant français et restaurant russe
+ La XXIXe planche technique décrivant la tour Eiffel est très intéressante puisqu'elle nous montre des éléments qui 
+ ont disparu de nos jours. Il s'agit des deux restaurants du 1er étage, le restaurant français et le restaurant russe. 
+ Il y a toujours un restaurant à la tour Eiffel, le Jules Verne, mais ce n'est plus le même qu'à cette époque. Les plans 
+ montrent en particulier les façades similaires l'un à l'autre, avec assez peu de côtes. C'est plus un plan général 
+ qu'autre chose.
+ XXX. Bar anglo-américain et Théâtre
+ Encore une planche intéressante pour qui s'intéresse à l'histoire de la tour Eiffel. Elle montre le théâtre qui se trouvait 
+ au premier étage, ainsi que le bar anglo-américain. Le théâtre, comme c'est indiqué, c'était durant l'exposition universelle 
+ de 1889 un restaurant flamand. Cette planche technique est à rapprocher de la précédente, qui décrit les deux restaurants 
+ français et russe.
+ CHAPITRE 9. CALCUL DE L'OSSATURE
+ XXXI. Section des Arbalétriers et du Treillis. Données pour le calcul de l'ossature
+ La planche XXXI est l'une des plus importantes du livre, c'est celle qui donne les sections des éléments principaux 
+ de la structure de la tour Eiffel. Il y est indiqué la section des arbalétriers, qui sont les longues barres métalliques 
+ partant du sol et arrivant au sommet, et des treillis, les poutrelles formant des caissons.
+ XXXII. Détermination de la résistance de la partie inférieure
+ Cette planche technique est un tableau de calcul, exprimé sous diverses formes. Il y a le schéma des efforts tranchants 
+ et la résistance des arbalétriers aux efforts du vent. Ici, nous sommes dans le coeur du calcul de la résistance de la tour 
+ Eiffel.
+ XXXIII. de la résistance au vent dans la partie supérieure
+ Ces calculs sont la suite des calculs de la planche précédente. La différence est qu'ici les calculs sont faits 
+ sur les parties supérieures de la tour, alors que la planche précédente concernait la partie inférieure. Il ne 
+ s'agit que de calculs et de tableaux de résultats.
+ XXXIV. de la résistance des grandes poutres du premier étage. Pression sur le sol de fondation des piles
+ Il n'y a pas grand chose à dire d'autres que ce que contient le titre, au sujet de cette planche. Elle décrit 
+ la résistance de la grand poutre du 1er étage et la pression au sol de chaque pile, dans des tableaux de chiffres 
+ et des schémas. Elle est comme les deux planches précédentes, un ensemble de calcul complexe.
+ DEUXIÈME SÉRIE RELATIVE A L'EXPOSITION DE 1900
+ CHAPITRE 1. ASCENSEUR FIVES-LILLE
+ XXXV. Ascenseur Fives-Lille. Ensemble des principaux organes
+ Cette planche décrit l'ascenseur Fives-Lille, ses composants, d'un point de vue général. C'est une planche assez complexe.
+ XXXVI. Disposition générale des appareils de distribution (Plan d'ensemble)
+ Cette planche est la suite de la précédente, la XXXVe. Elle représente l'ascenseur Fives-Lille dans le détail. il s'agit 
+ d'une planche assez complexe en marge de la tour Eiffel puisqu'il ne s'agit pas d'un élément structurel de la tour.
+ XXXVII. (Élévations) et appareil de manœuvre de la distribution
+ Encore une planche complète dédiée à l'ascenseur Fives-Lille de la tour Eiffel. Il s'agit comme les précédentes 
+ de données techniques assez complexes qui explique les formes précises et les implantations des différents éléments 
+ de la pompes et des systèmes d'élévation.
+ XXXVIII. Accumulateurs et leurs accessoires
+ Nouvelle planche sur l'ascenseur Fives-Lille, ces schémas montrent comment sont les réservoirs de l'appareil d'élévation. 
+ Il y a aussi des indications sur son implantation dans la tour.
+ XXXIX. Presses motrices. Soupapes d'arrêt et de mise en marche avec servo-moteur
+ Cette planche technique fait suite aux précédentes décrivant l'ascenseur Fives-Lille. Celle-ci présente les servo-moteurs 
+ et tout un tas de pièces mécaniques qui lui sont liées, dont les soupapes par exemple.
+ XL. Régulateurs de vitesse. Mécanisme de ralentissement. Coupleur. Appareils divers de la distribution
+ Encore une planche sur l'ascenseur Fives-Lille, qui en a beaucoup. Cet ascenseur est très complexe dans sa 
+ conception et sa mise en oeuvre, il nécessite un grand nombre de schéma. Celui-ci est particulièrement complexe, 
+ c'est une des planches les plus difficiles à comprendre.
+ XLI. Ascenseur Fives-Lille - Appareil funiculaire
+ XLI. Ascenseur Fives-Lille - Appareil funiculaire
+ L'ascenseur Fives-Lille est très largement décrit dans ces planches, il y a beaucoup d'éléments à décrire. Cette planche-ci 
+ présente l'appareil funiculaire, avec des grandes précisions dans les côtes.
+ XLII. Appareils de sûreté
+ Cette planche présente les différents systèmes de sécurité de l'ascenseur Fives-Lille, celui qui monte au 
+ troisième étage de la tour. Ces systèmes sont assez bien décrits, avec beaucoup d'informations, mais lus 
+ ainsi il est difficile de les comprendre.
+ XLIII. Véhicule. Ensemble
+ Ca ne parait pas mais il s'agit bien de la description technique de la cabine d'ascenseur Fives-Lille, celui montant 
+ au 3e étage de la tour Eiffel. Il s'agit d'un plan côté, mais en regardant de près on reconnait bien les formes des 
+ cabines qu'il y avait, à l'époque.
+ XLIV. Véhicule. (Suite)
+ Ca ne parait pas mais il s'agit bien de la description technique de la cabine d'ascenseur Fives-Lille, celui montant 
+ au 3e étage de la tour Eiffel. Il s'agit d'un plan côté, mais en regardant de près on reconnait bien les formes des 
+ cabines qu'il y avait, à l'époque.
+ XLV. Détails des freins de sûreté et divers
+ Cette planche présente les détails des systèmes de freinage nécessaire au fonctionnement en toute sécurité de l'ascenseur 
+ Fives-Lille, celui qui était en place à la fin du XIXe siècle pour monter au 3e étage.
+ CHAPITRE 2. RESTAURANTS ET PLATES-FORMES
+ XLVI. Modifications des plates-formes et des piles
+ Cette planche présente les modifications faites à la tour Eiffel pour l'exposition de 1900, il y a en particulier 
+ les escaliers et les plates-formes, dont celle du 3e étage.
+ XLVII. Restaurants et pavillon central de la deuxième plate-forme
+ La dernière planche technique décrivant la tour Eiffel concerne les modifications faites aux bâtiments du 
+ premier étage, les deux restaurants (Français et Russe). On distingue bien sur ce plan la forme des façades, un 
+ peu différentes de celles qui étaient en place en 1889.
+ Voir aussi :
+ Voir aussi : Histoire de la tour Eiffel 
+ La tour Eiffel
+ Découvrir 
+ Photos 
+ Emplacement 
+ Taille 
+ Poids 
+ La tour en chiffres 
+ Symbolisme 
+ Peinture 
+ Histoire de l'art 
+ Oeuvres artistiques 
+ Chansons 
+ Littérature 
+ Peintures 
+ Cinéma 
+ Théâtre 
+ Publicité 
+ Description 
+ Rez-de-chaussée 
+ 1er étage 
+ 2e étage 
+ Etage intermédiaire 
+ 3e étage 
+ Les 72 savants 
+ Ascenseurs 
+ Escaliers 
+ Machinerie 
+ Eclairage 
+ Copies et répliques 
+ Watkin's tower 
+ Ascenseurs Fives-Lille 
+ Visibilité 
+ La tour en 1900 
+ Histoire 
+ Chronologie 
+ Contexte technologique 
+ Les autres projets 
+ Réticences des artistes 
+ Construction 
+ Inauguration 
+ Medaille commémorative 
+ Rénovations 
+ Procés droit de reproduction 
+ Arnaques diverses 
+ Imprimerie du figaro 
+ La tour et l'expo 
+ Les entreprises Eiffel 
+ Société d'exploitation 
+ Biographies 
+ Gustave Eiffel 
+ Maurice Koechlin 
+ Emile Nouguier 
+ Stephen Sauvestre 
+ Jean Compagnon 
+ Adolphe Salles 
+ Jean Gobert 
+ Edouard Lockroy 
+ Franz Reichelt 
+ Construction 
+ Contrat de concession 
+ Plans 
+ Planches techniques 
+ Calculs des forces 
+ Calcul dûs au poids 
+ Calcul dûs au vent 
+ Calcul du poids des visiteurs 
+ Travail en atelier 
+ Planning 
+ Personnel 
+ Fondations 
+ Socles 
+ Piliers 
+ Etages 
+ Rivetage 
+ Grues 
+ Coût 
+ Rentabilité 
+ Fer utilisé 
+ Génie civil 
+ Tourisme 
+ Tarifs 
+ Horaires 
+ A voir sur la tour 
+ Récit d'une visite 
+ Images d'une visite 
+ Visiteurs célèbres 
+ Sciences 
+ Observations météo 1889 
+ Observations météo 1890 
+ Résistance de l'air 
+ Pression de l'air 
+ Manomètre hautes pressions 
+ Spectre solaire 
+ Absorptions des radiations 
+ Navigation aérienne 
+ Radiodiffusion 
+ Téléphotographie 
+ Télégraphie optique 
+ Phénomènes naturels 
+ Effets de la foudre 
+ Oscillations du sommet 
+ Effets de la montée 
+ Tous les monuments
+ Copyright 2013 - 2026 - Toute reproduction interdite sans l'autorisation de l'auteur. Ce site Internet est un site privé, non officiel, issu du travail de compilation des oeuvres de différents auteurs. Sauf mention contraire, les photos sont la propriété du webmaster. Toute utilisation des textes, photos ou autres éléments de ce site internet sont interdits sans accord du webmaster. Pour le contacter, utilisez le lien sur la page crédits . Sources documentaires : cliquez ici . Pour consulter la politique de confidentialité du site veuillez cliquer ici : Politique de confidentialité . 
+ Sites Internet du même auteur : Les Pyrénées-Orientales , Marguerite Duras , Merveilles du monde , Empereurs romains .

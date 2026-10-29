@@ -1,0 +1,89 @@
+Eiffel Tower - Graces Guide 
+ Grace's Guide To British Industrial History 
+ Registered UK Charity (No. 1154342) 
+ Grace's Guide is the leading source of historical information on industry and
+ manufacturing in Britain. This web publication contains 174,148 pages of
+ information and 250,321 images on early companies, their products and the
+ people who designed and built them.
+ Grace's Guide is the leading source of historical information on industry and
+ manufacturing in Britain. This web publication contains 147,919 pages of
+ information and 233,587 images on early companies, their products and the
+ people who designed and built them.
+ Navigation 
+ Home 
+ About Us 
+ Things To See 
+ Wanted 
+ What&#039;s On 
+ Contact Us 
+ View By 
+ Archives 
+ Biographies 
+ Industries 
+ Locations 
+ Timelines 
+ Eiffel Tower 
+ From Graces Guide
+ Jump to: navigation , search 
+ 1889. The Eiffel Tower . 
+ 1889. 
+ 1889. The top of the Eiffel Tower . 
+ 1889. Use of hydraulic jack to adjust the height of the leg bases. 
+ 1889. Roux, Combaluzier, and Lepape lift 
+ 1889. Otis lift 
+ Image by M. Soper. 
+ Base of the tower. Image by M. Soper. 
+ The tower seen from the other exhibition buildings. Image by M. Soper. 
+ 2019. First stage platform. The glazed/caged structure at the top replaced the original arched cast iron arcade. Decorative arch at bottom 
+ 2019. 
+ 2019. Painters' nightmare 
+The tower was built in 1887–1889 for the 1889 Universal Exposition in Paris . It is named after Alexandre Gustave Eiffel , and was designed by his company, G. Eiffel et Cie , with the bulk of the design work being credited to engineers Maurice Koechlin and Émile Nouguier and to architect Stephen Sauvestreand, to whom Eiffel expressed his indebtedness. &#91; 1 &#93; 
+ At over 300m, the tower was over 130m higher than the next tallest structure, the Washington Monument, which was dedicated in 1885.
+ See Wikipedia entry .
+ Design and Construction 
+ The magnitude of the achievement of building such a structure cannot be overstated.
+ While the 300-metre tall prestige project can hardly be described as 'functional', the structural design is largely functional, with restraint being shown regarding decorative embellishments. Some of those embellishments have been removed, most noticeably an arcade, in the form of interlinked arches, which sat on top of the first stage platform. Replaced by a plain flat-roofed glazed and caged structure. See 2019 photo.
+ The elegant shape results from engineering rather than artistic considerations, based on consideration of wind forces and dead weight. The splay of the legs is such that the width at the base is 38% of the total height (when viewed from the side. The figure is 54% based on the diagonal distance base dimension). 
+ The form of the main legs is not quite parabolic, and for practical reasons the curvature is approximated by using straight members. In fact the legs are straight from the ground to the first stage platform structure, 48m above. They leave the ground at an angle of ~66° to the horizontal, and become vertical at the uppermost stage. It appears that the largest members which are actually curved are there for decorative reasons, being the arches below the first stage platform.
+ There are four main legs at each corner. The inner legs on each side merge just below the intermediate stage. The main legs are of box section, each side of the box being assembled from two plates joined at the centre by a flat plate (or by T-iron or angle iron at lower levels), and at the corners by angle iron.
+ The pedestals at the base of the sixteen legs are steel castings, made by the Imphy steelworks.
+ It will be evident that main legs posed a particular challenge to designers and the fabricators. The rest of the structure was less challenging, mainly consisting of straight lattice girders attached to the legs via gusset plates.
+ Careful preparation was undertaken, producing thousands of drawings to establish the dimensions of the 18,000 components. These components were mainly made from rolled wrought iron sections supplied by Forges Dupont and Fould in Pompey in Meurthe-et-Moselle (eastern France). The sections were cut to size and machined in the Eiffel workshops in Levallois-Perret, near the site of the tower at Champ de Mars. A great deal of prefabrication - involving fitting two-thirds of the 2.5 million rivets - was carried out at the factory. Any defective parts of the structure were returned to the nearby factory for rectification. &#91; 2 &#93; 
+ High quality reproductions of many of the original arrangement and detail drawings are reproduced in 'Gustave Eiffel: The Eiffel Tower' &#91; 3 &#93; . This is a reprint of the original 1900 limited edition. Many of the drawings were coloured for clarity, and provide key dimensions. It would be interesting to know what sort of information was issued to the men on the shop floor. The published drawings show lengths such as 5.50855m and angles such as 59°7'1". While precise definition was essential in designing the immense structure such that the individual elements would come together where they were supposed to, such precise dimensions would not find their way to the men producing the pieces, working their planing, punching and shearing machines, to an orchestra of deafening riveting hammers, in dark and draughty workshops. Between the drawing office and the shop floor would be the mould loft, where 'loftsmen' translated the designers' intentions into wooden templates and battens to be used for marking the ironplates and sections for cutting, planing and punching or drilling.
+ The Lifts 
+ There were originally three types of lifts (elevators). Those working from ground level posed the greatest difficulty for the designers, because they had to be accommodated in the splayed legs of the tower.
+ Two lifts on the Roux, Combaluzier, and Lepape
+system, with jointed rods, went from the ground level to the first platform, working alongside the staircases in the east and west piers.
+Two American Otis lifts worked in the north and south
+piers, also starting at ground level and rising to the second
+platform at 377ft. height, with the option of stopping on the first platform. Lastly was a lift on the Edoux system, placed vertically in the centre of the tower, raising visitors from the
+second platform to the third at a height of 905ft. Each Roux lift was designed to raise 100 persons at a
+speed of 197ft. per minute, and make twelve trips per hour. The
+two Otis lifts were each designed to carry fifty persons at 394ft. per minute, and make eight trips an hour. The Edoux lift would hold 60-70 people, and make twelve trips per
+hour, at 177ft. per minute. See description in The Engineer 1889/07/19 .
+ In 1899-1900 the Roux, Combaluzier, and Lepape lifts were replaced by new lits made by Fives-Lille .
+ The Edoux lift remained in service until 1983, when it was dismantled due to obsolescence. Moreover being hydraulic, it could not work in winter because of the risk of the water freezing frost.
+ See here for a description of the lifts. &#91; 4 &#93; 
+ See also here &#91; 5 &#93; 
+ The original lifts were hydraulically operated using water pressure. The Wheelock-type engines to drive the Girard pumps were supplied by Augustus de Quillacq . Smoke from the four Collet-Niclausse system boilers passed through a tunnel 116 m long to a 12.5 m high brick chimney in the gardens. The chimney still exists.
+ See Also 
+ Loading...
+ Sources of Information 
+ ↑ 'Eiffel: The genius who invented himself' by David I. Harvie, 2004, Sutton Publishing 
+ ↑ [1] toureiffel.paris: 'The Eiffel Tower was built in just twenty-two months. How was this feat possible?' by Bertrand Lemoine. 
+ ↑ 'Gustave Eiffel: The Eiffel Tower', published by Taschen 2016. Modern text by Bertrand Lemoine 
+ ↑ [2] The Project Gutenberg EBook of Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel 
+ ↑ [3] Wonders of the World website - Elevators of the Eiffel Tower 
+Retrieved from " https://www.gracesguide.co.uk/index.php?title=Eiffel_Tower&oldid=1398220 "
+ Categories : Country - France 
+ Iron in Building Construction 
+ This page was last edited on 8 August 2024, at 18:08.
+ Privacy policy 
+ Disclaimers 
+ About Grace’s Guide 
+ Contact Grace’s Guide 
+ Grace's Guide web site design is Copyright © 2025 by Grace's Guide Ltd. The
+ text of this web site is available under the Creative
+ Commons Attribution-ShareAlike License ; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy
+ Policy . 
+ MW1.43

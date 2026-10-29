@@ -1,0 +1,557 @@
+{{Semi-protection longue}}
+{{Voir homonymes|Tour Eiffel (homonymie)}}
+{{Infobox Monument
+ | nom                   = Tour Eiffel
+ | nom local             = -
+ | surnom                = la Dame de Fer<ref>{{Lien web|titre=La Tour Eiffel, la Dame de Fer|url=https://www.france.fr/fr/paris/article/tour-eiffel-la-dame-de-fer|site=france.fr|consulté le=2023-12-10}}.</ref>
+ | anciens noms          = « Tour de 300 mètres », « Tour de Paris »
+ | image                 = Tour Eiffel Wikimedia Commons.jpg
+ | légende               = Le [[Champ-de-Mars (Paris)|Champ-de-Mars]] au premier plan, la tour Eiffel au deuxième, puis le [[palais de Chaillot]] au troisième plan.
+ | latitude              = <!-- par Wikidata -->
+ | longitude             = <!-- par Wikidata -->
+ | pays                  = {{France}}
+ | lien subdivision3     = Ville
+ | subdivision3          = [[Paris]]
+ | quartier              = [[Quartier du Gros-Caillou|Gros-Caillou]] ([[7e arrondissement de Paris|{{7e}} arr.]])
+ | adresse               = [[Champ-de-Mars (Paris)|Champ-de-Mars]]
+ | construction          = 1887 - 1889 (5 mois pour les fondations et 21 mois pour le montage de la partie métallique)
+ | rénovation            = 
+ | démolition            = 
+ | usage                 = [[tour d'observation]] et de [[télécommunications]], attraction touristique
+ | statut                = 
+ | hauteur               = [[Données techniques de la tour Eiffel|{{unité|330|m}} en 2022 (avec l'antenne)]]
+ | toit                  = 
+ | dernier étage         = 279,11 m
+ | étages                = 3
+ | sous-sol              = 
+ | superficie            = 
+ | ouverture             = {{date|31 mars 1889}}
+ | volume                = 
+ | ascenseurs            = 6{{efn|2 ascenseurs pilier Sud (dont un monte-charge et un ascenseur réservé aux clients du restaurant Jules Verne). 1 dans chaque autre pilier (Nord, Est et Ouest). Un dernier (2×2 cabines) situé entre les {{2e}} et {{3e|étages}}. Voir [http://www.toureiffel.paris/tout-savoir-sur-la-tour-eiffel/dossiers-thematiques/98.html site officiel de la tour] et [https://www.maison.com/architecture/histoire/ascenseurs-tour-eiffel-7882/ Les ascenseurs de la tour].}}
+ | chambre               = 
+ | coût                  = 7 799 401,31 francs-or de 1889, l'équivalent d'environ 32 millions d'euros de 2015.
+ | architecte            = [[Stéphen Sauvestre]]
+ | développeur           = [[Maurice Koechlin]] et [[Émile Nouguier]]
+ | propriétaire          = [[Paris|Ville de Paris]]
+ | contracteur           = [[Gustave Eiffel]]
+ | occupant              = [[Société d'exploitation de la tour Eiffel]]
+ | ingénieur             = [[Gustave Eiffel]], [[Maurice Koechlin]] et [[Émile Nouguier]]
+ | type                  = [[Tour autoportante]]
+ | matériau              = [[Puddlage|fer puddlé]]
+ | protection            = {{Inscrit MH|1964|accord=féminin}}<br/>{{Patrimoine mondial|1991||au titre de Paris, rives de la Seine}}
+ | gare                  = {{RER/correspondances avec intitulé|C}} [[Gare du Champ de Mars - Tour Eiffel|Champ de Mars - Tour Eiffel]]
+ | métro                 = 
+ | bus                   = {{Bus RATP/correspondances avec intitulé|30|42|72|82}} Tour Eiffel<br>{{Bus RATP/correspondances|69|86}} Champ de Mars
+ | site officiel         = <!-- par Wikidata -->
+ | géolocalisation       = France <!-- recherche automatique par Module:Carte -->
+}}
+
+La '''tour Eiffel''' [tuʁɛfɛl] {{Prononciation|Fr-Tour Eiffel.oga}} est une [[tour autoportante]] de [[Puddlage|fer puddlé]] de {{unité|330|m}}<ref>{{Lien web |auteur1=Le Figaro avec [[Agence France-Presse|AFP]] |titre=La Tour Eiffel culmine désormais à 330 mètres |url=https://www.lefigaro.fr/culture/la-tour-eiffel-culmine-desormais-a-330-metres-20220315 |site=lefigaro.fr |date=15-03-2022 |consulté le=4 septembre 2026}}.</ref> de hauteur (avec antennes) située à [[Paris]], à l’extrémité nord-ouest du parc du [[Champ-de-Mars (Paris)|Champ-de-Mars]] en bordure de la [[Seine]] dans le [[7e arrondissement de Paris|{{7e|arrondissement}}]]. Son adresse officielle est 5, [[Avenue Anatole-France (Paris)|avenue Anatole-France]].
+
+Construite en deux ans par [[Gustave Eiffel]] et ses collaborateurs pour l'[[Exposition universelle de Paris de 1889]], célébrant le [[Centenaire de la Révolution|centenaire de la Révolution française]], et initialement nommée « tour de {{nobr|300 mètres}} », elle est devenue le symbole de la capitale française et un site [[Tourisme|touristique]] de premier plan : il s’agit du [[Tourisme en France#Statistiques de fréquentation des sites touristiques en France|quatrième site culturel français payant le plus visité en 2016]], avec {{unité|5.9|millions}} de visiteurs. Depuis son ouverture au public, elle a accueilli plus de [[Popularité, notoriété et profil des visiteurs de la tour Eiffel|300 millions de visiteurs]]<ref name=":0">{{Article|auteur1=|titre=Paris : la tour Eiffel fête ses 300 millions de visiteurs|périodique=Franceinfo|date=2017-09-28|lire en ligne=https://www.francetvinfo.fr/sciences/histoire/paris-la-tour-eiffel-fete-ses-300-millions-de-visiteurs_2393660.html|consulté le=2018-01-30|pages=}}.</ref>.
+
+D’une hauteur de {{nobr|312 mètres}}<ref group="o" name="p2">{{p.}}2.</ref> à l’origine, la tour Eiffel est restée le monument le plus élevé du monde pendant quarante ans. Le second niveau du troisième étage, appelé parfois quatrième étage, situé à {{unité|279.11|mètres}}, est la plus haute plateforme d'observation accessible au public de l'[[Union européenne]] et la deuxième plus haute d'[[Europe]], derrière la [[tour Ostankino]] à [[Moscou]] culminant à {{nobr|337 mètres}}. La hauteur de la tour a été plusieurs fois augmentée par l’installation d'un drapeau puis de nombreuses [[Antenne radioélectrique|antennes]], notamment en 1957 ({{unité|320,75|m}})<ref>{{Lien web |titre=De 300 à 330 mètres : l’histoire de la taille de la Tour |url=https://www.toureiffel.paris/fr/actualites/histoire-et-culture/de-300-330-metres-lhistoire-de-la-taille-de-la-tour |site=toureiffel.paris |date=28-04-2022 |consulté le=4 septembre 2026}}.</ref>, 1991, 1994, 2000 et 2022. Utilisée dans le passé pour de nombreuses expériences scientifiques, elle sert aujourd’hui d’[[Émetteur d'ondes radioélectriques|émetteur]] de programmes [[radiodiffusion|radiophoniques]] et [[Télévision|télévisés]].
+
+== Présentation générale ==
+[[Fichier:Emplacement tour Eiffel 7e arrondissement.JPG|thumb|left|Carte du [[7e arrondissement de Paris|{{7e|arrondissement}} de Paris]] situant la tour Eiffel et le [[Champ-de-Mars (Paris)|Champ-de-Mars]].]]
+Contestée par certains à l'origine puis plébiscitée par le public dès sa présentation, la tour Eiffel fut, à l'occasion de l'[[Exposition universelle de 1889]], la vitrine du savoir-faire technique français. Sa taille exceptionnelle et sa silhouette immédiatement reconnaissable en ont fait un emblème de Paris.
+
+Conçue par [[Maurice Koechlin]] et [[Émile Nouguier]], respectivement chef du bureau des études et chef du bureau des méthodes d'[[Eiffel (entreprise)|Eiffel & Cie]]<ref>Note : {{Lien web |auteur1=Structurae |titre=Fiche d'identité de la société Eiffel & Cie |url=https://web.archive.org/web/20130207130410/http://fr.structurae.de/firms/data/index.cfm?ID=f000034 |site=structurae.de via [[Internet Archive]] |consulté le=4 septembre 2026}} Sur le site fr.structurae.de.</ref>, la tour Eiffel est conçue pour être le {{Citation|clou de l'Exposition de 1889 se tenant à Paris}}. Elle salue également le centenaire de la [[Révolution française]]. Le premier plan est réalisé en {{date+|juin 1884}} et amélioré par [[Stéphen Sauvestre]], l’architecte en chef des projets de l'entreprise, qui lui apporte plus d'esthétique.
+
+Le ministre du Commerce et de l'Industrie [[Édouard Lockroy]], franc-maçon résolument anticlérical, est un fervent défenseur du projet dans lequel il voit un symbole de la révolution industrielle qui incarne la laïcité, surpassant en hauteur le [[Basilique du Sacré-Cœur de Montmartre|Sacré-Cœur de Montmartre]] alors en chantier<ref>{{Lien web|url=https://www.historia.fr/sciences-decouvertes/sciences-techniques/la-tour-eiffel-de-la-defiance-au-triomphe-2065091|titre=La tour Eiffel, de la défiance au triomphe|date=25 octobre 2023|site=[[historia.fr]]}}.</ref>. Le {{date|1|mai|1886}}, Lockroy signe un [[Arrêté en France|arrêté]] qui déclare ouvert {{Citation|un concours en vue de l’Exposition universelle de 1889}}<ref>{{img}} [[:Fichier:Arrêté 1er mai 1886.GIF|Arrêté du {{date|1er mai 1886}}, {{page|1}}]], [[:Fichier:Arrêté 1er mai 1886 (2).GIF|{{page|2}}]], [[:Fichier:Arrêté 1er mai 1886 (3).GIF|{{page|3}}]].</ref>. [[Gustave Eiffel]] remporte ce concours et une [[s:Convention du 8 janvier 1887|convention du 8 janvier 1887]] fixe les modalités d'exploitation de l'édifice. Construite en deux ans, deux mois et cinq jours, de 1887 à 1889, par {{nobr|250 ouvriers}}, elle est inaugurée, à l'occasion d'une fête de fin de chantier organisée par Gustave Eiffel, le {{date|31 mars 1889}}<ref group="o" name="p7">{{p.}}7.</ref>. Sa fréquentation s'érode rapidement ; la tour Eiffel ne connaîtra véritablement un succès massif et constant qu'à partir des années 1960, avec l'essor du [[tourisme]] international. Elle accueille maintenant plus de six millions de visiteurs chaque année.
+
+Sa hauteur lui a permis de porter le titre de {{Citation|plus haute structure du monde}} jusqu'à la construction en 1930 du [[Chrysler Building]] à [[New York]]. Située sur le [[Champ-de-Mars (Paris)|Champ-de-Mars]], près de la [[Seine]], dans le [[7e arrondissement de Paris|{{7e|arrondissement}} de Paris]], elle est actuellement exploitée par la [[Société d'exploitation de la tour Eiffel]] (SETE). Le site, sur lequel travaillent plus de {{nobr|500 personnes}} (dont plus de 250 directement employés par la SETE), est ouvert tous les jours de l'année<ref group="o" name="p2"/>.
+
+La tour Eiffel est inscrite aux [[monument historique (France)|monuments historiques]] depuis le {{date|24 juin 1964}}<ref>{{Base Mérimée|PA00088801}}.</ref> et est inscrite au [[patrimoine mondial]] de l'[[Organisation des Nations unies pour l'éducation, la science et la culture|UNESCO]] depuis 1991, en tant que partie des [[rives de la Seine à Paris]]<ref name="Paris, rives de la Seine">{{Lien web |titre=Paris, rives de la Seine |url=http://whc.unesco.org/fr/list/600/ |date=2024|éditeur=[[Organisation des Nations unies pour l'éducation, la science et la culture|UNESCO]] |site=whc.unesco.org |consulté le=18 novembre 2024}}.</ref>.
+
+=== Données techniques ===
+{{Article détaillé|Données techniques de la tour Eiffel}}
+[[Fichier:Dimensions Eiffel Tower.svg|thumb|upright=2|Dimensions de la tour Eiffel, entre 2000 et 2022.]]
+
+Voici les principales dimensions de la tour Eiffel.
+* Fondations
+** Hauteur du sol (au-dessus du niveau de la mer) : {{Unité|33.50|mètres}}
+** Longueur de l'écart intérieur entre 2 piliers : {{Unité|74.24|mètres}}
+** Longueur de l'écart extérieur entre 2 piliers : {{Unité|124.90|mètres}}
+* {{1er|étage}}
+** Hauteur du plancher au-dessus du sol : {{Unité|57.63|mètres}}
+** Hauteur du plancher au-dessus du niveau de la mer : {{Unité|91.13|mètres}}
+** Côté extérieur (au niveau du plancher) : {{Unité|70.69|mètres}}
+** Superficie (au niveau du plancher) : {{Unité|4200|m|2}}
+* {{2e|étage}}
+** Hauteur du plancher au-dessus du sol : {{Unité|115.73|mètres}}
+** Hauteur du plancher au-dessus du niveau de la mer : {{Unité|149.23|mètres}}
+** Côté extérieur (au niveau du plancher) : {{Unité|40.96|mètres}}
+** Superficie (au niveau du plancher) : {{Unité|1650|m|2}}
+* {{3e|étage}}
+** Hauteur du plancher au-dessus du sol : {{Unité|276.13|mètres}}
+** Hauteur du plancher au-dessus du niveau de la mer : {{Unité|309.63|mètres}}
+** Côté extérieur (au niveau du plancher) : {{Unité|18.65|mètres}}
+** Superficie (au niveau du plancher) : {{Unité|350|m|2}}
+* « {{4e}} étage » (second niveau du {{3e|étage}})
+** Hauteur du plancher au-dessus du sol : {{Unité|279.11|mètres}}
+** Hauteur du plancher au-dessus du niveau de la mer : {{Unité|312.61|mètres}}
+** Côté extérieur (au niveau du plancher) : {{Unité|18.65|mètres}}
+** Superficie (au niveau du plancher) : {{Unité|350|m|2}}
+* Flèche
+** Hauteur totale avec antennes (mesure 2022) : {{nobr|330 mètres}}
+** Hauteur totale avec antennes (mesure 2000) : {{nobr|324 mètres}}
+** Hauteur totale avec antennes (mesure 1994) : {{Unité|318.70|mètres}}
+** Hauteur totale avec antennes (mesure 1991) : {{Unité|317.96|mètres}}
+** Hauteur totale avec drapeau (mesure 1889) : {{Unité|312.27|mètres}}
+** Hauteur totale sans drapeau (mesure 1889) : {{nobr|300 mètres}}
+
+=== Description de la tour étage par étage ===
+Les informations ci-dessous décrivent les principales données techniques de chaque étage, ainsi que les principales curiosités qui s'offrent au visiteur, une fois sur place<ref name="le parisien">{{Chapitre|titre chapitre=Histoire – Approche générale|auteurs ouvrage=Collectif|titre ouvrage=La tour Eiffel|éditeur=Fabbri / Le Parisien|collection=Les trésors de l'Ile-de-France|numéro dans collection=2|année=2005}}.</ref>.
+
+==== Base ====
+[[Fichier:Eiffel Tower Telephoto (34782131773).jpg|vignette|Base de la tour.]]
+La tour s'inscrit dans un carré de {{nobr|125 mètres}} de côté, selon les termes mêmes du concours de [[1886]]. Haute de {{nobr|330 mètres}} avec ses {{nobr|116 antennes}}, elle est située à {{unité|33.5|mètres}} au-dessus du [[niveau de la mer]].
+
+===== Des fondations aux appuis =====
+Les deux piliers situés du côté de l'[[École militaire (France)|École militaire]] reposent sur une couche de béton de {{nobr|2 mètres}}, qui elle-même repose sur un lit de gravier, la fosse faisant en tout {{nobr|7 mètres}} de profondeur. Les deux piliers côté [[Seine]] sont situés en dessous du niveau du fleuve. Les ouvriers travaillèrent dans des [[caisson (génie civil)|caissons]] métalliques étanches dans lesquels était injecté de l'air comprimé ([[Procédé Triger (génie civil)|procédé Triger]]).
+
+Seize massifs de fondation soutiennent seize [[arbalétrier (charpente)|arbalétriers]] inclinés à {{unité|54|[[degré (angle)|degrés]]}} par rapport au sol<ref group="a" name="p12">{{p.|12}}.</ref>, qui forment les arêtes des quatre piliers en [[Treillis (structure)|treillis]] composés chacun de 28 quadrilatères [[Triangulation d'une surface|triangulés]], [[Contreventement|contreventés]] par des [[croix de saint André]], ces quatre piles écartées à la base et se rejoignant au sommet étant liées entre elles par des [[Traverse (architecture)|traverses]] (poutres horizontales) disposées tous les cinquante mètres<ref>{{ouvrage|auteur=|titre=L'architecture du fer : France {{s-|XIX}}|éditeur=Champ Vallon|date=1986|passage=68}}</ref>. D'énormes boulons d'ancrage de {{unité|7.80|mètres}} de long fixent un sabot en [[fonte (métallurgie)|fonte]], qui contient un contre-sabot en [[acier]] moulé, lequel sert d'appui à l'arbalétrier. Durant les travaux, un [[vérin hydraulique]] amovible placé entre le sabot et le contre-sabot permettait de les faire coulisser de quelques centimètres l'un par rapport à l'autre, et éventuellement d'ajuster les cales en fer qui règlent leur espacement. Ce dispositif, ajouté aux [[boîte à sable (génie civil)|boîtes à sable]] des pylônes provisoires soutenant les parties hautes des arbalétriers durant les travaux, permettait au contremaître de montage d'effectuer les réglages nécessaires, en particulier lors du raccordement des quatre piliers avec les poutres horizontales du premier étage, tout en parant à l'éventualité d'un tassement des maçonneries ou du sol<ref group="a">{{Page|101–102}} et {{Page|106–108}} à propos des vérins, {{Page|75}} à propos des cales en fer et du tassement du sol.</ref>.
+
+Selon les calculs des ingénieurs, la pression sur les sommiers en [[pierre de taille]] de [[Château-Landon]] placés directement sous les sabots est de {{unité|18.70|kg/cm|2}}, compte tenu des efforts dus à la fois au poids de la tour et aux vents. La pression exercée sur les fondations de béton sur le sol, composé de sable et de gravier, n'est plus que de {{unité|4.9|à=5.3|kg/cm|2}} suivant les piliers<ref group="a" name="p67-68">{{p.|67–68}}.</ref>.
+
+[[Fichier:Tour Eiffel IMG 1818.JPG|thumb|Entrée du pilier est, entre les appuis de deux arcs décoratifs, devant le soubassement en pierre factice, février 2009.]]
+
+===== Soubassements =====
+Le [[Champ-de-Mars (Paris)|Champ de Mars]] étant orienté du sud-est au nord-ouest, chacun des quatre piliers est orienté en direction d'un [[point cardinal]]. Les bases des quatre piliers sont abritées dans des soubassements carrés de {{nobr|25 mètres}} de côté et de {{nobr|4 mètres}} de hauteur, composés d'une ossature en fer et de pierres factices en béton comprimé. Ils furent réalisés du {{date|28 septembre 1888}} au {{date|4 janvier 1889}}<ref group="a" name="p95">{{p.|95}}.</ref>.
+
+De nos jours, les caisses pour l'achat des billets occupent les piliers nord et ouest, les ascenseurs sont accessibles depuis les piliers est et ouest. Les escaliers (ouverts au public jusqu'au deuxième étage, et comprenant au total {{nombre|1665|marches}} jusqu'au sommet) sont accessibles depuis le pilier est. Et enfin, le pilier sud comprend un ascenseur privé, réservé au personnel et aux clients du restaurant gastronomique ''[[Le Jules Verne]]'', situé au deuxième étage.
+
+===== Arcs =====
+[[Fichier:Arche de la tour Eiffel.jpg|vignette|L'un des arcs de la tour Eiffel ({{date|avril 2025}}).]]
+[[Fichier:La tour Eiffel sous le soleil.jpg|vignette|Arc et envol de la tour Eiffel ({{date|Avril 2025}}).]]
+Tendus entre chacun des quatre piliers, les arcs s'élèvent à {{nobr|39 mètres}} au-dessus du sol et ont un diamètre de {{nobr|74 mètres}}. Bien que très richement décorés sur les croquis initiaux de Harry Bellod, ils le sont beaucoup moins de nos jours. Leur rôle est « purement décoratif »<ref group=a name=p12/>.
+
+==== Le premier étage ====
+[[Fichier:Sous la Tour Eiffel 1.jpg|thumb|Le premier étage vu depuis la base.]]
+
+Situé à {{nobr|57 mètres}} au-dessus du sol, d'une superficie de {{unité|4220|mètres carrés}} environ, le premier étage peut supporter la présence simultanée d'environ {{nombre|2500|personnes}}.
+
+Une galerie circulaire fait le tour du premier étage et permet d'embrasser une vue à {{nombre|360|°}} sur Paris. Cette galerie est ponctuée de plusieurs [[table d'orientation|tables d'orientation]] et [[longue-vue|longues-vues]] permettant d'observer les monuments parisiens. Face à l'extérieur sont inscrits en lettres d'or les noms de [[Liste des 72 noms de savants inscrits sur la tour Eiffel|soixante-douze personnalités]] du monde scientifique des {{s2-|XVIII|XIX}} (Français ayant vécu entre 1789 et 1889).
+
+Ce premier étage abrite le restaurant ''[[Madame Brasserie]]'' qui s'étend sur deux niveaux. Celui-ci offre d'un côté une vue panoramique sur Paris, et de l'autre une vue sur l'intérieur de la tour.
+
+On peut également voir certains vestiges liés à l'histoire de la tour Eiffel, notamment un tronçon de l'[[escalier en colimaçon]] qui, à l'origine du monument, montait jusqu'au sommet. Cet escalier a été démonté en 1986, lors des très importants travaux de rénovation de la tour. Il a été ensuite découpé en {{nobr|22 tronçons}} dont 21 ont été vendus aux enchères, et achetés pour la plupart par des collectionneurs américains.
+
+Enfin, un observatoire des mouvements du sommet permet de retracer les oscillations de la tour sous l'effet du vent et de la dilatation thermique. Gustave Eiffel avait exigé qu'elle puisse supporter une amplitude de {{nobr|70 centimètres}}, ce qui ne fut jamais le cas puisque dans les faits, lors de la [[Tempêtes de fin décembre 1999 en Europe|tempête de fin décembre 1999]] (vent de {{unité|240|km/h}}) l'amplitude a été de {{unité|13|cm}}, et a atteint {{unité|18|cm}} lors de lors de la [[Canicule et sécheresse de 1976 en Europe|canicule de 1976]]. En effet, la [[dilatation thermique]] fait varier la taille de la Tour Eiffel d’une vingtaine de centimètres entre l’été et l’hiver<ref>{{Lien web |titre=Pourquoi à Paris, la Tour Eiffel change-t-elle de taille plusieurs fois dans l'année ? |url=https://actu.fr/ile-de-france/paris_75056/pourquoi-a-paris-la-tour-eiffel-change-t-elle-de-taille-plusieurs-fois-dans-l-annee_38612132.html |site=actu.fr |date=2021-01-10 |consulté le=2026-03-25}}</ref>. Pierre Affaticati et Simon Pierrat ont d'ailleurs su remédier à ce problème d'amplitude en 1982 en incorporant des matériaux composites à l'armature connexe. Une des particularités de la tour est qu'elle « fuit le Soleil ». En effet, la chaleur étant plus importante du côté ensoleillé, le fer se dilate de ce côté et le sommet s'oriente légèrement à l'opposé.
+
+==== Le deuxième étage ====
+[[Fichier:Tour Eiffel - 20150801 13h57 (10615).jpg|vignette|Le deuxième étage de la tour Eiffel vu depuis le parvis.]]
+
+Situé à {{nobr|115 mètres}} au-dessus du sol, d'une superficie de {{unité|1650|mètres carrés}} environ, le deuxième étage peut supporter la présence simultanée d'environ {{nombre|1600|personnes}}.
+
+De cet étage, l'altitude est optimale pour apercevoir les bâtiments en contrebas, qui sont en effet moins visibles au troisième étage, et par rapport à la perspective générale, nécessairement plus limitée au premier étage.
+
+À travers le plancher, des hublots vitrés ont été installés afin de permettre une vue plongeante sur le sol en contrebas. Des grillages métalliques de protection sont présents afin d'empêcher toute tentative de saut dans le vide, qu'il s'agisse d'un suicide ou d'un exploit sportif.
+
+Un restaurant de {{nombre|500 m²}} se situe également à cet étage<ref>{{Lien web |auteur1=Alexandre M |titre=Perché à 125 mètres de haut ce restaurant parisien se trouve dans la Tour la plus célèbre du monde… |url=https://www.pariszigzag.fr/bar-restaurant/jules-verne-tour-eiffel |site=Paris Zigzag |périodique=Paris ZigZag / Insolite & Secret |date=10-10-2023 |consulté le=4 septembre 2026}}.</ref> : ''[[Le Jules Verne]]'', dirigé par [[Frédéric Anton]] depuis 2019 après une rénovation menée par l'architecte d'intérieur [[Aline Asmar d'Amman]]<ref>{{Lien web |prénom1=Fanny |nom1=Guénon des Mesnards |titre=Le Jules Verne, restaurant mythique de la Tour Eiffel, rouvre ses portes |url=https://www.admagazine.fr/lifestyle/le-carnet-adresses-de/diaporama/le-jules-verne-restaurant-mythique-de-la-tour-eiffel-rouvre-ses-portes/58389 |site=AD Magazine |date=2019-07-25 |consulté le=4 septembre 2026}}.</ref>. Il dispose de {{nobr|95 couverts}} et, contrairement à son voisin du premier étage, est accessible à ses clients par un ascenseur privé, situé dans le pilier sud de la tour. D'un standing plus élevé que ''Madame Brasserie'', il est noté deux étoiles au [[guide Michelin]] depuis 2024<ref>{{Lien web |auteur=Christine Henry |titre=Au {{2e}} étage de la tour Eiffel, Le Jules Verne célèbre ses deux étoiles au Michelin : « Un moment formidable » |url=https://www.leparisien.fr/paris-75/au-2e-etage-de-la-tour-eiffel-le-jules-verne-celebre-ses-deux-etoiles-au-michelin-un-moment-formidable-19-03-2024-BWLHDYX4A5FF3CIE2BDHJG3QLA.php |site=Le Parisien |date=2024-03-19 |consulté le=2024-05-17}}.</ref>.
+[[Fichier:La tour Effeil de nuit.jpg|alt=La tour Eiffel illuminée la nuit.|vignette|La tour Eiffel illuminée la nuit.]]
+
+==== Le troisième étage ====
+Situé à {{unité|276.13|mètres}} au-dessus du sol, d'une superficie de {{unité|350|mètres carrés}}, le troisième étage peut supporter la présence simultanée d'environ {{nobr|400 personnes}}.
+
+L'accès se fait obligatoirement par un ascenseur (l'escalier est interdit au public à partir du deuxième étage) et donne sur un espace fermé ponctué de tables d'orientation. En montant quelques marches, le visiteur arrive ensuite sur une plate-forme extérieure, parfois dénommée « quatrième étage », culminant à près de {{unité|279|m}}.
+
+On peut apercevoir à cet étage une reconstitution du type « [[musée de cire]] » montrant Gustave Eiffel recevant [[Thomas Edison]], qui renforce l'idée selon laquelle Gustave Eiffel aurait utilisé l'endroit comme bureau ou appartement<ref>{{Lien web |titre=Découvrez l'appartement secret de la Tour Eiffel ! |url=https://www.cosmopolitan.fr/,decouvrez-l-appartement-secret-de-la-tour-eiffel,1943746.asp |site=Cosmopolitan.fr |date=21-12-2015 |consulté le=4 septembre 2026}}.</ref>. La réalité historique est différente : l'endroit a d'abord été occupé par le laboratoire météorologique, puis dès 1903 par [[Gustave Ferrié]] pour ses expérimentations de [[Transmission sans fil|TSF]]<ref>{{Lien web |auteur=Tour Eiffel |titre=Gustave Ferrié : Général au service de la science |url=https://www.toureiffel.paris/fr/actualites/histoire-et-culture/gustave-ferrie-general-au-service-de-la-science |site=toureiffel.paris/fr |date=14 avril 2021 |consulté le=4 septembre 2026}}.</ref>.
+
+<gallery align="center">
+The_top_deck_at_the_tower’s_summit._The_door_on_the_left_leads_into_Eiffel’s_personal_room_(or_Belvedere_in_French).jpg|Première expérimentation de TSF au sommet de la tour par [[Eugène Ducretet]] le {{date|5 novembre 1898}}.
+</gallery>
+
+Le {{date|8 novembre 1935}} la définition de 180 lignes est atteinte en télédiffusion et le tout premier émetteur de [[télévision]] à haute fréquence est installé au sommet de la tour Eiffel par la Compagnie générale de Télévision<ref>{{Lien web |auteur=Dounia Hadni |titre=Il y a 80 ans : Radiovision-PTT diffuse la première émission de la télé française |url=https://www.radiotsf.fr/il-y-a-80-ans-radiovision-ptt-diffuse-la-premiere-emission-de-la-tele-francaise/ |site=radiotsf.fr |date=88 décembre 2015 |consulté le=4 septembre 2026}}.</ref>. Des émissions sont régulièrement diffusées sur le canal [[Radiovision-PTT]] en noir et blanc à partir de 1937.
+
+En 1940, l’armée allemande prend possession de la tour mais l’émetteur [[455 lignes]] est saboté. En 1943, un studio de télévision est spécialement aménagé à proximité pour la chaîne franco-allemande [[Fernsehsender Paris]] dans la [[rue Cognacq-Jay]]. Un nouvel émetteur [[Telefunken]] est installé au sommet de la Tour, directement relié aux plateaux du 13-15 rue Cognacq-Jay. Vers 15 h le {{date|7 mai 1943}}, la première émission de la chaîne est émise. Les émissions s'arrêtent le {{date|12 août 1944}}, avant la libération de Paris. À la suite de la remise en état de l’émetteur [[Très haute fréquence|VHF]] en [[441 lignes]] noir et blanc de la tour Eiffel, les émissions de télévision reprennent le {{date|1|octobre|1944|à la télévision}} depuis les studios abandonnés dans lesquels s'installe la [[RDF Télévision française|Télévision Française]].
+
+L'émetteur {{Nobr|441 lignes}} est victime d'un incendie le {{date|3 janvier 1956}}, obsolète il ne sera pas réparé. Les téléspectateurs pionniers sont indemnisés pour l'achat d'un récepteur [[819 lignes]]<ref>https://www.leparisien.fr/paris-75/deja-un-incendie-en-1956-23-07-2003-2004268896.php</ref>.
+
+Tout en haut de la tour, un nouveau mât de télédiffusion a été installé en 1957 et la Tour Eiffel passe à une hauteur de 320,75 mètres<ref>{{lien web |titre=LA TOUR EIFFEL |url=https://iafricaventures.wordpress.com/2015/04/08/la-tour-eiffel/ |site=iafricaventures |date=08-04-2015 |consulté le=10-08-2026}}.</ref>. Le mât est complété en 1959 pour couvrir environ {{nobr|10 millions}} de foyers en [[Télévision analogique terrestre|programmes hertziens]]. Le {{date|17 janvier 2005}}, le dispositif a été complété par le premier émetteur [[Télévision numérique terrestre|TNT]] français, portant à 116 le nombre d'antennes de télédiffusion et radiodiffusion de l'ensemble<ref>https://www.leparisien.fr/culture-loisirs/c-est-presque-parti-pour-la-tnt-17-01-2005-2005624541.php</ref>. Le {{Date|15 mars 2022}}, une nouvelle antenne compatible avec le réseau [[Digital Audio Broadcasting|DAB+]] est installée par [[héliportage]] au sommet de la tour, la faisant ainsi passer de 324 à {{nobr|330 mètres}} de hauteur<ref>{{Lien web |auteur=William Vuillez |titre=Paris : pourquoi la Tour Eiffel va gagner quelques mètres ce mardi |url=https://www.rtl.fr/actu/debats-societe/paris-pourquoi-la-tour-eiffel-va-gagner-quelques-metres-ce-mardi-15-mars-7900133941 |site=rtl.fr |date=15/03/2022 |consulté le=4 septembre 2026}}.</ref>.
+
+== Historique ==
+{{Article détaillé|Histoire de la tour Eiffel|Chronologie de la tour Eiffel}}
+
+=== Contexte ===
+[[Fichier:The Centennial Tower Philadelphia 1876.jpeg|thumb|upright|''The Centennial Tower'' est le premier projet crédible d'une tour d'environ {{nobr|300 mètres}}, imaginé en 1874 pour l'[[Exposition universelle de 1876]].]]
+
+Dès la première [[Exposition internationale#Expositions universelles|exposition universelle]] (''Great Exhibition of the Works of Industry of All Nations'', [[Londres]], 1851), les gouvernants s'aperçoivent que derrière l'enjeu technologique se profile une vitrine politique dont il serait dommage de ne pas profiter. En démontrant son savoir-faire industriel, le pays accueillant l'exposition signifie son avance et sa supériorité sur les autres puissances européennes qui règnent alors sur le monde.
+
+Dans cette optique, la France accueille à plusieurs reprises l'Exposition universelle, comme en 1855, 1867 et 1878. [[Jules Ferry]], [[Président du Conseil (France)|président du conseil]] de 1883 à 1885, décide de relancer l'idée d'une nouvelle exposition universelle en France. Le {{date|8 novembre 1884}}, il signe un [[Décret en France|décret]] instituant officiellement la tenue d'une exposition universelle à Paris, du {{date|5 mai}} au {{date|31 octobre 1889}}. L'année choisie n'est pas innocente, puisqu'elle symbolise le centenaire de la [[Révolution française]].
+
+C'est aux [[États-Unis]] que naît l'idée d'une tour de {{nobr|300 mètres}} : lors de l'[[Exposition universelle de 1876|exposition universelle de Philadelphie en 1876]], les ingénieurs américains Clarke et Reeves imaginent un projet de pylône cylindrique de {{nobr|9 mètres}} de diamètre maintenu par des [[hauban (construction)|haubans]] métalliques, ancrés sur une base circulaire de {{nobr|45 mètres}} de diamètre, d'une hauteur totale de {{unité|1000|pieds}} (environ {{nobr|300 mètres}})<ref>{{Ouvrage|langue=en|prénom1=United States National|nom1=Museum|titre=Bulletin|éditeur=U.S. Government Printing Office|date=1962|passage=4–6 |lire en ligne=https://books.google.fr/books?id=n85GAQAAMAAJ&pg=PA4&lpg=PA4#v=onepage&q&f=false |consulté le= 16-06-2025}}.</ref>. Faute de financement<ref>{{Lien web |langue=en |auteur=Joel Levinson |titre=Is it time for a tower in Philadelphia? |url=https://www.chestnuthilllocal.com/stories/is-it-time-for-a-tower-in-philadelphia,7784 |site=The Chestnut Hill Local |date=2015-12-09 |consulté le=4 septembre 2026}}.</ref>, ce projet ne voit pas le jour, mais il est décrit en France dans la revue ''La Nature''<ref>Numéro 42 du 21 mars 1874. Disponible sur Wikisource, [[wikisource:fr:La Tour américaine de mille pieds de haut|La Tour américaine de mille pieds de haut]]</ref>.
+
+Le projet de Clarke et Reeves était techniquement réaliste. Il restait à Eiffel à construire la première tour à partir de ces proportions<ref>{{Article|langue=en|prénom1=Frank I.|nom1=Jenkins|titre=Harbingers of Eiffel's Tower|périodique=Journal of the Society of Architectural Historians|volume=16|numéro=4|pages=22–29|date=1957-12-01|issn=0037-9808|doi=10.2307/987874}}.</ref>.
+
+En France, dans les années 1880, le principal concurrent de Gustave Eiffel est [[Jules Bourdais]], qui a imaginé et construit, avec Gabriel Davioud, le [[palais du Trocadéro]], dans le cadre de l'[[exposition universelle de 1878]]. Bourdais imagine d'abord une tour de {{nobr|300 mètres}} en [[granit]], mais le projet ne prenant pas assez en compte le problème de la résistance des matériaux. En effet, la pierre ne permet pas de dépasser une certaine hauteur. L'[[Washington Monument|obélisque de Washington]] en est la preuve. Il était prévu à l'origine que le monument, fait de marbre, de grès et de granit, atteigne {{nobr|180 mètres}} de hauteur. Achevé le {{date|6 décembre 1884}}, et officiellement ouvert au public le {{date|9 octobre 1888}}, il mesure {{nobr|169 mètres}}, soit 10 de moins que prévu. C'est alors la plus haute structure du monde.
+
+La technique du fer permet ensuite de dépasser cette limite. Que ce soit en Angleterre, en France ou aux États-Unis, les projets vont se multiplier pour atteindre l'objectif de {{nobr|300 mètres}}. En 1833, [[Richard Trevithick]], expert britannique des [[Machine à vapeur|machines à vapeur]], propose un projet de colonne en [[Fonte (métallurgie)|fonte]] ajourée, haute de {{nombre|1000|pieds}} (≈ {{nobr|300 mètres}}).
+
+Si Jules Bourdais est resté connu comme un concurrent sérieux d'Eiffel, c'est qu'il a su promouvoir, comme son adversaire, son projet de tour auprès des hommes politiques, des médias et du grand public. {{nobr|107 projets}} sont déposés lors de ce concours. Même s'ils ne semblent pas tous réalistes, cela prouve que Gustave Eiffel est loin d'être le seul ingénieur à avoir planché sur ce projet de très haute tour.
+
+=== Élaboration du projet ===
+
+En {{date|juin 1884}}, deux ingénieurs des entreprises Eiffel, [[Maurice Koechlin]] et [[Émile Nouguier]], respectivement chef du bureau d’études et directeur des études techniques et des montages, se penchent à leur tour sur un projet de tour métallique de {{unité|300|mètres}}. Ils espèrent pouvoir en faire le clou de l'Exposition de 1889.
+
+Le {{date|6 juin}}, Émile Nouguier et Maurice Koechlin dessinent le premier croquis de l’édifice. Le dessin représente un haut [[pylône de temple égyptien|pylône]] de {{nobr|300 mètres}}, dont les quatre piles incurvées, se rejoignant au sommet, sont reliées par des plates-formes tous les {{nobr|50 mètres}}. Pour concevoir le [[Treillis (structure)|treillis]] métallique du pylône, Koechlin se base sur les calculs de [[résistance des matériaux]] et sur le traité de ''Statique graphique'' de son professeur [[Karl Culmann|Culmann]], lequel s'appuie sur les travaux du professeur d'anatomie {{lien|fr=Georg Hermann von Meyer|lang=de|trad=Georg Hermann von Meyer|texte=Hermann von Meyer}} relatifs aux [[Trabécule|structures osseuses]] de la [[Tête fémorale|tête du fémur]]<ref>{{Article|auteur=André Giordan|titre=Voici venue l'ère de la physionique|périodique=[[La Recherche (magazine)|La Recherche]]|date=février 1996|numéro=284|pages=81}}</ref>{{,}}<ref>{{ouvrage|auteur=André Giordan|titre=Mon corps, la première merveille du monde|éditeur=JC Lattès|date=2014|passage=42-43|lire en ligne={{Google Livres|RzQSVr89u58C}}}}</ref>. Lorsque Gustave Eiffel voit l'esquisse de leur projet architectural, il est sceptique<ref>{{ouvrage|auteur=François Vey, Emmanuel Hecht|titre=La Tour Eiffel. Vérités et légendes|éditeur=Place des éditeurs|date=2018|passage=13}}</ref>, mais concède toutefois à ses concepteurs l'autorisation de poursuivre l'étude.
+
+[[Stephen Sauvestre]], architecte en chef des entreprises Eiffel, est sollicité et redessine complètement le projet pour lui donner une autre envergure : il rajoute de lourds pieds en [[maçonnerie]] et consolide la tour jusqu'au premier étage par le [[:wikt:truchement|truchement]] d'arcs, réduit le nombre de plates-formes de cinq à deux, surplombe la tour d'une « coiffe » la faisant ressembler à un [[phare]]{{etc}}
+
+<gallery heights=300px widths=300px>
+Maurice koechlin pylone.jpg|Premier croquis du pylône de {{nobr|300 mètres}}, réalisé par [[Émile Nouguier]] et [[Maurice Koechlin]]. Cette forme, sensiblement différente du projet final, a nourri l'imaginaire collectif{{efn|Une [[légende urbaine]], constatant une similitude entre les pieds de la tour et le [[porte-jarretelles]], voudrait que Gustave Eiffel soit l'inventeur de ce sous-vêtement. Cette légende est en fait un canular imaginé en 1983 dans ''[[L'Écho des savanes]]'' par [[Jacques Lob]] racontant que l'ingénieur aurait conçu cet accessoire pour répondre à un défi de son épouse<ref>{{ouvrage |auteur1=François Vey |auteur2=Emmanuel Hecht |titre=La Tour Eiffel, vérités et légendes |éditeur=Place des éditeurs |date=2018 |passage=10}}</ref>. Selon une autre légende, il aurait donné à la tour une forme évoquant la lettre A, symbole de son amour de jeunesse, Adrienne Bourgès<ref>{{Lien web |url=https://www.ouest-france.fr/leditiondusoir/2023-12-26/dix-choses-meconnues-sur-gustave-eiffel-le-pere-de-la-celebre-tour-disparu-il-y-a-cent-ans-a29dd515-0018-4b99-b576-1a8251357d44 |titre=Dix choses méconnues sur Gustave Eiffel, le père de la célèbre Tour, disparu il y a cent ans |auteur=Gautier Demouveaux |date=26-12-2023 |site=ouest-france.fr}}.</ref>.}}.
+Fichier:Projet Sauvestre Eiffel.jpg|Projet architectural de [[Stéphen Sauvestre]].
+</gallery>
+
+Cette nouvelle mouture du projet est à nouveau présentée à Gustave Eiffel qui, cette fois-ci, se montre enthousiasmé. À tel point qu'il dépose, le {{date|18 septembre 1884}}, en son nom et ceux de Koechlin et Nouguier, un brevet « pour une disposition nouvelle permettant de construire des piles et des pylônes métalliques d'une hauteur pouvant dépasser {{nobr|300 mètres}} ». Et bien vite, il rachètera les droits de Koechlin et Nouguier, pour détenir les droits exclusifs sur la future tour, qui, par voie de conséquence, portera son nom.
+
+[[Gustave Eiffel]] n'a donc pas conçu le monument, mais s'est appliqué à faire connaître son projet auprès des gouvernants, des décideurs et du grand public, pour pouvoir construire la tour, puis, une fois que cela fut fait, à en faire, aux yeux de tous, plus qu'un simple défi architectural et technique ou encore un objet purement esthétique (ou inesthétique selon certains). Il a aussi financé avec ses propres fonds quelques expériences scientifiques menées directement sur ou depuis la tour Eiffel, qui auront permis de la pérenniser.
+
+En 1885, le projet est présenté à la [[Société des ingénieurs civils de France|Société des ingénieurs civils]], pour un devis initial total de {{unité|3155000|francs}} incluant fondations, ascenseurs et leurs moteurs<ref>{{Ouvrage|auteur1=Gustave Eiffel|auteur2=Stephen Sauvestre|auteur3=Maurice Koechlin|titre=Tour en fer de 300 mètres de hauteur destinée à l'Exposition de 1889 : projet présenté par M. G. Eiffel,… ; dressé par MM. E. Nouguier et M. Koechlin,… et par M. S. Sauvestre,…|éditeur=|année=1885|passage=7|lire en ligne=https://gallica.bnf.fr/ark:/12148/bpt6k854575s|consulté le=2019-11-12}}.</ref>.
+
+Pour commencer, il va s'employer à convaincre [[Édouard Lockroy]], le ministre de l'Industrie et du Commerce, de lancer un concours ayant pour objet « d'étudier la possibilité d'élever sur le [[Champ-de-Mars (Paris)|Champ-de-Mars]] une tour en fer à base carrée de {{nobr|125 mètres}} de côté à la base et de {{nobr|300 mètres}} de hauteur ». Les modalités de ce concours, qui a lieu en {{date|mai 1886}}, ressemblent beaucoup au projet défendu par Gustave Eiffel, même si ce dernier ne les a pas écrites. Grâce à cette similitude, son projet a de grandes chances d'être retenu pour figurer à l'Exposition universelle qui se tient trois ans plus tard<ref name="Landon">{{Ouvrage|prénom1=François|nom1=Landon|titre=La Tour Eiffel|lieu=Paris|éditeur=[[Ramsay (maison d'édition)|Ramsay]]|numéro dans collection=2198|année=1981|pages totales=160|isbn=2-85956-303-2}}.</ref>. Encore faut-il convaincre que l'objet n'est pas purement un bâtiment d'agrément et qu'il peut remplir d'autres fonctions. En mettant en avant l'intérêt scientifique qui peut être retiré de sa tour, Eiffel marque des points.
+
+L'issue du concours n’est pourtant pas acquise d'avance à Eiffel. La concurrence est rude avec 107 projets déposés. Gustave Eiffel gagne finalement ce concours, l'autorisant à construire sa tour pour l'Exposition universelle de 1889, juste devant Jules Bourdais qui avait entre-temps, troqué le granit pour le [[fer]].
+
+[[Fichier:Convention signée sur les modalités de construction Et d’exploitation de la Tour de 300 mètres. 1 sur 8 - Archives Nationales - F-12-3770.jpg|thumb|right|upright|Convention signée le {{date|8 janvier 1887}} qui précise l’emplacement, ainsi que les modalités de construction et d’exploitation de la Tour de {{nobr|300 mètres}}.]]
+
+Deux problèmes se posent alors : le système d'[[ascenseur]]s qui ne satisfait pas le jury du concours, obligeant Eiffel à changer de fournisseur, et l'emplacement du monument. Au début, il est envisagé de lui faire enjamber la [[Seine]] ou de le coller à l'[[Ancien Palais du Trocadéro]], situé à l'emplacement de l'actuel [[palais de Chaillot]], avant finalement de décider de la placer directement sur le [[Champ-de-Mars (Paris)|Champ-de-Mars]], lieu de l'Exposition, et d'en faire une sorte de porte d'entrée monumentale.
+
+L'emplacement, mais aussi les modalités de construction et d'exploitation font l'objet d'[[s:Convention du 8 janvier 1887|une convention signée le {{date|8 janvier 1887}}]] entre Édouard Lockroy, ministre du Commerce, agissant au nom de l'État français, [[Eugène Poubelle]], [[Préfet (France)|préfet]] de la [[Seine (département)|Seine]], agissant ici au nom de la ville de Paris et Gustave Eiffel, agissant en son nom propre<ref group="note">Et non pour son entreprise.</ref>. Cet acte officiel précise notamment le coût prévisionnel de la construction, soit {{unité|6.5|millions}} de francs de l’époque, au double du devis initial<ref name=":1">{{Ouvrage|auteur1=Anne Vermès|titre=Piloter un projet comme Gustave Eiffel|sous-titre=comment mener un projet contre vents et marées|lieu=Paris|éditeur=[[Eyrolles]]|date=2013|pages totales=151|passage=56|isbn=978-2-212-55589-9|isbn2=221255589X|oclc=858209077}}.</ref>, payés à hauteur de {{unité|1.5|million}} de francs par des [[subvention]]s (article 7) et pour le reste par une [[société anonyme]] ayant pour objet spécifique l'exploitation de la tour Eiffel, créée par Gustave Eiffel et financée par l'ingénieur et un consortium de trois [[banque]]s. L'écrit précise aussi le prix des entrées qui devra être pratiqué durant l'Exposition universelle (article 7), et que, à chaque étage, une salle spéciale, devra être réservée, pour mener des expériences scientifiques et/ou militaires, restant gratuitement à disposition pour les personnes désignées par le Commissaire général (article 8){{etc}} Enfin, l'article 11 stipule qu'après l'Exposition, Paris deviendra propriétaire de la tour, mais que M. Eiffel, comme complément du prix des travaux, en conservera la jouissance pendant {{nobr|20 ans}} — jusqu'au {{date|31|décembre|1909}} — délai au bout duquel elle appartiendra à la [[Mairie de Paris|ville de Paris]].
+
+En 1889, avant que la tour Eiffel ne soit officiellement achevée, seules trois structures dépassaient {{nobr|150 mètres}}, soit la moitié de sa hauteur : la [[Cathédrale Notre-Dame de Rouen|cathédrale de Rouen]] ({{nobr|150 mètres}}), la [[cathédrale de Cologne]] ({{nobr|157 mètres}}) et l'[[Washington Monument|obélisque de Washington]] ({{nobr|169 mètres}}). Avec ses {{nobr|300 mètres}}, la tour Eiffel dépasse donc largement tous les autres grands bâtiments du monde existants<ref>{{Ouvrage|titre=L'Exposition de 1889 et la tour Eiffel, d'après les documents officiels / par un ingénieur|date=1889|lire en ligne=https://gallica.bnf.fr/ark:/12148/bpt6k61693x|consulté le=2024-03-22}} : biographies de Gustave Eiffel ({{Page|11–14}}), Maurice Koechlin ({{Page|17–18}}), Stephen Sauvestre ({{Page|19–20}}), Émile Nouguier ({{Page|15–16}}) et Édouard Lockroy ({{Page|67–70}}) et liste des plus hauts bâtiments en 1889 ({{Page|53}}).</ref>.
+
+=== Construction de la tour ===
+Aperçu des différentes étapes de la construction de la tour Eiffel :
+{{Animation
+ | upright = 0.5
+ | float = right
+ | titre = Animation d'octobre 1887 à avril 1889<br><small>clichés de Jules Théophile Féau (1839-1892)</small>
+ | delai = 0.5
+ | lire en boucle = 1
+ | boutons haut = 1
+ | Eiffel Tower 1887-10-08.jpg|8 octobre 1887
+ | Eiffel Tower 1887-11-10.jpg|10 novembre 1887
+ | Eiffel Tower 1888-04-10.jpg|10 avril 1888
+ | Eiffel Tower 1888-05-10.jpg|10 mai 1888
+ | Eiffel Tower 1888-10-14.jpg|14 octobre 1888
+ | Eiffel Tower 1888-11-14.jpg|14 novembre 1888
+ | Eiffel Tower 1888-12-26.jpg| 26 décembre 1888
+ | Eiffel Tower 1889-01-20.jpg|20 janvier 1889
+ | Eiffel Tower 1889-02-12.jpg|12 février 1889
+ | Eiffel Tower 1889-03-12.jpg|12 mars 1889
+ | Eiffel Tower 1889-04-02.jpg|2 avril 1889
+}}
+
+<gallery mode="packed">
+Fichier:Champ de Mars avant construction Tour Eiffel.jpg|[[Champ-de-Mars (Paris)|Champ-de-Mars]] en 1887, avant la construction de la Tour Eiffel.
+Fichier:Construction tour eiffel.JPG|18 juillet 1887 : commencement du montage métallique de la pile {{numéro|4.}}
+Fichier:Construction tour eiffel2.JPG|7 décembre 1887 : montage de la partie inférieure sur les pylônes en charpente.
+Fichier:Construction tour eiffel3.JPG|20 mars 1888 : montage des poutres horizontales sur l'échafaudage du milieu.
+Fichier:Construction tour eiffel4.JPG|15 mai 1888 : montage des piliers au-dessus du premier étage.
+Fichier:Construction tour eiffel5.JPG|21 août 1888 : montage de la deuxième plate-forme.
+Fichier:Construction tour eiffel6.JPG|26 décembre 1888 : montage de la partie supérieure.
+Fichier:Construction tour eiffel7.JPG|15 mars 1889 : montage du campanile.
+Fichier:Construction tour eiffel8.JPG|Fin mars 1889 : vue générale de l'ouvrage achevé.
+</gallery>
+
+==== Chantier ====
+Initialement, Gustave Eiffel (ingénieur passé maître dans l'architecture du fer) avait prévu douze mois de travaux ; en réalité, il faudra en compter le double. La phase de construction qui débute le {{date|28 janvier 1887}}, s’achèvera finalement en {{date|mars 1889}}, juste avant l’ouverture officielle de l’Exposition universelle.
+[[Fichier:Revista de la Exposición Universal de París, 1889 Talleres de Levallois-Perret. (3784008029).jpg|vignette|Ateliers de Levallois-Perret (1889)]]
+Sur le chantier, le nombre d’[[ouvrier]]s ne dépassera jamais 250. C’est que, en fait, une grande partie du travail est fait en amont, dans les usines des entreprises Eiffel à [[Levallois-Perret]]. Ainsi, sur les {{nombre|2500000|[[rivet]]s}} que compte la tour, seulement {{formatnum:1050846}} ont été posés sur le chantier, soit 42 % du total. La plupart des éléments sont assemblés dans les ateliers de Levallois-Perret, au sol, par tronçons de cinq mètres, avec des [[boulon]]s provisoires, et ce n’est qu’après, sur le chantier, qu’ils sont définitivement remplacés par des rivets posés à chaud.
+
+[[Fichier:Les fondations de la Tour Eiffel, maçonneries.jpg|thumb|left|Maçonnerie de la tour Eiffel en 1887. Photographie par [[Pierre Petit (photographe)|Pierre Petit]], [[musée d'Orsay]].]]
+
+La construction des pièces et leur assemblage ne sont pas le fruit du hasard. Cinquante ingénieurs exécutent pendant deux ans {{nombre|5300|dessins}} d’ensemble ou de détails, et chacune des {{nombre|18038|pièces}} en fer possédait son schéma descriptif.
+
+Sur le chantier, dans un premier temps, les ouvriers s’attaquent à la [[maçonnerie]] en réalisant notamment d’énormes socles en béton soutenant les quatre piliers de l’édifice. Cela permet de minimiser la pression au sol de l’ensemble qui n'exerce qu'une très faible poussée de {{unité|4.5|kg/cm|2}} au niveau de ses fondations.
+
+===== Montage =====
+[[Fichier:Paul Louis Delance Tour Eiffel.jpg|vignette|Construction de la tour Eiffel en janvier 1888 (peinture de [[Paul-Louis Delance]]).]]
+[[Fichier:Revista de la Exposición Universal de París, 1889 Construcción de la Torre Eiffel. (3784817812).jpg|vignette|Lors de la construction (1889)]]Le montage de la partie métallique proprement dite commence le {{date|1er juillet 1887}}. Les hommes chargés de ce montage sont nommés les voltigeurs et sont dirigés par [[Jean Compagnon (1837-1900)|Jean Compagnon]]. Jusqu’à {{nobr|30 mètres}} de hauteur, les pièces sont montées à l’aide de [[Grue (chantier)|grues]] pivotantes fixées sur le chemin des ascenseurs. Entre {{unité|30|et=45|mètres}} de hauteur, {{nombre|12|[[échafaudage]]s}} en [[bois]] sont construits. Une fois passés les {{nobr|45 mètres}} de hauteur, il fallut édifier de nouveaux échafaudages, adaptés aux poutres de {{nobr|70 tonnes}} qui furent utilisées pour le premier étage.
+
+Est ensuite venue l’heure de la jonction de ces énormes poutres avec les quatre arêtes, au niveau du premier étage. Cette jonction a été réalisée sans encombre le {{date|7 décembre 1887}} et a rendu inutiles les échafaudages temporaires, remplacés dans un premier temps par la première plate-forme ({{nobr|57 mètres}}), puis, à partir d’{{date|août 1888}}, par la seconde plate-forme ({{nobr|115 mètres}}).
+
+===== Grèves =====
+[[Fichier:Revista de la Exposición Universal de París, 1889 Subida de los trabajadores a la Torre Eiffel. (3784007749).jpg|vignette|Ouvriers escaladant la Tour Eiffel (1889)]]En {{date|septembre 1888}}, alors que le chantier est déjà bien avancé et le deuxième étage construit, les ouvriers se mettent en [[grève]]. Ils contestent les horaires de travail ({{nobr|9 heures}} en hiver et {{nobr|12 heures}} l’été), ainsi que leur salaire considéré insuffisant eu égard aux risques pris. Gustave Eiffel argue du fait que le risque n’est pas différent qu’ils travaillent à {{nobr|200 mètres}} d’altitude ou à 50, et bien que les ouvriers soient déjà mieux rémunérés que la moyenne de ce qui se pratiquait dans ce secteur à l’époque, il leur concède une augmentation de salaire, tout en refusant de l’indexer sur le facteur « risque variable selon la hauteur » demandé par les ouvriers.
+
+Trois mois plus tard, une nouvelle grève éclate mais cette fois-ci, Eiffel tient tête et refuse toute négociation.[[Fichier:Eiffel Tower and the Trocadero, Exposition Universal, 1900, Paris, France.jpg|vignette|Mise en perspective de la tour Eiffel et du Trocadéro pendant l'[[Exposition universelle de 1900|exposition universelle de Paris en 1900]].|centré]]
+
+==== Ascenseurs ====
+L’édifice achevé ou presque, il reste à prévoir un moyen pour que le public monte à la troisième plate-forme. Les ascenseurs Backmann initialement prévus dans le projet présenté au concours de {{date|mai 1886}}, ont été rejetés par le jury, Gustave Eiffel fait appel à trois nouveaux fournisseurs{{efn|2 ascenseurs Roux-Combaluzier et Lepape du sol au {{1er|étage}}, 2 ascenseurs Otis du sol au {{2e|étage}}, et 1 ascenseur Edoux du {{2e|étage}} au {{3e|étage}} (source : ''Guide de la tour Eiffel'', Paris, 1890), ce dernier remplacé en 1983, la société américaine [[Otis Elevator Company|Otis]] et enfin [[Félix Léon Edoux|Léon Edoux]].}} : [[Roux-Combaluzier]] et Lepape (devenus [[Groupe Schindler|Schindler]]), la société américaine [[Otis Elevator Company|Otis]] et enfin [[Félix Léon Edoux|Léon Edoux]] qui a fait ses études dans la même promotion que Gustave Eiffel.
+
+==== Fer puddlé de la tour ====
+[[Fichier:Eiffeltower, Forges et Usines de Pompey, Fould-Dupont fournisseur, Des Fers de la Tour.JPG|vignette|Au pied de la tour Eiffel à Paris.]]
+
+Le [[Puddlage|fer puddlé]] (matériau débarrassé de l'excès de [[carbone]]) de la tour Eiffel a été produit dans les forges et aciéries [[Société des Hauts Fourneaux, Forges et Aciéries de Pompey|Dupont et Fould]] de [[Pompey]], en [[Lorraine]]<ref>{{Lien web |titre= États de service de Monsieur Alphonse Fould, chef et seul propriétaire de la maison Fould-Dupont |date= 18-12-1889 |lire en ligne= http://www2.culture.gouv.fr/LH/LH075/PG/FRDAFAN83_OL1008056v008.htm }}, base Leonore de la légion d'Honneur.</ref>, à la suite d’un appel d’offres remporté par l’entreprise. Gustave Eiffel l'a choisi notamment en raison de ses propriétés mécaniques<ref>« [http://www.otua.org/aciers-ts/glossaire/narration-eiffel.asp Les traitements de surface à la tour Eiffel] », sur ''Office technique de l'utilisation de l'acier (OTUA)''.</ref>. Contrairement à plusieurs idées reçues, le fer utilisé par les forges provient uniquement de [[Lorraine]], plus précisément des mines de [[Ludres]]<ref>{{Lien web |titre=D’où vient le fer de la tour Eiffel - La tour Eiffel |url=https://www.toureiffel.paris/fr/actualites/histoire-et-culture/dou-vient-le-fer-de-la-tour-eiffel |site=www.toureiffel.paris |date=2021-02-12 |consulté le=4 septembre 2026}}.</ref> et de [[Faulx]]<ref>{{article |titre= Les fers de la tour Eiffel |auteur= Lucien Geindre |url= https://gallica.bnf.fr/ark:/12148/bpt6k96001953/f44.item |périodique= Le pays lorrain |date= 1989 |numéro=1 |année= 86 |volume= 66 |consulté le= 10-08-2026}}</ref>.
+
+==== Peintures ====
+
+Les éléments de structure de la tour Eiffel sont peints avant son montage en [[rouge]] Venise puis à son inauguration en 1889, l'édifice est recouvert d'une épaisse couche de [[Brun (couleur)|brun]] rouge, « avant de connaître, au fil des années, différentes teintes » - Gustave Eiffel ayant écrit que le bâtiment a été conçu de façon à rendre ses parties accessibles « afin de pouvoir faire en tout temps des visites destinées à reconnaître un commencement de rouille et à y remédier »<ref name=":2">{{Lien web |auteur=Caroline Beyer |titre=Inquiétude sur l'état de la tour Eiffel |url=https://www.lefigaro.fr/culture/patrimoine/la-tour-eiffel-est-elle-en-train-de-rouiller-20220703 |site=LEFIGARO |date=2022-07-03 |consulté le=4 septembre 2026}}.</ref>.
+
+Depuis 1968, lors de sa trente-cinquième campagne de peinture, la couleur choisie et qui demeure est le brun<ref name=":2" />.
+
+En 1995, la tour est pour la première fois [[Peinture au plomb|repeinte sans plomb]]<ref name=":2" />.
+
+Depuis 2018, débute une nouvelle campagne de rénovation et peinture devant se terminer en 2024<ref name=":2" />. (Voir ''infra'')
+
+[[Fichier:Les-couleurs-de-la-Tour-Eiffel-au-fil-du-temps-byRundvald.jpg|centre|721px]]
+
+==== Bilan ====
+[[Fichier:Revista de la Exposición Universal de París, 1889 "Los transportes durante los trabajos". (3784004657).jpg|vignette|Transports durant les travaux de l'exposition universelle de 1889]]En {{date|mars 1889}}, le monument est achevé à temps et aucun accident mortel n'a été déploré parmi les ouvriers (un ouvrier y trouve toutefois la mort un dimanche ; il ne travaillait pas et perd l'équilibre lors d'une démonstration à sa fiancée).
+
+La tour Eiffel a coûté {{unité|7799401.31|francs}}<ref>{{Lien web |titre=Coût de la tour Eiffel |url=https://www.merveilles-du-monde.com/Tour-Eiffel/Cout-de-la-tour-Eiffel.php |site=merveilles-du-monde.com |consulté le=4 septembre 2026}}.</ref> soit environ {{nombre|1.5|million}} de francs de plus que prévu, et a pris le double du temps à être construit que ce qui était initialement prévu dans la convention de {{date|janvier 1887}}. Cela représente aussi plus du double du devis initial d'Eiffel présenté à la Société des Ingénieurs Civils, en 1885<ref name=":1" />.
+
+=== Tour Eiffel de 1889 à la Première Guerre mondiale ===
+[[Fichier:L'acierlorrain2012.JPG|vignette|Manifestation devant la tour Eiffel, rappelant le rôle des aciéries lorraines (2012)<ref>{{Article|auteur1=Pauline Overney|titre=Parisienne… mais Lorraine !|périodique=Lorraine magazine|numéro=110|pages=6–8|date=2018|lire en ligne=https://www.lorrainemag.com/wp-content/uploads/2018/02/LorraineMag110.pdf|format=pdf}}.</ref>.]]
+[[Fichier:Vue aérienne, depuis un ballon, de l'exposition universelle de 1889 par Alphonse Liébert 3b40741.jpg|vignette|gauche|Vue aérienne de l'[[Exposition universelle de Paris de 1889]] à l'occasion de laquelle la tour Eiffel fut construite.]]
+[[Fichier:Eiffel_revers._Médaille_souvenir.jpg|vignette|Médaille de 1889 commémorant l'ascension du 1er étage. La tour est représentée à côté de 9 monuments célèbres : Invalides, N-D de Cologne, Opéra, Grande pyramide, Panthéon, St-Pierre, Arc de triomphe, Rouen, Obélisque Washington.]]
+
+Le {{date|6 mai 1889}}, l’[[Exposition universelle de Paris de 1889|Exposition universelle]] ouvre ses portes au public, qui peut grimper sur ''la Tour de 300 mètres'' (nom de la tour Eiffel à cette époque) à partir du {{date|15 mai}}. Alors qu’elle avait été décriée pendant sa construction, elle connaît, pendant l’Exposition, un succès populaire immédiat. Dès la première semaine, alors que les ascenseurs ne sont même pas encore en service, ce sont {{nombre|28922|personnes}} qui grimpent à pied en haut de l’édifice. Finalement, sur les {{nobr|32 millions}} d’entrées comptabilisées pour l’Exposition, ce sont environ {{nobr|2 millions}} de curieux qui s’y presseront.
+
+Le monument, qui est alors le plus haut du monde (jusqu’en [[1930]] et l’édification du ''[[Chrysler Building]]'' à [[New York]]), attire aussi quelques personnalités, dont [[Thomas Edison]].
+
+Mais, une fois l’Exposition finie, la curiosité retombe vite et le nombre de visiteurs avec elle. En 1899, seules {{nombre|149580|entrées}} sont comptabilisées. Afin de relancer l’exploitation commerciale de sa tour, Gustave Eiffel baisse le prix des billets d’entrée, sans que l’impact soit significatif. Il faut attendre l’[[Exposition universelle de 1900]] à Paris, pour que remonte le nombre de curieux. À cette occasion, plus d’un million de tickets sont vendus, ce qui est largement supérieur aux dix années précédentes, mais bien inférieur à ce qui aurait pu être permis. En effet, non seulement les entrées sont deux fois moins nombreuses qu’en 1889, mais, en part absolue, la baisse est encore plus forte, compte tenu du fait que les visiteurs de l’Exposition universelle de 1900 sont encore plus nombreux qu’en 1889.
+
+La chute du nombre d’entrées reprend dès 1901, de sorte que l’avenir de la tour n’est pas assuré, passé le {{date|31 décembre 1909}}, date de la fin de la concession d’origine. Certains avancent même l’idée qu’elle puisse être détruite.
+
+[[Bombardements de Paris et de sa banlieue durant la Première Guerre mondiale|Le {{date|15 juillet 1918}}]], durant la [[Première Guerre mondiale]], un obus lancé par la [[Pariser Kanonen|Grosse Bertha]] explose près du pilier Est de la Tour Eiffel<ref>{{Gallica|id=bpt6k4605797h|t=Excelsior du 9 janvier 1919 : Carte et liste officielles des obus lancés par le canon monstre et numérotés suivant leur ordre et leur date de chute (pages 1 et 5)}}.</ref>.
+
+=== Expériences scientifiques et radiodiffusion ===
+{{article détaillé|Gustave Eiffel#Eiffel et les nouvelles technologies{{!}}Eiffel et les nouvelles technologies}}
+[[Fichier:Vue Lumière No 992 - Panorama pendant l'ascension de la Tour Eiffel (1898).ogv|vignette|Vue panoramique pendant l'ascension de la tour Eiffel, par les [[Auguste et Louis Lumière|frères Lumière]], 1898.]]Conscient du risque de destruction de la tour, Gustave Eiffel imagine, dès l'origine, qu'elle puisse rendre des services à la science. C’est pourquoi, il y multiplie les expériences, qu’il finance en partie, jusqu'à son retrait des affaires en 1893, après le [[scandale de Panama]] dans lequel il est impliqué.
+
+==== Météorologie et aérodynamique ====
+En [[1889]], il autorise [[Éleuthère Mascart]], premier directeur du Bureau central météorologique de France (ancêtre de [[Météo-France]] créé en 1878) à installer une petite station d’observation en haut de la tour Eiffel.
+
+En [[1909]], une petite [[soufflerie]] est construite au pied de la tour. Elle est remplacée en 1912 par une soufflerie beaucoup plus vaste, rue Boileau, dans le [[16e arrondissement de Paris|{{16e}} arrondissement]], où sera conçu le seul avion de [[Gustave Eiffel]], le [[Breguet Laboratoire Eiffel]].
+
+==== Radio et télévision ====
+[[Fichier:Antenne tour Eiffel 1914.jpg|thumb|Les [[Télégraphie sans fil|antennes radiotélégraphiques]], 1914.]]En octobre [[1898]], [[Eugène Ducretet]] établit la première liaison [[Transmission sans fil|téléphonique hertzienne]] entre la tour Eiffel et le [[Panthéon (Paris)|Panthéon]], distant de {{nobr|4 kilomètres}}.
+
+En [[1903]], Gustave Eiffel soutient, à ses frais, le projet du capitaine [[Gustave Ferrié]], qui cherche à établir un réseau [[Télégraphe|télégraphique sans fil]], sans le financement de l’Armée qui privilégie à cette époque les signaux optiques et les [[Pigeon voyageur|pigeons voyageurs]], jugés plus fiables. Alors que la [[télégraphie sans fil]] n’en est qu’à ses balbutiements, il accepte l'installation d'une antenne au sommet de sa tour, l'expérience est couronnée de succès.
+
+La tour Eiffel a donc un potentiel scientifique qui mérite d’être exploité : les autorités décident, en 1910, de prolonger la concession et l’exploitation pour soixante-dix années supplémentaires. La tour apparaît d’autant plus utile qu’il s’agit du point le plus élevé de la région parisienne et que son émetteur de TSF aura été stratégique pendant la [[Première Guerre mondiale]]. Grâce à la tour Eiffel, plusieurs messages décisifs sont captés dont le « radiogramme de la victoire », permettant de déjouer l’[[Bataille de la Marne (1914)|attaque allemande sur la Marne]], et ceux conduisant à l'arrestation de [[Mata Hari]].
+
+À partir des années 1920, le réseau de TSF à usage strictement militaire dont fait partie l’émetteur de la tour Eiffel bascule vers un usage civil. À partir de 1921, des programmes radio sont régulièrement diffusés depuis la tour Eiffel et [[Radio Tour Eiffel]] est officiellement inaugurée le {{date|6|février|1922}}.
+
+En [[1925]], la tour Eiffel sert de cadre aux débuts de la [[télévision en France]]. La technique s’améliore et des émissions, encore expérimentales, sont proposées entre 1935 et 1939.
+
+À la [[Libération de la France|Libération]], l'émetteur Telefunken du ''Fernsehsender Paris'' est utilisé pour les premières émissions en {{nobr|441 lignes}}. Après son incendie, il est remplacé par un émetteur {{nobr|819 lignes}} jusqu'à l'arrêt des émissions en noir et blanc de TF1. La télévision se répand ensuite dans les foyers, d’abord en noir et blanc, puis en couleur.
+
+En [[1959]], l’installation d’un nouveau mât de télédiffusion fait culminer la tour Eiffel à {{unité|320.75|mètres}} et arrose {{nobr|10 millions}} de personnes. Un émetteur pour la [[télévision numérique terrestre]] est installé en 2005.
+
+=== Virage de 1937 ===
+La société d'exploitation change et la tour subit quelques transformations à l'occasion de l'[[Exposition spécialisée de 1937]] : les décorations démodées du premier étage sont enlevées et un nouvel éclairage est installé.
+
+=== La tour depuis la Seconde Guerre mondiale ===
+[[Fichier:Fréquentation tour Eiffel.svg|thumb|400px|Évolution de la fréquentation de la tour Eiffel depuis 1889.]]
+
+La tour est réquisitionnée par la [[Wehrmacht]] qui y installe également le seul émetteur de télévision fonctionnant en Europe pendant la guerre, le ''Fernsehsender Paris'', pour communiquer avec les troupes. Les émissions, principalement en français, étaient destinées aux militaires allemands blessés se trouvant dans les hôpitaux de la région. Les Allemands placent un faisceau lumineux dans la tour pour guider les avions, dans la nuit. Après avoir échappé à la destruction prévue par [[Hitler]] en 1944, elle passe, à la [[Libération de la France|Libération]], sous contrôle allié et les Américains y installent un [[radar]].
+
+En 1952, la tour Eiffel se voit aussi dotée d'un [[phare aéronautique]] de balisage, remplaçant celui du [[mont Valérien]] détruit pendant la guerre. De par sa hauteur et sa position, celui-ci pouvait balayer les quatre points cardinaux sans être interrompu par le relief. Les faisceaux pouvaient porter jusqu'à trois-cents kilomètres.
+
+À partir des années 1960, le [[tourisme]] international de masse commence à se développer, et le nombre de visiteurs de la tour augmente pour atteindre progressivement le cap des {{nobr|6 millions}} d’entrées annuelles (cap passé pour la première fois en 1998). Une rénovation a lieu dans les années 1980, autour de trois axes :
+* l'allègement de la structure de l'édifice ;
+* la reconstruction totale des ascenseurs et escaliers ;
+* la création de moyens de sécurité adaptés au succès populaire de la tour.
+
+[[Fichier:France, 1989 - 5 francs, Fifth Republic, 100 years of the Eiffel Tower, silver.jpg|thumb|Pièce de collection de 5 [[Franc français|francs]] émise pour le {{100e}} anniversaire de la tour Eiffel (1989, [[Pièce en argent|argent]]).]]
+
+La tour Eiffel, ainsi allégée de {{unité|1340|tonnes}} superflues, est repeinte et traitée contre la corrosion, les ascenseurs de la troisième plate-forme sont remplacés, le restaurant gastronomique ''Le Jules-Verne'' est installé, un dispositif d’éclairage composé de {{nobr|352 projecteurs}} au [[sodium]] est mis en place. Les noms de savants du premier étage sont remis en valeur par de la dorure comme à l'origine.
+
+En 2002, le cap des {{nobr|200 millions}} d’entrées cumulées est dépassé.
+
+Le {{date|1 janvier 2006}}, s’ouvre une nouvelle période d’exploitation de dix ans, le concessionnaire étant la société d'économie mixte SETE (Société d'exploitation de la tour Eiffel), dont le capital est détenu à 60 % par la ville de Paris.
+
+En {{date|février 2015}}, le deuxième étage de la tour Eiffel est équipé de deux éoliennes capables de produire {{unité|10|[[Kilowatt-heure|MWh]]}} par an. En comparaison, la consommation électrique annuelle de la tour s'élève à {{unité|6.7|GWh}}<ref>{{Lien web |auteur=AFP |titre=Deux éoliennes sur la Tour Eiffel |url=https://www.lefigaro.fr/flash-actu/2015/02/26/97001-20150226FILWWW00120-deux-eoliennes-sur-la-tour-eiffel.php |site=Le Figaro |date=2015-02-26 |consulté le=2024-03-22}}.</ref>.
+
+Fin 2017, un appel à projets international est lancé par la maire de Paris [[Anne Hidalgo]] afin d'embellir les alentours du monument et de supprimer les files d'attente<ref>{{Lien web |titre=Exclusif. Un concours mondial pour la tour Eiffel de demain |url=https://www.lejdd.fr/Societe/exclusif-un-concours-mondial-pour-la-tour-eiffel-de-demain-3522758 |site=lejdd.fr |date=2017-12-16 |consulté le=2024-03-22}}.</ref>. Depuis fin 2019, des travaux de peinture ont lieu pour la tour, qui arborera une nouvelle couleur plus dorée en prévision des [[Jeux olympiques d'été de 2024|Jeux olympiques de 2024]] à Paris. Les travaux doivent prendre fin au cours de l'année 2022.
+[[Fichier:Olympic rings on the Eiffel Tower 2024 (5).jpg|vignette|Anneaux olympiques sur la Tour Eiffel, lors des [[Jeux olympiques d'été de 2024|Jeux Olympiques d'été]] en 2024.]]
+Lors des [[Jeux olympiques d'été de 2024|Jeux Olympiques d'été de 2024]] se déroulant à Paris, les [[Anneaux olympiques|anneaux de l'olympisme]] sont installés temporairement au niveau du premier étage de la tour. Le {{Date|31 août 2024}}, il est annoncé que les anneaux seront conservés sur la façade de la tour, à la suite d'une décision de la maire [[Anne Hidalgo]]<ref>{{Article|titre=Les anneaux olympiques « vont rester sur la tour Eiffel » après les Jeux, annonce Anne Hidalgo|périodique=[[Le Monde]]|date=2024-08-31|lire en ligne=https://www.lemonde.fr/jeux-paralympiques/article/2024/08/31/les-anneaux-olympiques-vont-rester-sur-la-tour-eiffel-apres-les-jeux-annonce-anne-hidalgo_6300540_6192807.html|consulté le=2024-08-31}}</ref>. Dans la nuit du 26 au {{date|27 septembre 2024}}, les anneaux olympiques accrochés sur la tour Eiffel depuis {{date|juin 2024}} ont été retirés, en attendant en principe d'être remplacés par une structure plus pérenne pour y rester jusqu'en 2028 comme le veut la mairie de Paris<ref>{{Lien web |titre=Les anneaux olympiques de la tour Eiffel ont été déposés |url=https://www.lefigaro.fr/flash-actu/les-anneaux-olympiques-de-la-tour-eiffel-ont-ete-deposes-20240927 |site=Le Figaro |date=2024-09-27 |consulté le=2024-09-27}}</ref>.
+
+=== Lutte contre le terrorisme ===
+[[Fichier:Nouvel aménagement Tour Eiffel (30802597738).jpg|vignette|Dispositif pare-balles et antivoiture-bélier.]]
+
+En raison du [[Terrorisme en France|risque terroriste]], la [[Société d'exploitation de la tour Eiffel]] fait fermer le parvis de la tour à la libre circulation en {{date|juin 2016}} et sécurise le périmètre en mettant en place en 2018 sur deux côtés une enceinte en verre pare-balles épaisse de {{Unité|6,5 cm}} complétée par des plots anti-voitures-béliers, sur les deux autres un grillage métallique haut de {{Unité|3,24 m}} (le centième de la tour Eiffel) qui « reprend la forme et les courbes » de la tour<ref>{{lien web |titre=Travaux de clôture : accès et circulations modifiés |url=https://www.toureiffel.paris/fr/actualites/chantiers/travaux-de-cloture-acces-et-circulations-modifies |site=La tour Eiffel |date=07-03-2018 |consulté le=07-06-2020}}.</ref>{{,}}<ref>{{Lien web|url=https://www.20minutes.fr/paris/2289987-20180614-paris-mur-verre-barriere-acier-plots-ca-tour-eiffel-dispositif-securite|titre=Paris : Mur de verre, barrière en acier, plots… Ça y est la tour Eiffel a son dispositif de sécurité|date=14 juin 2018|site=20minutes.fr}}.</ref>. Des fouilles ont lieu.
+
+== Évocations de la tour ==
+{{Article général|position=section|Représentation de la tour Eiffel dans l'art et la culture}}
+
+=== Protestation des artistes contre la tour ===
+
+Des articles, souvent pamphlétaires, sont publiés tout au long de l'année 1886, avant le début des travaux.
+
+Alors que les fondations de l'édifice n'avaient commencé que quelques jours plus tôt, le {{date|28 janvier 1887}} exactement, [[s:Protestation des artistes contre la tour de M. Eiffel du 14 février 1887|une lettre de protestation]] signée par une cinquantaine d'artistes (écrivains, peintres, compositeurs, architectes, etc.) paraissait dans le journal ''[[Le Temps (quotidien français, 1861-1942)|Le Temps]]'' le {{date|14 février 1887}}<ref group="o" name="p9">{{p.|9}}.</ref>. Signée de grands noms de l'époque ([[Alexandre Dumas fils]], [[Guy de Maupassant]], [[Émile Zola]], [[Charles Gounod]], [[Leconte de Lisle]], [[Charles Garnier (architecte)|Charles Garnier]], [[Sully Prudhomme]], etc.) et restée célèbre sous le nom de ''Protestation des artistes contre la tour de M. Eiffel'', elle se montrait très virulente à l'égard de la hauteur de la tour qui viendrait, selon eux, défigurer Paris<ref group="o" name=p9/> :
+
+{{Citation bloc|II suffit d’ailleurs, pour se rendre compte de ce que nous avançons, de se figurer une tour vertigineusement ridicule, dominant Paris, ainsi qu’une noire et gigantesque cheminée d’usine, écrasant de sa masse barbare : [[Cathédrale Notre-Dame de Paris|Notre-Dame]], la [[Sainte-Chapelle]], la [[tour Saint-Jacques]], le [[Palais du Louvre|Louvre]], le [[Hôtel des Invalides|dôme des Invalides]], l’[[Arc de triomphe de l'Étoile|Arc de triomphe]], tous nos monuments humiliés, toutes nos architectures rapetissées, qui disparaîtront dans ce rêve stupéfiant. Et pendant vingt ans, nous verrons s’allonger sur la ville entière, frémissante encore du génie de tant de siècles, comme une tache d’encre, l’ombre odieuse de l’odieuse colonne de tôle boulonnée.|Collectif d’artistes, « Les artistes contre la tour Eiffel », ''Le Temps'', 14 février 1887.}}
+
+Un débat houleux mêlant des personnalités de l'époque, des responsables politiques, des journalistes, des ingénieurs suit cette déclaration.
+
+En {{date|juillet 1888}}, [[François Coppée]] fustige la tour Eiffel, qu’il traite de « mât de fer aux durs agrès / Inachevé, confus, difforme », de « symbole de force inutile », d’« œuvre monstrueuse et manquée » ou encore de « mât ridicule » (''Sur la tour Eiffel, deuxième plateau'', ''Poésies''). En {{date|mai 1889}}, par poésie interposée, [[Raoul Bonnery]] lui répond : « Tu mis la fleur de ta science/ À m'appeler « Monstre hideux » / Un peu plus de reconnaissance / T'eût convenu peut-être mieux. », ou encore « Quel sang dans tes veines circule / Pour t'écrier avec mépris, / Que je suis un mât ridicule / Sur le navire de Paris. / Un mât ? J'accepte l'épithète, / Mais un mât fier, audacieux, / Qui saura, portant haut la tête, / Parler de progrès jusqu'aux cieux. » (''La tour Eiffel à François Coppée, le jour de ses {{nobr|300 mètres}}'', in ''Le Franc journal''). Au contraire des exemples précédents, [[Vicente Huidobro]], [[Blaise Cendrars]] et [[Louis Aragon]] lui rendent hommage (respectivement dans ''Nord-Sud'', {{numéro|6-7}}, [[1917]], ''La tour en 1910'' in ''Dix-neuf poèmes élastiques'', [[1913]] et ''La tour parle'' in ''La Tour Eiffel de Robert Delaunay''). [[Pierre Bourgeade]], dans une nouvelle intitulée ''La Suicidée'', relate, via le témoignage d'un gardien, le suicide d'une inconnue ayant sauté du {{3e|étage}} de la tour (in ''Les Immortelles'', Gallimard, 1966).
+
+On a pu lire ailleurs :
+* « ce lampadaire véritablement tragique » ([[Léon Bloy]]) ;
+* « ce squelette de beffroi » ([[Paul Verlaine]]) ;
+* « ce mât de fer aux durs agrès, inachevé, confus, difforme » ([[François Coppée]]) ;
+* « cette haute et maigre pyramide d'échelles de fer, squelette disgracieux et géant, dont la base semble faite pour porter un formidable monument de Cyclopes, et qui avorte en un ridicule et mince profil de cheminée d'usine » ([[Guy de Maupassant]]) ;
+* « un tuyau d'usine en construction, une carcasse qui attend d'être remplie par des pierres de taille ou des briques, ce grillage infundibuliforme, ce suppositoire criblé de trous » ([[Joris-Karl Huysmans]]).
+
+Gustave Eiffel répondit à la protestation des artistes dans [[s:Réponse de Gustave Eiffel à la protestation des artistes du 14 février 1887|un entretien avec Paul Bourde]] qui fut reproduit dans le même numéro du journal ''Le Temps'', à la suite de la protestation<ref group="o" name=p9/>.
+
+Le ministre [[Édouard Lockroy]] remit au directeur des travaux, [[Adolphe Alphand]], [[s:Réponse du ministre Édouard Lockroy à la protestation des artistes contre la tour Eiffel|une réponse]] qui pourrait avoir été rédigée par un obscur fonctionnaire nommé Georges Moineaux, qui deviendra célèbre sous le nom de [[Georges Courteline]].
+
+Gustave Eiffel écrivit plus tard : {{citation bloc|Cette page bien française a dû étonner quelque peu les expéditionnaires du ministère ; la correspondance administrative n'est malheureusement d'ordinaire ni si vive, ni si gaie, ni si spirituelle ; sa sévérité s'accommode mal à nos vieilles traditions gauloises. Si M. Lockroy pouvait faire école, l'exercice des fonctions publiques serait moins monotone et certainement mieux apprécié. Le ministre avait su mettre les rieurs de son côté. Son procès était gagné.}}
+
+La tour Eiffel a attiré les foules après son inauguration, faisant, petit à petit, taire les réticences. Ainsi, deux ans après avoir signé la « protestation des artistes », [[Sully Prudhomme]] prononce [[s:Discours prononcé au 13e banquet de la conférence Scientia par Sully Prudhomme le 13 avril 1889|un discours favorable à la tour]].
+
+=== Art pictural ===
+{{Article détaillé|Représentation de la tour Eiffel dans l'art et la culture#En peinture{{!}}Représentation de la tour Eiffel dans la peinture}}
+
+Avant même la fin de la construction, [[Georges Seurat]] ou encore [[Paul-Louis Delance]] peignent la tour Eiffel. En [[1889]], le peintre Roux la représente à la ''Fête de nuit à l’Exposition universelle de 1889'' et [[Jean Béraud]] la fait apparaître en arrière-plan de son ''Entrée de l’Exposition de 1889''.
+
+Puis plusieurs peintres viendront directement s'en inspirer : le [[Henri Rousseau|Douanier Rousseau]], [[Paul Signac]], [[Pierre Bonnard]], [[Maurice Utrillo]], [[Gromaire|Marcel Gromaire]], [[Édouard Vuillard]], [[Albert Marquet]], [[Raoul Dufy]], [[Marc Chagall]], [[Roger Lersy]], [[Henri Rivière (artiste)|Henri Rivière]]<ref group="o" name="p16">{{p.|16}}.</ref>, [[Paolo Intini]]<ref>{{Lien web |titre=La Tour Eiffel |url=https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/la-tour-eiffel |site=parismuseescollections.paris.fr |consulté le=2024-03-22}}.</ref>.
+
+Mais le peintre le plus prolifique et inspiré vis-à-vis de la tour Eiffel reste [[Robert Delaunay]], qui en fait le sujet central d'une trentaine de toiles, réalisées entre [[1910]] et [[1925]]<ref>« [http://www.cnac-gp.fr/expositions/toureiffel/delaunay.htm La tour Eiffel de Delaunay] », sur ''cnac-gp.fr''.</ref>.
+
+<gallery mode="packed">
+Fichier:Georges Seurat 043.jpg|[[Georges Seurat]] (1859-1891). ''[[La Tour Eiffel (Seurat)|La Tour Eiffel]]''. 1889, [[musée des beaux-arts de San Francisco]].
+Fichier:Paul Louis Delance Tour Eiffel.jpg|Paul-Louis Delance (1848-1924). ''La tour Eiffel vue de la Seine''. 1889, [[musée Carnavalet]].
+Fichier:Douanier Rousseau tour Eiffel.jpg|[[Henri Rousseau]] (1844-1910). ''La tour Eiffel''. 1898, [[musée des Beaux-Arts de Houston]].
+Fichier:Delaunay - Tour Eiffel.jpeg|[[Robert Delaunay]] (1885-1941) ''[[Tour Eiffel (Delaunay, 1911)|La Tour Eiffel]]''. 1911, [[Art Institute of Chicago]].
+</gallery>
+
+=== Littérature ===
+{{Article détaillé|Représentation de la tour Eiffel dans l'art et la culture#En littérature{{!}}Représentation de la tour Eiffel dans la littérature}}
+
+Au moment de son édification et au tout début de son exploitation, le monument a avant toute chose fait l’objet d’analyses critiques personnelles, le plus souvent publiées dans des journaux de l’époque et le plus souvent négatives, les artistes abordant les thèmes récurrents du défi technique, industriel et commercial que la tour représentait à l’époque, de son influence sur le rayonnement de la France à l’étranger, l’aspect esthétique ou au contraire inesthétique de la tour ou encore de son intérêt scientifique potentiel ou au contraire de son inutilité.
+
+[[Fichier:Maupassant vie errante.JPG|thumb|upright|{{1re|page}} de ''[[:s:La Vie errante|La Vie errante]]'' (''[[:s:Lassitude (La Vie errante)|Lassitude]]'') de [[Guy de Maupassant]].]]
+
+Par la suite, devant le succès populaire qu’elle a remporté auprès du grand public, un grand nombre d’écrivains ont revu leurs considérations, balayant leurs dernières réserves.
+
+[[Roland Barthes]] décrit ce sentiment d'attrait/répulsion des artistes vis-à-vis de la tour Eiffel :
+{{Citation bloc|Regard, objet, symbole, la tour est tout ce que l’homme met en elle, et ce tout est infini. Spectacle regardé et regardant, édifice inutile et irremplaçable, monde familier et symbole héroïque, témoin d’un siècle et monument toujours neuf, objet inimitable et sans cesse reproduit, elle est le signe pur, ouvert à tous les temps, à toutes les images et à tous les sens, la métaphore sans frein ; à travers la tour, les hommes exercent cette grande fonction de l’imaginaire, qui est leur liberté ; puisque aucune histoire, si sombre soit-elle, n’a jamais pu la leur enlever.|[[Roland Barthes]], ''La Tour Eiffel'', Delpire Éditeur, 1964.}}
+
+[[Fichier:Guillaume Apollinaire Calligramme.JPG|thumb|[[Calligrammes|Calligramme]] de [[Guillaume Apollinaire]].]]
+
+[[Léon-Paul Fargue]] revient sur l’analyse critique de ses pairs, sur la tour à ses débuts (''Le Piéton de Paris'', [[1932]]-[[1939]]), de même que [[Pierre Mac Orlan]], qui tout en rappelant qu’au départ, pour les artistes, « vitupérer contre la tour […] était un brevet de sensibilité littéraire et artistique », souligne l’intérêt scientifique et militaire qui a ensuite été reconnu à la tour (''La Tour, Javel et les Bélandres, Villes'', in ''Œuvres complètes''), enfin dernièrement, [[Pascal Lainé]] aborde l’histoire de la conception, de la construction et des premières années d’exploitation de la tour à travers une narration romancée (''Le Mystère de la tour Eiffel'', [[2005]]). En cela, il se rapproche de [[Dino Buzzati]], qui dans ''Le K.'', mettait en scène un ouvrier fictif qui aurait travaillé sur le chantier de la tour en [[1887]]-[[1889]]. Néanmoins, Buzzati procède différemment de Lainé, son texte étant une [[nouvelle]], pas un [[Roman (littérature)|roman]], et le ton utilisé étant fantastique et non réaliste comme pour Pascal Lainé.
+
+En [[poésie]], [[Guillaume Apollinaire]] en a fait un calligramme souvenir de guerre, dans ''{{2e|canonnier}} conducteur'' du recueil ''[[Calligrammes]]'' ([[1918]]), et l'évoque dans un vers de ''[[Alcools (Apollinaire)|Zone]]'' en [[1913]], vers que [[René Étiemble]] considère, dans ''Essais de littérature (vraiment) générale'', comme un exemple d’[[haïku]] occidental (« Bergère ô tour Eiffel le troupeau des ponts bêle ce matin »).
+
+Le monument du Champ-de-Mars a également été traité sous des formes particulières : journal ([[Jules de Goncourt]] et [[Edmond de Goncourt]], ''Journal'', tome VIII, {{date|6 mai}} et {{date|2 juillet 1889}}), récit de voyage ([[Guy de Maupassant]], ''[[La Vie errante]]'', [[1890]]), où l’écrivain dit son dégoût de la tour Eiffel (dès les premières lignes, le ton est donné : « J’ai quitté Paris et même la France, parce que la tour Eiffel finissait par m’ennuyer trop »), étude [[sémiologie|sémiologique]] ([[Roland Barthes]], ''La Tour Eiffel'', [[1964]]), mais aussi préface de livres, discours à une conférence, article dans une revue, etc.
+
+La tour est également largement évoquée dans le roman d'[[Umberto Eco]] ''[[Le Pendule de Foucault]]'', publié en 1988 ; le chapitre 116 lui est presque entièrement consacré.
+
+=== Cinéma et télévision ===
+{{Article détaillé|Représentation de la tour Eiffel dans l'art et la culture#Au cinéma et à la télévision{{!}}Représentation de la tour Eiffel au cinéma et à la télévision}}
+
+Dès que l'ingénierie cinématographique commença à se développer, la tour Eiffel fut filmée par les cinéastes les plus illustres. Ainsi, dès [[1897 au cinéma|1897]], soit seulement 8 ans après son inauguration, [[Louis Lumière]] filme le premier l'édifice dans ''Panorama pendant l'ascension de la tour Eiffel'' pour le diffuser au public dans sa salle de projection parisienne. Un autre pionnier du cinéma, [[Georges Méliès]], la montrera dans ''Images de l'exposition 1900''.
+
+La tour Eiffel trouve sa première consécration dans une œuvre de fiction avec les premiers ''Fantômas'' de [[Louis Feuillade]], soit {{nobr|5 films}} d'action réalisés durant les années [[1913 au cinéma|1913]] et [[1914 au cinéma|1914]] (''[[Fantômas (film, 1913)|Fantômas]], [[Juve contre Fantômas (film, 1913)|Juve contre Fantômas]], [[Le Mort qui tue (film, 1913)|Le mort qui tue]], [[Fantômas contre Fantômas (film, 1914)|Fantômas contre Fantômas]]'' et ''[[Le Faux Magistrat (film)|Le Faux Magistrat]]''). [[René Navarre]] qui joue ''Fantômas'' est alors le maître de la tour Eiffel.
+
+En [[1923 au cinéma|1923]], avec ''[[Paris qui dort]]'', [[René Clair]] réalise la première fiction ayant la tour Eiffel pour personnage principal. Dans ce court film ({{nobr|35 minutes}}), un scientifique plonge [[Paris]] dans le sommeil. Une poignée d'hommes et de femmes qui se réfugient dans les hauteurs de la tour Eiffel échappent au sort réservé aux autres habitants de la capitale. La tour Eiffel devient alors un lieu magique qui offre sa protection à ces heureux individus. Le réalisateur français récidivera en [[1928 au cinéma|1928]], avec ''La Tour'', mais cette fois-ci sous forme de documentaire. Pendant les {{nobr|14 minutes}} que dure cette œuvre, il explore toutes les possibilités de la caméra et montre le monument sous toutes ses coutures. Par là même, il signe une sorte de déclaration d'amour à cet édifice qui l'inspire tant.
+
+En [[1930 au cinéma|1930]], avec ''La Fin du monde'', [[Abel Gance]] pousse encore les recherches pour mettre en valeur l'esthétisme des structures de la tour.
+
+En [[1939 au cinéma|1939]], le réalisateur [[Ernst Lubitsch]] connaît un des plus grands succès de sa carrière avec le film ''[[Ninotchka]]''. La camarade russe Ninotchka, jouée par [[Greta Garbo]], arrive en mission à Paris. En chemin vers la tour Eiffel, elle rencontre un Français ([[Melvyn Douglas]]) avec lequel elle vivra une aventure sentimentale qui prendra de plus en plus d'ampleur à chaque étage franchi de la tour. La plupart des vues de la tour Eiffel sont réalisées en studio et non sur place. La célèbre scène du cocktail associera à jamais l'image du [[Champagne (AOC)|champagne]] à celle de la tour Eiffel et comme l'explique le scénariste du film, [[Billy Wilder]], à la suite de ce film, [[Hollywood]] aura tendance à adopter l'enchaînement d'une bouteille de champagne à la tour Eiffel pour chaque scène se déroulant à Paris.
+
+Mais avant toute chose, la tour Eiffel deviendra au fil du temps, le symbole visuel de Paris et de la France.
+
+Ainsi, dès [[1942 au cinéma|1942]], le célèbre film de [[Michael Curtiz]], ''[[Casablanca (film)|Casablanca]]'' met furtivement en scène la tour Eiffel pendant l'histoire romantique se passant à Paris entre ''Rick Blaine'' ([[Humphrey Bogart]]) et ''Ilsa Lund Laszlo'' ([[Ingrid Bergman]]). Le cinéma américain sera également très friand d'apparitions de la tour, notamment pour l'effet pratique et symbolique. Elle permet en effet de signifier en un seul plan ou une seule séquence, même courte, que l'action se situe en France ou à Paris. Ainsi, dès [[1953 au cinéma|1953]], [[Byron Haskin]] la montre détruite dans son adaptation de ''[[La Guerre des mondes (film, 1953)|La Guerre des mondes]]''. Ce genre d'images (la tour Eiffel détruite) sera par la suite souvent utilisée dans des films américains pour signifier un danger planétaire immédiat et grave, comme en [[1996 au cinéma|1996]] dans ''[[Independence Day (film, 1996)|Independence Day]]'' et ''[[Mars Attacks!]]'' ou encore ''[[Armageddon (film, 1998)|Armageddon]]'' en [[1998 au cinéma|1998]].
+
+Les apparitions cinématographiques de ce symbole de Paris sont impossibles à comptabiliser, mais le critique de cinéma français [[Luc Lagier]] a réalisé un catalogue vidéo des apparitions les plus marquantes de la dame de fer au septième art pour l'émission ''Blow-Up'' sur ''[[Arte]]''<ref name="Blow-Up">{{Lien web |auteur=Luc Lagier |url=https://www.youtube.com/watch?v=GkuyhX-M5_4 |titre=La Tour Eiffel au cinéma |jour=12 |mois=octobre |année=2021 |site=Blow Up |éditeur=[[Arte]] }}.</ref>.
+
+=== Autres formes artistiques ===
+{{Article détaillé|Représentation de la tour Eiffel dans l'art et la culture}}
+[[Fichier:Eiffel tower (115).JPG|vignette|Vue photographique sous la tour Eiffel]]
+Recenser de manière exhaustive les évocations de la tour dans l'art ou la culture serait impossible. La construction de la tour a accompagné le développement de certaines formes d'art, comme la [[photographie]] ou la [[bande dessinée]]. La [[publicité]] et l'industrie des [[loisir]]s ont également largement utilisé la tour, de la silhouette aux détails structurels, afin d'évoquer l'[[Mode de vie|art de vivre]] français.
+
+Enfin, si les formes d'expression plus traditionnelles, comme le théâtre et à l'opéra, se sont librement emparées de la tour, son utilisation y est restée plus confidentielle que d'autres, plus modernes, comme les [[jeu vidéo|jeux vidéo]] ou la télévision.
+
+== Exploitation commerciale ==
+=== Fréquentation de la tour Eiffel ===
+{{Article détaillé|Fréquentation de la tour Eiffel}}
+[[Fichier:Warteschlange vor dem Eiffelturm.JPG|thumb|File d'attente de visiteurs de la Tour Eiffel.]]
+[[Fichier:Jeton souvenir de l'ascension automatique de la Tour Eiffel.jpg|vignette|Jeton souvenir de l'ascension automatique de la tour Eiffel, début du {{s-|XX}}.]]
+
+Après le succès populaire pendant l’[[Exposition universelle de Paris de 1889]] et le demi-succès de l’[[Exposition universelle de 1900]], le nombre de visiteurs ne décollera qu’une fois la [[Seconde Guerre mondiale]] terminée.
+
+Ainsi, entre 1901 et 1914, entre {{formatnum:120000}} et {{nombre|260000|personnes}} en font l’ascension chaque année. De [[1915]] à [[1918]] inclus, elle est fermée du fait de la [[Première Guerre mondiale]]. Puis, de [[1919]] à [[1939]], la tour Eiffel attire en moyenne {{nombre|480000|visiteurs}} par an avec des pics à {{nombre|800000|entrées}} pendant l’[[Exposition coloniale]] de [[1931]] et l’[[Exposition spécialisée de 1937]]. Entre [[1940]] et [[1945]] inclus, elle est de nouveau fermée pour cause de Seconde Guerre mondiale.
+
+Une fois cette période passée, le nombre de visiteurs annuels ne cessera d’augmenter : {{formatnum:1300000}} en moyenne de [[1946]] à [[1962]] et ce n’est véritablement qu’à partir de [[1963]] que les entrées se développent, notamment grâce à l’essor du [[tourisme]] international. En effet, en 1963, la tour Eiffel repasse pour la première fois le cap des {{nobr|2 millions}} de visiteurs, soit le même que pour son année inaugurale soixante-quatorze ans plus tôt, à la différence majeure que cette fois-ci, ce cap symbolique de {{nobr|2 millions}} d’entrées sera amélioré chaque année. En [[1972]] le cap des {{nobr|3 millions}} d’entrées est dépassé, en 1984 c’est celui des {{nobr|4 millions}}, en [[1989]] celui des {{nobr|5 millions}}, et enfin en 1998 celui des {{nobr|6 millions}}.
+
+À l’heure actuelle, ce sont donc plus de {{nobr|300 millions}} de visiteurs qui ont foulé de leurs pieds la tour Eiffel (palier atteint le {{Date|28|9|2017}})<ref name=":0" />.
+
+D'après l'''Observatoire régional du tourisme d'Île-de-France'', la tour Eiffel est le cinquième monument le plus visité d'Île-de-France en 2004 avec {{nombre|6229993|visiteurs}}, derrière [[Cathédrale Notre-Dame de Paris|Notre-Dame de Paris]] ({{nombre|12800000|visiteurs}}), [[Disneyland Paris]] ({{formatnum:12400000}}), la [[basilique du Sacré-Cœur de Montmartre]] ({{nobr|8 millions}}) et le [[musée du Louvre]] ({{formatnum:6600398}})<ref>{{pdf}} « [http://www.ortif.info/documents/uploaded/CC2005.pdf Chiffres clés du tourisme 2004 en Île-de-France] », {{Page|6–8}}, ORTIF (Observatoire régional du tourisme d'Île-de-France), d'après CDT-OTCP, Musées et monuments, CMN, RMN, DMF.</ref>.
+
+=== Différents exploitants ===
+{| class="wikitable droite"
+! colspan="4" | Résultats de la [[Société d'exploitation de la tour Eiffel|SETE]] (en millions d'euros)<ref name=":3">{{Ouvrage|auteur1=Société d'Exploitation de la Tour Eiffel (SETE)|titre=Dépôt au registre du commerce et des sociétés|date=31/12/2021|pages totales=96|passage=52|présentation en ligne=https://infonet.fr/entreprises/48262252900048-societe-d-exploitation-de-la-tour-eiffel/#service_financial|lire en ligne=|format électronique=pdf|consulté le=03/03/2023}}.</ref>.
+|-
+!Poste
+!2019
+!2020
+!2021
+|-
+|Chiffre d'affaires|| align="center" |{{formatnum:99.2}}
+|{{formatnum:25.3}}
+|{{formatnum:33.4}}
+|-
+|Résultat avant impôt|| align="center" |{{formatnum:5.7}}
+|{{Unité|-47.6}}
+|{{Unité|-34.4}}
+|-
+|Dotations aux amortissements et provisions|| align="center" |{{formatnum:2.9}}
+|{{formatnum:4.4}}
+|{{formatnum:9.4}}
+|-
+|Résultat net|| align="center" |{{formatnum:1.8}}
+|{{Unité|-52}}
+|{{Unité|-47.8}}
+|}
+Propriété de l'État français pendant l'[[Exposition universelle de Paris de 1889|Exposition universelle de 1889]], la tour Eiffel est ensuite devenue propriété de la [[Mairie de Paris|ville de Paris]] ([[s:Convention du 8 janvier 1887|Article 11 de la convention du 8 janvier 1887]]). Selon ce même article, [[Gustave Eiffel]] devient (en son nom propre) l'exploitant de la tour Eiffel. Il possède la jouissance commerciale de la tour pour une durée de vingt ans, du {{date|1er janvier 1890}} au {{date|31 décembre 1909}}, après quoi, l'édifice est susceptible d'être détruit. Devant l'intérêt scientifique reconnu au monument, Gustave Eiffel obtient une prolongation de son autorisation d'exploiter commercialement la tour Eiffel, à partir du {{date|1er janvier 1910}} et pour une période de {{nobr|70 ans}} supplémentaires.
+
+La gestion du monument a ensuite été confiée, de 1980 à 2005, à la [[Sociétés d'économie mixte de Paris|Société nouvelle d'exploitation de la tour Eiffel (SNTE)]], [[société d'économie mixte]] détenue à 30 % par Paris et à 70 % par la SAGI (Société anonyme de gestion immobilière), elle-même détenue à hauteur de 60 % par Perexia, une filiale du [[Crédit foncier de France]] (Groupe [[Caisse d'épargne]]) et à 40 % par Paris.
+
+Le {{date|13 décembre 2005}}, le [[conseil de Paris]] décide la création d'une nouvelle société d'économie mixte, la [[Société d'exploitation de la tour Eiffel]] (SETE), détenue à hauteur de 60 % par Paris et à 40 % par des partenaires privés ([[Eiffage|BTP Eiffage]], [[Unibail]], [[Louis Vuitton Moët Hennessy SA|LVMH]], [[Dexia (banque)|Dexia Crédit local]] et [[Électricité de France|EDF]]), pour prendre le relais de la SNTE dans la gestion du monument dans le cadre d'une [[délégation de service public]]<ref>{{Lien web |titre=Attribution de la délégation de service public pour la gestion et l’exploitation de la Tour Eiffel ({{7e}}) |url=https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22118&items_per_page=20&sort_name=&sort_order=&terms=Agent%20sp%C3%A9cialis%C3%A9%20de%20la%20Pr%C3%A9fecture%20de%20Police&query=Agent%20sp%C3%A9cialis%C3%A9%20de%20la%20Pr%C3%A9fecture%20de%20Police&fq=seance_string:DECEMBRE%202005 |site=a06-v7.apps.paris.fr |consulté le=2024-03-22}}.</ref>. Cette société doit être l'exploitant de la tour du {{date|1 janvier 2006}} au {{date|31 décembre 2015}}.
+
+La SETE emploie {{nobr|362 personnes}} au {{Date|31 12 2021}}<ref name=":3" />.
+
+=== Revenus de l'exploitation ===
+La tour Eiffel a coûté {{unité|7.8|millions de [[franc-or|francs-or]]}}. L'État français a versé {{unité|1.5|million de francs-or}} sous forme de subventions et une [[société anonyme]] a été spécialement créée à l'occasion de l'édification de la tour, avec un capital de {{unité|5.1|millions de francs-or}}. Cette société était détenue pour partie par Gustave Eiffel lui-même et pour partie par un [[consortium]] de trois banques. Les bénéfices obtenus à l'issue de l'Exposition universelle de 1889 ont permis de rembourser intégralement le capital aux [[actionnaire]]s.
+
+Selon une étude conduite par la [[Chambre de commerce]] italienne de [[Monza]] et [[Brianza]] en 2012, qui a évalué les monuments d'Europe les plus célèbres, la tour Eiffel aurait une image de marque d'une valeur virtuelle de {{nobr|434 milliards}} d'euros, loin devant le [[Colisée]] de Rome ({{nobr|91 milliards}} d'euros) et la [[Sagrada Família]] de Barcelone ({{nobr|90 milliards}} d'euros)<ref>{{Lien web |auteur=André Figeard |titre=La Tour Eiffel vaudrait 434 milliards d'euros ! |url=https://www.bfmtv.com/immobilier/la-tour-eiffel-vaudrait-434-milliards-d-euros_AN-201208200208.html |site=BFM BUSINESS |date=20/08/2012 |consulté le=2024-03-22}}.</ref>.
+Selon l'étude historico-immobilière « Que vaut Paris ? » publiée en 2013, la Tour Eiffel vaudrait {{nombre|2.8|milliards}} d'euros comparés à {{nombre|7.5|milliards}} pour [[Le Louvre]] et {{nobr|525 milliards}} pour l'ensemble des logements parisiens<ref>{{Lien web |titre=Combien coûterait Paris ? |url=https://immobilier.lefigaro.fr/article/combien-couterait-paris-_9e70baba-34d0-11e3-95fe-3bac7a191126/ |site=Le Figaro |date=2013-10-14 |consulté le=2024-03-22}}.</ref>.
+
+=== Textes officiels ===
+[[Fichier:2005 DF 92.jpg|thumb|Délibération du Conseil de Paris du 13 décembre 2005.]]
+
+Les textes désignant les exploitants de la tour Eiffel sont les suivants :
+* [[s:Convention du 8 janvier 1887|Convention du 8 janvier 1887]], entre [[Gustave Eiffel]], [[Édouard Lockroy]] et [[Eugène Poubelle]], autorisant l'exploitation de la tour par Gustave Eiffel, en son nom propre, du jour d'ouverture au public lors de l'Exposition universelle de 1889 jusqu'au {{date|31 décembre 1909}} ;
+* prolongation de l'autorisation de gestion et d'exploitation de la tour Eiffel donnée à Gustave Eiffel pour une période de {{nobr|70 ans}}, à compter du {{date|1er janvier 1910}} ;
+* délibération du Conseil de Paris du {{date|17 février 1981}}, « portant sur la concession de la tour Eiffel », accordée à la SNTE pour une période de vingt-cinq ans, allant du {{date|1er janvier 1981}} au {{date|31 décembre 2005}} ;
+* délibération du Conseil de Paris du {{date|13 décembre 2005}} ;
+* attribution de la délégation de service public pour la gestion et l’exploitation de la tour Eiffel, accordée à la SETE pour une durée de dix ans, à partir du {{date|1er janvier 2006}}.
+
+=== Droits d'auteur ===
+Dès 1889, la tour Eiffel fait l'objet de très nombreuses reproductions, on la retrouve par exemple sur des bouteilles, des bougies, des [[Chromolithographie|chromos]], des pieds de lampe, etc.
+
+Gustave Eiffel envisage alors d'exploiter commercialement l'image de sa tour. [[Jules Jaluzot]], directeur du [[Magasins du Printemps|Printemps]], lui propose même de lui racheter les droits exclusifs de reproduction pour fabriquer des copies en série et les vendre dans son magasin. Mais l'initiative provoque un tollé de nombreux artisans et Gustave Eiffel renonce à son idée initiale en abandonnant ses [[Droit d'auteur|droits d'auteur]] dans le [[domaine public (propriété intellectuelle)|domaine public]].
+
+{{Référence nécessaire|Ainsi, Gustave Eiffel s'est privé d'une source de revenus importante. L'exploitation commerciale de l'image sur les [[Carte postale|cartes postales]] représentant la tour Eiffel aurait pu lui rapporter beaucoup d'argent.|date=septembre 2011}} Avec plus de {{nobr|5 milliards}} d'unités, en cumulé depuis 1889, les cartes postales représentant le monument sont les plus vendues au monde<ref name="quid"/>. {{Référence nécessaire|Mais Gustave Eiffel a une importante fortune personnelle et la seule exploitation commerciale des entrées lui rapporte suffisamment.|date=septembre 2011}}
+
+La Société d'exploitation de la tour Eiffel (SETE) revendique des droits sur la publication de la tour illuminée, sans que cela soit confirmé par un jugement<ref name="copyright">{{Lien web |titre=Utiliser l'image de la tour Eiffel : tournages et prises de vue |url=https://www.toureiffel.paris/fr/entreprise/utiliser-image-tour-eiffel |site=toureiffel.paris |date=2017-10-27 |consulté le=2024-03-22}}.</ref>, en s'appuyant sur une décision de la [[Cour de cassation (France)|Cour de cassation]] du {{date|3 mars 1992}}, confirmant celle de la [[Cour d'appel de Paris]], relative à des illuminations mises en place en 1989, pour le centenaire de la tour. Selon la Cour, le spectacle son-et-lumière ''La Mode en images'', et notamment « la composition de jeux de lumière destinés à révéler et à souligner les lignes et les formes du monument constituait une « création visuelle » originale, et, partant, une [[Œuvre|œuvre de l'esprit]] qu'il en résultait nécessairement au bénéfice de son auteur un [[Droit d'auteur en France|droit de propriété incorporelle]]<ref>[http://www.lexeek.com/jus-luminum/decision-cass-03-03-1992,523975.htm Cass. {{1re}} civ.] {{Lien archive|url=http://www.lexeek.com/jus-luminum/decision-cass-03-03-1992,523975.htm|titre=Copie archivée|horodatage archive=20091116234240}}, 3 mars 1992, RIDA 1994 {{Numéro|159}}, {{p.|113}}. Décision de la chambre civile ''Jus Luminum'' {{n°|J523975}}</ref>. »
+
+== Entretien ==
+
+[[Fichier:Maintenance de la Tour Eiffel.jpg|vignette|Maintenance de la tour Eiffel.]]
+
+Au début des [[Années 1980 en France|années 1980]], [[Jacques Chirac]], alors maire de Paris, lance d'importants travaux de [[rénovation]], accompagnés d'un traitement [[anticorrosion]] et d'une campagne de [[Peinture (matière)|peinture]] sur l'ensemble de la tour<ref name=":2" />.
+
+De 2008 à 2014, l’ascenseur du pilier ouest est rénové pour un coût global estimé à {{nobr|36 millions}} d'euros<ref>{{Article|auteur1=Denis Cosnard|titre=La tour Eiffel, 125 ans, prisonnière d'un chantier diabolique|périodique=Le Monde.fr|date=2014-03-29|lire en ligne=https://www.lemonde.fr/economie/article/2014/03/29/la-dame-de-fer-et-le-chantier-diabolique_4391943_3234.html|consulté le=2024-03-22}}.</ref>.
+
+La {{19e|campagne}} de peinture de la tour a lieu de 2009 à 2010<ref>{{Lien web |nom=Batiactu |titre=La Tour Eiffel a 120 ans et se teint en brune |url=https://www.batiactu.com/edito/tour-eiffel-a-120-ans-et-se-teint-brune-22797.php |site=Batiactu |date=2009-04-01 |consulté le=2024-03-22}}.</ref>.
+
+En 2010, un modèle numérique de la tour a été réalisé par le [[Centre technique des industries mécaniques]] en collaboration avec [[DEKRA]], pour la Société d'exploitation de la tour Eiffel. Grâce à ce modèle, il est possible de simuler le comportement de la structure en fonction des efforts appliqués (vent, gel, neige, poids des visiteurs), ou d'anticiper les conséquences des modifications et de mieux planifier l'entretien<ref>{{Article|auteur1=Adrien Pouthier|titre=La Tour Eiffel s'offre sa version 2.0|périodique=Le Moniteur|date=2010-09-16|lire en ligne=https://www.lemoniteur.fr/article/la-tour-eif

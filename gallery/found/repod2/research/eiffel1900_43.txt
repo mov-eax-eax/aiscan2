@@ -1,0 +1,38 @@
+<noinclude><pagequality level="3" user="Ganjidvd" /></noinclude>{{T4|'''§ 2. — Puissance des ascenseurs.'''}} 
+<section begin="s1"/><br />{{em|2}}Pour faciliter aux nombreux visiteurs l’ascension des différents 
+étages de la Tour, il a été nécessaire d’installer des organes mécaniques 
+puissants permettant de transporter ces voyageurs sans fatigue et sans 
+danger. 
+
+On a du reste, en dehors des ascenseurs, accès du sol au premier 
+étage par deux escaliers placés dans les piliers Ouest et Est, et du 
+premier au deuxième étage par quatre escaliers en hélice, placés respectivement 
+dans chaque pilier. 
+
+Le nombre et la puissance des ascenseurs devaient être proportionnés 
+au chiffre des visiteurs prévu pour chaque plate-forme ; ce 
+chiffre devait naturellement diminuer avec la hauteur de l’étage et avec 
+l’augmentation du tarif d’ascension. 
+
+C’est ainsi que l’on fut amené à desservir la première plate-forme 
+au moyen de deux ascenseurs spéciaux, du système Roux, Combaluzier 
+et Lepape, installés dans les piliers Ouest et Est, qui, pratiquement, 
+élevaient 90{{lié}}personnes par voyage et effectuaient 10{{lié}}voyages à l’heure, 
+soit 900{{lié}}personnes à l’heure et {{unité|1800}} pour les deux appareils. 
+
+Pour le deuxième étage, on a installé deux ascenseurs hydrauliques, 
+système Otis, dans les piliers Nord et Sud, qui étaient capables de transporter 
+42{{lié}}voyageurs en effectuant 9{{lié}}voyages à l’heure. On a été conduit 
+par les besoins de l’exploitation à affecter un seul de ces ascenseurs 
+à ce service, qui comportait 42×9=378{{lié}}voyageurs à l’heure. L’autre 
+ascenseur fut affecté au service du premier au deuxième étage et réalisa 
+12{{lié}}ascensions de 42{{lié}}voyageurs, soit 42×12=504{{lié}}voyageurs à 
+l’heure. Leur ensemble permettait ainsi de monter au deuxième étage 
+378+504=882{{lié}}voyageurs à l’heure. 
+
+Pour l’ascension du deuxième étage au sommet, on a adopté un ascenseur 
+vertical du système Edoux à course fractionnée et avec changement 
+de cabine à la plate-forme intermédiaire. 
+
+Il élevait 455{{lié}}personnes à l’heure à raison de 7{{lié}}voyages et de 65{{lié}}personnes par voyage.<section end="s1"/><noinclude>
+<references/></noinclude>

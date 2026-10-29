@@ -1,0 +1,225 @@
+Socles de la tour Eiffel 
+ Menu 
+ Découvrir 
+ Description 
+ Tourisme 
+ Histoire 
+ Construction 
+ Sciences 
+ Boutique 
+ Sommaire 
+ Plan 
+ FAQ 
+ Monuments 
+ Monuments 
+ Tour Eiffel 
+ Construction 
+ Socles 
+ -->
+ La tour Eiffel
+ Type
+ Tour autoportante en fer
+ Auteur
+ Gustave Eiffel
+ Inauguration
+ 31 mars 1889
+ Intérêt
+ Symbole du savoir-faire français
+ Propriétaire
+ Mairie de Paris
+ Inscription
+ Patrimoine mondial de l'UNESCO depuis 1991
+ Visiteurs
+ 7 millions/an
+ Situation : Paris, France
+ GPS : 48° 51' 30.13'' Nord / 2° 17' 40.13'' Est
+ Menu
+ Sommaire 
+ Description 
+ Ses dimensions 
+ Histoire 
+ Gustave Eiffel 
+ Contexte 
+ Comment la visiter ? 
+ Toutes les pages 
+ Autres monuments 
+ Rechercher
+ Socles de la tour Eiffel
+ Les socles de la tour Eiffel sont en fait des petits bâtiments desquels partent les piliers. Mais comme vous vous en doutez, ce ne sont pas eux 
+ qui supportent la totalité des forces de la tour, ils seraient bien trop faibles. Les arbalétriers (ces tiges métalliques qui partent du socle et 
+ vont jusqu'au sommet, ils forment l'armature principale de la tour) sont fixés sur les sabots reliés à des contre-sabots fixés sur des massifs de 
+ maçonnerie, ce sont eux qui supportent les efforts. Il y a plusieurs massifs par piliers, et chaque massif est inclus dans des fondations 
+ générales, support d'un mur de soutenement entourant les massifs. La mise en place d'un plafond forme un soubassement qui contient les parties 
+ techniques, et c'est au-dessus que se trouvent les socles que l'on voit à l'extérieur. Ce qu'on appelle un socle, c'est donc un ensemble 
+ fondations-massifs-soubassement.
+ Il existe un document donnant les modes de construction des fondations , il explique également 
+ comment elles sont faites et comment elles englobent les massifs. Mais c'est ci-dessous qu'est présenté les calculs de pression dans le sol, ainsi 
+ que la partie consacrée aux soubassements.
+ Pression dans les maçonneries et sur le sol
+ Le calcul de la pression exercée par la partie métallique de la tour sur le sol, et également sur les maçonneries, est partiellement fourni par 
+ les plans. On a vu dans les calculs ( Planche XXXIV ) que la pression 
+ maximale sur un arbalétrier est :
+ Par le poids seul : 723 750 kg
+ Par le poids el le vent : 1 075 250 Kg
+ Ces pressions se reportent sur la maçonnerie de pierre de taille par un sabot en fonte formant un carré de 1,80 m de côté avec coins 
+ arrondis. La surface de ce sabot est de 2,96 m 2 . La surface de la pierre en contact avec le sabot supporte donc une pression de :
+ Sous le poids seul : 24,5 kg par centimètre carré
+ Sous le poids et le vent : 35,6 kg par centimètre carré
+ A la partie inférieure de la pierre de taille, la surface est de 4,10 m sur 4,00 m soit 16,40 m 2 . La surface supérieure du 
+ moellon supporte donc une pression de :
+ Sous le poids seul : 4,40 kg par centimètre carré
+ Sous le poids et le vent : 0,35 kg par centimètre carré
+ Cette pression va rapidement en diminuant dans l'intérieur du massif : vers son milieu, on peut admettre une surface normale de 6,00 m 
+ sur 4,60 m soit 27,60 m 2 . La charge unitaire n'est que de :
+ Sous le poids seul : 2,00 kg par centimètre carré
+ Sous le poids et le vent : 3,90 kg par centimètre carré
+ Enfin au sol, elle a été exactement calculée et elle est pour les piles 2 et 3 (voir 
+ Planche XXXIV ) de :
+ Sans le vent : 4,20 kg
+ Avec le vent : 3,40 kg
+ Pour les piles 1 et 4 :
+ Sans le vent : 4,10 kg
+ Avec le vent : 4,00 kg
+ Ces charges présentent la plus grande sécurité et montrent que les maçonneries de fondation ont été largement traitées de manière à ce 
+ qu'aucun tassement ne fût possible et qu'il n'a été rien épargné, soit comme dimensions, soit comme qualité des matériaux, pour écarter toutes 
+ craintes à cet égard.
+ Soubassements
+ Quoique les soubassements apparents des piles élevés au-dessus des murs de pourtour aient été faits longtemps après le commencement du montage 
+ de la Tour, pour lequel ils eussent été une gêne, nous donnerons tout de suite, pour compléter tout ce qui est relatif aux piles, les renseignements 
+ sur l'exécution de ces soubassements.
+ Ils ont été constitués par une ossature en fer sur laquelle venaient s'appliquer, à la partie inférieure, des pierres factices en béton comprimé 
+ présentant un appareil à gros bossages. La gorge formant la partie supérieure était construite en mortier de ciment appliqué sur place à l'aide de 
+ calibrés suivant lesquels étaient traînées les moulures.
+ L'ossature ( Planche V , fig. 11 à 19) se composait de quatre grandes poutres 
+ à treillis de 2,80 m de hauteur, ayant la longueur de chacune des faces et qui venaient reposer à leurs extrémités sur les murs de pourtour. Celles 
+ des faces intérieures étaient interrompues pour le passage des portes. Sur ces poutres s'appliquait une série de fermettes triangulaires inclinées, 
+ de 5,40 m de hauteur, espacées en moyenne de 1,10 m et réunies par des entretoises horizontales en fer à simple T. Ces fermettes reposaient, en outre, 
+ pour les deux faces extérieures, sur les murs de pourtour eux-mêmes, et, pour les faces intérieures à la Tour, sur des fers à T s'appuyant sur ces 
+ murs.
+ Les pierres factices, d'environ 15 m d'épaisseur, sont posées sur les fers à simple T horizontaux formant entretoises, sur lesquels on les scellait 
+ au ciment. La hauteur des assises en dehors du boudin est de 3,00 m, celle de la gorge de 2,40 m.
+ La gorge supérieure était appliquée sur des cerces en fer, reliées à chaque fermette et venait dans le haut presque au contact des faces des 
+ arbalétriers.
+ En avant de chacune des faces intérieures se trouvent deux socles destinés à recevoir les arcatures des poutres décoratives. Enfin, l'angle le plus 
+ près du centre de la Tour est disposé suivant une courbe, le long de laquelle règne un banc.
+ Le poids des fers de cette ossature, fournie par MM. Pillet et Schmid, entrepreneurs de serrurerie, s'élève pour les quatre piles à 164 492 Kg, soit 
+ 41 123 Kg par pile.
+ Le montage a commencé le 23 septembre 1888 et a été terminé pour l'ensemble des quatre piles le 4 janvier 1889.
+ Les pierres factices ont été fournies par MM. E. Dubos et compagnie.
+ La gorge supérieure en ciment, traînée sur place, a été exécutée par M. Combaz. Le montage de ces revêtements a été terminé seulement en mai 1889. 
+ Les piles ont donné lieu à certains travaux complémentaires :
+ Les massifs des ascenseurs ont dû être modifiés à la demande de la partie mécanique ; les maçonneries nouvelles se sont élevées ensemble à un cube 
+ de 194 m 3 
+ La pile 3, dont l'intérieur renferme la salle des machines, a été couverte par une toiture vitrée, établie par M. Bernard, entrepreneur de serrurerie, 
+ pesant 37 784 Kg.
+ On a établi au-dessus du réservoir destiné à la décharge des ascenseurs, un plancher en fer double T et tôle striée. Son poids est de 5 047 Kg. Le sol 
+ des piles a été recouvert en asphalte sur une surface de 1 003 m 2 , et enfin on a disposé autour du soubassement, un rocaillage cachant les 
+ maçonneries et formant raccordement avec le sol.
+ Voir aussi :
+ Construction de la tour Eiffel 
+ Histoire de la tour Eiffel 
+ La tour Eiffel
+ Découvrir 
+ Photos 
+ Emplacement 
+ Taille 
+ Poids 
+ La tour en chiffres 
+ Symbolisme 
+ Peinture 
+ Histoire de l'art 
+ Oeuvres artistiques 
+ Chansons 
+ Littérature 
+ Peintures 
+ Cinéma 
+ Théâtre 
+ Publicité 
+ Description 
+ Rez-de-chaussée 
+ 1er étage 
+ 2e étage 
+ Etage intermédiaire 
+ 3e étage 
+ Les 72 savants 
+ Ascenseurs 
+ Escaliers 
+ Machinerie 
+ Eclairage 
+ Copies et répliques 
+ Watkin's tower 
+ Ascenseurs Fives-Lille 
+ Visibilité 
+ La tour en 1900 
+ Histoire 
+ Chronologie 
+ Contexte technologique 
+ Les autres projets 
+ Réticences des artistes 
+ Construction 
+ Inauguration 
+ Medaille commémorative 
+ Rénovations 
+ Procés droit de reproduction 
+ Arnaques diverses 
+ Imprimerie du figaro 
+ La tour et l'expo 
+ Les entreprises Eiffel 
+ Société d'exploitation 
+ Biographies 
+ Gustave Eiffel 
+ Maurice Koechlin 
+ Emile Nouguier 
+ Stephen Sauvestre 
+ Jean Compagnon 
+ Adolphe Salles 
+ Jean Gobert 
+ Edouard Lockroy 
+ Franz Reichelt 
+ Construction 
+ Contrat de concession 
+ Plans 
+ Planches techniques 
+ Calculs des forces 
+ Calcul dûs au poids 
+ Calcul dûs au vent 
+ Calcul du poids des visiteurs 
+ Travail en atelier 
+ Planning 
+ Personnel 
+ Fondations 
+ Socles 
+ Piliers 
+ Etages 
+ Rivetage 
+ Grues 
+ Coût 
+ Rentabilité 
+ Fer utilisé 
+ Génie civil 
+ Tourisme 
+ Tarifs 
+ Horaires 
+ A voir sur la tour 
+ Récit d'une visite 
+ Images d'une visite 
+ Visiteurs célèbres 
+ Sciences 
+ Observations météo 1889 
+ Observations météo 1890 
+ Résistance de l'air 
+ Pression de l'air 
+ Manomètre hautes pressions 
+ Spectre solaire 
+ Absorptions des radiations 
+ Navigation aérienne 
+ Radiodiffusion 
+ Téléphotographie 
+ Télégraphie optique 
+ Phénomènes naturels 
+ Effets de la foudre 
+ Oscillations du sommet 
+ Effets de la montée 
+ Tous les monuments
+ Copyright 2013 - 2026 - Toute reproduction interdite sans l'autorisation de l'auteur. Ce site Internet est un site privé, non officiel, issu du travail de compilation des oeuvres de différents auteurs. Sauf mention contraire, les photos sont la propriété du webmaster. Toute utilisation des textes, photos ou autres éléments de ce site internet sont interdits sans accord du webmaster. Pour le contacter, utilisez le lien sur la page crédits . Sources documentaires : cliquez ici . Pour consulter la politique de confidentialité du site veuillez cliquer ici : Politique de confidentialité . 
+ Sites Internet du même auteur : Les Pyrénées-Orientales , Marguerite Duras , Merveilles du monde , Empereurs romains .

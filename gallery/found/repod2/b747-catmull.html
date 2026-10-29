@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boeing 747 — Catmull-Rom 3D Model</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#0b0e14;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;}
+  #app{position:fixed;inset:0;}
+  #hud{position:fixed;left:20px;bottom:16px;color:#dfe6f2;pointer-events:none;
+    text-shadow:0 2px 8px rgba(0,0,0,.65);}
+  #hud h1{margin:0;font-size:18px;font-weight:600;letter-spacing:.5px;}
+  #hud p{margin:4px 0 0;font-size:12px;opacity:.75;max-width:520px;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="hud">
+  <h1>Boeing 747 · Catmull-Rom Model</h1>
+  <p>fuselage spine &amp; radius profile, upper-deck hump, airfoils and engine nacelles are all Catmull-Rom curves —
+     drag to orbit · scroll to zoom</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ================= scene / renderer / camera ================= */
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0d1220);
+  scene.fog = new THREE.Fog(0x0d1220, 170, 330);
+
+  const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 500);
+  camera.position.set(58, 27, 72);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  document.getElementById('app').appendChild(renderer.domElement);
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0, 0);
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 1.0;
+  controls.maxPolarAngle = Math.PI * 0.495;
+  controls.minDistance = 12;
+  controls.maxDistance = 220;
+
+  /* lights */
+  scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x1c232e, 0.85));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.15);
+  sun.position.set(-60, 90, -40);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left:-85, right:85, top:85, bottom:-85, near:10, far:260 });
+  scene.add(sun);
+  scene.add(new THREE.AmbientLight(0x33415c, 0.35));
+
+  /* ================= Catmull-Rom 1D profile helper ================= */
+  function catmullRom1D(p0, p1, p2, p3, t){
+    const t2 = t * t, t3 = t2 * t;
+    return 0.5 * ((2 * p1) + (-p0 + p2) * t +
+                  (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 +
+                  (-p0 + 3 * p1 - 3 * p2 + p3) * t3);
+  }
+  /* knots: [[t, value], ...] ascending t -> smooth radius/scale function */
+  function makeProfile(knots){
+    return function(t){
+      if (t <= knots[0][0]) return knots[0][1];
+      if (t >= knots[knots.length - 1][0]) return knots[knots.length - 1][1];
+      let i = 0;
+      while (i < knots.length - 2 && knots[i + 1][0] < t) i++;
+      const a = knots[i], b = knots[i + 1];
+      const p0 = knots[Math.max(0, i - 1)][1], p1 = a[1],
+            p2 = b[1], p3 = knots[Math.min(knots.length - 1, i + 2)][1];
+      const lt = (t - a[0]) / (b[0] - a[0]);
+      return Math.max(0.02, catmullRom1D(p0, p1, p2, p3, lt));
+    };
+  }
+
+  /* ================= fuselage spine (3D Catmull-Rom) ================= */
+  const SPINE_PTS = [
+    new THREE.Vector3(-35, 0.00, 0),
+    new THREE.Vector3(-30, 0.12, 0),
+    new THREE.Vector3(-15, 0.22, 0),
+    new THREE.Vector3(  0, 0.26, 0),
+    new THREE.Vector3( 15, 0.22, 0),
+    new THREE.Vector3( 30, 0.12, 0),
+    new THREE.Vector3( 35, 0.00, 0)
+  ];
+  const spine = new THREE.CatmullRomCurve3(SPINE_PTS, false, 'catmullrom', 0.5);
+
+  const R = 3.5; // max fuselage radius
+  const radiusFn = makeProfile([
+    [0.00, 0.02], [0.04, 1.10], [0.10, 3.35], [0.16, 3.50],
+    [0.68, 3.50], [0.84, 3.20], [0.92, 2.30], [0.97, 1.00], [1.00, 0.02]
+  ]);
+
+  /* ================= swept tube along a spine ================= */
+  function sweep(spineCurve, radiusFn, segments, radialSegs){
+    const rs = radialSegs;
+    const positions = [], normals = [], uvs = [], indices = [];
+    const up = new THREE.Vector3(0, 1, 0);
+    for (let i = 0; i <= segments; i++){
+      const t = i / segments;
+      const p  = spineCurve.getPointAt(t);
+      const T  = spineCurve.getTangentAt(t).normalize();
+      const Rv = new THREE.Vector3().crossVectors(up, T);
+      if (Rv.lengthSq() < 1e-8) Rv.set(1, 0, 0); else Rv.normalize();
+      const N = new THREE.Vector3().crossVectors(T, Rv).normalize();
+      const r = radiusFn(t);
+      for (let j = 0; j <= rs; j++){
+        const a = (j / rs) * Math.PI * 2;
+        const ca = Math.cos(a), sa = Math.sin(a);
+        positions.push(p.x + Rv.x * ca * r + N.x * sa * r,
+                       p.y + Rv.y * ca * r + N.y * sa * r,
+                       p.z + Rv.z * ca * r + N.z * sa * r);
+        normals.push(Rv.x * ca + N.x * sa,
+                     Rv.y * ca + N.y * sa,
+                     Rv.z * ca + N.z * sa);
+        uvs.push(i / segments, j / rs);
+      }
+    }
+    for (let i = 0; i < segments; i++){
+      for (let j = 0; j < rs; j++){
+        const a = i * (rs + 1) + j, b = a + rs + 1;
+        indices.push(a, b, a + 1, b, b + 1, a + 1);
+      }
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    g.setAttribute('normal',   new THREE.Float32BufferAttribute(normals, 3));
+    g.setAttribute('uv',       new THREE.Float32BufferAttribute(uvs, 2));
+    g.setIndex(indices);
+    return g;
+  }
+
+  /* ================= materials ================= */
+  const whiteMat = new THREE.MeshStandardMaterial({ color:0xe9edf3, roughness:0.55, metalness:0.05, side:THREE.DoubleSide });
+  const redMat   = new THREE.MeshStandardMaterial({ color:0xd11f2f, roughness:0.45, metalness:0.05, side:THREE.DoubleSide });
+  const grayMat  = new THREE.MeshStandardMaterial({ color:0x9aa2ad, roughness:0.60, metalness:0.10, side:THREE.DoubleSide });
+  const darkMat  = new THREE.MeshStandardMaterial({ color:0x1c2735, roughness:0.40, metalness:0.10, side:THREE.DoubleSide });
+  const gearMat  = new THREE.MeshStandardMaterial({ color:0x3c434d, roughness:0.70 });
+  const wheelMat = new THREE.MeshStandardMaterial({ color:0x15181d, roughness:0.85 });
+
+  /* ================= main fuselage tube ================= */
+  const fuselage = new THREE.Mesh(sweep(spine, radiusFn, 96, 32), whiteMat);
+  fuselage.castShadow = true;
+  scene.add(fuselage);
+
+  /* ================= upper-deck hump (double-bubble lobe) ================= */
+  // lobe spine follows the local fuselage top so its tapered ends stay buried
+  const lobeCtrl = [];
+  for (let i = 0; i <= 20; i++){
+    const t = i / 20;
+    const p = spine.getPointAt(t);
+    lobeCtrl.push(new THREE.Vector3(p.x, p.y + radiusFn(t) - 0.15, p.z));
+  }
+  const lobeSpine = new THREE.CatmullRomCurve3(lobeCtrl, false, 'catmullrom', 0.5);
+  const humpFn = makeProfile([
+    [0.00, 0.01], [0.07, 0.01], [0.12, 1.50], [0.16, 1.75],
+    [0.30, 1.75], [0.36, 1.60], [0.42, 0.80], [0.46, 0.01]
+  ]);
+  const hump = new THREE.Mesh(sweep(lobeSpine, humpFn, 96, 32), whiteMat);
+  hump.castShadow = true;
+  scene.add(hump);
+
+  /* ================= cheatline stripe ================= */
+  const stripe = new THREE.Mesh(sweep(spine, makeProfile([
+    [0.00, 0.01], [0.12, 0.01], [0.14, R + 0.03], [0.80, R + 0.03], [0.84, 0.01], [1.00, 0.01]
+  ]), 120, 24), redMat);
+  scene.add(stripe);
+
+  /* ================= cockpit window band ================= */
+  const cockpit = new THREE.Mesh(sweep(spine, makeProfile([
+    [0.000, 0.01], [0.042, 0.01], [0.055, R + 0.02], [0.100, R + 0.02], [0.115, 0.01], [1.000, 0.01]
+  ]), 48, 24), darkMat);
+  scene.add(cockpit);
+
+  /* ================= airfoil (Catmull-Rom outline) + loft ================= */
+  function airfoilOutline(chord, thickness){
+    const c = chord;
+    const upper = [[0,0],[0.12,0.50],[0.25,0.62],[0.50,0.58],[0.72,0.40],[0.88,0.20],[1,0]];
+    const lower = [[0,0],[0.15,-0.28],[0.35,-0.42],[0.60,-0.40],[0.80,-0.22],[1,0]];
+    const cu = new THREE.CatmullRomCurve3(upper.map(p => new THREE.Vector3(p[0]*c, p[1]*c*thickness, 0)), false, 'catmullrom', 0.5);
+    const cl = new THREE.CatmullRomCurve3(lower.map(p => new THREE.Vector3(p[0]*c, p[1]*c*thickness, 0)), false, 'catmullrom', 0.5);
+    const N = 18, pts = [];
+    for (let i = 0; i <= N; i++) pts.push(cu.getPointAt(i / N));
+    for (let i = 1; i < N; i++)  pts.push(cl.getPointAt(i / N));
+    return pts;
+  }
+  function loft(rootPts, tipPts){
+    const n = rootPts.length;
+    const positions = [], uvs = [], indices = [];
+    for (let i = 0; i < n; i++){
+      positions.push(rootPts[i].x, rootPts[i].y, rootPts[i].z);
+      positions.push(tipPts[i].x,  tipPts[i].y,  tipPts[i].z);
+      uvs.push(0, i / n, 1, i / n);
+    }
+    for (let i = 0; i < n; i++){
+      const j = (i + 1) % n;
+      const a = 2*i, b = 2*j, c = 2*j + 1, d = 2*i + 1;
+      indices.push(a, b, d, b, c, d);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    g.setAttribute('uv',       new THREE.Float32BufferAttribute(uvs, 2));
+    g.setIndex(indices);
+    g.computeVertexNormals();
+    return g;
+  }
+
+  /* ================= wings (swept + dihedral) ================= */
+  const W_ROOT_Z = 3.0, W_SPAN = 30, W_ROOT_Y = -1.2, W_TIP_Y = 2.5;
+  const W_ROOT_LE = 3, W_TIP_LE = 17;
+  const wingRoot = airfoilOutline(8.0, 0.115).map(p => new THREE.Vector3(W_ROOT_LE + p.x, W_ROOT_Y + p.y, W_ROOT_Z));
+  const wingTip  = airfoilOutline(2.6, 0.09 ).map(p => new THREE.Vector3(W_TIP_LE  + p.x, W_TIP_Y  + p.y, W_ROOT_Z + W_SPAN));
+  const wingR = new THREE.Mesh(loft(wingRoot, wingTip), whiteMat);
+  wingR.castShadow = true;
+  const wingL = wingR.clone();
+  wingL.scale.z = -1;            // mirror
+  wingL.castShadow = true;
+  scene.add(wingR, wingL);
+
+  /* ================= horizontal stabilizer ================= */
+  const hsRoot = airfoilOutline(4.5, 0.10).map(p => new THREE.Vector3(24.5 + p.x, 0.8 + p.y, 2.0));
+  const hsTip  = airfoilOutline(1.4, 0.09).map(p => new THREE.Vector3(28.5 + p.x, 1.8 + p.y, 13.0));
+  const hsR = new THREE.Mesh(loft(hsRoot, hsTip), whiteMat);
+  const hsL = hsR.clone();
+  hsL.scale.z = -1;
+  scene.add(hsR, hsL);
+
+  /* ================= vertical stabilizer (red fin) ================= */
+  const finRoot = airfoilOutline(7.0, 0.07).map(p => new THREE.Vector3(22 + p.x, 1.2, p.y));
+  const finTip  = airfoilOutline(1.8, 0.06).map(p => new THREE.Vector3(29 + p.x, 10.6, p.y));
+  const fin = new THREE.Mesh(loft(finRoot, finTip), redMat);
+  scene.add(fin);
+
+  /* ================= engines (Catmull-Rom nacelle profile, lathed) ================= */
+  const engRfn = makeProfile([
+    [0.00, 0.82], [0.05, 0.90], [0.14, 0.97], [0.30, 0.97],
+    [0.50, 0.93], [0.72, 0.72], [1.00, 0.52]
+  ]);
+  const ENG_LEN = 3.4;
+  const lathePts = [];
+  for (let i = 0; i <= 28; i++){
+    const t = i / 28;
+    lathePts.push(new THREE.Vector2(engRfn(t), t * ENG_LEN));
+  }
+  const nacelleGeo = new THREE.LatheGeometry(lathePts, 28);
+  const fanGeo  = new THREE.CircleGeometry(0.80, 28);
+  const fanMat  = new THREE.MeshBasicMaterial({ color: 0x0a0d12 });
+  const exGeo   = new THREE.CircleGeometry(0.50, 24);
+
+  function addEngine(z){
+    const az = Math.abs(z);
+    const wingYz  = W_ROOT_Y + (az - W_ROOT_Z) / W_SPAN * (W_TIP_Y - W_ROOT_Y);
+    const chordZ  = 8.0 - (az - W_ROOT_Z) / W_SPAN * (8.0 - 2.6);
+    const leZ     = W_ROOT_LE + (az - W_ROOT_Z) / W_SPAN * (W_TIP_LE - W_ROOT_LE);
+    const ex = leZ + chordZ * 0.42;
+    const ey = wingYz - 1.35;
+
+    const nac = new THREE.Mesh(nacelleGeo, grayMat);
+    nac.rotation.z = -Math.PI / 2;                 // lathe axis Y -> X
+    nac.position.set(ex - ENG_LEN / 2, ey, z);
+    nac.castShadow = true;
+    scene.add(nac);
+
+    const fan = new THREE.Mesh(fanGeo, fanMat);
+    fan.rotation.y = Math.PI / 2;                  // face forward (-X)
+    fan.position.set(ex - ENG_LEN / 2 + 0.04, ey, z);
+    scene.add(fan);
+
+    const exr = new THREE.Mesh(exGeo, darkMat);
+    exr.rotation.y = -Math.PI / 2;                 // face aft (+X)
+    exr.position.set(ex + ENG_LEN / 2 - 0.04, ey, z);
+    scene.add(exr);
+
+    const pyl = new THREE.Mesh(new THREE.BoxGeometry(0.5, Math.max(0.25, wingYz - ey - 0.85), 0.7), gearMat);
+    pyl.position.set(ex, (wingYz + ey + 0.85) / 2, z);
+    scene.add(pyl);
+  }
+  addEngine( 8.5);
+  addEngine(19.5);
+  addEngine(-8.5);
+  addEngine(-19.5);
+
+  /* ================= landing gear ================= */
+  function addGear(x, z, wheels, strutTop){
+    const h = (-4.3) - strutTop;
+    const strut = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, h, 8), gearMat);
+    strut.position.set(x, strutTop + h / 2, z);
+    scene.add(strut);
+    for (let i = 0; i < wheels; i++){
+      const w = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.42, 20), wheelMat);
+      w.rotation.z = Math.PI / 2;
+      w.position.set(x, -4.35, z + (i - (wheels - 1) / 2) * 0.9);
+      scene.add(w);
+    }
+  }
+  addGear(-1.6,  1.9, 2, -3.10);
+  addGear(-1.6, -1.9, 2, -3.10);
+  addGear(-30,   0.0, 1, -1.35);
+
+  /* ================= lights & windows ================= */
+  const winMat = new THREE.MeshBasicMaterial({ color: 0x15222f });
+  const winGeo = new THREE.PlaneGeometry(0.16, 0.26);
+  function surfaceFrame(t){
+    const p  = spine.getPointAt(t);
+    const T  = spine.getTangentAt(t).normalize();
+    const up = new THREE.Vector3(0, 1, 0);
+    let Rv = new THREE.Vector3().crossVectors(up, T);
+    if (Rv.lengthSq() < 1e-8) Rv.set(1, 0, 0); else Rv.normalize();
+    const N = new THREE.Vector3().crossVectors(T, Rv).normalize();
+    return { p, Rv, N };
+  }
+  [1, -1].forEach(side => {
+    for (let k = 0; k < 15; k++){
+      const t = 0.17 + k * 0.032;
+      const { p, Rv, N } = surfaceFrame(t);
+      const r = radiusFn(t) + 0.02;
+      const a = side * Math.PI / 2;
+      const pos = new THREE.Vector3().copy(p)
+        .addScaledVector(Rv, Math.cos(a) * r)
+        .addScaledVector(N, Math.sin(a) * r);
+      const nrm = new THREE.Vector3().addScaledVector(Rv, Math.cos(a))
+        .addScaledVector(N, Math.sin(a)).normalize();
+      const w = new THREE.Mesh(winGeo, winMat);
+      w.position.copy(pos);
+      w.lookAt(pos.clone().add(nrm));
+      scene.add(w);
+    }
+  });
+
+  /* ================= beacon + wingtip nav lights ================= */
+  const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.22, 12, 12),
+    new THREE.MeshBasicMaterial({ color: 0xff2020 }));
+  beacon.position.set(30, 10.8, 0);
+  scene.add(beacon);
+  const navR = new THREE.Mesh(new THREE.SphereGeometry(0.18, 10, 10),
+    new THREE.MeshBasicMaterial({ color: 0x22ff55 }));
+  navR.position.set(18, 2.5, 33.2);
+  scene.add(navR);
+  const navL = new THREE.Mesh(new THREE.SphereGeometry(0.18, 10, 10),
+    new THREE.MeshBasicMaterial({ color: 0xff2222 }));
+  navL.position.set(18, 2.5, -33.2);
+  scene.add(navL);
+
+  /* ================= ground / runway ================= */
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400),
+    new THREE.MeshStandardMaterial({ color: 0x141a24, roughness: 0.95 }));
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -4.9;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  const runway = new THREE.Mesh(new THREE.PlaneGeometry(14, 200),
+    new THREE.MeshStandardMaterial({ color: 0x1d2531, roughness: 0.9 }));
+  runway.rotation.x = -Math.PI / 2;
+  runway.position.y = -4.88;
+  runway.receiveShadow = true;
+  scene.add(runway);
+
+  const grid = new THREE.GridHelper(240, 48, 0x2a3547, 0x222c3d);
+  grid.position.y = -4.87;
+  scene.add(grid);
+
+  /* ================= loop ================= */
+  function tick(){
+    requestAnimationFrame(tick);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  tick();
+
+  addEventListener('resize', () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+{{confusion|École militaire en France}}
+{{voir homonymes|École militaire (homonymie)}}
+{{Sources à lier|date=juillet 2021}}
+{{Infobox Monument
+ | image                 = Central building of Ecole Militaire at dusk, Paris 7e 20140607 1.jpg
+ | légende               = La façade de l'École militaire, [[place Joffre]].
+ | style                 = Période néoclassique
+ | architecte            = [[Ange-Jacques Gabriel]]
+ | site web              = https://www.defense.gouv.fr/academ
+ | classement            = {{Classé MH|1990|accord=féminin}} <!--statut patrimonial, Wikidata : Property:P1435--><br/>{{Patrimoine mondial|1991||au titre de Paris, rives de la Seine}}<ref name="Paris, rives de la Seine">{{Lien web |langue=fr |titre=Paris, rives de la Seine |url=http://whc.unesco.org/fr/list/600/ |date=2024|éditeur=[[Organisation des Nations unies pour l'éducation, la science et la culture|UNESCO]] |site=whc.unesco.org |consulté le=18 novembre 2024}}.</ref>
+ | adresse               = 1 [[place Joffre]]
+ | métro                 = [[École Militaire (métro de Paris)|''École Militaire'']]
+}}
+L’'''École militaire''' est à la fois une institution d'[[Études supérieures|enseignement supérieur]] militaire fondée en 1751 par le roi [[Louis XV de France|Louis XV]], et l'ensemble de bâtiments construits pour la recevoir à [[Paris]] dans le [[7e arrondissement de Paris|{{7e|arrondissement}}]]. Construit au {{s-|XVIII}} par l'architecte du roi [[Ange-Jacques Gabriel]], cet ensemble monumental est toujours en activité. Il ferme la perspective sud-est du [[Champ-de-Mars (Paris)|Champ-de-Mars]], où se faisait la revue annuelle des troupes, déplacée ensuite aux [[Avenue des Champs-Élysées|Champs-Élysées]]. Il est classé au titre des [[monuments historiques]] depuis 1990<ref name = PA00088684 >{{Base Mérimée|PA00088684|École militaire|source=non}}.</ref>.
+
+L'[[École supérieure de guerre]] (ESG), plus haut établissement [[France|français]] d'enseignement militaire destiné à former des officiers d'[[état-major]] et des [[officier général|officiers généraux]], est installée au sein de l'École militaire de 1876 à 1993. Elle est renommée en 1993 [[Collège interarmées de Défense]] (CID), puis en 2011 l'[[École de guerre]], installée également au sein de l'École militaire.
+
+Le site est desservi par la ligne [[Ligne 8 du métro de Paris|8]] à la [[Liste des stations du métro de Paris|station de métro]] ''[[École Militaire (métro de Paris)|École Militaire]].''
+
+== Historique de l’École royale militaire ==
+
+=== Origine de l’institution de l’École militaire ===
+Avant la fondation de l'École royale militaire, les enfants de la noblesse qui se destinaient à la carrière des armes recevaient déjà une formation de haut niveau. Ils faisaient leur instruction dans des ''académies militaires'' qui étaient coûteuses pour les familles, certains avaient la chance de faire leur apprentissage comme pages aux Écuries du roi (Grande et Petite) ou chez certains princes qui avaient aussi une école des pages<ref>[https://www.persee.fr/doc/rhmc_0048-8003_1957_num_4_2_3112 Pourquoi et comment on entrait à l'École royale militaire de Paris].</ref>.
+
+En 1748, la [[guerre de Succession d'Autriche]] s'achève. Si la France est victorieuse, la guerre n'a pourtant pas été facile pour elle et les combats ont montré le manque d'officiers bien formés pour commander les régiments royaux. C'est pourquoi le [[maréchal de Saxe]], qui avait combattu aux côtés des armées françaises, propose au roi [[Louis XV de France|Louis XV]] de fonder une école royale militaire. Il fait appuyer son projet par [[Madame de Pompadour]], alors maîtresse du roi, et par le financier [[Joseph Pâris Duverney]] (frère de Jean Pâris, marquis de Brunoy et parrain de cette dernière).
+
+Par l’édit de {{date|janvier 1751}}, le roi [[Louis XV de France|Louis XV]] fonde l'institution destinée à l'instruction de cinq cents jeunes gens nobles et nés sans fortune. L’article XI de l’édit prévoit d’accorder « par forme de première dotation perpétuelle » la taxe sur les [[cartes à jouer]]. L’administration en est confiée au secrétaire d’État à la Guerre. L'École royale militaire comprenait un certain nombre de collèges militaires en province comme l'[[École de Brienne]] où les élèves étaient admis sur preuve de noblesse. À l'issue de leur scolarité, l'admission à l'école royale militaire de Paris se faisait par un concours national<ref>[https://www.cometoparis.com/fre/decouvrir-paris/monuments-de-paris/ecole-militaire-s954 Histoire de l'école militaire de Paris].</ref>.
+
+=== Projet architectural d'Ange-Jacques Gabriel ===
+[[Fichier:Ecole militaire paris.jpg|thumb|left|La façade, côté [[Champ-de-Mars (Paris)|Champ-de-Mars]], d'inspiration [[Serlienne|palladienne]].]]
+[[Fichier:Ecole militaire.jpg|thumb|220px|Côté [[Champ-de-Mars (Paris)|Champ-de-Mars]].]]
+[[Fichier:Fronton toit école militaire.jpg|vignette|210px|Le fronton de l'École militaire.]]
+[[Fichier:Ecole Militaire Projet.jpg|thumb|260px|right|Ange-Jacques Gabriel, l'École militaire, 1751.]] 
+Aussi le roi charge-t-il son premier architecte, [[Ange-Jacques Gabriel]] (chef de file du mouvement néoclassique), de dessiner les plans d'un édifice plus vaste et plus grandiose que l'[[hôtel des Invalides]], construit par [[Louis XIV de France|Louis {{XIV}}]]. C'est la tâche à laquelle s'attache Gabriel, qui présente le {{date|24 juin 1751}} son Grand Projet. La surface prévue est immense, les façades magnifiques, et une foule de détails montrent que l'architecte a bien entendu les désirs du Roi.
+
+Le projet s'inspire des modèles classiques, comme l'on peut voir avec son temple au fronton triangulaire, ou encore à ses façades d'inspiration palladienne, ou bien à l'utilisation de colonnes antiques.
+
+Ainsi, il est prévu de construire des rez-de-chaussée voûtés, de faire venir l'eau courante grâce à un système de puits et de canalisations et de bâtir au centre de l'édifice une immense église, bien plus vaste que celle des Invalides, et précédée d'une colonnade, comme à [[Basilique Saint-Pierre|Saint-Pierre de Rome]]. [[Ange-Jacques Gabriel]] rêve de construire un palais doté de cinq pavillons en façade sur le Champ-de-Mars, de bâtiments de trois étages bordant de multiples cours, et dominé au milieu de la composition, par une chapelle en forme de croix latine<ref>Yvan Christ, ''Paris des Utopies'', éd. Balland, Paris, 1977, {{p.|92}} et 93.</ref>.
+
+=== Travaux ===
+[[Fichier:École militaire 2545x809.jpg|thumb|250px|La façade de l'École militaire en 2006.]]
+Dès le {{date|13 septembre 1751}}, les travaux <ref>[http://www.paris15histoire.com/parc.html Le parc de Vaugirard, parc des charrois de l'École militaire"]. Résumé d'un article de Claude Pollien in ''Bull. Soc. hist. & arch. du XVème arrondt de Paris – n° 13''</ref> commencent par le creusement du grand puits. Mais, très vite, l'argent vient à manquer. Après les guerres de Louis XV, les caisses de l'État sont vides et l'on peine à réunir les fonds nécessaires. Les travaux avancent si lentement qu'en 1754 seuls ont été commencés les différents bâtiments de service. C'est pourquoi, pour ne pas compromettre l'ouverture de l'institution, il est décidé de n'accueillir dans un premier temps qu'un petit nombre d'élèves, en aménageant les bâtiments de service en dortoirs et salles de classe. C'est chose faite dès 1756 : l'institution ouvre ses portes à deux cents cadets. La même année, les carrières de Vaugirard sont achetées par le Roi à l'[[abbaye de Saint-Germain-des-Prés]] pour pourvoir le chantier de pierres à bâtir<ref>{{Ouvrage |auteur1=[[Lucien Lambeau]] |titre=Vaugirard |lieu=Paris |éditeur=Ernest Leroux |collection=Histoire des communes annexées à Paris en 1859 |année=1912 |passage=24 }}.</ref>. Les travaux se poursuivent, mais la situation financière devient de plus en plus préoccupante. Madame de Pompadour et [[Joseph Pâris Duverney]] ne peuvent pas financer eux-mêmes toute la construction. Finalement, en 1760, le Roi décide que l'institution sera répartie entre l'École militaire et le Collège Royal de la Flèche, ce qui rend caduc le grand projet.
+
+Gabriel se remet au travail, mais il lui faut désormais voir moins grand. Heureusement, on s'avise en 1766, après avoir débarrassé le [[Champ-de-Mars (Paris)|Champ-de-Mars]] des matériaux qui l'encombrent, que la magnifique perspective qu'il offre mérite de s'achever sur une belle façade. Gabriel peut ainsi reprendre, sur une surface réduite, plusieurs éléments du Grand Projet et notamment la magnifique façade du bâtiment principal, que l'on peut toujours admirer aujourd'hui. Le {{date|5 juillet 1768}}, le Roi vient poser la première pierre de la chapelle et en 1780, les travaux sont achevés. L'institution fonctionne alors depuis plus de vingt ans et a déjà formé de nombreux cadets. Le plus célèbre d'entre ceux qui dans les années suivantes y ont été admis est certainement [[Napoléon Ier|Bonaparte]]. Entré à l'École militaire en {{date|octobre 1784}}, il en sort en {{date|octobre 1785}}, peu après avoir reçu la Confirmation dans la chapelle de l'institution. Parmi les élèves, on compte aussi le futur diplomate [[Jean-François de Bourgoing]], entré en 1760. Parmi les professeurs, on compte le géographe [[Edme Mentelle]], ou l'académicien et militaire [[Louis-Félix Guynement de Kéralio]].
+
+Mais le Collège Royal militaire voulu par Louis XV ne survit pas à la mort de son fondateur. Sept ans après son achèvement, le {{date|9 octobre 1787}}, l'École militaire est fermée et on y prévoit le transfert de l'Hôtel-Dieu. Finalement, le déménagement n'aura jamais lieu. Les bâtiments servent de simple caserne avant d'être pillés pendant la Révolution. L'édifice traverse des années mouvementées pendant lesquelles il sert de dépôt, puis de caserne, notamment pour la Garde impériale, sous les noms de [[Liste des casernes de Paris|caserne de l'École militaire, caserne Impériale et caserne des Grenadiers]]. Au fur et à mesure de ses différentes affectations, il est agrandi, pour acquérir l'aspect qu'on lui connaît actuellement.
+
+C'est seulement à la fin du {{s-|XIX}} que l'École militaire est rendue à sa vocation première : l'enseignement. En 1878 est ouverte dans ses murs l’[[École supérieure de guerre]]. Puis, en 1911 s'installe le centre des hautes études militaires. Depuis cette date, elle n'a plus cessé de former des officiers. Elle a accueilli le [[Collège de défense de l'OTAN]] (ou ''NATO college'') de sa création en 1951 à 1966 (sortie de la France du commandement intégré de l'[[Organisation du traité de l'Atlantique nord|OTAN]]) ; celui-ci est maintenant à Rome.
+
+En 2012, des travaux de purge sont entrepris. Les façades des bâtiments étant dans un état délabré, des fragments de pierre de construction tombent au sol. Leur chute étant dangereuse pour les occupants et pour les passants sur le trottoir, il fut décidé de supprimer tous les morceaux risquant de tomber. C'est la raison pour laquelle les façades sont nouvellement « marquées » de zones plus claires, et que des coins et autres parties des pierres ont été évasés lors de la purge. En {{date|juin 2012}}, la purge de la façade du bâtiment situé au n°15, accolés au « château », a mis au jour deux balles emprisonnées dans l'ouverture des fenêtres du bâtiment attenant à la [[Centre de documentation de l'École militaire|bibliothèque]] : elles ont été remises aux bibliothécaires. Ces balles datent probablement de 1944. Les façades révèlent des centaines d’impacts de tir, surtout au n°11; les balles ont percé la pierre sur 5 à 15 cm de profondeur.
+
+[[Fichier:Paryż szkoła wojskowa2.JPG|thumb|center|upright=2.8|<center>L'École militaire vue depuis la [[tour Eiffel]].</center>]]
+
+== Architecture et distribution ==
+=== La façade ===
+Fondée sous le règne de [[Louis XV]], l’École militaire devait être un lieu d’apprentissage des sciences de la guerre pour les jeunes officiers. Louis XV, le souverain pacificateur, estime alors qu’il faut savoir user de la force avec discernement pour installer une paix durable.
+Cette philosophie s’illustre directement sur le fronton du pavillon central de l’École, au-dessus des trophées qui encadrent l’écusson de Louis XV : on peut apercevoir à gauche, « la Victoire », représentée sous les traits de Louis XV vêtu à l’antique, et « la France » symbolisée par une femme drapée à l’antique ; à droite, on peut observer « la Paix », avec un coq de vigilance à ses pieds, se tenant aux côtés de « la Force », incarnée par [[Hercule]] : ces statues sont l'œuvre de [[Louis-Philippe Mouchy]]. Les deux-bas reliefs « Le Temps » et « L’Astronomie » qui encadrent l’horloge seraient de [[Jean-Pierre Pigalle]].
+
+=== Le Château et la cour d’honneur ===
+« Le Château » est la partie centrale de l’École militaire. Elle se distingue par son dôme quadrangulaire inspiré de l’architecture du [[Palais du Louvre|Louvre]]. Il comprend un escalier d’honneur, une salle des gardes qui contient des bustes de Lemoyne et cinq portraits de grands officiers, un salon dit « des maréchaux », une chapelle, la ''[[Centre de documentation de l'École militaire|Bibliothèque patrimoniale]]''<ref>[https://patrickmanbincliere.com/2013/10/04/ecole-militaire-cdem-bibliotheque-patrimoniale/ La bibliothèque patrimoniale], vue par Patrick Manclière, en ligne.</ref>.
+
+=== De la Révolution à la Commune ===
+Théâtre de l'histoire, l’École garde dans ses murs des traces discrètes des événements historiques, notamment dans « le château ». Les dégradations subies sous [[la Révolution]] sont encore visibles sur les marches de l’escalier d’honneur, déjà peint en gris en son temps car la rampe en plaqué or était jugée trop luxueuse. Quant au salon dit « des Maréchaux », il devint le bureau de [[Bonaparte]], qui installa son quartier général dans l’école en 1795, après y avoir été élève dix ans plus tôt. On peut y voir des tableaux de [[Jean-Baptiste Le Paon]], peints sur le terrain, de [[Francesco Casanova]], un lustre en cristal de Bohème, des bronzes d’ornement de Philippe Caffieri … mais aussi la trace d’une balle, dans le miroir, tirée par les troupes du [[Félix Charles Douay|général Douay]], lorsqu’elles reprirent l’école aux Fédérés pendant la [[Commune de Paris (1871)|Commune]].
+
+=== Dreyfus ===
+En 1895, la cour Morland est le lieu de la dégradation militaire du [[Alfred Dreyfus|capitaine Dreyfus]], alors accusé de trahison, mais il sera réhabilité dans la cour Desjardins le {{date|13 juillet 1906}}. Le film ''[[J'accuse (film, 2019)|J'accuse]]'' (2019) de [[Roman Polanski]], qui prend pour sujet l'[[affaire Dreyfus]], est tourné à l'École militaire<ref>{{Article|titre="J'Accuse", de Roman Polanski, sur l'affaire Dreyfus, projeté à l'Ecole militaire |auteur= |périodique=Le Point|date=4 novembre 2019|url=https://www.lepoint.fr/societe/j-accuse-de-roman-polanski-sur-l-affaire-dreyfus-projete-a-l-ecole-militaire-04-11-2019-2345208_23.php}}.</ref>.
+
+=== Deux siècles de service après-vente ===
+À l’extérieur, dans la cour d’honneur, on peut admirer une horloge réalisée par [[Jean-André Lepaute]], encadrée par une jeune femme aux seins nus qui montre l’heure, que la tradition rapproche de [[Mme de Pompadour]], et une vieille aux pieds nus tenant un livre, qui symboliserait l’Étude. Aujourd’hui encore, l’entretien est assuré par l’entreprise Lepaute, 235 ans après l’installation de l’horloge.
+
+=== La chapelle Saint-Louis ===
+[[Fichier:École Militaire Chapelle St Louis.jpg|thumb|right|300px|Chapelle Saint-Louis.]]
+[[Fichier:Le Sacre de saint Louis - Charles-Amedee Van Loo.jpg|thumb|''Le sacre de Saint Louis'' de [[Charles Amédée Philippe van Loo|Charles-Amédée Van Loo]].]]
+La chapelle de l’École militaire fut bâtie, cachée dans le château, d’après les plans de [[Jacques-Ange Gabriel]] en l’honneur de [[Louis IX de France|Saint Louis]], saint patron des armées. Passablement saccagée pendant la [[Révolution française|Révolution]] et très longtemps inutilisée, si ce n’est comme magasin militaire d’habillement et comme salle de bal pour le deuxième anniversaire du sacre de [[Napoléon]], la chapelle est rendue au culte en 1952. On peut y admirer un plafond en voûte surbaissé et de grandes colonnes [[ordre corinthien|corinthiennes]] fondues dans le mur. L’ensemble bénéficie enfin d’une belle luminosité qui accentue la nature simple et élégante de la chapelle.
+Bien que plusieurs éléments aient disparu, on peut toujours s’arrêter devant la porte du tabernacle de bronze qui représente [[Jésus]] instituant le sacrement de l’[[Eucharistie]] ; lever les yeux vers la voûte, ornée de hauts-reliefs, et découvrir les anges au-dessus de l’autel et de l’orgue ; observer le bas-relief sur lequel est représenté Saint Louis, sur une chape cachant une crosse d’évêque, à gauche de l’autel.
+
+La chapelle est décorée de neuf tableaux illustrant la vie de [[Louis IX de France|Saint Louis]], commande royale auprès de l'académie de peinture au XVIIIe siècle<ref>{{Ouvrage|langue=fr|prénom1=Amédée|nom1=Boinet|titre=Les églises parisiennes (3) : 17e et 18e siècles|éditeur=Les Éditions de Minuit (réédition numérique FeniXX)|date=1964-01-01|isbn=978-2-7073-3266-0|lire en ligne=https://books.google.fr/books?id=JuRXDwAAQBAJ|consulté le=2021-03-08}}</ref> :
+
+* ''Saint Louis remet à la reine, sa mère, la régence'' de [[Joseph-Marie Vien]]
+* ''Saint Louis sacré par l'évêque de Soissons'' de [[Charles Amédée Philippe van Loo|Charles-Amédée Van Loo]]
+* ''Saint Louis servant les malades et les pauvres'' de [[Louis Jean-Jacques Durameau|Louis Durameau]]
+* ''Transport des saintes reliques de Vincennes à Paris'' de [[Noël Hallé]]
+* ''La réception de l’ambassadeur du prince des assassins'' par [[Nicolas Guy Brenet]]
+* ''Entrevue du roi et du pape Innocent III à Lyon'' de [[Louis Jean François Lagrenée|Lagrenée l'aîné]]
+* ''Descente du roi à Tunis'' de [[Jean-Bernard Restout]]
+* ''Le roi malade donne ses instructions à son fils Philippe'' de [[Jacques-Antoine Beaufort]]
+
+La série comportait deux autres tableaux, disparus lors de la Révolution :
+
+* ''Mariage du roi avec Marguerite de Provence'' de [[Hugues Taraval]]
+* ''Saint-Louis rendant lui-même justice sous un orme'' par [[Nicolas-Bernard Lépicié]]
+
+Enfin, la chapelle héberge un étonnant trésor dans son sous-sol : une crypte contenant les restes dans un cercueil en chêne de [[Joseph Pâris Duverney|Pâris Duverney]], le fondateur de l’École militaire et secrétaire des Finances de [[Louis XV]]<ref>{{Ouvrage|auteur1=Bernard Pâris de Bollardière|titre=Joseph Pâris Duverney et ses frères|éditeur=[[Presses du Midi]]|année=2006|passage=146|isbn=}}</ref>.
+
+=== La rotonde Gabriel ===
+Chapelle initiale de l’École militaire, prévue pour être la chapelle des élèves, la rotonde Gabriel<ref>[https://www.youtube.com/watch?v=7JMhT-umbyQ  La rotonde Gabriel de l’Ecole militaire].</ref>, du nom de son architecte, abrite aujourd’hui l’un des deux points de restauration de l’École militaire. C’est un bâtiment de forme octogonale coiffé d’une coupole aplatie et éclairée par quatre « œils-de-bœuf » ou oculi. Elle est précédée sur chaque façade d’un avant-corps d’un étage avec fronton rectangulaire et balcons à balustres.
+Après la fermeture de l’institution royale à la Révolution, la chapelle tombe dans l’oubli, puis devient une sellerie. Ce n’est qu’en 1945 qu’elle est remise en état et transformée en mess.
+
+=== La bibliothèque ===
+[[Fichier:École Militaire Bibliothèque.jpg|thumb|300px|Une salle de la [[Centre de documentation de l'École militaire|Bibliothèque de l'École militaire]].]]
+La bibliothèque patrimoniale de l'École militaire située dans « le Château », est l’œuvre de l’architecte [[Jacques Ange Gabriel]]. Les locaux, classés au titre des Monuments historiques <ref name = PA00088684 />, sont constitués par une enfilade d’anciens salons de réception. On peut remarquer, dans la salle de lecture, les boiseries sculptées et des plafonds longtemps attribués au flamand Jacob Verbeeckt<ref>[http://www.rimab.ch/personen/person1595/view?set_language=fr Verbeeckt, Jacob (1704 - 1771)].</ref>, des tableaux de [[:it:Pierre-François Cozette|Pierre-François Cozette]], des cheminées en marbre style [[Louis XVI]], dont une où sont représentés deux cadets entourant les armoiries de l’École royale militaire. On peut noter sur une des glaces d’époque, deux impacts de balles datant des combats du {{date|25 août 1944}}.
+
+L’École militaire est située sur l’une des plus belles perspectives de la ville de Paris, l’axe [[Place du Trocadéro-et-du-11-Novembre|Trocadéro]]- Breteuil, qui part du [[palais de Chaillot]], traverse le [[pont d'Iéna]] et le [[Champ-de-Mars (Paris)|Champ-de-Mars]] pour terminer sur la place de Breteuil. Encadrée par la [[tour Eiffel]] et le siège de l’[[UNESCO]], l’École, chef d’œuvre de l’architecture classique du {{s-|XVIII}}, s’impose au cœur de la capitale et de son histoire comme le symbole du lien Armée-Nation.
+
+Durant vingt ans, un important monument parisien s'est élevé au fond du Champ-de-Mars, juste devant l'École militaire : la [[Galerie des Machines]], construite à l'occasion de l'[[Exposition universelle de Paris de 1889]]. Elle fut démolie en 1909.
+
+== Organisation aujourd'hui ==
+
+=== Multitude d'organismes d'enseignement, de doctrine et de recherche du plus haut niveau ===
+
+L'École militaire regroupe aujourd'hui des instituts nationaux, des centres de recherche, de doctrine, et l'ensemble des organismes de l'enseignement militaire supérieur, soit une vingtaine d'organismes de formation, d'enseignement, de doctrine et de recherche en stratégie, en sécurité nationale et en géopolitique. L'ensemble constitue un pôle sans équivalent en Europe sur le plan des études de défense.
+
+En {{date|octobre 2023}}, ces organismes se sont rassemblés pour former l'Académie de défense de l'École militaire (ACADEM).
+
+La mission de l’ACADEM est de faciliter l’action de ses membres et de favoriser le développement de l'influence, instituée comme sixième fonction stratégique au service de la politique de défense et de sécurité nationale dans la ''Revue nationale stratégiqu''e, en mettant en commun les travaux et événements des organismes qui la composent. En établissant des passerelles avec le monde académique français, européen et international, spécialement les partenaires et alliés de la France, l’ACADEM donne à la pensée stratégique française un puissant outil de rayonnement.
+
+Le bâtiment abrite également plusieurs services de l'administration centrale du ministère des Armées, notamment le secrétariat général du Conseil supérieur de la fonction militaire (CSFM), ainsi que le groupement de soutien de la base de défense de Paris École Militaire (GSBdD PEM), chargé du soutien logistique de l'ensemble du site.
+
+=== L'Académie de défense de l'École militaire ===
+[[Fichier:Plaque institutionnelle de l'ACADEM.jpg|alt=Plaque institutionnelle de l'ACADEM sur la façade de l'École militaire au 21 place Joffre|vignette|279x279px|Plaque institutionnelle de l'ACADEM sur la façade de l'École militaire au 21 [[place Joffre]].]]
+Inaugurée le {{date|26 octobre 2023}} par le ministre des Armées, [[Sébastien Lecornu]], l'Académie de défense de l'École militaire (ACADEM) est une structure légère et fédératrice, vouée au développement et au rayonnement de la formation, de la recherche et de la doctrine françaises en matière de défense et de sécurité, à travers l’organisation d’évènements, de débats, de séminaires et de forums communs aux différentes structures qu’elle rassemble, toutes situées sur le site de l’École militaire à Paris.
+
+[[Fichier:Lancement ACADEM Ecole militaire le 26 octobre 2023.jpg|alt=Logo de l'Académie de défense de l'École militaire|gauche|vignette|249x249px|Logo de l'Académie de défense de l'École militaire.]]
+L'ACADEM regroupe : l'[[Académie du renseignement]], la [[Centre de documentation de l'École militaire|Bibliothèque de l'École militaire]] (anciennement le Centre de documentation de l'École militaire), le [[Commandement du combat futur]] (CCF), le Centre d'enseignement militaire supérieur Air (CEMS-Air), le Centre de l’enseignement militaire supérieur Terre (CEMS-Terre), le [[Centre d'études stratégiques de la Marine]] (CESM), le Centre des études stratégiques aérospatiales (CESA), le Centre de formation des dirigeants de la gendarmerie nationale (CFDG), le Centre de formation au management de la défense (CFMD, qui est l’unique centre de formation du ministère des Armées qui regroupe des cadres supérieurs militaires et civils, généralement appelés à exercer des responsabilités croissantes dans la suite de leur parcours. Il est un lieu de développement des compétences et un espace d’échanges à forte valeur ajoutée où le partage d’expériences très complémentaires et les regards croisés sur les thématiques abordées renforcent la connaissance mutuelle. Relevant de la DRH-MD, il inscrit son action dans le cadre de la politique de formation définie par le ministère des Armées. Disposant d'une Digital factory, véritable centre de création et d'innovation digitale, il intègre des approches innovantes dans ses programmes de formation. Il propose, selon une approche partenariale, des formations de haut niveau adaptées aux défis contemporains et répondant aux besoins de développement professionnel des cadres en étant au plus près des besoins des employeurs. Il est membre de l'Académie de défense de l'École militaire<ref>http://www.defense.gouv.fr/academ/lacademie</ref>{{,}}<ref>https://eform-cfmd.defense.gouv.fr/ilias.php?baseClass=ilrepositorygui&reloadpublic=1&cmd=&ref_id=1</ref>), le Centre de recherche des officiers de la Gendarmerie nationale (CREOGN), le [[Centre des hautes études militaires]] (CHEM), le [[Centre interarmées de concepts, de doctrines et d'expérimentations]] (CICDE), la Chaire économie de défense de l’IHEDN, la Chaire cyber et souveraineté numérique de l'IHEDN, la Chaire défense et sécurité du territoire national, la Chaire stratégies aérienne et spatiale appliquées intégrée au CESA, le [[Conseil général de l'armement]] (CGARM), l’[[École de guerre]], l'[[Institut des hautes études de défense nationale]] (IHEDN), l’[[Institut des hautes études du ministère de l'Intérieur|Institut des hautes études du ministère de l’Intérieur]] (IHEMI), l’[[Institut de recherche stratégique de l'École militaire]] (IRSEM), et la revue ''Inflexions'', qui dépend du chef d'état-major de l'armée de terre<ref>En savoir plus sur l'ACADEM : [https://www.youtube.com/embed/2ZA2Q9uv2l4 vidéo de présentation de l'ACADEM] ; [https://www.defense.gouv.fr/academ site internet de l'ACADEM].</ref>.
+
+=== Institut des hautes études de défense nationale ===
+{{Article détaillé|Institut des hautes études de défense nationale}}
+
+Établissement public administratif, placé sous l’autorité du Premier ministre, l’institut des hautes études de défense nationale a pour vocation de donner à des hauts fonctionnaires, des officiers des armées et des cadres de tous secteurs d’activité de la nation, une connaissance approfondie en matière de défense globale, d’apporter son concours à la promotion des enseignements universitaires de défense, de conduire et de susciter des études concernant la défense.
+
+==== Formations ====
+
+* ''Les sessions'' : nationales, en régions, internationales.
+
+La durée des études diffère selon les sessions mais la méthode de travail est identique et s’articule autour de trois éléments : les « travaux en comités », les « conférences-débats » au cours desquelles s’expriment des intervenants de haut niveau, et les « visites et missions d’études » sur le terrain. Chaque année, le thème d’étude est défini à partir des domaines d’actualité de la défense globale et des relations internationales, après approbation du premier ministre.
+
+* ''Des séminaires'', sur des thématiques particulières.
+
+Pour accroître le maillage social et territorial de la formation à la culture de défense, des séminaires spécialisés ont été mis en place dès 1980. Ils concernent les jeunes de 20 à 30 ans, les élus en régions, les magistrats, les préfets, les étudiants des universités et des grandes écoles, les publics intéressés par les menaces extérieures et par l’intelligence économique.
+
+=== Institut des hautes études du ministère de l’Intérieur ===
+L'[[Institut des hautes études du ministère de l'Intérieur]] (IHEMI) est un service à compétence nationale. L’IHEMI a pour principale mission de former de hauts responsables des secteurs public et privé. L’IHEMI délivre des formations longues et courtes sur la connaissance des milieux de la sécurité et de la justice, sur la protection des entreprises et l’intelligence économique, sur la gestion de crise et l’anticipation des risques et la communication de crise, sur la citoyenneté et l'intelligence artificielle.
+
+L’IHEMI conduit également des travaux de recherche scientifique qui portent sur la gestion de crise, l'économie souterraine et la criminalité organisée, les modèles de police ou encore les phénomènes de radicalisation. L’Institut s’appuie sur un réseau interministériel de partenaires scientifiques et d'experts qui participent aux formations, contribuent aux publications et animent les conférences.
+
+Enfin, l’IHEMI organise également des conférences ouvertes au public et publie deux revues sur les questions de sécurité, de justice, de prévention des risques, de gestion des crises ou encore d'intelligence et de sécurité économiques.
+
+=== Centre des hautes études militaires ===
+{{Article détaillé|Centre des hautes études militaires}}
+
+Le Centre des hautes études militaires « constitue une réserve de réflexion et un outil de rayonnement à la disposition du chef d’état-major des armées ».
+
+Depuis 1952, le CHEM forme chaque année une trentaine de colonels, capitaines de vaisseau ou équivalents, appelés à de hautes responsabilités. Il offre aux auditeurs, dégagés pendant toute la durée de la formation de toute responsabilité directe, un cadre d’échange et de réflexion.
+
+Issus des trois armées, de la gendarmerie et de la direction générale de l’armement, les auditeurs du CHEM sont désignés par le ministre de la Défense, sur proposition du chef d’état-major des armées (CEMA). Âgés en moyenne de 47 ans, ils comptent 26 années de service et 5 ans d’ancienneté dans leur grade. Trois auditeurs de l’[[Union européenne]] se joignent à eux pour cette année d’étude.
+
+De juin à septembre, ils suivent une formation qui se situe au niveau de réflexion et d’action stratégique du CEMA, et s’articule autour de trois cycles. Ces derniers sont consacrés à la défense, la collectivité nationale et les relations internationales. Autour des conférences données par les plus hauts responsables civils et militaires de la Défense et d’éminentes personnalités françaises ou étrangères, les auditeurs participent à des échanges bilatéraux et multilatéraux avec les instituts alliés équivalents du CHEM. Enfin, trois missions d’étude à l’étranger sont organisées chaque année pour permettre aux auditeurs d’appréhender sur le terrain les problématiques stratégiques régionales. La session est répartie en trois comités, au sein desquels les rencontres et la réflexion peuvent se prolonger.
+Chaque cycle est l’objet d’études individuelles et collectives dont les thèmes sont choisis en accord avec les orientations stratégiques de l’EMA et dont les restitutions peuvent donner lieu à des tables rondes et des débats.
+
+Parallèlement, les auditeurs suivent la session nationale de l’Institut des hautes études de défense nationale (IHEDN) où, aux côtés de 60 auditeurs civils, ils complètent leur formation.
+
+Dépendant du CEMA, le CHEM est dirigé par un officier général également directeur de l’IHEDN et de l’enseignement militaire supérieur, ce qui renforce la synergie CHEM-IHEDN auquel les auditeurs consacrent un tiers de leur temps.
+
+Le CHEM répond ainsi au vœu du ministre de la Défense de mieux préparer les officiers à haut potentiel à tenir un rôle de plus en plus déterminant dans l’élaboration des choix en matière de défense et de l’ouvrir totalement à la Nation.
+
+=== Institut de recherche stratégique de l'École militaire ===
+{{Article détaillé|Institut de recherche stratégique de l'École militaire}}
+
+L’Institut de recherche stratégique de l'École militaire est un centre de recherche et de prospective en matière militaire, stratégique et géopolitique. Il a pour objectifs de favoriser la recherche dans ces domaines, en faisant coopérer le monde de l'université et de la recherche civile et l'enseignement et la recherche militaires. Il doit aussi être au service du rayonnement de la pensée stratégique française.
+
+=== Société hippique nationale ===
+L'École militaire possède une écurie et un manège, ouverts prioritairement aux militaires en activité et à leur famille<ref name=":0">{{Lien web |langue=fr-FR |titre=Accueil |url=https://www.manege-ecole-militaire.fr/ |site=Manège école militaire Paris |consulté le=2025-07-27}}</ref>. Mais aussi aux [[réservistes]] ainsi qu'aux civils<ref name=":0" />.
+
+=== École de guerre ===
+{{Article détaillé|École de guerre}}
+
+Pôle d’excellence de l’enseignement militaire français, l’École de guerre (collège interarmées de défense de 1993 à 2011) s’est substitué, à partir du {{date|1 septembre 1993}}, aux écoles supérieures de guerre de chacune des armées, à l’école supérieure de la gendarmerie nationale et au cours supérieur interarmées.
+
+L’École de guerre a pour finalité de développer l’esprit et la compétence interarmées des officiers stagiaires : il accueille chaque année, au sein d’une même promotion, environ 320 officiers supérieurs stagiaires dont une centaine d’officiers étrangers de 70 nationalités (officiers des trois armées et de la gendarmerie, ingénieurs de l’armement, médecins militaires et ingénieurs du service des essences). Les stagiaires suivent un enseignement diversifié, à dominantes interarmées et relations internationales, qui s’étend sur une année. La pédagogie utilisée est aussi active et participative que possible (conférences, travaux en groupe et travaux personnels).
+
+Aux côtés d’un encadrement militaire permanent, des intervenants civils des universités et du monde de l’entreprise, ainsi que des officiers, assurent un enseignement de haute qualité articulé autour d’un enseignement général (ouverture et vision prospective sur le monde, réflexion géopolitique, stratégique et opérative, séminaire Europe) et d’un enseignement opérationnel (planification et conduite d’opérations interarmées et multinationales). Dans ce cadre, des échanges sont organisés avec les autres centres d’enseignement militaire supérieur européens.
+
+Relevant du chef d’état-major des armées, l'École de guerre prépare ainsi ces officiers à assumer des responsabilités importantes d’état-major, de commandement et de direction au sein de leur armée d’appartenance et dans des organismes et états-majors interarmées ou interalliés, où s’élabore et s’exécute la politique de défense.
+
+=== École de guerre - Terre ===
+{{Article détaillé|École de guerre - Terre}}
+Au sein du [[Centre de Doctrine et d’Enseignement du Commandement|CDEC]], l’[[École de guerre - Terre|École de guerre-Terre]] (EDG-T) forme les officiers supérieurs de l’[[Armée de terre|armée de Terre]], recrutés principalement sur concours à l’issue d’une première partie de carrière en [[corps de troupe]], qui seront amenés à occuper des fonctions au sein du haut encadrement militaire<ref>[https://www.penseemiliterre.fr/edg-t_1013154.html EDG-T Ecole de Guerre Terre].</ref>. L’EDG-T se distingue de l’EDG par la nature de son enseignement. Alors que cette dernière est tournée vers les opérations interarmées, l’EDG-T consacre son enseignement aux opérations aéroterrestres au sol et près du sol de l’armée de Terre. Elle répond à l’ambition du général Bosser, alors [[Chef d'état-major de l'Armée de terre (France)|chef d’état-major de l’armée de Terre]] (CEMAT), de former les chefs de demain dans un contexte sécuritaire dégradé et de préparer le futur haut encadrement militaire à l'exercice du leadership. Ainsi, l’EDG-T cherche-t-elle à faire de l’officier breveté de l’armée de Terre : 
+
+* un expert de la conception et de la conduite des opérations aéroterrestres,
+* un expert des milieux d'engagement aéroterrestres,
+* un expert de l'Armée de terre.
+
+=== Bibliothèque de l'École militaire (ex-CDEM) ===
+{{Article détaillé|Centre de documentation de l'École militaire}}
+
+Inauguré en 2009, le Centre de documentation de l'École militaire (CDEM) soutient les organismes de l'École militaire en mettant à disposition ou en produisant de la documentation. Entité de la [[direction de l'enseignement militaire supérieur]] (DEMS), le CDEM n'en est pas pour autant fermé au public<ref>[https://www.dems.defense.gouv.fr/cdem/ Centre de Documentation de l'École militaire].</ref>.
+
+Il est accessible à tous les acteurs de la réflexion de défense (institutionnels, stagiaires et auditeurs de l'enseignement militaire, chercheurs militaires et civils, universitaires…) dont les besoins de recherche le justifient. Les visiteurs extérieurs y accèdent par l'entrée principale de l'École militaire, située au 1, [[place Joffre]] (sur présentation d'une [[pièce d'identité]] française ou européenne) ou à partir du 17, place Joffre (accès direct avec pièce d'identité hors période estivale).
+
+Le CDEM a changé de nom en 2023 pour devenir la « [[Centre de documentation de l'École militaire|Bibliothèque de l'École militaire]] ».
+
+=== Groupement de soutien de la base de défense de Paris École militaire ===
+Le Groupement de soutien de base de défense de Paris École militaire crée le {{date|1 janvier 2011}} anciennement {{1re}} Base de soutien au commandement<ref>[https://www.ixarm.com/fr/node/686869 Groupement de Soutien de la Base de Défense Paris Ecole Militaire].</ref>. Il a pour mission d’assurer le soutien de l’enseignement militaire supérieur et des organismes situés sur le site de l’École militaire, soit 55 organismes totalisant 3 000 personnes. De plus, il réalise 500 prestations diverses d’accueil d’autorités, de visites et de séminaires par an. Organisme interarmées, il assure désormais le soutien de l'[[Hôtel des Invalides|hôtel national des Invalides]], de la Pépinière et de l'[[École du Val-de-Grâce|École du Val de grâce]].
+Il s'occupe également du fonctionnement courant du site, et permet aux organismes de fonctionner en bonne intelligence. Il est chargé de la sécurité des accès communs, du fonctionnement du cercle-mess de l'école, de l'entretien des bâtiments classés, de la coordination des activités sur l'école et du fonctionnement du Centre de conférences. Il assure aussi la promotion du site dans les médias et au sein du {{7e}} arrondissement. C'est lui qui assure l'ouverture du site lors des [[Journées européennes du patrimoine|journées du patrimoine]] chaque année.
+
+== Notes et références ==
+{{Références}}
+
+== Annexe ==
+{{coord|48|51|09|N|2|18|13|E|region:FR_type:landmark_source:frwiki|display=title}}
+
+=== Bibliographie ===
+* Robert Laulan, ''L’école militaire de Paris, le monument 1751-1788'', Paris, A. et J. Picard, 1950, 138 pages, 40 planches ;
+* Yoann Brault, Frédéric Jiméno, Daniel Rabreau (dir.), ''L’école militaire et l’axe Breteuil-Trocadéro'', Action artistique de la ville de Paris, 2002, 296 p.
+* {{ouvrage|auteur=[[Christian Benoit]]|titre=L'Ecole militaire|sous-titre=Une histoire illustrée|éditeur=Pierre de Taillac Editions|année=2014|pages=128|isbn=978-2-3644-5044-8}}
+* Robert Laulan, ''L'enseignement des exercices du corps à l'École militaire de Paris'', {{p.|43-57}}, Bulletin de la Société de l'histoire de Paris et de l'Ile-de-France, 1952-1954 [https://gallica.bnf.fr/ark:/12148/bpt6k9603038n/f48.item.r=.zoom (''lire en ligne'')]
+* {{ouvrage|auteur1=[[Pierre Garrigou Grandchamp]]|auteur2=Francis Hammond (Photographies)|titre=L'École militaire à Paris|sous-titre=L'Art de la Guerre|éditeur=Flammarion|année=2015|pages=264|isbn=978-2-0813-4644-4}}
+* {{ouvrage|langue=en|auteur=Haroldo A. Guízar|titre=The École Royale Militaire|sous-titre=Noble Education, Institutional Innovation, and Royal Charity, 1750-1788 (Éducation noble, innovation institutionnelle et charité royale, 1750-1788)|éditeur=Springer Nature Switzerland AG|année=2020|pages=301|isbn=978-3-0304-5930-7}}
+
+=== Articles connexes ===
+{{Autres projets|commons=Category:École militaire}}
+* [[Écoles militaires en France]]
+* [[Séminaire interarmées des grandes écoles militaires]]
+* [[École militaire des aspirants de Coëtquidan|{{4e}} bataillon de l'École spéciale militaire de Saint-Cyr]]
+
+=== Liens externes ===
+{{Liens}}
+* [http://www.ecole-militaire-lieu-de-memoire.fr/ Association École militaire - lieu de mémoire].
+
+{{Palette|Unités militaires françaises}}
+{{Portail|Paris|éducation|monuments historiques|patrimoine mondial|armée française}}
+
+{{DEFAULTSORT:Ecole militaire (France)}}
+[[Catégorie:École militaire en France]]
+[[Catégorie:Enseignement supérieur à Paris]]
+[[Catégorie:Monument historique dans le 7e arrondissement de Paris|Ecole militaire]]
+[[Catégorie:Bâtiment d'Ange-Jacques Gabriel]]
+[[Catégorie:Monument historique classé en 1990]]
+[[Catégorie:Édifice construit en 1780]]
+[[Catégorie:Caserne à Paris]]

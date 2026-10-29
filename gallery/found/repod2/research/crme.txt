@@ -1,0 +1,1877 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- bs5/base -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  
+
+<link rel="schema.dc" href="http://purl.org/dc/elemtens/1.1/" />
+<meta name="citation_doi" content="10.1016/j.crme.2004.02.021">
+<meta name="citation_title" content="Model equations for the Eiffel Tower profile: historical perspective and new results">
+
+  <meta name="citation_author" content="Patrick Weidman"><meta name="citation_author" content="Iosif Pinelis">
+
+<meta name="citation_publication_date"
+      content="2004">
+
+  <meta name="citation_date"
+        content="2004-05-14">
+
+<meta name="citation_journal_title"
+      content="Comptes Rendus. Mécanique">
+
+  <meta name="citation_issn"
+        content="1873-7234">
+
+<meta name="citation_volume" content="332">
+<meta name="citation_language" content="en">
+<meta name="citation_issue" content="7">
+<meta name="citation_firstpage" content="571">
+<meta name="citation_lastpage" content="584">
+
+
+  
+    <meta name="citation_pdf_url"
+          content="https://comptes-rendus.academie-sciences.fr/mecanique/item/10.1016/j.crme.2004.02.021.pdf">
+  
+
+
+
+
+    <title>
+      
+  Model equations for the Eiffel Tower profile: historical perspective and new results
+
+    </title>
+
+    
+    
+    
+      <link rel="stylesheet"
+            href="/mecanique/static/ptf/vendors/font-awesome/css/font-awesome.min.css" />
+    
+    
+      <link rel="stylesheet"
+            href="/mecanique/static/ptf/vendors/bootstrap5/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="/mecanique/static/ptf/css/bs5/ptf.css" />
+    <link rel="stylesheet" href="/mecanique/static/ptf/css/bs5/base.css" />
+    
+      <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab"
+          rel="stylesheet">
+
+    
+      <link rel="shortcut icon"
+            type="image/svg+xml"
+            href="/mecanique/static/crmeca/img/favicon.ico" />
+    
+
+    
+  
+  
+<link rel="stylesheet" href="/mecanique/static/ptf/css/bs5/style.css" />
+
+  <link rel="stylesheet" href="/mecanique/static/cr_app/css/cr_common.css" />
+  <link rel="stylesheet" href="/mecanique/static/ptf/css/bs5/search-bar.css" />
+  <link rel="stylesheet"
+        href="/mecanique/static/ptf/vendors/flag-icon/css/flag-icon.min.css" />
+  <link rel="stylesheet" href="/mecanique/static/ptf/css/bs5/lightbox.css" />
+
+
+  
+    <link rel="stylesheet"
+          href="/mecanique/static/comments_views/journal/css/bs5/comments.css" />
+    <link rel="stylesheet" href="/mecanique/static/ptf/css/custom-alerts.css">
+  
+
+
+    
+  <link rel="stylesheet" href="/mecanique/static/cr_app/css/cr_common.css" />
+  <!-- cr_app/templates/base.html -->
+
+    
+      
+
+<link type="application/rss+xml" rel="alternate" href="/mecanique/fr/latest/feed/crmeca/" title="Flux RSS des derniers articles parus" hreflang="fr"/>
+
+    
+  </head>
+  <body 
+        class="d-flex flex-column position-relative"
+        
+  
+
+        >
+    
+  
+  <!-- Menu on extra-small screen (Phones). Hidden on larger screens
+    -->
+  <nav class="d-md-none navbar navbar-expand-md navbar-dark bg-dark">
+    <div class='container-fluid justify-content-end px-0 gap-2'>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="navbar-nav">
+          
+          
+
+
+
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      À propos
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="/mecanique/page/notre-revue/" class="dropdown-item menu-link">Notre revue</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/equipe-editoriale/" class="dropdown-item menu-link">Équipe éditoriale</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/referencement-archivage/" class="dropdown-item menu-link">Référencement et archivage</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Articles et numéros
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/mecanique/volume/CRMECA_2026__354_G1/" class="dropdown-item menu-link">Nos derniers articles</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/mecanique/items/CRMECA/" class="dropdown-item menu-link">Numéros thématiques</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/collections_fr/" class="dropdown-item menu-link">Collections transverses</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/articles-aciens/" class="dropdown-item menu-link">Articles et numéros antérieurs à 2002</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Science ouverte
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="/mecanique/page/libre-acces-diamant/" class="dropdown-item menu-link">Les CR Mécanique en libre accès diamant</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/politique-libre-acces/" class="dropdown-item menu-link">Politique de libre accès</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/donnees-ouvertes/" class="dropdown-item menu-link">Politique de données ouvertes</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/plurilinguisme-cr/" class="dropdown-item menu-link">Le plurilinguisme dans les Comptes Rendus</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Intégrité scientifique
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/code-ethique-bonnes-pratiques/" class="dropdown-item menu-link">Code d&#x27;éthique et bonnes pratiques</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/intelligence-artificielle" class="dropdown-item menu-link">Usage de l&#x27;intelligence artificielle</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/commenter-fr/" class="dropdown-item menu-link">Commenter les articles des CR Mécanique</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Outils auteurs
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/soumission/" class="dropdown-item menu-link">Procédure de soumission</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/instructions-auteurs/" class="dropdown-item menu-link">Instructions aux auteurs</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/references-biblio-numeric/" class="dropdown-item menu-link">Formater vos références bibliographiques</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/propriete-intellectuelle/" class="dropdown-item menu-link">Propriété intellectuelle</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/traduire-article/" class="dropdown-item menu-link">Traduisez un de nos articles !</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/ojs/mecanique/login" class="dropdown-item menu-link">Soumettre votre manuscrit</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+    
+    
+      
+        <li><a href="https://comptes-rendus.academie-sciences.fr/page/impression-et-reutilisation/" class="menu-link nav-link">Impression et réutilisation</a></li>
+      
+    
+    
+  
+
+
+
+          
+
+
+
+
+
+  
+  <hr class="bg-light mx-3">
+  
+  
+    <form class="navbar-form navbar-right position-relative align-self-end me-3" action="/mecanique/i18n/setlang/" style="max-width: fit-content;" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="2ky4fiqmuKHieKOZDoBdlJmq6hcFfut39RenpMZOfvGieOKgARovsLLgD7w2I28A">
+      <button class="language-select-button btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="flag-icon flag-icon-fr"></span>
+      </button>
+      <input type="hidden" name="language" value="fr">
+      <ul class="dropdown-menu custom-select position-absolute start-0 end-0" style="min-width: auto; max-width: fit-content; text-align: center;">
+        
+        <li><a class="dropdown-item" href="#" value="en" action="submit"><span class="flag-icon flag-icon-gb"></span></a></li>
+        
+        <li><a class="dropdown-item" href="#" value="fr" action="submit"><span class="flag-icon flag-icon-fr"></span></a></li>
+        
+      </ul>      
+    </form>
+  
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+
+
+    
+      <main class="container 
+  article-container
+"
+            style="flex-grow: 1">
+        
+  
+
+
+  
+
+
+
+
+<!-- Menu on regular screens
+-->
+
+
+  <nav id="all-cr-nav"
+       class="d-md-flex justify-content-center menu-top p-0 mw-100">
+    <ul class="d-flex flex-row list-unstyled mw-100 flex-wrap">
+      <li>
+        <a class="nav-link py-0" href="/">
+          <span class="fa fa-home" aria-hidden="true"> </span>
+        </a>
+      </li>
+      <li><a class="nav-link py-0" href="/mathematique">Mathématique</a></li>
+      <li class="active"><a class="nav-link py-0" href="/mecanique">Mécanique</a></li>
+      <li><a class="nav-link py-0" href="/physique">Physique</a></li>
+      <li><a class="nav-link py-0" href="/geoscience">Géoscience</a></li>
+      <li>
+        <a class="nav-link py-0"
+           href="https://sciencepress.mnhn.fr/fr/periodiques/comptes-rendus-palevol"
+           target="_blank">Palevol</a>
+      </li>
+      <li><a class="nav-link py-0" href="/chimie">Chimie</a></li>
+      <li><a class="nav-link py-0" href="/biologies">Biologies</a></li>
+      <li>
+        <a class="nav-link py-0"
+           href="https://vds.hypotheses.org/"
+           target="_blank">Vie des sciences</a>
+      </li>
+      <li class="language-select-nav ms-1">
+
+
+
+
+
+  
+  
+    <form class="navbar-form navbar-right position-relative " action="/mecanique/i18n/setlang/"  method="post"><input type="hidden" name="csrfmiddlewaretoken" value="2ky4fiqmuKHieKOZDoBdlJmq6hcFfut39RenpMZOfvGieOKgARovsLLgD7w2I28A">
+      <button class="language-select-button btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="flag-icon flag-icon-fr"></span>
+      </button>
+      <input type="hidden" name="language" value="fr">
+      <ul class="dropdown-menu custom-select position-absolute " style="min-width: auto; max-width: fit-content; text-align: center;">
+        
+        <li><a class="dropdown-item" href="#" value="en" action="submit"><span class="flag-icon flag-icon-gb"></span></a></li>
+        
+        <li><a class="dropdown-item" href="#" value="fr" action="submit"><span class="flag-icon flag-icon-fr"></span></a></li>
+        
+      </ul>      
+    </form>
+  
+</li>
+    </ul>
+  </nav>
+
+  
+    <div class="d-flex flex-row justify-content-around align-items-center">
+      <div id="top-logo-cr" class="d-none d-md-block">
+        <a href="/mecanique/">
+          <img src="/mecanique/static/cr_app/img/logo-cras.png"
+               class="logo-cras"
+               alt="logo CRAS">
+          <img src="/mecanique/static/cr_app/img/logo-cnrs.png"
+               class="logo-cnrs"
+               alt="logo CNRS">
+        </a>
+      </div>
+      <div id="title-cr"
+           class="d-flex align-items-center justify-content-center">
+        
+          <a href="/mecanique/">
+            <img src="/mecanique/static/crmeca/img/title-crmeca.png" id="img-title" alt="Comptes Rendus">
+          </a>
+        
+      </div>
+    </div>
+  
+
+  
+<nav class="d-none d-md-block menu-top">
+  <ul class="nav nav-pills nav-justified align-items-center flex-nowrap">
+    
+    
+    
+
+
+
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      À propos
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="/mecanique/page/notre-revue/" class="dropdown-item menu-link">Notre revue</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/equipe-editoriale/" class="dropdown-item menu-link">Équipe éditoriale</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/referencement-archivage/" class="dropdown-item menu-link">Référencement et archivage</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Articles et numéros
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/mecanique/volume/CRMECA_2026__354_G1/" class="dropdown-item menu-link">Nos derniers articles</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/mecanique/items/CRMECA/" class="dropdown-item menu-link">Numéros thématiques</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/collections_fr/" class="dropdown-item menu-link">Collections transverses</a></li>
+          
+      
+      
+      
+          
+          <li><a href="/mecanique/page/articles-aciens/" class="dropdown-item menu-link">Articles et numéros antérieurs à 2002</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Science ouverte
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="/mecanique/page/libre-acces-diamant/" class="dropdown-item menu-link">Les CR Mécanique en libre accès diamant</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/politique-libre-acces/" class="dropdown-item menu-link">Politique de libre accès</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/donnees-ouvertes/" class="dropdown-item menu-link">Politique de données ouvertes</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/plurilinguisme-cr/" class="dropdown-item menu-link">Le plurilinguisme dans les Comptes Rendus</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Intégrité scientifique
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/code-ethique-bonnes-pratiques/" class="dropdown-item menu-link">Code d&#x27;éthique et bonnes pratiques</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/intelligence-artificielle" class="dropdown-item menu-link">Usage de l&#x27;intelligence artificielle</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/commenter-fr/" class="dropdown-item menu-link">Commenter les articles des CR Mécanique</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+  <li class=" position-relative ">
+    <a href="#" class="dropdown-toggle menu-link nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Outils auteurs
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/soumission/" class="dropdown-item menu-link">Procédure de soumission</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/instructions-auteurs/" class="dropdown-item menu-link">Instructions aux auteurs</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/references-biblio-numeric/" class="dropdown-item menu-link">Formater vos références bibliographiques</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/propriete-intellectuelle/" class="dropdown-item menu-link">Propriété intellectuelle</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/page/traduire-article/" class="dropdown-item menu-link">Traduisez un de nos articles !</a></li>
+          
+      
+      
+      
+          
+          <li><a href="https://comptes-rendus.academie-sciences.fr/ojs/mecanique/login" class="dropdown-item menu-link">Soumettre votre manuscrit</a></li>
+          
+      
+      
+    </ul>
+  </li>
+  
+
+  
+  
+    
+    
+      
+        <li><a href="https://comptes-rendus.academie-sciences.fr/page/impression-et-reutilisation/" class="menu-link nav-link">Impression et réutilisation</a></li>
+      
+    
+    
+  
+
+
+
+    
+
+  </ul> 
+</nav>
+
+
+
+
+
+
+
+  
+    
+  <div id='search-bar'>
+    
+
+
+
+
+
+
+<form class="d-flex gap-2 align-items-center align-items-md-start flex-column flex-md-row" method="get" action="/mecanique/search_init/">
+
+  
+  
+
+<div class="px-0 text-nowrap browse-button">
+  <a href="/mecanique/journals/CRMECA/"
+     class="btn btn-primary search-button">
+    
+  Consulter
+
+  </a>
+</div>
+
+  
+
+  <div class="flex-grow-1 d-flex gap-2 w-100 align-items-stretch align-items-lg-start">
+    <div class="flex-grow-1" id="line-container">
+      <div class="d-flex input-group search-group flex-nowrap">
+        <div class="search-group-inner input-group w-100" id="search-input-group">
+          <input class="searchinput form-control" type="text" name="q0" value=""
+                  placeholder="Rechercher des articles, des auteurs..."/>
+          <i class="searchclear fa fa-remove hidden" role="button"></i>
+          <input type="hidden" name="qt0" value="all">
+          <button type="button" class="btn btn-light dropdown-toggle border-0 rounded-0 border-end d-flex flex-nowrap align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+            
+              Tout
+            
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">Tout</a></li>
+            <li><a href="#" class="dropdown-item">Auteur</a></li>
+            <li><a href="#" class="dropdown-item">Titre</a></li>
+            <li><a href="#" class="dropdown-item">Bibliographie</a></li>
+            
+              <li><a href="#" class="dropdown-item">Mots-clés</a></li>
+            
+            
+              <li><a href="#" class="dropdown-item">Résumé</a></li>
+            
+            <li><a href="#" class="dropdown-item">Affiliation</a></li>
+            <li><a href="#" class="dropdown-item">Plein texte</a></li>
+          </ul>
+          
+          <button id="add-search-field" type="button" class="btn btn-light">
+            <i class="fa fa-plus"></i>
+          </button>
+          
+        </div>
+      </div>
+
+      
+      
+        
+      
+    </div>
+
+    
+    
+
+<div class="search-button-div d-flex">
+  <button type="submit" class="btn btn-primary search-button d-flex flex-nowrap align-items-center gap-1" name="Submit">
+    <i class="fa fa-search"></i>
+    <span id="search-button-text" class="d-none d-sm-block">Rechercher</span>
+  </button>
+  
+  
+  
+</div>
+    
+  </div>
+
+  
+</form>
+<div id="template-search-form" style="display:none">
+  
+
+<div class="input-group search-group search-group-added d-none d-lg-flex flex-nowrap">
+  <div  class="input-group flex-nowrap">
+    <div style="display:flex" class="input-group-text flex-nowrap justify-content-center align-items-center gap-1 px-2 search_first_box">
+      <input id="not##i##"" class="bt-checkbox" type="checkbox" name="not##i##" /> <label for="not##i##"">NOT</label>
+    </div>
+    <div  class="search-group-inner input-group w-100 p-0">
+      <input class="searchinput form-control rounded-0 border-0 w-100 h-100 px-2 py-1" type="text" name="q##i##"/>
+      <i class="searchclear fa fa-remove hidden"></i>
+    </div>
+  </div>
+
+  <div style="display:none" class="flex-grow-1 input-group">
+    <!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+    <span class="input-group-text search_first_box">Entre</span>
+    <input class="form-control" type="text" name="q-f-##i##" placeholder="Année" />
+    <span class="input-group-text">et</span>
+    <input class="form-control rounded-0" type="text" name="q-l-##i##" placeholder="Année" />
+  <!-- </div> -->
+  <!-- </div> -->
+</div>
+<div class="input-group-btn d-flex flex-nowrap" id="search-group-btn">
+    <input type="hidden" name="qt##i##" value="author">
+    <button type="button" class="btn btn-light dropdown-toggle rounded-0 border-0 border-start border-end" data-bs-toggle="dropdown" aria-expanded="false">
+      
+        Auteur
+      
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#" class="dropdown-item">Tout</a></li>
+      <li><a href="#" class="dropdown-item">Auteur</a></li>
+      <li><a href="#" class="dropdown-item">Titre</a></li>
+      <li><a href="#" class="dropdown-item">Date</a></li>
+      <li><a href="#" class="dropdown-item">Bibliographie</a></li>
+      <li><a href="#" class="dropdown-item">Mots-clés</a></li>
+      
+        <li><a href="#" class="dropdown-item">Résumé</a></li>
+      
+      <li><a href="#" class="dropdown-item">Affiliation</a></li>
+      <li><a href="#" class="dropdown-item">Plein texte</a></li>
+    </ul>
+    <button type="button" class="btn btn-light border-0 remove-search-field">
+      <i class="fa fa-minus"></i>
+    </button>
+  </div>
+</div><!-- /input-group -->
+
+
+</div>
+
+
+
+
+  </div>
+
+  
+
+
+
+
+
+
+          <div class="row justify-content-center">
+            
+              <div class="container-fluid d-flex">
+                
+                  <!-- Debut content -->
+                  
+                    <!-- Debut Left -->
+                    <div>
+                      
+                      
+                      
+  <div id="content_left">
+    
+  </div>
+
+                    </div>
+                    <!-- Fin left -->
+                  
+
+                  
+                  <div class="flex-grow-1" style="max-width: 100%;">
+                    <!-- Breadcrumb -->
+                    
+  
+    
+
+
+<div class="breadcrumb-row d-flex flex-column flex-xl-row gap-2">
+  
+    <div class="col-md-12 col-xl-3 btn-tex order-xl-2">
+      
+
+<form class="w-100" action="/mecanique/set-formula-display/" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="2ky4fiqmuKHieKOZDoBdlJmq6hcFfut39RenpMZOfvGieOKgARovsLLgD7w2I28A">
+  
+    <input type="submit" value="Afficher les formules comme du code source TeX" class="btn btn-light border text-wrap" style="max-width: 100%">
+    <input type="hidden" name="formula-display" value="tex">
+  
+</form>
+
+    </div>
+    <div class="col-12 col-xl-9 article-breadcrumb px-0">
+  
+    
+    <div class="breadcrumb-lg flex-wrap" style="font-size: 14px">
+      
+        <div style="float: left;">
+          <ul class="cms-breadcrumb d-flex m-0 mb-1">
+            <li class="breadcrumb-previous">
+              <a href="/mecanique/articles/10.1016/j.crme.2004.03.003/">Précédent</a>
+            </li>
+          </ul>
+        </div>
+      
+      <div class="order-2 order-md-1 col-12 col-md-auto" style="float: left;">
+        <ul class="cms-breadcrumb d-flex flex-nowrap mb-3">
+          
+            
+            
+              <li class="">
+                <a href="/mecanique/item/CRMECA/">Consulter</a>
+              </li>
+            
+          
+            
+            
+              <li class="">
+                <a href="/mecanique/volume/CRMECA_2004__332_7/">Volume 332 (2004)</a>
+              </li>
+            
+          
+            
+            
+              <li class="">
+                <a href="/mecanique/item/CRMECA_2004__332_7/">no. 7</a>
+              </li>
+            
+          
+            
+            
+              <li class="active">
+                <a href="/mecanique/articles/10.1016/j.crme.2004.02.021/">p. 571-584</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+        <div class="order-1 order-md-2" style="float: left;">
+          <ul class="cms-breadcrumb d-flex mb-1">
+            <li class="breadcrumb-next">
+              <a href="/mecanique/articles/10.1016/S1631-0721(04)00128-7/">Suivant</a>
+            </li>
+          </ul>
+        </div>
+      
+    </div>
+    
+    <div class="breadcrumb-sm">
+      
+        <a href="/mecanique/articles/10.1016/j.crme.2004.03.003/" class="btn btn-light border"><i class="fa fa-chevron-left"></i></a>
+      
+
+      
+        
+          
+        
+          
+            <a href="/mecanique/item/CRMECA_2004__332_7/" class="btn btn-light border">no. 7</a>
+          
+        
+          
+        
+          
+        
+      
+
+      
+        <a href="/mecanique/articles/10.1016/S1631-0721(04)00128-7/" class="btn btn-light border"><i class="fa fa-chevron-right"></i></a>
+      
+    </div>
+    <div class="clearfix">
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+                    <!-- center_top -->
+                    
+                    
+                    <!-- center_middle -->
+                    
+  
+  
+    
+
+
+<template id="custom-alert-template">
+  <div class="custom-alert" role="alert">
+    <button aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+    <div class="custom-alert-content"></div>
+  </div>
+</template>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div id="article-div" class="article-div">
+  
+  <div >
+    
+
+    
+    <div class="col-12">
+    
+
+      
+        
+          <div class="article-subj" style="margin-bottom:0px">History, old problems and new solutions / Histoire, vieux problèmes et nouveaux résultats</div>
+        
+      
+      <div style="font-size:18px;margin-bottom:10px">
+        
+
+
+  <span class="common-title article-title">
+    
+    
+    Model equations for the Eiffel Tower profile: historical perspective and new results
+    
+      
+    
+  </span>
+  
+  <br>
+  <span class="article-trans-title">[Mise en équations du profil de la Tour Eiffel : rétrospective et nouveautés]</span>
+  
+  
+
+
+
+
+      </div>
+      
+
+
+
+<div class="article-author" style="display:inline-block">
+  
+    
+      
+        
+
+
+  
+
+
+  
+    Évariste Sanchez-Palencia
+
+
+    
+
+    
+
+  
+
+  
+
+      
+    
+      
+        
+          
+
+
+
+
+  <div style="margin-bottom:5px; font-size: 16px">
+    <a class="author_link" href="/mecanique/search?&quot;Patrick Weidman&quot;-c">Patrick Weidman<span href="#aff_1"></span></a><a class="author_link" href="#affiliation" data-bs-toggle="collapse" aria-controls="affiliation"><sup><span href="#aff_1">1</span></sup></a>&nbsp; ;&nbsp;<a class="author_link" href="/mecanique/search?&quot;Iosif Pinelis&quot;-c">Iosif Pinelis<span href="#aff_2"></span></a><a class="author_link" href="#affiliation" data-bs-toggle="collapse" aria-controls="affiliation"><sup><span href="#aff_2">2</span></sup></a><a data-bs-toggle="collapse" href="#affiliation" aria-controls="affiliation"><button id="house-affiliation" type="button" class="btn btn-link btn-sm" title="Affiliations des auteurs"><span class="bi bi-house-fill"></span><span id="house-caret" class="caret-icon bi bi-caret-down-fill" style="margin-left:3px"></span></button></a><div class="collapse" id="affiliation"><div class="card card-body"><div class="affiliation-authors"><span id="aff_1"><sup>1</sup>Department of Mechanical Engineering, University of Colorado, Boulder, CO 80301-0427, USA</span><br><span id="aff_2"><sup>2</sup>Department of Mathematical Sciences, Michigan Technological University, Houghton, MI 49931-1295, USA</span><br></div></div></div>
+</div>
+
+
+        
+      
+    
+  
+</div>
+
+
+      <div style="margin-bottom:10px">
+        
+
+
+
+Comptes Rendus. Mécanique, Volume 332 (2004) no. 7, pp. 571-584
+
+        
+        
+      </div>
+
+      
+      
+        <div class="binary-file-icon" style="margin-top:20px;margin-bottom:10px">
+          
+  <div class="wrapper-float">
+
+
+
+  <div class="d-flex flex-nowrap mt-0">
+    
+      <a href="/mecanique/item/10.1016/j.crme.2004.02.021.pdf" target="_blank">
+        <img src="/mecanique/static/ptf/img/pdf.svg">
+      </a>
+    
+    
+    
+    
+    
+    
+  </div>
+
+</div>
+
+
+        </div>
+      
+      
+      
+    </div>
+
+    
+  </div>
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+
+
+  
+
+
+<div id="abstract">
+  <div class="col-12">
+    <div class="mt-4 mb-4">
+      <ul class="nav nav-tabs article-tab">
+        
+          <li class="nav-item">
+            <a class="nav-link "
+               lang="en"
+               data-bs-toggle="tab"
+               data-bs-target="#abstract-en"
+               href="#abstract-en">
+              <span title="Anglais
+">
+                
+                  
+                    Abstract
+                  
+                  
+                    (VO)
+                  
+                
+              </span>
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link active"
+               lang="fr"
+               data-bs-toggle="tab"
+               data-bs-target="#abstract-fr"
+               href="#abstract-fr">
+              <span title="Français
+">
+                
+                  
+                    Résumé
+                  
+                  
+                
+              </span>
+            </a>
+          </li>
+        
+      </ul>
+      <div class="tab-content mt-2">
+        
+          <div lang="en"
+               id="abstract-en"
+               class="tab-pane fade ">
+            
+              
+            <p>Model equations for the shape of the Eiffel Tower are investigated. One model purported to be based on Eiffel's writing does not give a tower with the correct curvature. A second popular model not connected with Eiffel's writings provides a fair approximation to the tower's skyline profile of 29 contiguous panels. Reported here is a third model derived from Eiffel's concern about wind loads on the tower, as documented in his communication to the French Civil Engineering Society on 30 March 1885. The result is a nonlinear, integro-differential equation which is solved to yield an exponential tower profile. It is further verified that, as Eiffel wrote, “in reality the curve exterior of the tower reproduces, at a determined scale, the same curve of the moments produced by the wind”. An analysis of the actual tower profile shows that it is composed of two piecewise continuous exponentials with different growth rates. This is explained by specific safety factors for wind loading that Eiffel &amp; Company incorporated in the design of the free-standing tower. </p>
+          
+            
+            
+
+
+
+
+            
+
+
+
+
+          </div>
+        
+          <div lang="fr"
+               id="abstract-fr"
+               class="tab-pane fade show active">
+            
+              
+            <p>La mise en équation de la forme de la Tour Eiffel est ici étudiée. Un model supposé être basé sur les écrits d'Eiffel abouti à une tour possédant une courbure incorrecte. Il existe également un second model populaire, non déduit des notes d'Eiffel, produisant une bonne approximation du profile de la tour en vingt-neuf panneaux successifs. Ici est présenté un troisième model dérivé des préoccupations d'Eiffel concernant les effets du vent décrits dans sa communication a la Société Française des Ingénieurs Civils datée du 30 mars 1885. Il en résulte une équation non-linéaire intégro-différentielle dont la solution produit un profil de tour de type exponentiel. Il a été par ailleurs vérifié, comme Eiffel l'a noté, « en réalité la courbe extérieure de la tour reproduit, à une échelle déterminée, la courbe même des moments fléchissant dus au vent ». Une analyse du profil actuel de la tour montre qu'il est composé de deux parties continues exponentielles à taux d'accroissement différents. Cela s'explique par des facteurs de sûreté spécifiques, liés à la charge du vent, inclus par Eiffel &amp; Compagnie dans le plans d'une tour auto supportée. </p>
+          
+            
+            
+
+
+
+
+            
+
+
+
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+        <div>
+          <div class="col-12">
+          
+          
+            
+              
+                
+                  <div class="mt-4 mb-4">
+                    <ul class="nav nav-tabs article-tab">
+                      
+                        <li class="nav-item">
+                          <a class="nav-link active"
+                             data-bs-toggle="tab"
+                             data-bs-target="#info-tab"
+                             href="#info-tab">Détail</a>
+                        </li>
+                      
+
+                      <li class="nav-item">
+                        <a class="nav-link "
+                           data-bs-toggle="tab"
+                           data-bs-target="#citation-tab"
+                           href="#citation-tab"><i class="bi bi-quote"></i> Citer cet article</a>
+                      </li>
+
+                      
+                      
+                      
+                    </ul>
+                    <div class="tab-content" style="margin-top:10px">
+                      <div id="info-tab"
+                           class="tab-pane fade show active">
+                        
+                          
+                            Reçu le : <time datetime="2003-10-29">2003-10-29</time>
+                            <br>
+                          
+                          
+                            
+                            
+                              Accepté le : <time datetime="2004-02-18">2004-02-18</time>
+                              <br>
+                            
+                          
+                          
+                          
+                            Publié le : <time datetime="2004-05-14">2004-05-14</time>
+                            <br>
+                          
+                        
+                        <!--Mis en ligne le : <time datetime="2024-03-10">2024-03-10</time><br>-->
+                        <div style="margin-top:5px">
+                          
+                            
+                              
+                            
+                            
+                            
+                            
+                          
+                        </div>
+                        
+                          
+  
+    
+      DOI : 
+        
+          <a href="https://doi.org/10.1016/j.crme.2004.02.021">10.1016/j.crme.2004.02.021</a>
+        
+        <br>
+    
+  
+
+                        
+                        
+                        
+                          <div style="margin-top:5px">
+                            
+                              <!-- kwd_tuple.0: msc  |  kwd_tuple.1: kwds  |  kwd_tuple.2: trans_kwds (dict) -->
+                              
+                              
+                                
+
+Keywords: 
+<span class="mathjax-formula">
+Solids and structures, History of sciences, Eiffel Tower, Model equations, Wind loads, Nonlinear integral equations
+</span>
+
+                                <br />
+                              
+                              
+                              
+                                
+
+Mots-clés : 
+<span class="mathjax-formula">
+Solides et structures, Histoire des sciences, Modélisation mathématique, Charge due au vent, Équations intégrales non-linéaires
+</span>
+
+                                <br />
+                              
+                            
+                          </div>
+                        
+                        <div style="margin-top:5px">
+                          
+                            
+                          
+                        </div>
+                        
+                        
+                          
+                        
+                        
+                          
+                            
+                              <div style="margin-top:5px">
+                                
+                                  
+                                    <span id="affiliation-toggle"
+                                          data-bs-toggle="collapse"
+                                          href="#affiliation_details"
+                                          role="button"
+                                          aria-expanded="false"
+                                          aria-controls="affiliation_details">
+                                      Affiliations des auteurs :
+                                      <span id="details-caret"
+                                            class="caret-icon fa fa-caret-down"
+                                            style="margin-left:3px"></span>
+                                    </span>
+                                    <div class="collapse"
+                                         id="affiliation_details"
+                                         style="margin-top:10px;
+                                                margin-left:10px">
+                                      <div class="card card-body">
+                                        <p>
+                                          
+                                            Patrick Weidman&hairsp;
+                                            <sup class="d-inline-block">
+                                              
+                                                1
+                                                
+                                              
+                                            </sup>
+                                            
+                                              &nbsp;
+                                              ;
+                                            
+                                          
+                                            Iosif Pinelis&hairsp;
+                                            <sup class="d-inline-block">
+                                              
+                                                2
+                                                
+                                              
+                                            </sup>
+                                            
+                                          
+                                        </p>
+                                        
+
+
+  <div class="affiliation-authors">
+    
+      
+        <span id="aff_1">
+          <sup>1</sup>
+           Department of Mechanical Engineering, University of Colorado, Boulder, CO 80301-0427, USA
+        </span>
+        
+        <br>
+      
+        <span id="aff_2">
+          <sup>2</sup>
+           Department of Mathematical Sciences, Michigan Technological University, Houghton, MI 49931-1295, USA
+        </span>
+        
+        <br>
+      
+    
+  </div>
+
+
+                                      </div>
+                                    </div>
+                                  
+                                
+                              </div>
+                            
+                          
+                        
+                        
+                        
+                        
+                      </div>
+                      <div id="citation-tab"
+                           class="tab-pane fade ">
+                        
+
+
+
+<div class="upper-right">
+  <pre class="upper-right-content" id="how-to-cite-div">Patrick Weidman; Iosif Pinelis. Model equations for the Eiffel Tower profile: historical perspective and new results. Comptes Rendus. Mécanique, Volume 332 (2004) no. 7, pp. 571-584. doi: 10.1016/j.crme.2004.02.021</pre>
+  <button class="bi bi-copy copy-button btn btn-primary"
+          data-clipboard-action="copy"
+          data-clipboard-target="#how-to-cite-div"
+          aria-hidden="true"
+          title="Copier dans le presse-papier"></button>
+</div>
+<div class="upper mt-4">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="nav-item">
+      <a class="nav-link active"
+         data-bs-toggle="tab"
+         data-bs-target="#bibtex"
+         href="#bibtex">BibTeX</a>
+    </li>
+    <li role="presentation" class="nav-item">
+      <a class="nav-link"
+         data-bs-toggle="tab"
+         data-bs-target="#ris"
+         href="#ris">RIS</a>
+    </li>
+    <li role="presentation" class="nav-item">
+      <a class="nav-link"
+         data-bs-toggle="tab"
+         data-bs-target="#enw"
+         href="#enw">EndNote</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="bibtex" class="tab-pane fade show active">
+      <pre class="upper-right-content" id="bibtex-div">@article{CRMECA_2004__332_7_571_0,
+     author = {Patrick Weidman and Iosif Pinelis},
+     title = {Model equations for the {Eiffel} {Tower} profile: historical perspective and new results},
+     journal = {Comptes Rendus. M\&#x27;ecanique},
+     pages = {571--584},
+     year = {2004},
+     publisher = {Elsevier},
+     volume = {332},
+     number = {7},
+     doi = {10.1016/j.crme.2004.02.021},
+     language = {en},
+}</pre>
+      <button class="bi bi-copy copy-button btn btn-primary"
+              data-clipboard-action="copy"
+              data-clipboard-target="#bibtex-div"
+              aria-hidden="true"
+              title="Copier dans le presse-papier"></button>
+      
+        <a class="bi bi-download export-button btn btn-primary"
+           title="Télécharger"
+           href="/mecanique/export_citation/CRMECA_2004__332_7_571_0/bib/"></a>
+      
+    </div>
+    <div id="ris" class="tab-pane fade">
+      <pre class="upper-right-content" id="ris-div">TY  - JOUR
+AU  - Patrick Weidman
+AU  - Iosif Pinelis
+TI  - Model equations for the Eiffel Tower profile: historical perspective and new results
+JO  - Comptes Rendus. Mécanique
+PY  - 2004
+SP  - 571
+EP  - 584
+VL  - 332
+IS  - 7
+PB  - Elsevier
+DO  - 10.1016/j.crme.2004.02.021
+LA  - en
+ID  - CRMECA_2004__332_7_571_0
+ER  - </pre>
+      <button class="bi bi-copy copy-button btn btn-primary"
+              data-clipboard-action="copy"
+              data-clipboard-target="#ris-div"
+              aria-hidden="true"
+              title="Copier dans le presse-papier"></button>
+      
+        <a class="bi bi-download export-button btn btn-primary"
+           title="Télécharger"
+           href="/mecanique/export_citation/CRMECA_2004__332_7_571_0/ris/"></a>
+      
+    </div>
+    <div id="enw" class="tab-pane fade">
+      <pre class="upper-right-content" id="enw-div">%0 Journal Article
+%A Patrick Weidman
+%A Iosif Pinelis
+%T Model equations for the Eiffel Tower profile: historical perspective and new results
+%J Comptes Rendus. Mécanique
+%D 2004
+%P 571-584
+%V 332
+%N 7
+%I Elsevier
+%R 10.1016/j.crme.2004.02.021
+%G en
+%F CRMECA_2004__332_7_571_0</pre>
+      <button class="bi bi-copy copy-button btn btn-primary"
+              data-clipboard-action="copy"
+              data-clipboard-target="#enw-div"
+              aria-hidden="true"
+              title="Copier dans le presse-papier"></button>
+      
+        <a class="bi bi-download export-button btn btn-primary"
+           title="Télécharger"
+           href="/mecanique/export_citation/CRMECA_2004__332_7_571_0/enw/"></a>
+      
+    </div>
+  </div>
+</div>
+
+                      </div>
+                      
+                      
+                      
+                      
+                    </div>
+                  </div>
+                
+              
+            
+          
+          
+    </div>
+  </div>
+
+
+
+  
+
+  
+
+
+
+
+  <div>
+    <div class="col-12">
+      <div style="margin-top:30px;margin-bottom:10px">
+
+        <ul class="nav nav-tabs article-tab"
+            >
+          <li class="nav-item"
+              id="main-citations-li"
+              >
+            <a class="nav-link active"
+               data-bs-toggle="tab"
+               data-bs-target="#references-tab"
+               href="#references-tab">Bibliographie</a>
+          </li>
+          <li class="nav-item" id="citations-html" style="display:none">
+            <a class="nav-link"
+               data-bs-toggle="tab"
+               data-bs-target="#citations-tab"
+               href="#citations-tab">Cité par</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" style="margin-top:10px">
+          
+            <div id="references-tab" class="tab-pane fade show active">
+              <div style="margin-top:11px;margin-bottom: 0px">
+
+
+
+
+  
+    <p class="bibitemcls" id="BIB001">[1] <span class="citation-author">D.G. Zill; M.R. Cullen</span><span class="citation-document-title"> Advanced Engineering Mathematics</span>, Jones and Bartlett, Boston, 2000</p><p class="bibitemcls" id="BIB002">[2]  <a href="http://wwwusers.imaginet.fr/~chouard/equation_eiffel_tower.html" target="_blank">http://wwwusers.imaginet.fr/~chouard/equation_eiffel_tower.html</a> (Website)</p><p class="bibitemcls" id="BIB003">[3] <span class="citation-author">E. Heinle; F. Leonhardt</span><span class="citation-document-title"> Towers: A Historical Survey</span>, Rizzoli International, New York, 1989 (p. 216)</p><p class="bibitemcls" id="BIB004">[4] A. Deroy, engraving published in Revue Illustrée, July 1 (1888) p. 38</p><p class="bibitemcls" id="BIB005">[5] <span class="citation-author">R. Lakes</span><span class="citation-document-title"> Materials with structural hierarchy</span><span class="citation-publication-title">, Nature</span><span class="citation-volume">, Volume 361</span> (1993), pp. 511-515</p><p class="bibitemcls" id="BIB006">[6] <span class="citation-author">R.B. Banks</span><span class="citation-document-title"> Towing Icebergs, Falling Dominoes, and Other Adventures in Applied Mathematics</span>, Princeton University Press, Princeton, 1998 (pp. 150–156)</p><p class="bibitemcls" id="BIB007">[7] <span class="citation-author">P. Puig-Adam</span><span class="citation-document-title"> Curso Teórico-Práctico de Ecuaciones Diferenciales</span>, Nuevas Gráficas, Madrid, 1951 (p. 14)</p><p class="bibitemcls" id="BIB008">[8] <span class="citation-author">H. Loyrette</span><span class="citation-document-title"> Gustave Eiffel</span>, Rizzoli International, New York, 1985 (p. 211, Translation of Eiffel's Biographie, vol. 2, p. 3)</p><p class="bibitemcls" id="BIB009">[9] <span class="citation-author">J. Harriss</span><span class="citation-document-title"> The Tallest Tower</span>, Houghton Mifflin, Boston, 1975 (p. 25, Translation from Le Temps, 14 February, 1887)</p><p class="bibitemcls" id="BIB010">[10] <span class="citation-author">G. Eiffel</span><span class="citation-document-title"> Projet d'une tour en fer de 300 mètres de hauteur destinée à L'Exposition de 1889</span><span class="citation-publication-title">, Société des Ingénieurs Civils de France, Bulletin</span><span class="citation-volume">, Volume 38</span> (1885), pp. 345-370 (All quotations from this mémoire are taken from the translation by C. Roland and P.D. Weidman)</p><p class="bibitemcls" id="BIB011">[11] H. Loyrette, p. 53, translation of Nouveaux ponts portatifs économiques, système Eiffel [...] Notice sur les différents types des ponts de ce système, Paris, second ed., 1885, p. 56</p><p class="bibitemcls" id="BIB012">[12] G. Eiffel, 1885, p. 347</p><p class="bibitemcls" id="BIB013">[13] G. Eiffel, 1885, p. 348–349</p><p class="bibitemcls" id="BIB014">[14] G. Eiffel, 1885, p. 349</p><p class="bibitemcls" id="BIB015">[15] G. Eiffel, 1885, p. 350</p><p class="bibitemcls" id="BIB016">[16] G. Eiffel, 1885, p. 363</p>
+  
+
+</div>
+            </div>
+          
+
+          
+            <div id="citations-tab" class="tab-pane fade show">
+              <div id="citations-div"
+                   data-url="/mecanique/citedby/10.1016/j.crme.2004.02.021"
+                   style="margin-top:11px;
+                          margin-bottom: 11px"></div>
+              <p>
+                <em>Cité par <span id="citations-number"></span> Sources : <span id="citations-sources"></span></em>
+              </p>
+            </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  
+
+  
+  
+
+<div class="row">
+  <div class="col-12">
+    <div id="article-comments-section">
+      <p class="panel-title show-body-panel-title"
+         data-bs-toggle="collapse"
+         data-bs-target="#articleCommentsCollapse"
+         aria-controls="articleCommentsCollapse">
+        <span class="panel-title-content">
+          <span>Commentaires</span>
+          
+            <span class="panel-title-description">
+              <span class="panel-title-separator">-</span>
+              <a class="click-stop-propagation"
+                 target="_blank"
+                 href="https://comptes-rendus.academie-sciences.fr/page/commenting-en/">
+                Politique
+                <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+              </a>
+            </span>
+          
+        </span>
+        <span class="collapse-icon">
+          <i class="bi bi-chevron-up"></i>
+        </span>
+      </p>
+      <hr class="panel-title-separator">
+      <div id="articleCommentsCollapse"
+           class="collapse show open-on-outline-submenu collapse-body"
+           style="margin:20px 10px">
+        <div id="async-article-comments"
+             class="async-html"
+             data-spinner="true"
+             data-url="/mecanique/article-comments/10.1016/j.crme.2004.02.021/?redirect_url=https%3A%2F%2Fcomptes-rendus.academie-sciences.fr%2Fmecanique%2Farticles%2F10.1016%2Fj.crme.2004.02.021%2F%23article-comments-section"
+             data-js-callback="articleComments"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+
+</div>
+
+
+                    <!-- center_footer -->
+                    
+                    
+                  </div>
+
+                  
+                    <div>
+                      
+                      
+                      
+                      
+                    </div>
+                  
+
+                
+              </div>
+              
+          </div>
+        
+
+  
+
+      </main>
+    
+
+    
+      
+  <div id="suggestedArticles"
+       data-url="/mecanique/suggested_articles/10.1016/j.crme.2004.02.021">
+    
+
+
+
+  </div>
+  
+        
+
+
+
+
+<footer id="footer" class="mt-auto">
+
+  
+  <div class="logos-footer d-flex justify-content-center align-items-center flex-wrap" style="padding: 0 10%; column-gap:5px; row-gap: 10px">
+    
+    
+
+
+<div class="logo-footer-div d-flex mx-auto flex-nowrap gap-2 align-items-center ">
+  <span class="footer-logo-text text-nowrap">Diffusé par : </span>
+  <a class="logo-footer" href="http://www.centre-mersenne.org/"><img class="logo-footer" src="/mecanique/static/mersenne_cms/img/logo-mersenne.png" alt="centre Mersenne"></a>
+  
+</div>
+
+    
+
+    
+  
+
+
+<div class="logo-footer-div d-flex mx-auto flex-nowrap gap-2 align-items-center ">
+  <span class="footer-logo-text text-nowrap">Publié par : </span>
+  <a class="logo-footer" href="https://www.academie-sciences.fr"><img class="logo-footer" src="/mecanique/static/cr_app/img/logo-as.png" alt="Académie des Sciences"></a>
+  
+  <a class="logo-footer" href="https://www.cnrs.fr"><img class="logo-footer" src="/mecanique/static/cr_app/img/logo-cnrs.png" alt="CNRS"></a>
+  
+</div>
+
+
+
+    
+
+
+<div class="logo-footer-div d-flex mx-auto flex-nowrap gap-2 align-items-center mathdoc-thumbnail">
+  <span class="footer-logo-text text-nowrap">Développé par : </span>
+  <a class="logo-footer" href="http://www.mathdoc.fr/"><img class="logo-footer" src="/mecanique/static/mersenne_cms/img/logo-mathdoc-footer.png" alt="Mathdoc"></a>
+  
+</div>
+
+</div>
+
+  
+
+  <div id="info-line" class="d-flex flex-nowrap justify-content-around align-items-center col-12 col-md-10 col-xl-8 mx-auto">
+    <div class="footer-text d-flex justify-content-center align-items-center">
+      
+  ISSN : 1631-0721 <br>
+
+
+  e-ISSN : 1873-7234
+
+
+  <br>
+
+
+  <!--    <span>©&nbsp;2018 - 2026&nbsp;</span><a href="http://www.centre-mersenne.org">Centre Mersenne</a>, <a href="/mecanique/">Algebraic Combinatorics</a>, and the authors-->
+    </div>
+
+    
+
+    <nav class="navbar menu-bottom">
+      <div class="container-fluid justify-content-center align-items-center">
+        <ul class="nav d-flex justify-content-center align-items-end " style="column-gap: 1rem;">
+          <li><a class="menu-link nav-link p-0" href="/mecanique/accessibility/">Accessibilité - non conforme</a></li>
+          <li>
+            <a class="menu-link nav-link p-0" href='/mecanique/rss/' alt='syndication feed'>
+              <i class="fa fa-rss d-inline" aria-hidden="true"></i> Nous suivre
+            </a>
+          </li>
+
+          
+          
+
+
+
+
+  
+  
+    
+    
+        <li >
+          <a href="/mecanique/page/mentions-legales_fr/"
+             class="menu-link nav-link p-0">Mentions légales</a>
+        </li>
+    
+    
+  
+
+  
+  
+    
+    
+        <li >
+          <a href="/mecanique/page/contact_fr/"
+             class="menu-link nav-link p-0">Contact</a>
+        </li>
+    
+    
+  
+
+
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+</footer>
+
+
+      
+
+    
+
+    
+      <script type="text/javascript"
+              src="/mecanique/static/ptf/vendors/jquery/js/jquery-3.5.1.min.js"></script>
+      
+        <script type="text/javascript"
+                src="/mecanique/static/ptf/vendors/bootstrap5/js/bootstrap.bundle.min.js"></script>
+      
+      <script type="text/javascript"
+              src="/mecanique/static/ptf/vendors/clipboard/js/clipboard.min.js "></script>
+      
+        <script type="module" src="/mecanique/static/ptf/js/mathjax-config.js" defer></script>
+        
+    <script type="text/javascript"
+            src="/mecanique/static/cr_app/js/mathjax-font.js"
+            defer></script>
+  
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+      
+
+      
+  
+  
+      
+  <script type="text/javascript" src="/mecanique/static/ptf/js/bs5/select.js"></script>
+  <script type="text/javascript" src="/mecanique/static/ptf/js/bs5/lightbox.js"></script>
+  <script type="module" src="/mecanique/static/ptf/js/full_text.js"></script>
+  <script type="text/javascript" src="/mecanique/static/cr_app/js/cras.js"></script>
+
+  
+    <script src="/mecanique/static/comments_views/journal/js/comments.js"></script>
+    <script src="/mecanique/static/ptf/js/custom-alerts.js"></script>
+  
+
+
+      <script type="text/javascript" src="/mecanique/static/ptf/js/bs5/ptf.js"></script>
+      <script type="text/javascript" src="/mecanique/static/ptf/js/bs5/search-bar.js"></script>
+      <script type="text/javascript" src="/mecanique/static/ptf/js/bs5/facets.js"></script>
+    
+  </body>
+</html>

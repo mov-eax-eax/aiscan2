@@ -1,0 +1,1 @@
+{"name":"repod2","private":true,"license":"UNLICENSED","devDependencies":{"@ff-labs/fff-node":"^0.10.3"},"dependencies":{"esbuild":"^0.28.2","puppeteer-core":"^25.10.0","three":"^0.160.1"}}

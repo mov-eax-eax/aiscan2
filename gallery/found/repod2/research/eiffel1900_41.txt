@@ -1,0 +1,42 @@
+<noinclude><pagequality level="3" user="Ganjidvd" /></noinclude><section begin="s1"/>{{em|2}}Au delà du premier étage, leur inclinaison devient variable ainsi que 
+leur largeur, qui va en décroissant progressivement jusqu’au deuxième 
+étage, où elle n’est plus que de {{unité|10.41|m}}. 
+
+À ce deuxième étage, de nouvelles poutres horizontales entretoisent 
+les quatre montants ; mais, au delà, le mode de construction change : les 
+faces extérieures des montants se réunissent deux à deux, leurs faces 
+intérieures disparaissent et l’on n’a plus, dans cette partie supérieure de 
+la Tour, qu’un grand caisson unique en forme de tronc de pyramide 
+quadrangulaire dont la base, à la hauteur de {{unité|115.73|m}}, a {{unité|31.70|m}} de côté et dont celle au niveau du troisième étage, c’est-à-dire à la hauteur 
+de {{unité|276.13|m}}, a seulement {{unité|10.00|m}}. 
+
+Des arcs de {{unité|74|m}} de diamètre se développent entre les montants 
+à l’étage inférieur ; mais leur rôle est purement décoratif. 
+
+Au premier étage sont installés, dans les espaces compris entre les 
+montants d’une même face, quatre restaurants ; de plus une galerie 
+couverte extérieure, portée par des consoles et ayant {{unité|270|m}} de développement, fait le tour de la construction. 
+
+Tout l’espace compris entre les montants et dans l’intérieur de 
+ceux-ci porte un plancher laissant un grand vide central entouré d’un 
+garde-corps. 
+
+La surface totale des planchers de cet étage, déduction faite des 
+vides pour le passage des ascenseurs, mais en y comprenant la galerie, 
+est de {{unité|4010|m|2}}. La surface couverte par les galeries et les restaurants 
+est de {{unité|2760|m|2}}. 
+
+Le deuxième étage a aussi une galerie extérieure établie de la 
+même manière que celle du premier étage, mais d’un développement 
+moindre ({{unité|150.52|m|2}}). Le plancher s’étend à cet étage sur toute la 
+section de la Tour, sans vide central, et donne une surface de 
+{{unité|1300|m|2}}. Sur ce plancher étaient établis une boulangerie, une imprimerie 
+du ''Figaro'', des abris fermés et des kiosques divers qui ont 
+disparu après l’Exposition. 
+
+Le troisième étage est complètement couvert et donne avec les 
+consoles extérieures une surface de {{unité|270|m|2}} Il forme une sorte de 
+cage vitrée par des glaces mobiles, d’où les visiteurs peuvent, à l’abri du 
+vent qui règne fréquemment à ces hauteurs, observer le panorama qui 
+les entoure.<section end="s1"/><noinclude>
+<references/></noinclude>

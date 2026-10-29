@@ -1,0 +1,261 @@
+{{Confusion|Palais du Trocadéro}}
+{{Voir homonymes|Chaillot}}
+{{autre|l'ancien couvent de la Visitation Sainte-Marie de la rue Saint-Antoine|Temple protestant du Marais}}
+{{Infobox Monument
+ | nom                   = <!-- nom sur Wikidata -->
+ | nom local             = 
+ | image                 = Trocadero 2016 (4).jpg
+ | légende               = Le palais de Chaillot, vu depuis le {{3e|étage}} de la [[tour Eiffel]].
+ | latitude              = <!-- coordonnées sur Wikidata -->
+ | longitude             = <!-- coordonnées sur Wikidata -->
+ | référence             = 
+ | pays                  = <!-- pays sur Wikidata -->
+ | région                = [[Île-de-France]]
+ | subdivision           = 
+ | intitulé subdivision  = 
+ | subdivision2          = 
+ | intitulé subdivision2 = 
+ | commune               = [[Paris]]
+ | intitulé commune      = 
+ | style                 = [[Art-déco]] <br />[[Post Art déco]]<br />[[Classicisme dépouillé]]
+ | type                  = Palais
+ | architecte            = [[Léon Azéma]] <br />[[Jacques Carlu]] <br />[[Louis-Hippolyte Boileau]]
+ | hauteur               = 
+ | date de construction  = [[1935]]-[[1937]]
+ | propriétaire          = État français
+ | destination initiale  = [[Palais du Trocadéro]]
+ | destination actuelle  = [[Musée de l'Homme]] <br />[[Musée national de la Marine]] <br />[[Théâtre national de Chaillot]] <br />[[Cité de l'architecture et du patrimoine]]
+ | classement            = <!-- statut patrimonial sur Wikidata -->
+ | site                  = 
+ | géolocalisation       = <!-- recherche automatique par Module:Carte -->
+}}
+
+Le '''palais de Chaillot''' est situé sur la [[colline de Chaillot]] à [[Paris]], dans le [[16e arrondissement de Paris|{{16e}} arrondissement]], [[place du Trocadéro-et-du-11-Novembre]]. Il est réalisé pour l'[[Exposition universelle de 1937]] par les [[Prix de Rome|architectes et grands prix de Rome]] [[Léon Azéma]], [[Jacques Carlu]] et [[Louis-Hippolyte Boileau]], en lieu et place du [[palais du Trocadéro]]<ref name="T_1935">[http://paris-unplugged.blogspot.com/2011/03/1878-le-trocadero-dune-exposition.html 1878 - Le Trocadéro... D’une exposition à l’autre] - Vues du Trocadéro, avant et après 1935.</ref>.
+
+Il est, avec le [[palais de Tokyo]] et le [[Palais d'Iéna|palais d’Iéna]], l'un des trois édifices permanents résultant de cette Exposition universelle.
+
+== Histoire ==
+
+=== Passé du site ===
+
+==== Sous l'Ancien régime ====
+{{Article détaillé|Château de Chaillot|Couvent des Visitandines de Chaillot}}
+Plusieurs bâtiments et projets architecturaux se sont succédé à l'emplacement où va s'élever le palais du Trocadéro. Un édifice, « l'Hermitage » ou « Maison de Beauregard », est acquis en 1583 par [[Catherine de Médicis]] qui projette d'y construire une maison de plaisance qui devait être inspirée des villas antiques, sous la direction de l'architecte [[Étienne Dupérac]]. Au {{s-|XVII}}, les lieux sont acquis par Pierre Jeanin, puis font partie du domaine du [[François de Bassompierre|maréchal de Bassompierre]], compagnon d'armes d'[[Henri IV (roi de France)|Henri IV]], qui agrandit ce manoir. <br>
+Le château est acquis en 1651 par les religieuses du [[Couvent des Visitandines de Chaillot|couvent de la Visitation Sainte-Marie]] à l'initiative d'[[Henriette d'Angleterre]] qui y sera inhumée.
+Ce couvent abandonné au début de la [[Révolution française]] est détruit en 1794 par l'[[explosion de la poudrerie de Grenelle]]<ref name="a">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 7.</ref>.
+
+==== Les projets du {{s-|XIX}} ====
+[[Fichier:Vue du palais du Roi de Rome depuis le Champ de Mars.jpg|270px|left|thumb|Projet de [[palais du roi de Rome]] par [[Charles Percier]] et [[Pierre Fontaine (architecte)|Pierre Fontaine]] (1811).]]
+[[Fichier:Caserne du Trocadéro.jpg|270px|left|thumb|Projet d'aménagement de la colline de Chaillot par [[Antoine-Marie Peyre]] (1824).]]
+
+En [[1811]], l'empereur {{Napoléon Ier}} décide de la construction sur le site du [[palais du roi de Rome]], un édifice projeté pour être la résidence [[Napoléon II|de son fils]] (soit un mois avant la naissance de celui-ci). Il devait être le centre d'une cité impériale administrative et militaire<ref>[[Frédéric Masson]], ''Napoléon et son fils'', 1904, Paris, éd. Goupil et Cie, {{p.|137}}.</ref>{{,}}<ref>Roger Wahl, ''Un projet de Napoléon {{Ier}} : le Palais du Roi de Rome'', Neuilly-sur-Seine, 1955, {{p.|41}}.</ref>{{,}}<ref>Le « Palais du Roi de Rome » de Rambouillet est en fait un hôtel particulier datant du règne de Louis XVI, réaménagé sous le Premier Empire. Le projet de Chaillot correspond davantage à un palais que l'hôtel du duc d'Angiviller, gouverneur du domaine de Rambouillet, construit entre 1784 et 1785 par l'architecte Jacques-Jean Thévenin ; son lien avec le Roi de Rome est aussi plus fort, car lié à l'essence même du projet, alors que le lien entre Rambouillet et le fils de Napoléon correspond à une période très courte de l'histoire de la construction de Jacques-Jean Thévenin. C'est pour des raisons touristiques et de prestige que la ville de Rambouillet utilise le nom de « Palais du Roi de Rome ».</ref>. Les architectes responsables du projet sont [[Charles Percier]] et [[Pierre Fontaine (architecte)|Pierre-François-Léonard Fontaine]]. Il devait être, de l'aveu même de son concepteur, l'architecte [[Pierre Fontaine (architecte)|Pierre-François-Léonard Fontaine]], {{Citation|l'ouvrage le plus vaste et le plus extraordinaire de notre siècle}}.
+
+En [[1824]], [[Antoine-Marie Peyre]] conçut un projet de « villa Trocadéro »<ref>[[Charles Gabet]], ''Dictionnaire des artistes de l'école française au {{s-|XIX}}'', 1831, {{p.}}551.</ref>. Il s'agissait d'un vaste projet immobilier centré sur une place semi-circulaire, laissant aux acquéreurs le choix de l'architecture<ref>[[Françoise Waquet]], ''Les Fêtes royales sous la restauration'', 1981, {{p.}}99 citant G. Hubert, « L'Art français au service de la Restauration », ''Revue des Arts'', 1955, {{n°|4}}, {{p.}}210-216.</ref>. Le nom de « Trocadéro » provient du [[Fort Louis (Trocadéro)|fort du Trocadéro]], qui défendait le port [[Espagne|espagnol]] de [[Cadix]]<ref name="b">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 11.</ref>. En effet, le {{date|31|août|1823}}, il est capturé par le [[Expédition d'Espagne|corps expéditionnaire français]] commandé par le [[Louis de France (1775-1844)|duc d'Angoulême]], qui avait été envoyé par son oncle, le roi de France [[Louis XVIII]] pour rétablir le roi [[Ferdinand VII]] sur son trône d'[[Espagne]]. Le site du Trocadéro faisait ainsi référence à une victoire militaire française.
+
+En 1826, au cours d'une reconstitution de ce fait d'armes lors d'une parade militaire devant le roi de France [[Charles X]], la topographie des lieux servit à figurer cette bataille : la [[colline de Chaillot]] représente le « fort du Trocadéro » et devait être alors « conquise » à partir du [[Champ-de-Mars (Paris)|Champ-de-Mars]] d'où partirent les « troupes » françaises. Le projet visait à édifier en face l’École militaire, un obélisque célébrant la prise du fort de Trocadéro par le duc d'Angoulême en 1823 et des casernes pour abriter trois bataillons de la garde royale (1824)
+
+On éleva sur place un arc de triomphe provisoire et on posa la première pierre d'une caserne militaire qui ne vit jamais le jour. L'obélisque qui devait surgir au centre de la colline ne dépassa pas le stade du projet.
+
+Sous la [[monarchie de Juillet]], il fut proposé d'ériger en ces lieux le tombeau de l'empereur<ref name="a"/>, avant que les cendres ne trouvent leur place aux Invalides. Ainsi, en [[1839]], [[Camille Moret]] conçut pour les lieux un projet de tombeau pour [[Napoléon Ier|Napoléon {{Ier}}]] et, en 1841, [[Hector Horeau]] proposa d'ériger une statue colossale de l’empereur de {{nobr|30 mètres}} de haut<ref>Michael Paul Driskel, ''As Befits a Legend: Building a Tomb for Napoleon, 1840-1861'', Kent State University Press, 1993 {{ISBN|0-87338-484-9}}, {{p.}}54-55.</ref>{{,}}<ref name="a"/>.
+
+En [[1848]], le [[sculpteur]] [[Antoine Étex]], proposa un monument à la Liberté<ref>[[Adolphe Napoléon Didron]], ''Annales archéologiques'', {{vol.}}8, 1848, {{p.}}225-226.</ref>{{,}}<ref name="a"/>.
+
+En [[1858]], il projetait un « phare ou fontaine monumentale » au centre d'une place circulaire accueillant le palais [[Second Empire|impérial]] et les hôtels des ministères<ref>Antoine Étex, « Cours élémentaire de dessin », 1859, {{p.}}3.</ref>.
+
+En [[1868]], Hector Horeau proposa quant à lui un nouveau projet envisageant une statue colossale de la « France intelligente éclairant le monde »<ref>Françoise Boudon, « Hector Horeau », 1978, {{p.}}143.</ref>.
+
+Mais rien de tout cela ne fut réalisé.
+Après l'arasement de {{nobr|3 mètres}} et nivellement de la colline pour l'exposition universelle de 1867 puis création d'une place et d'un escalier, les terrains en contrebas à l'emplacement des actuels jardins du Trocadéro restèrent à l'état de friche jusqu'en 1876.
+
+=== Le palais du Trocadéro ===
+{{Article détaillé|Palais du Trocadéro}}
+
+[[Fichier:The Trocadero, Exposition Universal, 1900, Paris, France.jpg|right|thumb|Le palais du Trocadéro pendant l'[[exposition universelle de 1900]], vu des [[jardins du Trocadéro|jardins]].]]
+
+Dès le milieu des années 1860, la colline de Chaillot subit des {{Citation|travaux de terrassement et de nivellement}}, afin de servir de panorama aux installations de l’[[exposition universelle de 1867]] situées en [[Rive gauche (Paris)|rive gauche]] et de constituer le parc du Champ-de-Mars<ref name="k">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 12.</ref>. La place qui s'appelle alors encore « place du roi de Rome » est reliée jusqu’au [[pont d'Iéna]] par un escalier en granit<ref name="k"/>. Le palais du Trocadéro est construit pour l'[[exposition universelle de 1878]] sur les plans d'inspirations [[Architecture mauresque|mauresque]] et [[Architecture néo-byzantine|néo-byzantine]] des architectes [[Gabriel Davioud]] et [[Jules Bourdais]], avec des [[jardins du Trocadéro|jardins]] de l'[[ingénieur]] [[Adolphe Alphand|Alphand]]. Lors de l'[[exposition universelle de 1937]], le bâtiment est détruit et remplacé par le palais de Chaillot, qui en garda une partie de l'ossature et la configuration de deux ailes en demi-cercles<ref name="T_1935"/>.
+
+Le palais du Trocadéro n’a pas vocation à dépasser le stade de l’exposition<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 20.</ref> mais finalement subsiste. Il voit passer les [[exposition universelle de Paris de 1889|expositions universelles de 1889]] et de [[exposition universelle de 1900|1900]], dont les installations sont surtout réparties sur le Champ-de-Mars (la plus notable étant la [[tour Eiffel]], construite elle aussi initialement de façon éphémère). Le {{date|15 avril 1889}}, un supplément du ''[[Figaro]]'' note : {{Citation|Si l'on tient à bien se rendre compte de l'ensemble de l'exposition universelle, le meilleur moyen est de se placer au point central du palais du Trocadéro, au milieu de la galerie circulaire qui domine les statues dorées des cinq parties du monde. De là, le panorama est magnifique}}<ref name="p42">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 42.</ref>. Lors de l'exposition de 1900, les pavillons des colonies et protectorats français sont installés dans les jardins du palais<ref name="p42"/> et le [[pont d'Iéna]] est {{Citation|élargi au moyen de trottoirs en bois}}<ref name="p64">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 64.</ref> (il est complètement agrandi en 1935, de 14 à {{nobr|35 mètres}})<ref name="p64"/>.
+
+Il accueillit pendant son existence le [[musée des Monuments français (1879)|musée des monuments français]] créé en [[1879]] par [[Eugène Viollet-le-Duc]] ainsi que le [[Musée d'Ethnographie du Trocadéro|premier musée parisien d'ethnographie]] fondé par [[Ernest Hamy|E. Hamy]], ancêtre du [[musée de l'Homme]]. Les [[jardins du Trocadéro]] furent dessinés par [[Adolphe Alphand]]. À partir de 1880, un [[Observatoire astronomique|observatoire]] populaire, fondé par [[Léon Jaubert]], y était installé.
+
+=== Le palais de Chaillot ===
+[[Fichier:PalaisdeChaillotetTourEiffel.jpg|vignette|Le palais de Chaillot vu de la tour Eiffel.]]
+==== Le projet ====
+
+Le palais du Trocadéro sera finalement détruit, remplacé par le palais de Chaillot bâti pour l'[[exposition universelle de 1937]], qui reprendra lui-même l'essentiel de l'ossature de l'ancien édifice, notamment les ailes et les verrières et la fondation des colonnades<ref name="b"/>{{,}}<ref>Pascal Ory, Le palais de Chaillot, page 78.</ref> (seule la partie centrale du palais du Trocadéro laissera la place à [[Parvis des droits de l'homme|une esplanade]], ce qui implique de creuser sous terre pour enfouir le nouveau théâtre<ref name="Pascal Ory page 76">Pascal Ory, Le palais de Chaillot, page 76.</ref>). Sont également conservées les {{Citation|fermes métalliques curvilignes en tôle découpée de la charpente}}, visibles dans la [[Cité de l'architecture et du patrimoine|galerie des moulages du musée]]<ref name="m">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 16.</ref> bien que la structure générale devienne en béton armé, les piles porteuses étant doublées de pierres meulières, les murs étant édifiés en moellons de pierre, en parpaings de béton, en briques pleines ou creuses alors qu'ils sont ensuite recouverts de plaques de pierre de Bourgogne et de pierre reconstituée (derrière ces plaques se trouvent encore les murs de pierre de l'ancien palais du Trocadéro) ; les planchers sont constitués de dalles de béton armé alors que les menuiseries sont métalliques (elles ont été posées assemblées)<ref name="Pascal Ory page 76"/>. Le nouveau projet est représentatif d'un style épuré et néoclassique dit « de l'[[entre-deux-guerres]] », contrastant avec l'ancien bâtiment, jugé trop éclectique, voire indéfinissable ;  [[Léon Azéma|Azéma]] parle même d'un projet {{Citation|néo-romain}} bien qu'il ne faille pas y voir une résonance particulière à l'[[architecture totalitaire]], ce type de bâtiment étant courant à cette période également aux [[États-Unis]] ou au [[Royaume-Uni]]<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', pages 70 et 71.</ref>.
+
+[[Fichier:Le Projet Perret.jpg|vignette|gauche|Le projet proposé par Auguste Perret<ref>{{Lien web |titre=1939 : Palais de Chaillot |site=Auditorium - Orchestre National de Lyon |url=https://www.auditorium-lyon.com/fr/1939-palais-chaillot |consulté le=2021-10-30}}</ref>.]]
+Parmi les projets initiaux n'ayant pas été retenus, on compte celui d'[[Auguste Perret]], qui entrait dans le cadre de son désir de créer un axe allant de la [[porte Dauphine]] à la [[Place d'Italie (Paris)|place d'Italie]]. Au Trocadéro, il propose de créer une « cité des musées », quatre grands édifices reliés par une colonnade d'environ {{nobr|200 mètres}}, plusieurs terrasses permettant plus bas de rejoindre la Seine. La [[Grande Dépression|crise économique]] et la chute du gouvernement Daladier, partisan du projet, conduit dès lors à choisir une idée moins coûteuse, qui reprend pour partie la structure de l'ancien palais du Trocadéro<ref>Bruno D. Cot, « Paris. Les projets fous… auxquels vous avez échappé », cahier central publié dans ''[[L'Express]]'', semaine du 29 mars 2013, p. IV-V.</ref>.
+[[Fichier:Palais de Chaillot 2014 02.JPG|thumb|Palais de Chaillot.]]
+
+Les architectes [[Jacques Carlu]], [[Louis-Hippolyte Boileau]] et [[Léon Azéma]] sont chargés du projet<ref name="p">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 61.</ref>. On choisit d'{{Citation|enchemiser}} les ailes de l'ancien palais en les {{Citation|doublant par une nouvelle galerie du côté Seine}} mais de détruire la salle de spectacle et des deux tours pour les remplacer par une simple esplanade, dans l'{{Citation|axe tour Eiffel-École militaire}} alors qu'une {{Citation|nouvelle salle de théâtre [est] aménagée sous ce parvis}}<ref name="p"/>. Le style du nouveau palais est {{Citation|monumentaliste [[Architecture néo-classique|néo-classique]]}}<ref name="p"/>. La superficie du nouveau palais est portée à {{unité|41000|m|2}}, contre {{formatnum:17000}} auparavant<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 80.</ref> ; la nouvelle esplanade est ouverte sur {{nobr|125 mètres}} et large de 60. Pour contenter les architectes non retenus par le concours (bien que les noms aient déjà été précédemment choisis), certains se voient confier une partie des travaux : [[Édouard Niermans|Édouard]] et [[Jean Niermans]] aménagent la nouvelle salle de spectacle, [[Louis Süe]] et [[Gustave Louis Jaulmes]] décorant le foyer, le bar-fumoir et la galerie centrale du foyer et [[Roger-Henri Expert]] les fontaines<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', {{p.|65}}.</ref>. Des grèves syndicales ponctuent néanmoins la construction en 1936 et le palais ne sera pas achevé à temps, du moins pour les parties intérieures, le théâtre n'étant terminé qu'en 1939<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', {{p.|66}}.</ref>. La revue ''[[La Nature]]'' note, dans son numéro du second semestre de 1936 : {{Citation|Un coup de mine dans les arcades du Trocadéro : construit pour durer des siècles, l'ancien palais aura été abattu au bout de cinquante-sept ans}}<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 74.</ref>. Contrairement à l'ancien, le nouveau palais offre une harmonie générale dans ses proportions<ref>Pascal Ory, ''Le palais de Chaillot'', page 74.</ref>.
+
+==== L'entre-deux-guerres et la Seconde Guerre mondiale ====
+[[Fichier:Musée de l'homme.jpg|vignette|gauche|« Dans ces murs voués aux merveilles <br />J'accueille et garde les ouvrages <br />De la main prodigieuse de l'artiste <br />Égale et rivale de sa pensée <br />L'une n'est rien sans l'autre »]]
+
+Lors de l'exposition de 1937, les pavillons des puissances invitées sont installés dans les jardins. Celui de l’[[URSS]], du côté de l'aile de Passy, comporte la statue ''L'Ouvrier et la Kolkhozienne'' de la sculptrice [[Vera Moukhina]] ; en face, celui de l'Allemagne du [[Troisième Reich]] est surmonté d'un {{Citation|aigle doré juché sur [une] croix gammée}}, et a été conçu par [[Albert Speer]]<ref name="p92">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 92.</ref>. Dans la perspective du palais et de la tour Eiffel, située sur la place du Trocadéro, s'élève la ''Colonne de la paix'', réalisée par [[Albert Laprade]]<ref name="p92"/>. Pour la première fois, l'électricité est utilisée de façon massive, créant ainsi une attraction nocturne appréciée sur la colline de Chaillot<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', {{p.|68}}.</ref>.
+
+Le palais sert de cadre à la commémoration de la Révolution française de 1789 et de la Fête de la fédération de 1790, lors d'une fête de l'unité nationale, le {{date|14 juillet 1939}} ; le champ de Mars, où s'était déroulée cette manifestation 149 ans plus tôt, se situe de l’autre côté du [[pont d'Iéna]]. {{Citation|Pavoisés aux couleurs de la France, le palais de Chaillot et le Champ-de-Mars servent de cadre aux cérémonies solennelles et aux réjouissances populaires qui accompagnent l'évènement. […] Pour marquer l’événement, la terrasse du [palais] est drapée et ornée d'une immense cocarde tricolore agrémentée, en son centre, du moulage de la ''Marseillaise'' de [[François Rude]]. Des faisceaux de licteurs de 15 mètres de haut pavoisés aux couleurs de la France sont également dressés sur le parvis}}<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 108-110.</ref>. [[Albert Lebrun]], président de la République, prononce un discours à la foule, amassée autour de la [[Fontaine du Trocadéro|fontaine]], sous la pluie ; le journal ''[[Le Temps (quotidien français, 1861-1942)|Le Temps]]'' note que la France avait {{Citation|donné au monde et à […] elle-même le spectacle d'une force militaire bien faite pour décourager l’esprit d'agression quels que puissent être l'enivrement et la présomption des agresseurs éventuels}}<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 110.</ref>. Quarante-cinq jours après débute la Seconde Guerre mondiale.
+
+[[Fichier:Bundesarchiv Bild 183-H28708, Paris, Eifelturm, Besuch Adolf Hitler.jpg|vignette|redresse|Adolf Hitler sur l’[[Parvis des Droits-de-l'Homme|esplanade du Trocadéro]], le {{date|23 juin}} [[1940]].]]
+Le {{date|23 juin 1940}}, après l'invasion allemande, le Führer [[Adolf Hitler]] et son entourage militaire parcourent l'esplanade du Trocadéro<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 112.</ref>. {{refnec|Il prévoit dès lors d'en faire une copie à [[Berlin]]}} pour la future « [[Welthauptstadt Germania]] », projet qui sera finalement abandonné. Une cérémonie est organisée le {{date|22 juin 1943}}, pour marquer l'[[opération Barbarossa]] (invasion allemande en URSS), deux ans plus tôt. Des musiques héroïques sont diffusées, puis un ''Appel aux morts de la [[Légion des volontaires français contre le bolchevisme|L.V.F.]]'' ; des bannières de la LVF et [[Troisième Reich|de l'Allemagne nazie]] sont étendues sur le palais<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', {{p.|116}}.</ref>. Un [[canon antiaérien]] est installé par les troupes alliées le lendemain de la [[Libération de Paris]] dans le grand bassin de la [[fontaine du Trocadéro|fontaine du jardin du Trocadéro]]<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 118.</ref>. Le {{date|25 juillet 1945}}, les [[obsèques nationales]] de l'écrivain [[Paul Valéry]] y sont organisées : le {{Citation|catafalque aux couleurs de la France}} disposé sur l'esplanade reçoit les {{Citation|honneurs militaires et le recueillement de la population}}<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 122.</ref>.
+
+==== Le bâtiment de l'ONU et de l'OTAN ====
+[[Fichier:NATO Headquarters (1952–1959).jpg|vignette|gauche|Dans les années 1950, le palais, siège des [[Organisation des Nations unies|Nations unies]] puis de l'[[Organisation du traité de l'Atlantique nord|OTAN]], est complété de préfabriqués autour de la [[fontaine du Trocadéro]].]]
+
+L'[[Organisation des Nations unies|ONU]], qui vient d'être créée en [[1946]], tient au palais de Chaillot deux sessions de son [[Assemblée générale des Nations unies|Assemblée générale]], la {{3e}} (septembre-{{date|décembre 1948}}) et la {{6e}} ({{date|novembre 1951}}-{{date|février 1952}}), car presque toutes les institutions onusiennes<ref>Seule la [[Cour internationale de justice]] s'installa définitivement à [[La Haye]] dès 1946.</ref> n'avaient pas de sièges définitifs. Le palais bénéficiera à ce titre d'une exception d'[[extraterritorialité]] temporaire<ref name="p124">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', {{p.|124}}.</ref>. Le {{date|1 septembre 1948}}, le ministre [[France|français]] des Affaires étrangères [[Robert Schuman]] remet symboliquement les clefs du palais au secrétaire général de l'ONU, [[Trygve Lie]]. L'Assemblée générale y adopte la [[Déclaration universelle des droits de l'homme]] le {{date|10|décembre|1948}}<ref name="p124"/> (une plaque commémorative rappelle cet évènement dans le théâtre). Des premiers préfabriqués sont édifiés dans les jardins par l'architecte [[Jacques Carlu]], qui dans son exil forcé aux États-Unis pendant la guerre avait acquis de maîtrise la conception de tels bâtiments. Pendant cette période, le fonctionnement du théâtre et du musée de Chaillot sont fortement perturbés<ref name="Ory104">Pascal Ory, ''Le palais de Chaillot'', pages 104.</ref>.
+
+En 1951, afin de recevoir la sixième assemblée générale, d'autres bâtiments provisoires préfabriqués situés de l’esplanade jusqu'à l'actuelle [[avenue des Nations-Unies]] et autour de la fontaine, sont construits en 135 jours, toujours sur les plans de Carlu mais plus ambitieux ({{unité|25000|mètres}} carrés avec charpente métallique et montage à sec ; ils resteront en place une dizaine d'années)<ref name="p126">''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 126.</ref>{{,}}<ref name="Ory104"/>. Ce sera la dernière session de l'assemblée générale avant son transfert définitif à [[New York]]. Véritable centre international où se pressent {{formatnum:3000}} fonctionnaires, diplomates et journalistes (''Libération'' parle du {{Citation|siège du gouvernement du monde}}), le palais accueille également, entre le {{date|28 avril 1952}} et le {{date|15 décembre 1959}}, le siège de l'[[OTAN]], qui est ensuite déplacé au palais de l'OTAN (actuelle [[Centre universitaire Dauphine|université Paris-Dauphine]])<ref name="p126"/>{{,}}<ref>{{lien web |titre=OTAN Hebdo - 1952 |url=http://www.nato.int/docu/update/50-59/1952f.htm |site=nato.int |consulté le=03-10-2021}}.</ref>. Le {{date|23 octobre 1954}} a lieu au palais la signature du protocole d'adhésion de l'Allemagne de l'Ouest à l'OTAN ; à cette occasion est créée l'[[Union de l'Europe occidentale]], installée dans une partie du bâtiment créée par Perret, en face de l'aile Paris<ref>Pascal Ory, ''Le palais de Chaillot'', pages 102-103.</ref>. En 1960, les préfabriqués sont détruits<ref name="Ory104"/>.
+
+Pour commémorer l'endroit, le président de la République française [[François Mitterrand]] renomme l'esplanade « [[parvis des droits de l'homme]] », le {{date|30 mai 1985}}<ref name="p124"/>.
+
+==== Le palais depuis les années 1990 ====
+
+Le palais de Chaillot est une propriété de l'État dont le ministère de la Culture est l'utilisateur principal. Il abrite plusieurs établissements publics qui en sont les utilisateurs secondaires : des musées, dont le [[musée de l'Homme]] et le [[musée national de la Marine]] dans son aile ouest, le [[Théâtre national de Chaillot]] en son centre, notamment sous le parvis, et la [[Cité de l'architecture et du patrimoine]] dans son aile est ([[Musée des Monuments français (1879)|Musée des monuments français]], [[École de Chaillot]] et [[Institut français d'architecture]]).
+Un incendie survenu le {{date|22 juillet 1997}}, à 22 heures, abîme les collections du musée des monuments français, tant par les flammes (notamment la charpente qui venait d'être rénovée) que par les jets d'eau utilisés par les pompiers<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 134.</ref>.
+
+La restructuration de l'aile de Paris consécutive à cet incendie s’est accompagnée du déménagement définitif de la [[Cinémathèque française]] à [[Quartier de Bercy|Bercy]], logée dans le palais entre 1963 et 2005.
+Dans l'aile Passy, le musée de l'Homme a été profondément remanié entre 2010 et 2015, et le musée national de la Marine a également bénéficié d'une rénovation importante de 2018 à 2023.
+
+== Architecture du palais de Chaillot ==
+Ce site est desservi par la [[Liste des stations du métro de Paris|station de métro]] [[Trocadéro (métro de Paris)|Trocadéro]].
+
+=== Palais ===
+Le palais de Chaillot est formé de deux pavillons et de deux ailes curvilignes cernant un vide central (l'[[Parvis des droits de l'homme|esplanade des droits de l'homme]]) et descendant vers la [[Seine]]. Entre les deux ailes « de Passy » (à l'ouest) et « de Paris » (à l'est), les [[jardins du Trocadéro]] dominent la vue sur la [[tour Eiffel]] et le [[Champ-de-Mars (Paris)|Champ de Mars]].
+
+Au dernier étage, du côté de l’aile de Passy, se trouve un duplex de quelques centaines de mètres carrés, avec terrasse, dans lequel ont habité [[Paul Rivet]] (1876-1958), fondateur du [[musée de l'Homme]]<ref>[[Christian Charrière (écrivain)|Christian Charrière]], ''Le Printemps des enragés'', Fayard, 1968.</ref>, [[René Coty]] (1882-1962), ancien [[président de la République française]], puis [[Christian Fouchet]] (1911-1974), ancien [[Ministre de l'Éducation nationale (France)|ministre de l’Éducation nationale]]. L’homme politique [[François Léotard]] (1942-2023) a failli s’y installer, avant d’en être dissuadé par une indiscrétion parue dans la presse<ref>[[Daniel Schneidermann]], ''Tout va très bien, Monsieur le Ministre'', Paris, 1987.</ref>.
+
+Le palais de Chaillot est critiqué, notamment dans l'après guerre, à cause de sa proximité de l'architecture totalitaire. En effet, l'écrivain italien [[Leonardo Sciascia]] considère qu'il s'agit de l'{{Citation|exemple d'une architecture qui dans notre mémoire fait tout un avec le fascisme}}. Cela est à mettre en perspective avec le [[Paris sous l'occupation allemande#Visite d'Adolf Hitler à Paris|séjour parisien]], en {{date|juin 1940}}, d'[[Adolf Hitler]], qui avait visité l'édifice et fait part de son admiration<ref>Pascal Ory, ''Le palais de Chaillot'', page 90.</ref>.
+
+L'ensemble de l'édifice se caractérise par une abondante statuaire due, entre autres, aux artistes [[Paul Belmondo (sculpteur)|Paul Belmondo]], [[Léon-Ernest Drivier]] et [[Marcel Gimond]]. [[Charles Hairon]] a réalisé certains des bas-reliefs extérieur et [[Gilbert Poillerat]] les grilles d'entrée<ref>Béatrice de Rochebouët, « Paris, reine indétronable de l'Art déco », ''[[Le Figaroscope]]'', semaine du 16 au 22 octobre 2013, p. 4-6.</ref>. Les deux pavillons sont surmontés de groupes monumentaux sculptés par [[Raymond Delamarre]] et [[Carlo Sarrabezolles]]. Parmi les statues disposées le long des grands escaliers permettant de rejoindre la [[Fontaine du Trocadéro|fontaine des jardins du Trocadéro]] (ou « de Varsovie », érigée en [[1937]]), du côté de l'aile de Passy, on note, debout, l'''Homme'' de [[Pierre Traverse]], et assise, ''Flore'' de [[Louis-Aimé Lejeune]]<ref>''Esprits des lieux : Du Trocadéro au palais de Chaillot'', p. 120.</ref>.
+
+Devant se situent les [[jardins du Trocadéro]], ornés de sculptures et d'une végétation organisée au sein d'un parc à l'anglaise encadrant des bassins en cascade, la [[fontaine du Trocadéro|fontaine]] et s'écoulant par vingt jets d'eau étagés sur huit paliers successifs. [[Félix Févola]] a réalisé le miroir d'eau et les fontaines<ref>[http://www.insecula.com/contact/A010425.html Félix-Pascal Févola] - Insecula.</ref>. Le tout est aménagé par l'architecte [[Roger-Henri Expert]].
+
+Les façades et couvertures du palais, son parvis et sa terrasse avec son escalier, ses décors d'origine subsistants (sauf la salle de théâtre remaniée) ont été classés [[Monument historique (France)|monuments historiques]] par arrêté du {{date|24 décembre 1980}}<ref>{{Base Mérimée|PA00086706}}.</ref>. En ciment moulé, les murs extérieurs sont moins de la sculpture en épaisseur que des plaquages, des tableaux sculptés. Sur les 20 emplacements en hauteur susceptibles d'accueillir des bas-reliefs côté rue, quatorze sont occupés : sur l'aile Passy (musée de l'Homme et musée national de la Marine, on retrouve une iconographie des continents et de la navigation (notamment ''L'Océanie'' d'Henry Arnold, ''L'Afrique'' d'[[Antoine Sartorio]] et ''L'Asie'' de [[Georges Saupique]]) alors que sur l'aile Paris (musée des Monuments français), on trouve des bas-reliefs consacrés à la sculpture et l'architecture (comme ''L'Architecture civile'' de Jean Debarre)<ref>Pascal Ory, ''Le palais de Chaillot'', page 82.</ref>.
+
+=== Théâtre ===
+{{Article connexe|Théâtre national de Chaillot}}
+[[Fichier:Chaillot - Grand Foyer.jpg|vignette|Le grand foyer du théâtre.]]
+
+Les critiques techniques et sonores de la salle des fêtes de l'[[Palais du Trocadéro|ancien palais du Trocadéro]] sont prises en compte dans la création du théâtre du palais de Chaillot (notamment pour l'orgue, désormais modulable et déplaçable) même si on reproche au nouveau lieu un décor trop pesant, les citations de [[Paul Valéry|Valéry]] présentées dans un cadre en bronze, qui détournent l'attention de la scène, et surtout une acoustique toujours défaillante<ref name="Ory96">Pascal Ory, ''Le palais de Chaillot'', pages 96.</ref>.
+
+Le théâtre, construit dans un style [[Art déco]] sous la direction de Louie Süe, a requis la compétence de proches, comme le ferronnier Raymond Sube (pour les lampadaires, les vasques et les balustrades) et les peintres [[Gustave Louis Jaulmes]] (fresque de style pompéien), [[Pierre Bonnard]], [[Maurice Denis]], [[Ker-Xavier Roussel]] et Émile Vuillard (quatre anciens nabis qui réalisent avec [[Louis Billotey]], [[Roland Oudot]] et [[Jean Souverbie]] des panneaux pour la galerie des orchestres). La salle, œuvre des Niermans, comporte dix ensembles sculptés, principalement des couples allégoriques, comme ''France''/''Ville de Paris'' ou ''Art mural''/''Art théâtral''. Le fronton de scène est réalisé par [[Évariste Jonchère]] et figure Apollon entouré des ''Arts du théâtre''<ref>Pascal Ory, ''Le palais de Chaillot'', pages 81-82.</ref>. La fosse d'orchestre peut accueillir 150 musiciens ; on compte {{nombre|2800|places}} pour le public, dont 1500 au parterre<ref name="Ory96"/>{{,}}<ref name="Ory97">Pascal Ory, ''Le palais de Chaillot'', pages 97.</ref>.
+
+[[Fichier:Chaillot - Salle Jean Vilar.jpg|vignette|La salle « Jean-Vilar ».]]
+Pendant l'Occupation allemande ont lieu au théâtre diverses concerts et spectacles, organisés par les collaborationnistes ou les nazis, notamment pour des « bonnes œuvres » en faveur des travailleurs français en Allemagne. Le {{date|11 novembre 1944}} s'y tient un gala en l'honneur des familles des [[Forces françaises de l'intérieur|FFI]]. [[Paul Abram]], le directeur du théâtre, est révoqué par Vichy en 1939 ; en 1941 est nommé Pierre Aldebert, qui reste en poste jusque dans les années 1950 mais avec très peu de moyens mis à sa disposition. Vers 1950, pendant deux mois, la salle est fermée pour accueillir l'ONU. La présence de ces manifestations politiques tient beaucoup à l'échec culturel du lieu<ref name="Ory97"/>. Le théâtre rouvre en 1952, avec à sa tête [[Jean Vilar]], qui veut relancer le [[Théâtre national populaire]], déjà présent dans l'ancien palais du Trocadéro mais qui avait été un échec. La nouvelle formule est un succès, où se produisent de grands comédiens ([[Gérard Philipe]], [[Maria Casarès]], etc.) et de jeunes débutants ([[Michel Bouquet]], [[Jeanne Moreau]], etc.) dans de grandes mises en scène ([[William Shakespeare]], [[Bertolt Brecht]], etc.) au caractère dépouillé réalisées par Vilar, avec [[Maurice Jarre]] à la musique et [[Léon Gischia]] et [[Édouard Pignon]] à la scénographie<ref>Pascal Ory, ''Le palais de Chaillot'', page 99.</ref>. La critique est dans l'ensemble favorable et la dimension populaire de l'entreprise, réelle, avec des horaires de représentation calqués sur ceux des salariés, des rencontres entre artistes et public, une coopération avec les comités d'entreprises de l'Île-de-France et des prix réduits (cinq ans après le lancement, on compte 1139 représentations « à prix populaires » sur un total de 1451) ; malgré tout, le public reste davantage issu des classes moyennes que du milieu ouvrier. Si Jean Vilar critique à son tour l'agencement de la salle, il réussit à la remplir de façon convenable. En 1963, il ne demande pourtant pas le renouvellement de son contrat et concentre son travail à Avignon. Après cette période s'enclenche un relatif déclin, une baisse de fréquentation, tenant en partie aux choix de son successeur, [[Georges Wilson]]<ref>Pascal Ory, ''Le palais de Chaillot'', page 100.</ref>.
+
+En plus de la grande salle, est aménagée, en 1965, une salle plus petite, de 420 places par l'architecture Jean de Mailly et le scénographe Jacques Le Marquet, sur la commande du directeur Georges Wilson, à la place d'un bar-fumoir décoré par Dufy et Friesz. La grande salle disparaît dans les années 1970, suivant une partie du projet formulé en 1972 par [[Jack Lang]] et [[Antoine Vitez]], afin de laisser place à un espace modulable : il s'agit de l'aménagement des architectes Valentin Fabre et Jean Perrotet. Il y a donc désormais trois salles, la plus grande étant de {{nombre|1200|places}}<ref>[http://www.theatre-chaillot.fr/fr/salle-jean-vilar La salle Jean Vilar (page officielle)]</ref> ; les aménagements théâtraux d'origine, certes d'usage compliqué, ont donc disparu<ref>Pascal Ory, ''Le palais de Chaillot'', page 91.</ref>.
+
+=== Orgue Cavaillé-Coll / Gonzalez ===
+
+{{Article détaillé|Orgue du palais de Chaillot}}
+De sa construction à 1972, le palais de Chaillot a abrité un orgue prestigieux, l'ancien orgue du Trocadéro, devenu aujourd'hui celui de l'[[auditorium Maurice-Ravel]] de [[Lyon]].
+
+=== Les jardins ===
+[[Fichier:Trocadéro canons à eau 2.jpg|vignette|La fontaine dans les jardins.]]
+{{Article détaillé|Jardins du Trocadéro|Fontaine du Trocadéro}}
+
+== Musées ==
+Bien qu'il n'ait pas existé de volonté politique consciente de regrouper en autant de lieux proches de nombreux musées, [[Pascal Ory]] envisage de parler d'« {{page h'|Île aux Musées|île aux Musées}} » pour évoquer le quartier de Chaillot. Outre ceux abrités dans le palais ([[Musée des Monuments français (1879)|musée des Monuments français]] depuis 1879, [[musée de l'Homme]] depuis 1937, [[musée national de la Marine]] depuis 1943 et [[Cité de l'architecture et du patrimoine]] depuis 2007) ou qui y ont été ([[musée d'Ethnographie du Trocadéro]] entre 1878 et 1937), de nombreux musées sont situés aux alentours ([[musée national des Arts asiatiques - Guimet]], [[musée d'Art moderne de Paris]], [[palais Galliera, musée de la Mode de la ville de Paris]], [[musée Clemenceau]] ; à noter aussi le [[musée national des Travaux publics]], fermé en 1955, le [[Musée national des Arts et Traditions populaires (Paris)|musée national des Arts et Traditions populaires]], fermé en 2005 et le [[Cinémathèque française|musée du Cinéma]] ouvert par [[Henri Langlois]] dans les années 1970 et rouvert en 2005 dans le {{12e arrondissement de Paris}})<ref>Pascal Ory, ''Le palais de Chaillot'', page 110.</ref>.
+
+== Le palais de Chaillot « spectacle du politique » ==
+=== Événements ===
+De nombreux événements et mises en scène politiques ont eu lieu au palais de Chaillot, comme la cérémonie nocturne des 150 ans de la Révolution française du {{date|13 juillet 1939}} scénographiée par Carlu, dont le galop d'essai avait été, un an plus tôt au même endroit, une scénographie toujours signée Carlu en l'honneur de l'amitié franco-britannique et qui s'inspirait du grandiose des mises en scène des régimes totalitaires de l'époque (notamment d'immenses [[faisceau de licteur|faisceaux de licteur]], pourtant emblème depuis une vingtaine d'années du fascisme italien), mais ici au service de la grandeur de la République. Ont également lieu les funérailles de Paul Valéry les 24 et {{date|25 juillet 1945}}, l'ouverture de la première « année » internationale les 7-{{date|8 juin 1985}} (« Année de l'Inde », sous la houlette de [[Catherine Clément]]) et l'anniversaire des 50 ans de l'exposition universelle en 1987 (« Nuit de la Lumière »)<ref>Pascal Ory, ''Le palais de Chaillot'', pages 101-102.</ref>.
+
+=== Symboles ===
+==== « Paix et culture » ====
+Les inscriptions du poète [[Paul Valéry]] sur les façades et les ornements extérieurs exultent la combinaison allégorique « paix / culture », par exemple les deux sculptures situées de part et d'autre de l'esplanade, ''Hercule'' de Pommier et ''Apollon'' de Bouchard. L'esprit des expositions universelles étant résolument engagé pour promouvoir « l'esprit de paix », on retrouve cette signalétique dans le pavillon de la Paix, provisoire et construit par Albert Laprade et Léon-H. Bazin, installé au centre de la [[place du Trocadéro]] ; il est composé de salles disposés en hémicycle abritant des photomontages supervisés par Jean Carlu (sur deux idées : ''Les forces de guerre agissent'' et ''Les forces de paix agissent''), en arrière-plan d'un pylône de {{nobr|50 mètres}} de hauteur décoré de rameaux d'olivier et d'une base où est affiché le mot « PAX ». À sa place se trouve depuis 1951 une statue du [[Ferdinand Foch|maréchal Foch]]<ref name="Ory1056">Pascal Ory, ''Le palais de Chaillot'', pages 105-107.</ref>.
+
+Influencé par l'arrivée récente du [[Front populaire (France)|gouvernement du Front populaire]], l'exposition est relativement modifiée et « gauchie », avec l'adjonction d'autres pavillons (pour le Rassemblement universel pour la paix, pour le Comité mondial des femmes, les associations français pour la SDN ainsi que des groupes d'anciens combattants). En 1935, [[Paul Rivet]], premier élu du Front populaire, avait été à l'origine de la création du [[musée de l'Homme]] au palais de Chaillot<ref name="Ory1056"/>.
+
+Les lieux entourant le palais dans le quartier sont pour beaucoup liés à l'amitié franco-américaine ([[Rue Benjamin-Franklin (Paris)|rue Benjamin-Franklin]] et statue, monument à l'amiral de Grasse, stèles aux Français morts à la [[bataille de Yorktown]], statue de [[George Washington]] place d'Iéna, [[place des États-Unis]] - depuis 1881 - et [[place Rochambeau]] - depuis 1934 - et [[Avenue du Président-Wilson (Paris)|avenue du Président-Wilson]]) puis, après le second conflit mondial à l'amitié universelle avec des noms de dirigeants et lieux étrangers dans le choix des allées des jardins du palais (1932 : [[Albert Ier (prince de Monaco)|Albert {{Ier}} de Monaco]], 1951 : [[Gustave V|Gustave V de Suède]], 1952 : Nations unies, 1945 : quai de New York - auparavant de Tokyo -, place de Varsovie, [[Hussein (roi de Jordanie)|Hussein {{Ier}} de Jordanie]]). Sous [[Valéry Giscard d'Estaing]], la place du Trocadéro devient « place du Trocadéro-et-du 11-Novembre » et sous [[François Mitterrand]] l'esplanade « parvis des Libertés-et-des-Droits-de-l'Homme ». Trois plaques extérieures célébrant les [[Droits de l'homme]] sont par la suite inaugurés : en 1985 sous Mitterrand, en 1987 par [[ATD Quart monde]] et une dernière sur les martyrs du « devoir d'informer » ; une quatrième a été installée en 1988 dans le grand foyer du théâtre, œuvre d'Henry Laurens<ref>Pascal Ory, ''Le palais de Chaillot'', page 107.</ref>.
+
+==== Inscriptions ====
+[[Fichier:Palais de Chaillot (Paris) (4).jpg|thumb|Palais de Chaillot - Aile Paris, vers la tour Eiffel.]]
+Le choix de [[Paul Valéry]] pour les quatre inscriptions tient à son statut d'auteur de référence après son texte de 1919 sur l'avenir de la civilisation ; celles-ci sont commandées par le commissariat de l'exposition universelle et réalisée dans une police de caractère, le [[Peignot (police d'écriture)|Peignot]], inventée pour l'évènement par [[Cassandre (graphiste)|Cassandre]]. Pascal Ory note : {{Citation|les quatre phrases glosent significativement sur la fonction esthétique du palais, dont elles sont en quelque sorte la dédicace, au sens religieux}}. Un cinquième bloc d'inscription se trouvait dans le théâtre réalisé par Niermans, mais il fut retiré lors de son réaménagement. Un buste rend hommage à l'homme de lettres dans les jardins, côté Passy<ref name="Ory1056"/>.
+
+Les inscriptions sur le fronton du palais :
+* '''Côté Cité de l'architecture et du patrimoine (Aile Paris), vers la tour Eiffel :'''
+{{Vers|texte=
+Il dépend de celui qui passe
+Que je sois tombe ou trésor
+Que je parle ou me taise
+Ceci ne tient qu'à toi
+Ami n'entre pas sans désir
+}}
+En dessous, se trouve la statue de 1937, ''Apollon Musagète'', exécutée par [[Henri Bouchard (sculpteur)|Henri Bouchard]].
+* '''Côté musée de l'Homme (Aile Passy), vers la tour Eiffel :'''
+[[Fichier:Inscription sur le Palais de Chaillot.JPG|thumb|Palais de Chaillot - Aile Passy, vers la place du Trocadéro.]]
+{{Vers|texte=
+Tout homme crée sans le savoir
+Comme il respire
+Mais l'artiste se sent créer
+Son acte engage tout son être
+Sa peine bien aimée le fortifie
+}}
+En dessous, se trouve la statue de 1937, ''Hercule domptant un bison'', exécutée par [[Albert Pommier]].
+* '''Côté musée de l'Homme (Aile Passy), vers la place du Trocadéro :'''<ref>[http://3.bp.blogspot.com/__kNMBDAgUJM/RoCT-AqIk-I/AAAAAAAAD7g/zZY4wn-T0fM/s1600-h/9.jpg Photographie de l'Aile Passy (vers la place du Trocadéro)]  {{img}}.</ref>
+{{Vers|texte=
+Choses rares ou choses belles
+Ici savamment assemblées
+Instruisent l'œil à regarder
+Comme jamais encore vues
+Toutes choses qui sont au monde
+}}
+* '''Côté Cité de l'architecture et du patrimoine (Aile Paris), vers la place du Trocadéro :'''<ref>[http://1.bp.blogspot.com/__kNMBDAgUJM/RoCUCgqIk_I/AAAAAAAAD7o/E7xQ2wnufNw/s1600-h/8.jpg Photographie de l'Aile Paris (vers la place du Trocadéro)] {{img}}.</ref>
+{{Vers|texte=
+Dans ces murs voués aux merveilles
+J'accueille et garde les ouvrages
+De la main prodigieuse de l'artiste
+Égale et rivale de sa pensée
+L'une n'est rien sans l'autre
+}}
+
+== Bibliographie ==
+;Expositions universelles
+* Linda Aimone et Carlo Olmo, ''Les expositions universelles, 1851-1900'', Paris, Belin, [[1993]].
+* [[Pascal Ory]], ''Les Expositions universelles de 1855 à 1939'', Paris, Ramsay, [[1982]].
+* ''Gabriel Davioud, architecte, 1824-1881, Paris'', délégation à l’action artistique de la ville de Paris, [[1981]].
+* ''Paris 37. Cinquantenaire de l'exposition internationale des arts et des techniques dans la vie moderne'', Paris, Institut français d'architecture / Paris-Musées, [[1987]], 510 pages.
+
+;Trocadéro
+* Isabelle Gournay, ''Le nouveau Trocadéro'', Liège/Bruxelles, Mardaga/IFA, 1985, 240 pages, {{ISBN|2-87009-211-3}}.
+* Bertrand Lemoine [dir.], ''Paris 1937. Cinquantenaire de l'Exposition internationale des arts et des techniques de la vie moderne'', Paris, Institut français d’architecture/Paris-Musées, [[1987]].
+* Frédéric Seitz, ''Le Trocadéro : les métamorphose d'une colline de Paris'', Paris, Belin, [[2005]].
+* [[Pascal Ory]], ''Le palais de Chaillot'', {{abréviation discrète|coll.|collection}} Les grands témoins de l'architecture, Cité de l’architecture et du patrimoine / Aristéas / Actes Sud, [[2006]].
+* La Cité de l’architecture et du patrimoine / le musée des Monuments français / les Archives nationales, ''Esprits des lieux : Du Trocadéro au palais de Chaillot'', [[2011]], 140 pages.
+
+== Notes et références ==
+{{références}}
+
+== Voir aussi ==
+
+{{Autres projets
+|commons=Category:Palais de Chaillot
+|commons titre=Palais de Chaillot
+}}
+
+=== Articles connexes ===
+* [[Palais du Trocadéro]]
+* [[Parvis des droits de l'homme|Parvis du Trocadéro]] | [[Jardins du Trocadéro]] | [[Fontaine du Trocadéro]]
+* [[Cité de l'architecture et du patrimoine]]
+* [[Bibliothèque d'architecture contemporaine de la Cité de l'architecture et du patrimoine]]
+* [[Colline de Chaillot]]
+
+=== Liens externes ===
+* {{Autorité}}
+* {{Bases}}
+* {{Dictionnaires}}
+* [https://web.archive.org/web/20080204115533/http://83.206.192.51/dossdoc/viewer/home.aspx?INSTANCE=INCIPIO&ID=STRUCTURE_32FFD266BA1B48D29E3392D953140F64 Dossier documentaire réalisé par la bibliothèque de la Cité de l'architecture et du patrimoine sur l'histoire du Palais de Chaillot]
+* [https://www.flickr.com/photos/ruamps/6305529111/ Photographie du bâtiment provisoire de l'ONU au Palais de Chaillot]
+
+{{Palette|Trocadéro}}
+{{Portail|architecture et urbanisme|néo-classicisme|Art déco|Paris|monuments historiques|Années 1930|expositions internationales}}
+
+[[Catégorie:Architecture du XXe siècle en Île-de-France]]
+[[Catégorie:Palais de Chaillot|*]]
+[[Catégorie:Architecture moderniste en France|Paris, Palais de Chaillot]]
+[[Catégorie:Architecture Art déco à Paris]]
+[[Catégorie:Exposition universelle de 1937]]
+[[Catégorie:Monument historique ayant subi un incendie]]
+[[Catégorie:Vestige des expositions internationales de Paris]]

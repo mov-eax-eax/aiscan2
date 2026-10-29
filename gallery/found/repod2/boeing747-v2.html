@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boeing 747-400 &mdash; Catmull-Rom Lofted Procedural Model (Three.js)</title>
+<style>
+  :root { --accent:#7fb2ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; overflow:hidden; background:#0e1116; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; color:#dfe5ec; }
+  #app { position:fixed; inset:0; }
+  canvas { display:block; }
+
+  .hud {
+    position:fixed; top:18px; left:18px; z-index:10;
+    background: rgba(10,13,18,.62);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px; padding:16px 18px 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 330px;
+  }
+  .hud h1 {
+    font-size:19px; font-weight:800; letter-spacing:3.5px; color:#fff;
+    text-transform: uppercase;
+  }
+  .hud .sub {
+    margin-top:4px; font-size:11.5px; line-height:1.45; color:#9fb0c4;
+  }
+  .controls { margin-top:12px; display:flex; flex-wrap:wrap; gap:7px; }
+  .controls button {
+    font: 600 12px/1 "Segoe UI", Arial, sans-serif;
+    color:#cfd8e4; background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:9px; padding:7px 11px; cursor:pointer;
+    letter-spacing:.4px; transition: background .15s, color .15s, border-color .15s;
+  }
+  .controls button:hover { background:rgba(255,255,255,.13); color:#fff; }
+  .controls button.on { background:var(--accent); border-color:var(--accent); color:#0a0f16; font-weight:700; }
+  .stats {
+    margin-top:11px; font-size:10.5px; color:#7f92a9; letter-spacing:.3px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hint {
+    position:fixed; left:50%; bottom:16px; transform:translateX(-50%); z-index:10;
+    font-size:11.5px; color:#8294a8; letter-spacing:.4px;
+    background:rgba(10,13,18,.5); padding:6px 14px; border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  #err {
+    position:fixed; inset:0; z-index:99; display:none; align-items:center; justify-content:center;
+    background:#0e1116; color:#ffb4b4; font: 600 14px "Segoe UI", Arial, sans-serif; text-align:center; padding:30px;
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="hud">
+  <h1>Boeing 747-400</h1>
+  <div class="sub">Fully procedural &ldquo;Queen of the Skies&rdquo; &mdash; fuselage, wings, tail and
+    window runs lofted along <b>Catmull-Rom</b> splines. Four CF6-class turbofans, landing gear,
+    flap-track fairings, framed windshield, livery decals and a painted runway.</div>
+  <div class="controls">
+    <button id="btn-rotate" class="on" title="Auto-orbit the camera">&#10227; Rotate</button>
+    <button id="btn-wire" title="Show wireframe">&#9638; Wireframe</button>
+    <button id="btn-fans" class="on" title="Spin the engine fans">&#9673; Fans</button>
+    <button id="btn-livery" title="Cycle accent livery">&#127912; Livery</button>
+  </div>
+  <div class="stats" id="stats"></div>
+</div>
+<div class="hint">drag&nbsp;&middot;&nbsp;orbit&nbsp;&nbsp;&nbsp;wheel&nbsp;&middot;&nbsp;zoom&nbsp;&nbsp;&nbsp;right-drag&nbsp;&middot;&nbsp;pan disabled</div>
+<div id="err"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+// ================= PURE-BUILD-BEGIN =================
+// Everything between the markers is pure geometry/material construction
+// (no DOM / WebGL) so it can be smoke-tested headlessly in Node.
+
+const RAD  = 3.25;          // fuselage radius (m)
+const LEN  = 70.6;          // fuselage length (m)
+const HUMP = 0.30;          // upper-deck hump amplitude, fraction of RAD
+const DEG  = Math.PI / 180;
+
+const v = (x, y, z) => new THREE.Vector3(x, y, z);
+const clamp01 = (x) => Math.min(1, Math.max(0, x));
+const smooth = (a, b, x) => { const t = clamp01((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const gauss = (u, c, w) => { const d = (u - c) / w; return Math.exp(-d * d); };
+
+// The fuselage centerline: a Catmull-Rom spline through four stations.
+// (It is deliberately near-straight, like the real 747's centerline.)
+const spine = new THREE.CatmullRomCurve3([
+  v(-0.15, 0, 0), v(18, 0, 0), v(42, 0, 0), v(70.45, 0, 0),
+]);
+
+function humpAmt(u) { return smooth(0.030, 0.100, u) * (1 - smooth(0.440, 0.480, u)); }
+function bellyAmt(u) {
+  return 0.85 * gauss(u, 0.38, 0.13) + 0.70 * gauss(u, 0.52, 0.13) + 0.45 * gauss(u, 0.72, 0.09);
+}
+function radiusFactor(u) {
+  let rf = 1;
+  const uN = 0.085;                                   // nose taper
+  if (u < uN) rf = Math.pow(Math.max(u, 1e-4) / uN, 0.7);
+  if (u > 0.89) {                                     // tail taper
+    const t = clamp01((u - 0.89) / 0.11);
+    rf *= Math.max(0.05, Math.pow(Math.cos(t * Math.PI / 2), 1.3));
+  }
+  return rf;
+}
+// Cross-section at station u and polar angle th: returns [lateral, vertical]
+// offsets. Includes the 747 upper-deck hump and the canoe-style wing-body
+// / belly fairing.
+function profile(u, th) {
+  const rf = radiusFactor(u), hm = humpAmt(u), fb = bellyAmt(u);
+  const s = Math.sin(th), c = Math.cos(th);
+  const bumpH = Math.pow(Math.max(0, s), 2.4);
+  const bumpB = 0.62 * Math.pow(Math.abs(c), 1.5) + 0.45 * Math.pow(Math.max(0, -s), 2.0);
+  const lat  = c * rf * RAD;
+  const vert = (s + bumpH * HUMP * hm - bumpB * fb) * rf * RAD;
+  return [lat, vert];
+}
+function surfacePoint(u, th) {
+  const p = spine.getPointAt(u);
+  const [lat, vert] = profile(u, th);
+  return v(p.x, p.y + vert, p.z + lat);
+}
+
+// Generic loft between ring sections (equal length, same point order).
+function loft(sections, closed) {
+  const n = sections.length, m = sections[0].length;
+  const pos = new Float32Array(n * m * 3);
+  const uv  = new Float32Array(n * m * 2);
+  let pi = 0, ui = 0;
+  for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) {
+    const p = sections[i][j];
+    pos[pi++] = p.x; pos[pi++] = p.y; pos[pi++] = p.z;
+    uv[ui++] = j / m; uv[ui++] = i / (n - 1);
+  }
+  const idx = [];
+  for (let i = 0; i < n - 1; i++) for (let j = 0; j < m; j++) {
+    let j2 = j + 1;
+    if (j2 === m) { if (!closed) continue; j2 = 0; }
+    // skip quads whose ring step collapses to a point (duplicated seam vertices)
+    if (sections[i][j].distanceToSquared(sections[i][j2]) < 1e-12 &&
+        sections[i + 1][j].distanceToSquared(sections[i + 1][j2]) < 1e-12) continue;
+    const a = i * m + j, b = (i + 1) * m + j, c = (i + 1) * m + j2, d = i * m + j2;
+    idx.push(a, b, c, a, c, d);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  return g;
+}
+function mirrorGeometry(geo) {
+  const g = geo.clone();
+  const p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) p.setZ(i, -p.getZ(i));
+  if (g.index) {
+    const a = g.index.array;
+    for (let i = 0; i < a.length; i += 3) { const t = a[i + 1]; a[i + 1] = a[i + 2]; a[i + 2] = t; }
+  } else {
+    const a = p.array;
+    for (let i = 0; i < a.length; i += 9) {
+      for (let k = 0; k < 3; k++) { const t = a[i + 3 + k]; a[i + 3 + k] = a[i + 6 + k]; a[i + 6 + k] = t; }
+    }
+  }
+  g.computeVertexNormals();
+  return g;
+}
+
+// NACA 4-digit family: returns upper/lower surface points at chord fraction f.
+function nacaAirfoil(f, { m, p, t }) {
+  const yt = 5 * t * (0.2969 * Math.sqrt(Math.max(f, 0)) - 0.1260 * f - 0.3516 * f * f
+    + 0.2843 * f * f * f - 0.1015 * f * f * f * f);
+  let yc, dyc;
+  if (f < p) { yc = m / (p * p) * (2 * p * f - f * f);       dyc = 2 * m / (p * p) * (p - f); }
+  else       { const q = 1 - p; yc = m / (q * q) * ((1 - 2 * p) + 2 * p * f - f * f); dyc = 2 * m / (q * q) * (p - f); }
+  const th = Math.atan(dyc), st = Math.sin(th), ct = Math.cos(th);
+  return { xu: f - yt * st, yu: yc + yt * ct, xl: f + yt * st, yl: yc - yt * ct };
+}
+
+// Loft an aerodynamic surface along Catmull-Rom leading/trailing-edge curves.
+// o: { lePts, tePts, naca, thickAxis:'y'|'z', bands:[[f0,f1,mat],...], nSpan, twist?(s) }
+function capFan(ring, outDir) {
+  const C = v(0, 0, 0);
+  ring.forEach((p) => C.add(p));
+  C.multiplyScalar(1 / ring.length);
+  const pos = [C.x, C.y, C.z];
+  ring.forEach((p) => pos.push(p.x, p.y, p.z));
+  let order = 1;
+  for (let j = 0; j < ring.length; j++) {
+    const j2 = (j + 1) % ring.length;
+    if (ring[j].distanceToSquared(ring[j2]) < 1e-12) continue;
+    const n = ring[j].clone().sub(C).cross(ring[j2].clone().sub(C));
+    order = n.dot(outDir) >= 0 ? 1 : -1;
+    break;
+  }
+  const idx = [];
+  for (let j = 0; j < ring.length; j++) {
+    const j2 = (j + 1) % ring.length;
+    if (ring[j].distanceToSquared(ring[j2]) < 1e-12) continue;
+    if (order === 1) idx.push(0, j + 1, j2 + 1);
+    else idx.push(0, j2 + 1, j + 1);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  return g;
+}
+
+function buildSurface(o) {
+  const leC = new THREE.CatmullRomCurve3(o.lePts);
+  const teC = new THREE.CatmullRomCurve3(o.tePts);
+  const nSpan = o.nSpan;
+  const sDir = leC.getPointAt(1).clone().sub(leC.getPointAt(0)).normalize();
+  const thickVec = o.thickAxis === 'z' ? v(0, 0, 1) : v(0, 1, 0);
+  const jSign = Math.sign(thickVec.clone().cross(sDir).dot(v(1, 0, 0))) || 1;
+  const groups = o.bands.map(() => []);
+  for (let si = 0; si < nSpan; si++) {
+    const s = si / (nSpan - 1);
+    const LE = leC.getPointAt(s), TE = teC.getPointAt(s);
+    const chord = TE.x - LE.x;
+    const tw = o.twist ? o.twist(s) : 0;
+    const ct = Math.cos(tw), st = Math.sin(tw);
+    o.bands.forEach((band, bi) => {
+      const f0 = band[0], f1 = band[1], nF = 6;
+      const point = (f, up) => {
+        const a = nacaAirfoil(f, o.naca);
+        const dx = (up ? a.xu : a.xl) * chord;
+        const dt = (up ? a.yu : a.yl) * chord;
+        const rx = dx * ct - dt * st, rt = dx * st + dt * ct;
+        return o.thickAxis === 'z' ? v(LE.x + rx, LE.y, LE.z + rt)
+                                   : v(LE.x + rx, LE.y + rt, LE.z);
+      };
+      const top = [], bot = [];
+      for (let k = 0; k < nF; k++) {
+        const f = f0 + (f1 - f0) * k / (nF - 1);
+        top.push(point(f, true));
+        bot.push(point(f, false));
+      }
+      // Closed ring with duplicated seam vertices so the band cut-walls
+      // (slat/flap/elevator/rudder seams) shade with their own normals.
+      const A = jSign > 0 ? top : top.slice().reverse();
+      const B = jSign > 0 ? bot.slice().reverse() : bot;
+      const ring = [
+        A[0], A[0], ...A.slice(1, nF - 1), A[nF - 1], A[nF - 1],
+        B[0], B[0], ...B.slice(1, nF - 1), B[nF - 1], B[nF - 1],
+      ];
+      groups[bi].push(ring);
+    });
+  }
+  const meshes = [];
+  o.bands.forEach((band, bi) => {
+    meshes.push(new THREE.Mesh(loft(groups[bi], true), band[2]));
+    if (o.caps && o.caps.tip)
+      meshes.push(new THREE.Mesh(capFan(groups[bi][groups[bi].length - 1], sDir), band[2]));
+  });
+  return meshes;
+}
+
+// Curved patch hugging the fuselage between stations u0..u1 and angles t0..t1.
+function surfacePatch(u0, u1, t0, t1, off, mat, opts = {}) {
+  const nu = opts.nu ?? 12, nt = opts.nt ?? 8;
+  const pos = [], uvs = [], idx = [];
+  for (let i = 0; i <= nu; i++) {
+    const u = u0 + (u1 - u0) * i / nu;
+    const sp = spine.getPointAt(u);
+    for (let j = 0; j <= nt; j++) {
+      const th = t0 + (t1 - t0) * j / nt;
+      const [lat, vert] = profile(u, th);
+      const p = v(sp.x, sp.y + vert, sp.z + lat);
+      const n = v(0, p.y - sp.y, p.z - sp.z).normalize();
+      pos.push(p.x + n.x * off, p.y + n.y * off, p.z + n.z * off);
+      uvs.push(opts.swapUV ? i / nu : j / nt, opts.swapUV ? j / nt : i / nu);
+    }
+  }
+  for (let i = 0; i < nu; i++) for (let j = 0; j < nt; j++) {
+    const a = i * (nt + 1) + j, b = a + nt + 1, c = b + 1, d = a + 1;
+    idx.push(a, b, c, a, c, d);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(uvs), 2));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  mat.side = THREE.DoubleSide;
+  return new THREE.Mesh(g, mat);
+}
+
+function makeCanvas(w, h) {
+  return (typeof document !== 'undefined') ? document.createElement('canvas') : null;
+}
+
+// ---------------- materials ----------------
+const std = (o) => {
+  const m = new THREE.MeshStandardMaterial(Object.assign(
+    { roughness: 0.4, metalness: 0.12, envMapIntensity: 0.55 }, o));
+  allMats.push(m);
+  return m;
+};
+const allMats = [];
+const matFuselage = std({ color: 0xf3f5f8, roughness: 0.34, metalness: 0.14 });
+const matRadome   = std({ color: 0xe9edf1, roughness: 0.40, metalness: 0.10, side: THREE.DoubleSide });
+const matCapTail  = std({ color: 0xf3f5f8, roughness: 0.34, metalness: 0.14, side: THREE.DoubleSide });
+const matBelly    = std({ color: 0xb9bfc7, roughness: 0.45, metalness: 0.10 });
+const matCheat    = std({ color: 0x0d3f96, roughness: 0.35, metalness: 0.22 });
+const matFin      = std({ color: 0x0d3f96, roughness: 0.35, metalness: 0.22 });
+const matRudder   = std({ color: 0x0a2f6e, roughness: 0.40, metalness: 0.20 });
+const matGlass    = std({ color: 0x0c1117, roughness: 0.12, metalness: 0.70, envMapIntensity: 1.4 });
+const matDoor     = std({ color: 0xdde2e8, roughness: 0.40, metalness: 0.10 });
+const matBorder   = std({ color: 0x8b939c, roughness: 0.40, metalness: 0.15 });
+const matCargo    = std({ color: 0xaab1b9, roughness: 0.45, metalness: 0.10 });
+const matWing     = std({ color: 0xeceff2, roughness: 0.38, metalness: 0.12 });
+const matSlat     = std({ color: 0xdfe4e9, roughness: 0.40, metalness: 0.15 });
+const matFlap     = std({ color: 0xd3d9de, roughness: 0.42, metalness: 0.15 });
+const matEngine   = std({ color: 0xd9dde2, roughness: 0.32, metalness: 0.55, side: THREE.DoubleSide });
+const matSpinner  = std({ color: 0xe6e9ed, roughness: 0.35, metalness: 0.40, side: THREE.DoubleSide });
+const matHot      = std({ color: 0x23272d, roughness: 0.60, metalness: 0.60, side: THREE.DoubleSide });
+const matLip      = std({ color: 0x7d848d, roughness: 0.30, metalness: 0.80 });
+const matPylon    = std({ color: 0xc9cfd6, roughness: 0.40, metalness: 0.20 });
+const matGear     = std({ color: 0x43484f, roughness: 0.55, metalness: 0.50 });
+const matWheel    = std({ color: 0x191d21, roughness: 0.85, metalness: 0.05 });
+const matHub      = std({ color: 0x596069, roughness: 0.50, metalness: 0.60 });
+const matWindow   = std({ color: 0x0b1016, roughness: 0.15, metalness: 0.75, envMapIntensity: 1.4 });
+const matAntenna  = std({ color: 0xd6dade, roughness: 0.40, metalness: 0.20 });
+const matPod      = std({ color: 0xb9c0c7, roughness: 0.45, metalness: 0.20 });
+
+// ---------------- textures ----------------
+function makeFanTexture() {
+  const c = makeCanvas(512, 512); if (!c) return null;
+  const g = c.getContext('2d');
+  g.fillStyle = '#13171c'; g.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 26; i++) {
+    const a = i / 26 * Math.PI * 2;
+    g.strokeStyle = '#97a1ae'; g.lineWidth = 11;
+    g.beginPath();
+    g.moveTo(256 + Math.cos(a) * 62, 256 + Math.sin(a) * 62);
+    g.lineTo(256 + Math.cos(a) * 238, 256 + Math.sin(a) * 238);
+    g.stroke();
+  }
+  const sg = g.createRadialGradient(256, 256, 6, 256, 256, 96);
+  sg.addColorStop(0, '#3a414b'); sg.addColorStop(1, '#20252c');
+  g.fillStyle = sg; g.beginPath(); g.arc(256, 256, 92, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = '#0b0e12'; g.lineWidth = 14;
+  g.beginPath(); g.arc(256, 256, 247, 0, Math.PI * 2); g.stroke();
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return t;
+}
+const fanTex = makeFanTexture();
+const matFan = std({ map: fanTex, color: 0xffffff, metalness: 0.45, roughness: 0.40, side: THREE.DoubleSide });
+
+function makeFinTexture() {
+  const c = makeCanvas(512, 512); if (!c) return null;
+  const g = c.getContext('2d');
+  g.font = '900 300px Arial, sans-serif';
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillStyle = '#ffffff';
+  g.fillText('747', 256, 268);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return t;
+}
+const finTex = makeFinTexture();
+const matFinText = new THREE.MeshBasicMaterial({
+  map: finTex, transparent: true, alphaTest: 0.05, depthWrite: true,
+});
+
+function makeTitleTexture(text, color) {
+  const c = makeCanvas(1024, 300); if (!c) return null;
+  const g = c.getContext('2d');
+  g.font = '900 235px Arial, sans-serif';
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillStyle = color;
+  g.fillText(text, 512, 158);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return t;
+}
+const titleCanvases = {};
+const matBoeing = new THREE.MeshBasicMaterial({ map: null, transparent: true, alphaTest: 0.05 });
+const matModel  = new THREE.MeshBasicMaterial({ map: null, transparent: true, alphaTest: 0.05 });
+function redrawTitles(color) {
+  titleCanvases.boeing = makeTitleTexture('BOEING', color);
+  titleCanvases.model  = makeTitleTexture('747-400', color);
+  if (matBoeing.map) matBoeing.map.dispose();
+  if (matModel.map) matModel.map.dispose();
+  matBoeing.map = titleCanvases.boeing;
+  matModel.map  = titleCanvases.model;
+  matBoeing.needsUpdate = matModel.needsUpdate = true;
+}
+
+// ---------------- engine ----------------
+const nacProfile = [
+  [0.02,  3.05], [0.55,  2.90], [0.70,  2.70], [0.85,  2.45], [1.05,  1.90],
+  [1.30,  0.90], [1.40, -0.20], [1.43, -1.40], [1.44, -2.20], [1.45, -2.55],
+  [1.34, -2.35], [1.32, -1.90], [1.32, -1.55], [1.15, -0.60], [0.95,  0.40],
+  [0.75,  1.30], [0.60,  2.00], [0.55,  2.40], [0.02,  2.90],
+].map(([r, y]) => new THREE.Vector2(r, y));
+const spinnerProfile = [
+  [0.01, -2.35], [0.12, -2.22], [0.30, -1.95], [0.44, -1.68], [0.52, -1.58], [0.545, -1.55],
+].map(([r, y]) => new THREE.Vector2(r, y));
+const plugProfile = [
+  [0.02, 2.95], [0.22, 2.75], [0.38, 2.40], [0.48, 2.00], [0.52, 1.70], [0.545, 1.50],
+].map(([r, y]) => new THREE.Vector2(r, y));
+
+function buildEngine() {
+  const g = new THREE.Group();
+  const nac = new THREE.Mesh(new THREE.LatheGeometry(nacProfile, 40), matEngine);
+  nac.rotation.z = -Math.PI / 2;                     // lathe +Y -> +X (engine axis)
+  nac.name = 'nac';
+  const fan = new THREE.Mesh(new THREE.CircleGeometry(1.32, 40), matFan);
+  fan.rotation.y = -Math.PI / 2;                     // faces forward (-x)
+  fan.position.x = -1.62; fan.name = 'fan';
+  const spin = new THREE.Mesh(new THREE.LatheGeometry(spinnerProfile, 32), matSpinner);
+  spin.rotation.z = -Math.PI / 2; spin.name = 'spinner';
+  const plug = new THREE.Mesh(new THREE.LatheGeometry(plugProfile, 24), matHot);
+  plug.rotation.z = -Math.PI / 2; plug.name = 'plug';
+  const lip = new THREE.Mesh(new THREE.TorusGeometry(1.44, 0.06, 12, 40), matLip);
+  lip.rotation.y = Math.PI / 2; lip.position.x = -2.52; lip.name = 'lip';
+  g.add(nac, fan, spin, plug, lip);
+  return g;
+}
+const engineProto = buildEngine();
+
+// ---------------- model assembly ----------------
+function buildAircraft() {
+  const model = new THREE.Group();
+  const fans = [];
+
+  // --- fuselage: 72 Catmull-Rom stations, 48 polar segments ---
+  const N = 72, M = 48, sections = [];
+  for (let i = 1; i <= N; i++) {
+    const u = 0.5 - 0.5 * Math.cos(Math.PI * i / N);
+    const sp = spine.getPointAt(u);
+    const ring = [];
+    for (let j = 0; j < M; j++) {
+      const th = j / M * 2 * Math.PI;
+      const [lat, vert] = profile(u, th);
+      ring.push(v(sp.x, sp.y + vert, sp.z + lat));
+    }
+    sections.push(ring);
+  }
+  model.add(new THREE.Mesh(loft(sections, true), matFuselage));
+
+  // --- nose hemisphere cap + tail cone cap + APU exhaust ---
+  const u0 = 0.5 - 0.5 * Math.cos(Math.PI / N);
+  const rNose = radiusFactor(u0) * RAD;
+  const noseCap = new THREE.Mesh(
+    new THREE.SphereGeometry(rNose, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), matRadome);
+  noseCap.rotation.z = Math.PI / 2;
+  const p0 = spine.getPointAt(u0);
+  noseCap.position.set(p0.x, 0, 0);
+  model.add(noseCap);
+  const rTail = radiusFactor(1) * RAD;
+  const tailCap = new THREE.Mesh(
+    new THREE.SphereGeometry(rTail, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), matCapTail);
+  tailCap.rotation.z = -Math.PI / 2;
+  tailCap.scale.set(1, 1.5, 1);
+  tailCap.position.set(spine.getPointAt(1).x, 0, 0);
+  model.add(tailCap);
+  const apu = new THREE.Mesh(new THREE.CircleGeometry(0.13, 16), matHot);
+  apu.rotation.y = Math.PI / 2;
+  apu.position.set(70.72, 0, 0);
+  model.add(apu);
+
+  // --- fuselage patches (paint / glass / doors / decals) ---
+  const addPatch = (u0p, u1p, t0d, t1d, off, mat, opts = {}) => {
+    model.add(surfacePatch(u0p, u1p, t0d * DEG, t1d * DEG, off, mat, opts));
+    if (opts.mirror)
+      model.add(surfacePatch(u0p, u1p, (180 - t1d) * DEG, (180 - t0d) * DEG, off, mat, opts));
+  };
+  // gray belly + blue cheatline
+  addPatch(0.02, 0.985, 205, 335, 0.02, matBelly, { nu: 48, nt: 12 });
+  addPatch(0.105, 0.655, 6, 42, 0.02, matCheat, { mirror: true, nu: 40, nt: 6 });
+  // radome seam ring
+  addPatch(0.0085, 0.0105, 0, 360, 0.025, matBorder, { nu: 40, nt: 4 });
+  // framed windshield + cockpit side windows
+  addPatch(0.047, 0.078, 40, 140, 0.028, matGlass, { nu: 10, nt: 10 });
+  addPatch(0.0455, 0.0475, 40, 140, 0.034, matBorder, { nu: 6, nt: 6 });
+  addPatch(0.0770, 0.0795, 40, 140, 0.034, matBorder, { nu: 6, nt: 6 });
+  addPatch(0.047, 0.078, 68, 72, 0.034, matBorder, { nu: 6, nt: 4 });
+  addPatch(0.047, 0.078, 108, 112, 0.034, matBorder, { nu: 6, nt: 4 });
+  addPatch(0.078, 0.098, 54, 88, 0.030, matGlass, { mirror: true, nu: 6, nt: 6 });
+  // cargo doors (lower sides)
+  addPatch(0.165, 0.300, 210, 245, 0.030, matCargo, { mirror: true, nu: 14, nt: 6 });
+  addPatch(0.560, 0.660, 212, 244, 0.030, matCargo, { mirror: true, nu: 12, nt: 5 });
+  // five main cabin doors with frames, per side
+  const doorUs = [0.155, 0.275, 0.400, 0.520, 0.645];
+  doorUs.forEach((uC) => {
+    const dU = 0.0125;
+    addPatch(uC - dU, uC + dU, 6, 37, 0.030, matDoor, { mirror: true, nu: 6, nt: 5 });
+    addPatch(uC - dU, uC + dU, 35.6, 37.6, 0.036, matBorder, { mirror: true, nu: 6, nt: 3 });
+    addPatch(uC - dU, uC + dU, 4.4, 6.4, 0.036, matBorder, { mirror: true, nu: 6, nt: 3 });
+    addPatch(uC - dU - 0.0011, uC - dU + 0.0011, 6, 37, 0.036, matBorder, { mirror: true, nu: 3, nt: 5 });
+    addPatch(uC + dU - 0.0011, uC + dU + 0.0011, 6, 37, 0.036, matBorder, { mirror: true, nu: 3, nt: 5 });
+  });
+  // overwing emergency exits
+  [0.475, 0.545].forEach((uC) => {
+    const dU = 0.007;
+    addPatch(uC - dU, uC + dU, 6, 24, 0.030, matDoor, { mirror: true, nu: 5, nt: 4 });
+    addPatch(uC - dU, uC + dU, 22.5, 24.5, 0.036, matBorder, { mirror: true, nu: 5, nt: 3 });
+    addPatch(uC - dU, uC + dU, 5.5, 7.5, 0.036, matBorder, { mirror: true, nu: 5, nt: 3 });
+  });
+  // fuselage titles
+  addPatch(0.125, 0.185, 44, 66, 0.025, matBoeing, { mirror: true, swapUV: true, nu: 20, nt: 10 });
+  addPatch(0.700, 0.760, 48, 68, 0.025, matModel, { mirror: true, swapUV: true, nu: 16, nt: 9 });
+
+  // --- passenger windows (two rows, instanced, Catmull-Rom aligned) ---
+  const doorSkip = (u) => doorUs.some((d) => Math.abs(u - d) < 0.014)
+    || Math.abs(u - 0.475) < 0.010 || Math.abs(u - 0.545) < 0.010;
+  const mainUs = [];
+  for (let u = 0.108; u <= 0.835; u += 0.0105) if (!doorSkip(u)) mainUs.push(u);
+  const upperUs = [];
+  for (let u = 0.115; u <= 0.420; u += 0.012) upperUs.push(u);
+  const mainPts = mainUs.map((u) => surfacePoint(u, 21 * DEG));
+  const upperPts = upperUs.map((u) => surfacePoint(u, 50 * DEG));
+  const mainCurve = new THREE.CatmullRomCurve3(mainPts);
+  const upperCurve = new THREE.CatmullRomCurve3(upperPts);
+  const windowMatrix = (p) => {
+    const out = v(0, p.y, p.z).normalize();
+    return new THREE.Matrix4().lookAt(p, p.clone().add(out), v(0, 1, 0));
+  };
+  const boxMain = new THREE.BoxGeometry(0.30, 0.44, 0.05);
+  const boxUpper = new THREE.BoxGeometry(0.26, 0.36, 0.05);
+  const winMain = new THREE.InstancedMesh(boxMain, matWindow, mainPts.length * 2);
+  const winUpper = new THREE.InstancedMesh(boxUpper, matWindow, upperPts.length * 2);
+  winMain.frustumCulled = winUpper.frustumCulled = false;
+  const m4 = new THREE.Matrix4();
+  mainPts.forEach((pt, i) => {
+    winMain.setMatrixAt(i, windowMatrix(mainCurve.getPointAt(i / (mainPts.length - 1))));
+    const left = mainCurve.getPointAt(i / (mainPts.length - 1));
+    left.z *= -1;
+    winMain.setMatrixAt(mainPts.length + i, windowMatrix(left));
+  });
+  upperPts.forEach((pt, i) => {
+    winUpper.setMatrixAt(i, windowMatrix(upperCurve.getPointAt(i / (upperPts.length - 1))));
+    const left = upperCurve.getPointAt(i / (upperPts.length - 1));
+    left.z *= -1;
+    winUpper.setMatrixAt(upperPts.length + i, windowMatrix(left));
+  });
+  model.add(winMain, winUpper);
+
+  // --- wings: 3 chordwise bands (slats / main / flaps), twist, dihedral ---
+  const wingOpts = {
+    lePts: [v(21.0, -1.1, 3.0), v(27.82, 0.19, 13.5), v(40.32, 2.15, 29.5)],
+    tePts: [v(37.5, -1.1, 3.0), v(38.32, 0.19, 13.5), v(43.72, 2.15, 29.5)],
+    naca: { m: 0.02, p: 0.40, t: 0.115 },
+    thickAxis: 'y',
+    twist: (s) => (-2.5 + 5.5 * s) * DEG,
+    bands: [[0, 0.16, matSlat], [0.16, 0.75, matWing], [0.75, 1.0, matFlap]],
+    nSpan: 26,
+    caps: { tip: true },
+  };
+  const wingLE = new THREE.CatmullRomCurve3(wingOpts.lePts);
+  const wingTE = new THREE.CatmullRomCurve3(wingOpts.tePts);
+  buildSurface(wingOpts).forEach((m) => model.add(m));
+  buildSurface(wingOpts).forEach((m) => model.add(new THREE.Mesh(mirrorGeometry(m.geometry), m.material)));
+
+  // --- winglets ---
+  const wingletOpts = {
+    lePts: [v(41.93, 2.15, 29.45), v(42.53, 4.85, 29.85)],
+    tePts: [v(43.50, 2.15, 29.45), v(44.00, 4.85, 29.85)],
+    naca: { m: 0, p: 0.3, t: 0.10 },
+    thickAxis: 'z',
+    bands: [[0, 1, matWing]],
+    nSpan: 7,
+    caps: { tip: true },
+  };
+  buildSurface(wingletOpts).forEach((m) => model.add(m));
+  buildSurface(wingletOpts).forEach((m) => model.add(new THREE.Mesh(mirrorGeometry(m.geometry), m.material)));
+
+  // --- horizontal stabilizers (elevator band) ---
+  const stabOpts = {
+    lePts: [v(58.0, 1.5, 2.0), v(69.6, 3.5, 19.6)],
+    tePts: [v(67.0, 1.5, 2.0), v(72.6, 3.5, 19.6)],
+    naca: { m: 0, p: 0.3, t: 0.115 },
+    thickAxis: 'y',
+    bands: [[0, 0.72, matWing], [0.72, 1.0, matFlap]],
+    nSpan: 14,
+    caps: { tip: true },
+  };
+  buildSurface(stabOpts).forEach((m) => model.add(m));
+  buildSurface(stabOpts).forEach((m) => model.add(new THREE.Mesh(mirrorGeometry(m.geometry), m.material)));
+
+  // --- vertical fin (blue, darker rudder band) ---
+  const finOpts = {
+    lePts: [v(56.0, 2.3, 0), v(67.0, 11.7, 0)],
+    tePts: [v(66.0, 2.3, 0), v(69.8, 11.7, 0)],
+    naca: { m: 0, p: 0.3, t: 0.12 },
+    thickAxis: 'z',
+    bands: [[0, 0.70, matFin], [0.70, 1.0, matRudder]],
+    nSpan: 16,
+    caps: { tip: true },
+  };
+  buildSurface(finOpts).forEach((m) => model.add(m));
+  // "747" tail decals
+  const finDecal = new THREE.PlaneGeometry(3.4, 2.6);
+  const decalR = new THREE.Mesh(finDecal, matFinText);
+  decalR.position.set(58.8, 4.5, 0.60);
+  const decalL = new THREE.Mesh(finDecal, matFinText);
+  decalL.position.set(58.8, 4.5, -0.60);
+  decalL.rotation.y = Math.PI;
+  model.add(decalR, decalL);
+
+  // --- engines (4x) with pylons ---
+  const engineSpans = [
+    { z: 9.6,  hang: 2.5 },
+    { z: 20.4, hang: 3.3 },
+  ];
+  engineSpans.forEach(({ z, hang }) => {
+    const s = (z - 3.0) / 26.5;
+    const LE = wingLE.getPointAt(s);
+    const TE = wingTE.getPointAt(s);
+    const wingY = -1.1 + (z - 3.0) * Math.tan(7 * DEG);
+    const halfThick = 0.0575 * (TE.x - LE.x);
+    const cy = wingY - hang;
+    [1, -1].forEach((side) => {
+      const zz = z * side;
+      const eg = engineProto.clone(true);
+      eg.position.set(LE.x - 0.6, cy, zz);
+      model.add(eg);
+      fans.push(eg.getObjectByName('fan'), eg.getObjectByName('spinner'));
+      const pylon = buildSurface({
+        lePts: [v(LE.x + 0.4, wingY - halfThick + 0.04, zz), v(LE.x - 1.2, cy + 1.41, zz)],
+        tePts: [v(LE.x + 5.6, wingY - halfThick + 0.04, zz), v(LE.x + 3.2, cy + 1.41, zz)],
+        naca: { m: 0, p: 0.3, t: 0.16 },
+        thickAxis: 'z',
+        bands: [[0, 1, matPylon]],
+        nSpan: 4,
+      });
+      pylon.forEach((m) => model.add(m));
+    });
+  });
+
+  // --- flap-track fairings ---
+  [6.5, 11.5, 16.5, 21.5].forEach((z) => {
+    const TE = wingTE.getPointAt((z - 3.0) / 26.5);
+    const y = -1.1 + (z - 3.0) * Math.tan(7 * DEG);
+    [1, -1].forEach((side) => {
+      const pod = new THREE.Mesh(new THREE.CapsuleGeometry(0.28, 3.0, 8, 14), matPod);
+      pod.rotation.z = Math.PI / 2;
+      pod.position.set(TE.x + 0.7, y - 0.65, z * side);
+      model.add(pod);
+    });
+  });
+
+  // --- wing-root fairings (soft ellipsoids) ---
+  [1, -1].forEach((side) => {
+    const leF = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 16), matFuselage);
+    leF.scale.set(2.3, 1.5, 1.0);
+    leF.position.set(21.6, -1.6, 3.2 * side);
+    const teF = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 16), matFuselage);
+    teF.scale.set(2.4, 1.4, 1.2);
+    teF.position.set(36.6, -1.75, 3.25 * side);
+    model.add(leF, teF);
+  });
+
+  // --- landing gear ---
+  const wheel = (x, y, z, r, w) => {
+    const grp = new THREE.Group();
+    const tire = new THREE.Mesh(new THREE.CylinderGeometry(r, r, w, 24), matWheel);
+    tire.rotation.z = Math.PI / 2;
+    const hub = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.30, r * 0.30, w + 0.03, 16), matHub);
+    hub.rotation.z = Math.PI / 2;
+    grp.add(tire, hub);
+    grp.position.set(x, y, z);
+    return grp;
+  };
+  const strut = (x, yTop, yBot, z, r) => {
+    const s = new THREE.Mesh(new THREE.CylinderGeometry(r, r, yTop - yBot, 16), matGear);
+    s.position.set(x, (yTop + yBot) / 2, z);
+    return s;
+  };
+  [1, -1].forEach((side) => {
+    const zB = 3.05 * side;
+    model.add(strut(29.0, -3.45, -4.40, zB, 0.09));
+    const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 2.4, 12), matGear);
+    beam.rotation.x = Math.PI / 2;
+    beam.position.set(29.0, -4.40, zB);
+    model.add(beam);
+    [0.75, -0.75].forEach((dx) => {
+      const axle = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 1.5, 10), matGear);
+      axle.rotation.z = Math.PI / 2;
+      axle.position.set(29.0 + dx, -4.40, zB);
+      model.add(axle);
+      [0.32, -0.32].forEach((dz) => model.add(wheel(29.0 + dx, -4.45, zB + dz, 0.52, 0.34)));
+    });
+    const zW = 9.8 * side;
+    model.add(strut(33.5, -0.95, -4.40, zW, 0.11));
+    const beamW = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 12), matGear);
+    beamW.rotation.x = Math.PI / 2;
+    beamW.position.set(33.5, -4.40, zW);
+    model.add(beamW);
+    [0.75, -0.75].forEach((dx) => {
+      const axle = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 1.5, 10), matGear);
+      axle.rotation.z = Math.PI / 2;
+      axle.position.set(33.5 + dx, -4.40, zW);
+      model.add(axle);
+      [0.32, -0.32].forEach((dz) => model.add(wheel(33.5 + dx, -4.45, zW + dz, 0.52, 0.34)));
+    });
+  });
+  model.add(strut(9.3, -3.20, -4.55, 0, 0.08));
+  const nAxle = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.9, 10), matGear);
+  nAxle.rotation.z = Math.PI / 2;
+  nAxle.position.set(9.3, -4.58, 0);
+  model.add(nAxle);
+  model.add(wheel(9.3, -4.62, 0.42, 0.40, 0.30));
+  model.add(wheel(9.3, -4.62, -0.42, 0.40, 0.30));
+
+  // --- antennas & pitot probes ---
+  const blade = new THREE.Mesh(new THREE.BoxGeometry(0.45, 1.3, 0.04), matAntenna);
+  blade.position.set(39.0, 4.0, 0);
+  const vhf = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.0, 0.05), matAntenna);
+  vhf.position.set(52.5, 3.75, 0);
+  model.add(blade, vhf);
+  [1, -1].forEach((side) => {
+    const pitot = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.8, 10), matGear);
+    pitot.rotation.z = Math.PI / 2;
+    pitot.position.set(2.8, -1.4, 1.5 * side);
+    model.add(pitot);
+  });
+
+  return {
+    model, fans, allMats,
+    accent: { matCheat, matFin, matRudder },
+    redrawTitles,
+    stats() {
+      let tris = 0, verts = 0, meshes = 0;
+      model.traverse((o) => {
+        if (o.isMesh) {
+          meshes++;
+          verts += o.geometry.attributes.position.count;
+          tris += o.geometry.index ? o.geometry.index.count / 3 : o.geometry.attributes.position.count / 3;
+        }
+      });
+      return { tris, verts, meshes };
+    },
+  };
+}
+// ================= PURE-BUILD-END =================
+
+// ---------------- scene / lights / ground ----------------
+try {
+  const aircraft = buildAircraft();
+  aircraft.redrawTitles('#0d3f96');
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.08;
+  document.getElementById('app').appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x14171d);
+  scene.fog = new THREE.Fog(0x14171d, 220, 520);
+
+  const camera = new THREE.PerspectiveCamera(34, window.innerWidth / window.innerHeight, 0.5, 700);
+  camera.position.set(-38, 16, 46);
+
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  scene.add(new THREE.HemisphereLight(0x8fb3d9, 0x3a3f46, 0.55));
+  const key = new THREE.DirectionalLight(0xffffff, 2.2);
+  key.position.set(80, 120, 50);
+  key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048);
+  key.shadow.camera.left = -80; key.shadow.camera.right = 80;
+  key.shadow.camera.top = 80; key.shadow.camera.bottom = -80;
+  key.shadow.camera.near = 20; key.shadow.camera.far = 400;
+  key.shadow.bias = -0.0004;
+  key.shadow.normalBias = 0.03;
+  scene.add(key, key.target);
+  const fill = new THREE.DirectionalLight(0xbdd4f2, 0.7);
+  fill.position.set(-70, 40, -50);
+  const rim = new THREE.DirectionalLight(0xffffff, 0.6);
+  rim.position.set(-50, 30, 70);
+  scene.add(fill, rim);
+
+  // backdrop gradient dome
+  const bgCan = document.createElement('canvas');
+  bgCan.width = 32; bgCan.height = 256;
+  const bgG = bgCan.getContext('2d');
+  const grad = bgG.createLinearGradient(0, 0, 0, 256);
+  grad.addColorStop(0, '#2b3240'); grad.addColorStop(0.55, '#171b23'); grad.addColorStop(1, '#0d1015');
+  bgG.fillStyle = grad; bgG.fillRect(0, 0, 32, 256);
+  const bgTex = new THREE.CanvasTexture(bgCan);
+  bgTex.colorSpace = THREE.SRGBColorSpace;
+  const dome = new THREE.Mesh(
+    new THREE.SphereGeometry(340, 32, 16),
+    new THREE.MeshBasicMaterial({ map: bgTex, side: THREE.BackSide, fog: false }));
+  scene.add(dome);
+
+  // runway ground
+  const rw = document.createElement('canvas');
+  rw.width = 2048; rw.height = 1024;
+  const rg = rw.getContext('2d');
+  rg.fillStyle = '#4d5258'; rg.fillRect(0, 0, 2048, 1024);
+  for (let i = 0; i < 4200; i++) {
+    rg.fillStyle = 'rgba(' + (18 + Math.random() * 70 | 0) + ',' + (18 + Math.random() * 70 | 0) + ',' + (20 + Math.random() * 70 | 0) + ',0.05)';
+    rg.fillRect(Math.random() * 2048, Math.random() * 1024, 3, 3);
+  }
+  const ry0 = 362, ry1 = 662;
+  rg.fillStyle = '#3a3f45'; rg.fillRect(0, ry0, 2048, 300);
+  rg.fillStyle = '#cfd3d8';
+  rg.fillRect(0, ry0 + 6, 2048, 10);
+  rg.fillRect(0, ry1 - 16, 2048, 10);
+  rg.fillStyle = '#e8ebee';
+  for (let x = 0; x < 2048; x += 160) rg.fillRect(x, 505, 90, 14);
+  for (let k = 0; k < 8; k++) {
+    rg.fillRect(12, ry0 + 30 + k * 26, 130, 16);
+    rg.fillRect(2048 - 142, ry0 + 30 + k * 26, 130, 16);
+  }
+  rg.fillStyle = '#e8ebee';
+  for (let k = 0; k < 5; k++) {
+    rg.fillRect(170 + k * 200, ry0 + 46 + k * 24, 110, 14);
+    rg.fillRect(2048 - 280 - k * 200, ry0 + 46 + k * 24, 110, 14);
+  }
+  const rwTex = new THREE.CanvasTexture(rw);
+  rwTex.colorSpace = THREE.SRGBColorSpace;
+  rwTex.anisotropy = 8;
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(520, 320),
+    new THREE.MeshStandardMaterial({ map: rwTex, roughness: 0.92, metalness: 0.05 }));
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -5.06;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  aircraft.model.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  aircraft.model.position.x = -35;
+  scene.add(aircraft.model);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 1.5, 0);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.enablePan = false;
+  controls.minDistance = 22;
+  controls.maxDistance = 150;
+  controls.maxPolarAngle = 1.52;
+  controls.minPolarAngle = 0.12;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.5;
+
+  // ---------------- UI ----------------
+  const btnRotate = document.getElementById('btn-rotate');
+  const btnWire = document.getElementById('btn-wire');
+  const btnFans = document.getElementById('btn-fans');
+  const btnLivery = document.getElementById('btn-livery');
+  const statsEl = document.getElementById('stats');
+
+  const livery = [
+    { name: 'Classic Blue', cheat: 0x0d3f96, fin: 0x0d3f96, rudder: 0x0a2f6e, text: '#0d3f96' },
+    { name: 'Crimson',     cheat: 0x8f1d2c, fin: 0x8f1d2c, rudder: 0x6e1622, text: '#8f1d2c' },
+    { name: 'Evergreen',   cheat: 0x0b6e5a, fin: 0x0b6e5a, rudder: 0x085243, text: '#0b6e5a' },
+    { name: 'Graphite',    cheat: 0x2f343b, fin: 0x2f343b, rudder: 0x22262b, text: '#2f343b' },
+  ];
+  let liveryIdx = 0;
+  const applyLivery = () => {
+    const L = livery[liveryIdx];
+    aircraft.accent.matCheat.color.setHex(L.cheat);
+    aircraft.accent.matFin.color.setHex(L.fin);
+    aircraft.accent.matRudder.color.setHex(L.rudder);
+    aircraft.redrawTitles(L.text);
+    btnLivery.textContent = 'Livery: ' + L.name;
+  };
+  applyLivery();
+  btnLivery.addEventListener('click', () => { liveryIdx = (liveryIdx + 1) % livery.length; applyLivery(); });
+
+  btnRotate.addEventListener('click', () => {
+    controls.autoRotate = !controls.autoRotate;
+    btnRotate.classList.toggle('on', controls.autoRotate);
+  });
+  let wire = false;
+  btnWire.addEventListener('click', () => {
+    wire = !wire;
+    aircraft.allMats.forEach((m) => { m.wireframe = wire; });
+    btnWire.classList.toggle('on', wire);
+  });
+  let fansOn = true;
+  btnFans.addEventListener('click', () => {
+    fansOn = !fansOn;
+    btnFans.classList.toggle('on', fansOn);
+  });
+
+  const st = aircraft.stats();
+  statsEl.textContent = st.tris.toLocaleString() + ' triangles · '
+    + st.verts.toLocaleString() + ' vertices · '
+    + st.meshes + ' meshes · 4 engines';
+
+  // ---------------- loop ----------------
+  const clock = new THREE.Clock();
+  let spin = 0;
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.1);
+    if (fansOn) {
+      spin += dt * 9;
+      aircraft.fans.forEach((f) => { if (f) f.rotation.x = spin; });
+    }
+    controls.update();
+    renderer.render(scene, camera);
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+} catch (e) {
+  const err = document.getElementById('err');
+  err.style.display = 'flex';
+  err.textContent = 'Failed to initialise: ' + (e && e.message ? e.message : e);
+}
+</script>
+</body>
+</html>

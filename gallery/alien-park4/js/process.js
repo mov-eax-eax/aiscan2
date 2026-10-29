@@ -112,4 +112,14 @@ export const PROCESS = [
     title: 'The park guide',
     critique: 'The park is now framed as an entertainment park, with a skyway, drop tower, carousel, stage, grazers, drones, sky mantas and the Quiet Object. The guide states the scale, the six body plans and the open questions. The low-poly silhouette is still the limiting factor: detail that exists in the guide is not yet visible enough at the default framing.',
     action: 'Ship the park guide, the alienology notes and the entertainment district together, then verify. Next: upgrade the asset language rather than adding more props.',
+  },  {
+    n: '19',
+    title: 'Asset language',
+    critique: 'The low-poly ceiling is finally being broken: the bloom uses lofted petals, a fluted stem and a lathed calyx; the cliffs are displaced instead of cut cylinders; surfaces have albedo and bump detail; pavilion windows and terrace ground cover add human-scale texture; the palette has moved from neon purple to dusk, ochre, moss and steel. A close view still exposes simple silhouettes and floating geometry.',
+    action: 'Rebuild the hero forms, subdivide the assets, add surface detail and a wide natural palette. Next: final QA and the close-view inspection pass.',
+  },  {
+    n: '20',
+    title: 'Close inspection',
+    critique: 'The wide frame now has a natural dusk palette, a warm key, fuller foliage, lofted pavilion pods and a detail layer that rewards the new View button. The close view still exposes simple silhouettes, but the park has crossed from flat-shaded diorama to a legible, materially layered place. Hyperrealism is not finished: normal maps, baked occlusion, high-poly sculpts and post treatment are the next real steps, not more props.',
+    action: 'Ship the asset-language pass, natural light, inspection presets and updated process archive. Verify GPU load, catalogue thumb and shared board.',
   },];

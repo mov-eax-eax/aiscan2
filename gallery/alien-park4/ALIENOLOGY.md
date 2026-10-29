@@ -78,3 +78,29 @@ entertain.
 
 An entertainment park is allowed to leave a few things unexplained. That is where the
 audience lives.
+
+## 6. Asset-language audit (cycles 19–20)
+
+The first phase proved the composition. The second phase proved the content. This phase attacked the ceiling the critic named: **the low-poly style itself**.
+
+What changed:
+
+- the bloom is built from **lofted petal surfaces** and a **fluted, lathed stem**, not extruded cards and a smooth cylinder;
+- the cliffs are **displaced radial meshes** with strata, erosion and overhangs, not cut cylinders;
+- all major geometry was **subdivided** (cylinders, cones, spheres, tori, lathes);
+- stone, panel, organic and petal **albedo/bump maps** are procedural, not flat colour;
+- pavilion hulls have **window slits**, the central pavilion is a **lofted pod**, terraces have **tufts, lichen and scattering**;
+- the palette moved from neon magenta/cyan to a **dusk spectrum**: warm sun, ochre stone, steel, moss, gold and coral foliage;
+- the **View** control exposes island, crown and promenade presets;
+- the process archive now carries the asset-build renders.
+
+What still fails:
+
+- the large silhouettes are still **stylised**; the petals read as a designed leaf crown, not a scanned organism;
+- bump detail only survives at close range; the wide frame still flattens it;
+- there are no normal maps, baked occlusion, LODs or post-processing;
+- several ride supports and cables occlude the promenade view;
+- the first render compiles a large shader/geometry set, so the loader is slower than it should be.
+
+Next technical move: **normal maps baked from sculpted high-poly assets, LOD chains, triplanar detail shaders, an inspection camera with a proper near-field budget, and a GPU-side load step**. That is the difference between “detailed stylised” and “photoreal”.
+

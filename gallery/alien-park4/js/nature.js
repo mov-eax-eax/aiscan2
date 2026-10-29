@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { mulberry32, range, pick, chance } from './rng.js';
+import { bump } from './textures.js';
 
 const TAU = Math.PI * 2;
 const hsl = (h, s, l) => new THREE.Color().setHSL(((h % 360) + 360) % 360 / 360, s, l);
@@ -18,14 +19,27 @@ export function createNature() {
   const rng = mulberry32(99041);
 
   const dark = new THREE.MeshStandardMaterial({ color: 0x18312d, roughness: 0.86, metalness: 0.04, flatShading: true });
-  const teal = new THREE.MeshBasicMaterial({ color: 0x75ffd7, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false });
-  const pink = new THREE.MeshBasicMaterial({ color: 0xff7bde, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false });
+  const sharedTrunk = [
+    new THREE.MeshStandardMaterial({ color: hsl(20, 0.32, 0.16), roughness: 0.88, metalness: 0.06, bumpMap: bump('organic'), bumpScale: 0.08 }),
+    new THREE.MeshStandardMaterial({ color: hsl(38, 0.28, 0.2), roughness: 0.9, metalness: 0.04, bumpMap: bump('organic'), bumpScale: 0.08 }),
+    new THREE.MeshStandardMaterial({ color: hsl(54, 0.24, 0.15), roughness: 0.86, metalness: 0.08, bumpMap: bump('organic'), bumpScale: 0.08 }),
+  ];
+  const sharedLeaf = [
+    new THREE.MeshStandardMaterial({ color: hsl(68, 0.55, 0.28), emissive: hsl(76, 0.72, 0.1), emissiveIntensity: 1.0, roughness: 0.55, bumpMap: bump('organic'), bumpScale: 0.06 }),
+    new THREE.MeshStandardMaterial({ color: hsl(112, 0.5, 0.25), emissive: hsl(120, 0.7, 0.09), emissiveIntensity: 1.0, roughness: 0.6, bumpMap: bump('organic'), bumpScale: 0.06 }),
+    new THREE.MeshStandardMaterial({ color: hsl(158, 0.44, 0.28), emissive: hsl(164, 0.64, 0.1), emissiveIntensity: 0.9, roughness: 0.55, bumpMap: bump('organic'), bumpScale: 0.06 }),
+    new THREE.MeshStandardMaterial({ color: hsl(212, 0.4, 0.3), emissive: hsl(220, 0.55, 0.1), emissiveIntensity: 0.9, roughness: 0.58, bumpMap: bump('organic'), bumpScale: 0.06 }),
+    new THREE.MeshStandardMaterial({ color: hsl(26, 0.62, 0.36), emissive: hsl(30, 0.7, 0.12), emissiveIntensity: 1.1, roughness: 0.52, bumpMap: bump('organic'), bumpScale: 0.06 }),
+    new THREE.MeshStandardMaterial({ color: hsl(344, 0.48, 0.33), emissive: hsl(350, 0.62, 0.11), emissiveIntensity: 1.0, roughness: 0.55, bumpMap: bump('organic'), bumpScale: 0.06 }),
+  ];
+  const teal = new THREE.MeshBasicMaterial({ color: 0x9cc8b7, transparent: true, opacity: 0.42, blending: THREE.AdditiveBlending, depthWrite: false });
+  const pink = new THREE.MeshBasicMaterial({ color: 0xd18e78, transparent: true, opacity: 0.42, blending: THREE.AdditiveBlending, depthWrite: false });
 
   function mesh(geo, material, x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0) {
     const m = new THREE.Mesh(geo, material);
     m.position.set(x, y, z);
     m.rotation.set(rx, ry, rz);
-    m.castShadow = true;
+    m.castShadow = false;
     m.receiveShadow = true;
     return m;
   }
@@ -34,8 +48,8 @@ export function createNature() {
     const treeRng = mulberry32(seed);
     const y = terraceHeight(radius);
     const size = range(treeRng, 0.65, 1.8);
-    const trunkMat = new THREE.MeshStandardMaterial({ color: hsl(range(treeRng, 140, 185), 0.35, 0.16), roughness: 0.86, metalness: 0.08, flatShading: true });
-    const leafMat = new THREE.MeshStandardMaterial({ color: hsl(range(treeRng, 150, 210), 0.65, 0.28), emissive: hsl(range(treeRng, 160, 220), 0.8, 0.16), emissiveIntensity: 1.2, roughness: 0.5, flatShading: true });
+    const trunkMat = sharedTrunk[Math.abs(seed) % sharedTrunk.length];
+    const leafMat = sharedLeaf[Math.abs(seed >> 3) % sharedLeaf.length];
     const tree = new THREE.Group();
     const height = range(treeRng, 3, 9) * size;
     const bend = range(treeRng, -1.2, 1.2);
@@ -43,16 +57,16 @@ export function createNature() {
       const a = (i / 3) * TAU + range(treeRng, -0.3, 0.3);
       const branch = new THREE.Group();
       const len = height * range(treeRng, 0.45, 0.8);
-      branch.add(mesh(new THREE.CylinderGeometry(0.09 * size, 0.22 * size, len, 5), trunkMat, 0, len / 2, 0, range(treeRng, -0.25, 0.25), 0, bend * 0.2));
+      branch.add(mesh(new THREE.CylinderGeometry(0.09 * size, 0.22 * size, len,24), trunkMat, 0, len / 2, 0, range(treeRng, -0.25, 0.25), 0, bend * 0.2));
       const tip = new THREE.Group();
       tip.position.set(bend * len * 0.2, len, 0);
       tip.add(mesh(new THREE.IcosahedronGeometry(range(treeRng, 0.7, 1.45) * size, 0), leafMat));
-      tip.add(mesh(new THREE.ConeGeometry(0.24 * size, 2.3 * size, 4), leafMat, 0, 0.9 * size, 0));
+      tip.add(mesh(new THREE.ConeGeometry(0.24 * size, 2.3 * size,20), leafMat, 0, 0.9 * size, 0));
       branch.add(tip);
       branch.rotation.y = a;
       tree.add(branch);
     }
-    tree.add(mesh(new THREE.CylinderGeometry(0.32 * size, 0.55 * size, 1.4 * size, 5), trunkMat, 0, 0.7 * size, 0));
+    tree.add(mesh(new THREE.CylinderGeometry(0.32 * size, 0.55 * size, 1.4 * size,24), trunkMat, 0, 0.7 * size, 0));
     tree.position.set(Math.sin(angle) * radius, y, Math.cos(angle) * radius);
     tree.rotation.y = range(treeRng, 0, TAU);
     tree.userData.sway = range(treeRng, 0.2, 0.5);
@@ -75,8 +89,8 @@ export function createNature() {
     const candel = new THREE.Group();
     for (let j = 0; j < 3; j++) {
       const a = (j / 3) * TAU + angle;
-      candel.add(mesh(new THREE.CylinderGeometry(0.07, 0.16, h * (0.7 + j * 0.16), 4), dark, Math.sin(a) * 0.4, h * 0.4, Math.cos(a) * 0.4));
-      candel.add(mesh(new THREE.SphereGeometry(0.16, 5, 4), j % 2 ? teal : pink, Math.sin(a) * 0.4, h * (0.7 + j * 0.16) + 0.1, Math.cos(a) * 0.4));
+      candel.add(mesh(new THREE.CylinderGeometry(0.07, 0.16, h * (0.7 + j * 0.16),24), dark, Math.sin(a) * 0.4, h * 0.4, Math.cos(a) * 0.4));
+      candel.add(mesh(new THREE.SphereGeometry(0.16,18,12), j % 2 ? teal : pink, Math.sin(a) * 0.4, h * (0.7 + j * 0.16) + 0.1, Math.cos(a) * 0.4));
     }
     candel.position.set(Math.sin(angle) * radius, y, Math.cos(angle) * radius);
     group.add(candel);
@@ -117,7 +131,7 @@ export function createNature() {
     const glow = new THREE.PointLight(0x66ffe2, 90, 18);
     glow.position.set(x, wf.y - 2.4, z);
     group.add(glow);
-    const foam = new THREE.Mesh(new THREE.TorusGeometry(wf.w * 0.55, 0.16, 4, 30), teal);
+    const foam = new THREE.Mesh(new THREE.TorusGeometry(wf.w * 0.55, 0.16,10,64), teal);
     foam.rotation.x = Math.PI / 2;
     foam.position.set(x, wf.y - wf.h + 0.2, z);
     group.add(foam);
@@ -126,7 +140,7 @@ export function createNature() {
   updates.push((dt, time) => { waterfallMat.uniforms.time.value = time; });
 
   // Streams feeding the falls from the pools.
-  const streamMat = new THREE.MeshStandardMaterial({ color: 0x0b7988, emissive: 0x0b4d57, emissiveIntensity: 1.4, transparent: true, opacity: 0.78, roughness: 0.16, metalness: 0.25 });
+  const streamMat = new THREE.MeshStandardMaterial({ color: 0x24616a, emissive: 0x14363b, emissiveIntensity: 1.4, transparent: true, opacity: 0.78, roughness: 0.16, metalness: 0.25 });
   const streams = [
     [[21, 17], [26, 27], [26.1, 40.6]],
     [[21, 17], [24, 24], [20.4, 33.1]],
@@ -157,7 +171,7 @@ export function createNature() {
   }
   const mistGeo = new THREE.BufferGeometry();
   mistGeo.setAttribute('position', new THREE.BufferAttribute(mistPositions, 3));
-  const mist = new THREE.Points(mistGeo, new THREE.PointsMaterial({ color: 0xa9fff2, size: 0.16, transparent: true, opacity: 0.32, blending: THREE.AdditiveBlending, depthWrite: false }));
+  const mist = new THREE.Points(mistGeo, new THREE.PointsMaterial({ color: 0xd8ddcb, size: 0.16, transparent: true, opacity: 0.32, blending: THREE.AdditiveBlending, depthWrite: false }));
   group.add(mist);
   updates.push((dt, time) => {
     const pos = mistGeo.attributes.position.array;
@@ -178,8 +192,8 @@ export function createNature() {
   // Crowds: the smallest detail is the one that gives the island its scale.
   const crowdRng = mulberry32(55199);
   const visitorCount = 150;
-  const bodyGeo = new THREE.CylinderGeometry(0.055, 0.09, 0.34, 4);
-  const headGeo = new THREE.SphereGeometry(0.075, 5, 4);
+  const bodyGeo = new THREE.CylinderGeometry(0.055, 0.09, 0.34,24);
+  const headGeo = new THREE.SphereGeometry(0.075,18,12);
   const bodyMesh = new THREE.InstancedMesh(bodyGeo, new THREE.MeshBasicMaterial({ color: 0xffffff }), visitorCount);
   const headMesh = new THREE.InstancedMesh(headGeo, new THREE.MeshBasicMaterial({ color: 0xffffff }), visitorCount);
   const dummy = new THREE.Object3D();
@@ -218,7 +232,7 @@ export function createNature() {
     pennant.rotation.y = -a;
     pennant.rotation.z = 0.25;
     group.add(pennant);
-    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.05, 4.5, 3), dark).translateX(Math.sin(a) * r).translateY(9.1).translateZ(Math.cos(a) * r));
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.05, 4.5,24), dark).translateX(Math.sin(a) * r).translateY(9.1).translateZ(Math.cos(a) * r));
   }
 
   // Low atmosphere: drifting mist sheets between the terraces.
@@ -249,6 +263,40 @@ export function createNature() {
       sprite.position.z = sprite.userData.baseZ + Math.cos(time * 0.06 + sprite.userData.phase) * 4;
     }
   });
+  // Ground cover: hundreds of tiny tufts and lichen discs make the terraces
+  // read as a surface rather than a painted disc.
+  const tuftGeo = new THREE.ConeGeometry(0.055, 0.48, 5);
+  const tuftMat = new THREE.MeshStandardMaterial({ color: 0x6c7c52, roughness: 0.9, metalness: 0.02, flatShading: false });
+  const tufts = new THREE.InstancedMesh(tuftGeo, tuftMat, 520);
+  const tuftDummy = new THREE.Object3D();
+  for (let i = 0; i < 520; i++) {
+    const a = range(rng, 0, TAU);
+    const r = range(rng, 19, 54);
+    tuftDummy.position.set(Math.sin(a) * r, terraceHeight(r) + 0.16, Math.cos(a) * r);
+    tuftDummy.rotation.set(range(rng, -0.18, 0.18), range(rng, 0, TAU), range(rng, -0.18, 0.18));
+    tuftDummy.scale.setScalar(range(rng, 0.55, 1.35));
+    tuftDummy.updateMatrix();
+    tufts.setMatrixAt(i, tuftDummy.matrix);
+  }
+  tufts.instanceMatrix.needsUpdate = true;
+  tufts.castShadow = false;
+  group.add(tufts);
+
+  const lichenGeo = new THREE.CircleGeometry(0.32, 8);
+  const lichenMat = new THREE.MeshStandardMaterial({ color: 0x8c805c, roughness: 0.95, metalness: 0.02, flatShading: false, side: THREE.DoubleSide });
+  const lichens = new THREE.InstancedMesh(lichenGeo, lichenMat, 240);
+  const lichenDummy = new THREE.Object3D();
+  for (let i = 0; i < 240; i++) {
+    const a = range(rng, 0, TAU);
+    const r = range(rng, 18, 54);
+    lichenDummy.position.set(Math.sin(a) * r, terraceHeight(r) + 0.02, Math.cos(a) * r);
+    lichenDummy.rotation.set(-Math.PI / 2, 0, range(rng, 0, TAU));
+    lichenDummy.scale.set(range(rng, 0.5, 1.8), range(rng, 0.5, 1.8), 1);
+    lichenDummy.updateMatrix();
+    lichens.setMatrixAt(i, lichenDummy.matrix);
+  }
+  lichens.instanceMatrix.needsUpdate = true;
+  group.add(lichens);
   // Fireflies and drifting spores.
   const count = 240;
   const positions = new Float32Array(count * 3);
@@ -293,10 +341,10 @@ export function createNature() {
   for (let i = 0; i < 8; i++) {
     const ray = new THREE.Group();
     const color = new THREE.MeshBasicMaterial({ color: rayColors[i % rayColors.length], transparent: true, opacity: 0.32, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false });
-    const body = mesh(new THREE.SphereGeometry(0.85, 10, 6), color, 0, 0, 0);
+    const body = mesh(new THREE.SphereGeometry(0.85,18,12), color, 0, 0, 0);
     body.scale.set(2.1, 0.3, 0.65);
     ray.add(body);
-    const head = mesh(new THREE.SphereGeometry(0.2, 6, 4), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false }), 0, 0, 2.0);
+    const head = mesh(new THREE.SphereGeometry(0.2,18,12), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false }), 0, 0, 2.0);
     ray.add(head);
     const wings = [];
     for (const side of [-1, 1]) {
@@ -308,7 +356,7 @@ export function createNature() {
       ray.add(wing);
       wings.push({ wing, side });
     }
-    const tail = new THREE.Mesh(new THREE.ConeGeometry(0.18, 3.4, 4), color);
+    const tail = new THREE.Mesh(new THREE.ConeGeometry(0.18, 3.4,20), color);
     tail.position.z = -2.4;
     tail.rotation.x = Math.PI / 2;
     ray.add(tail);

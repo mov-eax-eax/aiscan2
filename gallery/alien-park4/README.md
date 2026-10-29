@@ -25,6 +25,7 @@ Or use the root `Open 3D Gallery.bat` and follow the gallery.
 - **Drag** — orbit the island
 - **Wheel** — zoom
 - **Auto orbit** — continuous camera orbit
+- **View** — cycle island / crown / promenade inspection presets
 - **Park guide ↗** — scale, attractions, ecology, materials and open questions
 - **Process ↗** — the complete RSI run board, with every cycle render and critique
 
@@ -46,7 +47,7 @@ js/main.js              assembly + UI + QA hooks
 ALIENOLOGY.md           field notes, scale, open questions
 BOARD.md                human/agent coordination board
 cycles/critic-01.md     independent critic pass
-shots/cycle-00..18.png  one render per cycle
+shots/cycle-00..20.png  one render per cycle
 vendor/three.module.min.js
 ```
 

@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 export function createWorld(container) {
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x080b1c, 0.0028);
+  scene.fog = new THREE.FogExp2(0x17222b, 0.0024);
 
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1200);
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -10,21 +10,21 @@ export function createWorld(container) {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.12;
+  renderer.toneMappingExposure = 1.42;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.shadowMap.autoUpdate = false;
   renderer.domElement.id = 'xenosphere-canvas';
   container.appendChild(renderer.domElement);
 
-  const hemi = new THREE.HemisphereLight(0x6b5cd8, 0x07131a, 0.55);
+  const hemi = new THREE.HemisphereLight(0x9aafbc, 0x4a3a2c, 1.45);
   scene.add(hemi);
-  const ambient = new THREE.AmbientLight(0x435684, 0.25);
+  const ambient = new THREE.AmbientLight(0x55605d, 0.42);
   scene.add(ambient);
-  const sun = new THREE.DirectionalLight(0xffcfae, 1.35);
-  sun.position.set(-52, 82, -38);
+  const sun = new THREE.DirectionalLight(0xffb076, 2.6);
+  sun.position.set(-68, 56, 34);
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(1024, 1024);
   sun.shadow.camera.left = -78;
   sun.shadow.camera.right = 78;
   sun.shadow.camera.top = 78;
@@ -33,8 +33,17 @@ export function createWorld(container) {
   sun.shadow.camera.far = 260;
   sun.shadow.bias = -0.0004;
   scene.add(sun);
-  const rim = new THREE.DirectionalLight(0x4d9dff, 1.7);
-  rim.position.set(40, 28, 62);
+  const rim = new THREE.DirectionalLight(0x8faec2, 1.3);
+  rim.position.set(52, 26, -62);
+  const bounce = new THREE.DirectionalLight(0xc69268, 0.45);
+  bounce.position.set(26, 10, 78);
+  scene.add(bounce);
+  const warmFill = new THREE.PointLight(0xffa06a, 1400, 170, 2);
+  warmFill.position.set(26, 32, 42);
+  scene.add(warmFill);
+  const coolFill = new THREE.PointLight(0x7fa6bd, 1050, 165, 2);
+  coolFill.position.set(-42, 20, -24);
+  scene.add(coolFill);
   scene.add(rim);
 
   const state = {

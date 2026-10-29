@@ -30,17 +30,17 @@ export function createAttractions() {
   group.name = 'attractions';
   const updates = [];
   const rng = mulberry32(30511);
-  const metal = new THREE.MeshStandardMaterial({ color: 0x4b5570, roughness: 0.34, metalness: 0.58, emissive: 0x0c1828, emissiveIntensity: 0.9, flatShading: false, bumpMap: bump('panel'), bumpScale: 0.1 });
-  const dark = new THREE.MeshStandardMaterial({ color: 0x1b2233, roughness: 0.8, metalness: 0.2, flatShading: false, bumpMap: bump('panel'), bumpScale: 0.12 });
-  const cyan = new THREE.MeshBasicMaterial({ color: 0x7dffe6, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false });
-  const pink = new THREE.MeshBasicMaterial({ color: 0xff7bde, transparent: true, opacity: 0.78, blending: THREE.AdditiveBlending, depthWrite: false });
-  const amber = new THREE.MeshBasicMaterial({ color: 0xffc47d, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending, depthWrite: false });
+  const metal = new THREE.MeshStandardMaterial({ color: 0x8b8c85, roughness: 0.36, metalness: 0.58, emissive: 0x0c1828, emissiveIntensity: 0.9, flatShading: false, bumpMap: bump('panel'), bumpScale: 0.1 });
+  const dark = new THREE.MeshStandardMaterial({ color: 0x403d37, roughness: 0.78, metalness: 0.2, flatShading: false, bumpMap: bump('panel'), bumpScale: 0.12 });
+  const cyan = new THREE.MeshBasicMaterial({ color: 0xb7d3c8, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false });
+  const pink = new THREE.MeshBasicMaterial({ color: 0xd39480, transparent: true, opacity: 0.78, blending: THREE.AdditiveBlending, depthWrite: false });
+  const amber = new THREE.MeshBasicMaterial({ color: 0xe2b27b, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending, depthWrite: false });
 
   function mesh(geo, material, x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0) {
     const m = new THREE.Mesh(geo, material);
     m.position.set(x, y, z);
     m.rotation.set(rx, ry, rz);
-    m.castShadow = true;
+    m.castShadow = false;
     m.receiveShadow = true;
     return m;
   }
@@ -60,8 +60,8 @@ export function createAttractions() {
     const p = skyPoints[i];
     const baseY = 1.5;
     const tower = new THREE.Group();
-    tower.add(mesh(new THREE.CylinderGeometry(0.24, 0.7, p.y - baseY, 6), metal, 0, (p.y - baseY) / 2, 0));
-    tower.add(mesh(new THREE.CylinderGeometry(0.08, 0.1, p.y - baseY, 4), cyan, 0, (p.y - baseY) / 2, 0));
+    tower.add(mesh(new THREE.CylinderGeometry(0.24, 0.7, p.y - baseY,24), metal, 0, (p.y - baseY) / 2, 0));
+    tower.add(mesh(new THREE.CylinderGeometry(0.08, 0.1, p.y - baseY,24), cyan, 0, (p.y - baseY) / 2, 0));
     tower.add(mesh(new THREE.BoxGeometry(4.2, 0.32, 0.8), metal, 0, p.y - baseY, 0));
     tower.position.set(p.x, baseY, p.z);
     group.add(tower);
@@ -71,9 +71,9 @@ export function createAttractions() {
   const cabinList = [];
   for (let i = 0; i < 10; i++) {
     const cabin = new THREE.Group();
-    cabin.add(mesh(new THREE.SphereGeometry(0.72, 10, 7), i % 2 ? cyan : pink, 0, 0, 0));
-    cabin.add(mesh(new THREE.ConeGeometry(0.82, 1.1, 7), dark, 0, 0.9, 0));
-    cabin.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.4, 4), metal, 0, -1.0, 0));
+    cabin.add(mesh(new THREE.SphereGeometry(0.72,18,12), i % 2 ? cyan : pink, 0, 0, 0));
+    cabin.add(mesh(new THREE.ConeGeometry(0.82, 1.1,20), dark, 0, 0.9, 0));
+    cabin.add(mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.4,24), metal, 0, -1.0, 0));
     const t = i / 10;
     cabin.userData.t = t;
     cabin.userData.offset = 0.03 * (i % 3);
@@ -94,8 +94,8 @@ export function createAttractions() {
   // Station at the first support.
   const station = new THREE.Group();
   station.position.set(skyPoints[0].x, 1.5, skyPoints[0].z);
-  station.add(mesh(new THREE.CylinderGeometry(4.4, 5.2, 0.8, 10), dark, 0, 0.4, 0));
-  station.add(mesh(new THREE.TorusGeometry(4.1, 0.1, 4, 30), amber, 0, 0.9, 0, Math.PI / 2));
+  station.add(mesh(new THREE.CylinderGeometry(4.4, 5.2, 0.8,24), dark, 0, 0.4, 0));
+  station.add(mesh(new THREE.TorusGeometry(4.1, 0.1,10,64), amber, 0, 0.9, 0, Math.PI / 2));
   station.add(mesh(new THREE.BoxGeometry(6.4, 3.2, 3.4), metal, 0, 3, 0));
   group.add(station);
 
@@ -105,13 +105,13 @@ export function createAttractions() {
   drop.scale.setScalar(1.25);
   drop.rotation.y = -1.25;
   group.add(drop);
-  drop.add(mesh(new THREE.CylinderGeometry(4.4, 5.2, 0.9, 10), dark, 0, 0.45, 0));
-  drop.add(mesh(new THREE.CylinderGeometry(0.8, 1.2, 33, 6), metal, 0, 16.5, 0));
-  drop.add(mesh(new THREE.CylinderGeometry(0.1, 0.16, 33, 4), amber, 0.9, 16.5, 0));
-  for (const y of [8, 18, 27]) drop.add(mesh(new THREE.TorusGeometry(2.6, 0.12, 4, 24), pink, 0, y, 0, Math.PI / 2));
+  drop.add(mesh(new THREE.CylinderGeometry(4.4, 5.2, 0.9,24), dark, 0, 0.45, 0));
+  drop.add(mesh(new THREE.CylinderGeometry(0.8, 1.2, 33,24), metal, 0, 16.5, 0));
+  drop.add(mesh(new THREE.CylinderGeometry(0.1, 0.16, 33,24), amber, 0.9, 16.5, 0));
+  for (const y of [8, 18, 27]) drop.add(mesh(new THREE.TorusGeometry(2.6, 0.12,10,64), pink, 0, y, 0, Math.PI / 2));
   const car = new THREE.Group();
-  car.add(mesh(new THREE.SphereGeometry(1.25, 10, 7), cyan, 0, 0, 0));
-  car.add(mesh(new THREE.TorusGeometry(1.5, 0.08, 4, 20), pink, 0, 0, 0, Math.PI / 2));
+  car.add(mesh(new THREE.SphereGeometry(1.25,18,12), cyan, 0, 0, 0));
+  car.add(mesh(new THREE.TorusGeometry(1.5, 0.08,10,64), pink, 0, 0, 0, Math.PI / 2));
   drop.add(car);
   updates.push((dt, time) => {
     const cycle = (time * 0.16) % 1;
@@ -128,18 +128,18 @@ export function createAttractions() {
   carousel.position.set(Math.sin(2.55) * 29, 1.5, Math.cos(2.55) * 29);
   group.add(carousel);
   carousel.scale.setScalar(1.35);
-  carousel.add(mesh(new THREE.CylinderGeometry(7.4, 8.4, 0.8, 14), dark, 0, 0.4, 0));
-  carousel.add(mesh(new THREE.TorusGeometry(7.2, 0.12, 4, 36), cyan, 0, 0.9, 0, Math.PI / 2));
-  carousel.add(mesh(new THREE.CylinderGeometry(0.9, 1.2, 5.4, 6), metal, 0, 3.8, 0));
+  carousel.add(mesh(new THREE.CylinderGeometry(7.4, 8.4, 0.8,24), dark, 0, 0.4, 0));
+  carousel.add(mesh(new THREE.TorusGeometry(7.2, 0.12,10,64), cyan, 0, 0.9, 0, Math.PI / 2));
+  carousel.add(mesh(new THREE.CylinderGeometry(0.9, 1.2, 5.4,24), metal, 0, 3.8, 0));
   const rotor = new THREE.Group();
   rotor.position.y = 3;
   carousel.add(rotor);
   for (let i = 0; i < 8; i++) {
     const a = (i / 8) * TAU;
     const seat = new THREE.Group();
-    seat.add(mesh(new THREE.SphereGeometry(0.9, 10, 7), i % 2 ? pink : amber, 0, 0, 0));
-    seat.add(mesh(new THREE.ConeGeometry(0.5, 1.5, 5), metal, 0, -1.0, 0, 0, 0, Math.PI));
-    seat.add(mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.8, 4), metal, 0, -1.8, 0));
+    seat.add(mesh(new THREE.SphereGeometry(0.9,18,12), i % 2 ? pink : amber, 0, 0, 0));
+    seat.add(mesh(new THREE.ConeGeometry(0.5, 1.5,20), metal, 0, -1.0, 0, 0, 0, Math.PI));
+    seat.add(mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.8,24), metal, 0, -1.8, 0));
     seat.position.set(Math.sin(a) * 5.8, 0.6, Math.cos(a) * 5.8);
     seat.rotation.y = -a;
     rotor.add(seat);
@@ -154,12 +154,12 @@ export function createAttractions() {
   stage.position.set(Math.sin(5.78) * 42, 1.5, Math.cos(5.78) * 42);
   stage.rotation.y = -5.78;
   group.add(stage);
-  stage.add(mesh(new THREE.CylinderGeometry(9, 10, 0.8, 12), dark, 0, 0.4, 0));
-  stage.add(mesh(new THREE.CylinderGeometry(5.2, 5.8, 1.4, 8), metal, 0, 1.3, 0));
-  stage.add(mesh(new THREE.TorusGeometry(5.4, 0.12, 4, 36), amber, 0, 2.1, 0, Math.PI / 2));
+  stage.add(mesh(new THREE.CylinderGeometry(9, 10, 0.8,24), dark, 0, 0.4, 0));
+  stage.add(mesh(new THREE.CylinderGeometry(5.2, 5.8, 1.4,24), metal, 0, 1.3, 0));
+  stage.add(mesh(new THREE.TorusGeometry(5.4, 0.12,10,64), amber, 0, 2.1, 0, Math.PI / 2));
   for (let i = 0; i < 3; i++) {
     const a = -0.5 + i * 0.5;
-    const laser = mesh(new THREE.CylinderGeometry(0.035, 0.08, 15, 4), i % 2 ? cyan : pink, Math.sin(a) * 3.4, 8.5, Math.cos(a) * 3.4 + 1.2, 0, a, 0.18);
+    const laser = mesh(new THREE.CylinderGeometry(0.035, 0.08, 15,24), i % 2 ? cyan : pink, Math.sin(a) * 3.4, 8.5, Math.cos(a) * 3.4 + 1.2, 0, a, 0.18);
     stage.add(laser);
   }
   // Amphitheatre benches.
@@ -180,7 +180,7 @@ export function createAttractions() {
   entry.add(mesh(new THREE.BoxGeometry(9.2, 0.5, 4.4), dark, 0, 0.2, 0));
   for (const x of [-4.3, 4.3]) {
     entry.add(mesh(new THREE.BoxGeometry(0.75, 6.4, 0.75), metal, x, 3.2, 0));
-    entry.add(mesh(new THREE.SphereGeometry(0.22, 5, 4), pink, x, 6.5, 0));
+    entry.add(mesh(new THREE.SphereGeometry(0.22,18,12), pink, x, 6.5, 0));
   }
   entry.add(mesh(new THREE.TorusGeometry(4.3, 0.18, 4, 32, Math.PI), metal, 0, 6.4, 0));
   const entrySign = textPlate('XENOSPHERE', '#7dffe6', 8.4);
@@ -188,7 +188,7 @@ export function createAttractions() {
   entry.add(entrySign);
   for (let i = 0; i < 6; i++) {
     const x = -3.2 + i * 1.28;
-    entry.add(mesh(new THREE.CylinderGeometry(0.05, 0.08, 1.2, 4), metal, x, 1.1, 2.4));
+    entry.add(mesh(new THREE.CylinderGeometry(0.05, 0.08, 1.2,24), metal, x, 1.1, 2.4));
   }
 
   // ----------------------------------------------- string lights + stalls
@@ -196,7 +196,7 @@ export function createAttractions() {
     const a = (i / 16) * TAU;
     const r = 46 + (i % 3) * 2;
     const y = 8.8 + Math.sin(i * 2.2) * 1.1;
-    const bulb = mesh(new THREE.SphereGeometry(0.14, 5, 4), i % 3 === 0 ? pink : i % 3 === 1 ? cyan : amber, Math.sin(a) * r, y, Math.cos(a) * r);
+    const bulb = mesh(new THREE.SphereGeometry(0.14,18,12), i % 3 === 0 ? pink : i % 3 === 1 ? cyan : amber, Math.sin(a) * r, y, Math.cos(a) * r);
     group.add(bulb);
   }
   for (let i = 0; i < 4; i++) {
@@ -207,7 +207,7 @@ export function createAttractions() {
     stall.rotation.y = -a;
     stall.add(mesh(new THREE.BoxGeometry(3, 1.1, 2.2), dark, 0, 0.6, 0));
     stall.add(mesh(new THREE.BoxGeometry(3.4, 0.16, 2.6), i % 2 ? amber : pink, 0, 1.3, 0));
-    stall.add(mesh(new THREE.ConeGeometry(2.0, 1.2, 4), i % 2 ? cyan : pink, 0, 2.4, 0, 0, Math.PI / 4, 0));
+    stall.add(mesh(new THREE.ConeGeometry(2.0, 1.2,20), i % 2 ? cyan : pink, 0, 2.4, 0, 0, Math.PI / 4, 0));
     group.add(stall);
   }
 
@@ -231,7 +231,7 @@ export function createAttractions() {
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const mat = new THREE.PointsMaterial({ color: pick(rng, [0x7dffe6, 0xff7bde, 0xffc47d, 0x9d8cff]), size: 0.55, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
+    const mat = new THREE.PointsMaterial({ color: pick(rng, [0xd8dfc7, 0xd39480, 0xe2b27b, 0xa9a58f]), size: 0.55, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
     const points = new THREE.Points(geo, mat);
     group.add(points);
     bursts.push({ points, geo, mat, velocities, origin, age: range(rng, 0, 4), life: range(rng, 3.4, 5.2) });

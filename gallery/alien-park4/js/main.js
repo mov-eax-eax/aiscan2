@@ -14,6 +14,7 @@ if (shotMode) document.body.classList.add('shot-mode');
 const stage = document.getElementById('stage');
 const loader = document.getElementById('loader');
 const orbitButton = document.getElementById('orbit');
+const viewButton = document.getElementById('view');
 const processButton = document.getElementById('process');
 const processOverlay = document.getElementById('processOverlay');
 const processBody = document.getElementById('processBody');
@@ -107,6 +108,22 @@ orbitButton.addEventListener('click', () => {
   orbitButton.textContent = `Auto orbit: ${next ? 'on' : 'off'}`;
 });
 orbitButton.textContent = `Auto orbit: ${world.getAutoOrbit() ? 'on' : 'off'}`;
+
+const views = [
+  { label: 'island', view: { theta: 0.86, phi: 0.32, radius: 125, targetY: 25 } },
+  { label: 'crown', view: { theta: 0.72, phi: 0.24, radius: 57, targetY: 49 } },
+  { label: 'promenade', view: { theta: 1.15, phi: 0.19, radius: 82, targetY: 12 } },
+];
+let viewIndex = 0;
+viewButton.addEventListener('click', () => {
+  viewIndex = (viewIndex + 1) % views.length;
+  const preset = views[viewIndex];
+  world.setAutoOrbit(false);
+  orbitButton.classList.remove('on');
+  orbitButton.textContent = 'Auto orbit: off';
+  world.setView(preset.view);
+  viewButton.textContent = `View: ${preset.label}`;
+});
 
 let frames = 0;
 let frameTime = 0;

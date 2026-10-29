@@ -122,3 +122,114 @@ export function bump(kind) {
   cache.set(kind, tex);
   return tex;
 }
+
+function stoneAlbedo() {
+  const c = document.createElement('canvas');
+  c.width = 512; c.height = 512;
+  const ctx = c.getContext('2d');
+  const rng = mulberry32(19);
+  const g = ctx.createLinearGradient(0, 0, 0, 512);
+  g.addColorStop(0, '#525d68');
+  g.addColorStop(0.5, '#3e4854');
+  g.addColorStop(1, '#2c333d');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 90; i++) {
+    const y = rng() * 512;
+    ctx.strokeStyle = `rgba(${20 + rng() * 30},${20 + rng() * 30},${25 + rng() * 30},${0.08 + rng() * 0.15})`;
+    ctx.lineWidth = 1 + rng() * 5;
+    ctx.beginPath();
+    for (let x = 0; x <= 512; x += 32) ctx.lineTo(x, y + Math.sin(x * 0.025 + i) * (3 + rng() * 4));
+    ctx.stroke();
+  }
+  for (let i = 0; i < 80; i++) {
+    const a = rng() * Math.PI * 2;
+    const x = rng() * 512;
+    const y = rng() * 512;
+    ctx.fillStyle = `rgba(${40 + rng() * 20},${55 + rng() * 25},${45 + rng() * 20},${0.05 + rng() * 0.12})`;
+    ctx.beginPath();
+    ctx.ellipse(x, y, 4 + rng() * 18, 2 + rng() * 8, a, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  return canvasTexture(c);
+}
+
+function panelAlbedo() {
+  const c = document.createElement('canvas');
+  c.width = 512; c.height = 512;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#4c566b';
+  ctx.fillRect(0, 0, 512, 512);
+  const rng = mulberry32(27);
+  for (let x = 0; x < 512; x += 64) {
+    for (let y = 0; y < 512; y += 64) {
+      const shade = 35 + Math.floor(rng() * 18);
+      ctx.fillStyle = `rgb(${shade + 22},${shade + 30},${shade + 46})`;
+      ctx.fillRect(x + 2, y + 2, 60, 60);
+      ctx.strokeStyle = 'rgba(8,12,20,0.7)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x + 1, y + 1, 62, 62);
+      for (let i = 0; i < 4; i++) {
+        ctx.fillStyle = 'rgba(10,16,28,0.7)';
+        ctx.beginPath();
+        ctx.arc(x + 8 + i * 16, y + 8, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  for (let i = 0; i < 50; i++) {
+    ctx.fillStyle = `rgba(200,230,255,${0.03 + rng() * 0.08})`;
+    ctx.fillRect(rng() * 512, rng() * 512, 2 + rng() * 30, 1 + rng() * 2);
+  }
+  return canvasTexture(c);
+}
+
+function petalMap() {
+  const c = document.createElement('canvas');
+  c.width = 256; c.height = 512;
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, 256, 512);
+  const g = ctx.createLinearGradient(0, 512, 0, 0);
+  g.addColorStop(0, 'rgba(48,74,62,0.98)');
+  g.addColorStop(0.42, 'rgba(92,151,124,0.98)');
+  g.addColorStop(0.78, 'rgba(190,186,145,0.98)');
+  g.addColorStop(1, 'rgba(244,224,190,0.98)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 256, 512);
+  const rng = mulberry32(43);
+  ctx.lineWidth = 2;
+  for (let i = 0; i < 26; i++) {
+    const t = i / 26;
+    ctx.strokeStyle = `rgba(210,255,246,${0.15 + rng() * 0.35})`;
+    ctx.beginPath();
+    ctx.moveTo(128, 480 - t * 40);
+    ctx.quadraticCurveTo(128 + (rng() - 0.5) * 80, 300 - t * 180, 128 + (rng() - 0.5) * 40, 20 + t * 80);
+    ctx.stroke();
+  }
+  ctx.strokeStyle = 'rgba(230,255,250,0.8)';
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(128, 500);
+  ctx.quadraticCurveTo(120, 270, 128, 30);
+  ctx.stroke();
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+  return tex;
+}
+
+export function albedo(kind) {
+  const key = 'albedo:' + kind;
+  if (cache.has(key)) return cache.get(key);
+  const tex = kind === 'panel' ? panelAlbedo() : stoneAlbedo();
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(2, 2);
+  cache.set(key, tex);
+  return tex;
+}
+
+export function petalTexture() {
+  if (!cache.has('petal')) cache.set('petal', petalMap());
+  return cache.get('petal');
+}
+

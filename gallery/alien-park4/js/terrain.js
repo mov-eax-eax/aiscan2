@@ -1,11 +1,44 @@
 import * as THREE from 'three';
 import { mulberry32, range, pick, chance } from './rng.js';
-import { bump } from './textures.js';
+import { bump, albedo } from './textures.js';
 
 const TAU = Math.PI * 2;
 
 function hsl(h, s, l) {
   return new THREE.Color().setHSL(((h % 360) + 360) % 360 / 360, s, l);
+}
+
+function cliffGeometry(radiusTop, radiusBottom, height, seed, radialSegments = 128, heightSegments = 18) {
+  const positions = [];
+  const uvs = [];
+  const indices = [];
+  for (let iy = 0; iy <= heightSegments; iy++) {
+    const u = iy / heightSegments;
+    const y = -height / 2 + u * height;
+    const base = radiusBottom + (radiusTop - radiusBottom) * u;
+    for (let ia = 0; ia <= radialSegments; ia++) {
+      const a = (ia / radialSegments) * TAU;
+      const strata = Math.sin(y * 2.6 + seed) * 0.24 + Math.sin(y * 7.3 + seed * 2) * 0.08;
+      const ribs = Math.sin(a * 9 + seed) * 0.22 + Math.sin(a * 23 + y * 0.35) * 0.08;
+      const erosion = Math.sin(a * 3 + seed * 1.7) * 0.35;
+      const r = base + strata + ribs + erosion * (0.3 + u * 0.7);
+      positions.push(Math.sin(a) * r, y, Math.cos(a) * r);
+      uvs.push(ia / radialSegments, u * 3);
+    }
+  }
+  for (let iy = 0; iy < heightSegments; iy++) {
+    for (let ia = 0; ia < radialSegments; ia++) {
+      const a = iy * (radialSegments + 1) + ia;
+      const b = a + radialSegments + 1;
+      indices.push(a, b, a + 1, b, b + 1, a + 1);
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+  geo.setIndex(indices);
+  geo.computeVertexNormals();
+  return geo;
 }
 
 export function createTerrain() {
@@ -14,14 +47,15 @@ export function createTerrain() {
   const rng = mulberry32(48119);
 
   const stoneBump = bump('stone');
+  const stoneMap = albedo('stone');
   const organicBump = bump('organic');
-  const rock = new THREE.MeshStandardMaterial({ color: 0x232b3c, roughness: 0.88, metalness: 0.12, flatShading: false, bumpMap: stoneBump, bumpScale: 0.2 });
-  const rockWarm = new THREE.MeshStandardMaterial({ color: 0x3b3044, roughness: 0.9, metalness: 0.08, flatShading: false, bumpMap: stoneBump, bumpScale: 0.22 });
+  const rock = new THREE.MeshStandardMaterial({ color: 0x8d8372, map: stoneMap, roughness: 0.88, metalness: 0.12, flatShading: false, bumpMap: stoneBump, bumpScale: 0.2 });
+  const rockWarm = new THREE.MeshStandardMaterial({ color: 0x927e6f, map: stoneMap, roughness: 0.9, metalness: 0.08, flatShading: false, bumpMap: stoneBump, bumpScale: 0.22 });
   const rockShard = new THREE.MeshStandardMaterial({ color: 0x1d2433, roughness: 0.9, metalness: 0.1, flatShading: true });
-  const topA = new THREE.MeshStandardMaterial({ color: 0x123e3a, roughness: 0.76, metalness: 0.08, emissive: 0x061c1b, emissiveIntensity: 0.8, bumpMap: organicBump, bumpScale: 0.08 });
-  const topB = new THREE.MeshStandardMaterial({ color: 0x182f4c, roughness: 0.72, metalness: 0.12, emissive: 0x071426, emissiveIntensity: 0.8, bumpMap: stoneBump, bumpScale: 0.06 });
+  const topA = new THREE.MeshStandardMaterial({ color: 0x607457, map: stoneMap, roughness: 0.76, metalness: 0.08, emissive: 0x061c1b, emissiveIntensity: 0.8, bumpMap: organicBump, bumpScale: 0.08 });
+  const topB = new THREE.MeshStandardMaterial({ color: 0x586b78, map: stoneMap, roughness: 0.72, metalness: 0.12, emissive: 0x071426, emissiveIntensity: 0.8, bumpMap: stoneBump, bumpScale: 0.06 });
   const path = new THREE.MeshBasicMaterial({ color: 0xffc98a, transparent: true, opacity: 0.48, blending: THREE.AdditiveBlending, depthWrite: false });
-  const pathDim = new THREE.MeshBasicMaterial({ color: 0x7dffe3, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false });
+  const pathDim = new THREE.MeshBasicMaterial({ color: 0xa8c4b7, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending, depthWrite: false });
   const water = new THREE.MeshStandardMaterial({ color: 0x0a7a87, emissive: 0x07545d, emissiveIntensity: 1.5, transparent: true, opacity: 0.72, roughness: 0.13, metalness: 0.34 });
 
   // Underside of the floating island.
@@ -42,7 +76,7 @@ export function createTerrain() {
 
   levels.forEach((level, index) => {
     const wallRadius = level.radius + (index === 0 ? 1.5 : 0.8);
-    const wall = new THREE.Mesh(new THREE.CylinderGeometry(level.radius, wallRadius, level.height, 64, 2), index % 2 ? rockWarm : rock);
+    const wall = new THREE.Mesh(cliffGeometry(level.radius, wallRadius, level.height, index * 3.7 + 1.2), index % 2 ? rockWarm : rock);
     wall.position.y = level.top - level.height / 2;
     wall.castShadow = true;
     wall.receiveShadow = true;
@@ -159,7 +193,7 @@ export function createTerrain() {
       pts.push(new THREE.Vector3(Math.sin(a) * r, 1.3 - u * length, Math.cos(a) * r));
     }
     const curve = new THREE.CatmullRomCurve3(pts);
-    const vine = new THREE.Mesh(new THREE.TubeGeometry(curve, 14, 0.04, 4, false), i % 3 === 0 ? pathDim : new THREE.MeshBasicMaterial({ color: 0x2e8e75, transparent: true, opacity: 0.55 }));
+    const vine = new THREE.Mesh(new THREE.TubeGeometry(curve, 14, 0.04, 4, false), i % 3 === 0 ? pathDim : new THREE.MeshBasicMaterial({ color: 0x5d8060, transparent: true, opacity: 0.55 }));
     group.add(vine);
     group.add(new THREE.Mesh(new THREE.SphereGeometry(0.12, 5, 4), i % 2 ? path : pathDim).translateX(pts[pts.length - 1].x).translateY(pts[pts.length - 1].y).translateZ(pts[pts.length - 1].z));
   }
@@ -191,7 +225,7 @@ export function createTerrain() {
 
   // Horizontal strata bands catch the core light on the silhouette.
   for (const [y, radius, opacity] of [[0.7, 56.9, 0.34], [-0.8, 57.4, 0.2], [-2.6, 58.2, 0.12]]) {
-    const band = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.14, 4, 90), new THREE.MeshBasicMaterial({ color: 0x7dffe3, transparent: true, opacity, blending: THREE.AdditiveBlending, depthWrite: false }));
+    const band = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.14, 4, 90), new THREE.MeshBasicMaterial({ color: 0x9cb6a8, transparent: true, opacity, blending: THREE.AdditiveBlending, depthWrite: false }));
     band.rotation.x = Math.PI / 2;
     band.position.y = y;
     group.add(band);

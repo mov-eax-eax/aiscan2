@@ -1,0 +1,358 @@
+/* =====================================================================
+   PART 2 — renderer / camera / controls factories, procedural canvas
+   textures, sky dome, environment lighting.
+   ===================================================================== */
+
+/* ---------------- canvas texture factory ---------------- */
+function canvasTex(w, h, draw, opts){
+  opts = opts || {};
+  const c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  const g = c.getContext('2d');
+  g.clearRect(0,0,w,h);
+  draw(g, w, h);
+  const t = new THREE.CanvasTexture(c);
+  if(opts.sRGB !== false) t.colorSpace = THREE.SRGBColorSpace;
+  if(opts.repeat){ t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(opts.repeat[0], opts.repeat[1]); }
+  t.anisotropy = 8;
+  if(opts.flipY === false) t.flipY = false;
+  return t;
+}
+function noiseFill(g,w,h,alpha,colorFn){ // grainy value noise for organic surfaces
+  const id = g.createImageData(w,h);
+  const d = id.data;
+  for(let i=0;i<w*h;i++){
+    const v = colorFn ? colorFn(i) : (Math.random()*255)|0;
+    const o = i*4;
+    d[o]=v; d[o+1]=v; d[o+2]=v; d[o+3]=alpha!==undefined?alpha:255;
+  }
+  g.putImageData(id,0,0);
+}
+
+const TX = {};   // texture store
+
+function createTextures(){
+  // --- iron streak roughness (subtle brushed vertical streaks) ---
+  TX.streak = canvasTex(128,128,(g)=>{
+    g.fillStyle='#808080'; g.fillRect(0,0,128,128);
+    for(let i=0;i<1500;i++){
+      const v = 96+Math.random()*80|0;
+      g.fillStyle='rgba('+v+','+v+','+v+',0.09)';
+      g.fillRect(Math.random()*128, Math.random()*128, 1+Math.random()*2, 2+Math.random()*8);
+    }
+  },{sRGB:false});
+  TX.streak.wrapS = TX.streak.wrapT = THREE.RepeatWrapping;
+
+  // --- grass meadow (with mowing stripes) ---
+  TX.grass = canvasTex(256,256,(g,w,h)=>{
+    const base=[[106,128,70],[96,120,62],[116,138,80],[88,112,58]];
+    const id=g.createImageData(w,h), d=id.data;
+    for(let i=0;i<w*h;i++){
+      const px=i%w, py=(i/w)|0;
+      const band=base[((px/32)|0 + (py/32)|0)%2];
+      let n=Math.random()*26-13;
+      const streak = Math.random()<0.10 ? (Math.random()*26-13) : 0;
+      d[i*4]  =clamp(band[0]+n+streak,30,190);
+      d[i*4+1]=clamp(band[1]+n*1.1+streak,40,200);
+      d[i*4+2]=clamp(band[2]+n*0.8,30,150);
+      d[i*4+3]=255;
+    }
+    g.putImageData(id,0,0);
+    // faint path wear patches (baked, mostly covered by real paths)
+  },{repeat:[1,1]});
+  TX.grass.colorSpace = THREE.SRGBColorSpace;
+
+  // --- gravel for paths / esplanade alleys ---
+  TX.gravel = canvasTex(128,128,(g)=>{
+    g.fillStyle='#8d8574'; g.fillRect(0,0,128,128);
+    for(let i=0;i<2200;i++){
+      const v=120+Math.random()*110|0;
+      g.fillStyle='rgba('+v+','+(v*0.96)|0+','+(v*0.85)|0+',0.8)';
+      g.beginPath(); g.arc(Math.random()*128,Math.random()*128,0.6+Math.random()*1.9,0,7); g.fill();
+    }
+    for(let i=0;i<400;i++){ g.fillStyle='rgba(60,54,46,0.16)'; g.fillRect(Math.random()*128,Math.random()*128,1,1); }
+  },{repeat:[1,1]});
+
+  // --- esplanade paving slabs ---
+  TX.plaza = canvasTex(512,512,(g,w,h)=>{
+    g.fillStyle='#a69b89'; g.fillRect(0,0,w,h);
+    for(let i=0;i<26000;i++){
+      const v=140+Math.random()*70|0;
+      g.fillStyle='rgba('+v+','+v+','+(v*0.93)|0+',0.10)';
+      g.fillRect(Math.random()*w,Math.random()*h,1,1);
+    }
+    const sw=64, jw=2;
+    g.strokeStyle='rgba(64,56,46,0.55)'; g.lineWidth=jw;
+    for(let x=0;x<=w;x+=sw){ g.beginPath(); g.moveTo(x,0); g.lineTo(x,h); g.stroke(); }
+    for(let y=0;y<=h;y+=sw){ g.beginPath(); g.moveTo(0,y); g.lineTo(w,y); g.stroke(); }
+    g.fillStyle='rgba(52,46,38,0.5)';
+    for(let x=0;x<w;x+=sw) for(let y=0;y<h;y+=sw){ if(Math.random()<0.12) g.fillRect(x+4,y+4,sw-8,sw-8); }
+  },{repeat:[1,1]});
+
+  // --- ashlar stone (piers & masonry) ---
+  TX.stone = canvasTex(256,256,(g,w,h)=>{
+    g.fillStyle='#a99b87'; g.fillRect(0,0,w,h);
+    noiseFill(g,w,h,255,()=> (120+Math.random()*80)|0);
+    g.globalAlpha=0.22; g.fillStyle='#9a8b76';
+    const cw=64,ch=32;
+    for(let y=0;y<h;y+=ch){
+      const off=(y/ch)%2?32:0;
+      for(let x=-off;x<w;x+=cw){
+        g.beginPath(); g.rect(x+1,y+1,cw-2,ch-2); g.stroke();
+        g.fillRect(x+1,y+1,cw-2,ch-2);
+      }
+    }
+    g.globalAlpha=1;
+    g.strokeStyle='rgba(60,52,42,0.9)'; g.lineWidth=2;
+    for(let y=0;y<=h;y+=ch){ g.beginPath(); g.moveTo(0,y); g.lineTo(w,y); g.stroke(); }
+    const cw2=64;
+    for(let y=0;y<h;y+=ch){ const off=(y/ch)%2?32:0; for(let x=-off;x<w+off;x+=cw2){ g.beginPath(); g.moveTo(x,y); g.lineTo(x,y+ch); g.stroke(); } }
+    // corner bevel shading
+    for(let i=0;i<60;i++){ const x=Math.random()*w,y=Math.random()*h; g.fillStyle='rgba(0,0,0,'+(0.04+Math.random()*0.08)+')'; g.fillRect(x,y,6,6); }
+  },{repeat:[1,1]});
+
+  // --- dark roof sheet ---
+  TX.roof = canvasTex(128,128,(g)=>{
+    g.fillStyle='#3f4a52'; g.fillRect(0,0,128,128);
+    for(let i=0;i<2500;i++){ const v=50+Math.random()*70|0; g.fillStyle='rgba('+v+','+(v+10)+','+(v+16)+',0.5)'; g.fillRect(Math.random()*128,Math.random()*128,2,1); }
+  },{repeat:[1,1]});
+
+  // --- foliage leaf sprigs (alpha) ---
+  TX.leaf = canvasTex(128,128,(g,w,h)=>{
+    g.clearRect(0,0,w,h);
+    const cols=['#4d7039','#587f42','#416132','#66924c'];
+    for(let i=0;i<140;i++){
+      g.fillStyle=cols[i%cols.length];
+      const r=2+Math.random()*9, x=Math.random()*w, y=Math.random()*h;
+      g.globalAlpha=0.5+Math.random()*0.5;
+      g.beginPath();
+      if(Math.random()<0.7){ g.arc(x,y,r,0,7); g.fill(); }
+      else{ g.ellipse(x,y,r*1.6,r*0.7,Math.random()*3,0,7); g.fill(); }
+    }
+    g.globalAlpha=1;
+  },{repeat:[1,1]});
+  TX.leaf.anisotropy = 4;
+
+  // --- windowed facade (day albedo + separate emissive windows) ---
+  const facadeDraw = (emit)=>{
+    return (g,w,h)=>{
+      const cols=['#b0a08a','#a4947e','#bbaa93','#9d8d76'];
+      g.fillStyle=cols[0]; g.fillRect(0,0,w,h);
+      noiseFill(g,w,h,255,()=> (130+Math.random()*60)|0);
+      const colsX=7, rowsY=9, cw=w/colsX, ch=h/rowsY;
+      for(let i=0;i<420;i++){ g.fillStyle='rgba(40,30,20,'+(0.05+Math.random()*0.1)+')'; g.fillRect(Math.random()*w,Math.random()*h,4,4); }
+      for(let cx=0;cx<colsX;cx++) for(let ry=0;ry<rowsY;ry++){
+        const lit = Math.random();
+        if(emit){
+          if(lit<0.16){ g.fillStyle='rgba(255,214,140,'+(0.35+Math.random()*0.6)+')'; }
+          else if(lit<0.30){ g.fillStyle='rgba(150,180,220,0.4)'; }
+          else { g.fillStyle='rgba(6,6,10,0.85)'; }
+        } else {
+          g.fillStyle = (Math.random()<0.75)?'rgba(38,46,58,0.9)':'rgba(120,134,146,0.8)';
+        }
+        const mx=cx*cw+4, my=ry*ch+3;
+        g.fillRect(mx,my,cw-8,ch-6);
+      }
+      // cornice lines
+      g.fillStyle='rgba(60,52,44,0.8)';
+      for(let ry=0;ry<=rowsY;ry++) g.fillRect(0,ry*ch-1,w,3);
+    };
+  };
+  TX.facadeDay = canvasTex(256,288,facadeDraw(false),{repeat:[1,1]});
+  TX.facadeEmt = canvasTex(256,288,facadeDraw(true),{sRGB:false,repeat:[1,1]});
+
+  // --- water / seine strip ---
+  TX.water = canvasTex(256,256,(g,w,h)=>{
+    const grad=g.createLinearGradient(0,0,0,h);
+    grad.addColorStop(0,'#5c7280'); grad.addColorStop(0.5,'#465d6b'); grad.addColorStop(1,'#33474f');
+    g.fillStyle=grad; g.fillRect(0,0,w,h);
+    for(let i=0;i<9000;i++){
+      const y=Math.random()*h, x=Math.random()*w, L=3+Math.random()*22;
+      g.strokeStyle='rgba(190,214,224,'+(0.03+Math.random()*0.10)+')';
+      g.beginPath(); g.moveTo(x,y); g.lineTo(x+L,y+(Math.random()*2-1)); g.stroke();
+    }
+  },{repeat:[1,1]});
+
+  // --- circular sun glow sprite for lamp bulbs ---
+  TX.bulb = canvasTex(64,64,(g,w,h)=>{
+    const grad=g.createRadialGradient(32,32,2,32,32,30);
+    grad.addColorStop(0,'rgba(255,246,214,1)');
+    grad.addColorStop(0.25,'rgba(255,226,160,0.9)');
+    grad.addColorStop(0.6,'rgba(255,190,110,0.25)');
+    grad.addColorStop(1,'rgba(255,170,80,0)');
+    g.fillStyle=grad; g.fillRect(0,0,w,h);
+  },{sRGB:false});
+}
+
+/* ---------------- sky dome (custom gradient + sun + scattering) ---------------- */
+let skyMesh, sunDirV = new THREE.Vector3(-0.42,0.40,0.81).normalize();
+function buildSky(){
+  const uniforms = {
+    uSunDir:  { value: sunDirV.clone().normalize() },
+    uNight:   { value: 0 },
+    uDayZen:  { value: new THREE.Color(0x3f7cc2) },
+    uDayHor:  { value: new THREE.Color(0xcfe0ec) },
+    uDuskZen: { value: new THREE.Color(0x2a3f72) },
+    uDuskHor: { value: new THREE.Color(0xe8a468) },
+    uNightZen:{ value: new THREE.Color(0x05070f) },
+    uNightHor:{ value: new THREE.Color(0x0b1222) },
+    uSunCol:  { value: new THREE.Color(0xffe2ad) },
+    uSunPow:  { value: 1600.0 }
+  };
+  const mat = new THREE.ShaderMaterial({
+    uniforms,
+    side: THREE.BackSide,
+    depthWrite: false,
+    fog: false,
+    vertexShader: /*glsl*/`
+      varying vec3 vDir;
+      void main(){
+        vDir = normalize(position);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+      }`,
+    fragmentShader: /*glsl*/`
+      varying vec3 vDir;
+      uniform vec3 uSunDir; uniform float uNight;
+      uniform vec3 uDayZen,uDayHor,uDuskZen,uDuskHor,uNightZen,uNightHor,uSunCol;
+      uniform float uSunPow;
+      void main(){
+        vec3 d = normalize(vDir);
+        float h = clamp(d.y*0.5+0.5,0.0,1.0);
+        vec3 dayCol   = mix(uDayHor, uDayZen, pow(h,0.75));
+        vec3 duskCol  = mix(uDuskHor,uDuskZen, pow(h,0.8));
+        vec3 nightCol = mix(uNightHor,uNightZen, pow(h,0.9));
+        vec3 col = mix(dayCol, duskCol, uNight*0.5);
+        col = mix(col, nightCol, max(0.0,uNight*1.35-0.35));
+        // warm back-light band around the sun
+        float s = max(dot(d,uSunDir),0.0);
+        col += uSunCol * (pow(s,24.0)*0.10 + pow(s,3.0)*0.035) * (1.0-uNight);
+        // sun disc
+        float disc = smoothstep(0.99965,0.99995,s);
+        col = mix(col, vec3(1.0,0.98,0.92), disc*(1.0-uNight));
+        // very subtle zenith atmospheric gradient boost
+        col += vec3(0.015,0.025,0.045)*pow(h,6.0);
+        gl_FragColor = vec4(col,1.0);
+      }`
+  });
+  const geo = new THREE.SphereGeometry(6500, 40, 20);
+  skyMesh = new THREE.Mesh(geo, mat);
+  skyMesh.frustumCulled = false;
+  skyMesh.renderOrder = -10;
+  scene.add(skyMesh);
+  app.skyUniforms = uniforms;
+
+  // ---- stars ----
+  const N = 2200;
+  const pos = new Float32Array(N*3), col = new Float32Array(N*3);
+  for(let i=0;i<N;i++){
+    const a = rndRange(0,Math.PI*2);
+    const e = Math.acos(rndRange(0.02,1.0));
+    const r = 5900;
+    pos[i*3]=Math.cos(a)*Math.sin(e)*r;
+    pos[i*3+1]=Math.cos(e)*r;
+    pos[i*3+2]=Math.sin(a)*Math.sin(e)*r;
+    const v = 0.5+Math.random()*0.5;
+    col[i*3]=v; col[i*3+1]=v; col[i*3+2]=v;
+  }
+  const sgeo = new THREE.BufferGeometry();
+  sgeo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  sgeo.setAttribute('color', new THREE.BufferAttribute(col,3));
+  const smat = new THREE.PointsMaterial({ size:2.6, sizeAttenuation:false, vertexColors:true,
+    map:TX.bulb, transparent:true, opacity:0, depthWrite:false, blending:THREE.AdditiveBlending, fog:false });
+  const stars = new THREE.Points(sgeo, smat);
+  stars.frustumCulled = false; stars.renderOrder = -9;
+  scene.add(stars);
+  app.stars = { mesh: stars, mat: smat };
+}
+
+/* ---------------- core: renderer / scene / camera / controls ---------------- */
+const app = {};
+let clock;
+function initCore(){
+  const container = $('#app');
+  const w = container.clientWidth || window.innerWidth;
+  const h = container.clientHeight || window.innerHeight;
+  renderer = new THREE.WebGLRenderer({ antialias:true, powerPreference:'high-performance' });
+  renderer.setPixelRatio(params.pr>0 ? params.pr : Math.min(window.devicePixelRatio||1, 2));
+  renderer.setSize(w,h);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.02;
+  renderer.shadowMap.enabled = params.shadows;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.localClippingEnabled = true;
+  renderer.debug.checkShaderErrors = true;
+  container.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x22385a);
+  scene.fog = new THREE.Fog(0xc8d4de, 1300, 5200);
+
+  camera = new THREE.PerspectiveCamera(46, w/h, 0.5, 15000);
+  camera.position.set(190, 96, 330);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0,120,0);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.055;
+  controls.minDistance = 8;
+  controls.maxDistance = 2400;
+  controls.maxPolarAngle = Math.PI*0.499;
+  controls.autoRotateSpeed = 0.65;
+  controls.zoomSpeed = 0.8;
+
+  clock = new THREE.Clock();
+  app.container = container;
+  app.camera = camera; app.scene = scene; app.controls = controls;
+
+  // shared objects
+  app.dynamic = { nightT:0, nightTarget: params.night>0?1:0, t:0, sparkleOn:true,
+    wire:false, xray:false, autoRotate:false };
+  app.structuralMats = [];   // every tower material (for wireframe/xray)
+  app.fx = [];               // emissive int controllers for day/night
+  app.lights = [];
+}
+
+function onResize(){
+  if(!renderer || !app.container) return;
+  const w = app.container.clientWidth, h = app.container.clientHeight;
+  camera.aspect = w/h; camera.updateProjectionMatrix();
+  renderer.setSize(w,h);
+  if(composer) composer.setSize(w,h);
+}
+window.addEventListener('resize', onResize);
+
+/* ---------------- environment & lights ---------------- */
+function initEnvAndLights(){
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environment = envTex;
+  scene.environmentIntensity = 0.85;
+  pmrem.dispose();
+
+  // warm directional sun with a fitted ortho shadow camera
+  const sun = new THREE.DirectionalLight(0xffdab0, 3.6);
+  sun.position.set(330, 560, 280);
+  sun.castShadow = params.shadows;
+  sun.shadow.mapSize.set(2048, 2048);
+  const sc = sun.shadow.camera;
+  sc.left = -400; sc.right = 400; sc.top = 500; sc.bottom = -300;
+  sc.near = 60; sc.far = 1400;
+  sun.shadow.bias = -0.00035;
+  sun.shadow.normalBias = 1.6;
+  scene.add(sun);
+  scene.add(sun.target);
+  sun.target.position.set(0,130,0);
+  app.sun = sun; app.lights.push(sun);
+
+  const hemi = new THREE.HemisphereLight(0xcfe0f2, 0x423828, 0.62);
+  scene.add(hemi);
+  app.hemi = hemi; app.lights.push(hemi);
+
+  const amb = new THREE.AmbientLight(0xffffff, 0.12);
+  scene.add(amb); app.ambient = amb;
+}
+
+/* helper used by later parts: register emissive controller */
+function regFx(material, dayInt, nightInt){ app.fx.push({ mat:material, d:dayInt, n:nightInt }); }
+

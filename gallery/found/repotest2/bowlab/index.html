@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bowlab — compound &amp; recurve bow mechanics</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<div id="topbar">
+  <div class="brand">
+    <b>bowlab</b>
+    <span>parametric archery bow &mdash; real draw-force mechanics</span>
+  </div>
+  <div id="kindSwitch">
+    <button data-kind="compound" class="on">Compound</button>
+    <button data-kind="recurve">Recurve</button>
+  </div>
+  <div class="spacer"></div>
+  <div id="camSwitch">
+    <button data-cam="side" class="on">Side</button>
+    <button data-cam="three">3/4</button>
+    <button data-cam="cam">Top cam</button>
+    <button data-cam="grip">Grip</button>
+    <button data-cam="front">Front</button>
+    <button data-cam="wide">Wide</button>
+  </div>
+</div>
+
+<aside id="left" class="panel">
+  <div class="panelHead">Bow parameters <span id="solveTime" class="badge">--</span></div>
+  <div id="controls" class="panelBody"></div>
+</aside>
+
+<aside id="right" class="panel">
+  <div class="panelHead">Mechanics</div>
+  <div class="panelBody">
+    <div class="chartWrap">
+      <div class="chartTitle">Draw force &ndash; draw length <em>(area = stored energy)</em></div>
+      <canvas id="chartForce"></canvas>
+    </div>
+    <div class="chartWrap">
+      <div class="chartTitle" id="armTitle">Cable lever arm about the axle <em>(the cam-over that makes let-off)</em></div>
+      <canvas id="chartArm"></canvas>
+    </div>
+    <div class="chartWrap">
+      <div class="chartTitle">Arrow speed along the power stroke</div>
+      <canvas id="chartVel"></canvas>
+    </div>
+    <div id="readout" class="readout"></div>
+  </div>
+</aside>
+
+<footer id="bottom">
+  <div id="playback"></div>
+  <div class="spacer"></div>
+  <div class="hint">hold <b>space</b> to draw &middot; release to shoot &middot; <b>R</b> reset &middot; drag to orbit &middot; scroll to zoom</div>
+  <div id="fps" class="badge">--</div>
+</footer>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="js/physics.js"></script>
+<script src="js/builders.js"></script>
+<script src="js/parts.js"></script>
+<script src="js/bow.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

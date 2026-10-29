@@ -1,0 +1,114 @@
+[
+ {
+  "name": "hero",
+  "qs": "?view=hero&intro=0",
+  "title": "EIFFEL-OK 431992 tris 205 calls",
+  "ms": 23196,
+  "state": {
+   "ok": true,
+   "error": null,
+   "triangles": 431992,
+   "calls": 205,
+   "beams": 23058,
+   "buildMs": 4355,
+   "sparks": 20000,
+   "audit": {
+    "minX": -60.08778382531513,
+    "maxX": 60.08778382531513,
+    "minY": 2,
+    "maxY": 330,
+    "minZ": -60.08778382531513,
+    "maxZ": 60.08778382531513,
+    "bad": 0,
+    "n": 23058,
+    "per": {}
+   }
+  },
+  "errors": [],
+  "shot": "F:/repotest2/_shot_hero.png"
+ },
+ {
+  "name": "base",
+  "qs": "?view=base&intro=0",
+  "title": "EIFFEL-OK 431992 tris 205 calls",
+  "ms": 24984,
+  "state": {
+   "ok": true,
+   "error": null,
+   "triangles": 431992,
+   "calls": 205,
+   "beams": 23058,
+   "buildMs": 3411,
+   "sparks": 20000,
+   "audit": {
+    "minX": -60.08778382531513,
+    "maxX": 60.08778382531513,
+    "minY": 2,
+    "maxY": 330,
+    "minZ": -60.08778382531513,
+    "maxZ": 60.08778382531513,
+    "bad": 0,
+    "n": 23058,
+    "per": {}
+   }
+  },
+  "errors": [],
+  "shot": "F:/repotest2/_shot_base.png"
+ },
+ {
+  "name": "top",
+  "qs": "?view=top&intro=0",
+  "title": "EIFFEL-OK 431992 tris 205 calls",
+  "ms": 29325,
+  "state": {
+   "ok": true,
+   "error": null,
+   "triangles": 431992,
+   "calls": 205,
+   "beams": 23058,
+   "buildMs": 4052,
+   "sparks": 20000,
+   "audit": {
+    "minX": -60.08778382531513,
+    "maxX": 60.08778382531513,
+    "minY": 2,
+    "maxY": 330,
+    "minZ": -60.08778382531513,
+    "maxZ": 60.08778382531513,
+    "bad": 0,
+    "n": 23058,
+    "per": {}
+   }
+  },
+  "errors": [],
+  "shot": "F:/repotest2/_shot_top.png"
+ },
+ {
+  "name": "night",
+  "qs": "?view=hero&intro=0&night=1",
+  "title": "EIFFEL-OK 431992 tris 205 calls",
+  "ms": 25574,
+  "state": {
+   "ok": true,
+   "error": null,
+   "triangles": 431992,
+   "calls": 205,
+   "beams": 23058,
+   "buildMs": 5150,
+   "sparks": 20000,
+   "audit": {
+    "minX": -60.08778382531513,
+    "maxX": 60.08778382531513,
+    "minY": 2,
+    "maxY": 330,
+    "minZ": -60.08778382531513,
+    "maxZ": 60.08778382531513,
+    "bad": 0,
+    "n": 23058,
+    "per": {}
+   }
+  },
+  "errors": [],
+  "shot": "F:/repotest2/_shot_night.png"
+ }
+]

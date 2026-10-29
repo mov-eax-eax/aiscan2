@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Tour Eiffel — research-driven procedural build</title>
+<!-- Inline SVG icon: avoids the browser's automatic /favicon.ico request 404ing
+     on a bare static server, and gives the tab a tower glyph. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0e13'/%3E%3Cpath d='M15.6 4 L16.8 4 L19.4 23 L21.6 29 L10.4 29 L12.6 23 Z' fill='%23e0ab5f'/%3E%3Crect x='13.2' y='17' width='5.6' height='1.4' fill='%230b0e13'/%3E%3Crect x='12' y='23' width='8' height='1.4' fill='%230b0e13'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --ink: #f4eee4;
+    --panel: rgba(13, 15, 19, 0.64);
+    --line: rgba(228, 210, 178, 0.22);
+    --accent: #e0ab5f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #05070b; }
+  body {
+    font: 13px/1.45 ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); -webkit-font-smoothing: antialiased;
+  }
+  canvas { display: block; }
+
+  .panel {
+    position: fixed; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
+  }
+
+  #info { top: 14px; left: 14px; padding: 13px 16px 12px; max-width: 322px; }
+  #info h1 { margin: 0 0 2px; font-size: 15px; letter-spacing: 0.055em; text-transform: uppercase; font-weight: 600; }
+  #info .sub { margin: 0 0 10px; font-size: 11px; opacity: 0.6; letter-spacing: 0.03em; }
+  #info dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; font-size: 11.5px; }
+  #info dt { opacity: 0.58; }
+  #info dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  #info .note {
+    margin: 10px 0 0; padding-top: 9px; border-top: 1px solid var(--line);
+    font-size: 10.5px; line-height: 1.5; opacity: 0.55;
+  }
+  #info .note b { color: var(--accent); font-weight: 600; }
+
+  #views { top: 14px; right: 14px; padding: 7px; display: flex; flex-direction: column; gap: 4px; }
+
+  button {
+    appearance: none; cursor: pointer; color: var(--ink);
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line);
+    border-radius: 7px; padding: 6px 10px; font: inherit; font-size: 11.5px; text-align: left;
+    transition: background 0.16s, border-color 0.16s, color 0.16s;
+  }
+  button:hover { background: rgba(224, 171, 95, 0.16); border-color: rgba(224, 171, 95, 0.5); }
+  button.active { background: rgba(224, 171, 95, 0.24); border-color: var(--accent); color: #fff4e2; }
+
+  #controls {
+    bottom: 14px; left: 50%; transform: translateX(-50%);
+    padding: 10px 14px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap;
+    justify-content: center; max-width: calc(100vw - 28px);
+  }
+  .ctl { display: flex; align-items: center; gap: 8px; }
+  .ctl > label { font-size: 11px; opacity: 0.62; white-space: nowrap; }
+  .sep { width: 1px; align-self: stretch; background: var(--line); }
+
+  input[type="range"] {
+    appearance: none; width: 118px; height: 3px; border-radius: 2px; outline: none;
+    background: linear-gradient(90deg, #2b3a5c, #7fa6d8 42%, #f0c98a 68%, #fff2d8);
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none; width: 13px; height: 13px; border-radius: 50%;
+    background: #fff4e2; border: 1px solid rgba(0, 0, 0, 0.35); cursor: grab;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 13px; height: 13px; border-radius: 50%; background: #fff4e2;
+    border: 1px solid rgba(0, 0, 0, 0.35); cursor: grab;
+  }
+
+  #perf {
+    bottom: 14px; right: 14px; padding: 7px 10px; font-size: 10.5px;
+    font-variant-numeric: tabular-nums; opacity: 0.8; line-height: 1.55;
+  }
+  #perf b { font-weight: 600; color: var(--accent); }
+
+  #loader {
+    position: fixed; inset: 0; display: grid; place-items: center;
+    background: #05070b; z-index: 20; transition: opacity 0.5s ease;
+  }
+  #loader.done { opacity: 0; pointer-events: none; }
+  #loader .ring {
+    width: 34px; height: 34px; margin: 0 auto 14px;
+    border: 2px solid rgba(224, 171, 95, 0.2); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #loader p { margin: 0; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; }
+
+  #hint {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    padding: 16px 22px; max-width: 470px; display: none; z-index: 30; text-align: center;
+  }
+  #hint.show { display: block; }
+  #hint h2 { margin: 0 0 8px; font-size: 14px; }
+  #hint p { margin: 0; font-size: 12px; opacity: 0.75; line-height: 1.6; }
+  #hint code { color: var(--accent); font-size: 11.5px; }
+
+  @media (max-width: 760px) {
+    #info { max-width: 216px; padding: 10px 12px; }
+    #info dl { font-size: 10.5px; }
+    #perf { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="info" class="panel">
+  <h1>Tour Eiffel</h1>
+  <p class="sub">Research-driven procedural lattice</p>
+  <dl>
+    <dt>Height</dt><dd id="m-height">330.0 m</dd>
+    <dt>Base</dt><dd id="m-base">124.9 m</dd>
+    <dt>Level 1 / 2 / 3</dt><dd>57.63 · 115.73 · 276.13 m</dd>
+    <dt>Members</dt><dd id="m-members">—</dd>
+    <dt>Triangles</dt><dd id="m-tris">—</dd>
+    <dt>Profile fit</dt><dd id="m-profile">—</dd>
+  </dl>
+  <p class="note" id="credit">
+    Generated from the measured <b>two-exponential</b> width law: the decay rate
+    halves above platform 2, so no single curve fits this tower.
+  </p>
+</div>
+
+<div id="views" class="panel">
+  <button data-view="panorama" class="active">Panorama</button>
+  <button data-view="arch">The Arch</button>
+  <button data-view="base">Legs &amp; base</button>
+  <button data-view="level1">First level</button>
+  <button data-view="shaft">The shaft</button>
+  <button data-view="summit">Summit</button>
+  <button data-view="bird">Bird's eye</button>
+</div>
+
+<div id="controls" class="panel">
+  <div class="ctl">
+    <label for="tod">Time of day</label>
+    <input id="tod" type="range" min="0" max="1" step="0.01" value="0.74">
+  </div>
+  <div class="sep"></div>
+  <div class="ctl"><button id="btn-density" title="Rebuild the lattice at a different brace density">Lattice: Balanced</button></div>
+  <div class="ctl"><button id="btn-sparkle" class="active" title="Toggle the twinkling bulbs">Sparkle</button></div>
+  <div class="ctl"><button id="btn-spin" class="active" title="Toggle turntable">Auto-spin</button></div>
+  <div class="ctl"><button id="btn-shadow" class="active" title="Toggle shadow casting">Shadows</button></div>
+  <div class="sep"></div>
+  <div class="ctl"><button id="btn-reset" title="Reset the camera">Reset view</button></div>
+</div>
+
+<div id="perf" class="panel">
+  <div><b id="p-fps">—</b> fps</div>
+  <div><span id="p-tris">—</span> tris</div>
+  <div><span id="p-calls">—</span> calls</div>
+</div>
+
+<div id="loader"><div class="box"><div class="ring"></div><p>Raising the lattice…</p></div></div>
+
+<div id="hint" class="panel">
+  <h2>This page needs a local web server</h2>
+  <p>
+    Your browser blocked the local scripts because the page was opened directly from disk.
+    Run <code>serve.cmd</code> and open <code>http://localhost:8080/</code>.
+  </p>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="src/eiffelGenesis.js"></script>
+<script>
+  window.__pageError = null;
+  window.addEventListener('error', function (e) {
+    window.__pageError = e.message || String(e.error);
+    var h = document.getElementById('hint');
+    var l = document.getElementById('loader');
+    if (l) l.classList.add('done');
+    if (h) {
+      h.querySelector('h2').textContent = 'Something went wrong';
+      h.querySelector('p').textContent = window.__pageError;
+      h.classList.add('show');
+    }
+  });
+  if (typeof THREE === 'undefined' || typeof EiffelGenesis === 'undefined') {
+    document.getElementById('loader').classList.add('done');
+    document.getElementById('hint').classList.add('show');
+  }
+</script>
+<script src="src/main.js"></script>
+</body>
+</html>

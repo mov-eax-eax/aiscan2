@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stage 1 — does the silhouette read?</title>
+<style>
+  :root{
+    --paper:#f7f5f0; --card:#fffefb; --ink:#1d2027; --soft:#6b6f7a;
+    --rule:#ddd8cd; --accent:#8a2f22; --model:#243040; --ghost:#b9b3a6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{padding:22px 26px 14px;border-bottom:1px solid var(--rule)}
+  h1{margin:0 0 3px;font-size:16px;letter-spacing:.05em;text-transform:uppercase}
+  .sub{color:var(--soft);font-size:12px}
+  .sub b{color:var(--accent);font-weight:600}
+  main{display:grid;grid-template-columns:300px 300px minmax(320px,1fr);gap:18px;padding:20px 26px 40px;align-items:start}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px}
+  .card h2{margin:0 0 8px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);font-weight:650}
+  canvas{display:block;width:100%;height:auto;border-radius:4px}
+  .refimg{width:100%;height:auto;border-radius:4px;display:block}
+  .note{margin:9px 0 0;font-size:11px;color:var(--soft);line-height:1.5}
+  table{border-collapse:collapse;width:100%;font-size:11.5px;margin-top:4px}
+  th,td{border-bottom:1px solid var(--rule);padding:3px 5px;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--soft);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+  .ok{color:#2f6b3f;font-weight:700}
+  .warn{color:var(--accent);font-weight:700}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+  @media(max-width:1050px){main{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Stage 1 — the flat silhouette</h1>
+  <div class="sub" id="sub">loading profile…</div>
+</header>
+
+<main>
+  <div class="card">
+    <h2>1 · Filled silhouette</h2>
+    <canvas id="sil" width="560" height="1000"></canvas>
+    <p class="note">
+      No lattice, no decks, no extrusions — just the envelope and the arch void.
+      <b>If this alone does not read as the Eiffel Tower, nothing downstream will.</b>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>2 · The profile itself</h2>
+    <canvas id="chart" width="560" height="1000"></canvas>
+    <p class="note">
+      <span class="swatch" style="background:#243040"></span>faceted polyline (the definition)<br>
+      <span class="swatch" style="background:#b9b3a6"></span>straight base-to-apex chord<br>
+      <span class="swatch" style="background:#8a2f22"></span>attested anchors
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>3 · Reference — the dimensioned elevation</h2>
+    <img class="refimg" src="research/plates/dimensions-tour-eiffel-pasted.png" alt="dimensioned elevation">
+    <p class="note">Compare by eye. The concavity below the 2nd platform is the thing to check.</p>
+  </div>
+
+  <div class="card" style="grid-column:1/-1">
+    <h2>4 · The numbers the eye is checking</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <div>
+        <div class="note" style="margin:0 0 4px">Concavity — how much wider a naive triangle is</div>
+        <table id="conc"></table>
+      </div>
+      <div>
+        <div class="note" style="margin:0 0 4px">Sampler fidelity at the anchors</div>
+        <table id="anch"></table>
+      </div>
+      <div>
+        <div class="note" style="margin:0 0 4px">Derived arch (from constraints, not a contested number)</div>
+        <table id="arch"></table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="module">
+import { profileHalf, shaftHalf, legOuterHalf, legInnerFaceHalf, DECKS, FACETS, FACET_BOUNDS, ANCHORS, ARCH, OFFICIAL, metrics } from './src/geom/profile.js';
+
+const M = metrics();
+const H = OFFICIAL.height;            // 330
+const PAD = 26;
+
+/* ---------------- 1. filled silhouette ---------------- */
+(() => {
+  const c = document.getElementById('sil'), g = c.getContext('2d');
+  const sx = (c.width - 2 * PAD) / (OFFICIAL.baseOuter * 1.16);
+  const sy = (c.height - 2 * PAD) / H;
+  const s = Math.min(sx, sy);
+  const ox = c.width / 2, oy = c.height - PAD;
+  const X = (m) => ox + m * s, Y = (m) => oy - m * s;
+  const sx0 = s, sy0 = s;
+
+  g.fillStyle = '#fffefb'; g.fillRect(0, 0, c.width, c.height);
+
+  // ground rule
+  g.strokeStyle = '#ddd8cd'; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(PAD * 0.4, Y(0) + 0.5); g.lineTo(c.width - PAD * 0.4, Y(0) + 0.5); g.stroke();
+
+  // outer outline — the SHAFT, not the deck envelope
+  const left = [], right = [];
+  const step = 1.5;
+  for (let y = 0; y <= H; y += step) { const w = shaftHalf(y); left.push([-w, y]); right.push([w, y]); }
+
+  g.beginPath();
+  g.moveTo(X(left[0][0]), Y(0));
+  left.forEach(([w, y]) => g.lineTo(X(w), Y(y)));
+  right.slice().reverse().forEach(([w, y]) => g.lineTo(X(w), Y(y)));
+  g.closePath();
+
+  // the THREE DECKS protrude past the shaft — the bars that carry identity
+  DECKS.forEach(d => {
+    g.moveTo(X(-d.half), Y(d.y));
+    g.lineTo(X(d.half), Y(d.y));
+    g.lineTo(X(d.half), Y(d.y + d.thick));
+    g.lineTo(X(-d.half), Y(d.y + d.thick));
+    g.closePath();
+  });
+
+  // THE GREAT VOID — punched from the ground all the way to the 2nd platform,
+  // bounded by the legs' inner faces. It is ONE void, not just an arch-shaped
+  // notch under the 1st platform: the four uprights stay isolated to L2, so the
+  // slot continues up between them. Filling this is the recurring fault.
+  g.moveTo(X(-legInnerFaceHalf(0)), Y(0));
+  for (let y = 0; y <= OFFICIAL.L2; y += 1.5) g.lineTo(X(-legInnerFaceHalf(y)), Y(y));
+  for (let y = OFFICIAL.L2; y >= 0; y -= 1.5) g.lineTo(X(legInnerFaceHalf(y)), Y(y));
+  g.closePath();
+
+  g.fillStyle = '#243040';
+  g.fill('evenodd');
+
+  // material that DOES cross the void: the two belts, and the four arches
+  g.fillStyle = '#243040';
+  [[OFFICIAL.L1, 3.6], [OFFICIAL.L2, 3.2]].forEach(([y, t]) => {
+    g.fillRect(X(-legOuterHalf(y)), Y(y + t / 2), 2 * legOuterHalf(y) * sx0, t * sy0);
+  });
+  const pts = ARCH.points(72);
+  g.beginPath();
+  pts.forEach((p, i) => i ? g.lineTo(X(p.x), Y(p.y)) : g.moveTo(X(p.x), Y(p.y)));
+  g.lineWidth = 2.6 * sx0; g.strokeStyle = '#243040'; g.stroke();
+
+  // facet boundaries, faint — the faceting is the point
+  g.strokeStyle = 'rgba(255,255,255,.22)'; g.lineWidth = 1;
+  FACET_BOUNDS.forEach(y => {
+    if (y <= 0 || y >= OFFICIAL.ironTop) return;
+    const w = profileHalf(y);
+    g.beginPath(); g.moveTo(X(-w), Y(y) + 0.5); g.lineTo(X(w), Y(y) + 0.5); g.stroke();
+  });
+
+  // scale bar
+  g.strokeStyle = '#8a2f22'; g.lineWidth = 1.4;
+  g.beginPath(); g.moveTo(X(-62.45), Y(-6)); g.lineTo(X(62.45), Y(-6)); g.stroke();
+  g.fillStyle = '#8a2f22'; g.font = '11px ui-sans-serif';
+  g.textAlign = 'center'; g.fillText('124.9 m', ox, Y(-9));
+  g.textAlign = 'left'; g.fillText('330 m', X(64), Y(H / 2));
+})();
+
+/* ---------------- 2. profile chart ---------------- */
+(() => {
+  const c = document.getElementById('chart'), g = c.getContext('2d');
+  const sx = (c.width - 2 * PAD) / 70;
+  const sy = (c.height - 2 * PAD) / (H + 24);
+  const s = Math.min(sx, sy);
+  const ox = c.width / 2, oy = c.height - PAD - 12 * s;
+  const X = (m) => ox + m * s, Y = (m) => oy - m * s;
+
+  g.fillStyle = '#fffefb'; g.fillRect(0, 0, c.width, c.height);
+  g.strokeStyle = '#ddd8cd'; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(X(-63), Y(0) + .5); g.lineTo(X(63), Y(0) + .5); g.stroke();
+
+  // platform levels
+  g.setLineDash([3, 4]); g.strokeStyle = '#e6e0d4';
+  [57.63, 115.73, 226.13, 276.13].forEach(y => {
+    g.beginPath(); g.moveTo(X(-64), Y(y) + .5); g.lineTo(X(64), Y(y) + .5); g.stroke();
+  });
+  g.setLineDash([]);
+
+  // straight chord for contrast
+  g.strokeStyle = '#b9b3a6'; g.lineWidth = 1.4; g.setLineDash([6, 5]);
+  [1, -1].forEach(sg => {
+    g.beginPath(); g.moveTo(X(sg * 62.45), Y(0)); g.lineTo(X(0), Y(H)); g.stroke();
+  });
+  g.setLineDash([]);
+
+  // the faceted polyline
+  g.strokeStyle = '#243040'; g.lineWidth = 2;
+  [1, -1].forEach(sg => {
+    g.beginPath();
+    FACETS.forEach((p, i) => { const x = X(sg * p.half), y = Y(p.y); i ? g.lineTo(x, y) : g.moveTo(x, y); });
+    g.lineTo(X(0), Y(H));
+    g.stroke();
+  });
+
+  // facet corners
+  g.fillStyle = '#243040';
+  FACETS.forEach(p => [1, -1].forEach(sg => { g.beginPath(); g.arc(X(sg * p.half), Y(p.y), 2.1, 0, 7); g.fill(); }));
+
+  // anchors
+  g.fillStyle = '#8a2f22';
+  ANCHORS.forEach(a => [1, -1].forEach(sg => {
+    g.beginPath(); g.arc(X(sg * a.half), Y(a.y), 3.6, 0, 7); g.fill();
+  }));
+  g.font = '10.5px ui-sans-serif'; g.fillStyle = '#8a2f22'; g.textAlign = 'left';
+  ANCHORS.forEach(a => g.fillText(`${a.half.toFixed(1)} @ ${a.y}`, X(63) - 96, Y(a.y) - 5));
+})();
+
+/* ---------------- 4. numbers ---------------- */
+document.getElementById('sub').innerHTML =
+  `<b>${M.facetCount} facets</b> · base:height <b>${M.baseToHeight.toFixed(3)}</b> · ` +
+  `sampler max error <b>${Math.max(...M.samplerErr.map(e => e.errPct)).toFixed(3)} %</b>`;
+
+const conc = document.getElementById('conc');
+conc.innerHTML = '<tr><th>height</th><th>real</th><th>triangle</th><th>ratio</th></tr>' +
+  M.concavity.map(c => `<tr><td>${c.y} m</td><td>${c.real.toFixed(2)}</td><td>${c.straightChord.toFixed(2)}</td>` +
+    `<td class="${c.ratio > 1.4 ? 'warn' : ''}">×${c.ratio.toFixed(2)}</td></tr>`).join('');
+
+const anch = document.getElementById('anch');
+anch.innerHTML = '<tr><th>height</th><th>attested</th><th>sampler</th><th>error</th></tr>' +
+  M.samplerErr.map(e => `<tr><td>${e.y} m</td><td>${e.want.toFixed(3)}</td><td>${e.got.toFixed(3)}</td>` +
+    `<td class="ok">${e.errPct.toFixed(3)} %</td></tr>`).join('');
+
+const ar = document.getElementById('arch');
+ar.innerHTML =
+  `<tr><td>half-span (inner gap / 2)</td><td>${ARCH.halfSpan.toFixed(3)} m</td></tr>` +
+  `<tr><td>rise</td><td>${(ARCH.crownY - ARCH.springingY).toFixed(2)} m</td></tr>` +
+  `<tr><td>radius</td><td>${ARCH.R.toFixed(3)} m</td></tr>` +
+  `<tr><td>centre above springing</td><td>${ARCH.centreAboveSpringing.toFixed(2)} m</td></tr>` +
+  `<tr><td>included angle</td><td>${ARCH.includedAngleDeg.toFixed(1)}° ${ARCH.includedAngleDeg > 180 ? '(> semicircle)' : ''}</td></tr>` +
+  `<tr><td>crown clears L1 girder base (47.90)</td><td class="ok">${(47.9 - ARCH.crownY).toFixed(2)} m clear</td></tr>`;
+</script>
+</body>
+</html>

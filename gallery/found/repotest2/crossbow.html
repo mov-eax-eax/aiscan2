@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compound Crossbow — mechanism &amp; ballistics</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='13' fill='none' stroke='%234fd1ff' stroke-width='3'/><circle cx='16' cy='16' r='4' fill='%234fd1ff'/></svg>">
+<style>
+  :root{
+    --bg:#0a0d12; --panel:rgba(10,14,20,.82); --line:rgba(120,160,200,.20);
+    --ink:#dce8f5; --dim:#8fa4bb; --hi:#4fd1ff; --warm:#ffd24a; --good:#6ee7a8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font:13px/1.45 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+  #view{position:fixed;inset:0;width:100%;height:100%;display:block}
+
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;backdrop-filter:blur(14px) saturate(1.2);
+    box-shadow:0 12px 40px rgba(0,0,0,.45)}
+
+  /* ---- top bar ---- */
+  #top{top:14px;left:14px;right:14px;height:52px;display:flex;align-items:center;gap:8px;padding:0 12px}
+  #top h1{font-size:13px;font-weight:650;letter-spacing:.10em;text-transform:uppercase;margin:0 12px 0 0;white-space:nowrap}
+  #top h1 span{color:var(--hi)}
+  .views{display:flex;gap:5px;flex-wrap:wrap}
+  button{font:inherit;color:var(--ink);background:rgba(255,255,255,.05);
+    border:1px solid var(--line);border-radius:7px;padding:6px 10px;cursor:pointer;
+    transition:.14s;white-space:nowrap}
+  button:hover{background:rgba(79,209,255,.14);border-color:rgba(79,209,255,.5)}
+  button.on{background:rgba(79,209,255,.22);border-color:var(--hi);color:#eaf7ff}
+  #spacer{flex:1}
+
+  /* ---- right readout ---- */
+  #hud{top:78px;right:14px;width:322px;padding:12px 14px}
+  #hud h2{margin:0 0 8px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px dotted rgba(120,160,200,.13)}
+  .row:last-child{border-bottom:0}
+  .k{color:var(--dim)}
+  .v{font-variant-numeric:tabular-nums;font-weight:600}
+  .v.hi{color:var(--hi)} .v.warm{color:var(--warm)} .v.good{color:var(--good)}
+  hr{border:0;border-top:1px solid var(--line);margin:10px 0}
+
+  /* ---- bottom left ---- */
+  #controls{left:14px;bottom:14px;padding:12px 14px;width:340px}
+  .ctlrow{display:flex;align-items:center;gap:10px;margin:7px 0}
+  input[type=range]{flex:1;accent-color:var(--hi)}
+  .lbl{font-size:11px;color:var(--dim);width:74px;letter-spacing:.06em;text-transform:uppercase}
+  #chart{display:block;width:420px;height:150px;border-radius:8px;margin-top:10px;border:1px solid var(--line)}
+  #chartwrap{position:relative;width:420px}
+
+  /* ---- status ---- */
+  #status{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
+    font-size:11px;color:var(--dim);background:var(--panel);border:1px solid var(--line);
+    padding:5px 14px;border-radius:20px;white-space:nowrap}
+  kbd{background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:4px;
+    padding:1px 5px;font:11px ui-monospace,monospace}
+  #hint{position:fixed;left:14px;top:78px;width:250px;padding:11px 13px;font-size:11.5px;color:var(--dim)}
+  #hint b{color:var(--ink);font-weight:600;display:block;margin-bottom:5px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  #hint .li{margin:3px 0}
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div class="panel" id="top">
+  <h1>Compound <span>Match Crossbow</span></h1>
+  <div class="views">
+    <button data-view="full">Full</button>
+    <button data-view="action" class="on">Action</button>
+    <button data-view="side">Side</button>
+    <button data-view="top">Top</button>
+    <button data-view="cam">Cam</button>
+    <button data-view="riser">Riser</button>
+    <button data-view="trigger">Trigger</button>
+    <button data-view="string">String</button>
+    <button data-view="range">Range</button>
+  </div>
+  <div id="spacer"></div>
+  <button id="b-cock">Cock &amp; Draw <kbd>Space</kbd></button>
+  <button id="b-fire">Loose <kbd>F</kbd></button>
+  <button id="b-slow">Slow-mo <kbd>S</kbd></button>
+  <button id="b-reset">Reset <kbd>R</kbd></button>
+</div>
+
+<div class="panel" id="hint">
+  <b>Controls</b>
+  <div class="li"><kbd>drag</kbd> orbit · <kbd>right-drag</kbd> pan · <kbd>wheel</kbd> zoom</div>
+  <div class="li"><kbd>Space</kbd> cock then loose · <kbd>F</kbd> fire</div>
+  <div class="li"><kbd>↑</kbd><kbd>↓</kbd> scope elevation (¼ MOA clicks)</div>
+  <div class="li"><kbd>←</kbd><kbd>→</kbd> crosswind · <kbd>C</kbd> zero range</div>
+  <div class="li"><kbd>S</kbd> slow motion · <kbd>T</kbd> trajectory trace</div>
+</div>
+
+<div class="panel" id="hud">
+  <h2>Mechanism</h2>
+  <div class="row"><span class="k">Draw length</span><span class="v hi" id="h-draw">0.00 in</span></div>
+  <div class="row"><span class="k">Draw force</span><span class="v hi" id="h-force">0.0 lbf</span></div>
+  <div class="row"><span class="k">Holding weight</span><span class="v" id="h-hold">–</span></div>
+  <div class="row"><span class="k">Let-off</span><span class="v good" id="h-let">–</span></div>
+  <div class="row"><span class="k">Limb stored energy</span><span class="v" id="h-energy">0 J</span></div>
+  <hr>
+  <h2>Shot</h2>
+  <div class="row"><span class="k">Bolt velocity</span><span class="v hi" id="h-speed">–</span></div>
+  <div class="row"><span class="k">Kinetic energy</span><span class="v" id="h-ke">–</span></div>
+  <div class="row"><span class="k">Time of flight</span><span class="v" id="h-tof">–</span></div>
+  <div class="row"><span class="k">Gravity drop</span><span class="v" id="h-drop">–</span></div>
+  <div class="row"><span class="k">Sight correction</span><span class="v warm" id="h-moa">–</span></div>
+  <hr>
+  <div class="row"><span class="k">Phase</span><span class="v good" id="h-phase">brace</span></div>
+</div>
+
+<div class="panel" id="controls">
+  <div class="ctlrow"><span class="lbl">Draw</span><input id="drag" type="range" min="0" max="1000" value="0"></div>
+  <div id="chartwrap"><canvas id="chart"></canvas></div>
+</div>
+<div id="status">loading…</div>
+
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
+

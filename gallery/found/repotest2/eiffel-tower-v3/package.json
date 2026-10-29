@@ -1,0 +1,11 @@
+{
+  "name": "eiffel-tower-v3",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Research-driven technical model of the Eiffel Tower. ES modules, no bundler; served over HTTP.",
+  "scripts": {
+    "serve": "python -m http.server 8081",
+    "verify": "node verify/run.mjs"
+  }
+}

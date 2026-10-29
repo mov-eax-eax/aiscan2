@@ -1,0 +1,3 @@
+TITLE: EIFFEL-OK 312256 tris 187 calls
+DBG: {"nightT":1,"sun":0,"sky":1,"frames":8}
+SHOT: F:/repotest2/_shot_night_forced.png

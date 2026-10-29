@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eiffel Tower — full model</title>
+<style>
+  :root{--ink:#ece6da;--panel:rgba(15,17,21,.68);--line:rgba(228,210,178,.20);--accent:#d9a961}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:#0d0f13}
+  body{font:13px/1.5 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+  canvas{display:block}
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+         backdrop-filter:blur(13px);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  #info{top:14px;left:14px;padding:12px 15px;max-width:268px}
+  #info h1{margin:0 0 2px;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+  #info .sub{margin:0 0 9px;font-size:11px;opacity:.6}
+  #info dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:11.5px}
+  #info dt{opacity:.55}#info dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+  #views{top:14px;right:14px;padding:6px;display:flex;flex-direction:column;gap:4px}
+  #layers{top:232px;right:14px;padding:10px 12px;max-height:calc(100vh - 320px);overflow:auto;width:182px}
+  #layers h2{margin:0 0 7px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.55;font-weight:650}
+  #layers label{display:flex;align-items:center;gap:6px;font-size:11px;padding:2px 0;cursor:pointer;opacity:.9}
+  #layers input{accent-color:var(--accent)}
+  button{appearance:none;cursor:pointer;color:var(--ink);background:rgba(255,255,255,.05);
+         border:1px solid var(--line);border-radius:7px;padding:6px 10px;font:inherit;font-size:11.5px;
+         text-align:left;transition:background .15s,border-color .15s}
+  button:hover{background:rgba(217,169,97,.16);border-color:rgba(217,169,97,.5)}
+  button.active{background:rgba(217,169,97,.24);border-color:var(--accent)}
+  #bar{bottom:14px;left:50%;transform:translateX(-50%);padding:9px 13px;display:flex;gap:13px;
+       align-items:center;flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 28px)}
+  .ctl{display:flex;align-items:center;gap:7px}
+  .ctl label{font-size:11px;opacity:.6;white-space:nowrap}
+  input[type=range]{appearance:none;width:104px;height:3px;border-radius:2px;outline:none;
+    background:linear-gradient(90deg,#2b3a5c,#7fa6d8 42%,#f0c98a 68%,#fff2d8)}
+  input[type=range]::-webkit-slider-thumb{appearance:none;width:13px;height:13px;border-radius:50%;
+    background:#fff4e2;border:1px solid rgba(0,0,0,.35);cursor:grab}
+  #perf{bottom:14px;right:14px;padding:6px 10px;font-size:10.5px;opacity:.75;
+        font-variant-numeric:tabular-nums;line-height:1.5}
+  #loader{position:fixed;inset:0;display:grid;place-items:center;background:#0d0f13;z-index:9;transition:opacity .6s}
+  #loader.done{opacity:0;pointer-events:none}
+  #loader .ring{width:34px;height:34px;margin:0 auto 12px;border:2px solid rgba(217,169,97,.2);
+    border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+  #loader p{margin:0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.6;text-align:center}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  #err{position:fixed;left:14px;bottom:14px;max-width:44vw;padding:11px 13px;background:#3a1d1a;
+       color:#ffd9d2;font-size:11.5px;border-radius:8px;display:none;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div id="info" class="panel">
+  <h1>Tour Eiffel</h1>
+  <p class="sub">full model · metres · 1 : 1</p>
+  <dl>
+    <dt>Height</dt><dd>330.0 m</dd>
+    <dt>Base</dt><dd>124.90 m</dd>
+    <dt>Platforms</dt><dd>57.63 · 115.73 · 276.13</dd>
+    <dt>Panels</dt><dd id="pn">29</dd>
+    <dt>Members</dt><dd id="mc">—</dd>
+    <dt>Draw calls</dt><dd id="dc">—</dd>
+  </dl>
+</div>
+
+<div id="views" class="panel">
+  <button data-v="hero" class="active">Hero</button>
+  <button data-v="front">Front elevation</button>
+  <button data-v="side">Side elevation</button>
+  <button data-v="arch">The arch</button>
+  <button data-v="base">Legs &amp; base</button>
+  <button data-v="l1">First platform</button>
+  <button data-v="through">See-through</button>
+  <button data-v="top">Summit</button>
+</div>
+
+<div id="layers" class="panel"><h2>Layers</h2><div id="layerlist"></div></div>
+
+<div id="bar" class="panel">
+  <div class="ctl"><label for="tod">Time of day</label><input id="tod" type="range" min="0" max="1" step="0.01" value="0.74"></div>
+  <div class="ctl"><label for="clip">Section at</label><input id="clip" type="range" min="0" max="330" step="1" value="330"><span id="clipv" style="font-size:11px;opacity:.6;width:38px">—</span></div>
+  <div class="ctl"><button id="ortho">Orthographic</button></div>
+  <div class="ctl"><button id="spin" class="active">Spin</button></div>
+  <div class="ctl"><button id="quality">Quality: Medium</button></div>
+  <div class="ctl"><button id="bloom" class="active">Bloom</button></div>
+  <div class="ctl"><button id="reset">Reset</button></div>
+</div>
+
+<div id="perf" class="panel"><div><span id="pf">—</span> fps</div><div><span id="pt">—</span> tris</div><div><span id="pc">—</span> calls</div></div>
+<div id="loader"><div><div class="ring"></div><p>building the tower…</p></div></div>
+<div id="err"></div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+} }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { buildTowerDetailed } from './src/build/tower-detailed.js';
+import * as P from './src/geom/profile.js';
+
+const errEl = document.getElementById('err');
+const errors = [];
+function note(msg) { errors.push(msg); errEl.style.display = 'block'; errEl.textContent = errors.join('\n'); }
+window.addEventListener('error', e => note('✕ ' + e.message));
+window.addEventListener('unhandledrejection', e => note('✕ ' + (e.reason?.message || e.reason)));
+
+/* ---------------- renderer ---------------- */
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25));   // 2x was quadrupling the fill cost
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.26;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.localClippingEnabled = true;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0xc7d8e8, 800, 3600);
+
+const persp = new THREE.PerspectiveCamera(34, innerWidth / innerHeight, 0.5, 5000);
+persp.position.set(238, 196, 430);
+const aspect = innerWidth / innerHeight;
+const ORTHO_H = 380;
+const ortho = new THREE.OrthographicCamera(-ORTHO_H * aspect / 2, ORTHO_H * aspect / 2, ORTHO_H / 2, -ORTHO_H / 2, 0.5, 5000);
+ortho.position.set(0, 165, 900);
+let camera = persp;
+
+let controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 152, 0);
+controls.maxPolarAngle = Math.PI * 0.495;
+controls.minDistance = 30;
+controls.maxDistance = 1600;
+controls.autoRotateSpeed = 0.4;
+
+/* ---------------- sky + PMREM environment ---------------- */
+const skyCanvas = document.createElement('canvas');
+skyCanvas.width = 128; skyCanvas.height = 256;
+const skyCtx = skyCanvas.getContext('2d');
+const skyTex = new THREE.CanvasTexture(skyCanvas);
+skyTex.colorSpace = THREE.SRGBColorSpace;
+skyTex.mapping = THREE.EquirectangularReflectionMapping;
+// The sky feeds the PMREM *and* is displayed. Without this the background is
+// black however good the environment is.
+scene.background = skyTex;
+const pmrem = new THREE.PMREMGenerator(renderer);
+let envRT = null;
+
+const PAL = {
+  night: { top: '#050912', hor: '#101c33', bot: '#080c12', fog: 0x0a1120, sun: 0x9fb4e0,
+           sunI: 0.28, elev: 0.30, azim: -2.30, hemi: 0.32, amb: 0.05, ground: 0x1e2228 },
+  day:   { top: '#2a68c0', hor: '#cfe0f2', bot: '#93a08a', fog: 0xc7d8e8, sun: 0xfff4e2,
+           sunI: 2.75, elev: 0.80, azim: 0.46, hemi: 0.90, amb: 0.16, ground: 0x8d9583 }
+};
+function palette(t) {
+  t = Math.min(1, Math.max(0, t));
+  const a = PAL.night, b = PAL.day, L = (x, y) => new THREE.Color(x).lerp(new THREE.Color(y), t);
+  return {
+    top: L(a.top, b.top), hor: L(a.hor, b.hor), bot: L(a.bot, b.bot), fog: L(a.fog, b.fog),
+    sun: L(a.sun, b.sun), ground: L(a.ground, b.ground),
+    sunI: a.sunI + (b.sunI - a.sunI) * t, elev: a.elev + (b.elev - a.elev) * t,
+    azim: a.azim + (b.azim - a.azim) * t, hemi: a.hemi + (b.hemi - a.hemi) * t,
+    amb: a.amb + (b.amb - a.amb) * t
+  };
+}
+function drawSky(p) {
+  const H = skyCanvas.height;
+  const g = skyCtx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, '#' + p.top.getHexString());
+  g.addColorStop(0.44, '#' + p.hor.getHexString());
+  g.addColorStop(0.50, '#' + p.hor.getHexString());
+  g.addColorStop(0.60, '#' + p.bot.getHexString());
+  g.addColorStop(1, '#' + p.bot.getHexString());
+  skyCtx.fillStyle = g; skyCtx.fillRect(0, 0, skyCanvas.width, H);
+  // a sun blob so the environment has a key direction
+  const u = ((p.azim / (Math.PI * 2)) + 0.5) * skyCanvas.width;
+  const v = (0.5 - p.elev / Math.PI) * H;
+  const rg = skyCtx.createRadialGradient(u, v, 0, u, v, H * 0.16);
+  rg.addColorStop(0, '#' + p.sun.getHexString());
+  rg.addColorStop(1, 'rgba(0,0,0,0)');
+  skyCtx.globalAlpha = 0.5; skyCtx.fillStyle = rg;
+  skyCtx.fillRect(0, 0, skyCanvas.width, H); skyCtx.globalAlpha = 1;
+  skyTex.needsUpdate = true;
+  const prev = envRT;
+  envRT = pmrem.fromEquirectangular(skyTex);
+  scene.environment = envRT.texture;
+  if (prev) prev.dispose();
+}
+
+/* ---------------- lights ---------------- */
+const hemi = new THREE.HemisphereLight(0xbcd8ff, 0x6f6b52, 0.86); scene.add(hemi);
+const amb = new THREE.AmbientLight(0xffffff, 0.13); scene.add(amb);
+const key = new THREE.DirectionalLight(0xfff3e2, 2.55);
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);   // 4096 over a 240 m frustum bought nothing visible
+Object.assign(key.shadow.camera, { left: -120, right: 120, top: 350, bottom: -20, near: 1, far: 2000 });
+key.shadow.camera.updateProjectionMatrix();
+key.shadow.bias = -0.0004; key.shadow.normalBias = 0.9;
+scene.add(key, key.target);
+const fill = new THREE.DirectionalLight(0xcfe0f5, 0.55);
+fill.position.set(420, 240, 430); scene.add(fill);
+
+const groundMat = new THREE.MeshStandardMaterial({ color: 0x8d9583, roughness: 0.95, metalness: 0.02 });
+const ground = new THREE.Mesh(new THREE.CircleGeometry(800, 96).rotateX(-Math.PI / 2), groundMat);
+ground.receiveShadow = true; scene.add(ground);
+
+/* ---------------- the model ---------------- */
+let tower;
+try {
+  tower = buildTowerDetailed({ detail: 1, rivets: true });
+  scene.add(tower);
+  document.getElementById('mc').textContent = tower.userData.memberCount.toLocaleString();
+  document.getElementById('pn').textContent = (tower.userData.panelBounds.length - 1) + ' panels';
+} catch (e) {
+  note('✕ tower build failed: ' + e.message);
+}
+
+/* ---------------- section plane ---------------- */
+const clipPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 1000);
+const clipEl = document.getElementById('clip'), clipV = document.getElementById('clipv');
+function setClip(v) {
+  clipPlane.constant = v;                       // keeps everything BELOW v
+  clipV.textContent = v >= 330 ? 'off' : v + ' m';
+  const on = v < 330;
+  if (tower) tower.traverse(o => {
+    if (!o.material) return;
+    o.material.clippingPlanes = on ? [clipPlane] : null;
+    o.material.needsUpdate = true;
+  });
+}
+clipEl.addEventListener('input', () => setClip(parseFloat(clipEl.value)));
+setClip(330);
+
+/* ---------------- layers ---------------- */
+const LAYER_LABEL = {
+  chord: 'Corner chords (arbalétriers)', treillis: 'Treillis — paired flats',
+  treillisFine: 'Panel rails', entretoise: 'Entretoises', gusset: 'Gussets',
+  rivet: 'Rivets', belt: 'The two belts', arch: 'Decorative arches',
+  deck: 'Decks', railing: 'Railings', frieze: 'First-floor frieze', masque: 'Masque',
+  shaft: 'Upper caisson', campanile: 'Campanile & lantern', antenna: 'Antenna & rods',
+  lift: 'Elevator rails', stair: 'Stair', stone: 'Masonry', panel: 'Decorative solid panels'
+};
+if (tower) {
+  const list = document.getElementById('layerlist');
+  Object.keys(tower.userData.layerMeshes).sort().forEach(name => {
+    const id = 'L_' + name;
+    const w = document.createElement('label');
+    w.innerHTML = `<input type="checkbox" id="${id}" checked> ${LAYER_LABEL[name] || name}`;
+    list.appendChild(w);
+    w.querySelector('input').addEventListener('change', e => tower.userData.setLayerVisible(name, e.target.checked));
+  });
+}
+
+/* ---------------- views ---------------- */
+const VIEWS = {
+  hero:    { pos: [262, 172, 505], tgt: [0, 146, 0] },
+  front:   { pos: [0, 168, 760],   tgt: [0, 168, 0] },
+  side:    { pos: [760, 168, 0],   tgt: [0, 168, 0] },
+  arch:    { pos: [140, 48, 300],  tgt: [0, 58, 0] },
+  base:    { pos: [0, 62, 235],   tgt: [0, 34, 0] },   // framed on the arch, above the control bar
+  l1:      { pos: [80, 78, 150],   tgt: [0, 66, 0] },
+  mid:     { pos: [78, 96, 128],   tgt: [0, 88, 0] },
+  through: { pos: [6, 82, 250],    tgt: [0, 86, 0] },
+  top:     { pos: [95, 300, 230],  tgt: [0, 284, 0] }
+};
+let spinWanted = true;
+function applyView(v) {
+  const t = VIEWS[v] || VIEWS.hero;
+  camera.position.set(...t.pos);
+  controls.target.set(...t.tgt);
+  if (camera.isOrthographicCamera) { camera.zoom = 1; camera.updateProjectionMatrix(); }
+  controls.update();
+}
+document.querySelectorAll('#views button').forEach(b => b.addEventListener('click', () => {
+  applyView(b.dataset.v);
+  document.querySelectorAll('#views button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  spinWanted = false; controls.autoRotate = false;
+  document.getElementById('spin').classList.remove('active');
+}));
+
+/* ---------------- ortho / perspective ---------------- */
+document.getElementById('ortho').addEventListener('click', (e) => {
+  const on = !e.target.classList.contains('active');
+  e.target.classList.toggle('active', on);
+  const wasTarget = controls.target.clone();
+  const wasPos = camera.position.clone();
+  controls.dispose();
+  camera = on ? ortho : persp;
+  const a = innerWidth / innerHeight;
+  if (on) {
+    const d = wasPos.distanceTo(wasTarget);
+    camera.top = d * Math.tan(THREE.MathUtils.degToRad(persp.fov / 2));
+    camera.bottom = -camera.top;
+    camera.left = -camera.top * a; camera.right = camera.top * a;
+    camera.near = 0.5; camera.far = 6000;
+    camera.position.copy(wasPos.clone().sub(wasTarget).normalize().multiplyScalar(1200).add(wasTarget));
+    camera.updateProjectionMatrix();
+  }
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.06;
+  controls.maxPolarAngle = Math.PI * 0.495;
+  controls.target.copy(wasTarget);
+  controls.autoRotate = spinWanted; controls.autoRotateSpeed = 0.4;
+  controls.update();
+});
+
+/* ---------------- time of day ---------------- */
+const tod = document.getElementById('tod');
+let dayMix = 0;
+function applyTod(v) {
+  dayMix = Math.min(1, v / 0.55);
+  const p = palette(dayMix);
+  drawSky(p);
+  scene.fog.color.copy(p.fog);
+  hemi.color.copy(p.hor); hemi.intensity = p.hemi;
+  amb.intensity = p.amb;
+  key.color.copy(p.sun); key.intensity = p.sunI;
+  const h = 1100;
+  key.position.set(Math.sin(p.azim) * Math.cos(p.elev) * h, Math.sin(p.elev) * h, Math.cos(p.azim) * Math.cos(p.elev) * h);
+  key.target.position.set(0, 150, 0); key.target.updateMatrixWorld();
+  groundMat.color.copy(p.ground);
+  fill.intensity = 0.55 * dayMix + 0.06;
+  const night = 1 - dayMix;
+  if (tower) tower.userData.setNight(night);
+  if (bloomPass) { bloomPass.strength = 0.9 * night; bloomPass.enabled = bloomOn && night > 0.04; }
+}
+tod.addEventListener('input', () => applyTod(parseFloat(tod.value)));
+
+/* ---------------- post-processing (optional; falls back to direct render) ---------------- */
+let composer = null, bloomPass = null, gtaoPass = null;
+async function setupPost() {
+  const [EC, RP, OP, SM, UB, GA] = await Promise.all([
+    import('three/addons/postprocessing/EffectComposer.js'),
+    import('three/addons/postprocessing/RenderPass.js'),
+    import('three/addons/postprocessing/OutputPass.js'),
+    import('three/addons/postprocessing/SMAAPass.js'),
+    import('three/addons/postprocessing/UnrealBloomPass.js'),
+    import('three/addons/postprocessing/GTAOPass.js')
+  ]);
+  composer = new EC.EffectComposer(renderer);
+  composer.addPass(new RP.RenderPass(scene, camera));
+  gtaoPass = new GA.GTAOPass(scene, camera, innerWidth, innerHeight);
+  gtaoPass.output = GA.GTAOPass.OUTPUT.Default;
+  // OPT-IN: GTAO over thousands of thin members is the single biggest cost.
+  gtaoPass.enabled = false;
+  composer.addPass(gtaoPass);
+  bloomPass = new UB.UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0, 0.7, 0.85);
+  composer.addPass(bloomPass);
+  composer.addPass(new SM.SMAAPass(innerWidth, innerHeight));
+  composer.addPass(new OP.OutputPass());
+}
+
+/* ---------------- toggles ---------------- */
+const spinBtn = document.getElementById('spin');
+spinBtn.addEventListener('click', () => {
+  spinWanted = !spinWanted; controls.autoRotate = spinWanted;
+  spinBtn.classList.toggle('active', spinWanted);
+});
+controls.autoRotate = true;
+const bloomBtn = document.getElementById('bloom');
+let bloomOn = true;
+bloomBtn.addEventListener('click', () => {
+  bloomOn = !bloomOn; bloomBtn.classList.toggle('active', bloomOn);
+  if (bloomPass) bloomPass.enabled = bloomOn && TIERS[tier].bloom && dayMix < 0.96;
+});
+document.getElementById('reset').addEventListener('click', () => {
+  applyView('hero'); spinWanted = true; controls.autoRotate = true; spinBtn.classList.add('active');
+});
+addEventListener('resize', () => {
+  const a = innerWidth / innerHeight;
+  persp.aspect = a; persp.updateProjectionMatrix();
+  if (camera.isOrthographicCamera) { camera.left = -camera.top * a; camera.right = camera.top * a; camera.updateProjectionMatrix(); }
+  renderer.setSize(innerWidth, innerHeight);
+  if (composer) composer.setSize(innerWidth, innerHeight);
+  if (gtaoPass && gtaoPass.setSize) gtaoPass.setSize(innerWidth, innerHeight);
+});
+
+/* ---------------- quality tiers, adaptive resolution, distance LOD ----------------
+ * The full model is ~8k members; the cost is fill rate and post-processing, not
+ * geometry. So quality steps the things that actually bite, and the renderer
+ * degrades itself if the frame budget is missed. */
+const TIERS = [
+  { name: 'Low',    pr: 1.00, shadow: 1024, gtao: false, bloom: false, fineLayers: false },
+  { name: 'Medium', pr: 1.25, shadow: 2048, gtao: false, bloom: true,  fineLayers: true  },
+  { name: 'High',   pr: 1.50, shadow: 2048, gtao: true,  bloom: true,  fineLayers: true  }
+];
+let tier = 1;
+const FINE = ['rivet', 'gusset', 'entretoise', 'treillisFine'];
+function applyTier(i) {
+  tier = Math.max(0, Math.min(TIERS.length - 1, i));
+  const t = TIERS[tier];
+  renderer.setPixelRatio(Math.min(devicePixelRatio, t.pr));
+  key.shadow.mapSize.set(t.shadow, t.shadow);
+  if (key.shadow.map) { key.shadow.map.dispose(); key.shadow.map = null; }
+  if (gtaoPass) gtaoPass.enabled = t.gtao;
+  if (bloomPass) bloomPass.enabled = t.bloom && bloomOn && dayMix < 0.96;
+  if (tower) FINE.forEach(n => tower.userData.setLayerVisible(n, t.fineLayers));
+  const btn = document.getElementById('quality');
+  if (btn) btn.textContent = 'Quality: ' + t.name;
+}
+document.getElementById('quality').addEventListener('click', () => applyTier((tier + 1) % TIERS.length));
+
+// distance LOD: the fine lacework is sub-pixel past ~420 m, so stop drawing it
+function lodByDistance() {
+  if (!tower || !TIERS[tier].fineLayers) return;
+  const d = camera.position.distanceTo(controls.target);
+  const near = d < 420;
+  FINE.forEach(n => tower.userData.setLayerVisible(n, near));
+}
+
+// adaptive: if we miss ~40 fps for a second, step down a tier (once per tier)
+let lowFrames = 0, autoDropped = 0;
+function adapt(fps) {
+  if (fps >= 40) { lowFrames = 0; return; }
+  if (++lowFrames < 2) return;
+  lowFrames = 0;
+  if (autoDropped < TIERS.length - 1) { autoDropped++; applyTier(Math.max(0, tier - 1)); }
+}
+/* ---------------- diagnostic probe (?probe=basic) ----------------
+ * Replaces every material with an unlit one. If the tower still renders dark
+ * under this, the fault is in the colours or the geometry, NOT the lighting. */
+const Q = new URLSearchParams(location.search);
+if (Q.get('probe') === 'normal' && tower) {
+  tower.traverse(o => { if (o.material) o.material = new THREE.MeshNormalMaterial(); });
+}
+if (Q.get('composer') === '0') { composer = null; }
+if (Q.get('hide') && tower) {
+  Q.get('hide').split(',').forEach(n => tower.userData.setLayerVisible(n.trim(), false));
+}
+if (Q.get('only') && tower) {
+  const keep = Q.get('only').split(',').map(s => s.trim());
+  Object.keys(tower.userData.layerMeshes).forEach(n => tower.userData.setLayerVisible(n, keep.includes(n)));
+}
+if (Q.get('shadows') === '0') renderer.shadowMap.enabled = false;
+if (Q.get('env') === '0') scene.environment = null;
+if (Q.get('fog') === '0') scene.fog = null;if (new URLSearchParams(location.search).get('probe') === 'basic' && tower) {
+  const flat = new THREE.MeshBasicMaterial({ vertexColors: true });
+  const flatNoV = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  tower.traverse(o => {
+    if (!o.material) return;
+    o.material = (o.geometry && o.geometry.attributes.color) ? flat : flatNoV;
+  });
+  const gw = new URLSearchParams(location.search).get('ground');
+  if (gw === '0') ground.visible = false;
+}
+/* ---------------- debug readout (?debug=1) ----------------
+ * Renders live renderer/light state as visible text so it survives a screenshot. */
+function debugReadout() {
+  let sample = null, inst = null, vc = null, mats = new Set();
+  if (tower) tower.traverse(o => {
+    if (!o.material) return;
+    mats.add(o.material.uuid);
+    if (!sample) {
+      sample = o.material.type + ' color=#' + (o.material.color ? o.material.color.getHexString() : '-');
+      vc = 'vertexColors=' + !!o.material.vertexColors;
+      if (o.isInstancedMesh && o.instanceColor) {
+        const c = new THREE.Color().fromBufferAttribute(o.instanceColor, 0);
+        inst = '#' + c.getHexString();
+      }
+    }
+  });
+  const L = [];
+  L.push('key  int=' + key.intensity.toFixed(2) + ' pos=' + key.position.toArray().map(v => v.toFixed(0)).join(',') +
+         ' tgt=' + key.target.position.toArray().join(',') + ' #' + key.color.getHexString());
+  L.push('hemi ' + hemi.intensity.toFixed(2) + '  amb ' + amb.intensity.toFixed(2) + '  fill ' + fill.intensity.toFixed(2));
+  L.push('env=' + (scene.environment ? 'yes' : 'NO') + '  bg=' + (scene.background ? 'yes' : 'NO') +
+         '  fog=' + (scene.fog ? 'yes' : 'no') + '  shadows=' + renderer.shadowMap.enabled);
+  L.push('tone=' + renderer.toneMapping + ' exp=' + renderer.toneMappingExposure + ' cs=' + renderer.outputColorSpace);
+  L.push('composer=' + (composer ? 'YES' : 'no') + ' bloom=' + (bloomPass ? (bloomPass.enabled ? 'on' : 'off') : '-') +
+         ' gtao=' + (gtaoPass ? (gtaoPass.enabled ? 'on' : 'off') : '-') + ' dayMix=' + dayMix.toFixed(2));
+  L.push('mats=' + mats.size + '  ' + sample + '  ' + vc + '  instColor0=' + inst);
+  L.push('dayMix=' + dayMix + '  sunI=' + palette(dayMix).sunI.toFixed(2));
+  const cnt = (tower && tower.userData.buckets) ? Object.entries(tower.userData.buckets).map(([k, v]) => k + '=' + v.length).join(' ') : '-';
+  L.push('buckets ' + cnt);
+  L.push('errors=' + (errors.length ? errors.join(' | ') : 'none'));
+  const el = document.createElement('div');
+  el.style.cssText = 'position:fixed;left:8px;top:8px;z-index:99;background:#000c;color:#0f0;' +
+    'font:12px/1.5 monospace;padding:10px;border-radius:6px;max-width:96vw;white-space:pre-wrap';
+  el.textContent = L.join('\n');
+  document.body.appendChild(el);
+}
+if (new URLSearchParams(location.search).get('debug') === '1') setTimeout(debugReadout, 3000);
+/* ---------------- boot ---------------- */
+applyTod(parseFloat(tod.value));
+
+// ?view=NAME — and PROVE it applied. This hook was silently absent for several rounds,
+// so every "frontal" render was actually the default 3/4 hero view (which is what the
+// user kept telling me, and I kept assuring them otherwise). It now sets the view,
+// disables auto-spin so it cannot drift, and reports the result on screen.
+{
+  const qv = new URLSearchParams(location.search).get('view');
+  if (qv && VIEWS[qv]) {
+    applyView(qv);
+    spinWanted = false;
+    controls.autoRotate = false;
+    const sb = document.getElementById('spin');
+    if (sb) sb.classList.remove('active');
+    console.log('[view] applied', qv, 'cam', camera.position.toArray().map(n => n.toFixed(0)).join(','),
+                'tgt', controls.target.toArray().join(','));
+  } else if (qv) {
+    console.warn('[view] unknown view "' + qv + '"; have: ' + Object.keys(VIEWS).join(', '));
+  }
+}
+// The model is ready now; post-processing is an enhancement, so it must NOT gate
+// the loader. Previously a slow addon fetch left the tower behind a dark overlay.
+document.getElementById('loader').classList.add('done');
+setupPost().then(() => {
+  applyTier(1);
+}).catch(e => {
+  note('· post-processing unavailable (' + e.message + ') — rendering directly');
+});
+
+const pf = document.getElementById('pf'), pt = document.getElementById('pt'), pc = document.getElementById('pc');
+const dc = document.getElementById('dc');
+let last = performance.now(), acc = 0, frames = 0;
+renderer.setAnimationLoop((now) => {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  controls.update();
+  if ((frames & 15) === 0) lodByDistance();
+  if (composer) composer.render(dt); else renderer.render(scene, camera);
+  acc += dt; frames++;
+  if (acc >= 0.5) {
+    const fps = Math.round(frames / acc);
+    pf.textContent = fps;
+    pt.textContent = (renderer.info.render.triangles / 1e6).toFixed(2) + 'M';
+    pc.textContent = renderer.info.render.calls;
+    dc.textContent = renderer.info.render.calls;
+    adapt(fps);
+    acc = 0; frames = 0;
+  }
+});
+</script>
+</body>
+</html>

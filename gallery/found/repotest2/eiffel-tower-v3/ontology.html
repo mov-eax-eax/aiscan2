@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Element Ontology of the Eiffel Tower</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23161a20'/%3E%3Cpath d='M15.6 4 L16.8 4 L19.4 23 L21.6 29 L10.4 29 L12.6 23 Z' fill='%23c9a227'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --panel: #ffffff;
+    --ink: #1d2027;
+    --ink-soft: #55596a;
+    --rule: #ddd8cd;
+    --rule-soft: #ece8df;
+    --accent: #8a6d1f;
+    --accent-bg: #fdf6e3;
+    --quote-bg: #f3f0e8;
+    --code-bg: #f0ede6;
+    --th-bg: #efeae0;
+    --unverified: #a33a2a;
+    --ok: #2f6b3f;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15.5px/1.62 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { display: grid; grid-template-columns: 310px minmax(0, 1fr); gap: 0; max-width: 1500px; margin: 0 auto; }
+
+  /* ---------- sidebar ---------- */
+  aside {
+    position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
+    padding: 26px 18px 40px 22px; border-right: 1px solid var(--rule);
+    background: linear-gradient(180deg, #fbf9f4, #f4f1ea);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  aside h1 { font-size: 13px; letter-spacing: .09em; text-transform: uppercase; margin: 0 0 3px; color: var(--accent); }
+  aside .meta { font-size: 11px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.5; }
+  aside nav a {
+    display: block; font-size: 12.2px; line-height: 1.35; padding: 3px 8px 3px 9px;
+    color: var(--ink-soft); text-decoration: none; border-left: 2px solid transparent;
+    border-radius: 0 4px 4px 0;
+  }
+  aside nav a:hover { background: #efe9db; color: var(--ink); }
+  aside nav a.active { border-left-color: var(--accent); background: #f4ecd8; color: #4a3a10; font-weight: 600; }
+  aside nav a.lvl1 { font-weight: 700; color: var(--ink); font-size: 12.8px; margin-top: 9px; }
+  aside nav a.lvl3 { padding-left: 22px; font-size: 11.6px; opacity: .86; }
+  aside .legend { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 10.8px; color: var(--ink-soft); line-height: 1.6; }
+  aside .legend b { color: var(--ink); }
+
+  /* ---------- document switcher ---------- */
+  .switcher { display: flex; flex-direction: column; gap: 3px; margin: 0 0 15px; }
+  .switcher button {
+    appearance: none; cursor: pointer; text-align: left; font: inherit; font-size: 11.8px;
+    padding: 6px 9px; border-radius: 6px; border: 1px solid var(--rule);
+    background: #fff; color: var(--ink-soft); line-height: 1.3;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .switcher button:hover { border-color: var(--accent); color: var(--ink); }
+  .switcher button.active { background: #f4ecd8; border-color: var(--accent); color: #4a3a10; font-weight: 650; }
+  .switcher button small { display: block; font-weight: 400; opacity: .72; font-size: 10.4px; margin-top: 1px; }
+
+  /* ---------- document ---------- */
+  main { padding: 40px 56px 140px; max-width: 1010px; }
+  article { font-size: 15.5px; }
+  article > h1:first-child { display: none; }        /* shown in the sidebar instead */
+  h1, h2, h3, h4 { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.25; color: #14161b; }
+  h2 {
+    font-size: 23px; margin: 54px 0 14px; padding-bottom: 8px;
+    border-bottom: 2px solid var(--rule); letter-spacing: -.01em;
+  }
+  h3 { font-size: 17.5px; margin: 34px 0 10px; color: #2a2d36; }
+  h4 { font-size: 15px; margin: 26px 0 8px; color: #3a3e4a; }
+  p { margin: 0 0 13px; }
+  a { color: #7a5c12; }
+  strong { color: #101216; }
+  ul, ol { margin: 0 0 14px; padding-left: 24px; }
+  li { margin: 3px 0; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 40px 0; }
+
+  /* verbatim French quotations are the point of this document — make them sing */
+  blockquote {
+    margin: 16px 0; padding: 13px 18px 13px 20px; background: var(--quote-bg);
+    border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;
+    font-style: italic; color: #33302a;
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .855em; background: var(--code-bg); padding: 1.5px 5px; border-radius: 4px;
+  }
+  pre { background: var(--code-bg); padding: 14px 16px; border-radius: 7px; overflow-x: auto; border: 1px solid var(--rule-soft); }
+  pre code { background: none; padding: 0; font-size: 12.5px; line-height: 1.55; }
+
+  table {
+    border-collapse: collapse; width: 100%; margin: 18px 0; font-size: 13.4px;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  th, td { border: 1px solid var(--rule); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--th-bg); font-weight: 650; font-size: 12.6px; }
+  tr:nth-child(even) td { background: #fbfaf7; }
+  td code { font-size: 12px; }
+
+  /* flags used throughout the document */
+  .flag-unverified { color: var(--unverified); font-weight: 700; }
+
+  #fallback { display: none; padding: 18px 20px; background: #fdf1ee; border: 1px solid #e6c3bb; border-radius: 8px; margin: 30px 0; }
+  #fallback code { background: #f6e2dd; }
+
+  @media (max-width: 1000px) {
+    .wrap { grid-template-columns: 1fr; }
+    aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--rule); }
+    aside nav { max-height: 220px; overflow-y: auto; }
+    main { padding: 24px 20px 90px; }
+  }
+  @media print {
+    aside { display: none; } .wrap { display: block; } main { padding: 0; max-width: none; }
+    body { font-size: 11pt; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside>
+    <h1>Eiffel Tower v3</h1>
+    <p class="meta">
+      Working documents — grounded in Eiffel's 1900 treatise, the Gallica plate
+      scans and the SETE lexicon<br>
+      <span id="stat">loading…</span>
+    </p>
+    <nav class="switcher" id="switcher"></nav>
+    <nav id="toc"></nav>
+    <div class="legend">
+      <b>Reading notes</b><br>
+      Verbatim French is quoted with its source line numbers. Anything the
+      researchers could not verify is marked <span class="flag-unverified">UNVERIFIED</span>
+      or INFERRED rather than filled in.
+    </div>
+  </aside>
+  <main>
+    <div id="fallback">
+      <strong>Could not load the renderer.</strong>
+      The raw document is right here: <a href="research/notes/10-element-ontology.md">10-element-ontology.md</a>
+    </div>
+    <article id="doc"></article>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  var DOCS = [
+    { id: 'approach',  label: 'Approach — with taste',  note: 'the governing document',        src: 'APPROACH.md' },
+    { id: 'build',     label: 'Engineering plan',       note: 'modules · algorithms · gates',  src: 'BUILD.md' },
+    { id: 'plan',      label: 'Decisions & evidence',   note: 'rules · open items · log',      src: 'PLAN.md' },
+    { id: 'ontology',  label: 'Element ontology',       note: '136 KB · the taxonomy',         src: 'research/notes/10-element-ontology.md' },
+    { id: 'solidity',  label: 'Solidity & production',  note: '108 KB · measured + three.js',  src: 'research/notes/11-solidity-and-production.md' },
+    { id: 'drawing',   label: 'Drawing techniques',     note: '104 KB · the compression ladder', src: 'research/notes/12-drawing-techniques.md' },
+    { id: 'elevation', label: 'Dimensioned elevation',  note: 'the 1/1000 drawing',            src: 'research/notes/13-dimensioned-elevation.md' },
+    { id: 'plates',    label: 'Plate readings',         note: 'native-res 1900 plates',        src: 'research/notes/14-plate-readings.md' }
+  ];
+
+  var docEl = document.getElementById('doc');
+  var tocEl = document.getElementById('toc');
+  var switcher = document.getElementById('switcher');
+  var observer = null;
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 60);
+  }
+
+  function wanted() {
+    var q = new URLSearchParams(location.search).get('doc');
+    for (var i = 0; i < DOCS.length; i++) if (DOCS[i].id === q) return DOCS[i];
+    return DOCS[0]; // the engineering plan
+  }
+
+  function paintSwitcher(current) {
+    switcher.innerHTML = '';
+    DOCS.forEach(function (d) {
+      var b = document.createElement('button');
+      b.className = d.id === current.id ? 'active' : '';
+      b.innerHTML = d.label + '<small>' + d.note + '</small>';
+      b.onclick = function () { load(d); };
+      switcher.appendChild(b);
+    });
+  }
+
+  function flagHonesty(root) {
+    root.querySelectorAll('p, li, td').forEach(function (el) {
+      el.innerHTML = el.innerHTML
+        .replace(/\bUNVERIFIED\b/g, '<span class="flag-unverified">UNVERIFIED</span>')
+        .replace(/\bNOT ATTESTED\b/g, '<span class="flag-unverified">NOT ATTESTED</span>')
+        .replace(/\bNOT FOUND\b/g, '<span class="flag-unverified">NOT FOUND</span>')
+        .replace(/\bREFUTED\b/g, '<span class="flag-unverified">REFUTED</span>')
+        .replace(/\bPROVISIONAL\b/g, '<span class="flag-unverified">PROVISIONAL</span>');
+    });
+  }
+
+  function buildToc() {
+    if (observer) observer.disconnect();
+    tocEl.innerHTML = '';
+    var heads = docEl.querySelectorAll('h2, h3');
+    var links = [];
+    heads.forEach(function (h, i) {
+      var id = 's' + i + '-' + slug(h.textContent);
+      h.id = id;
+      var a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = h.textContent;
+      a.className = h.tagName === 'H2' ? 'lvl1' : 'lvl3';
+      tocEl.appendChild(a);
+      links.push({ a: a, h: h });
+    });
+    observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var hit = links.filter(function (l) { return l.h === e.target; })[0];
+        if (!hit) return;
+        links.forEach(function (l) { l.a.classList.remove('active'); });
+        hit.a.classList.add('active');
+      });
+    }, { rootMargin: '0px 0px -78% 0px', threshold: 0 });
+    heads.forEach(function (h) { observer.observe(h); });
+  }
+
+  function load(doc) {
+    if (typeof marked === 'undefined') {
+      document.getElementById('fallback').style.display = 'block';
+      return;
+    }
+    paintSwitcher(doc);
+    document.getElementById('stat').textContent = 'loading…';
+    fetch(doc.src).then(function (r) {
+      if (!r.ok) throw new Error(doc.src + ' → HTTP ' + r.status);
+      return r.text();
+    }).then(function (md) {
+      document.getElementById('stat').textContent =
+        (Math.round(md.length / 102.4) / 10) + ' KB · ' + md.split('\n').length.toLocaleString() + ' lines';
+      docEl.innerHTML = marked.parse(md);
+      flagHonesty(docEl);
+      buildToc();
+      document.title = doc.label + ' — Eiffel Tower v3';
+      history.replaceState(null, '', '?doc=' + doc.id);
+      window.scrollTo(0, 0);
+    }).catch(function (err) {
+      var f = document.getElementById('fallback');
+      f.style.display = 'block';
+      f.insertAdjacentHTML('beforeend', '<p style="margin:10px 0 0">' + err.message + '</p>');
+    });
+  }
+
+  if (typeof marked === 'undefined') {
+    document.getElementById('fallback').style.display = 'block';
+    return;
+  }
+  marked.setOptions({ gfm: true, breaks: false, headerIds: false, mangle: false });
+  load(wanted());
+})();
+</script>
+</body>
+</html>

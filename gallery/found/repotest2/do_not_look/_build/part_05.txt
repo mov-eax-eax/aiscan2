@@ -1,0 +1,354 @@
+/* =====================================================================
+   PART 5 — platform decks (1st & 2nd are the classic “cross” plan with
+   the four corner squares occupied by the legs; the 3rd is an octagon),
+   perimeter railings, the gold-engraved name frieze under level 1,
+   glass floor, restaurant & gallery volumes.
+   ===================================================================== */
+let renderer, scene, camera, controls, composer, bloomPass;   // (declared here for module scope)
+let nightLights = [];            // SpotLights for night flooding
+const structureMats = [];        // all tower materials (wireframe/x-ray)
+
+function crossPoly(H, N){
+  return [[ N, H],[-N, H],[-N, N],[-H, N],[-H,-N],[-N,-N],[-N,-H],
+          [ N,-H],[ N,-N],[ H,-N],[ H, N],[ N, N]];
+}
+function octPoly(R){
+  const p=[]; for(let i=0;i<8;i++){ const a=Math.PI*(i+0.5)/4; p.push([Math.cos(a)*R, Math.sin(a)*R]); } return p;
+}
+function polyShape(poly){
+  const s = new THREE.Shape();
+  s.moveTo(poly[0][0], -poly[0][1]);
+  for(let i=1;i<poly.length;i++) s.lineTo(poly[i][0], -poly[i][1]);
+  s.closePath();
+  return s;
+}
+/* thin plate following a floor polygon (with optional holes) */
+function addPlateShape(poly, y, mat, holes){
+  const s = polyShape(poly);
+  if(holes) for(const h of holes){
+    const hh = new THREE.Path();
+    hh.moveTo(h[0][0], -h[0][1]);
+    for(let i=h.length-1;i>0;i--) hh.lineTo(h[i][0], -h[i][1]);
+    hh.closePath();
+    s.holes.push(hh);
+  }
+  const g = new THREE.ExtrudeGeometry(s, { depth:0.14, bevelEnabled:false });
+  const m = new THREE.Mesh(g, mat);
+  m.position.y = y;
+  m.receiveShadow = true;
+  scene.add(m);
+  return m;
+}
+
+/* slab: extrude a floor polygon upward from yBottom with thickness th */
+function addSlab(poly, yBottom, th, mat, holes){
+  const s = polyShape(poly);
+  if(holes) for(const h of holes){
+    const hh = new THREE.Path();
+    hh.moveTo(h[0][0], -h[0][1]);
+    for(let i=h.length-1;i>0;i--) hh.lineTo(h[i][0], -h[i][1]);   // opposite winding
+    hh.closePath();
+    s.holes.push(hh);
+  }
+  const g = new THREE.ExtrudeGeometry(s, { depth: th, bevelEnabled:false });
+  const m = new THREE.Mesh(g, mat);
+  m.position.y = yBottom;
+  m.castShadow = true; m.receiveShadow = true;
+  scene.add(m);
+  return m;
+}
+
+/* riveted metal deck plate texture */
+function makePlateTexture(){
+  if(TX.plate) return TX.plate;
+  TX.plate = canvasTex(256,256,(g,w,h)=>{
+    g.fillStyle='#5f4d39'; g.fillRect(0,0,w,h);
+    noiseFill(g,w,h,255,()=> (72+Math.random()*60)|0);
+    const pl=64;
+    g.strokeStyle='rgba(26,20,14,0.85)'; g.lineWidth=3;
+    for(let x=0;x<=w;x+=pl){ g.beginPath(); g.moveTo(x,0); g.lineTo(x,h); g.stroke(); }
+    for(let y=0;y<=h;y+=pl){ g.beginPath(); g.moveTo(0,y); g.lineTo(w,y); g.stroke(); }
+    // rivets at plate corners
+    g.fillStyle='rgba(200,170,120,0.5)';
+    for(let x=8;x<w;x+=pl) for(let y=8;y<h;y+=pl){ g.beginPath(); g.arc(x,y,2,0,7); g.fill(); }
+    for(let i=0;i<2600;i++){ g.fillStyle='rgba(0,0,0,'+(0.03+Math.random()*0.07)+')'; g.fillRect(Math.random()*w,Math.random()*h,3,2); }
+  },{repeat:[1,1]});
+  return TX.plate;
+}
+
+/* railing along a polygon: instanced posts + top & mid rails (rail bucket) */
+function addDeckRailings(poly, yBase, yTop, spacing){
+  const pts = poly.map(p=>[p[0], p[1]]);
+  const segs=[];
+  for(let i=0;i<pts.length;i++){
+    const a=pts[i], b=pts[(i+1)%pts.length];
+    const L=Math.hypot(b[0]-a[0], b[1]-a[1]);
+    const n=Math.max(1, Math.round(L/spacing));
+    for(let j=0;j<n;j++){
+      const t0=j/n, t1=(j+1)/n;
+      segs.push({ x0:a[0]+(b[0]-a[0])*t0, z0:a[1]+(b[1]-a[1])*t0,
+                  x1:a[0]+(b[0]-a[0])*t1, z1:a[1]+(b[1]-a[1])*t1 });
+    }
+  }
+  const railY=[yTop+0.28, yTop+0.85];
+  for(const ry of railY){
+    for(const s of segs){
+      FB.add('rail', s.x0, yBase+ry, s.z0, s.x1, yBase+ry, s.z1);
+    }
+  }
+  // posts
+  const postPts=[];
+  for(const s of segs) postPts.push([ (s.x0+s.x1)/2, (s.z0+s.z1)/2 ]);
+  for(const p of postPts){
+    FB.add('rail', p[0], yBase+yTop, p[1], p[0], yBase+yTop+1.02, p[1]);
+  }
+}
+
+/* ---------------- gold engraved name frieze ---------------- */
+const NAMES_72 = [
+  'Ampère','Arago','Balard','Becquerel','Bélanger','Bichat','Borda','Brémontier','Bresse','Broca',
+  'Cauchy','Chaptal','Chasles','Combes','Coriolis','Coulomb','Cuvier','Daguerre','David','de Dion',
+  'de Fermat','Delambre','Delaunay','Dulong','Duméry','Fourier','Fresnel','Foucault','Fizeau','Fraunhofer',
+  'Gay-Lussac','Giffard','Gouin','Haüy','Jamin','Jousselin','Lagrange','Lalande','Lamarck','Laplace',
+  'Lavoisier','Le Chatelier','Le Verrier','Lévêque','Lorentz','Lucas','Malus','Marcelin Berthelot','Monge','Morin',
+  'Père','Perronet','Petiet','Plateau','Poinsot','Poisson'
+];
+
+function makeFriezeTextures(){
+  if(TX.frieze) return TX.frieze;
+  const groups=[[],[],[],[]];
+  NAMES_72.forEach((nm,i)=>groups[i%4].push(nm.toUpperCase()));
+  const W=8192, H=512;
+  TX.frieze=[];
+  for(const grp of groups){
+    const tex = canvasTex(W,H,(g)=>{
+      // band background: bronzed steel with subtle vertical brushed gradient
+      const bg=g.createLinearGradient(0,0,0,H);
+      bg.addColorStop(0,'#4c3d2e'); bg.addColorStop(0.5,'#5f4d39'); bg.addColorStop(1,'#453729');
+      g.fillStyle=bg; g.fillRect(0,0,W,H);
+      for(let i=0;i<2400;i++){ g.fillStyle='rgba(0,0,0,'+(0.03+Math.random()*0.09)+')'; g.fillRect(Math.random()*W,Math.random()*H,10,2); }
+      // fine horizontal rule lines
+      g.fillStyle='rgba(22,16,10,0.8)'; g.fillRect(0,10,W,6); g.fillRect(0,H-16,W,6);
+      g.fillStyle='rgba(210,175,120,0.35)'; g.fillRect(0,17,W,3); g.fillRect(0,H-19,W,3);
+      // gold engraving of names
+      g.font = '700 190px Georgia,"Times New Roman",serif';
+      g.textBaseline = 'middle';
+      const gap = 150;
+      let strs=[];
+      let x=gap*0.8;
+      g.textAlign='left';
+      for(let k=0;k<grp.length;k++){
+        strs.push(grp[k]);
+      }
+      // measure total
+      const widths=strs.map(s=>g.measureText(s).width);
+      const total = widths.reduce((a,b)=>a+b,0) + gap*(strs.length);
+      const fit = Math.min(1, (W*0.985)/total);
+      g.save();
+      g.translate(W*0.5, H*0.5);
+      g.scale(fit, fit);
+      let curX = -total*fit/(2*fit);
+      // redraw with transform; easier: draw un-transformed inside translated scale
+      for(let k=0;k<strs.length;k++){
+        g.font = '700 190px Georgia,"Times New Roman",serif';
+        const w = widths[k];
+        const cx = curX + w/2;
+        // engraved shading (dark offset bottom-right, highlight top-left, gold fill)
+        g.save();
+        g.translate(cx, 0);
+        g.shadowColor='rgba(20,12,4,0.95)'; g.shadowBlur=8; g.shadowOffsetX=6; g.shadowOffsetY=8;
+        g.fillStyle='#2c2013';
+        g.fillText(strs[k], -w/2, 0);
+        g.restore();
+        g.save();
+        g.translate(cx, 0);
+        g.fillStyle='rgba(255,220,150,0.16)';
+        g.fillText(strs[k], -w/2, -5);
+        g.restore();
+        g.save();
+        g.translate(cx, 0);
+        g.fillStyle='#caa96b';
+        g.shadowColor='rgba(0,0,0,0.7)'; g.shadowBlur=2; g.shadowOffsetX=1; g.shadowOffsetY=2;
+        g.fillText(strs[k], -w/2, 0);
+        g.restore();
+        // diamond separator
+        g.fillStyle='rgba(232,196,132,0.75)';
+        const sepX = curX + w + gap/2;
+        g.beginPath();
+        g.moveTo(sepX-10,0); g.lineTo(sepX,10); g.lineTo(sepX+10,0); g.lineTo(sepX,-10);
+        g.closePath(); g.fill();
+        curX += w + gap;
+      }
+      g.restore();
+    },{sRGB:true});
+    TX.frieze.push(tex);
+  }
+  return TX.frieze;
+}
+
+/* attach the four frieze panels around level-1 under the deck */
+function addFrieze(Hside, N, yBandBottom, yBandTop, thickness){
+  const texs = makeFriezeTextures();
+  const addPanel = (len, y, cx, cz, yaw, tex)=>{
+    const mat = new THREE.MeshStandardMaterial({ map:tex, roughness:0.72, metalness:0.4,
+      emissive:0xd9b071, emissiveMap:tex, emissiveIntensity:0.0 });
+    const hBand = yBandTop-yBandBottom;
+    const g = new THREE.BoxGeometry(len, hBand, thickness);
+    const m = new THREE.Mesh(g, mat);
+    m.position.set(cx, (yBandBottom+yBandTop)/2, cz);
+    m.rotation.y = yaw;
+    m.castShadow = true; m.receiveShadow = true;
+    scene.add(m);
+    regFx(mat, 0.0, 0.85);
+    return m;
+  };
+  const L = 2*N;
+  // four faces: z=+Hside (facing -z? north), z=-Hside, x=+Hside, x=-Hside
+  // normals pointing outward: box at z=Hside+th shows its +z face outside
+  addPanel(L, 0, 0,  Hside+thickness/2, 0,     texs[0]);   // north face of deck (outward +z)
+  addPanel(L, 0, 0, -Hside-thickness/2, Math.PI, texs[1]);
+  addPanel(L, 0,  Hside+thickness/2, 0,  Math.PI/2, texs[2]);
+  addPanel(L, 0, -Hside-thickness/2, 0, -Math.PI/2, texs[3]);
+}
+
+/* under-deck girder framework (visible when looking up from ground) */
+function addUnderDeckGirders(poly, y, section){
+  const n=poly.length;
+  for(let i=0;i<n;i++){
+    const a=poly[i], b=poly[(i+1)%n];
+    FB.addB('girder', [a[0],y,a[1]],[b[0],y,b[1]]);
+  }
+  // diagonal cross braces near corners
+  for(let i=0;i<n;i+=1){
+    const a=poly[i], c=poly[(i+4)%n];
+    FB.addB('diag', [a[0],y,a[1]],[c[0],y-0.6,c[1]]);
+  }
+}
+
+/* ============ build all three decks & level details ============ */
+function buildDecks(){
+  const plateMat = stdMat({ map: planeTex(makePlateTexture(), 18, 18),
+    color:0x8a7355, roughness:0.55, metalness:0.5 });
+  const slabMat  = stdMat({ color:0x5b4936, roughness:0.75, metalness:0.35 });
+  const paintMat = stdMat({ color:0x6b5540, roughness:0.6, metalness:0.45 });
+
+  /* ---------- LEVEL 1 : y 57 ---------- */
+  {
+    const N1 = legInR(Y_P1), H1 = envR(Y_P1) - 0.35;
+    const bottom=55.9, top=bottom+1.25;
+    const poly=crossPoly(H1, N1);
+    // glass floor cut-out along the western arm
+    const hole = [[ 27.5,-2.6],[ 34.5,-2.6],[ 34.5, 2.6],[ 27.5, 2.6]];
+    addSlab(poly, bottom, top-bottom, slabMat, [hole]);
+    // riveted deck surface slightly above
+    addPlateShape(poly, top+0.02, plateMat, [hole]);
+    // glass panes + frame in the cut-out
+    {
+      const glass = stdMat({ color:0x9fd0da, transparent:true, opacity:0.30,
+        roughness:0.05, metalness:0.1, side:THREE.DoubleSide });
+      const pane = new THREE.Mesh(new THREE.PlaneGeometry(7,5.2), glass);
+      pane.rotation.x=-Math.PI/2; pane.position.set(31, top+0.02, 0);
+      scene.add(pane);
+      const frameMat=stdMat({ color:0x4a3b2f, metalness:0.6, roughness:0.5 });
+      for(let i=0;i<3;i++){
+        const f1=new THREE.Mesh(new THREE.BoxGeometry(7,0.12,0.12), frameMat);
+        f1.position.set(31,top+0.05,-2.6+ i*2.6 +1.3); f1.rotation.x=0; scene.add(f1);
+      }
+      for(const z of [-2.6,2.6]){
+        const f2=new THREE.Mesh(new THREE.BoxGeometry(7,0.12,0.12), frameMat);
+        f2.position.set(31,top+0.05,z); scene.add(f2);
+      }
+    }
+    addDeckRailings(poly, top, 1.05, 2.8);
+    addUnderDeckGirders(poly, bottom-0.7, 1);
+    // name frieze band under the balcony between the legs
+    addFrieze(H1, N1, 54.35, 55.75, 0.5);
+
+    // restaurant / gallery volumes on the deck arms
+    const volMat = stdMat({ color:0x2e3c40, roughness:0.25, metalness:0.3,
+      transparent:true, opacity:0.94, emissive:0xffcf9a, emissiveIntensity:0.08 });
+    const roofMat = stdMat({ color:0x8a8f93, roughness:0.6 });
+    const addVolume=(cx,cz,w,d,h,yaw)=>{
+      const body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d), volMat);
+      body.position.set(cx, top+h/2, cz);
+      body.rotation.y = yaw||0; body.castShadow=true; scene.add(body);
+      const roof=new THREE.Mesh(new THREE.BoxGeometry(w+0.8,0.45,d+0.8), roofMat);
+      roof.position.set(cx, top+h+0.22, cz); roof.rotation.y=yaw||0; roof.castShadow=true; scene.add(roof);
+      return body;
+    };
+    addVolume( 0, N1+9, 22, 9, 4.4);            // south arm restaurant
+    addVolume( -10, -N1-9, 13, 8, 4.2, 0);      // north-west ticket hall volume
+    // elevator machinery houses beside two legs
+    const machMat=stdMat({ color:0x4c463f, roughness:0.55, metalness:0.6 });
+    const addMach=(x,z,s)=>{
+      const m=new THREE.Mesh(new THREE.BoxGeometry(s,s,3.2), machMat);
+      m.position.set(x, top+1.6, z); m.castShadow=true; scene.add(m);
+    };
+    addMach(N1+2, N1+2, 4.2); addMach(-N1-2, -N1-2, 4.2);
+    regFx(volMat, 0.06, 0.85);
+  }
+
+  /* ---------- LEVEL 2 : y 115 ---------- */
+  {
+    const N2 = legInR(Y_P2), H2 = envR(Y_P2) - 0.3;
+    const bottom=113.7, top=bottom+1.25;
+    const poly=crossPoly(H2, N2);
+    addSlab(poly, bottom, top-bottom, slabMat, null);
+    addPlateShape(poly, top+0.02,
+      stdMat({ map: planeTex(makePlateTexture(), 12, 12), color:0x7d6850, roughness:0.55, metalness:0.5 }), null);
+    addDeckRailings(poly, top, 1.1, 2.6);
+    addUnderDeckGirders(poly, bottom-0.7, 1);
+    // Jules Verne restaurant volume (south-east corner of the deck)
+    const jvMat = stdMat({ color:0x1f2a30, roughness:0.2, metalness:0.35,
+      transparent:true, opacity:0.96, emissive:0xffd9a0, emissiveIntensity:0.05 });
+    const jv=new THREE.Mesh(new THREE.BoxGeometry(14,4.6,9), jvMat);
+    jv.position.set(12, top+2.3, -13); jv.castShadow=true; scene.add(jv);
+    const jr=new THREE.Mesh(new THREE.BoxGeometry(14.8,0.4,9.8), stdMat({color:0x757a7e,roughness:0.6}));
+    jr.position.set(12, top+4.8, -13); scene.add(jr);
+    regFx(jvMat, 0.05, 0.9);
+    // corner pylon bases (stairs & lift landings) at the four legs
+    const pylMat=stdMat({ color:0x5d4a36, roughness:0.6, metalness:0.45 });
+    for(const sx of [-1,1]) for(const sz of [-1,1]){
+      const px=sx*(N2+2.4), pz=sz*(N2+2.4);
+      const p=new THREE.Mesh(new THREE.BoxGeometry(4.6,4.4,4.6), pylMat);
+      p.position.set(px, top+2.2, pz); p.castShadow=true; scene.add(p);
+    }
+    // 4 corner pylons above level 2 are the legs themselves (continuing up)
+  }
+
+  /* ---------- LEVEL 3 (top) : y 276.1 ---------- */
+  {
+    const R3 = shaftHalf(Y_P3);          // 6.5 m shaft half side
+    const outer = R3 + 6.4;              // deck octagon circumradius
+    const holeR = R3 + 0.55;
+    const poly = octPoly(outer);
+    const holePts = octPoly(holeR);
+    const bottom=274.6, top=bottom+1.35;
+    const slabMat3 = stdMat({ color:0x52412f, roughness:0.6, metalness:0.4 });
+    addSlab(poly, bottom, top-bottom, slabMat3, [holePts]);
+    addSlab(poly, top+0.02, 0.14,
+      stdMat({ map: planeTex(makePlateTexture(), 8, 8), color:0x7d6850, roughness:0.5, metalness:0.5 }), [holePts]);
+    addDeckRailings(poly, top, 1.1, 2.2);
+    addUnderDeckGirders(poly, bottom-0.5, 1);
+    // enclosed gallery cabin (the “lab” volume) on the deck
+    const cabMat = stdMat({ color:0x35424a, roughness:0.3, metalness:0.3,
+      emissive:0xffd9a0, emissiveIntensity:0.05 });
+    const cab=new THREE.Mesh(new THREE.BoxGeometry(7.5,4.2,5.2), cabMat);
+    cab.position.set(4.2, top+2.1, 0.5); cab.castShadow=true; scene.add(cab);
+    const cr=new THREE.Mesh(new THREE.BoxGeometry(8,0.5,5.7), stdMat({color:0x999d9f,roughness:0.5}));
+    cr.position.set(4.2, top+4.4, 0.5); scene.add(cr);
+    // small radio cabin
+    const r2=new THREE.Mesh(new THREE.BoxGeometry(3.6,3.0,3.0), cabMat);
+    r2.position.set(-4.8, top+1.5, -1.2); scene.add(r2);
+    regFx(cabMat, 0.05, 1.0);
+    // wind-bracing truss girders on the shaft just under the deck
+    const ytr = bottom - 2.5;
+    const s = shaftHalf(ytr);
+    const ring=[[-s,-s],[ s,-s],[ s, s],[-s, s]];
+    for(let i=0;i<4;i++){
+      const a=ring[i], b=ring[(i+1)%4];
+      FB.addB('girder', [a[0],ytr,a[1]],[b[0],ytr,b[1]]);
+    }
+  }
+}
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>recurve bow — Olympic ILF takedown, 68″ / 36 lb</title>
+<style>
+  :root{
+    --panel:rgba(255,255,255,.80); --line:rgba(20,26,34,.14);
+    --ink:#151a20; --dim:#5d6b7a; --acc:#2f6fd0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#cdd2d8;color:var(--ink);
+    font:12.5px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    overflow:hidden;-webkit-font-smoothing:antialiased}
+  #view{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab}
+  #view:active{cursor:grabbing}
+
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;backdrop-filter:blur(14px) saturate(1.15);z-index:10;
+    box-shadow:0 6px 24px rgba(20,30,45,.10)}
+
+  #top{top:14px;left:14px;right:14px;height:48px;display:flex;align-items:center;
+    gap:16px;padding:0 16px}
+  #top h1{margin:0;font-size:13.5px;font-weight:650;letter-spacing:.2px;white-space:nowrap}
+  #top h1 em{font-style:normal;color:var(--dim);font-weight:400}
+  #views{display:flex;gap:5px;flex-wrap:wrap}
+  button{font:inherit;font-size:11.5px;color:var(--ink);background:rgba(255,255,255,.55);
+    border:1px solid var(--line);border-radius:7px;padding:4px 10px;cursor:pointer;
+    transition:background .12s,border-color .12s}
+  button:hover{background:rgba(255,255,255,.9)}
+  button.on{background:rgba(47,111,208,.16);border-color:rgba(47,111,208,.5);color:#12447f}
+
+  #specs{margin-left:auto;color:var(--dim);font-size:11.5px;white-space:nowrap}
+
+  #left{top:74px;left:14px;padding:11px 14px}
+  label.chk{display:flex;align-items:center;gap:7px;padding:3px 0;cursor:pointer;
+    white-space:nowrap}
+  input[type=checkbox]{accent-color:var(--acc);width:14px;height:14px;cursor:pointer}
+
+  #right{top:74px;right:14px;width:250px;max-height:calc(100% - 100px);
+    display:flex;flex-direction:column;overflow:hidden}
+  .ph{padding:10px 14px 8px;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--dim);border-bottom:1px solid var(--line)}
+  #parts{overflow:auto;padding:6px 8px 10px}
+  .pi{display:flex;justify-content:space-between;gap:8px;padding:3.5px 7px;border-radius:5px}
+  .pi em{font-style:normal;color:var(--dim);font-variant-numeric:tabular-nums;font-size:11px}
+
+  #hint{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);color:var(--dim);
+    font-size:11px;background:var(--panel);border:1px solid var(--line);border-radius:20px;
+    padding:6px 16px;z-index:10;white-space:nowrap}
+  kbd{background:rgba(20,26,34,.08);border:1px solid var(--line);border-radius:4px;
+    padding:1px 5px;font:inherit;font-size:10.5px}
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div class="panel" id="top">
+  <h1>recurve bow <em>— Olympic ILF takedown, 68″ / 36 lb</em></h1>
+  <div id="views"></div>
+  <div id="specs"></div>
+</div>
+
+<div class="panel" id="left">
+  <label class="chk"><input type="checkbox" id="chk-labels"> Part labels</label>
+  <label class="chk"><input type="checkbox" id="chk-stand" checked> Bow stand</label>
+</div>
+
+<div class="panel" id="right">
+  <div class="ph">Parts</div>
+  <div id="parts"></div>
+</div>
+
+<div id="hint"><kbd>drag</kbd> orbit · <kbd>right-drag</kbd> pan · <kbd>wheel</kbd> zoom</div>
+
+<script type="module">
+  import './src/main.js';
+
+  const V = [['side','Side'],['whole','Whole bow'],['riser','Riser'],
+             ['sight','Sight'],['three','3/4'],['front','Front']];
+  document.getElementById('views').innerHTML =
+    V.map(([v,n]) => `<button data-view="${v}"${v==='side'?' class="on"':''}>${n}</button>`).join('');
+
+  const SPECS = '25″ riser · 68″ AMO · brace 8.5″ · 1716 mm tip to tip';
+  document.getElementById('specs').textContent = SPECS;
+
+  /* The parts list: what the thing is made of, counted from the scene. */
+  addEventListener('load', () => setTimeout(() => {
+    const seen = new Map();
+    window.__bow?.traverse?.(o => {});
+  }, 0));
+</script>
+</body>
+</html>

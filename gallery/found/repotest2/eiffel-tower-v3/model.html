@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eiffel Tower — model</title>
+<style>
+  :root{--ink:#eae4d8;--panel:rgba(16,18,22,.66);--line:rgba(226,208,176,.22);--accent:#d9a961}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:#0e1014}
+  body{font:13px/1.5 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+  canvas{display:block}
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+         backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  #info{top:14px;left:14px;padding:12px 15px;max-width:270px}
+  #info h1{margin:0 0 2px;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+  #info .sub{margin:0 0 9px;font-size:11px;opacity:.6}
+  #info dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:11.5px}
+  #info dt{opacity:.55}#info dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+  #views{top:14px;right:14px;padding:6px;display:flex;flex-direction:column;gap:4px}
+  button{appearance:none;cursor:pointer;color:var(--ink);background:rgba(255,255,255,.05);
+         border:1px solid var(--line);border-radius:7px;padding:6px 10px;font:inherit;font-size:11.5px;
+         text-align:left;transition:background .15s,border-color .15s}
+  button:hover{background:rgba(217,169,97,.16);border-color:rgba(217,169,97,.5)}
+  button.active{background:rgba(217,169,97,.24);border-color:var(--accent)}
+  #bar{bottom:14px;left:50%;transform:translateX(-50%);padding:9px 13px;display:flex;gap:14px;
+       align-items:center;flex-wrap:wrap;justify-content:center}
+  .ctl{display:flex;align-items:center;gap:7px}
+  .ctl label{font-size:11px;opacity:.6}
+  input[type=range]{appearance:none;width:120px;height:3px;border-radius:2px;outline:none;
+    background:linear-gradient(90deg,#2b3a5c,#7fa6d8 42%,#f0c98a 68%,#fff2d8)}
+  input[type=range]::-webkit-slider-thumb{appearance:none;width:13px;height:13px;border-radius:50%;
+    background:#fff4e2;border:1px solid rgba(0,0,0,.35);cursor:grab}
+  #perf{bottom:14px;right:14px;padding:6px 10px;font-size:10.5px;opacity:.75;
+        font-variant-numeric:tabular-nums;line-height:1.5}
+  #loader{position:fixed;inset:0;display:grid;place-items:center;background:#0e1014;z-index:9;transition:opacity .5s}
+  #loader.done{opacity:0;pointer-events:none}
+  #loader .ring{width:32px;height:32px;margin:0 auto 12px;border:2px solid rgba(217,169,97,.2);
+    border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  #err{position:fixed;inset:auto 0 0 0;padding:14px;background:#3a1d1a;color:#ffd9d2;font-size:12px;display:none}
+</style>
+</head>
+<body>
+<div id="info" class="panel">
+  <h1>Tour Eiffel</h1>
+  <p class="sub">structural model · 1:1 metres</p>
+  <dl>
+    <dt>Height</dt><dd>330.0 m</dd>
+    <dt>Base</dt><dd>124.90 m</dd>
+    <dt>Platforms</dt><dd>57.63 · 115.73 · 276.13</dd>
+    <dt>Members</dt><dd id="mc">—</dd>
+    <dt>Regime</dt><dd id="reg">4 isolated legs</dd>
+  </dl>
+</div>
+
+<div id="views" class="panel">
+  <button data-v="hero" class="active">Hero</button>
+  <button data-v="front">Front elevation</button>
+  <button data-v="arch">The arch</button>
+  <button data-v="base">Legs &amp; base</button>
+  <button data-v="through">See-through</button>
+  <button data-v="top">Summit</button>
+</div>
+
+<div id="bar" class="panel">
+  <div class="ctl"><label for="tod">Time of day</label><input id="tod" type="range" min="0" max="1" step="0.01" value="0.72"></div>
+  <div class="ctl"><button id="spin" class="active">Auto-spin</button></div>
+  <div class="ctl"><button id="ground" class="active">Ground</button></div>
+  <div class="ctl"><button id="reset">Reset</button></div>
+</div>
+
+<div id="perf" class="panel"><div><span id="pf">—</span> fps</div><div><span id="pt">—</span> tris</div><div><span id="pc">—</span> calls</div></div>
+<div id="loader"><div><div class="ring"></div></div></div>
+<div id="err"></div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+} }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { buildTower } from './src/build/tower.js';
+
+const showErr = (m) => { const e = document.getElementById('err'); e.style.display = 'block'; e.textContent = m; };
+window.addEventListener('error', (e) => showErr(e.message));
+
+/* ---------------- renderer ---------------- */
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.12;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(34, innerWidth / innerHeight, 0.5, 4000);
+camera.position.set(230, 190, 420);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 150, 0);
+controls.maxPolarAngle = Math.PI * 0.495;   // never go under the model
+controls.minDistance = 40;
+controls.maxDistance = 1400;
+controls.autoRotateSpeed = 0.45;
+
+/* ---------------- sky + environment ----------------
+ * A metallic surface with no environment renders black regardless of lighting,
+ * so the sky gradient doubles as the PMREM environment. */
+const skyCanvas = document.createElement('canvas');
+skyCanvas.width = 64; skyCanvas.height = 256;
+const skyCtx = skyCanvas.getContext('2d');
+const skyTex = new THREE.CanvasTexture(skyCanvas);
+skyTex.colorSpace = THREE.SRGBColorSpace;
+skyTex.mapping = THREE.EquirectangularReflectionMapping;
+const pmrem = new THREE.PMREMGenerator(renderer);
+let envRT = null;
+
+const PAL = {
+  night: { top: '#050912', hor: '#111d33', bot: '#080c12', fog: 0x0a1120,
+           sun: 0x9fb4e0, sunI: 0.30, elev: 0.30, azim: -2.3, hemi: 0.34, amb: 0.06, ground: 0x20242a },
+  day:   { top: '#2a68c0', hor: '#cfe0f2', bot: '#93a08a', fog: 0xc7d8e8,
+           sun: 0xfff4e2, sunI: 2.6, elev: 0.88, azim: -0.72, hemi: 0.85, amb: 0.14, ground: 0x8d9583 }
+};
+let night = 0;
+function mixPalette(t) {
+  const a = PAL.night, b = PAL.day;
+  const lerpHex = (h1, h2) => new THREE.Color(h1).lerp(new THREE.Color(h2), t);
+  return {
+    top: lerpHex(a.top, b.top), hor: lerpHex(a.hor, b.hor), bot: lerpHex(a.bot, b.bot),
+    fog: lerpHex(a.fog, b.fog), sun: lerpHex(a.sun, b.sun),
+    sunI: a.sunI + (b.sunI - a.sunI) * t,
+    elev: a.elev + (b.elev - a.elev) * t,
+    azim: a.azim + (b.azim - a.azim) * t,
+    hemi: a.hemi + (b.hemi - a.hemi) * t,
+    amb: a.amb + (b.amb - a.amb) * t,
+    ground: lerpHex(a.ground, b.ground)
+  };
+}
+function drawSky(p) {
+  const g = skyCtx.createLinearGradient(0, 0, 0, skyCanvas.height);
+  g.addColorStop(0, '#' + p.top.getHexString());
+  g.addColorStop(0.46, '#' + p.hor.getHexString());
+  g.addColorStop(0.52, '#' + p.hor.getHexString());
+  g.addColorStop(0.62, '#' + p.bot.getHexString());
+  g.addColorStop(1, '#' + p.bot.getHexString());
+  skyCtx.fillStyle = g; skyCtx.fillRect(0, 0, 64, skyCanvas.height);
+  skyTex.needsUpdate = true;
+  const prev = envRT;
+  envRT = pmrem.fromEquirectangular(skyTex);
+  scene.environment = envRT.texture;
+  if (prev) prev.dispose();
+}
+
+/* ---------------- lights ---------------- */
+const hemi = new THREE.HemisphereLight(0xbcd8ff, 0x6f6b52, 0.85); scene.add(hemi);
+const amb = new THREE.AmbientLight(0xffffff, 0.14); scene.add(amb);
+const key = new THREE.DirectionalLight(0xfff3e2, 2.6);
+key.position.set(-320, 620, 380);
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+Object.assign(key.shadow.camera, { left: -130, right: 130, top: 360, bottom: -20, near: 1, far: 1800 });
+key.shadow.bias = -0.0005; key.shadow.normalBias = 0.8;
+scene.add(key, key.target);
+
+/* ---------------- ground: the model reads as an object on a plinth -------- */
+const groundMat = new THREE.MeshStandardMaterial({ color: 0x8d9583, roughness: 0.95, metalness: 0.02 });
+const ground = new THREE.Mesh(new THREE.CircleGeometry(700, 96).rotateX(-Math.PI / 2), groundMat);
+ground.receiveShadow = true; scene.add(ground);
+
+/* ---------------- the model ---------------- */
+const tower = buildTower();
+scene.add(tower);
+document.getElementById('mc').textContent = tower.userData.memberCount.toLocaleString();
+document.getElementById('loader').classList.add('done');
+
+/* ---------------- views ---------------- */
+const VIEWS = {
+  hero:     { pos: [230, 190, 420], tgt: [0, 150, 0] },
+  front:    { pos: [0, 165, 700],   tgt: [0, 165, 0] },
+  arch:     { pos: [120, 46, 300],  tgt: [0, 60, 0] },
+  base:     { pos: [150, 120, 300], tgt: [0, 90, 0] },
+  through:  { pos: [10, 78, 230],   tgt: [0, 84, 0] },
+  top:      { pos: [90, 300, 220],  tgt: [0, 285, 0] }
+};
+let spinWanted = true;
+function goView(v) {
+  const t = VIEWS[v]; if (!t) return;
+  camera.position.set(...t.pos);
+  controls.target.set(...t.tgt);
+  controls.update();
+}
+document.querySelectorAll('#views button').forEach(b => b.addEventListener('click', () => {
+  goView(b.dataset.v);
+  document.querySelectorAll('#views button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  spinWanted = false; controls.autoRotate = false;
+  document.getElementById('spin').classList.remove('active');
+}));
+
+/* ---------------- time of day ---------------- */
+const tod = document.getElementById('tod');
+function applyTod(v) {
+  night = Math.pow(1 - Math.min(1, v / 0.55), 1.0);
+  const p = mixPalette(Math.min(1, v / 0.55));
+  drawSky(p);
+  scene.fog = new THREE.Fog(p.fog, 700, 3200);
+  hemi.color.copy(p.hor); hemi.intensity = p.hemi;
+  amb.intensity = p.amb;
+  key.color.copy(p.sun); key.intensity = p.sunI;
+  const h = 900;
+  key.position.set(Math.sin(p.azim) * Math.cos(p.elev) * h, Math.sin(p.elev) * h, Math.cos(p.azim) * Math.cos(p.elev) * h);
+  key.target.position.set(0, 150, 0); key.target.updateMatrixWorld();
+  groundMat.color.copy(p.ground);
+  document.getElementById('reg').textContent = '4 isolated legs';
+}
+tod.addEventListener('input', () => applyTod(parseFloat(tod.value)));
+applyTod(parseFloat(tod.value));
+
+/* ---------------- toggles ---------------- */
+const spin = document.getElementById('spin');
+spin.addEventListener('click', () => {
+  spinWanted = !spinWanted;
+  controls.autoRotate = spinWanted;
+  spin.classList.toggle('active', spinWanted);
+});
+controls.autoRotate = true;
+const gbtn = document.getElementById('ground');
+gbtn.addEventListener('click', () => {
+  ground.visible = !ground.visible;
+  gbtn.classList.toggle('active', ground.visible);
+});
+document.getElementById('reset').addEventListener('click', () => {
+  goView('hero'); spinWanted = true; controls.autoRotate = true; spin.classList.add('active');
+});
+
+/* ---------------- loop ---------------- */
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+const pf = document.getElementById('pf'), pt = document.getElementById('pt'), pc = document.getElementById('pc');
+let last = performance.now(), acc = 0, frames = 0;
+renderer.setAnimationLoop((now) => {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  controls.update();
+  renderer.render(scene, camera);
+  acc += dt; frames++;
+  if (acc >= 0.5) {
+    pf.textContent = Math.round(frames / acc);
+    pt.textContent = (renderer.info.render.triangles / 1000).toFixed(0) + 'k';
+    pc.textContent = renderer.info.render.calls;
+    acc = 0; frames = 0;
+  }
+});
+</script>
+</body>
+</html>

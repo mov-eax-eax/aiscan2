@@ -1,0 +1,11 @@
+{
+  "name": "recurve-bow",
+  "private": true,
+  "type": "module",
+  "description": "Olympic ILF takedown recurve -- parametric geometry and forward-only mechanics",
+  "scripts": {
+    "verify": "node src/verify.js",
+    "bundle": "node tools/bundle.mjs",
+    "shots": "node tools/shot.mjs"
+  }
+}

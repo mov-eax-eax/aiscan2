@@ -1,0 +1,4 @@
+--- day ?view=hero&intro=0
+{"dbg":{"nightT":0,"sun":3.7,"sky":0,"frames":4},"buckets":{"FB":[["chord",1404],["diag",10664],["belt",5908],["sub",4012],["girder",40],["rail",732]],"FB2":[["rail",298]]},"audit":{"minX":-60.08778382531513,"maxX":60.08778382531513,"minY":2,"maxY":330,"minZ":-60.08778382531513,"maxZ":60.08778382531513,"bad":0,"n":23058,"per":{}}}
+--- night ?view=hero&intro=0&night=1
+{"dbg":{"nightT":0.3041,"sun":2.575,"sky":0.304071006972142,"frames":14},"buckets":{"FB":[["chord",1404],["diag",10664],["belt",5908],["sub",4012],["girder",40],["rail",732]],"FB2":[["rail",298]]},"audit":{"minX":-60.08778382531513,"maxX":60.08778382531513,"minY":2,"maxY":330,"minZ":-60.08778382531513,"maxZ":60.08778382531513,"bad":0,"n":23058,"per":{}}}

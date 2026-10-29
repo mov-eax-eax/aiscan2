@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tour Eiffel — procedural build…</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --panel:rgba(16,15,14,.88); --panel-line:rgba(214,178,124,.35); --gold:#d9b071;
+    --txt:#e8dcc4; --dim:#9b8c74; --bg0:#05060a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:var(--bg0);color:var(--txt);
+    font:13px/1.45 "Segoe UI",system-ui,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  #app{position:fixed;inset:0}
+  canvas{display:block}
+
+  /* ---------- loading overlay ---------- */
+  #overlay{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(1200px 700px at 50% 32%,#1a1815 0%,#0b0a09 55%,#05060a 100%);transition:opacity .8s ease}
+  #overlay.hide{opacity:0;pointer-events:none}
+  #ovLogo{font:600 30px/1.2 Georgia,"Times New Roman",serif;letter-spacing:.12em;color:var(--gold);text-shadow:0 2px 18px rgba(217,176,113,.35)}
+  #ovSub{font-size:12px;color:var(--dim);letter-spacing:.28em;margin-top:6px}
+  #ovBarWrap{width:min(420px,78vw);height:4px;border-radius:3px;background:rgba(255,255,255,.07);margin-top:26px;overflow:hidden}
+  #ovBar{height:100%;width:0%;background:linear-gradient(90deg,#6b5540,#d9b071);border-radius:3px;transition:width .12s linear}
+  #ovPhase{margin-top:10px;font-size:11px;color:var(--dim);letter-spacing:.06em;min-height:15px}
+  #ovDetail{margin-top:4px;font-size:10px;color:#5f5547}
+  #ovErr{display:none;margin-top:18px;max-width:min(640px,88vw);padding:12px 16px;border:1px solid rgba(255,120,90,.5);
+    background:rgba(120,20,10,.16);color:#ffb3a0;font:11px/1.5 Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+
+  /* ---------- HUD panel ---------- */
+  #hud{position:fixed;top:14px;left:14px;z-index:40;width:264px;max-height:calc(100vh - 28px);overflow:auto;
+    background:var(--panel);border:1px solid var(--panel-line);border-radius:10px;padding:12px 13px 10px;
+    box-shadow:0 8px 30px rgba(0,0,0,.5);backdrop-filter:blur(6px);scrollbar-width:thin}
+  #hud.collapsed .hudBody{display:none}
+  #hudTitle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+  #hudTitle b{font:700 14px/1.2 Georgia,serif;letter-spacing:.08em;color:var(--gold)}
+  #hudTitle span{color:var(--dim);font-size:11px}
+  .hudBody{margin-top:9px}
+  .hudRow{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);padding:1px 0}
+  .hudRow b{color:var(--txt);font-weight:600}
+  .hudRow b.g{color:#b7d98f}.hudRow b.y{color:var(--gold)}
+  .hudSep{border:none;border-top:1px solid rgba(214,178,124,.16);margin:8px 0}
+  .hudSec{font-size:10px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin:8px 0 4px}
+  .btnRow{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .btn{position:relative;padding:5px 6px;border-radius:6px;border:1px solid rgba(214,178,124,.28);background:rgba(120,95,60,.10);
+    color:var(--txt);font-size:11px;cursor:pointer;text-align:left;transition:background .12s,border-color .12s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .btn:hover{background:rgba(160,126,78,.22);border-color:var(--gold)}
+  .btn.on{background:rgba(217,176,113,.24);border-color:var(--gold);color:#fff3d9}
+  .btn kbd{position:absolute;right:4px;top:50%;transform:translateY(-50%);font:9px Consolas,monospace;color:var(--dim);border:1px solid rgba(255,255,255,.14);border-radius:3px;padding:0 3px;background:rgba(0,0,0,.3)}
+  .btn span{display:inline-block;max-width:calc(100% - 26px);overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
+  .presetRow{display:flex;flex-wrap:wrap;gap:4px}
+  .btnP{padding:3px 8px;font-size:11px;border-radius:999px;border:1px solid rgba(214,178,124,.35);background:transparent;color:var(--txt);cursor:pointer}
+  .btnP:hover{background:rgba(160,126,78,.3)}
+  .btnP.act{background:var(--gold);color:#201708;font-weight:700}
+  #fpsNote{font-size:10px;color:#6d6152}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- ============ loading overlay ============ -->
+<div id="overlay" role="status" aria-live="polite">
+  <div id="ovLogo">TOUR EIFFEL</div>
+  <div id="ovSub">PROCÉDURALE · THREE.JS · 330 M</div>
+  <div id="ovBarWrap"><div id="ovBar"></div></div>
+  <div id="ovPhase">initialisation…</div>
+  <div id="ovDetail"></div>
+  <pre id="ovErr"></pre>
+</div>
+
+<!-- ============ HUD ============ -->
+<div id="hud">
+  <div id="hudTitle" title="click to collapse"><b>▦ TOUR EIFFEL</b><span id="hudChevron">▾</span></div>
+  <div class="hudBody">
+    <div class="hudRow"><span>Height</span><b>330.00 m (tip) / 276 m (3rd deck)</b></div>
+    <div class="hudRow"><span>Base square</span><b>125 m · 4 piers</b></div>
+    <div class="hudRow"><span>Platforms</span><b>57 · 115 · 276 m</b></div>
+    <div class="hudRow"><span>Mass</span><b id="stTons">—</b></div>
+    <hr class="hudSep">
+    <div class="hudRow"><span>FPS</span><b class="g" id="stFps">—</b></div>
+    <div class="hudRow"><span>Draw calls</span><b class="y" id="stCalls">—</b></div>
+    <div class="hudRow"><span>Triangles</span><b class="y" id="stTris">—</b></div>
+    <div class="hudRow"><span>Instanced beams</span><b class="y" id="stBeams">—</b></div>
+    <div class="hudRow"><span>Sparkle lights</span><b id="stSparks">—</b></div>
+    <hr class="hudSep">
+    <div class="hudSec">Controls</div>
+    <div class="btnRow">
+      <button class="btn" id="bRot" title="Toggle auto-rotate"><span>Auto-rotate</span><kbd>A</kbd></button>
+      <button class="btn" id="bDay" title="Cycle day / night"><span>Night mode</span><kbd>N</kbd></button>
+      <button class="btn" id="bWire" title="Toggle wireframe"><span>Wireframe</span><kbd>W</kbd></button>
+      <button class="btn" id="bXray" title="Toggle x-ray / cutaway"><span>X-ray</span><kbd>X</kbd></button>
+      <button class="btn" id="bStairs" title="Toggle internal staircases"><span>Show stairs</span><kbd>S</kbd></button>
+      <button class="btn" id="bInt" title="Toggle interior details"><span>Interior</span><kbd>I</kbd></button>
+      <button class="btn" id="bSpark" title="Toggle night sparkle"><span>Sparkle</span><kbd>L</kbd></button>
+      <button class="btn" id="bReset" title="Reset camera"><span>Reset view</span><kbd>R</kbd></button>
+    </div>
+    <div class="hudSec">Camera presets</div>
+    <div class="presetRow" id="presetRow">
+      <button class="btnP act" data-p="hero">Hero</button>
+      <button class="btnP" data-p="ground">Ground</button>
+      <button class="btnP" data-p="base">Base</button>
+      <button class="btnP" data-p="lvl1">1st</button>
+      <button class="btnP" data-p="lvl2">2nd</button>
+      <button class="btnP" data-p="top">Top</button>
+      <button class="btnP" data-p="flyby">Flyby</button>
+    </div>
+    <div id="fpsNote" style="margin-top:8px">Drag to orbit · wheel to zoom · right-drag to pan.</div>
+  </div>
+</div>
+
+<script>
+/* ---- early error trap: catches import failures & runtime errors before the module boots ---- */
+(function(){
+  var state = window.__EIFFEL_STATE__ = {ok:false, error:null, triangles:0, calls:0, beams:0, buildMs:0, sparks:0};
+  function fatal(msg, extra){
+    if(state.error || state.ok) return;
+    state.error = String(msg && msg.message ? msg.message : msg);
+    try{ document.title = 'EIFFEL-ERROR: ' + state.error; }catch(e){}
+    var ov = document.getElementById('overlay'), er = document.getElementById('ovErr');
+    if(ov){ ov.style.display='flex'; document.getElementById('ovPhase').textContent='Initialization failed';
+      er.style.display='block'; er.textContent = state.error + (extra ? '\n'+extra : ''); }
+  }
+  window.__eiffelFatal = fatal;
+  window.addEventListener('error', function(e){
+    var m = (e && e.message) ? e.message : ('Script error');
+    if(e && e.filename && /eiffel-tower\.html/.test(e.filename||'') === false && e.filename) m += ' @' + e.filename + ':' + e.lineno;
+    fatal(m);
+  });
+  window.addEventListener('unhandledrejection', function(e){
+    var r = e && e.reason;
+    fatal(r ? (r.message || String(r)) : 'Unhandled promise rejection');
+  });
+})();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}
+</script>
+
+<!-- ==================== THE MODULE ==================== -->
+<script type="module">
+/*EIF_MODULE*/
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+'use strict';
+/* =====================================================================
+   TOUR EIFFEL — fully procedural, metric (1 unit = 1 m)
+   Structure levels: piers 0–4.8 m · lattice legs 4.8–187.4 m ·
+   merged shaft 187.4–299.7 m · top platform 276.1 m · mast to 330 m.
+   Envelope half-width s(y)=62.5·exp(-0.0082·y) (125 m base → ~13 m @276 m)
+   ===================================================================== */
+
+/* ---------------- params (URL query overrides) ---------------- */
+const _u = new URLSearchParams(location.search);
+const params = {
+  seed:     _u.has('seed')     ? Number(_u.get('seed'))     : 20240218,
+  density:  _u.has('density')  ? Number(_u.get('density'))  : 1.0,
+  intro:    _u.has('intro')    ? (_u.get('intro') === '1' || _u.get('intro') === 'true') : true,
+  night:    _u.has('night')    ? Number(_u.get('night'))    : 0,
+  post:     _u.has('post')     ? (_u.get('post') === '0' ? false : true) : true,
+  shadows:  _u.has('shadows')  ? (_u.get('shadows') === '0' ? false : true) : true,
+  pr:       _u.has('pr')       ? Number(_u.get('pr'))       : 0,
+  sparks:   _u.has('sparks')   ? Number(_u.get('sparks'))   : 20000,
+  view:     _u.get('view')     || '',
+  reduced:  matchMedia('(prefers-reduced-motion: reduce)').matches
+};
+const REDUCED = params.reduced;
+
+/* ---------------- dom helpers ---------------- */
+const $ = s => document.querySelector(s);
+function setPhase(text, detail){ const p=$('#ovPhase'); if(p)p.textContent=text; const d=$('#ovDetail'); if(d)d.textContent=detail||''; }
+function reportProgress(f, text, detail){
+  const bar=$('#ovBar'); if(bar) bar.style.width = Math.min(100, Math.round(f*100)) + '%';
+  if(text) setPhase(text, detail||$('#ovDetail').textContent);
+}
+/* yield to the event loop so the progress overlay actually paints */
+const _yield = () => new Promise(r => setTimeout(r, 0));
+let _lastYield = 0;
+async function breatheEvery(n, i){ if(i - _lastYield > n){ _lastYield = i; await _yield(); } }
+
+/* ---------------- deterministic rng ---------------- */
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+const RND = mulberry32(params.seed);
+const rnd = RND;
+const rndRange = (a,b)=> a + (b-a)*RND();
+const rndInt = (a,b)=> Math.floor(rndRange(a,b+0.999999));
+const pick = arr => arr[Math.floor(RND()*arr.length)];
+const clamp = (v,a,b)=> v<a?a:(v>b?b:v);
+const lerp = (a,b,t)=> a+(b-a)*t;
+const smooth = t => t*t*(3-2*t);
+const easeIO = t => t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+const dist2 = (ax,az,bx,bz)=>{ const dx=ax-bx,dz=az-bz; return dx*dx+dz*dz; };
+
+/* ---------------- tower dimensions (metric) ---------------- */
+const H_TIP   = 330.0;     // antenna/flagpole tip
+const Y_P1    = 57.0;      // 1st platform (deck top level ~57.4)
+const Y_P2    = 115.0;     // 2nd platform
+const Y_P3    = 276.1;     // 3rd / top platform
+const LEG_Y0  = 4.8;       // lattice legs start on pier caps
+const LEG_Y1  = 187.4;     // legs merge into the central shaft
+const SHAFT_Y1= 299.7;     // lattice shaft / belfry top
+const MAST_Y0 = 299.7;     // antenna mast base
+const envR   = y => 62.5*Math.exp(-0.0082*y);              // outer envelope corner radius (m)
+const legWid = y => 21.8*Math.exp(-0.00685*(y-LEG_Y0));    // leg box width (m)
+const legInR = y => envR(y) - legWid(y);                   // inner corner radius
+const legOutR= y => envR(y);                               // outer corner radius
+function shaftHalf(y){ return envR(y); }                   // merged shaft envelope
+function mastHalf(y){ const t=clamp((y-MAST_Y0)/(330-MAST_Y0),0,1); return lerp(0.82,0.15,t); }
+
+/* ---------------- palette & material buckets ---------------- */
+const COL = { base:0x4a3b2f, mid:0x6b5540, hi:0x8a6e52, stone:0xb7a893, stoneDark:0x8f8071,
+  gold:0xd9b071, glass:0x9fd4e0, leaf:0x3f5a34, leafL:0x557a40, trunk:0x4e3b2b };
+const BUCKETS = {
+  chord : { s:1.20, c:0x8a6e52, n:'corner chords / heavy' },
+  girder: { s:1.95, c:0x8a6e52, n:'platform girders' },
+  belt  : { s:0.78, c:0x6b5540, n:'horizontal belts' },
+  diag  : { s:0.48, c:0x5d4a38, n:'X braces' },
+  sub   : { s:0.30, c:0x55432f, n:'secondary diagonals' },
+  tiny  : { s:0.20, c:0x4f3e2c, n:'fine lattice' },
+  rail  : { s:0.14, c:0x6b5540, n:'railings / posts' }
+};
+
+/* beam factory — everything lattice-like goes through here so it can be
+   instanced in a handful of draw calls at the end */
+const FB = {
+  buckets: {},
+  nodeCount: 0,
+  bucket(name){ let b=this.buckets[name]; if(!b){ const d=BUCKETS[name]; if(!d) throw new Error('unknown bucket '+name);
+      b=this.buckets[name]={ name, s:d.s, c:d.c, n:d.n, beams:[] }; } return b; },
+  add(name, x0,y0,z0, x1,y1,z1){ this.bucket(name).beams.push(x0,y0,z0,x1,y1,z1); this.nodeCount++; },
+  addB(name, p0, p1){ this.add(name, p0[0],p0[1],p0[2], p1[0],p1[1],p1[2]); },
+  count(){ let n=0; for(const k in this.buckets) n += this.buckets[k].beams.length/6; return n; },
+  /* call at end of modelling: bake every bucket into InstancedMesh(es) */
+  finalize(roughness, metalness){
+    const out = [];
+    for(const key in this.buckets){
+      const bk = this.buckets[key], arr = bk.beams;
+      if(!arr.length) continue;
+      const count = arr.length/6;
+      const geo = new THREE.BoxGeometry(1,1,1);
+      geo.computeBoundingSphere(); geo.boundingSphere.radius = 420;
+      const mat = new THREE.MeshStandardMaterial({
+        color: bk.c, roughness, metalness, name:'bucket-'+key,
+        envMapIntensity:0.9 });
+      const q = new THREE.Quaternion(), m = new THREE.Matrix4(), up = new THREE.Vector3();
+      const X = new THREE.Vector3(1,0,0), dir = new THREE.Vector3();
+      const pos = new THREE.Vector3(), scale = new THREE.Vector3();
+      const chunks = Math.ceil(count / 24000);
+      for(let cix=0; cix<chunks; cix++){
+        const c0 = cix*24000, c1 = Math.min(count, c0+24000), n = c1-c0;
+        const im = new THREE.InstancedMesh(geo, mat, n);
+        im.name = 'FB-'+key+'-'+(cix+1)+'/'+chunks;
+        im.frustumCulled = false;
+        im.castShadow = true; im.receiveShadow = true;
+        const col = new THREE.Color();
+        for(let i=c0;i<c1;i++){
+          const k=i-c0, o=i*6;
+          const x0=arr[o], y0=arr[o+1], z0=arr[o+2], x1=arr[o+3], y1=arr[o+4], z1=arr[o+5];
+          dir.set(x1-x0,y1-y0,z1-z0);
+          const L = dir.length(); if(L<1e-5) continue;
+          dir.multiplyScalar(1/L);
+          q.setFromUnitVectors(X, dir);
+          pos.set((x0+x1)*0.5,(y0+y1)*0.5,(z0+z1)*0.5);
+          scale.set(L, bk.s, bk.s);
+          m.compose(pos, q, scale);
+          im.setMatrixAt(k, m);
+          // subtle per-instance brightness / tint jitter so metal does not look flat
+          const j = 0.94 + RND()*0.12;
+          const tint = RND();
+          col.setHex(bk.c).multiplyScalar(j);
+          if(tint>0.85) col.lerp(new THREE.Color(0x9a7a54), (tint-0.85)*4);
+          else if(tint<0.15) col.lerp(new THREE.Color(0x3c2f25), (0.15-tint)*4);
+          im.setColorAt(k, col);
+        }
+        if(im.instanceColor) im.instanceColor.needsUpdate = true;
+        im.computeBoundingSphere(); im.boundingSphere.radius = 500;
+        out.push(im);
+      }
+    }
+    return out;
+  }
+};
+

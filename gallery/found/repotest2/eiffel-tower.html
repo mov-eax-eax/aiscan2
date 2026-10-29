@@ -1,0 +1,1556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tour Eiffel — measured 3D reconstruction · Three.js</title>
+<style>
+  :root{
+    --ink:#f4e9d8; --dim:#b6a48c; --accent:#e3b271; --line:rgba(227,178,113,.22);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:#04060a;color:var(--ink);
+    font-family:"Segoe UI",Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  #app{position:fixed;inset:0}
+  canvas{display:block}
+
+  #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
+  .panel{position:absolute;pointer-events:auto;background:rgba(12,11,9,.74);
+    border:1px solid var(--line);border-radius:11px;backdrop-filter:blur(11px);
+    box-shadow:0 12px 44px rgba(0,0,0,.6)}
+  .panel h2{margin:0 0 7px;font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--dim);font-weight:600}
+
+  #title{top:14px;left:14px;padding:13px 15px;max-width:322px}
+  #title h1{margin:0;font-size:14px;letter-spacing:.15em;text-transform:uppercase;
+    font-weight:600;color:var(--accent)}
+  #title .sub{margin:5px 0 0;font-size:11px;line-height:1.55;color:var(--dim)}
+  #title .sub b{color:var(--ink);font-weight:600}
+
+  #tools{top:14px;right:14px;padding:10px;width:206px;display:flex;flex-direction:column;gap:7px}
+  .grp{display:flex;flex-wrap:wrap;gap:5px}
+  .grp>span{flex:0 0 100%;font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--dim);margin-bottom:-1px}
+  button{pointer-events:auto;font:inherit;font-size:10.5px;color:var(--ink);
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+    border-radius:7px;padding:4px 8px;cursor:pointer;transition:.14s}
+  button:hover{background:rgba(227,178,113,.18);border-color:rgba(227,178,113,.45)}
+  button.on{background:rgba(227,178,113,.24);border-color:var(--accent);color:#fff}
+
+  #readout{bottom:14px;left:14px;padding:11px 13px;width:288px;font-size:10.5px;line-height:1.62}
+  #readout .row{display:flex;justify-content:space-between;gap:8px}
+  #readout .row span:last-child{color:var(--accent);font-variant-numeric:tabular-nums}
+  #readout .sep{height:1px;background:rgba(255,255,255,.08);margin:6px 0}
+  #readout .src{color:#7d7264;font-size:9px;line-height:1.45;margin-top:7px}
+
+  #hint{bottom:14px;right:14px;padding:8px 12px;font-size:10px;color:var(--dim);
+    max-width:236px;line-height:1.5}
+
+  #dims{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:6}
+  .dim{position:absolute;transform:translate(-50%,-50%);font-size:9.5px;letter-spacing:.03em;
+    color:#ffdca6;text-shadow:0 1px 6px #000,0 0 2px #000;white-space:nowrap;
+    padding:1px 5px;border-radius:5px;background:rgba(18,13,7,.62);
+    border:1px solid rgba(255,204,140,.28);font-variant-numeric:tabular-nums}
+  .dim.wide{color:#bfe0ff;border-color:rgba(150,200,255,.3)}
+
+  #loader{position:fixed;inset:0;display:flex;flex-direction:column;gap:10px;
+    align-items:center;justify-content:center;background:#04060a;z-index:50;
+    transition:opacity .7s;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent)}
+  #loader .bar{width:190px;height:2px;background:rgba(227,178,113,.18);overflow:hidden;border-radius:2px}
+  #loader .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+  #loader.done{opacity:0;pointer-events:none}
+  #err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+    background:#080a0f;z-index:60;padding:40px;text-align:center;font-size:12.5px;
+    line-height:1.75;color:#f0d9b5}
+  #err code{color:#8fd0ff}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div id="hud">
+  <div class="panel" id="title">
+    <h1>Tour Eiffel · 1889</h1>
+    <p class="sub">Measured reconstruction — <b>18,038</b> iron parts, <b>2,500,000</b> rivets,
+      <b>7,300 t</b> of puddled iron. Profile digitised from Eiffel's published drawings,
+      dimensions from SETE / <i>toureiffel.paris</i>.</p>
+  </div>
+
+  <div class="panel" id="tools">
+    <div class="grp"><span>Viewpoint</span>
+      <button data-cam="full">Full</button>
+      <button data-cam="elev">Elevation</button>
+      <button data-cam="base">Base</button>
+      <button data-cam="f1">1st floor</button>
+      <button data-cam="f2">2nd floor</button>
+      <button data-cam="top">Summit</button>
+      <button data-cam="under">Under</button>
+      <button data-cam="arch">Arch</button>
+    </div>
+    <div class="grp"><span>Light</span>
+      <button id="btnNight">Night</button>
+      <button id="btnSparkle">Sparkle</button>
+      <button id="btnBeacon" class="on">Beacon</button>
+    </div>
+    <div class="grp"><span>Overlay</span>
+      <button id="btnDims">Dimensions</button>
+      <button id="btnSpin" class="on">Spin</button>
+      <button id="btnWire">Members</button>
+    </div>
+  </div>
+
+  <div class="panel" id="readout">
+    <h2>Documented figures</h2>
+    <div class="row"><span>Total height (2022 antenna)</span><span>330.00 m</span></div>
+    <div class="row"><span>Iron frame (1889, no flag)</span><span>300.65 m</span></div>
+    <div class="row"><span>Base, outer square</span><span>124.90 m</span></div>
+    <div class="row"><span>Base, clear gap between legs</span><span>74.24 m</span></div>
+    <div class="row"><span>Pillar width at ground</span><span>25.33 m</span></div>
+    <div class="row"><span>Arbalétriers, inclination</span><span>54°</span></div>
+    <div class="sep"></div>
+    <div class="row"><span>1st floor · 57.63 m</span><span>70.69 m</span></div>
+    <div class="row"><span>2nd floor · 115.73 m</span><span>40.96 m</span></div>
+    <div class="row"><span>3rd floor · 276.13 m</span><span>18.65 m</span></div>
+    <div class="row"><span>Decorative arch</span><span>39 × 74 m</span></div>
+    <div class="sep"></div>
+    <div class="row"><span>Puddled-iron parts</span><span>18,038</span></div>
+    <div class="row"><span>Rivets</span><span>2,500,000</span></div>
+    <div class="row"><span>Iron mass / total</span><span>7,300 / 10,100 t</span></div>
+    <div class="row"><span>Steps to the summit</span><span>1,665</span></div>
+    <div class="row"><span>Ground altitude</span><span>33.5 m NGF</span></div>
+    <div class="src">SETE key figures; Eiffel, <i>La Tour de 300 mètres</i> (1900);
+      Wikimedia technical drawing (profile).</div>
+  </div>
+
+  <div class="panel" id="hint">Drag to orbit · wheel to zoom · right-drag to pan.
+    <span id="stat"></span></div>
+</div>
+
+<div id="dims"></div>
+<div id="loader"><div>Building the tower…</div><div class="bar"><i id="lbar"></i></div></div>
+<div id="err">
+  <div>Three.js could not be loaded from the CDN.<br>
+  Check your connection, or serve this folder over HTTP:<br><br>
+  <code>npx serve .</code> → <code>http://localhost:3000/eiffel-tower.html</code></div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   TOUR EIFFEL — measured procedural reconstruction
+   ──────────────────────────────────────────────────────────────────────────────
+   All dimensions in metres. Ground = y 0, tower axis = origin, +y up.
+   Sources
+     · SETE / toureiffel.paris key figures (platform heights, platform sides,
+       base square, inner gap, mass, parts, rivets, steps, arch 39 × 74 m).
+     · fr.wikipedia "Données techniques de la tour Eiffel" (from Eiffel,
+       La Tour de 300 mètres, Paris, Lemercier, 1900).
+     · Wikimedia technical elevation drawing: the outer envelope was digitised
+       row by row (1 px = 0.2407 m) and normalised on the documented 124.90 m
+       base square; it is embedded below as PROFILE.
+     · Eiffel's Atlas plates I (élévation), VIII (pied), XV (partie supérieure)
+       for the member layout: 4 box-truss pillars, St-Andrew cross bracing,
+       corner box columns above the 1st floor, openwork arch girder.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+const M = {
+  groundAlt   : 33.50,     // m above sea level
+  baseOuter   : 124.90,    // outer square at ground
+  baseInner   : 74.24,     // clear gap between two opposite pillars
+  pillarW     : 25.33,     // pillar width at ground  (124.90-74.24)/2
+  f1 : { y:  57.63, side: 70.69, area: 4200 },
+  f2 : { y: 115.73, side: 40.96, area: 1652 },
+  f3 : { y: 276.13, side: 18.65, area:  350 },
+  ironTop : 300.65,        // top of the iron frame, 1889 (300 m without flag)
+  flag1889: 312.27,
+  tip     : 330.00,        // with the 2022 DAB+ antenna (324 m in 2000)
+  arch    : { rise: 39, span: 74.24 },
+  parts   : 18038, rivets: 2500000, massIron: 7300, massTotal: 10100,
+  steps   : 1665, bulbs: 20000, projectors: 336,
+  legAngle: 54,            // arbalétriers inclined 54° to the ground
+};
+
+/* ── outer envelope, digitised from the reference elevation ───────────────────
+   [height m, half of the outer square side] — normalised so that S(0)=62.45   */
+const PROFILE = [[0,62.088],[2,61.513],[4,60.744],[6,59.854],[8,58.577],[10,57.191],
+[12,55.804],[14,54.637],[16,53.526],[18,52.426],[20,51.358],[22,50.258],[24,49.181],
+[26,48.124],[28,47.089],[30,46.023],[32,44.967],[34,43.943],[36,42.93],[38,41.907],
+[40,40.917],[42,39.948],[44,39.003],[46,38.068],[48,37.143],[50,36.252],[52,35.482],
+[54,34.834],[56,34.283],[58,33.887],[60,33.81],[62,33.063],[64,32.138],[66,31.246],
+[68,30.234],[70,29.024],[72,28.023],[74,27.396],[76,26.769],[78,26.164],[80,25.58],
+[82,25.008],[84,24.413],[86,23.864],[88,23.326],[90,22.764],[92,22.214],[94,21.729],
+[96,21.245],[98,20.772],[100,20.321],[102,19.926],[104,19.52],[106,19.179],[108,18.893],
+[110,18.573],[112,18.573],[114,18.483],[116,18.274],[118,17.845],[120,17.516],
+[122,16.999],[124,16.461],[126,15.955],[128,15.68],[130,15.416],[132,15.163],
+[134,14.909],[136,14.644],[138,14.378],[140,14.136],[142,13.883],[144,13.63],
+[146,13.4],[148,13.169],[150,12.939],[152,12.719],[154,12.511],[156,12.313],
+[158,12.114],[160,11.916],[162,11.739],[164,11.552],[166,11.376],[168,11.2],
+[170,11.035],[172,10.882],[174,10.728],[176,10.608],[178,10.476],[180,10.377],
+[182,10.278],[184,10.189],[186,10.1],[188,10.034],[190,9.956],[192,9.867],
+[194,9.791],[196,9.714],[198,9.604],[200,9.505],[202,9.417],[204,9.297],[206,9.187],
+[208,9.099],[210,9.011],[212,8.901],[214,8.801],[216,8.712],[218,8.613],[220,8.524],
+[222,8.414],[224,8.326],[226,8.227],[228,8.14],[230,8.052],[232,7.975],[234,7.909],
+[236,7.832],[238,7.767],[240,7.69],[242,7.624],[244,7.536],[246,7.492],[248,7.426],
+[250,7.35],[252,7.284],[254,7.207],[256,7.141],[258,7.064],[260,7.02],[262,6.977],
+[264,6.922],[266,6.878],[268,6.812],[270,6.746],[272,6.746],[274,6.746],[276,6.746],
+[278,6.746],[280,6.746],[282,6.746],[284,6.746],[286,6.746],[288,6.746],[290,6.589],
+[292,5.456],[294,4.247],[296,3.169],[298,2.29],[300,1.647]];
+const PROFILE_SCALE = M.baseOuter / 2 / PROFILE[0][1];   // exact 124.90 m base
+
+/* monotone cubic (PCHIP) interpolation of the tabulated envelope */
+const PROF_Y = PROFILE.map(p => p[0]);
+const PROF_V = PROFILE.map(p => p[1] * PROFILE_SCALE);
+const PROF_M = (() => {
+  const n = PROF_Y.length, h = [], d = [], m = new Array(n);
+  for (let i = 0; i < n - 1; i++){ h[i] = PROF_Y[i+1] - PROF_Y[i]; d[i] = (PROF_V[i+1] - PROF_V[i]) / h[i]; }
+  m[0] = d[0]; m[n-1] = d[n-2];
+  for (let i = 1; i < n - 1; i++){
+    if (d[i-1] * d[i] <= 0) m[i] = 0;
+    else { const w1 = 2*h[i] + h[i-1], w2 = h[i] + 2*h[i-1];
+           m[i] = (w1 + w2) / (w1/d[i-1] + w2/d[i]); }
+  }
+  return m;
+})();
+/** half of the outer square side at height y (the tower's silhouette) */
+function S(y){
+  if (y <= 0) return PROF_V[0];
+  if (y >= PROF_Y[PROF_Y.length-1]) return PROF_V[PROF_V.length-1];
+  let i = 1; while (PROF_Y[i] < y) i++;
+  const x0 = PROF_Y[i-1], x1 = PROF_Y[i], hh = x1 - x0, t = (y - x0) / hh;
+  const t2 = t*t, t3 = t2*t;
+  return (2*t3 - 3*t2 + 1) * PROF_V[i-1] + (t3 - 2*t2 + t) * hh * PROF_M[i-1]
+       + (-2*t3 + 3*t2) * PROF_V[i]     + (t3 - t2) * hh * PROF_M[i];
+}
+const S1 = S(M.f1.y), S2 = S(M.f2.y), S3 = S(M.f3.y);
+
+/* ── pillar inner face: 37.12 m from the axis at ground (74.24/2),
+      narrowing to 17.0 m at the 1st floor (leg width 25.33 → 18.3 m) ────────── */
+const INNER = [[0,37.12],[8,36.60],[14,35.60],[22,32.60],[32,28.20],[44,22.90],[57.63,17.00]];
+function innerFace(y){
+  const t = INNER;
+  if (y <= 0) return t[0][1];
+  if (y >= M.f1.y) return t[t.length-1][1];
+  let i = 1; while (t[i][0] < y) i++;
+  const a = t[i-1], b = t[i], u = (y - a[0]) / (b[0] - a[0]);
+  const s = u*u*(3-2*u);                       // smoothstep: C1, monotone
+  return a[1] + (b[1] - a[1]) * s;
+}
+const legWidth = y => Math.max(2.2, S(y) - innerFace(y));
+
+/* ── decorative arch: circle through (±37.12, 0) with crown at (0, 39) ─────── */
+const ARCH_HALF = M.arch.span / 2;
+const ARCH_R    = (ARCH_HALF*ARCH_HALF + M.arch.rise*M.arch.rise) / (2*M.arch.rise);
+const ARCH_CY   = M.arch.rise - ARCH_R;                     // ≈ 1.83
+const archX = y => Math.sqrt(Math.max(0, ARCH_R*ARCH_R - (y - ARCH_CY)*(y - ARCH_CY)));
+
+/* ── paint: the tower is painted in graded tones, darkest at the base ──────── */
+const PAINT = [
+  [   0, 0x5c4530], [ 57.63, 0x77593a], [115.73, 0x8d6d49],
+  [276.13, 0xaa8c5f], [330.00, 0xc4a677],
+].map(([y, hex]) => [y, new THREE.Color(hex)]);
+const _cA = new THREE.Color(), _cB = new THREE.Color();
+function paintAt(y, out = new THREE.Color()){
+  if (y <= PAINT[0][0]) return out.copy(PAINT[0][1]);
+  for (let i = 1; i < PAINT.length; i++){
+    if (y <= PAINT[i][0]){
+      const a = PAINT[i-1], b = PAINT[i];
+      const t = (y - a[0]) / (b[0] - a[0]);
+      return out.copy(a[1]).lerp(b[1], t);
+    }
+  }
+  return out.copy(PAINT[PAINT.length-1][1]);
+}
+/* night floodlighting: the 336 projectors throw a warm wash up the legs */
+const NIGHT = [
+  [   0, 0x2a1c10], [ 57.63, 0x7a4a1e], [115.73, 0x9c6425],
+  [276.13, 0xc08a3a], [330.00, 0xd9a24a],
+].map(([y, hex]) => [y, new THREE.Color(hex)]);
+function nightAt(y, out = new THREE.Color()){
+  if (y <= NIGHT[0][0]) return out.copy(NIGHT[0][1]);
+  for (let i = 1; i < NIGHT.length; i++){
+    if (y <= NIGHT[i][0]){
+      const a = NIGHT[i-1], b = NIGHT[i];
+      return out.copy(a[1]).lerp(b[1], (y - a[0]) / (b[0] - a[0]));
+    }
+  }
+  return out.copy(NIGHT[NIGHT.length-1][1]);
+}
+
+const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
+const CORNERS = [[1,1], [-1,1], [-1,-1], [1,-1]];
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   GEOMETRY ENGINE — every iron member is a boxed bar merged into one
+   indexed BufferGeometry carrying a per-vertex paint colour.
+   ══════════════════════════════════════════════════════════════════════════════ */
+class Mesher {
+  constructor(){
+    this.pos = []; this.nrm = []; this.col = []; this.idx = []; this.ys = [];
+    this.n = 0; this.members = 0;
+    this.pts = [];                    // member end points (rivets / bulbs / dims)
+  }
+  _v(x, y, z, nx, ny, nz, c){
+    this.pos.push(x, y, z); this.nrm.push(nx, ny, nz); this.ys.push(y);
+    this.col.push(c.r, c.g, c.b); return this.n++;
+  }
+  _quad(a, b, c, d, nx, ny, nz, col){
+    const i0 = this._v(a[0],a[1],a[2], nx,ny,nz, col);
+    const i1 = this._v(b[0],b[1],b[2], nx,ny,nz, col);
+    const i2 = this._v(c[0],c[1],c[2], nx,ny,nz, col);
+    const i3 = this._v(d[0],d[1],d[2], nx,ny,nz, col);
+    this.idx.push(i0,i1,i2, i0,i2,i3);
+  }
+  /** rectangular member a→b, w across the face, t through it, n = face normal */
+  beam(a, b, w, t, n, col){
+    const dx = b.x-a.x, dy = b.y-a.y, dz = b.z-a.z;
+    const len = Math.hypot(dx, dy, dz);
+    if (len < 1e-4 || w <= 0 || t <= 0) return;
+    const ux = dx/len, uy = dy/len, uz = dz/len;
+    let nx = n ? n.x : 0, ny = n ? n.y : 1, nz = n ? n.z : 0;
+    const d = nx*ux + ny*uy + nz*uz; nx -= d*ux; ny -= d*uy; nz -= d*uz;
+    let nl = Math.hypot(nx, ny, nz);
+    if (nl < 1e-6){ nx = 1; ny = 0; nz = 0; const dd = nx*ux + ny*uy + nz*uz;
+                    nx -= dd*ux; ny -= dd*uy; nz -= dd*uz; nl = Math.hypot(nx, ny, nz) || 1; }
+    nx /= nl; ny /= nl; nz /= nl;
+    const sx = uy*nz - uz*ny, sy = uz*nx - ux*nz, sz = ux*ny - uy*nx;   // u × n
+    const hw = w/2, ht = t/2;
+    const P = (px, py, pz, ea, eb) => [
+      px + sx*ea*hw + nx*eb*ht, py + sy*ea*hw + ny*eb*ht, pz + sz*ea*hw + nz*eb*ht];
+    const A = [P(a.x,a.y,a.z,-1,-1), P(a.x,a.y,a.z, 1,-1), P(a.x,a.y,a.z, 1, 1), P(a.x,a.y,a.z,-1, 1)];
+    const B = [P(b.x,b.y,b.z,-1,-1), P(b.x,b.y,b.z, 1,-1), P(b.x,b.y,b.z, 1, 1), P(b.x,b.y,b.z,-1, 1)];
+    const flip = (p, nv) => nv.some(k => (p[k] - (a[k]+b[k])/2) * (nv[k]) < -1e-9);
+    for (let k = 0; k < 4; k++){
+      const k2 = (k+1) % 4;
+      const q = [A[k], A[k2], B[k2], B[k]];
+      // face normal = (edge along w) × (edge along u)
+      const e1 = [q[1][0]-q[0][0], q[1][1]-q[0][1], q[1][2]-q[0][2]];
+      const e2 = [ux, uy, uz];
+      let fx = e1[1]*e2[2]-e1[2]*e2[1], fy = e1[2]*e2[0]-e1[0]*e2[2], fz = e1[0]*e2[1]-e1[1]*e2[0];
+      const fl = Math.hypot(fx, fy, fz) || 1; fx/=fl; fy/=fl; fz/=fl;
+      // orient away from the axis
+      const cx = (q[0][0]+q[1][0]+q[2][0]+q[3][0])/4;
+      const cy = (q[0][1]+q[1][1]+q[2][1]+q[3][1])/4;
+      const cz = (q[0][2]+q[1][2]+q[2][2]+q[3][2])/4;
+      const m0x = (A[0][0]+A[1][0]+A[2][0]+A[3][0]+B[0][0]+B[1][0]+B[2][0]+B[3][0])/8 - a.x;
+      if (fx*(cx-0) + fz*(cz-0) < 0 && Math.abs(fx)+Math.abs(fz) > 1e-6){ fx=-fx; fy=-fy; fz=-fz; }
+      this._quad(q[0], q[1], q[2], q[3], fx, fy, fz, col);
+    }
+    this._quad(A[0], A[3], A[2], A[1], -ux, -uy, -uz, col);
+    this._quad(B[0], B[1], B[2], B[3],  ux,  uy,  uz, col);
+    this.members++;
+    this.pts.push(a.x, a.y, a.z, b.x, b.y, b.z);
+  }
+  /** flat plate from 4 corners (deck, gusset, web) — double sided */
+  plate(a, b, c, d, col){
+    const e1 = [b.x-a.x, b.y-a.y, b.z-a.z], e2 = [d.x-a.x, d.y-a.y, d.z-a.z];
+    let nx = e1[1]*e2[2]-e1[2]*e2[1], ny = e1[2]*e2[0]-e1[0]*e2[2], nz = e1[0]*e2[1]-e1[1]*e2[0];
+    const l = Math.hypot(nx, ny, nz) || 1; nx/=l; ny/=l; nz/=l;
+    const A = [a.x,a.y,a.z], B = [b.x,b.y,b.z], C = [c.x,c.y,c.z], D = [d.x,d.y,d.z];
+    this._quad(A, B, C, D, nx, ny, nz, col);
+    this._quad(A, D, C, B, -nx, -ny, -nz, col);
+    this.members++;
+    this.pts.push(a.x, a.y, a.z, c.x, c.y, c.z);
+  }
+  /** axis-aligned box, centre + half sizes */
+  box(cx, cy, cz, hx, hy, hz, col){
+    const p = (x,y,z) => V3(cx+x, cy+y, cz+z);
+    const a=p(-hx,-hy,-hz), b=p(hx,-hy,-hz), c=p(hx,hy,-hz), d=p(-hx,hy,-hz);
+    const e=p(-hx,-hy, hz), f=p(hx,-hy, hz), g=p(hx,hy, hz), h=p(-hx,hy, hz);
+    this.plate(a,b,c,d,col); this.plate(f,e,h,g,col);
+    this.plate(a,e,f,b,col); this.plate(c,d,h,g,col);
+    this.plate(b,f,g,c,col); this.plate(e,a,d,h,col);
+  }
+  /** box aligned to an arbitrary frame (u,v,w unit vectors) */
+  obox(c, u, v, w, hu, hv, hw, col){
+    const P = (a,b,c2) => V3(c.x+u.x*a*hu+v.x*b*hv+w.x*c2*hw,
+                             c.y+u.y*a*hu+v.y*b*hv+w.y*c2*hw,
+                             c.z+u.z*a*hu+v.z*b*hv+w.z*c2*hw);
+    const q = [P(-1,-1,-1),P(1,-1,-1),P(1,1,-1),P(-1,1,-1),P(-1,-1,1),P(1,-1,1),P(1,1,1),P(-1,1,1)];
+    const F = (i0,i1,i2,i3) => this.plate(q[i0], q[i1], q[i2], q[i3], col);
+    F(0,1,2,3); F(5,4,7,6); F(0,4,5,1); F(2,6,7,3); F(1,5,6,2); F(4,0,3,7);
+  }
+  /** cylinder along a→b */
+  cyl(a, b, r, seg, col){
+    const dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z, len=Math.hypot(dx,dy,dz);
+    if (len < 1e-4) return;
+    const ux=dx/len, uy=dy/len, uz=dz/len;
+    let ax = Math.abs(ux) < .9 ? 1 : 0, ay = Math.abs(ux) < .9 ? 0 : 1, az = 0;
+    let s1x = uy*az-uz*ay, s1y = uz*ax-ux*az, s1z = ux*ay-uy*ax;
+    let l = Math.hypot(s1x,s1y,s1z)||1; s1x/=l; s1y/=l; s1z/=l;
+    const s2x = uy*s1z-uz*s1y, s2y = uz*s1x-ux*s1z, s2z = ux*s1y-uy*s1x;
+    for (let k = 0; k < seg; k++){
+      const t0 = k/seg*Math.PI*2, t1 = (k+1)/seg*Math.PI*2;
+      const c0 = Math.cos(t0), n0 = Math.sin(t0), c1 = Math.cos(t1), n1 = Math.sin(t1);
+      const nx0 = s1x*c0+s2x*n0, ny0 = s1y*c0+s2y*n0, nz0 = s1z*c0+s2z*n0;
+      const nx1 = s1x*c1+s2x*n1, ny1 = s1y*c1+s2y*n1, nz1 = s1z*c1+s2z*n1;
+      const p0 = [a.x+nx0*r, a.y+ny0*r, a.z+nz0*r], p1 = [b.x+nx0*r, b.y+ny0*r, b.z+nz0*r];
+      const p2 = [b.x+nx1*r, b.y+ny1*r, b.z+nz1*r], p3 = [a.x+nx1*r, a.y+ny1*r, a.z+nz1*r];
+      this._quad(p0, p1, p2, p3, nx0+nx1, ny0+ny1, nz0+nz1, col);
+    }
+    this.members++;
+    this.pts.push(a.x, a.y, a.z, b.x, b.y, b.z);
+  }
+  build(){
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(this.pos, 3));
+    g.setAttribute('normal',   new THREE.Float32BufferAttribute(this.nrm, 3));
+    g.setAttribute('color',    new THREE.Float32BufferAttribute(this.col, 3));
+    g.setIndex(this.idx);
+    g.computeBoundingSphere();
+    return g;
+  }
+}
+
+/* bilinear point / normal of a planar quad  p00→p10 = u, p00→p01 = v */
+const bilerp = (p00, p10, p11, p01, u, v) => {
+  const a = new THREE.Vector3().lerpVectors(p00, p10, u);
+  const b = new THREE.Vector3().lerpVectors(p01, p11, u);
+  return a.lerp(b, v);
+};
+const quadNormal = (p00, p10, p01) => new THREE.Vector3()
+  .crossVectors(new THREE.Vector3().subVectors(p10, p00),
+                new THREE.Vector3().subVectors(p01, p00)).normalize();
+
+/**
+ * Lattice pattern inside a planar quad.
+ *  nu × nv cells, X or K bracing, border members, intermediate posts.
+ */
+function fillQuad(mesh, p00, p10, p11, p01, o = {}){
+  const nu = o.nu || 1, nv = o.nv || 1;
+  const w = o.w ?? 0.24, t = o.t ?? 0.10;
+  const nrm = o.nrm || quadNormal(p00, p10, p01);
+  const col = o.col || paintAt((p00.y + p11.y) / 2);
+  const P = (u, v) => bilerp(p00, p10, p11, p01, u, v);
+  if (o.border !== false){
+    const bw = o.bw ?? w*1.5, bt = o.bt ?? t*1.3;
+    mesh.beam(p00, p10, bw, bt, nrm, col);
+    mesh.beam(p01, p11, bw, bt, nrm, col);
+    mesh.beam(p00, p01, bw, bt, nrm, col);
+    mesh.beam(p10, p11, bw, bt, nrm, col);
+  }
+  for (let i = 0; i < nu; i++) for (let j = 0; j < nv; j++){
+    const a = P(i/nu, j/nv), b = P((i+1)/nu, j/nv),
+          c = P((i+1)/nu, (j+1)/nv), d = P(i/nu, (j+1)/nv);
+    if (o.diag === 'K'){ mesh.beam(a, c, w, t, nrm, col); mesh.beam(b, c, w, t, nrm, col); }
+    else if (o.diag === 'N'){ mesh.beam(a, c, w, t, nrm, col); }
+    else if (o.diag !== false){ mesh.beam(a, c, w, t, nrm, col); mesh.beam(b, d, w, t, nrm, col); }
+  }
+  for (let i = 1; i < nu; i++){
+    const a = P(i/nu, 0), b = P(i/nu, 1);
+    mesh.beam(a, b, w*0.85, t*0.9, nrm, col);
+  }
+  for (let j = 1; j < nv; j++){
+    const a = P(0, j/nv), b = P(1, j/nv);
+    mesh.beam(a, b, w*1.1, t*1.05, nrm, col);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   TOWER ASSEMBLY
+   ══════════════════════════════════════════════════════════════════════════════ */
+const NAMES = {
+  '+z': ['SEGUIN','LALANDE','TRESCA','PONCELET','BRESSE','LAGRANGE','BELANGER','CUVIER',
+         'LAPLACE','DULONG','CHASLES','LAVOISIER','AMPERE','CHEVREUL','FLACHAT','NAVIER',
+         'LEGENDRE','CHAPTAL'],
+  '-z': ['CAUCHY','BELGRAND','REGNAULT','FRESNEL','DE PRONY','VICAT','EBELMEN','COULOMB',
+         'POINSOT','FOUCAULT','DELAUNAY','MORIN','HAUY','COMBES','THENARD','ARAGO',
+         'POISSON','MONGE'],
+  '+x': ['PETIET','DAGUERRE','WURTZ','LE VERRIER','PERDONNET','DELAMBRE','MALUS','BREGUET',
+         'POLONCEAU','DUMAS','CLAPEYRON','BORDA','FOURIER','BICHAT','SAUVAGE','PELOUZE',
+         'CARNOT','LAME'],
+  '-x': ['JAMIN','GAY-LUSSAC','FIZEAU','SCHNEIDER','LE CHATELIER','BERTHIER','BARRAL',
+         'DE DION','GOUIN','JOUSSELIN','BROCA','BECQUEREL','CORIOLIS','CAIL','TRIGER',
+         'GIFFARD','PERRIER','STURM'],
+};
+/** gold raised lettering, 60 cm high on the real tower — drawn to a canvas */
+function nameTexture(names){
+  const W = 4096, H = 128;
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const c = cv.getContext('2d');
+  c.textBaseline = 'middle'; c.textAlign = 'left';
+  const probe = 100;
+  c.font = 'bold ' + probe + 'px "Times New Roman", Georgia, serif';
+  let total = 0;
+  for (const n of names) total += c.measureText(n).width;
+  let gap = probe * 1.1;
+  total += gap * (names.length - 1);
+  const k = (W * 0.95) / total;
+  const font = probe * k, g = gap * k;
+  c.font = 'bold ' + font.toFixed(1) + 'px "Times New Roman", Georgia, serif';
+  let x = (W - (total * k)) / 2;
+  for (const n of names){
+    c.fillStyle = 'rgba(60,40,10,.85)';
+    c.fillText(n, x + 1.5, H/2 + 1.5);
+    c.fillStyle = '#ffdfa2';
+    c.fillText(n, x, H/2);
+    x += c.measureText(n).width + g;
+  }
+  const tex = new THREE.CanvasTexture(cv);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  return tex;
+}
+const extras = [];                         // meshes that need the scene later
+
+const mesh = new Mesher();                 // structural iron
+const glass = [];                          // glazing quads [a,b,c,d]
+const bulbPos = [];                        // 20 000 scintillation bulbs
+const rivetPos = [];                       // rivet heads
+const dimPoints = [];                      // {p:Vector3, text, cls}
+
+/* ── 1 · masonry plinths + cast-iron shoes ─────────────────────────────────── */
+function buildPlinths(){
+  const stone  = new THREE.Color(0xa79b86), stone2 = new THREE.Color(0x7d7362);
+  const iron   = new THREE.Color(0x3a3229);
+  const s = M.pillarW / 2, c0 = (M.baseOuter - M.pillarW) / 2;   // 49.785
+  for (const [sx, sz] of CORNERS){
+    const cx = sx*c0, cz = sz*c0;
+    mesh.box(cx, 0.55, cz, s+0.85, 0.55, s+0.85, stone2);        // footing
+    mesh.box(cx, 1.75, cz, s+0.45, 0.75, s+0.45, stone);
+    mesh.box(cx, 3.05, cz, s+0.15, 0.70, s+0.15, stone2);
+    mesh.box(cx, 3.95, cz, s,      0.35, s,      stone);         // cap
+    // cast-iron shoe (sabot) carrying each arbalétrier
+    for (let ci = 0; ci < 4; ci++){
+      const [ex, ez] = CORNERS[ci];
+      const px = cx + ex*(s - 1.0), pz = cz + ez*(s - 1.0);
+      mesh.box(px, 4.75, pz, 1.15, 0.55, 1.15, iron);
+      mesh.box(px, 5.55, pz, 0.85, 0.35, 0.85, iron);
+    }
+    if (sx === 1 && sz === 1) dimPoints.push({ p: V3(cx + s, 0.1, cz + s), text: '25.33 m pillar', cls: '' });
+  }
+  dimPoints.push({ p: V3(0, 0.2, M.baseOuter/2), text: '124.90 m outer square', cls: 'wide' });
+  dimPoints.push({ p: V3(0, 0.2, M.baseInner/2), text: '74.24 m clear gap', cls: 'wide' });
+}
+
+/* ── 2 · the four pillars ──────────────────────────────────────────────────── */
+const LEG_PANELS = 24;
+function legLevels(){
+  const ys = [];
+  for (let i = 0; i <= LEG_PANELS; i++) ys.push(M.f1.y * Math.pow(i/LEG_PANELS, 1.14));
+  return ys;
+}
+const LEG_Y = legLevels();
+
+/** plan corner of a pillar chord: pillar (sx,sz) spans [inner,S]² in plan */
+function legCorner(y, sx, sz, ci){
+  const S_ = S(y), I_ = Math.min(innerFace(y), S_ - 1.5);
+  const [ex, ez] = CORNERS[ci];
+  const x = ex > 0 ? S_ : I_, z = ez > 0 ? S_ : I_;
+  return V3(sx*x, y, sz*z);
+}
+function buildLegs(){
+  for (const [sx, sz] of CORNERS){
+    /* 2.1 the four corner columns (arbalétriers) — boxed sections */
+    for (let ci = 0; ci < 4; ci++){
+      for (let k = 0; k < LEG_Y.length-1; k++){
+        const a = legCorner(LEG_Y[k], sx, sz, ci), b = legCorner(LEG_Y[k+1], sx, sz, ci);
+        const yMid = (a.y + b.y) / 2;
+        const sz_ = THREE.MathUtils.lerp(1.45, 0.60, Math.pow(yMid/M.f1.y, 0.7));
+        const nrm = V3(a.x - sx*((S(a.y)+innerFace(a.y))/2), 0,
+                       a.z - sz*((S(a.y)+innerFace(a.y))/2)).normalize();
+        mesh.beam(a, b, sz_, sz_, nrm, paintAt(yMid));
+        // rivet heads along the column
+        const n = Math.max(3, Math.round(a.distanceTo(b) / 0.42));
+        for (let i = 0; i <= n; i++){
+          const p = a.clone().lerp(b, i/n);
+          rivetPos.push(p.x + nrm.x*sz_*0.52, p.y + nrm.y*sz_*0.52, p.z + nrm.z*sz_*0.52);
+          rivetPos.push(p.x - nrm.x*sz_*0.52, p.y - nrm.y*sz_*0.52, p.z - nrm.z*sz_*0.52);
+        }
+      }
+    }
+    /* 2.2 the four faces of the pillar: St-Andrew cross + secondary lace */
+    for (let ci = 0; ci < 4; ci++){
+      const ci2 = (ci+1) % 4;
+      for (let k = 0; k < LEG_Y.length-1; k++){
+        const y0 = LEG_Y[k], y1 = LEG_Y[k+1], ym = (y0+y1)/2;
+        const p00 = legCorner(y0, sx, sz, ci),  p10 = legCorner(y0, sx, sz, ci2),
+              p11 = legCorner(y1, sx, sz, ci2),  p01 = legCorner(y1, sx, sz, ci);
+        const col = paintAt(ym);
+        const f = Math.pow(y0 / M.f1.y, 0.55);
+        const w = THREE.MathUtils.lerp(0.42, 0.21, f);
+        const t = THREE.MathUtils.lerp(0.18, 0.095, f);
+        const nrm = quadNormal(p00, p10, p01);
+        const faceW = p00.distanceTo(p10), faceH = Math.abs(p01.y - p00.y);
+        const nu = THREE.MathUtils.clamp(Math.round(faceW / 2.15), 3, 14);
+        const nv = THREE.MathUtils.clamp(Math.round(faceH / 1.9), 1, 5);
+        // the pillar panel: dense St-Andrew mesh — the "dentelle"
+        fillQuad(mesh, p00, p10, p11, p01, { nu, nv, diag:'X', w, t, col, nrm,
+                                             bw: w*1.5, bt: t*1.4 });
+        // mid-panel belt
+        const ba = bilerp(p00, p10, p11, p01, 0, 0.5), bb = bilerp(p00, p10, p11, p01, 1, 0.5);
+        mesh.beam(ba, bb, w*1.2, t*1.1, nrm, col);
+      }
+    }
+    /* 2.3 transverse members (entretoises) tying the four columns */
+    for (let k = 2; k < LEG_Y.length-1; k += 2){
+      const y = LEG_Y[k];
+      for (let ci = 0; ci < 4; ci++){
+        const a = legCorner(y, sx, sz, ci), b = legCorner(y, sx, sz, (ci+1)%4);
+        const nrm = quadNormal(a, b, V3(a.x, y+1, a.z));
+        mesh.beam(a, b, 0.55, 0.34, nrm, paintAt(y));
+      }
+      // inner diagonal ties
+      const a0 = legCorner(y, sx, sz, 0), c0 = legCorner(y, sx, sz, 2);
+      const nrm = quadNormal(a0, c0, V3(a0.x, y+1, a0.z));
+      mesh.beam(a0, c0, 0.40, 0.26, nrm, paintAt(y));
+    }
+    /* 2.4 hydraulic lift cylinder + cage inside two pillars (1889 Roux lifts) */
+    if ((sx === 1 && sz === 1) || (sx === -1 && sz === -1)){
+      const yA = 1.0, yB = 30;
+      const cA = V3(sx*((S(yA)+innerFace(yA))/2), yA, sz*((S(yA)+innerFace(yA))/2));
+      const cB = V3(sx*((S(yB)+innerFace(yB))/2), yB, sz*((S(yB)+innerFace(yB))/2));
+      mesh.cyl(cA, cB, 0.62, 12, new THREE.Color(0x5b5b60));
+      mesh.box(cB.x, yB+1.2, cB.z, 1.5, 1.3, 1.5, new THREE.Color(0x6b6f74));
+    }
+  }
+}
+
+/* ── 3 · decorative arches + spandrels ─────────────────────────────────────── */
+function buildArches(){
+  const N = 88, depth = 2.95;
+  for (let si = 0; si < 4; si++){
+    const [sx, sz] = CORNERS[si];
+    const along = si % 2 === 0 ? 'x' : 'z';     // the face the arch belongs to
+    const ptsI = [], ptsO = [];
+    for (let i = 0; i <= N; i++){
+      const u = -1 + 2*i/N;
+      const x = u * ARCH_HALF;
+      const y = ARCH_CY + Math.sqrt(Math.max(0, ARCH_R*ARCH_R - x*x));
+      const out = S(y) - 0.15;
+      // intrados point lies on the inner faces of the two pillars
+      if (along === 'x'){ ptsI.push(V3(x, y, sz*innerFace(y))); ptsO.push(V3(x, y + depth, sz*innerFace(y))); }
+      else              { ptsI.push(V3(sx*innerFace(y), y, x)); ptsO.push(V3(sx*innerFace(y), y + depth, x)); }
+    }
+    const nrm = along === 'x' ? V3(0, 0, sz) : V3(sx, 0, 0);
+    for (let i = 0; i < N; i++){
+      const col = paintAt((ptsI[i].y + ptsI[i+1].y)/2);
+      // two chords + openwork web
+      mesh.beam(ptsI[i], ptsI[i+1], 0.78, 0.52, nrm, col);
+      mesh.beam(ptsO[i], ptsO[i+1], 0.56, 0.40, nrm, col);
+      mesh.beam(ptsI[i], ptsO[i], 0.32, 0.20, nrm, col);
+      mesh.beam(ptsI[i], ptsO[i+1], 0.26, 0.16, nrm, col);
+      mesh.beam(ptsO[i], ptsI[i+1], 0.26, 0.16, nrm, col);
+      const mA = ptsI[i].clone().lerp(ptsI[i+1], 0.5);
+      const mB = ptsO[i].clone().lerp(ptsO[i+1], 0.5);
+      mesh.beam(mA, mB, 0.24, 0.15, nrm, col);
+      if (i % 2 === 0){
+        const m0 = ptsI[i].clone().lerp(ptsI[i+1], 0.5);
+        const m1 = ptsO[i].clone().lerp(ptsO[i+1], 0.5);
+        const mid = m0.clone().lerp(m1, 0.5);
+        mesh.beam(m0, mid, 0.16, 0.10, nrm, col);
+        mesh.beam(m1, mid, 0.16, 0.10, nrm, col);
+      }
+      // rivets along the outer chord
+      if (i % 3 === 0){
+        const p = ptsO[i];
+        rivetPos.push(p.x + nrm.x*0.25, p.y, p.z + nrm.z*0.25);
+      }
+    }
+    /* spandrel: dense lattice between the arch extrados and the 1st floor deck */
+    const top = M.f1.y - 1.35;
+    for (let i = 0; i < N; i++){
+      const a = ptsO[i], b = ptsO[i+1];
+      const hi = Math.max(a.y, b.y);
+      if (hi >= top - 0.6) continue;
+      const a2 = a.clone(); a2.y = top;
+      const b2 = b.clone(); b2.y = top;
+      const col = paintAt((hi + top)/2);
+      const nv = THREE.MathUtils.clamp(Math.round((top - hi) / 3.4), 1, 8);
+      fillQuad(mesh, a, b, b2, a2, { nu: 1, nv, diag: 'X', w: 0.34, t: 0.18, col, nrm,
+                                     bw: 0.44, bt: 0.24 });
+    }
+    if (si === 0) dimPoints.push({ p: V3(0, M.arch.rise*0.55, sz*innerFace(M.arch.rise*0.55)),
+                                   text: 'arch 39 m × 74.24 m', cls: 'wide' });
+  }
+}
+
+/* ── 4 · decks: ring platform, edge girder, frieze, railing, glazed gallery ─── */
+function buildDeck(y, side, o = {}){
+  const half = side/2, thick = o.thick ?? 1.05;
+  const inner = o.inner ?? 0;                  // half width of the central void
+  const col = paintAt(y), dark = new THREE.Color(0x2b2620);
+  const top = y + thick/2, bot = y - thick/2;
+
+  const ring = (yy, ho, hi) => {
+    mesh.plate(V3(-ho,yy, ho), V3( ho,yy, ho), V3( ho,yy, hi), V3(-ho,yy, hi), col);
+    mesh.plate(V3( ho,yy,-ho), V3(-ho,yy,-ho), V3(-ho,yy,-hi), V3( ho,yy,-hi), col);
+    mesh.plate(V3( ho,yy, ho), V3( ho,yy,-ho), V3( hi,yy,-ho), V3( hi,yy, ho), col);
+    mesh.plate(V3(-ho,yy,-ho), V3(-ho,yy, ho), V3(-hi,yy, ho), V3(-hi,yy,-ho), col);
+  };
+  ring(top, half, inner);
+  ring(bot, half, inner);
+
+  /* edge girder + frieze band (the names of the 72 scientists are on it) */
+  const frieze = o.frieze ?? 1.75;
+  for (let e = 0; e < 4; e++){
+    const sgn = e < 2 ? (e === 0 ? 1 : -1) : (e === 2 ? 1 : -1);
+    const isZ = e < 2;
+    const P = (t, yy) => isZ ? V3(t*half, yy, sgn*half) : V3(sgn*half, yy, t*half);
+    const nrm = isZ ? V3(0,0,sgn) : V3(sgn,0,0);
+    const a = P(-1, bot), b = P(1, bot);
+    const a2 = P(-1, bot - frieze), b2 = P(1, bot - frieze);
+    mesh.beam(a, b, 0.66, 0.42, nrm, col);            // deck edge girder
+    mesh.beam(a2, b2, 0.54, 0.34, nrm, col);          // frieze lower chord
+    const n = Math.max(10, Math.round(side/1.9));
+    for (let i = 0; i <= n; i++){
+      const t = -1 + 2*i/n;
+      const p1 = P(t, bot), p2 = P(t, bot - frieze);
+      mesh.beam(p1, p2, 0.22, 0.13, nrm, dark);
+      if (i < n){
+        const q1 = P(-1 + 2*(i+1)/n, bot), q2 = P(-1 + 2*(i+1)/n, bot - frieze);
+        mesh.beam(p1, q2, 0.16, 0.09, nrm, dark);
+        mesh.beam(q1, p2, 0.16, 0.09, nrm, dark);
+      }
+    }
+    /* railing */
+    const rh = o.rail ?? 1.18;
+    const ra = P(-1, top), rb = P(1, top);
+    const ra2 = ra.clone(); ra2.y += rh;
+    const rb2 = rb.clone(); rb2.y += rh;
+    mesh.beam(ra2, rb2, 0.15, 0.10, nrm, col);
+    const n2 = Math.max(14, Math.round(side/1.25));
+    for (let i = 0; i <= n2; i++){
+      const t = -1 + 2*i/n2;
+      const p = P(t, top), q = p.clone(); q.y += rh;
+      mesh.beam(p, q, 0.12, 0.075, nrm, col);
+    }
+    const belt = ra.clone(); belt.y = top + rh*0.52;
+    const belt2 = rb.clone(); belt2.y = top + rh*0.52;
+    mesh.beam(belt, belt2, 0.12, 0.08, nrm, col);
+    /* glazed gallery — the covered gallery that rings the first two floors */
+    if (o.gallery){
+      const gh = o.gallery, inset = 0.05;
+      const ga = P(-0.985, top + rh*0.1), gb = P(0.985, top + rh*0.1);
+      const ga2 = ga.clone(); ga2.y += gh;
+      const gb2 = gb.clone(); gb2.y += gh;
+      mesh.beam(ga2, gb2, 0.20, 0.14, nrm, dark);                 // top rail
+      const nn = Math.max(10, Math.round(side/2.2));
+      for (let i = 0; i <= nn; i++){
+        const t = -0.985 + 1.97*i/nn;
+        const p = P(t, top + rh*0.1), q = p.clone(); q.y += gh;
+        mesh.beam(p, q, 0.14, 0.10, nrm, dark);
+        if (i < nn){
+          const q1 = P(-0.985 + 1.97*(i+1)/nn, top + rh*0.1);
+          const q2 = q1.clone(); q2.y += gh;
+          glass.push([p.clone(), q1.clone(), q2, q.clone()]);
+        }
+      }
+      // roof
+      const ra3 = P(-1, top + rh*0.1 + gh), rb3 = P(1, top + rh*0.1 + gh);
+      const ra4 = ra3.clone(); ra4.y += 0.35;
+      const rb4 = rb3.clone(); rb4.y += 0.35;
+      mesh.plate(ra3, rb3, rb4, ra4, dark);
+    }
+  }
+  /* underside radial girders + secondary beams */
+  const n = o.girders ?? 12;
+  for (let i = 0; i <= n; i++){
+    const t = -1 + 2*i/n;
+    mesh.beam(V3(t*half, bot-0.55, -half), V3(t*half, bot-0.55, -inner), 0.40, 0.24, V3(0,1,0), paintAt(y));
+    mesh.beam(V3(t*half, bot-0.55,  half), V3(t*half, bot-0.55,  inner), 0.40, 0.24, V3(0,1,0), paintAt(y));
+    mesh.beam(V3(-half, bot-0.55, t*half), V3(-inner, bot-0.55, t*half), 0.40, 0.24, V3(0,1,0), paintAt(y));
+    mesh.beam(V3( half, bot-0.55, t*half), V3( inner, bot-0.55, t*half), 0.40, 0.24, V3(0,1,0), paintAt(y));
+  }
+  if (o.names){
+    const yy = bot - frieze * 0.54, off = half + 0.12, hh = 1.55;
+    for (const key of ['+z', '-z', '+x', '-x']){
+      const mat = new THREE.MeshStandardMaterial({ map: nameTexture(NAMES[key]),
+        transparent: true, alphaTest: 0.30, color: 0xffffff,
+        metalness: 0.55, roughness: 0.40, side: THREE.DoubleSide });
+      const plane = new THREE.Mesh(new THREE.PlaneGeometry(side, hh), mat);
+      if (key === '+z') plane.position.set(0, yy, off);
+      else if (key === '-z'){ plane.position.set(0, yy, -off); plane.rotation.y = Math.PI; }
+      else if (key === '+x'){ plane.position.set(off, yy, 0); plane.rotation.y = Math.PI/2; }
+      else { plane.position.set(-off, yy, 0); plane.rotation.y = -Math.PI/2; }
+      extras.push(plane);
+    }
+  }
+  dimPoints.push({ p: V3(half + 2.5, y, 0), text: side.toFixed(2) + ' m square · ' + y.toFixed(2) + ' m', cls: 'wide' });
+}
+
+/* ── 5 · the shaft above the first floor: corner box columns + lattice faces ─ */
+const SHAFT_TOP = M.f3.y;
+function cornerColWidth(y){
+  const t = THREE.MathUtils.clamp((y - M.f1.y) / (SHAFT_TOP - M.f1.y), 0, 1);
+  return THREE.MathUtils.lerp(4.6, 1.15, Math.pow(t, 0.75));
+}
+function shaftLevels(){
+  const ys = [M.f1.y];
+  const a = M.f1.y, b = SHAFT_TOP;
+  const n = 58;
+  for (let i = 1; i <= n; i++){
+    const t = i/n;
+    ys.push(a + (b-a) * Math.pow(t, 1.22));
+  }
+  return ys;
+}
+const SHAFT_Y = shaftLevels();
+
+function buildShaft(){
+  /* 5.1 the four corner box columns (continuation of the arbalétriers) */
+  for (const [sx, sz] of CORNERS){
+    for (let k = 0; k < SHAFT_Y.length-1; k++){
+      const y0 = SHAFT_Y[k], y1 = SHAFT_Y[k+1];
+      const w0 = cornerColWidth(y0), w1 = cornerColWidth(y1);
+      const S0 = S(y0), S1_ = S(y1);
+      const col = paintAt((y0+y1)/2);
+      const th = THREE.MathUtils.lerp(0.42, 0.20, k/(SHAFT_Y.length-1));
+      // four chords of the corner column
+      const chord = (y, S_, w, u, v) => V3(sx*(S_ - u*w), y, sz*(S_ - v*w));
+      for (const [u, v] of [[0,0],[1,0],[1,1],[0,1]]){
+        const a = chord(y0, S0, w0, u, v), b = chord(y1, S1_, w1, u, v);
+        mesh.beam(a, b, th, th, V3(sx, 0, sz).normalize(), col);
+      }
+      // four faces of the column
+      for (const [u0, v0, u1, v1] of [[0,0,1,0],[1,0,1,1],[1,1,0,1],[0,1,0,0]]){
+        const p00 = chord(y0, S0, w0, u0, v0), p10 = chord(y0, S0, w0, u1, v1);
+        const p11 = chord(y1, S1_, w1, u1, v1), p01 = chord(y1, S1_, w1, u0, v0);
+        fillQuad(mesh, p00, p10, p11, p01, { nu:1, nv:1, diag:'X', col,
+          w: th*0.75, t: th*0.6, border:false });
+      }
+      if (k % 2 === 0){
+        const a = chord(y0, S0, w0, 0, 0), b = chord(y0, S0, w0, 1, 1);
+        mesh.beam(a, b, th*1.1, th*0.9, V3(sx,0,sz).normalize(), col);
+      }
+    }
+  }
+  /* 5.2 the four lattice faces between the corner columns */
+  for (let e = 0; e < 4; e++){
+    const sgn = e < 2 ? (e === 0 ? 1 : -1) : (e === 2 ? 1 : -1);
+    const isZ = e < 2;
+    const nrm = isZ ? V3(0,0,sgn) : V3(sgn,0,0);
+    for (let k = 0; k < SHAFT_Y.length-1; k++){
+      const y0 = SHAFT_Y[k], y1 = SHAFT_Y[k+1];
+      const S0 = S(y0) - cornerColWidth(y0), S1_ = S(y1) - cornerColWidth(y1);
+      const col = paintAt((y0+y1)/2);
+      const p00 = isZ ? V3(-S0, y0, sgn*S(y0)) : V3(sgn*S(y0), y0, -S0);
+      const p10 = isZ ? V3( S0, y0, sgn*S(y0)) : V3(sgn*S(y0), y0,  S0);
+      const p11 = isZ ? V3( S1_, y1, sgn*S(y1)) : V3(sgn*S(y1), y1,  S1_);
+      const p01 = isZ ? V3(-S1_, y1, sgn*S(y1)) : V3(sgn*S(y1), y1, -S1_);
+      const f = k/(SHAFT_Y.length-1);
+      const t = THREE.MathUtils.lerp(0.15, 0.070, f);
+      const w = t*1.55;
+      const faceW = p00.distanceTo(p10), faceH = Math.abs(p01.y - p00.y);
+      const nu = THREE.MathUtils.clamp(Math.round(faceW / 2.2), 3, 34);
+      const nv = THREE.MathUtils.clamp(Math.round(faceH / 2.0), 1, 4);
+      fillQuad(mesh, p00, p10, p11, p01, { nu, nv, diag:'X', w, t, col, nrm,
+        bw: w*1.5, bt: t*1.4 });
+      if (k % 1 === 0){
+        const a = p00.clone().lerp(p10, 0), b = p00.clone().lerp(p10, 1);
+        mesh.beam(a, b, w*1.5, t*1.4, nrm, col);
+      }
+    }
+  }
+  /* 5.3 horizontal belts (entretoises) + the inclined lifts inside */
+  for (let k = 2; k < SHAFT_Y.length-1; k += 2){
+    const y = SHAFT_Y[k];
+    const S_ = S(y);
+    for (let e = 0; e < 4; e++){
+      const sgn = e < 2 ? (e === 0 ? 1 : -1) : (e === 2 ? 1 : -1);
+      const isZ = e < 2;
+      const w = S_ - cornerColWidth(y);
+      const a = isZ ? V3(-w, y, sgn*S_) : V3(sgn*S_, y, -w);
+      const b = isZ ? V3( w, y, sgn*S_) : V3(sgn*S_, y,  w);
+      const nrm = isZ ? V3(0,0,sgn) : V3(sgn,0,0);
+      mesh.beam(a, b, 0.34, 0.22, nrm, paintAt(y));
+      // inner transverse tie
+      const a2 = isZ ? V3(-w, y, sgn*(S_-1.1)) : V3(sgn*(S_-1.1), y, -w);
+      const b2 = isZ ? V3( w, y, sgn*(S_-1.1)) : V3(sgn*(S_-1.1), y,  w);
+      mesh.beam(a2, b2, 0.30, 0.20, nrm, paintAt(y));
+    }
+  }
+  /* 5.4 the two inclined lifts of the 1st→2nd floor service */
+  for (const sgn of [1, -1]){
+    const y0 = M.f1.y + 2, y1 = M.f2.y - 2;
+    const x0 = sgn*0.55*S(y0), x1 = sgn*0.42*S(y1);
+    const z0 = sgn*0.55*S(y0), z1 = sgn*0.42*S(y1);
+    const a = V3(x0, y0, z0), b = V3(x1, y1, z1);
+    mesh.beam(a, b, 0.34, 0.34, V3(0,1,0), new THREE.Color(0x585c60));
+    const car = a.clone().lerp(b, 0.42);
+    mesh.box(car.x, car.y, car.z, 1.05, 1.25, 1.05, new THREE.Color(0x7d8186));
+    const car2 = a.clone().lerp(b, 0.74);
+    mesh.box(car2.x, car2.y, car2.z, 1.05, 1.25, 1.05, new THREE.Color(0x7d8186));
+  }
+}
+
+/* ── 6 · the summit: 3rd floor, belvédère, dome, antenna ───────────────────── */
+function buildSummit(){
+  const y3 = M.f3.y, s3 = M.f3.side;
+  buildDeck(y3, s3, { thick: 1.25, inner: 0, frieze: 1.90, rail: 1.30, gallery: 2.80, girders: 10 });
+
+  /* ── A · the belvédère: tapering box truss with a glazed observation band ── */
+  const yB = 288.60, wB = 3.40, wA = 4.60;
+  const nA = 16;
+  const levels = [];
+  for (let i = 0; i <= nA; i++) levels.push(y3 + (yB - y3) * (i/nA));
+  for (let k = 0; k < nA; k++){
+    const y0 = levels[k], y1 = levels[k+1];
+    const f0 = (y0 - y3) / (yB - y3), f1 = (y1 - y3) / (yB - y3);
+    const w0 = THREE.MathUtils.lerp(wA, wB, f0), w1 = THREE.MathUtils.lerp(wA, wB, f1);
+    const col = paintAt((y0+y1)/2);
+    for (const [sx, sz] of CORNERS){
+      mesh.beam(V3(sx*w0, y0, sz*w0), V3(sx*w1, y1, sz*w1), 0.26, 0.26,
+                V3(sx, 0, sz).normalize(), col);
+    }
+    for (let e = 0; e < 4; e++){
+      const sgn = e < 2 ? (e === 0 ? 1 : -1) : (e === 2 ? 1 : -1);
+      const isZ = e < 2;
+      const p00 = isZ ? V3(-w0, y0, sgn*w0) : V3(sgn*w0, y0, -w0);
+      const p10 = isZ ? V3( w0, y0, sgn*w0) : V3(sgn*w0, y0,  w0);
+      const p11 = isZ ? V3( w1, y1, sgn*w1) : V3(sgn*w1, y1,  w1);
+      const p01 = isZ ? V3(-w1, y1, sgn*w1) : V3(sgn*w1, y1, -w1);
+      const nrm = isZ ? V3(0,0,sgn) : V3(sgn,0,0);
+      fillQuad(mesh, p00, p10, p11, p01, { nu:2, nv:1, diag:'X', w:0.15, t:0.09, col, nrm });
+      if (k >= 3 && k <= 11){          // glazed band 280 → 286 m
+        glass.push([p00.clone(), p10.clone(), p11.clone(), p01.clone()]);
+      }
+    }
+  }
+  /* ── B · the ribbed campanile dome, 288.6 → 292.6 ───────────────────────── */
+  const domeR = wB * 1.02, domeH = 3.5, RIB = 16, RING = 4;
+  for (let a = 0; a < RIB; a++){
+    const ang = a/RIB * Math.PI*2;
+    const dx = Math.cos(ang), dz = Math.sin(ang);
+    let prev = V3(dx*domeR, yB, dz*domeR);
+    for (let i = 1; i <= RING; i++){
+      const t = i/RING * Math.PI/2;
+      const r = Math.cos(t)*domeR, h = Math.sin(t)*domeH;
+      const p = V3(dx*r, yB + h, dz*r);
+      mesh.beam(prev, p, 0.20, 0.13, V3(dx, 0, dz), paintAt(yB + h));
+      prev = p;
+    }
+  }
+  for (let i = 1; i < RING; i++){
+    const t = i/RING * Math.PI/2, r = Math.cos(t)*domeR, h = Math.sin(t)*domeH;
+    for (let a = 0; a < RIB; a++){
+      const a0 = a/RIB*Math.PI*2, a1 = (a+1)/RIB*Math.PI*2;
+      mesh.beam(V3(Math.cos(a0)*r, yB+h, Math.sin(a0)*r),
+                V3(Math.cos(a1)*r, yB+h, Math.sin(a1)*r), 0.13, 0.09, V3(0,1,0), paintAt(yB+h));
+    }
+  }
+  /* ── C · lantern + iron mast, 292.6 → 300.65 ────────────────────────────── */
+  mesh.cyl(V3(0, yB + domeH, 0), V3(0, yB + domeH + 1.55, 0), 0.55, 10, paintAt(M.ironTop));
+  mesh.cyl(V3(0, yB + domeH + 1.55, 0), V3(0, M.ironTop, 0), 0.34, 8, paintAt(M.ironTop));
+  for (let i = 0; i < 5; i++){
+    const y = yB + domeH + 1.8 + i*1.3;
+    mesh.beam(V3(-0.55, y, 0), V3(0.55, y, 0), 0.10, 0.10, V3(0,0,1), paintAt(y));
+    mesh.beam(V3(0, y, -0.55), V3(0, y, 0.55), 0.10, 0.10, V3(1,0,0), paintAt(y));
+  }
+  /* ── D · antenna mast: 1889 lightning rod continued to the 2022 DAB+ aerial */
+  const mastTop = M.tip;
+  mesh.cyl(V3(0, M.ironTop, 0), V3(0, 306, 0), 0.26, 8, new THREE.Color(0x9c8a68));
+  mesh.cyl(V3(0, 306, 0), V3(0, 312, 0), 0.20, 8, new THREE.Color(0x9c8a68));
+  mesh.cyl(V3(0, 312, 0), V3(0, 324, 0), 0.14, 6, new THREE.Color(0x9c8a68));
+  mesh.cyl(V3(0, 324, 0), V3(0, mastTop, 0), 0.10, 6, new THREE.Color(0xa89a78));
+  for (let i = 0; i < 5; i++){                     // DAB+ antenna rungs
+    const y = 325 + i*1.05;
+    mesh.beam(V3(-0.35, y, 0), V3(0.35, y, 0), 0.05, 0.05, V3(0,0,1), new THREE.Color(0xb0a280));
+  }
+  dimPoints.push({ p: V3(0, M.tip, 0), text: '330.00 m', cls: 'wide' });
+  dimPoints.push({ p: V3(0, M.ironTop, 0), text: '300.65 m iron frame', cls: 'wide' });
+  dimPoints.push({ p: V3(0, y3, 0), text: '3rd floor 276.13 m', cls: '' });
+  dimPoints.push({ p: V3(0, M.f2.y, 0), text: '2nd floor 115.73 m', cls: '' });
+  dimPoints.push({ p: V3(0, M.f1.y, 0), text: '1st floor 57.63 m', cls: '' });
+}
+
+/* ── 7 · ground, esplanade and the Champ-de-Mars tree lines ────────────────── */
+function buildGround(){
+  const g = new THREE.Group();
+  const S_ = 14000;
+  const cv = document.createElement('canvas'); cv.width = cv.height = 1024;
+  const c = cv.getContext('2d');
+  const grd = c.createRadialGradient(512, 512, 30, 512, 512, 620);
+  grd.addColorStop(0, '#6f7a4c'); grd.addColorStop(0.35, '#5d6a41');
+  grd.addColorStop(0.75, '#4a5536'); grd.addColorStop(1, '#38412a');
+  c.fillStyle = grd; c.fillRect(0, 0, 1024, 1024);
+  // gravel esplanade square around the tower
+  c.fillStyle = '#8d8676';
+  c.beginPath(); c.arc(512, 512, 210, 0, Math.PI*2); c.fill();
+  c.fillStyle = '#6f7a4c';
+  c.beginPath(); c.arc(512, 512, 118, 0, Math.PI*2); c.fill();
+  for (let i = 0; i < 2400; i++){                  // speckle
+    const x = Math.random()*1024, y = Math.random()*1024;
+    const r = Math.random()*2.2;
+    c.fillStyle = 'rgba(' + (Math.random()<0.5 ? '255,255,255,0.03' : '0,0,0,0.05') + ')';
+    c.beginPath(); c.arc(x, y, r, 0, Math.PI*2); c.fill();
+  }
+  const tex = new THREE.CanvasTexture(cv);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(S_, S_),
+    new THREE.MeshStandardMaterial({ map: tex, roughness: 0.96, metalness: 0 }));
+  ground.rotation.x = -Math.PI/2;
+  ground.position.y = -0.02;
+  g.add(ground);
+
+  // tree lines of the Champ-de-Mars / Trocadéro gardens
+  const trunkGeo = new THREE.CylinderGeometry(0.35, 0.5, 5, 6);
+  const crownGeo = new THREE.IcosahedronGeometry(4.2, 1);
+  const trunkMat = new THREE.MeshStandardMaterial({ color: 0x3a2f24, roughness: 1 });
+  const crownMat = new THREE.MeshStandardMaterial({ color: 0x2f4326, roughness: 1, flatShading: true });
+  const N = 900;
+  const trunks = new THREE.InstancedMesh(trunkGeo, trunkMat, N);
+  const crowns = new THREE.InstancedMesh(crownGeo, crownMat, N);
+  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), sc = new THREE.Vector3();
+  let idx = 0;
+  for (let i = 0; i < N; i++){
+    const side = i % 2 ? 1 : -1;
+    const along = (Math.random()*2 - 1) * 2600;
+    const across = side * (95 + Math.random()*120);
+    const x = side === 1 ? across : along, z = side === 1 ? along : across;
+    if (Math.hypot(x, z) < 150) continue;
+    if (Math.hypot(x, z) > 2600) continue;
+    const s = 0.8 + Math.random()*0.6;
+    q.setFromAxisAngle(new THREE.Vector3(0,1,0), Math.random()*Math.PI*2);
+    m4.compose(new THREE.Vector3(x, 2.5*s, z), q, sc.set(s, s, s));
+    trunks.setMatrixAt(idx, m4);
+    m4.compose(new THREE.Vector3(x, 6.6*s, z), q, sc.set(s*1.18, s*(0.72+Math.random()*0.22), s*1.18));
+    crowns.setMatrixAt(idx, m4);
+    idx++;
+  }
+  trunks.count = crowns.count = idx;
+  g.add(trunks, crowns);
+  return g;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   8 · ASSEMBLE THE TOWER
+   ══════════════════════════════════════════════════════════════════════════════ */
+const lbar = document.getElementById('lbar');
+const tBuild = performance.now();
+lbar.style.width = '12%';
+
+buildPlinths();                                              lbar.style.width = '24%';
+buildLegs();                                                 lbar.style.width = '52%';
+buildArches();                                               lbar.style.width = '66%';
+buildDeck(M.f1.y, M.f1.side, { thick: 1.15, inner: innerFace(M.f1.y), frieze: 2.15,
+                               rail: 1.20, gallery: 3.30, girders: 14, names: true });
+buildShaft();                                                lbar.style.width = '82%';
+buildDeck(M.f2.y, M.f2.side, { thick: 1.20,
+                               inner: Math.max(3.5, S(M.f2.y) - cornerColWidth(M.f2.y) - 0.6),
+                               frieze: 1.85, rail: 1.25, gallery: 2.80, girders: 12 });
+buildSummit();                                               lbar.style.width = '90%';
+
+const ironGeo = mesh.build();
+const VCOUNT = mesh.n;
+
+/* night palette: the 336 projectors wash the iron in warm gold from below */
+function nightColor(y, out){
+  const t = THREE.MathUtils.clamp(y / 330, 0, 1);
+  const k = 0.42 + 0.58 * Math.exp(-Math.pow((y - 72) / 130, 2));
+  return out.setRGB(1.0, 0.60 + 0.18*t, 0.22 + 0.18*t).multiplyScalar(k);
+}
+const dayColors = new Float32Array(mesh.col);
+const nightColors = new Float32Array(VCOUNT * 3);
+const _nc = new THREE.Color();
+for (let i = 0; i < VCOUNT; i++){
+  nightColor(mesh.ys[i], _nc);
+  nightColors[i*3] = _nc.r; nightColors[i*3+1] = _nc.g; nightColors[i*3+2] = _nc.b;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   9 · RENDERER, SKY, LIGHT
+   ══════════════════════════════════════════════════════════════════════════════ */
+const app = document.getElementById('app');
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+app.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(40, innerWidth/innerHeight, 0.6, 8000);
+camera.position.set(0, 125, 620);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.055;
+controls.target.set(0, 150, 0);
+controls.minDistance = 6;
+controls.maxDistance = 2600;
+controls.maxPolarAngle = Math.PI * 0.499;
+controls.panSpeed = 0.9;
+
+/* ── sky dome with a day / night gradient ─────────────────────────────────── */
+const skyUni = {
+  uTop:    { value: new THREE.Color(0x1d55a8) },
+  uBottom: { value: new THREE.Color(0xa4c6e2) },
+  uSun:    { value: new THREE.Vector3(0.42, 0.55, 0.72).normalize() },
+  uSunCol: { value: new THREE.Color(0xfff0d0) },
+  uSunI:   { value: 0.55 },
+  uNight:  { value: 0.0 },
+  uCloud:  { value: 1.0 },
+  uTime:   { value: 0.0 },
+};
+const SKY_VS = [
+  'varying vec3 vDir;',
+  'void main(){ vDir = normalize(position);',
+  '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+].join('\n');
+const SKY_FS = [
+  'varying vec3 vDir;',
+  'uniform vec3 uTop, uBottom, uSunCol, uSun;',
+  'uniform float uSunI, uNight, uCloud, uTime;',
+  'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }',
+  'float vnoise(vec2 p){',
+  '  vec2 i = floor(p), f = fract(p);',
+  '  f = f * f * (3.0 - 2.0 * f);',
+  '  float a = hash(i), b = hash(i + vec2(1.0, 0.0));',
+  '  float c = hash(i + vec2(0.0, 1.0)), d = hash(i + vec2(1.0, 1.0));',
+  '  return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);',
+  '}',
+  'float fbm(vec2 p){',
+  '  float s = 0.0, a = 0.5;',
+  '  for (int i = 0; i < 5; i++){ s += a * vnoise(p); p = p * 2.03 + 11.7; a *= 0.5; }',
+  '  return s;',
+  '}',
+  'void main(){',
+  '  float h = clamp(vDir.y * 1.15 + 0.06, 0.0, 1.0);',
+  '  vec3 col = mix(uBottom, uTop, pow(h, 0.62));',
+  '  float s = max(dot(normalize(vDir), normalize(uSun)), 0.0);',
+  '  col += uSunCol * pow(s, 22.0) * uSunI;',
+  '  col += uSunCol * pow(s, 3.0) * uSunI * 0.10;',
+  '  vec2 uv = vDir.xz / max(0.10, abs(vDir.y) + 0.17) * 0.9;',
+  '  float n  = fbm(uv * 1.30 + vec2(uTime * 0.0035, uTime * 0.0018));',
+  '  float n2 = fbm(uv * 3.10 - vec2(uTime * 0.0052, 0.0));',
+  '  float cl = smoothstep(0.50, 0.88, n * 0.80 + n2 * 0.28);',
+  '  cl *= smoothstep(-0.02, 0.16, vDir.y) * (1.0 - 0.45 * smoothstep(0.62, 1.0, vDir.y));',
+  '  vec3 cloudCol = mix(vec3(0.60, 0.64, 0.71), vec3(1.0, 0.995, 0.98), pow(cl, 0.65));',
+  '  cloudCol += uSunCol * pow(s, 7.0) * 0.55 * cl;',
+  '  col = mix(col, cloudCol, cl * uCloud);',
+  '  col = mix(col, vec3(0.016, 0.024, 0.045), uNight);',
+  '  gl_FragColor = vec4(col, 1.0);',
+  '}',
+].join('\n');
+const SKY_R = 1600;
+const sky = new THREE.Mesh(
+  new THREE.SphereGeometry(SKY_R, 40, 24),
+  new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, uniforms: skyUni,
+    vertexShader: SKY_VS, fragmentShader: SKY_FS })
+);
+scene.add(sky);
+
+/* stars, only visible at night */
+const starGeo = new THREE.BufferGeometry();
+{
+  const N = 1400, p = new Float32Array(N*3);
+  for (let i = 0; i < N; i++){
+    const u = Math.random()*Math.PI*2, v = Math.random()*0.92 + 0.02;
+    const th = Math.acos(1 - v), r = 1380;
+    p[i*3]   = Math.sin(th)*Math.cos(u)*r;
+    p[i*3+1] = Math.cos(th)*r*0.9 + 120;
+    p[i*3+2] = Math.sin(th)*Math.sin(u)*r;
+  }
+  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(p, 3));
+}
+const starMat = new THREE.PointsMaterial({ color: 0xdfe8ff, size: 3.4, sizeAttenuation: true,
+  transparent: true, opacity: 0, depthWrite: false, fog: false });
+const stars = new THREE.Points(starGeo, starMat);
+scene.add(stars);
+
+/* ── environment for the painted-iron sheen ───────────────────────────────── */
+const pmrem = new THREE.PMREMGenerator(renderer);
+const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04);
+scene.environment = envRT.texture;
+scene.environmentIntensity = 0.34;
+
+/* ── sun + ambient ────────────────────────────────────────────────────────── */
+const hemi = new THREE.HemisphereLight(0xcfe2ff, 0x6b5a3a, 0.55);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff2dc, 1.75);
+sun.position.set(430, 620, 640);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+const sc = sun.shadow.camera;
+sc.left = -240; sc.right = 240; sc.top = 400; sc.bottom = -70; sc.near = 1; sc.far = 2400;
+sun.shadow.bias = -0.0009;
+sun.shadow.normalBias = 0.6;
+scene.add(sun, sun.target);
+const rim = new THREE.DirectionalLight(0xbcd4ff, 0.42);
+rim.position.set(-380, 300, -520);
+scene.add(rim);
+
+/* ── the iron itself ──────────────────────────────────────────────────────── */
+const ironMat = new THREE.MeshStandardMaterial({
+  vertexColors: true, metalness: 0.30, roughness: 0.62,
+  envMapIntensity: 0.75, side: THREE.DoubleSide, dithering: true,
+});
+const nightUniforms = { uNightGlow: { value: 0.0 } };
+ironMat.onBeforeCompile = (sh) => {
+  sh.uniforms.uNightGlow = nightUniforms.uNightGlow;
+  sh.fragmentShader = 'uniform float uNightGlow;\n' + sh.fragmentShader.replace(
+    '#include <emissivemap_fragment>',
+    '#include <emissivemap_fragment>\n  totalEmissiveRadiance += vColor * uNightGlow;'
+  );
+};
+const tower = new THREE.Mesh(ironGeo, ironMat);
+tower.castShadow = true;
+tower.receiveShadow = false;
+scene.add(tower);
+
+/* ── glazing (galleries, belvédère) ───────────────────────────────────────── */
+if (glass.length){
+  const gp = [], gi = [];
+  for (const [a, b, c, d] of glass){
+    const o = gp.length/3;
+    gp.push(a.x,a.y,a.z, b.x,b.y,b.z, c.x,c.y,c.z, d.x,d.y,d.z);
+    gi.push(o,o+1,o+2, o,o+2,o+3);
+  }
+  const gg = new THREE.BufferGeometry();
+  gg.setAttribute('position', new THREE.Float32BufferAttribute(gp, 3));
+  gg.setIndex(gi);
+  gg.computeVertexNormals();
+  const gm = new THREE.MeshStandardMaterial({ color: 0xa9cfe0, metalness: 0.0, roughness: 0.08,
+    transparent: true, opacity: 0.17, side: THREE.DoubleSide, depthWrite: false,
+    envMapIntensity: 1.6 });
+  scene.add(new THREE.Mesh(gg, gm));
+}
+
+/* ── rivet heads (2 500 000 in the original; sampled here) ────────────────── */
+if (rivetPos.length){
+  const rg = new THREE.BufferGeometry();
+  rg.setAttribute('position', new THREE.Float32BufferAttribute(rivetPos, 3));
+  const rm = new THREE.PointsMaterial({ color: 0x1d1811, size: 0.52, sizeAttenuation: true });
+  scene.add(new THREE.Points(rg, rm));
+}
+
+/* ── the 20 000 scintillation bulbs ───────────────────────────────────────── */
+const BULBS = 20000;
+const bulbGeo = new THREE.BufferGeometry();
+{
+  const P = mesh.pts, nM = P.length/6;
+  const pos = new Float32Array(BULBS*3), ph = new Float32Array(BULBS), rd = new Float32Array(BULBS);
+  let k = 0, guard = 0;
+  while (k < BULBS && guard++ < BULBS*8){
+    const m = (Math.random()*nM)|0;
+    const t = Math.random();
+    const ax = P[m*6], ay = P[m*6+1], az = P[m*6+2];
+    const bx = P[m*6+3], by = P[m*6+4], bz = P[m*6+5];
+    const y = ay + (by-ay)*t;
+    if (y < 3) continue;
+    pos[k*3]   = ax + (bx-ax)*t + (Math.random()-0.5)*0.5;
+    pos[k*3+1] = y + (Math.random()-0.5)*0.5;
+    pos[k*3+2] = az + (bz-az)*t + (Math.random()-0.5)*0.5;
+    ph[k] = Math.random();
+    rd[k] = Math.random();
+    k++;
+  }
+  bulbGeo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  bulbGeo.setAttribute('aPhase', new THREE.Float32BufferAttribute(ph, 1));
+  bulbGeo.setAttribute('aRand', new THREE.Float32BufferAttribute(rd, 1));
+  bulbGeo.computeBoundingSphere();
+}
+const BULB_VS = [
+  'attribute float aPhase; attribute float aRand;',
+  'uniform float uTime, uSize;',
+  'varying float vI;',
+  'void main(){',
+  '  vec4 mv = modelViewMatrix * vec4(position, 1.0);',
+  '  gl_Position = projectionMatrix * mv;',
+  '  float wave = fract(uTime * 0.30 + aRand * 0.22);',
+  '  float on = step(0.30, wave) * (1.0 - step(0.90, wave));',
+  '  float flick = 0.5 + 0.5 * sin(uTime * 11.0 + aPhase * 6.2831);',
+  '  vI = on * (0.30 + 0.70 * flick);',
+  '  gl_PointSize = uSize * (430.0 / max(1.0, -mv.z)) * (0.45 + 0.75 * vI);',
+  '}',
+].join('\n');
+const BULB_FS = [
+  'uniform float uOpacity;',
+  'varying float vI;',
+  'void main(){',
+  '  vec2 d = gl_PointCoord - 0.5;',
+  '  float a = smoothstep(0.5, 0.06, length(d));',
+  '  vec3 c = mix(vec3(1.0, 0.72, 0.34), vec3(1.0, 0.95, 0.82), a);',
+  '  gl_FragColor = vec4(c * a * 3.2, a * vI * uOpacity);',
+  '}',
+].join('\n');
+const bulbUni = { uTime: { value: 0 }, uSize: { value: 4.2 }, uOpacity: { value: 0 } };
+const bulbMat = new THREE.ShaderMaterial({
+  uniforms: bulbUni, transparent: true, depthWrite: false,
+  blending: THREE.AdditiveBlending, vertexShader: BULB_VS, fragmentShader: BULB_FS,
+});
+const bulbs = new THREE.Points(bulbGeo, bulbMat);
+bulbs.frustumCulled = false;
+bulbs.visible = false;
+scene.add(bulbs);
+
+/* ── rotating beacon at the summit ────────────────────────────────────────── */
+const beacon = new THREE.Group();
+beacon.position.set(0, M.ironTop + 3.5, 0);
+{
+  const beamMat = new THREE.MeshBasicMaterial({ color: 0xffe6b0, transparent: true,
+    opacity: 0.0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+  for (let i = 0; i < 4; i++){
+    const beam = new THREE.Mesh(new THREE.ConeGeometry(1.6, 330, 10, 1, true), beamMat);
+    beam.rotation.z = Math.PI/2;
+    beam.position.x = 165;
+    const pivot = new THREE.Object3D();
+    pivot.rotation.y = i * Math.PI/2;
+    pivot.add(beam);
+    beacon.add(pivot);
+  }
+  beacon.userData.mat = beamMat;
+}
+scene.add(beacon);
+
+/* ── ground ───────────────────────────────────────────────────────────────── */
+for (const m of extras) scene.add(m);
+const groundGroup = buildGround();
+scene.add(groundGroup);
+
+/* ── floodlight pool at the base (visible at night) ───────────────────────── */
+const poolMat = new THREE.MeshBasicMaterial({ color: 0xffb867, transparent: true,
+  opacity: 0.0, blending: THREE.AdditiveBlending, depthWrite: false });
+const pool = new THREE.Mesh(new THREE.CircleGeometry(95, 48), poolMat);
+pool.rotation.x = -Math.PI/2;
+pool.position.y = 0.06;
+scene.add(pool);
+
+/* ── post-processing: bloom for the night lighting ────────────────────────── */
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.34, 0.68, 0.80);
+bloom.enabled = false;
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   10 · CAMERA PRESETS
+   ══════════════════════════════════════════════════════════════════════════════ */
+const VIEWS = {
+  full : { pos: [ 34, 120, 505], tgt: [0, 150, 0],  fov: 42 },
+  elev : { pos: [  0, 168, 1980], tgt: [0, 168, 0], fov: 10 },
+  base : { pos: [ 74,  26,  96], tgt: [ 26, 22,  26], fov: 42 },
+  f1   : { pos: [ 62,  82,  88], tgt: [  0, 58,   0], fov: 44 },
+  f2   : { pos: [ 48, 136,  74], tgt: [  0,116,   0], fov: 44 },
+  top  : { pos: [ 26, 300,  46], tgt: [  0,286,   0], fov: 44 },
+  under: { pos: [  9,   6,  40], tgt: [  0, 54,   0], fov: 55 },
+  arch : { pos: [  4,  24, 118], tgt: [  0, 27,  26], fov: 38 },
+};
+const camState = {
+  p0: new THREE.Vector3(), p1: new THREE.Vector3(),
+  t0: new THREE.Vector3(), t1: new THREE.Vector3(),
+  f0: 40, f1: 40, k: 1, dur: 1.15,
+};
+function setView(name, instant = false, opts = {}){
+  const v = VIEWS[name];
+  if (!v) return;
+  camState.p0.copy(camera.position);
+  camState.t0.copy(controls.target);
+  camState.f0 = camera.fov;
+  camState.p1.fromArray(opts.pos || v.pos);
+  camState.t1.fromArray(opts.tgt || v.tgt);
+  camState.f1 = opts.fov ?? v.fov;
+  camState.k = instant ? 1 : 0;
+  const d = camState.p1.distanceTo(camState.t1);
+  camera.near = Math.max(0.4, d * 0.003);
+  camera.far  = Math.max(4200, d * 8);
+  if (instant){
+    camera.position.copy(camState.p1);
+    controls.target.copy(camState.t1);
+    camera.fov = camState.f1;
+  }
+  camera.updateProjectionMatrix();
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   11 · STATE + UI
+   ══════════════════════════════════════════════════════════════════════════════ */
+const state = { night: false, sparkle: false, beacon: true, dims: false, spin: true, wire: false };
+const nightTarget = { glow: 0, sky: 0, bulbs: 0, beacon: 0, pool: 0 };
+const btn = (id) => document.getElementById(id);
+const ui = {
+  night: btn('btnNight'), sparkle: btn('btnSparkle'), beacon: btn('btnBeacon'),
+  dims: btn('btnDims'), spin: btn('btnSpin'), wire: btn('btnWire'),
+};
+
+function syncUI(){
+  ui.night.classList.toggle('on', state.night);
+  ui.sparkle.classList.toggle('on', state.sparkle);
+  ui.beacon.classList.toggle('on', state.beacon);
+  ui.dims.classList.toggle('on', state.dims);
+  ui.spin.classList.toggle('on', state.spin);
+  ui.wire.classList.toggle('on', state.wire);
+  const on = state.night;
+  nightTarget.glow   = on ? 0.85 : 0;
+  nightTarget.sky    = on ? 1 : 0;
+  nightTarget.bulbs  = (on && state.sparkle) ? 1 : 0;
+  nightTarget.beacon = (on && state.beacon) ? 0.075 : 0;
+  nightTarget.pool   = on ? 0.10 : 0;
+  bulbs.visible = on && state.sparkle;
+  sun.intensity = on ? 0.05 : 1.75;
+  hemi.intensity = on ? 0.08 : 0.55;
+  rim.intensity = on ? 0.04 : 0.35;
+  scene.environmentIntensity = on ? 0.08 : 0.34;
+  bloom.enabled = on;
+  const colAttr = ironGeo.getAttribute('color');
+  colAttr.array.set(on ? nightColors : dayColors);
+  colAttr.needsUpdate = true;
+  ironMat.needsUpdate = true;
+  dimsRoot.style.display = state.dims ? 'block' : 'none';
+}
+ui.night.onclick    = () => { state.night = !state.night; syncUI(); };
+ui.sparkle.onclick  = () => { state.sparkle = !state.sparkle; syncUI(); };
+ui.beacon.onclick   = () => { state.beacon = !state.beacon; syncUI(); };
+ui.spin.onclick     = () => { state.spin = !state.spin; syncUI(); };
+ui.dims.onclick     = () => { state.dims = !state.dims; syncUI(); };
+ui.wire.onclick     = () => {
+  state.wire = !state.wire;
+  ironMat.wireframe = state.wire;
+  ironMat.needsUpdate = true;
+  syncUI();
+};
+document.querySelectorAll('[data-cam]').forEach(b => { b.onclick = () => setView(b.dataset.cam); });
+
+/* ── dimension overlay ────────────────────────────────────────────────────── */
+const dimsRoot = document.getElementById('dims');
+const dimEls = dimPoints.map(d => {
+  const el = document.createElement('div');
+  el.className = 'dim ' + (d.cls || '');
+  el.textContent = d.text;
+  dimsRoot.appendChild(el);
+  return { el, p: d.p.clone() };
+});
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   12 · ANIMATION LOOP
+   ══════════════════════════════════════════════════════════════════════════════ */
+const clock = new THREE.Clock();
+const _v = new THREE.Vector3();
+let spinAngle = 0;
+
+function project(el, p){
+  _v.copy(p).project(camera);
+  if (_v.z > 1 || _v.z < -1){ el.style.opacity = '0'; return; }
+  const x = (_v.x * 0.5 + 0.5) * innerWidth;
+  const y = (-_v.y * 0.5 + 0.5) * innerHeight;
+  if (x < -260 || y < -140 || x > innerWidth + 260 || y > innerHeight + 140){
+    el.style.opacity = '0'; return;
+  }
+  el.style.opacity = '1';
+  el.style.left = x.toFixed(1) + 'px';
+  el.style.top  = y.toFixed(1) + 'px';
+}
+
+function tick(){
+  requestAnimationFrame(tick);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t = clock.elapsedTime;
+
+  if (camState.k < 1){
+    camState.k = Math.min(1, camState.k + dt / camState.dur);
+    const k = camState.k;
+    const e = k < 0.5 ? 4*k*k*k : 1 - Math.pow(-2*k + 2, 3)/2;
+    camera.position.lerpVectors(camState.p0, camState.p1, e);
+    controls.target.lerpVectors(camState.t0, camState.t1, e);
+    camera.fov = THREE.MathUtils.lerp(camState.f0, camState.f1, e);
+    camera.updateProjectionMatrix();
+  } else if (state.spin){
+    spinAngle += dt * 0.055;
+    const ox = camera.position.x - controls.target.x;
+    const oz = camera.position.z - controls.target.z;
+    const r = Math.hypot(ox, oz);
+    if (r > 1){
+      const a = Math.atan2(oz, ox) + dt * 0.055;
+      camera.position.x = controls.target.x + Math.cos(a) * r;
+      camera.position.z = controls.target.z + Math.sin(a) * r;
+    }
+  }
+
+  const L = (cur, tgt, rate) => cur + (tgt - cur) * Math.min(1, dt * rate);
+  nightUniforms.uNightGlow.value = L(nightUniforms.uNightGlow.value, nightTarget.glow, 2.2);
+  skyUni.uNight.value  = L(skyUni.uNight.value, nightTarget.sky, 2.2);
+  skyUni.uTime.value   = t;
+  skyUni.uCloud.value  = 1.0 - skyUni.uNight.value;
+  starMat.opacity      = L(starMat.opacity, nightTarget.sky * 0.9, 2.2);
+  bulbUni.uOpacity.value = L(bulbUni.uOpacity.value, nightTarget.bulbs, 3.0);
+  beacon.userData.mat.opacity = L(beacon.userData.mat.opacity, nightTarget.beacon, 2.4);
+  poolMat.opacity = L(poolMat.opacity, nightTarget.pool, 2.0);
+  scene.fog = nightTarget.sky > 0.5
+    ? new THREE.Fog(0x0a0f18, 900, 4200)
+    : new THREE.Fog(0xc2d6e6, 900, 5200);
+
+  bulbUni.uTime.value = t;
+  beacon.rotation.y = t * 0.42;
+  sky.position.copy(camera.position);
+  stars.position.copy(camera.position);
+
+  if (state.dims) for (const d of dimEls) project(d.el, d.p);
+
+  controls.update();
+  composer.render();
+  window.__FRAMES__ = (window.__FRAMES__ || 0) + 1;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   13 · BOOT + AUTOMATION API
+   ══════════════════════════════════════════════════════════════════════════════ */
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  composer.setSize(innerWidth, innerHeight);
+  bloom.setSize(innerWidth, innerHeight);
+});
+
+document.getElementById('stat').textContent =
+  mesh.members.toLocaleString() + ' iron members · ' +
+  Math.round(ironGeo.index.count/3).toLocaleString() + ' triangles';
+
+syncUI();
+setView('full', true);
+tick();
+setTimeout(() => document.getElementById('loader').classList.add('done'), 260);
+
+window.__STATS__ = {
+  members: mesh.members,
+  vertices: VCOUNT,
+  triangles: ironGeo.index.count / 3,
+  rivets: rivetPos.length / 3,
+  bulbs: BULBS,
+  buildMs: Math.round(performance.now() - tBuild),
+  base: M.baseOuter, f1: M.f1.y, f2: M.f2.y, f3: M.f3.y, tip: M.tip,
+  S: { base: S(0), f1: S(M.f1.y), f2: S(M.f2.y), f3: S(M.f3.y) },
+};
+window.__view = (name, opts = {}) => {
+  setView(name, true, opts);
+  if (opts.state) { Object.assign(state, opts.state); syncUI(); }
+  return true;
+};
+window.__set = (patch) => { Object.assign(state, patch); syncUI(); return Object.assign({}, state); };
+window.__settle = () => {   // snap every transition to its target (for capture)
+  nightUniforms.uNightGlow.value = nightTarget.glow;
+  skyUni.uNight.value = nightTarget.sky;
+  starMat.opacity = nightTarget.sky * 0.9;
+  bulbUni.uOpacity.value = nightTarget.bulbs;
+  beacon.userData.mat.opacity = nightTarget.beacon;
+  poolMat.opacity = nightTarget.pool;
+  return true;
+};
+window.__dbg = { THREE, scene, sky, skyUni, camera, renderer, ironMat, sun, hemi, rim,
+                tower, bulbs, bloom, composer, controls, groundGroup, state };
+window.__READY__ = true;
+
+</script>
+</body>
+</html>

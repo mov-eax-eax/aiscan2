@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIVICS ATF-X · 反曲弓全零件三维工程台 / Recurve Bow Parts Workbench</title>
+<style>
+  :root{
+    --bg0:#07090e; --bg1:#0c1017; --panel:rgba(13,17,25,.92); --panel2:rgba(19,25,36,.94);
+    --line:#1e2838; --line2:#2b3a52;
+    --tx:#c9d6ea; --tx2:#7f8da6; --tx3:#57657e;
+    --cy:#3fd2c7; --am:#ffb020; --rd:#ff5f6d; --gn:#6ee787; --vi:#a78bfa; --bl:#5aa9ff;
+    --mono:"JetBrains Mono","Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+    --ui:"Inter",-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Microsoft YaHei",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg0);color:var(--tx);font-family:var(--ui)}
+  #stage{position:fixed;inset:0;background:
+      radial-gradient(1200px 800px at 22% 12%,#141b27 0%,#0a0d13 55%,#06080c 100%)}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+  canvas.drag{cursor:grabbing}
+
+  /* ---------- top bar ---------- */
+  #top{position:absolute;left:0;right:0;top:0;height:46px;display:flex;align-items:center;gap:14px;
+       padding:0 14px;background:linear-gradient(180deg,rgba(9,12,18,.95),rgba(9,12,18,.55));
+       border-bottom:1px solid var(--line);z-index:20;backdrop-filter:blur(6px)}
+  .brand{display:flex;align-items:baseline;gap:9px;white-space:nowrap}
+  .brand b{font:700 17px/1 var(--ui);letter-spacing:.6px;color:#eaf2ff}
+  .brand b i{color:var(--cy);font-style:normal}
+  .brand span{font:500 10.5px/1 var(--mono);color:var(--tx3);letter-spacing:1.4px;text-transform:uppercase}
+  #top .sp{flex:1}
+  .chips{display:flex;gap:6px;flex-wrap:nowrap;overflow:hidden}
+  .chip{font:500 10.5px/1 var(--mono);color:var(--tx2);border:1px solid var(--line);border-radius:20px;
+        padding:5px 10px;white-space:nowrap;background:rgba(20,26,37,.6)}
+  .chip b{color:var(--cy);font-weight:600}
+  .chip.g b{color:var(--gn)} .chip.a b{color:var(--am)} .chip.b b{color:var(--bl)} .chip.v b{color:var(--vi)}
+
+  /* ---------- right panel ---------- */
+  #panel{position:absolute;right:10px;top:56px;bottom:86px;width:322px;z-index:15;display:flex;flex-direction:column;
+         background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden;
+         box-shadow:0 18px 46px rgba(0,0,0,.55)}
+  #panel header{display:flex;align-items:center;gap:8px;padding:9px 11px;border-bottom:1px solid var(--line);
+        font:600 11px/1 var(--ui);letter-spacing:1.3px;text-transform:uppercase;color:var(--tx2);background:rgba(255,255,255,.02)}
+  #panel header em{font-style:normal;color:var(--tx3);font:500 10px/1 var(--mono);letter-spacing:0}
+  #q{flex:1;min-width:0;background:#0a0e15;border:1px solid var(--line);border-radius:6px;color:var(--tx);
+     font:500 11px/1 var(--mono);padding:6px 8px;outline:none}
+  #q:focus{border-color:var(--cy)}
+  #tree{flex:1;overflow:auto;padding:6px 6px 14px}
+  #tree::-webkit-scrollbar{width:9px} #tree::-webkit-scrollbar-thumb{background:#223046;border-radius:9px}
+  .grp{margin:7px 0 3px}
+  .grp>h4{margin:0;padding:6px 8px;font:600 10.5px/1 var(--mono);letter-spacing:1.5px;text-transform:uppercase;
+      color:var(--tx3);display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none;border-radius:6px}
+  .grp>h4:hover{background:rgba(255,255,255,.03);color:var(--tx)}
+  .grp>h4 u{text-decoration:none;width:6px;height:6px;border-radius:50%;background:var(--gc,var(--cy));box-shadow:0 0 8px var(--gc,var(--cy))}
+  .grp>h4 s{text-decoration:none;margin-left:auto;color:var(--tx3);font-weight:400}
+  .grp.cl .lst{display:none}
+  .it{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:7px;cursor:pointer;
+      border:1px solid transparent;font-size:12px;line-height:1.32}
+  .it:hover{background:rgba(90,169,255,.08);border-color:#23344c}
+  .it.on{background:rgba(63,210,199,.11);border-color:#2b4d55}
+  .it .idx{font:600 9.5px/1.5 var(--mono);color:var(--tx3);min-width:20px;padding-top:1px}
+  .it .nm{flex:1;min-width:0}
+  .it .nm b{display:block;font-weight:600;color:#dbe7fa}
+  .it .nm i{display:block;font-style:normal;font:400 10px/1.35 var(--mono);color:var(--tx3);margin-top:2px;word-break:break-word}
+  .it .qt{font:600 9.5px/1 var(--mono);color:var(--am);border:1px solid #4a3a12;border-radius:4px;padding:2px 4px;white-space:nowrap}
+  /* ---------- info / details ---------- */
+  #info{position:absolute;left:10px;bottom:10px;width:392px;z-index:15;background:var(--panel);
+        border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:0 18px 46px rgba(0,0,0,.55)}
+  #info .hd{display:flex;align-items:center;gap:8px;padding:8px 11px;border-bottom:1px solid var(--line);
+      font:600 10.5px/1 var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);background:rgba(255,255,255,.02)}
+  #info .hd b{color:var(--tx)}
+  #info .hd u{text-decoration:none;margin-left:auto;color:var(--tx3);cursor:pointer}
+  #info .hd u:hover{color:var(--rd)}
+  #dbody{padding:9px 11px 11px;max-height:44vh;overflow:auto}
+  #dbody::-webkit-scrollbar{width:9px} #dbody::-webkit-scrollbar-thumb{background:#223046;border-radius:9px}
+  .dname{font:700 15px/1.25 var(--ui);color:#eef5ff;margin:0 0 2px}
+  .dsub{font:400 10.5px/1.4 var(--mono);color:var(--tx3);margin-bottom:8px}
+  table.spec{width:100%;border-collapse:collapse}
+  table.spec td{padding:3.5px 0;font:400 11.5px/1.4 var(--mono);color:var(--tx);border-bottom:1px dashed #1a2434;vertical-align:top}
+  table.spec td:first-child{color:var(--tx3);width:78px;white-space:nowrap}
+  .sec{margin:10px 0 4px;font:600 10px/1 var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--cy)}
+  ul.notes{margin:4px 0 0;padding-left:16px}
+  ul.notes li{font-size:11.5px;line-height:1.55;color:#9fb0c8;margin:2px 0}
+  /* ---------- hint / legend ---------- */
+  #hint{position:absolute;left:10px;top:56px;z-index:15;background:var(--panel);border:1px solid var(--line);
+        border-radius:10px;padding:9px 11px;font:400 10.5px/1.7 var(--mono);color:var(--tx2);max-width:264px}
+  #hint b{color:var(--cy)} #hint u{text-decoration:none;color:var(--am)}
+  #tt{position:absolute;z-index:40;pointer-events:none;background:rgba(8,11,16,.96);border:1px solid var(--line2);
+      border-radius:7px;padding:5px 8px;font:500 11px/1.4 var(--mono);color:var(--tx);display:none;
+      box-shadow:0 10px 26px rgba(0,0,0,.6);max-width:300px}
+  #tt b{color:var(--cy)}
+  #out{position:absolute;inset:0;pointer-events:none;z-index:12;overflow:hidden}
+  .lab{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font:600 9.5px/1 var(--mono);
+       color:#e8f2ff;background:rgba(8,12,18,.72);border:1px solid #26364c;border-radius:4px;padding:3px 5px;
+       letter-spacing:.3px}
+  .lab i{font-style:normal;color:var(--tx3);font-weight:400}
+  .lab.dim{color:#ffe9b8;border-color:#5a4a1e}
+  #stat{position:absolute;right:10px;bottom:10px;z-index:15;background:var(--panel);border:1px solid var(--line);
+        border-radius:9px;padding:7px 10px;font:400 10.5px/1.65 var(--mono);color:var(--tx2);text-align:right}
+  #stat b{color:var(--cy)} #stat u{text-decoration:none;color:var(--tx3)}
+  /* ---------- controls ---------- */
+  #ctl{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:16;display:flex;align-items:center;
+       gap:12px;padding:8px 14px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;
+       box-shadow:0 14px 36px rgba(0,0,0,.5);flex-wrap:nowrap;max-width:calc(100vw - 740px)}
+  .cb{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;font:500 10.5px/1 var(--mono);color:var(--tx2)}
+  .cb input{appearance:none;width:15px;height:15px;border:1px solid var(--line2);border-radius:4px;background:#0a0e15;
+      position:relative;cursor:pointer;flex:none}
+  .cb input:checked{background:var(--cy);border-color:var(--cy)}
+  .cb input:checked::after{content:"";position:absolute;left:4px;top:1px;width:5px;height:9px;border:2px solid #04120f;
+      border-top:0;border-left:0;transform:rotate(42deg)}
+  .cb:hover{color:var(--tx)}
+  .rng{display:flex;align-items:center;gap:7px;font:500 10.5px/1 var(--mono);color:var(--tx2)}
+  .rng input{width:104px;accent-color:var(--cy)}
+  .rng s{text-decoration:none;color:var(--tx3);min-width:30px;text-align:right}
+  .vsep{width:1px;height:22px;background:var(--line)}
+  .btn{font:600 10.5px/1 var(--mono);color:var(--tx);background:#131b27;border:1px solid var(--line2);
+       border-radius:7px;padding:7px 10px;cursor:pointer}
+  .btn:hover{border-color:var(--cy);color:var(--cy)}
+  #err{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:60;max-width:560px;display:none;
+       background:#1a0f12;border:1px solid #5a2530;border-radius:10px;padding:16px 18px;color:#ffd9dd;
+       font:400 12px/1.6 var(--mono)}
+  @media (max-width:1180px){
+    #ctl{max-width:calc(100vw - 360px)} #hint{display:none}
+  }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="cv"></canvas></div>
+<div id="out"></div>
+
+<div id="top">
+  <div class="brand"><b>FIVICS <i>ATF-X</i></b><span>Recurve Bow · Digital Mockup</span></div>
+  <div class="chips">
+    <div class="chip">Riser <b>25″</b></div>
+    <div class="chip g">Bow <b>66″</b></div>
+    <div class="chip a">Brace <b>220&nbsp;mm</b></div>
+    <div class="chip b">Draw <b>@28″</b></div>
+    <div class="chip v">ILF <b>Dovetail</b></div>
+  </div>
+  <div class="sp"></div>
+  <div class="chips">
+    <div class="chip">1 unit = <b>1 mm</b></div>
+    <div class="chip" id="cTri">Tris <b>—</b></div>
+  </div>
+</div>
+
+<div id="hint">
+  <b>拖拽</b> 旋转 · <b>滚轮</b> 缩放 · <b>右键/Shift 拖拽</b> 平移<br>
+  <b>悬停</b> 识别零件 · <b>单击</b> 锁定并查看规格<br>
+  <b>E</b> 爆炸 · <b>W</b> 线框 · <b>L</b> 标注 · <b>G</b> 幽灵模式 · <b>空格</b> 自动旋转
+</div>
+
+<div id="panel">
+  <header>BOM · 全零件清单 <em id="pcount"></em><input id="q" placeholder="搜索 名称 / 材料 / 规格 …" spellcheck="false"></header>
+  <div id="tree"></div>
+</div>
+
+<div id="info">
+  <div class="hd">Part Detail <b id="did">— 未选择 —</b><u id="dclr">清除</u></div>
+  <div id="dbody"></div>
+</div>
+
+<div id="ctl">
+  <label class="cb"><input type="checkbox" id="tAuto" checked>自动旋转</label>
+  <label class="cb"><input type="checkbox" id="tWire">线框</label>
+  <label class="cb"><input type="checkbox" id="tLab" checked>标注</label>
+  <label class="cb"><input type="checkbox" id="tDim" checked>尺寸线</label>
+  <label class="cb"><input type="checkbox" id="tGho">X光幽灵</label>
+  <label class="cb"><input type="checkbox" id="tGrid" checked>地平面</label>
+  <span class="vsep"></span>
+  <div class="rng">爆炸<input type="range" id="rX" min="0" max="140" value="0" step="1"><s id="vX">0%</s></div>
+  <span class="vsep"></span>
+  <button class="btn" id="bAll">展开全部</button>
+  <button class="btn" id="bOri">正视图</button>
+</div>
+
+<div id="stat"></div>
+<div id="tt"></div>
+<div id="err"></div>
+
+<script src="atf-x-bow-core.js"></script>
+<script src="atf-x-bow-parts.js"></script>
+<script src="atf-x-bow-ui.js"></script>
+</body>
+</html>

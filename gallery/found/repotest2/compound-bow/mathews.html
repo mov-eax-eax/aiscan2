@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mathews LIFT 33 - compound bow - three.js</title>
+<style>
+  :root{
+    --panel:rgba(250,251,253,.82); --panel2:rgba(244,246,249,.72);
+    --line:rgba(18,24,32,.12); --ink:#12171d; --dim:#5e6b7a; --acc:#c8721e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;color:var(--ink);
+    background:radial-gradient(125% 95% at 62% 26%,#f4f7fa 0%,#ccd6e0 44%,#93a1b0 100%);
+    font:12.5px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  #view{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab}
+  #view:active{cursor:grabbing}
+  #labels{position:fixed;inset:0;pointer-events:none;z-index:8}
+  .lab{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;
+    font-size:11px;color:#f2f5f8;background:rgba(18,22,28,.74);
+    border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:2px 8px;
+    box-shadow:0 2px 10px rgba(10,20,35,.22);transition:opacity .18s;letter-spacing:.2px}
+  .lab i{display:block;position:absolute;left:-9999px}
+  .lead{position:absolute;height:1px;background:rgba(240,120,20,.55);transform-origin:0 0;z-index:7}
+
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);
+    border-radius:13px;backdrop-filter:blur(16px) saturate(1.2);z-index:10;
+    box-shadow:0 10px 30px rgba(6,14,26,.28)}
+  #top{top:14px;left:14px;right:14px;height:52px;display:flex;align-items:center;
+    gap:18px;padding:0 18px}
+  #top h1{margin:0;font-size:14px;font-weight:680;letter-spacing:.2px;white-space:nowrap}
+  #top h1 em{font-style:normal;color:var(--dim);font-weight:400}
+  #views{display:flex;gap:5px;flex-wrap:wrap}
+  button{font:inherit;font-size:11.5px;color:var(--ink);background:rgba(255,255,255,.6);
+    border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer;
+    transition:background .12s,border-color .12s,color .12s}
+  button:hover{background:#fff}
+  button.on{background:rgba(200,114,30,.16);border-color:rgba(200,114,30,.5);color:#7a3d05}
+  #specs{margin-left:auto;color:var(--dim);font-size:11.5px;white-space:nowrap;
+    font-variant-numeric:tabular-nums}
+
+  #left{top:80px;left:14px;width:236px;padding:0 0 10px;overflow:hidden}
+  #right{top:80px;right:14px;width:258px;padding:0 0 10px;overflow:hidden}
+  .ph{padding:10px 14px 8px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--dim);border-bottom:1px solid var(--line);margin-bottom:8px}
+  .ph + .ph{margin-top:2px}
+  .body{padding:0 14px}
+  .row{display:flex;align-items:center;gap:9px;padding:4px 0}
+  .row label{color:var(--dim);width:38px}
+  .row output{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;
+    background:linear-gradient(90deg,var(--acc),#e0a35a);flex:1;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;
+    border-radius:50%;background:#fff;border:2px solid var(--acc);cursor:pointer;
+    box-shadow:0 1px 4px rgba(0,0,0,.3)}
+  label.chk{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer;white-space:nowrap}
+  input[type=checkbox]{accent-color:var(--acc);width:14px;height:14px;cursor:pointer}
+  #finish{display:flex;gap:5px;flex-wrap:wrap;padding:2px 0 4px}
+  #finish button{width:30px;height:22px;padding:0;border-radius:6px}
+  #chart{display:block;width:100%;height:112px;border-radius:8px;background:rgba(255,255,255,.5);
+    border:1px solid var(--line)}
+  #readout{margin-top:8px;font-size:11.5px;color:var(--dim);line-height:1.7}
+  #readout b{color:var(--ink);font-weight:620;font-variant-numeric:tabular-nums}
+  .kv{display:flex;justify-content:space-between;gap:8px}
+  #hint{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);color:var(--dim);
+    font-size:11px;background:var(--panel);border:1px solid var(--line);border-radius:20px;
+    padding:6px 18px;z-index:10;white-space:nowrap;box-shadow:0 6px 20px rgba(6,14,26,.2)}
+  kbd{background:rgba(18,24,32,.08);border:1px solid var(--line);border-radius:4px;
+    padding:1px 5px;font:inherit;font-size:10.5px}
+  #loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:#dbe3ea;color:#5d6b7a;z-index:40;font-size:13px;letter-spacing:.06em;
+    transition:opacity .5s}
+  body.clean .panel,body.clean #hint{display:none!important}
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="labels"></div>
+
+<div class="panel" id="top">
+  <h1>Mathews LIFT 33 <em>- modern compound bow</em></h1>
+  <div id="views"></div>
+  <div id="specs"></div>
+</div>
+
+<div class="panel" id="left">
+  <div class="ph">Bow</div>
+  <div class="body">
+    <div class="row"><label>Draw</label><input id="draw" type="range" min="0" max="100" value="0"><output id="drawv">0%</output></div>
+    <label class="chk"><input type="checkbox" id="auto"> Auto draw &amp; release</label>
+    <label class="chk"><input type="checkbox" id="chk-labels" checked> Callouts</label>
+    <label class="chk"><input type="checkbox" id="quiver"> Quiver</label>
+  </div>
+  <div class="ph">Finish</div>
+  <div class="body"><div id="finish"></div></div>
+</div>
+
+<div class="panel" id="right">
+  <div class="ph">Draw cycle</div>
+  <div class="body">
+    <canvas id="chart" width="440" height="224"></canvas>
+    <div id="readout"></div>
+  </div>
+</div>
+
+<div id="hint"><kbd>drag</kbd> orbit &middot; <kbd>right-drag</kbd> pan &middot; <kbd>wheel</kbd> zoom &middot; <kbd>space</kbd> draw</div>
+<div id="loading">building the bow&hellip;</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="src/geom.js"></script>
+<script src="src/materials.js"></script>
+<script src="src/bow.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>

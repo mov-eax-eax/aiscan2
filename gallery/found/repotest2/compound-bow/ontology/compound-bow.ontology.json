@@ -1,0 +1,1873 @@
+{
+  "meta": {
+    "id": "compound-bow-ontology",
+    "version": "0.2.0",
+    "title": "Modern compound bow ontology",
+    "purpose": "Formal, build-ready description of a modern compound bow: part taxonomy, interfaces, and the cam-and-cable mechanics that make it compound. Drives a parametric 3D model (geometry authored, physics a readout) and a verification step.",
+    "date": "2026-02-19",
+    "reference": {
+      "model": "Mathews LIFT 33 (2024)",
+      "rationale": "Current flagship hunting compound with a modular Crosscentric/SwitchWeight-X cam system, split limbs and a forged riser; published specs are complete.",
+      "publishedSpecs": {
+        "axleToAxle_in": 33,
+        "braceHeight_in": 6.5,
+        "drawLengthRange_in": [
+          26,
+          31.5
+        ],
+        "peakDrawWeight_lb": [
+          45,
+          80
+        ],
+        "letOff_pct": [
+          80,
+          85
+        ],
+        "iboSpeed_fps": 343,
+        "massWeight_lb": 4.26
+      }
+    },
+    "units": {
+      "length": "inch (in); _mm where given",
+      "force": "pound-force (lbf, written lb)",
+      "mass": "lb avoirdupois; arrow mass in grain (7000 gr = 1 lb)",
+      "angle": "degree",
+      "speed": "foot per second"
+    },
+    "provenance": {
+      "published": "Manufacturer/retailer spec sheet for the reference model.",
+      "standard": "Defined by AMO / ATA / IBO.",
+      "classTypical": "Typical of modern 30-34 in ATA compounds; not model-specific. Replace with measurement/CAD when authoring geometry.",
+      "derived": "Computed from other values by the stated formula."
+    }
+  },
+  "standards": {
+    "amoDrawLength": {
+      "definition": "AMO draw length = distance from string at full draw to the lowest point of the grip + 1.75 in.",
+      "offset_in": 1.75,
+      "formula": "DL_AMO = d(nock, pivotPoint) + 1.75",
+      "provenance": "standard"
+    },
+    "braceHeight": {
+      "definition": "Distance from the grip pivot point (deepest point of the throat) to the string at rest.",
+      "note": "Shorter brace = longer power stroke, less forgiving; longer brace = more forgiving, slightly slower.",
+      "provenance": "standard"
+    },
+    "ataSpeed": {
+      "definition": "ATA speed: initial velocity of a 350 gr arrow at 70 +/- 0.2 lb peak and 30 +/- 0.25 in draw length.",
+      "arrow_gr": 350,
+      "peak_lb": 70,
+      "drawLength_in": 30,
+      "provenance": "standard"
+    },
+    "iboSpeed": {
+      "definition": "IBO speed: initial velocity of a 5 gr-per-lb arrow.",
+      "arrow_grPerLb": 5,
+      "note": "Usually reported at 70 lb / 30 in; standard permits up to 80 +/- 2 lb and fixes no draw length.",
+      "provenance": "standard"
+    },
+    "minArrowMass": {
+      "definition": "Shoot at least 5 gr per lb of peak draw weight; lighter risks a dry-fire-like failure.",
+      "grPerLb": 5,
+      "provenance": "standard"
+    },
+    "storedEnergyRatio": {
+      "definition": "Stored energy / peak draw force (Mullaney). Usually near 1.0, up to ~1.4 ft.lb/lb.",
+      "typical_ftLbPerLb": [
+        1,
+        1.4
+      ],
+      "provenance": "standard"
+    },
+    "efficiency": {
+      "definition": "Stored energy transferred to the arrow.",
+      "typical_pct": [
+        70,
+        85
+      ],
+      "provenance": "standard"
+    },
+    "powerFactor": {
+      "definition": "S.E./P.D.F. x efficiency.",
+      "provenance": "standard"
+    }
+  },
+  "classes": [
+    {
+      "id": "Bow",
+      "label": "Bow",
+      "parent": null,
+      "abstract": true,
+      "definition": "A device that stores elastic energy in limbs and transfers it to an arrow."
+    },
+    {
+      "id": "CompoundBow",
+      "label": "Compound bow",
+      "parent": "Bow",
+      "definition": "A bow using cable-and-eccentric leverage to bend stiff limbs, with a force-draw curve that peaks early and lets off near full draw."
+    },
+    {
+      "id": "Riser",
+      "label": "Riser",
+      "parent": "Component",
+      "definition": "Central rigid platform; carries limbs, grip, rest, sight, stabilizer and quiver."
+    },
+    {
+      "id": "RiserBody",
+      "label": "Riser body",
+      "parent": "Riser",
+      "definition": "Machined or forged main body with a sight window and structural bridges.",
+      "typicalMaterials": [
+        "materials:7075-T6",
+        "materials:forgedAluminum",
+        "materials:carbonComposite"
+      ]
+    },
+    {
+      "id": "SightWindow",
+      "label": "Sight window",
+      "parent": "Feature",
+      "definition": "Arrow pass-through cutaway above the shelf that sets the limb-plane offset."
+    },
+    {
+      "id": "RiserBridge",
+      "label": "Bridge",
+      "parent": "Feature",
+      "definition": "Flared web stiffening the riser in torsion; 'dual-bridged' risers have one above the sight window and one below the stabilizer insert."
+    },
+    {
+      "id": "Grip",
+      "label": "Grip",
+      "parent": "Component",
+      "definition": "Hand interface; sets the pivot point. Modern one-piece polymer grips have a forward angle to reduce torque.",
+      "typicalMaterials": [
+        "materials:polymer"
+      ]
+    },
+    {
+      "id": "DovetailRestMount",
+      "label": "Dovetail rest mount",
+      "parent": "Interface",
+      "definition": "Integrated dovetail that a compatible drop-away rest clamps into for alignment without bolts."
+    },
+    {
+      "id": "StabilizerBushing",
+      "label": "Stabilizer bushing",
+      "parent": "Interface",
+      "definition": "Threaded insert (typically 5/16-24) below the grip for stabilizers and front bars."
+    },
+    {
+      "id": "AccessoryBushing",
+      "label": "Accessory bushing",
+      "parent": "Interface",
+      "definition": "Threaded insert (quiver, wrist sling, sight)."
+    },
+    {
+      "id": "Limb",
+      "label": "Limb",
+      "parent": "Component",
+      "definition": "Elastic beam storing energy; flexed indirectly by cables pulling its tips toward each other.",
+      "typicalMaterials": [
+        "materials:gordonComposites",
+        "materials:fiberglassLaminate"
+      ]
+    },
+    {
+      "id": "SplitLimb",
+      "label": "Split limb",
+      "parent": "Limb",
+      "definition": "Limb made of two parallel halves, giving a wide torsionally rigid footprint and a central cam slot."
+    },
+    {
+      "id": "LimbPocket",
+      "label": "Limb pocket",
+      "parent": "Component",
+      "definition": "Riser-mounted socket that holds the limb butt and sets its angle and stance.",
+      "typicalMaterials": [
+        "materials:6061-T6",
+        "materials:steel"
+      ]
+    },
+    {
+      "id": "LimbBolt",
+      "label": "Limb bolt / tiller bolt",
+      "parent": "Fastener",
+      "definition": "Threaded bolt through the pocket that sets limb preload (draw weight) and tiller; often 1/2-20."
+    },
+    {
+      "id": "LimbRetention",
+      "label": "Limb retention",
+      "parent": "Component",
+      "definition": "Clip/screw gripping the limb butt in the pocket for alignment and to keep the limb captive without drawing."
+    },
+    {
+      "id": "LimbDamper",
+      "label": "Limb damper",
+      "parent": "Component",
+      "definition": "Elastomer fitted to the limb that dissipates post-shot vibration.",
+      "typicalMaterials": [
+        "materials:rubber"
+      ]
+    },
+    {
+      "id": "Eccentric",
+      "label": "Eccentric",
+      "parent": "Component",
+      "abstract": true,
+      "definition": "Non-concentric pulley that changes the string/cable moment arm as it rotates."
+    },
+    {
+      "id": "Cam",
+      "label": "Cam",
+      "parent": "Eccentric",
+      "definition": "Driven eccentric at a limb tip; grooves hold string and cables and its profile shapes the force-draw curve.",
+      "typicalMaterials": [
+        "materials:7075-T6",
+        "materials:glassFilledNylon"
+      ]
+    },
+    {
+      "id": "IdlerWheel",
+      "label": "Idler wheel",
+      "parent": "Eccentric",
+      "definition": "Round (concentric) wheel on one limb tip used in single-cam designs; routes the string with no energy storage."
+    },
+    {
+      "id": "CamModule",
+      "label": "Cam module",
+      "parent": "Component",
+      "definition": "Interchangeable plate that sets draw length, let-off and peak weight (e.g. Mathews SwitchWeight). Swapping it retunes the bow."
+    },
+    {
+      "id": "AvsDisc",
+      "label": "Advanced Vectoring System disc",
+      "parent": "Component",
+      "definition": "Small disc on a Crosscentric cam mounted offset to the axle and anchored to a harness-cable end; rotates non-concentrically to shift the force vector, storing more energy early and increasing let-off late."
+    },
+    {
+      "id": "DrawStop",
+      "label": "Draw stop",
+      "parent": "Component",
+      "definition": "Post or peg that contacts a limb/cable at full draw, producing the solid back wall; adjustable to fine-tune draw length.",
+      "typicalMaterials": [
+        "materials:rubber",
+        "materials:aluminum"
+      ]
+    },
+    {
+      "id": "Axle",
+      "label": "Axle",
+      "parent": "Fastener",
+      "definition": "Shaft through the limb tip on which the cam/idler rotates; its centres define axle-to-axle length.",
+      "typicalMaterials": [
+        "materials:steel"
+      ]
+    },
+    {
+      "id": "Bearing",
+      "label": "Bearing",
+      "parent": "Component",
+      "definition": "Rolling or plain bearing between cam and axle for low-friction rotation.",
+      "typicalMaterials": [
+        "materials:steel"
+      ]
+    },
+    {
+      "id": "CamSpacer",
+      "label": "Cam spacer / shim",
+      "parent": "Component",
+      "definition": "Thin washer setting cam centring and clearance in the limb slot."
+    },
+    {
+      "id": "Cable",
+      "label": "Cable",
+      "parent": "Component",
+      "definition": "Low-stretch cord that couples the eccentrics to the limbs and synchronises them.",
+      "typicalMaterials": [
+        "materials:hmpe"
+      ]
+    },
+    {
+      "id": "BussCable",
+      "label": "Buss cable",
+      "parent": "Cable",
+      "definition": "Cable anchored to a cam and to the opposite limb (single-cam/hybrid designs)."
+    },
+    {
+      "id": "HarnessCable",
+      "label": "Harness / control cable",
+      "parent": "Cable",
+      "definition": "Cable spanning opposite cam anchors; its length and the cam rotation it induces set timing and let-off."
+    },
+    {
+      "id": "Bowstring",
+      "label": "Bowstring",
+      "parent": "Component",
+      "definition": "Primary cord the archer draws; runs in the cam string grooves.",
+      "typicalMaterials": [
+        "materials:hmpe"
+      ]
+    },
+    {
+      "id": "Serving",
+      "label": "Serving",
+      "parent": "Component",
+      "definition": "Wound thread protecting the string at the centre and loops.",
+      "typicalMaterials": [
+        "materials:hmpe"
+      ]
+    },
+    {
+      "id": "StringLoop",
+      "label": "D-loop",
+      "parent": "Component",
+      "definition": "Loop tied on the centre serving that the release aid clips to."
+    },
+    {
+      "id": "NockPoint",
+      "label": "Nocking point",
+      "parent": "Feature",
+      "definition": "Set of knots that locate the arrow nock on the string."
+    },
+    {
+      "id": "CableGuard",
+      "label": "Cable guard",
+      "parent": "Component",
+      "definition": "Bar that holds cables clear of the arrow's path."
+    },
+    {
+      "id": "RollerGuard",
+      "label": "Roller guard",
+      "parent": "CableGuard",
+      "definition": "Guard with a roller that lets cables roll with reduced friction."
+    },
+    {
+      "id": "CableSlide",
+      "label": "Cable slide",
+      "parent": "Component",
+      "definition": "Sliding block that keeps the two harness cables separated and parallel."
+    },
+    {
+      "id": "Arrow",
+      "label": "Arrow",
+      "parent": "Projectile",
+      "definition": "Shaft with nock, fletching and point; the payload."
+    },
+    {
+      "id": "ArrowShaft",
+      "label": "Arrow shaft",
+      "parent": "Component",
+      "typicalMaterials": [
+        "materials:carbonFiber",
+        "materials:aluminum"
+      ]
+    },
+    {
+      "id": "ArrowNock",
+      "label": "Arrow nock",
+      "parent": "Component"
+    },
+    {
+      "id": "ArrowPoint",
+      "label": "Arrow point / broadhead",
+      "parent": "Component"
+    },
+    {
+      "id": "Fletching",
+      "label": "Fletching",
+      "parent": "Component",
+      "definition": "Vanes that stabilise arrow flight."
+    },
+    {
+      "id": "ArrowRest",
+      "label": "Arrow rest",
+      "parent": "Accessory",
+      "definition": "Supports the arrow and drops away on release (drop-away) for clean flight."
+    },
+    {
+      "id": "Sight",
+      "label": "Sight",
+      "parent": "Accessory",
+      "definition": "Pins and housing for aiming."
+    },
+    {
+      "id": "PeepSight",
+      "label": "Peep",
+      "parent": "Accessory",
+      "definition": "Rear aperture served into the string, aligned with the sight."
+    },
+    {
+      "id": "Stabilizer",
+      "label": "Stabilizer",
+      "parent": "Accessory",
+      "definition": "Forward/side rods and weights that damp and steady the bow."
+    },
+    {
+      "id": "StringStop",
+      "label": "String stop",
+      "parent": "Accessory",
+      "definition": "Riser-mounted rubber bumper that arrests the string after the shot, cutting noise and vibration."
+    },
+    {
+      "id": "StringSilencer",
+      "label": "String silencer",
+      "parent": "Accessory",
+      "definition": "Fuzzy elastomer tufts (e.g. Monkey Tails) served onto the string."
+    },
+    {
+      "id": "ReleaseAid",
+      "label": "Release aid",
+      "parent": "Accessory",
+      "definition": "Mechanical trigger/tension release clipped to the D-loop for a consistent loose."
+    },
+    {
+      "id": "Quiver",
+      "label": "Quiver",
+      "parent": "Accessory"
+    },
+    {
+      "id": "WristSling",
+      "label": "Wrist sling",
+      "parent": "Accessory"
+    },
+    {
+      "id": "Component",
+      "label": "Component",
+      "parent": null,
+      "abstract": true
+    },
+    {
+      "id": "Feature",
+      "label": "Feature",
+      "parent": null,
+      "abstract": true,
+      "definition": "A named region of a part rather than a separate part."
+    },
+    {
+      "id": "Interface",
+      "label": "Interface",
+      "parent": null,
+      "abstract": true,
+      "definition": "A mounting feature that accepts a standardised accessory."
+    },
+    {
+      "id": "Fastener",
+      "label": "Fastener",
+      "parent": "Component",
+      "abstract": true
+    },
+    {
+      "id": "Projectile",
+      "label": "Projectile",
+      "parent": null,
+      "abstract": true
+    },
+    {
+      "id": "Accessory",
+      "label": "Accessory",
+      "parent": "Component"
+    },
+    {
+      "id": "LimbHalf",
+      "label": "Limb half",
+      "parent": "Limb",
+      "definition": "One of the two parallel beams of a split limb.",
+      "typicalMaterials": [
+        "materials:gordonComposites"
+      ]
+    },
+    {
+      "id": "DrawStroke",
+      "label": "Draw stroke",
+      "parent": "Feature",
+      "definition": "The nock travel from brace to the wall; what the draw stop terminates."
+    },
+    {
+      "id": "ForceVector",
+      "label": "Force vector",
+      "parent": "Feature",
+      "definition": "Direction and magnitude of the cable force acting on a cam."
+    },
+    {
+      "id": "DrawLengthSetting",
+      "label": "Draw-length setting",
+      "parent": "Feature",
+      "definition": "The draw length selected by a cam module."
+    }
+  ],
+  "materials": [
+    {
+      "id": "materials:7075-T6",
+      "label": "7075-T6 aluminium",
+      "use": "machined risers, cams",
+      "note": "High strength-to-weight; typical riser alloy."
+    },
+    {
+      "id": "materials:forgedAluminum",
+      "label": "Forged aluminium",
+      "use": "risers",
+      "note": "Forging improves toughness vs. billet machining."
+    },
+    {
+      "id": "materials:6061-T6",
+      "label": "6061-T6 aluminium",
+      "use": "limb pockets, accessories"
+    },
+    {
+      "id": "materials:carbonComposite",
+      "label": "Carbon composite",
+      "use": "premium risers"
+    },
+    {
+      "id": "materials:gordonComposites",
+      "label": "Gordon Composites / glass-phenolic laminate",
+      "use": "modern limbs",
+      "note": "Split limbs on current flagships."
+    },
+    {
+      "id": "materials:fiberglassLaminate",
+      "label": "Fiberglass / wood laminate",
+      "use": "older limbs"
+    },
+    {
+      "id": "materials:glassFilledNylon",
+      "label": "Glass-filled nylon",
+      "use": "some cams/modules"
+    },
+    {
+      "id": "materials:hmpe",
+      "label": "HMPE (Dyneema / polyethylene)",
+      "use": "strings and cables",
+      "note": "Low creep, low stretch."
+    },
+    {
+      "id": "materials:steel",
+      "label": "Steel",
+      "use": "axles, bearings, bolts",
+      "note": "Commonly stainless."
+    },
+    {
+      "id": "materials:rubber",
+      "label": "Elastomer / rubber",
+      "use": "stops, dampers, grips"
+    },
+    {
+      "id": "materials:polymer",
+      "label": "Injection-moulded polymer",
+      "use": "grips, modules"
+    },
+    {
+      "id": "materials:aluminum",
+      "label": "Aluminium (generic)",
+      "use": "cams, accessories, hardware"
+    },
+    {
+      "id": "materials:carbonFiber",
+      "label": "Carbon fibre",
+      "use": "arrow shafts, premium components"
+    }
+  ],
+  "objectProperties": [
+    {
+      "id": "hasPart",
+      "domain": "Bow",
+      "range": "Component",
+      "inverse": "partOf",
+      "definition": "Mereological containment."
+    },
+    {
+      "id": "mountsOn",
+      "domain": "Accessory",
+      "range": "Riser",
+      "definition": "Accessory is attached to the riser."
+    },
+    {
+      "id": "threadedInto",
+      "domain": "Fastener",
+      "range": "Component",
+      "definition": "Screwed into a threaded feature."
+    },
+    {
+      "id": "pivotsIn",
+      "domain": "Limb",
+      "range": "LimbPocket",
+      "definition": "Limb butt sits and rotates in the pocket."
+    },
+    {
+      "id": "holds",
+      "domain": "LimbPocket",
+      "range": "Limb",
+      "inverse": "heldBy",
+      "definition": "Pocket captures the limb."
+    },
+    {
+      "id": "rotatablyCoupledTo",
+      "domain": "Eccentric",
+      "range": "Axle",
+      "definition": "Rotates on the axle."
+    },
+    {
+      "id": "bearsOn",
+      "domain": "DrawStop",
+      "range": "Limb",
+      "definition": "Stop strikes the limb at full draw."
+    },
+    {
+      "id": "limits",
+      "domain": "DrawStop",
+      "range": "DrawStroke",
+      "definition": "Terminates the power stroke."
+    },
+    {
+      "id": "wraps",
+      "domain": "Bowstring",
+      "range": "Cam",
+      "definition": "String lies in the cam groove."
+    },
+    {
+      "id": "anchoredTo",
+      "domain": "Cable",
+      "range": "Cam",
+      "definition": "Cable end fixes to a cam anchor."
+    },
+    {
+      "id": "spans",
+      "domain": "Cable",
+      "range": "Limb",
+      "definition": "Cable runs between limb tips/anchors."
+    },
+    {
+      "id": "drives",
+      "domain": "Cable",
+      "range": "Limb",
+      "definition": "Cable tension pulls the limb tip inward."
+    },
+    {
+      "id": "synchronisesWith",
+      "domain": "Cam",
+      "range": "Cam",
+      "definition": "Two cams are kept in rotational timing."
+    },
+    {
+      "id": "biases",
+      "domain": "AvsDisc",
+      "range": "ForceVector",
+      "definition": "Offset disc shifts the cable force vector."
+    },
+    {
+      "id": "supports",
+      "domain": "CableGuard",
+      "range": "Cable",
+      "definition": "Holds a cable away from the arrow path."
+    },
+    {
+      "id": "dampens",
+      "domain": "LimbDamper",
+      "range": "Limb",
+      "definition": "Dissipates vibration."
+    },
+    {
+      "id": "sets",
+      "domain": "CamModule",
+      "range": "DrawLengthSetting",
+      "definition": "Module geometry sets draw length/let-off."
+    },
+    {
+      "id": "connectsTo",
+      "domain": "ReleaseAid",
+      "range": "StringLoop",
+      "definition": "Release aid clips onto the D-loop."
+    }
+  ],
+  "datatypeProperties": [
+    {
+      "id": "axleToAxle",
+      "unit": "in",
+      "definition": "Centre-to-centre axle distance at brace."
+    },
+    {
+      "id": "braceHeight",
+      "unit": "in",
+      "definition": "Grip pivot to string at rest."
+    },
+    {
+      "id": "drawLength",
+      "unit": "in",
+      "definition": "AMO draw length (see standards)."
+    },
+    {
+      "id": "peakDrawWeight",
+      "unit": "lb",
+      "definition": "Maximum draw force."
+    },
+    {
+      "id": "holdingWeight",
+      "unit": "lb",
+      "definition": "Draw force at full draw after let-off."
+    },
+    {
+      "id": "letOff",
+      "unit": "%",
+      "definition": "(peak - holding) / peak x 100."
+    },
+    {
+      "id": "iboSpeed",
+      "unit": "fps",
+      "definition": "Speed under the IBO test."
+    },
+    {
+      "id": "massWeight",
+      "unit": "lb",
+      "definition": "Bare bow mass."
+    },
+    {
+      "id": "camDiameter",
+      "unit": "in"
+    },
+    {
+      "id": "limbLength",
+      "unit": "in"
+    },
+    {
+      "id": "riserLength",
+      "unit": "in"
+    },
+    {
+      "id": "axleDiameter",
+      "unit": "in"
+    },
+    {
+      "id": "stringLength",
+      "unit": "in"
+    },
+    {
+      "id": "cableLength",
+      "unit": "in"
+    },
+    {
+      "id": "deflection",
+      "unit": "in",
+      "definition": "Limb tip travel."
+    }
+  ],
+  "individuals": [
+    {
+      "id": "riser",
+      "label": "Riser body",
+      "class": "RiserBody",
+      "material": "materials:7075-T6",
+      "qty": 1,
+      "interfaces": [
+        "sightWindow",
+        "grip",
+        "dovetailRestMount",
+        "stabilizerBushing",
+        "limbPockets",
+        "cableGuardMount",
+        "stringStopMount"
+      ],
+      "note": "Skeletonised, dual-bridged reflex riser."
+    },
+    {
+      "id": "sightWindow",
+      "label": "Sight window",
+      "class": "SightWindow",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "riserBridgeUpper",
+      "label": "Upper riser bridge",
+      "class": "RiserBridge",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "riserBridgeLower",
+      "label": "Lower riser bridge",
+      "class": "RiserBridge",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "grip",
+      "label": "Engage grip",
+      "class": "Grip",
+      "material": "materials:polymer",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "dovetailRestMount",
+      "label": "Dovetail rest mount",
+      "class": "DovetailRestMount",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "stabilizerBushing",
+      "label": "Stabilizer bushing 5/16-24",
+      "class": "StabilizerBushing",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "quiverBushing",
+      "label": "Quiver bushing",
+      "class": "AccessoryBushing",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "slingBushing",
+      "label": "Wrist-sling bushing",
+      "class": "AccessoryBushing",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "cableGuardMount",
+      "label": "Cable-guard mount",
+      "class": "Interface",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "stringStopMount",
+      "label": "String-stop mount",
+      "class": "Interface",
+      "qty": 1,
+      "partOf": "riser"
+    },
+    {
+      "id": "limbTop",
+      "label": "Upper split limb",
+      "class": "SplitLimb",
+      "material": "materials:gordonComposites",
+      "qty": 1
+    },
+    {
+      "id": "limbTopA",
+      "label": "Upper limb half A",
+      "class": "LimbHalf",
+      "qty": 1,
+      "partOf": "limbTop"
+    },
+    {
+      "id": "limbTopB",
+      "label": "Upper limb half B",
+      "class": "LimbHalf",
+      "qty": 1,
+      "partOf": "limbTop"
+    },
+    {
+      "id": "limbBottom",
+      "label": "Lower split limb",
+      "class": "SplitLimb",
+      "material": "materials:gordonComposites",
+      "qty": 1
+    },
+    {
+      "id": "limbBottomA",
+      "label": "Lower limb half A",
+      "class": "LimbHalf",
+      "qty": 1,
+      "partOf": "limbBottom"
+    },
+    {
+      "id": "limbBottomB",
+      "label": "Lower limb half B",
+      "class": "LimbHalf",
+      "qty": 1,
+      "partOf": "limbBottom"
+    },
+    {
+      "id": "limbPocketTop",
+      "label": "Upper limb pocket",
+      "class": "LimbPocket",
+      "material": "materials:6061-T6",
+      "qty": 1,
+      "holds": "limbTop",
+      "partOf": "riser"
+    },
+    {
+      "id": "limbPocketBottom",
+      "label": "Lower limb pocket",
+      "class": "LimbPocket",
+      "material": "materials:6061-T6",
+      "qty": 1,
+      "holds": "limbBottom",
+      "partOf": "riser"
+    },
+    {
+      "id": "limbBoltTopA",
+      "label": "Upper tiller bolt",
+      "class": "LimbBolt",
+      "material": "materials:steel",
+      "qty": 2,
+      "threadedInto": "limbPocketTop"
+    },
+    {
+      "id": "limbBoltBottomA",
+      "label": "Lower tiller bolt",
+      "class": "LimbBolt",
+      "material": "materials:steel",
+      "qty": 2,
+      "threadedInto": "limbPocketBottom"
+    },
+    {
+      "id": "limbRetentionTop",
+      "label": "Upper limb retention",
+      "class": "LimbRetention",
+      "qty": 2,
+      "partOf": "limbPocketTop"
+    },
+    {
+      "id": "limbRetentionBottom",
+      "label": "Lower limb retention",
+      "class": "LimbRetention",
+      "qty": 2,
+      "partOf": "limbPocketBottom"
+    },
+    {
+      "id": "limbDamperTop",
+      "label": "Upper limb damper",
+      "class": "LimbDamper",
+      "material": "materials:rubber",
+      "qty": 1,
+      "dampens": "limbTop"
+    },
+    {
+      "id": "limbDamperBottom",
+      "label": "Lower limb damper",
+      "class": "LimbDamper",
+      "material": "materials:rubber",
+      "qty": 1,
+      "dampens": "limbBottom"
+    },
+    {
+      "id": "camTop",
+      "label": "Upper SwitchWeight-X cam",
+      "class": "Cam",
+      "material": "materials:7075-T6",
+      "qty": 1,
+      "rotatablyCoupledTo": "axleTop",
+      "wraps": [
+        "bowstring",
+        "cableUpper"
+      ]
+    },
+    {
+      "id": "camBottom",
+      "label": "Lower SwitchWeight-X cam",
+      "class": "Cam",
+      "material": "materials:7075-T6",
+      "qty": 1,
+      "rotatablyCoupledTo": "axleBottom",
+      "wraps": [
+        "bowstring",
+        "cableLower"
+      ]
+    },
+    {
+      "id": "camModuleTop",
+      "label": "Upper SwitchWeight module",
+      "class": "CamModule",
+      "material": "materials:glassFilledNylon",
+      "qty": 1,
+      "sets": "drawLength",
+      "partOf": "camTop"
+    },
+    {
+      "id": "camModuleBottom",
+      "label": "Lower SwitchWeight module",
+      "class": "CamModule",
+      "material": "materials:glassFilledNylon",
+      "qty": 1,
+      "sets": "drawLength",
+      "partOf": "camBottom"
+    },
+    {
+      "id": "avsDiscTopA",
+      "label": "Upper AVS disc A",
+      "class": "AvsDisc",
+      "qty": 1,
+      "partOf": "camTop",
+      "biases": "forceVectorTop"
+    },
+    {
+      "id": "avsDiscTopB",
+      "label": "Upper AVS disc B",
+      "class": "AvsDisc",
+      "qty": 1,
+      "partOf": "camTop",
+      "biases": "forceVectorTop"
+    },
+    {
+      "id": "avsDiscBottomA",
+      "label": "Lower AVS disc A",
+      "class": "AvsDisc",
+      "qty": 1,
+      "partOf": "camBottom",
+      "biases": "forceVectorBottom"
+    },
+    {
+      "id": "avsDiscBottomB",
+      "label": "Lower AVS disc B",
+      "class": "AvsDisc",
+      "qty": 1,
+      "partOf": "camBottom",
+      "biases": "forceVectorBottom"
+    },
+    {
+      "id": "drawStopTop",
+      "label": "Upper draw stop",
+      "class": "DrawStop",
+      "material": "materials:rubber",
+      "qty": 1,
+      "partOf": "camTop",
+      "bearsOn": "limbTop",
+      "limits": "drawStroke"
+    },
+    {
+      "id": "drawStopBottom",
+      "label": "Lower draw stop",
+      "class": "DrawStop",
+      "material": "materials:rubber",
+      "qty": 1,
+      "partOf": "camBottom",
+      "bearsOn": "limbBottom",
+      "limits": "drawStroke"
+    },
+    {
+      "id": "axleTop",
+      "label": "Upper axle",
+      "class": "Axle",
+      "material": "materials:steel",
+      "qty": 1,
+      "partOf": "limbTop"
+    },
+    {
+      "id": "axleBottom",
+      "label": "Lower axle",
+      "class": "Axle",
+      "material": "materials:steel",
+      "qty": 1,
+      "partOf": "limbBottom"
+    },
+    {
+      "id": "bearingTopA",
+      "label": "Upper cam bearing",
+      "class": "Bearing",
+      "material": "materials:steel",
+      "qty": 2,
+      "partOf": "camTop"
+    },
+    {
+      "id": "bearingBottomA",
+      "label": "Lower cam bearing",
+      "class": "Bearing",
+      "material": "materials:steel",
+      "qty": 2,
+      "partOf": "camBottom"
+    },
+    {
+      "id": "camSpacerTopA",
+      "label": "Upper cam spacer",
+      "class": "CamSpacer",
+      "qty": 2,
+      "partOf": "camTop"
+    },
+    {
+      "id": "camSpacerBottomA",
+      "label": "Lower cam spacer",
+      "class": "CamSpacer",
+      "qty": 2,
+      "partOf": "camBottom"
+    },
+    {
+      "id": "bowstring",
+      "label": "MATCH bowstring",
+      "class": "Bowstring",
+      "material": "materials:hmpe",
+      "qty": 1,
+      "wraps": [
+        "camTop",
+        "camBottom"
+      ]
+    },
+    {
+      "id": "cableUpper",
+      "label": "Upper harness cable",
+      "class": "HarnessCable",
+      "material": "materials:hmpe",
+      "qty": 1,
+      "anchoredTo": "camBottom",
+      "spans": "limbTop",
+      "synchronisesWith": "cableLower"
+    },
+    {
+      "id": "cableLower",
+      "label": "Lower harness cable",
+      "class": "HarnessCable",
+      "material": "materials:hmpe",
+      "qty": 1,
+      "anchoredTo": "camTop",
+      "spans": "limbBottom",
+      "synchronisesWith": "cableUpper"
+    },
+    {
+      "id": "centerServing",
+      "label": "Centre serving",
+      "class": "Serving",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "endServingTop",
+      "label": "Upper end serving / loop",
+      "class": "Serving",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "endServingBottom",
+      "label": "Lower end serving / loop",
+      "class": "Serving",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "dLoop",
+      "label": "D-loop",
+      "class": "StringLoop",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "nockPoint",
+      "label": "Nocking point",
+      "class": "NockPoint",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "rollerGuard",
+      "label": "Reverse-assist roller guard",
+      "class": "RollerGuard",
+      "qty": 1,
+      "supports": [
+        "cableUpper",
+        "cableLower"
+      ],
+      "mountsOn": "riser"
+    },
+    {
+      "id": "cableSlide",
+      "label": "Cable slide",
+      "class": "CableSlide",
+      "qty": 1,
+      "supports": [
+        "cableUpper",
+        "cableLower"
+      ]
+    },
+    {
+      "id": "stringStop",
+      "label": "Dead-End string stop",
+      "class": "StringStop",
+      "material": "materials:rubber",
+      "qty": 1,
+      "mountsOn": "riser"
+    },
+    {
+      "id": "monkeyTailTop",
+      "label": "String silencer (upper)",
+      "class": "StringSilencer",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "monkeyTailBottom",
+      "label": "String silencer (lower)",
+      "class": "StringSilencer",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "arrowRest",
+      "label": "Drop-away arrow rest",
+      "class": "ArrowRest",
+      "qty": 1,
+      "mountsOn": "dovetailRestMount"
+    },
+    {
+      "id": "sight",
+      "label": "Bow sight",
+      "class": "Sight",
+      "qty": 1,
+      "mountsOn": "riser"
+    },
+    {
+      "id": "peep",
+      "label": "Peep sight",
+      "class": "PeepSight",
+      "qty": 1,
+      "partOf": "bowstring"
+    },
+    {
+      "id": "stabilizer",
+      "label": "Stabilizer / front bar",
+      "class": "Stabilizer",
+      "qty": 1,
+      "mountsOn": "stabilizerBushing"
+    },
+    {
+      "id": "release",
+      "label": "Release aid",
+      "class": "ReleaseAid",
+      "qty": 1,
+      "connectsTo": "dLoop"
+    },
+    {
+      "id": "quiver",
+      "label": "Quiver",
+      "class": "Quiver",
+      "qty": 1,
+      "mountsOn": "quiverBushing"
+    },
+    {
+      "id": "wristSling",
+      "label": "Wrist sling",
+      "class": "WristSling",
+      "qty": 1,
+      "mountsOn": "slingBushing"
+    },
+    {
+      "id": "arrow",
+      "label": "Arrow",
+      "class": "Arrow",
+      "qty": 1
+    },
+    {
+      "id": "arrowShaft",
+      "label": "Arrow shaft",
+      "class": "ArrowShaft",
+      "material": "materials:carbonFiber",
+      "qty": 1,
+      "partOf": "arrow"
+    },
+    {
+      "id": "arrowNock",
+      "label": "Arrow nock",
+      "class": "ArrowNock",
+      "qty": 1,
+      "partOf": "arrow"
+    },
+    {
+      "id": "arrowPoint",
+      "label": "Arrow point",
+      "class": "ArrowPoint",
+      "qty": 1,
+      "partOf": "arrow"
+    },
+    {
+      "id": "fletching",
+      "label": "Fletching (3 vanes)",
+      "class": "Fletching",
+      "qty": 3,
+      "partOf": "arrow"
+    }
+  ],
+  "subsystems": [
+    {
+      "id": "ssRiser",
+      "label": "Riser platform",
+      "function": "Rigid reference frame carrying every load; sight window sets arrow pass and limb-plane offset.",
+      "parts": [
+        "riser",
+        "grip",
+        "dovetailRestMount",
+        "stabilizerBushing",
+        "quiverBushing",
+        "slingBushing",
+        "cableGuardMount",
+        "stringStopMount",
+        "sightWindow",
+        "riserBridgeUpper",
+        "riserBridgeLower"
+      ]
+    },
+    {
+      "id": "ssLimbs",
+      "label": "Energy-storage limbs",
+      "function": "Elastic beams bent by cable tension; store the shot energy and return it.",
+      "parts": [
+        "limbTop",
+        "limbBottom",
+        "limbPocketTop",
+        "limbPocketBottom",
+        "limbBoltTopA",
+        "limbBoltBottomA",
+        "limbRetentionTop",
+        "limbRetentionBottom",
+        "limbDamperTop",
+        "limbDamperBottom",
+        "limbTopA",
+        "limbTopB",
+        "limbBottomA",
+        "limbBottomB"
+      ]
+    },
+    {
+      "id": "ssEccentrics",
+      "label": "Eccentric / let-off system",
+      "function": "Change moment arm through the draw to store energy early and let off late; provide the solid wall.",
+      "parts": [
+        "camTop",
+        "camBottom",
+        "camModuleTop",
+        "camModuleBottom",
+        "avsDiscTopA",
+        "avsDiscTopB",
+        "avsDiscBottomA",
+        "avsDiscBottomB",
+        "drawStopTop",
+        "drawStopBottom",
+        "axleTop",
+        "axleBottom",
+        "bearingTopA",
+        "bearingBottomA",
+        "camSpacerTopA",
+        "camSpacerBottomA"
+      ]
+    },
+    {
+      "id": "ssCables",
+      "label": "String and cable train",
+      "function": "Couple the cams to the limbs and to each other; deliver force to the arrow.",
+      "parts": [
+        "bowstring",
+        "cableUpper",
+        "cableLower",
+        "centerServing",
+        "endServingTop",
+        "endServingBottom",
+        "dLoop",
+        "nockPoint",
+        "rollerGuard",
+        "cableSlide",
+        "stringStop",
+        "monkeyTailTop",
+        "monkeyTailBottom"
+      ]
+    },
+    {
+      "id": "ssDelivery",
+      "label": "Arrow and aiming",
+      "function": "Support, aim and launch the projectile; hold and release the string consistently.",
+      "parts": [
+        "arrowRest",
+        "sight",
+        "peep",
+        "stabilizer",
+        "release",
+        "quiver",
+        "wristSling",
+        "arrow",
+        "arrowShaft",
+        "arrowNock",
+        "arrowPoint",
+        "fletching"
+      ]
+    }
+  ],
+  "frames": {
+    "note": "Right-handed bow, looking at the archer's side.",
+    "axes": {
+      "x": "+x = forward, along the arrow (away from the archer)",
+      "y": "+y = up, along the limb-to-limb axis",
+      "z": "+z = toward the archer's face (string side); arrow pass is at +z of the riser face"
+    },
+    "datums": [
+      {
+        "id": "pivotPoint",
+        "definition": "Deepest point of the grip throat; origin for brace height and AMO draw length."
+      },
+      {
+        "id": "axleTop",
+        "definition": "Centre of the upper cam axle; locates the top of the ATA span."
+      },
+      {
+        "id": "axleBottom",
+        "definition": "Centre of the lower cam axle."
+      },
+      {
+        "id": "stringPlane",
+        "definition": "Plane containing the bowstring at brace; brace height is pivotPoint to this plane."
+      },
+      {
+        "id": "arrowPass",
+        "definition": "Point the arrow leaves the rest; roughly the top of the grip shelf."
+      },
+      {
+        "id": "nockPoint",
+        "definition": "Point where the arrow nocks; draw length is measured to this."
+      }
+    ]
+  },
+  "mechanics": {
+    "summary": "The limbs store the energy; the eccentrics and cables decide how hard and how long you must pull to load them, and how little you must hold at full draw. The bow is drawn by cables pulling the limb tips TOWARD EACH OTHER, not by the string bending the limbs backward.",
+    "eccentricTopologies": [
+      {
+        "id": "singleCam",
+        "label": "Single cam + idler",
+        "cams": 1,
+        "idlers": 1,
+        "cables": 1,
+        "definition": "One driven cam (usually lower) and one round idler wheel. The string runs from the cam over the idler; a buss cable ties the cam to the opposite limb.",
+        "traits": [
+          "smooth and easy to time",
+          "nock travels on a shallow arc",
+          "generally slower than binary",
+          "timing tolerant"
+        ]
+      },
+      {
+        "id": "hybridCam",
+        "label": "Hybrid cam",
+        "cams": 2,
+        "cables": 1,
+        "definition": "Two eccentrics controlled by one cable; the second cam is often a control cam rather than a mirrored drive cam.",
+        "traits": [
+          "faster than single",
+          "moderate timing sensitivity"
+        ]
+      },
+      {
+        "id": "dualCam",
+        "label": "Dual cam",
+        "cams": 2,
+        "cables": 2,
+        "definition": "Two mirrored cams, each with its own cable anchored to the limb or cam.",
+        "traits": [
+          "symmetric",
+          "can be tuned for nock travel",
+          "sensitive to timing"
+        ]
+      },
+      {
+        "id": "binaryCam",
+        "label": "Binary cam",
+        "cams": 2,
+        "cables": 2,
+        "definition": "Two mirrored cams; each cable is anchored to the OPPOSITE cam, so the pair is self-correcting and stays synchronised. No cable is anchored to a limb.",
+        "traits": [
+          "best synchronisation",
+          "flat nock travel",
+          "fast",
+          "needs precise cable lengths and cam-to-cam timing"
+        ]
+      },
+      {
+        "id": "quadCam",
+        "label": "Quad cam",
+        "cams": 2,
+        "cables": 2,
+        "definition": "Two cams with multiple tracks; mechanically a binary variant with additional take-up."
+      },
+      {
+        "id": "hinged",
+        "label": "Hinged / limb-mounted eccentric",
+        "cams": 2,
+        "definition": "Eccentric carried on a hinged link rather than directly on the limb tip; uncommon.",
+        "traits": [
+          "altered leverage path"
+        ]
+      }
+    ],
+    "referenceEccentricSystem": {
+      "id": "crosscentricSWX",
+      "label": "Crosscentric cam with Advanced Vectoring System and SwitchWeight-X modules",
+      "topology": "binaryCam",
+      "components": [
+        "camTop",
+        "camBottom",
+        "avsDiscTopA",
+        "avsDiscTopB",
+        "avsDiscBottomA",
+        "avsDiscBottomB",
+        "camModuleTop",
+        "camModuleBottom",
+        "drawStopTop",
+        "drawStopBottom"
+      ],
+      "principle": [
+        "The cam is non-circular: its effective radius (the moment arm from the axle to the string/cable contact) changes as it rotates, so a roughly constant cable tension produces a shaped draw-force curve.",
+        "The AVS uses two small discs per cam mounted OFFSET to the axle and anchored to the ends of the harness cable. As they rotate non-concentrically they shift the force vector, storing more energy at the front of the draw and increasing let-off at the back.",
+        "The SwitchWeight module is the interface between the module and the cam tracks; swapping it changes draw length, let-off (80 or 85%) and peak weight in steps without changing limbs.",
+        "The draw stop on each cam strikes the limb at full draw, giving a hard back wall and fixing the anchor; its position also trims draw length."
+      ]
+    },
+    "drawCycle": {
+      "totalCamRotation_deg": 210,
+      "note": "Cam rotation and lever-arm change are read from the reference mechanism photograph (commons_cam_forcedraw.jpg): five poses at 0, 45, 90, 135 and ~210 degrees of rotation, annotated with lever arms and the cable take-up length.",
+      "phases": [
+        {
+          "id": "brace",
+          "draw_in": 0,
+          "camRotation_deg": 0,
+          "force": "brace preload (small, set by limb tiller)",
+          "behaviour": "String at rest at the brace height; cables pre-tensioned; limbs already bent from their moulded shape."
+        },
+        {
+          "id": "frontEnd",
+          "draw_in": [
+            0,
+            10
+          ],
+          "camRotation_deg": [
+            0,
+            45
+          ],
+          "force": "rises steeply to the peak within the first third",
+          "behaviour": "Cams turn and their long moment arms load the limbs hard; this is where a compound stores most of its energy per inch."
+        },
+        {
+          "id": "plateau",
+          "draw_in": [
+            10,
+            22
+          ],
+          "camRotation_deg": [
+            45,
+            135
+          ],
+          "force": "roughly flat near the peak ('stacking' if it rises, 'soft' if it falls)",
+          "behaviour": "The effective radius stays high; the archer does most of the work but feels an even pull."
+        },
+        {
+          "id": "letOff",
+          "draw_in": [
+            22,
+            "DL"
+          ],
+          "camRotation_deg": [
+            135,
+            200
+          ],
+          "force": "falls sharply toward the holding weight",
+          "behaviour": "The moment arm collapses as the string approaches the axle; stored energy is nearly maximum while the force needed falls."
+        },
+        {
+          "id": "wall",
+          "draw_in": "DL",
+          "camRotation_deg": 210,
+          "force": "the holding weight",
+          "behaviour": "Draw stop contacts the limb; a hard, repeatable stop. The archer stops pulling."
+        },
+        {
+          "id": "release",
+          "draw_in": "DL->0",
+          "camRotation_deg": "210->0",
+          "force": "limb torque drives the cams back",
+          "behaviour": "The cables unwind the cams; the limbs pull the string forward and launch the arrow."
+        }
+      ]
+    },
+    "letOff": {
+      "definition": "letOff = (peakDrawWeight - holdingWeight) / peakDrawWeight x 100.",
+      "holdingFormula": "holdingWeight = peakDrawWeight x (1 - letOff)",
+      "examples": [
+        {
+          "peak_lb": 70,
+          "letOff_pct": 80,
+          "holding_lb": 14
+        },
+        {
+          "peak_lb": 70,
+          "letOff_pct": 85,
+          "holding_lb": 10.5
+        },
+        {
+          "peak_lb": 80,
+          "letOff_pct": 85,
+          "holding_lb": 12
+        }
+      ],
+      "provenance": "derived"
+    },
+    "energy": {
+      "storedEnergy": {
+        "formula": "E_stored = integral F(s) ds over the power stroke",
+        "unit": "ft.lb",
+        "note": "The area under the force-draw curve; the reason a compound stores more than a recurve of equal peak weight."
+      },
+      "arrowKinetic": {
+        "formula": "KE = 0.5 * m * v^2 / gc, gc = 32.174 lb.ft/(lbf.s^2)",
+        "unit": "ft.lb"
+      },
+      "efficiency": {
+        "typical_pct": [
+          70,
+          85
+        ]
+      },
+      "iboCheck": {
+        "arrow_gr": 350,
+        "speed_fps": 343,
+        "ke_ftLb": 91.4,
+        "impliedStoredAt80pct_ftLb": 114.3,
+        "impliedStoredToPeakRatio": 1.63,
+        "note": "Sanity bound: IBO figures are optimistic and measured at 70 lb peak, so the implied stored/peak ratio sits above the 1.0-1.4 class-typical band. The model must not treat 343 fps as a guaranteed delivered speed."
+      },
+      "provenance": "derived"
+    },
+    "synchronisation": {
+      "definition": "Both cams must reach the wall together and stay in phase through the draw; if they drift, the nock travels off-axis and accuracy suffers.",
+      "mechanisms": [
+        "cable lengths (harness/buss)",
+        "timing marks on cam and limb",
+        "draw-stop length",
+        "cam-to-cam cable anchors on binary cams self-correct"
+      ],
+      "observable": "nock travel: the path of the nock relative to the arrow pass."
+    },
+    "forceVectoring": {
+      "id": "avs",
+      "definition": "Offset discs alter the direction as well as the magnitude of the cable force on the cam, changing how much energy is stored early and how much the force drops late."
+    }
+  },
+  "states": [
+    {
+      "id": "brace",
+      "label": "Brace / at rest",
+      "description": "String at brace height; limbs pre-bent by cable tension; no draw force on the string beyond preload."
+    },
+    {
+      "id": "drawing",
+      "label": "Drawing",
+      "description": "String pulled back; cams rotate and cables load the limbs; force rises along the F-d curve."
+    },
+    {
+      "id": "peak",
+      "label": "Peak weight",
+      "description": "Maximum force early in the draw."
+    },
+    {
+      "id": "valley",
+      "label": "Let-off / valley",
+      "description": "Force falls as the effective moment arm collapses."
+    },
+    {
+      "id": "wall",
+      "label": "Wall / full draw",
+      "description": "Draw stops bear on the limbs; holding weight is 15-20% of peak; the archer anchors."
+    },
+    {
+      "id": "loose",
+      "label": "Release",
+      "description": "Release aid fires; cables unwind; limbs drive the string forward."
+    },
+    {
+      "id": "recovery",
+      "label": "Recovery",
+      "description": "String is arrested by the string stop; dampers and string silencers dissipate vibration; cams return to brace."
+    }
+  ],
+  "buildPhases": [
+    {
+      "order": 1,
+      "id": "bpRiser",
+      "label": "Riser platform",
+      "parts": [
+        "riser",
+        "grip",
+        "dovetailRestMount",
+        "stabilizerBushing",
+        "quiverBushing",
+        "slingBushing",
+        "cableGuardMount",
+        "stringStopMount",
+        "sightWindow",
+        "riserBridgeUpper",
+        "riserBridgeLower"
+      ],
+      "note": "The rigid frame every later part references."
+    },
+    {
+      "order": 2,
+      "id": "bpLimbs",
+      "label": "Limb pockets and limbs",
+      "parts": [
+        "limbPocketTop",
+        "limbPocketBottom",
+        "limbBoltTopA",
+        "limbBoltBottomA",
+        "limbTop",
+        "limbBottom",
+        "limbRetentionTop",
+        "limbRetentionBottom",
+        "limbTopA",
+        "limbTopB",
+        "limbBottomA",
+        "limbBottomB"
+      ],
+      "note": "Limbs pivot in the pockets and are preloaded by the tiller bolts."
+    },
+    {
+      "order": 3,
+      "id": "bpEccentrics",
+      "label": "Axles, bearings, cams, modules, AVS, draw stops",
+      "parts": [
+        "axleTop",
+        "axleBottom",
+        "bearingTopA",
+        "bearingBottomA",
+        "camSpacerTopA",
+        "camSpacerBottomA",
+        "camTop",
+        "camBottom",
+        "avsDiscTopA",
+        "avsDiscTopB",
+        "avsDiscBottomA",
+        "avsDiscBottomB",
+        "camModuleTop",
+        "camModuleBottom",
+        "drawStopTop",
+        "drawStopBottom"
+      ],
+      "note": "Cams go in the limb slots on bearings; modules and draw stops set draw length and wall."
+    },
+    {
+      "order": 4,
+      "id": "bpCables",
+      "label": "String and cables",
+      "parts": [
+        "bowstring",
+        "cableUpper",
+        "cableLower",
+        "centerServing",
+        "endServingTop",
+        "endServingBottom"
+      ],
+      "note": "Requires a bow press: limbs must be compressed to relieve cable tension."
+    },
+    {
+      "order": 5,
+      "id": "bpTiming",
+      "label": "Timing and tuning",
+      "parts": [
+        "cableSlide",
+        "rollerGuard"
+      ],
+      "note": "Set cam timing, draw length, let-off and tiller; verify with timing marks."
+    },
+    {
+      "order": 6,
+      "id": "bpFinish",
+      "label": "Dampers, string furniture, accessories",
+      "parts": [
+        "limbDamperTop",
+        "limbDamperBottom",
+        "stringStop",
+        "monkeyTailTop",
+        "monkeyTailBottom",
+        "dLoop",
+        "nockPoint",
+        "peep",
+        "arrowRest",
+        "sight",
+        "stabilizer",
+        "release",
+        "quiver",
+        "wristSling",
+        "arrow",
+        "arrowShaft",
+        "arrowNock",
+        "arrowPoint",
+        "fletching"
+      ],
+      "note": "Everything the archer touches, plus the projectile."
+    }
+  ],
+  "sources": [
+    {
+      "id": "srcWiki",
+      "type": "reference",
+      "title": "Compound bow",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Compound_bow",
+      "usedFor": [
+        "eccentric topologies",
+        "AMO/ATA/IBO standards",
+        "let-off mechanism",
+        "parallel limbs"
+      ]
+    },
+    {
+      "id": "srcSpecLift",
+      "type": "spec",
+      "title": "Mathews LIFT 33 specifications",
+      "publisher": "Compound Bow Choice",
+      "url": "https://compoundbowchoice.com/brands/mathews/lift-33/specs/",
+      "usedFor": [
+        "reference bow dimensions"
+      ]
+    },
+    {
+      "id": "srcAbbey",
+      "type": "spec",
+      "title": "Mathews LIFT 33 product page",
+      "publisher": "Abbey Archery",
+      "url": "https://www.abbeyarchery.com.au/p/MILA332024/Mathews+LIFT+33.html",
+      "usedFor": [
+        "SWX cam, RPD limbs, features"
+      ]
+    },
+    {
+      "id": "srcVertix",
+      "type": "reference",
+      "title": "Bow Review: Mathews Vertix",
+      "publisher": "Bowhunter",
+      "url": "https://www.bowhunter.com/editorial/bow-review-mathews-vertix/368523",
+      "usedFor": [
+        "Crosscentric AVS mechanism",
+        "limb pocket / retention"
+      ]
+    },
+    {
+      "id": "srcBowtech",
+      "type": "spec",
+      "title": "Bowtech Core SR specifications",
+      "publisher": "Compound Bow Choice",
+      "url": "https://compoundbowchoice.com/brands/bowtech/core-sr/specs/",
+      "usedFor": [
+        "variant comparison"
+      ]
+    },
+    {
+      "id": "srcPhotoCam",
+      "type": "photo",
+      "title": "Compound Cams Auszug Weg & Hebel",
+      "author": "StromBer",
+      "license": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Compound_Cams_Auszug_Weg%26Hebel.jpg",
+      "usedFor": [
+        "cam rotation vs lever arm",
+        "take-up length"
+      ]
+    },
+    {
+      "id": "srcPhotoIdler",
+      "type": "photo",
+      "title": "Mission Idler & Stopper",
+      "author": "StromBer",
+      "license": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Mission_Idler%26Stopper.JPG",
+      "usedFor": [
+        "idler, string stop, y-cable"
+      ]
+    }
+  ]
+}

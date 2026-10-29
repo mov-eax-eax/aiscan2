@@ -1,0 +1,298 @@
+/* =====================================================================
+   PART 3 — ground plane, esplanade, Champ de Mars / Trocadéro gardens,
+   Seine, distant Paris skyline, lamps / benches / trees / hedges.
+   ===================================================================== */
+function stdMat(opt){ return new THREE.MeshStandardMaterial(Object.assign({
+  roughness:0.8, metalness:0.06 }, opt)); }
+function planeTex(base, rx, ry){
+  const t = base.clone(); t.repeat.set(rx,ry); t.needsUpdate = true; return t;
+}
+function groundMesh(geo, mat){ const m=new THREE.Mesh(geo,mat); m.receiveShadow=true; return m; }
+function addInstanced(geo, mat, n, fill, shadow, receive){
+  const im = new THREE.InstancedMesh(geo, mat, n);
+  im.frustumCulled = false;
+  im.castShadow = !!shadow; im.receiveShadow = !!receive;
+  if(fill) fill(im);
+  scene.add(im);
+  return im;
+}
+function yawM(q, ay){ q.setFromAxisAngle(_UP, ay); }
+const _UP = new THREE.Vector3(0,1,0);
+const _M4 = new THREE.Matrix4(), _P = new THREE.Vector3(), _Q = new THREE.Quaternion(), _SC = new THREE.Vector3();
+
+function buildGround(){
+  // ---------- big grass meadow ----------
+  {
+    const g = new THREE.CircleGeometry(3000, 80);
+    const m = stdMat({ map: planeTex(TX.grass, 700, 700), roughness:0.95, metalness:0 });
+    const me = new THREE.Mesh(g, m);
+    me.rotation.x = -Math.PI/2; me.position.y = 0;
+    me.receiveShadow = true;
+    scene.add(me);
+  }
+  // darker green collar immediately around the paved esplanade
+  {
+    const g = new THREE.RingGeometry(181, 250, 90);
+    const m = stdMat({ map: planeTex(TX.grass, 60, 12), roughness:1, metalness:0, color:0x87986a });
+    const me = new THREE.Mesh(g, m);
+    me.rotation.x = -Math.PI/2; me.position.y = 0.004;
+    me.receiveShadow = true; scene.add(me);
+  }
+
+  // ---------- main esplanade paving (square around the tower) ----------
+  {
+    const g = new THREE.PlaneGeometry(362, 362);
+    const m = stdMat({ map: planeTex(TX.plaza, 24, 24), roughness:0.92, metalness:0 });
+    const me = new THREE.Mesh(g, m);
+    me.rotation.x = -Math.PI/2; me.position.y = 0.03;
+    me.receiveShadow = true; scene.add(me);
+  }
+  // low stone curb around the plaza
+  {
+    const curb = stdMat({ color:0x8f8373, roughness:0.85 });
+    const S = 181.4;
+    const mk = (sx,sz,lx,lz)=>{ const m=new THREE.Mesh(new THREE.BoxGeometry(lx,0.4,lz),curb);
+      m.position.set(sx,0.2,sz); m.receiveShadow=true; scene.add(m); };
+    mk(0,S,363,1.4); mk(0,-S,363,1.4); mk(S,0,1.4,363); mk(-S,0,1.4,363);
+  }
+
+  // ---------- gravel avenues ----------
+  const addPath = (w, len, cx, cz, rotY, rx, rz)=>{
+    const g = new THREE.PlaneGeometry(w, len);
+    const m = stdMat({ map: planeTex(TX.gravel, rx||10, rz||10), roughness:1, metalness:0, color:0xd8d0c0 });
+    const me = new THREE.Mesh(g, m);
+    me.rotation.x = -Math.PI/2;
+    if(rotY) me.rotation.y = rotY;
+    me.position.set(cx,0.045,cz);
+    me.receiveShadow = true; scene.add(me);
+  };
+  addPath(64, 470, 0, -425);                       // south Champ-de-Mars avenue
+  addPath(90, 150, 0, 240);                        // north Trocadéro approach
+  addPath(1500, 46, 0, -730, 0, 130, 4);           // cross avenue far south
+  // diagonal walks from the plaza corners into the meadow
+  for(const sx of [-1,1]) for(const sz of [-1,1]){
+    const len=300, ang=Math.atan2(-sz*len, sx*len);
+    addPath(10, len, sx*272, sz*272, ang-Math.PI/2, 30, 1.2);
+  }
+
+  // ---------- Trocadéro fountain pond (north) ----------
+  {
+    const pondMat = stdMat({ color:0x7fa8b8, roughness:0.12, metalness:0.1, transparent:true, opacity:0.94 });
+    const me = new THREE.Mesh(new THREE.CircleGeometry(55, 44), pondMat);
+    me.rotation.x=-Math.PI/2; me.position.set(0,0.06,430); scene.add(me);
+    const rim = new THREE.Mesh(new THREE.RingGeometry(55,58,56), stdMat({ color:0x9aa0a4, roughness:0.6 }));
+    rim.rotation.x=-Math.PI/2; rim.position.set(0,0.09,430); scene.add(rim);
+    const sprayGeo=new THREE.ConeGeometry(0.8,7,6);
+    const sprayMat=stdMat({color:0xcfe2e6,transparent:true,opacity:0.5,roughness:0.3});
+    addInstanced(sprayGeo,sprayMat,12,(im)=>{
+      for(let i=0;i<12;i++){
+        const a=(i/12)*Math.PI*2;
+        _M4.makeTranslation(Math.cos(a)*30,5,430+Math.sin(a)*30);
+        im.setMatrixAt(i,_M4);
+      }
+    },false,false);
+  }
+  // simplified Palais de Chaillot (two long blocks facing the tower)
+  {
+    const day=planeTex(TX.facadeDay,5,1), emt=planeTex(TX.facadeEmt,5,1);
+    const palMat = stdMat({ map:day, emissive:0xffffff, emissiveMap:emt, emissiveIntensity:0.10, roughness:0.9, metalness:0 });
+    for(const sx of [-1,1]){
+      const body=new THREE.Mesh(new THREE.BoxGeometry(220,22,28), palMat);
+      body.position.set(sx*100,11,655); body.castShadow=true; body.receiveShadow=true; scene.add(body);
+      const roof=new THREE.Mesh(new THREE.BoxGeometry(228,2.6,34), stdMat({map:planeTex(TX.roof,44,6),roughness:0.9}));
+      roof.position.set(sx*100,23.3,655); roof.castShadow=true; scene.add(roof);
+    }
+    regFx(palMat, 0.05, 0.5);
+  }
+
+  // ---------- Seine river + bridge (far north) ----------
+  {
+    const wm = stdMat({ map: planeTex(TX.water, 80, 3), roughness:0.06, metalness:0.2 });
+    const me = new THREE.Mesh(new THREE.PlaneGeometry(9000, 340), wm);
+    me.rotation.x=-Math.PI/2; me.position.set(0,0.02,1700); scene.add(me);
+    const far = new THREE.Mesh(new THREE.PlaneGeometry(9000,140), stdMat({color:0x465259,roughness:1}));
+    far.rotation.x=-Math.PI/2; far.position.set(0,0.005,1940); scene.add(far);
+    for(const sx of [-1,1]){
+      const pier=new THREE.Mesh(new THREE.BoxGeometry(10,9,40), stdMat({color:0x8d8478,roughness:0.9}));
+      pier.position.set(sx*240,4.5,1500); pier.castShadow=true; scene.add(pier);
+    }
+    const bridge=new THREE.Mesh(new THREE.BoxGeometry(1400,2.4,30), stdMat({color:0x7c7266,roughness:0.8}));
+    bridge.position.set(0,9,1500); bridge.castShadow=true; scene.add(bridge);
+    for(const sx of [-1,1]){
+      const r=new THREE.Mesh(new THREE.BoxGeometry(1400,1.2,0.5), stdMat({color:0x4c463f,metalness:0.5,roughness:0.5}));
+      r.position.set(0,11.4,1500+sx*13.5); scene.add(r);
+    }
+  }
+
+  // ---------- distant Paris skyline ring ----------
+  {
+    const day=planeTex(TX.facadeDay,1,1), emt=planeTex(TX.facadeEmt,1,1);
+    const bm = stdMat({ map:day, emissive:0xffffff, emissiveMap:emt, emissiveIntensity:0.08, roughness:0.92, metalness:0 });
+    const N = 300;
+    addInstanced(new THREE.BoxGeometry(1,1,1), bm, N, (im)=>{
+      let i=0;
+      for(; i<N; i++){
+        const a = rndRange(0, Math.PI*2);
+        const r = rndRange(1850, 2650);
+        // thin out the skyline directly behind the Seine axis (keep water visible)
+        const az = Math.sin(a)*r;
+        if(az > 1500) { i--; continue; }
+        const w = rndRange(20,64), h = rndRange(12,60), d = rndRange(14,34);
+        _Q.setFromAxisAngle(_UP, rndRange(-0.4,0.4));
+        _P.set(Math.cos(a)*r, h*0.5, az);
+        _SC.set(w,h,d);
+        _M4.compose(_P,_Q,_SC);
+        im.setMatrixAt(i,_M4);
+      }
+    }, false, false);
+    regFx(bm, 0.04, 0.4);
+  }
+
+  // ---------- trees (instanced trunks + two canopy layers) ----------
+  {
+    const trunkGeo = new THREE.CylinderGeometry(0.28,0.44,5.2,6);
+    const trunkMat = stdMat({ color:0x4e3b2b, roughness:0.95 });
+    const leafGeo = new THREE.IcosahedronGeometry(1,1);
+    const leafMatA = stdMat({ color:0x46682f, roughness:1, map:TX.leaf.clone(), alphaTest:0.42, side:THREE.DoubleSide });
+    const leafMatB = stdMat({ color:0x5c8045, roughness:1, map:TX.leaf.clone(), alphaTest:0.42, side:THREE.DoubleSide });
+    const spots = [];
+    for(const sx of [-1,1]) for(let z=-250; z>-650; z-=36) spots.push([sx*(40+rndRange(-6,6)), z+rndRange(-3,3)]);
+    for(let i=0;i<52;i++){ const a=rndRange(0,Math.PI*2), r=rndRange(250,720); spots.push([Math.cos(a)*r, Math.sin(a)*r]); }
+    for(const sx of [-1,1]) for(let z=225;z<450;z+=32) spots.push([sx*(150+rndRange(0,40)), z+rndRange(-2,2)]);
+    const N=spots.length;
+    const treeData=[];
+    for(let i=0;i<N;i++){
+      const h=rndRange(5.6,7.6), s=rndRange(0.9,1.3);
+      treeData.push({ x:spots[i][0], z:spots[i][1], h, s, yaw:rndRange(0,6.283) });
+    }
+    addInstanced(trunkGeo, trunkMat, N, (im)=>{
+      for(let i=0;i<N;i++){ const t=treeData[i];
+        _Q.setFromAxisAngle(_UP,t.yaw);
+        _P.set(t.x, t.h*0.46, t.z); _SC.set(1, t.h/5.2, 1);
+        _M4.compose(_P,_Q,_SC); im.setMatrixAt(i,_M4); }
+    }, true, true);
+    addInstanced(leafGeo, leafMatA, N, (im)=>{
+      for(let i=0;i<N;i++){ const t=treeData[i];
+        const r=t.s*rndRange(2.6,3.8);
+        _P.set(t.x, t.h*1.12, t.z); _SC.set(r, r*0.85, r);
+        _M4.makeScale(r, r*0.85, r); _M4.setPosition(_P); im.setMatrixAt(i,_M4); }
+    }, true, false);
+    addInstanced(leafGeo, leafMatB, N, (im)=>{
+      for(let i=0;i<N;i++){ const t=treeData[i];
+        const r=t.s*rndRange(1.5,2.1);
+        _P.set(t.x+r*0.2, t.h*1.28, t.z+r*0.1); _SC.set(r,r*0.95,r);
+        _M4.makeScale(r, r*0.95, r); _M4.setPosition(_P); im.setMatrixAt(i,_M4); }
+    }, true, false);
+  }
+
+  // ---------- hedges ----------
+  {
+    const hedgeMat = stdMat({ color:0x37501f, roughness:1, side:THREE.DoubleSide });
+    const rects=[];
+    const seg=(x0,z0,x1,z1,w,cols)=>{
+      const dx=x1-x0,dz=z1-z0,L=Math.hypot(dx,dz); if(L<1) return;
+      const n=Math.max(1,Math.round(L/cols));
+      for(let i=0;i<n;i++){
+        const t0=i/n,t1=(i+1)/n;
+        rects.push({ cx:(x0+dx*(t0+t1)/2), cz:(z0+dz*(t0+t1)/2),
+          a:Math.atan2(dz,dx), Ln:L/n, w });
+      }
+    };
+    for(const sx of [-1,1]){
+      seg(sx*30,-260, sx*30,-700, 2.6, 22);                       // avenue flanks
+      seg(sx*196,-196, sx*196,-340, 2.4, 20);                     // plaza east/west hedges
+      seg(-196,sx*196, -340,sx*196, 2.4, 20);                     // plaza north/south hedges
+    }
+    seg(0,250, 0,540, 3.6, 26);                                   // trocadéro divider
+    const im = addInstanced(new THREE.BoxGeometry(1,1,1), hedgeMat, rects.length, (im)=>{
+      for(let i=0;i<rects.length;i++){
+        const r=rects[i];
+        _Q.setFromAxisAngle(_UP, r.a);
+        _P.set(r.cx, 0.8, r.cz);
+        _SC.set(r.Ln+r.w*0.12, 1.6, r.w);
+        _M4.compose(_P,_Q,_SC); im.setMatrixAt(i,_M4);
+      }
+    }, false, true);
+  }
+
+  // ---------- lamp posts ----------
+  {
+    const N=64; const lampPos=[];
+    for(let z=-182; z<=182; z+=28) lampPos.push([-182,z],[182,z]);
+    for(let x=-182; x<=182; x+=28) lampPos.push([x,-182],[x,182]);
+    for(let z=-260; z>=-600; z-=42) lampPos.push([-34,z],[34,z]);
+    const nL=lampPos.length;
+    const poleGeo=new THREE.CylinderGeometry(0.1,0.15,7.6,8);
+    const poleMat = stdMat({ color:0x211d17, metalness:0.55, roughness:0.5 });
+    addInstanced(poleGeo, poleMat, nL, (im)=>{
+      for(let i=0;i<nL;i++){ _M4.makeTranslation(lampPos[i][0],3.8,lampPos[i][1]); im.setMatrixAt(i,_M4); } }, true, false);
+    const headGeo=new THREE.BoxGeometry(0.7,0.42,0.42);
+    const headMat = stdMat({ color:0xfff2d2, emissive:0xffc37a, emissiveIntensity:0.3, roughness:0.4 });
+    addInstanced(headGeo, headMat, nL, (im)=>{
+      for(let i=0;i<nL;i++){ _M4.makeTranslation(lampPos[i][0],7.75,lampPos[i][1]); im.setMatrixAt(i,_M4); } }, false, false);
+    const bulbMat = new THREE.PointsMaterial({ size:2.6, map:TX.bulb, transparent:true, opacity:0,
+      depthWrite:false, blending:THREE.AdditiveBlending });
+    const bp = new Float32Array(nL*3);
+    for(let i=0;i<nL;i++){ bp[i*3]=lampPos[i][0]; bp[i*3+1]=7.8; bp[i*3+2]=lampPos[i][1]; }
+    const bg=new THREE.BufferGeometry(); bg.setAttribute('position',new THREE.BufferAttribute(bp,3));
+    const bulbs=new THREE.Points(bg,bulbMat); bulbs.frustumCulled=false; scene.add(bulbs);
+    regFx(headMat, 0.26, 2.4);
+    app.fx.push({ mat:bulbMat, d:0, n:0.85, cur:0 });
+    groundLampMats = [poleMat, headMat];
+  }
+
+  // ---------- benches ----------
+  {
+    const seatMat = stdMat({ color:0x6d4f33, roughness:0.9 });
+    const ironMat = stdMat({ color:0x2b2620, metalness:0.7, roughness:0.4 });
+    const spots=[];
+    for(let i=0;i<34;i++){
+      const side=i%4, t=(i>>2)/8.5; let x,z,a; const H=162;
+      if(side===0){ x=-H+18+(t)*324; z=H-8; a=Math.PI/2; }
+      else if(side===1){ x=H-8; z=H-18-t*324; a=0; }
+      else if(side===2){ x=H-18-t*324; z=-H+8; a=-Math.PI/2; }
+      else { x=-H+8; z=-H+18+t*324; a=Math.PI; }
+      spots.push([x,z,a]);
+    }
+    const seatGeo=new THREE.BoxGeometry(2.1,0.16,0.62);
+    const backGeo=new THREE.BoxGeometry(2.1,0.52,0.09);
+    const legGeo=new THREE.BoxGeometry(0.1,0.5,0.5);
+    const n=spots.length;
+    addInstanced(seatGeo, seatMat, n, (im)=>{
+      for(let i=0;i<n;i++){ _Q.setFromAxisAngle(_UP,spots[i][2]); _P.set(spots[i][0],0.56,spots[i][1]);
+        _M4.compose(_P,_Q,_SC.set(1,1,1)); im.setMatrixAt(i,_M4); } },false,false);
+    addInstanced(backGeo, seatMat, n, (im)=>{
+      for(let i=0;i<n;i++){ _Q.setFromAxisAngle(_UP,spots[i][2]); _P.set(spots[i][0],0.96,spots[i][1]+0.29);
+        _M4.compose(_P,_Q,_SC.set(1,1,1)); im.setMatrixAt(i,_M4); } },false,false);
+    addInstanced(legGeo, ironMat, n*2, (im)=>{
+      for(let i=0;i<n;i++) for(let j=0;j<2;j++){
+        const lx=j?0.86:-0.86;
+        _Q.setFromAxisAngle(_UP,spots[i][2]);
+        _P.set(spots[i][0]+lx,0.28,spots[i][1]);
+        _M4.compose(_P,_Q,_SC.set(1,1,1));
+        im.setMatrixAt(i*2+j,_M4);
+      } },false,false);
+  }
+
+  // ---------- glass ticket pavilions at the four pier feet ----------
+  {
+    const glassMat = stdMat({ color:0x9fc3cd, metalness:0.15, roughness:0.12, transparent:true, opacity:0.5 });
+    const frameMat = stdMat({ color:0x27353d, metalness:0.8, roughness:0.35 });
+    for(const [px,pz] of [[-96,-96],[96,-96],[-96,96],[96,96]]){
+      const base = new THREE.Mesh(new THREE.BoxGeometry(24,1.2,24), stdMat({ color:0xb0a187, map:planeTex(TX.stone,3,3), roughness:0.9 }));
+      base.position.set(px,0.6,pz); base.receiveShadow=true; scene.add(base);
+      const body = new THREE.Mesh(new THREE.BoxGeometry(22,6,22), glassMat);
+      body.position.set(px,4.2,pz); body.castShadow=true; scene.add(body);
+      const roof = new THREE.Mesh(new THREE.BoxGeometry(26,0.6,26), stdMat({ color:0x9db3a0, roughness:0.7 }));
+      roof.position.set(px,7.5,pz); roof.castShadow=true; scene.add(roof);
+      for(const sx of [-1,1]) for(const sz of [-1,1]){
+        const c=new THREE.Mesh(new THREE.BoxGeometry(0.8,7,0.8), frameMat);
+        c.position.set(px+sx*10.6,3.6,pz+sz*10.6); scene.add(c);
+      }
+      // little awning signs
+      const sign=new THREE.Mesh(new THREE.BoxGeometry(8,1.0,0.25), stdMat({color:0x8a6e52,roughness:0.7}));
+      sign.position.set(px,6.1,pz+ (pz>0? 12:-12)); scene.add(sign);
+    }
+  }
+}
+let groundLampMats = [];

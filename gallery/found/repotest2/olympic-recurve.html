@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Olympic Recurve Bow — three.js</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #05070a; }
+  canvas { display: block; }
+  #hud, #spec {
+    position: fixed; pointer-events: none;
+    font: 11px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: #6f8098; letter-spacing: .05em;
+  }
+  #hud { left: 18px; bottom: 15px; }
+  #spec { right: 16px; top: 14px; text-align: right; color: #566274; }
+  b { color: #cfd8e3; letter-spacing: .16em; font-weight: 600; }
+  #spec b { color: #93a3b8; letter-spacing: .06em; }
+  i { color: #3f4d60; font-style: normal; }
+</style>
+</head>
+<body>
+<div id="spec">
+  <b>68" AMO RECURVE</b><br />
+  25" ILF riser &middot; medium limbs<br />
+  brace height 9.0" &middot; string 65"<br />
+  nocking point +2&#188;" &middot; arrow 28"<br />
+  draw 19.2" &middot; long rod 30" &middot; side rods 14"
+</div>
+<div id="hud"><b>RECURVE</b> &nbsp; drag to orbit &middot; scroll to zoom &middot; click to shoot &nbsp; <i>&mdash; clicker &middot; plunger &middot; flipper rest &middot; laminated limbs</i></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* =====================================================================
+   Olympic recurve, modelled in real inches then scaled by S.
+   +Y up the bow, +Z toward the archer (arrow flies -Z), +X lateral.
+
+   68" AMO  = 25" riser + medium limbs;  AMO string = bow - 3" = 65";
+   brace height 9" from string plane to the throat of the grip.
+   ===================================================================== */
+const S            = 0.03;
+const STRING_Z     = -0.10;    // string plane
+const NOCK_Y       = 32.5;     // half of the 65" string
+const ARROW_Y      = 2.25;     // nocking point above riser centre
+const DRAW_TRAVEL  = 19.2;     // string travel at full draw
+const ARROW_LEN    = 28;       // barrelled carbon
+const FLEX_K       = 2.9 / DRAW_TRAVEL;
+const BLADE_TIP_Z  = -9.60;    // clicker blade tip (arrow point clears it = click)
+
+/* ---------- renderer / camera / controls ---------- */
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.05, 400);
+camera.position.set(2.25, 0.95, 2.30);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0.02, -0.42);
+controls.enableDamping = true;
+controls.dampingFactor = 0.075;
+controls.enablePan = false;
+controls.minDistance = 1.0;
+controls.maxDistance = 9;
+controls.minPolarAngle = 0.18;
+controls.maxPolarAngle = Math.PI - 0.18;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.35;
+controls.addEventListener('start', () => { controls.autoRotate = false; });
+
+/* ---------- environment + backdrop + lights ---------- */
+{
+  const env = new THREE.Scene();
+  env.add(new THREE.Mesh(new THREE.BoxGeometry(60, 60, 60),
+    new THREE.MeshBasicMaterial({ color: 0x191e26, side: THREE.BackSide })));
+  const panel = (c, w, h, x, y, z, down, up) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: c }));
+    m.position.set(x, y, z);
+    if (down) m.rotation.x = Math.PI / 2; else if (up) m.rotation.x = -Math.PI / 2; else m.lookAt(0, 0, 0);
+    env.add(m);
+  };
+  panel(0xffffff, 18, 18, 0, 22, 0, true);
+  panel(0x9dc6ff, 16, 14, -22, 4, 9);
+  panel(0xffd7a8, 16, 14, 22, 2, 11);
+  panel(0x0c0f13, 30, 30, 0, -18, 0, false, true);
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(env, 0.03).texture;
+  pmrem.dispose();
+}
+{
+  const backdrop = new THREE.Mesh(new THREE.SphereGeometry(140, 32, 16), new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false,
+    uniforms: { top: { value: new THREE.Color(0x1c2430) }, bottom: { value: new THREE.Color(0x05070a) } },
+    vertexShader: 'varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+    fragmentShader: 'varying vec3 vP; uniform vec3 top; uniform vec3 bottom; void main(){ float h = normalize(vP).y * 0.5 + 0.5; gl_FragColor = vec4(mix(bottom, top, pow(h, 0.85)), 1.0); }'
+  }));
+  backdrop.frustumCulled = false;
+  scene.add(backdrop);
+}
+scene.add(new THREE.HemisphereLight(0xa9c8ff, 0x0a0d12, 0.40));
+const keyL = new THREE.DirectionalLight(0xfff1de, 2.3); keyL.position.set(5, 8, 5); scene.add(keyL);
+const rimL = new THREE.DirectionalLight(0x86b7ff, 1.9); rimL.position.set(-7, 3, -6); scene.add(rimL);
+const fillL = new THREE.DirectionalLight(0xffffff, 0.5); fillL.position.set(-3, -6, 6); scene.add(fillL);
+
+/* ---------- materials ---------- */
+const MAT = {
+  riser:    new THREE.MeshStandardMaterial({ color: 0x343a42, roughness: 0.33, metalness: 0.94, envMapIntensity: 1.2, side: THREE.DoubleSide }),
+  pocket:   new THREE.MeshStandardMaterial({ color: 0x2a2f36, roughness: 0.4, metalness: 0.9, envMapIntensity: 1.1, side: THREE.DoubleSide }),
+  glass:    new THREE.MeshPhysicalMaterial({ color: 0x0f1114, roughness: 0.26, metalness: 0.2, clearcoat: 0.85, clearcoatRoughness: 0.14, side: THREE.DoubleSide }),
+  carbon:   new THREE.MeshStandardMaterial({ color: 0x1d2127, roughness: 0.44, metalness: 0.4, side: THREE.DoubleSide }),
+  core:     new THREE.MeshPhysicalMaterial({ color: 0xdcbb8c, roughness: 0.35, clearcoat: 0.5, clearcoatRoughness: 0.3, side: THREE.DoubleSide }),
+  grip:     new THREE.MeshStandardMaterial({ color: 0x1c1612, roughness: 0.92, metalness: 0.0, side: THREE.DoubleSide }),
+  metal:    new THREE.MeshStandardMaterial({ color: 0x9aa4af, roughness: 0.24, metalness: 1.0, envMapIntensity: 1.25 }),
+  steel:    new THREE.MeshStandardMaterial({ color: 0x767e88, roughness: 0.32, metalness: 1.0, envMapIntensity: 1.1 }),
+  black:    new THREE.MeshStandardMaterial({ color: 0x17191d, roughness: 0.45, metalness: 0.45 }),
+  rubber:   new THREE.MeshStandardMaterial({ color: 0x121418, roughness: 0.95, metalness: 0.0 }),
+  string:   new THREE.MeshStandardMaterial({ color: 0x7d7357, roughness: 0.88 }),
+  serving:  new THREE.MeshStandardMaterial({ color: 0xb8a887, roughness: 0.8 }),
+  brass:    new THREE.MeshStandardMaterial({ color: 0xc7a12a, roughness: 0.3, metalness: 1.0, envMapIntensity: 1.2 }),
+  shaft:    new THREE.MeshStandardMaterial({ color: 0x24272c, roughness: 0.35, metalness: 0.45 }),
+  wrap:     new THREE.MeshStandardMaterial({ color: 0xb03a2a, roughness: 0.6 }),
+  vaneA:    new THREE.MeshStandardMaterial({ color: 0xf2f4f8, roughness: 0.62, side: THREE.DoubleSide }),
+  vaneB:    new THREE.MeshStandardMaterial({ color: 0xff5a33, roughness: 0.62, side: THREE.DoubleSide }),
+  nockPl:   new THREE.MeshStandardMaterial({ color: 0xe8e2d2, roughness: 0.55 }),
+  pin:      new THREE.MeshStandardMaterial({ color: 0x3ce08a, roughness: 0.3, metalness: 0.2, emissive: 0x0d3b25 }),
+  level:    new THREE.MeshStandardMaterial({ color: 0x9fd8b4, roughness: 0.15, metalness: 0.1 })
+};
+
+/* ---------- math helpers ---------- */
+function hermite(keys, x) {
+  const n = keys.length;
+  if (x <= keys[0][0]) return keys[0][1];
+  if (x >= keys[n - 1][0]) return keys[n - 1][1];
+  let i = 0;
+  while (i < n - 2 && x > keys[i + 1][0]) i++;
+  const x0 = keys[i][0], v0 = keys[i][1], x1 = keys[i + 1][0], v1 = keys[i + 1][1];
+  const xm = keys[Math.max(0, i - 1)], xp = keys[Math.min(n - 1, i + 2)];
+  const m0 = i > 0 ? (v1 - xm[1]) / (x1 - xm[0]) : (v1 - v0) / (x1 - x0);
+  const m1 = i + 2 < n ? (xp[1] - v0) / (xp[0] - x0) : (v1 - v0) / (x1 - x0);
+  const dx = x1 - x0, t = (x - x0) / dx, t2 = t * t, t3 = t2 * t;
+  return (2 * t3 - 3 * t2 + 1) * v0 + (t3 - 2 * t2 + t) * dx * m0 + (-2 * t3 + 3 * t2) * v1 + (t3 - t2) * dx * m1;
+}
+const smoothstep = t => t * t * (3 - 2 * t);
+function lerpTable(u, table) {
+  if (u <= table[0][0]) return table[0][1];
+  for (let i = 1; i < table.length; i++) {
+    if (u <= table[i][0]) {
+      const a = table[i - 1], b = table[i];
+      return a[1] + (b[1] - a[1]) * smoothstep((u - a[0]) / (b[0] - a[0]));
+    }
+  }
+  return table[table.length - 1][1];
+}
+const UP = new THREE.Vector3(0, 1, 0);
+const _v = new THREE.Vector3();
+function placeStrut(mesh, a, b) {
+  _v.subVectors(b, a);
+  const len = _v.length() || 1e-6;
+  mesh.position.copy(a).addScaledVector(_v, 0.5);
+  mesh.quaternion.setFromUnitVectors(UP, _v.clone().divideScalar(len));
+  mesh.scale.set(1, len, 1);
+}
+function strut(a, b, r, mat, seg) {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 1, seg || 12), mat);
+  m.frustumCulled = false;
+  placeStrut(m, a, b);
+  return m;
+}
+function vec(x, y, z) { return new THREE.Vector3(x, y, z); }
+
+/* =====================================================================
+   RISER - lofted solid: rounded-rectangle cross sections stacked along Y.
+   Key parameters per height: xc (lateral centre), xw (width), zb (back,
+   archer side), zf (front, target side), r (corner radius).
+   The sight window is the run where the section collapses onto the
+   offset bridge at xc = +0.33 (the arrow passes beside it).
+   ===================================================================== */
+const RISER_KEYS = {
+  xc: [[-12.5,0],[-11.2,0],[-9,0],[-7,0],[-5,0],[-2,0],[0,0],[1.6,0],[1.90,0],[2.05,0.33],[3.2,0.33],[6.2,0.33],[7.3,0.20],[8.4,0],[10,0],[11.3,0],[12.5,0]],
+  xw: [[-12.5,1.30],[-11.2,1.28],[-9,1.22],[-7,1.20],[-5,1.24],[-2,1.30],[0,1.32],[1.6,1.28],[1.90,1.24],[2.05,0.34],[3.2,0.34],[6.2,0.34],[7.3,0.62],[8.4,1.10],[10,1.22],[11.3,1.28],[12.5,1.30]],
+  zb: [[-12.5,-10.50],[-11.2,-10.55],[-9,-10.70],[-7,-10.85],[-5,-10.95],[-2,-9.10],[0,-9.10],[1.6,-9.15],[1.90,-9.10],[2.05,-11.05],[3.2,-11.05],[6.2,-11.05],[7.3,-10.60],[8.4,-10.20],[10,-10.30],[11.3,-10.45],[12.5,-10.50]],
+  zf: [[-12.5,-11.70],[-11.2,-11.95],[-9,-12.10],[-7,-12.15],[-5,-12.20],[-2,-12.20],[0,-12.20],[1.6,-12.25],[1.90,-12.45],[2.05,-12.35],[3.2,-12.40],[6.2,-12.40],[7.3,-12.40],[8.4,-12.30],[10,-12.10],[11.3,-11.90],[12.5,-11.70]],
+  r:  [[-12.5,0.28],[-11.2,0.30],[-9,0.34],[-7,0.36],[-5,0.38],[-2,0.42],[0,0.44],[1.6,0.40],[1.90,0.30],[2.05,0.14],[3.2,0.15],[6.2,0.15],[7.3,0.25],[8.4,0.34],[10,0.38],[11.3,0.34],[12.5,0.28]]
+};
+/* rubber grip overlay, hugs the grip section */
+const GRIP_KEYS = {
+  xc: [[-5.4,0],[-4.4,0],[-3,0],[-1,0],[0.4,0],[1.5,0]],
+  xw: [[-5.4,1.26],[-4.4,1.42],[-3,1.46],[-1,1.44],[0.4,1.40],[1.5,1.30]],
+  zb: [[-5.4,-10.86],[-4.4,-9.16],[-3,-9.11],[-1,-9.10],[0.4,-9.15],[1.5,-9.24]],
+  zf: [[-5.4,-12.24],[-4.4,-12.32],[-3,-12.34],[-1,-12.32],[0.4,-12.34],[1.5,-12.36]],
+  r:  [[-5.4,0.34],[-4.4,0.52],[-3,0.56],[-1,0.52],[0.4,0.46],[1.5,0.38]]
+};
+
+function liftYs(keyList) {
+  const ys = [];
+  for (let i = 0; i < keyList.length - 1; i++) {
+    const a = keyList[i][0], b = keyList[i + 1][0], d = b - a;
+    const n = Math.max(3, Math.ceil(d / 0.45));
+    for (let j = 0; j < n; j++) ys.push(a + d * (j / n));
+  }
+  ys.push(keyList[keyList.length - 1][0]);
+  return ys;
+}
+
+function buildLoft(keys, material) {
+  const ys = liftYs(keys.xw);
+  const R = 16, pos = [], idx = [];
+  for (const y of ys) {
+    const xc = hermite(keys.xc, y), xw = hermite(keys.xw, y);
+    const zb = hermite(keys.zb, y), zf = hermite(keys.zf, y);
+    const x0 = xc - xw / 2, x1 = xc + xw / 2;
+    const r = Math.max(0.02, Math.min(hermite(keys.r, y), xw / 2 - 0.012, (zb - zf) / 2 - 0.012));
+    const ring = [];
+    const arc = (cz, cx, a0, a1) => {
+      for (let k = 0; k < 4; k++) {
+        const a = a0 + (a1 - a0) * (k / 3);
+        ring.push([cz + r * Math.cos(a), cx + r * Math.sin(a)]);
+      }
+    };
+    arc(zb - r, x0 + r, -Math.PI / 2, 0);
+    arc(zb - r, x1 - r, 0, Math.PI / 2);
+    arc(zf + r, x1 - r, Math.PI / 2, Math.PI);
+    arc(zf + r, x0 + r, Math.PI, Math.PI * 1.5);
+    for (const p of ring) pos.push(p[1], y, p[0]);
+  }
+  const N = ys.length;
+  for (let i = 0; i < N - 1; i++) {
+    for (let k = 0; k < R; k++) {
+      const a = i * R + k, b = i * R + ((k + 1) % R), c = (i + 1) * R + ((k + 1) % R), d = (i + 1) * R + k;
+      idx.push(a, b, c, a, c, d);
+    }
+  }
+  const cap = ringIndex => {
+    const base = ringIndex * R;
+    let sx = 0, sy = 0, sz = 0;
+    for (let k = 0; k < R; k++) { sx += pos[(base + k) * 3]; sy += pos[(base + k) * 3 + 1]; sz += pos[(base + k) * 3 + 2]; }
+    const ci = pos.length / 3;
+    pos.push(sx / R, sy / R, sz / R);
+    for (let k = 0; k < R; k++) idx.push(ci, base + k, base + ((k + 1) % R));
+  };
+  cap(0);
+  cap(N - 1);
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setIndex(idx);
+  geo.computeVertexNormals();
+  const mesh = new THREE.Mesh(geo, material);
+  mesh.frustumCulled = false;
+  return mesh;
+}
+
+/* =====================================================================
+   LIMBS - laminated blade: glass / carbon / maple core / carbon / glass
+   swept along the centreline, deformed by arclength^2 as the bow draws.
+   ===================================================================== */
+const LIMB_PTS = [
+  [12.30, -10.72], [15.30, -8.98], [18.30, -7.38], [21.30, -5.85],
+  [24.30, -4.36], [27.30, -2.90], [30.30, -1.55], [32.50, -0.28],
+  [33.30, -0.38], [33.92, -0.95], [34.05, -1.70], [33.70, -2.40]
+];
+const LIMB_W = [[0, 1.40], [0.15, 1.36], [0.40, 1.24], [0.65, 1.00], [0.85, 0.72], [0.95, 0.58], [1, 0.50]];
+const LIMB_T = [[0, 0.70], [0.20, 0.62], [0.50, 0.45], [0.75, 0.30], [0.90, 0.22], [1, 0.17]];
+const GLASS_T = 0.026, CARBON_T = 0.018;
+
+function buildLimb(sign) {
+  const SEG = 44;
+  const curve = new THREE.CatmullRomCurve3(
+    LIMB_PTS.map(p => new THREE.Vector3(0, p[0] * sign, p[1])), false, 'centripetal', 0.5);
+  const P = curve.getSpacedPoints(SEG);
+  const B = vec(1, 0, 0);
+  const NR = [];
+  for (let i = 0; i <= SEG; i++) {
+    const t = new THREE.Vector3()
+      .subVectors(P[Math.min(SEG, i + 1)], P[Math.max(0, i - 1)]).normalize();
+    NR.push(new THREE.Vector3().crossVectors(t, B).normalize());
+  }
+  const W = [], T = [];
+  for (let i = 0; i <= SEG; i++) {
+    const u = i / SEG;
+    W.push(lerpTable(u, LIMB_W));
+    T.push(lerpTable(u, LIMB_T));
+  }
+
+  const pos = [], uArr = [], idx = [], groups = [];
+  const allIdx = [];
+  for (let i = 0; i <= SEG; i++) allIdx.push(i);
+
+  function addTube(ringIdx, halfWidth, offN, halfThick, offB, matIndex) {
+    const start = idx.length, first = pos.length / 3, n = ringIdx.length;
+    for (const i of ringIdx) {
+      const p = P[i], nv = NR[i], u = i / SEG;
+      const hw = halfWidth(i), on = offN(i), ht = halfThick(i), ob = offB(i);
+      const corners = [[hw, ht], [-hw, ht], [-hw, -ht], [hw, -ht]];
+      for (const c of corners) {
+        pos.push(p.x + ob + c[0], p.y + nv.y * (on + c[1]), p.z + nv.z * (on + c[1]));
+        uArr.push(u);
+      }
+    }
+    for (let k = 0; k < 4; k++) {
+      for (let i = 0; i < n - 1; i++) {
+        const a = first + i * 4 + k, b = first + i * 4 + ((k + 1) % 4),
+              c = first + (i + 1) * 4 + ((k + 1) % 4), d = first + (i + 1) * 4 + k;
+        idx.push(a, b, c, a, c, d);
+      }
+    }
+    const base = first + (n - 1) * 4;
+    let sx = 0, sy = 0, sz = 0;
+    for (let k = 0; k < 4; k++) { sx += pos[(base + k) * 3]; sy += pos[(base + k) * 3 + 1]; sz += pos[(base + k) * 3 + 2]; }
+    const ci = pos.length / 3;
+    pos.push(sx / 4, sy / 4, sz / 4); uArr.push(1);
+    for (let k = 0; k < 4; k++) idx.push(ci, base + k, base + ((k + 1) % 4));
+    groups.push([start, idx.length - start, matIndex]);
+  }
+
+  const layers = [
+    { m: 0, lo: i => T[i] / 2 - GLASS_T, hi: i => T[i] / 2, inset: 0 },
+    { m: 1, lo: i => T[i] / 2 - GLASS_T - CARBON_T, hi: i => T[i] / 2 - GLASS_T, inset: 0.014 },
+    { m: 2, lo: i => -T[i] / 2 + GLASS_T + CARBON_T, hi: i => T[i] / 2 - GLASS_T - CARBON_T, inset: 0.026 },
+    { m: 1, lo: i => -T[i] / 2 + GLASS_T, hi: i => -T[i] / 2 + GLASS_T + CARBON_T, inset: 0.014 },
+    { m: 0, lo: i => -T[i] / 2, hi: i => -T[i] / 2 + GLASS_T, inset: 0 }
+  ];
+  for (const L of layers) {
+    addTube(allIdx, i => W[i] / 2 - L.inset, i => (L.lo(i) + L.hi(i)) / 2, i => (L.hi(i) - L.lo(i)) / 2, () => 0, L.m);
+  }
+  const tipIdx = [];
+  for (let i = Math.max(0, SEG - 7); i <= SEG; i++) tipIdx.push(i);
+  addTube(tipIdx, () => 0.035, () => 0, () => 0.105, i => (W[i] / 2 - 0.02), 0);
+  addTube(tipIdx, () => 0.035, () => 0, () => 0.105, i => -(W[i] / 2 - 0.02), 0);
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setIndex(idx);
+  for (const g of groups) geo.addGroup(g[0], g[1], g[2]);
+  geo.computeVertexNormals();
+  const mesh = new THREE.Mesh(geo, [MAT.glass, MAT.carbon, MAT.core]);
+  mesh.frustumCulled = false;
+
+  const target = vec(0, NOCK_Y * sign, -0.28);
+  let nockIdx = 0, best = Infinity;
+  for (let i = 0; i <= SEG; i++) {
+    const d = P[i].distanceToSquared(target);
+    if (d < best) { best = d; nockIdx = i; }
+  }
+  return { mesh, geo, base: Float32Array.from(pos), uArr: Float32Array.from(uArr), nockP: P[nockIdx].clone(), nockU: nockIdx / SEG };
+}
+
+/* =====================================================================
+   ASSEMBLE
+   ===================================================================== */
+const rig = new THREE.Group();
+rig.scale.setScalar(S);
+scene.add(rig);
+
+const limbs = [buildLimb(1), buildLimb(-1)];
+for (const L of limbs) rig.add(L.mesh);
+
+rig.add(buildLoft(RISER_KEYS, MAT.riser));
+rig.add(buildLoft(GRIP_KEYS, MAT.grip));
+
+/* ILF pockets + tiller bolts + lock screws */
+const LIMB_DIR = vec(0, 1, 0).applyAxisAngle(vec(1, 0, 0), Math.PI / 6);
+for (const s of [1, -1]) {
+  const d = vec(0, LIMB_DIR.y * s, LIMB_DIR.z * s);
+  const butt = vec(0, 12.30 * s, -10.72);
+  const pc = butt.clone().addScaledVector(d, 0.72);
+  const block = new THREE.Mesh(new THREE.BoxGeometry(1.36, 1.5, 1.42), MAT.pocket);
+  block.position.copy(pc);
+  block.rotation.x = Math.PI / 6 * s;
+  rig.add(block);
+
+  const slot = new THREE.Mesh(new THREE.BoxGeometry(1.06, 0.16, 0.9), MAT.black);
+  slot.position.copy(pc).addScaledVector(d, 0.72);
+  slot.rotation.x = Math.PI / 6 * s;
+  rig.add(slot);
+
+  const head = strut(
+    pc.clone().addScaledVector(d, 0.42), pc.clone().addScaledVector(d, 1.18), 0.17, MAT.metal, 16);
+  rig.add(head);
+  const socket = strut(
+    pc.clone().addScaledVector(d, 1.02), pc.clone().addScaledVector(d, 1.26), 0.108, MAT.black, 6);
+  rig.add(socket);
+
+  const lock = strut(vec(0.66, 13.05 * s, -10.30), vec(0.95, 13.05 * s, -10.30), 0.075, MAT.metal, 10);
+  rig.add(lock);
+}
+
+/* clicker: bracket on the bridge + a spring blade that flicks at full draw */
+const clickerBlade = new THREE.Group();
+{
+  const bracket = new THREE.Mesh(new THREE.BoxGeometry(0.255, 0.62, 0.30), MAT.black);
+  bracket.position.set(0.2725, 2.34, -12.45);
+  rig.add(bracket);
+
+  clickerBlade.position.set(0.152, 2.34, -12.30);
+  const blade = new THREE.Mesh(new THREE.BoxGeometry(0.016, 0.34, 2.70), MAT.steel);
+  blade.position.set(0, 0, 1.35);
+  clickerBlade.add(blade);
+  const lip = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.34, 0.22), MAT.steel);
+  lip.position.set(0.016, 0, 2.62);
+  clickerBlade.add(lip);
+  rig.add(clickerBlade);
+}
+
+/* arrow rest (flipper) + plunger button, both on the bridge */
+{
+  const body = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.86, 0.62), MAT.black);
+  body.position.set(0.33, 2.05, -11.62);
+  rig.add(body);
+  const arm = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.10, 0.34), MAT.metal);
+  arm.position.set(0.04, 2.05, -11.70);
+  rig.add(arm);
+  const launcher = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.07, 0.60), MAT.black);
+  launcher.position.set(-0.10, 2.09, -11.74);
+  launcher.rotation.z = 0.06;
+  rig.add(launcher);
+
+  const barrel = strut(vec(0.20, ARROW_Y, -11.42), vec(0.64, ARROW_Y, -11.42), 0.078, MAT.metal, 14);
+  rig.add(barrel);
+  const tip = strut(vec(0.128, ARROW_Y, -11.42), vec(0.21, ARROW_Y, -11.42), 0.050, MAT.rubber, 12);
+  rig.add(tip);
+  const nut = strut(vec(0.34, ARROW_Y, -11.42), vec(0.50, ARROW_Y, -11.42), 0.115, MAT.black, 6);
+  rig.add(nut);
+  const knob = strut(vec(0.62, ARROW_Y, -11.42), vec(0.76, ARROW_Y, -11.42), 0.10, MAT.metal, 14);
+  rig.add(knob);
+}
+
+/* sight: dovetail, extension bar, elevation column, aperture ring, level */
+{
+  const dovetail = new THREE.Mesh(new THREE.BoxGeometry(0.42, 1.05, 0.52), MAT.black);
+  dovetail.position.set(0.62, 4.62, -11.78);
+  rig.add(dovetail);
+
+  rig.add(strut(vec(0.60, 4.62, -11.95), vec(0.60, 4.62, -16.40), 0.145, MAT.black, 14));
+  rig.add(strut(vec(0.60, 4.62, -16.40), vec(0.60, 3.05, -16.40), 0.165, MAT.black, 14));
+  rig.add(strut(vec(0.60, 3.90, -16.40), vec(0.94, 3.90, -16.40), 0.20, MAT.black, 16));
+  rig.add(strut(vec(0.60, 4.30, -16.40), vec(0.98, 4.30, -16.40), 0.15, MAT.black, 16));
+
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.82, 0.045, 10, 52), MAT.black);
+  ring.position.set(0.24, 3.62, -16.40);
+  rig.add(ring);
+  const pinStem = strut(vec(0.24, 2.82, -16.40), vec(0.24, 3.62, -16.40), 0.018, MAT.black, 8);
+  rig.add(pinStem);
+  const pin = new THREE.Mesh(new THREE.SphereGeometry(0.065, 14, 10), MAT.pin);
+  pin.position.set(0.24, 3.62, -16.40);
+  rig.add(pin);
+  const lvlBarrel = strut(vec(-0.02, 4.44, -16.40), vec(0.66, 4.44, -16.40), 0.11, MAT.black, 14);
+  rig.add(lvlBarrel);
+  const lvlGlass = strut(vec(0.20, 4.44, -16.40), vec(0.44, 4.44, -16.40), 0.085, MAT.level, 14);
+  rig.add(lvlGlass);
+}
+
+/* stabiliser: bushing boss, V-bar, 30" long rod, 14" side rods, weights */
+{
+  const boss = strut(vec(0, -6.0, -11.90), vec(0, -6.0, -12.70), 0.44, MAT.pocket, 18);
+  rig.add(boss);
+  const vbar = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.80, 0.72), MAT.black);
+  vbar.position.set(0, -6.05, -12.95);
+  vbar.rotation.x = -0.10;
+  rig.add(vbar);
+
+  const rodEnd = vec(0, -6.05 - 30 * Math.sin(0.14), -12.95 - 30 * Math.cos(0.14));
+  const rod = strut(vec(0, -6.05, -12.95), rodEnd, 0.24, MAT.carbon, 16);
+  rig.add(rod);
+  for (let i = 0; i < 3; i++) {
+    const w = strut(rodEnd.clone().addScaledVector(vec(0, -Math.sin(0.14), -Math.cos(0.14)), -0.25 - i * 0.42),
+                    rodEnd.clone().addScaledVector(vec(0, -Math.sin(0.14), -Math.cos(0.14)), -0.60 - i * 0.42),
+                    1.05, MAT.steel, 24);
+    rig.add(w);
+  }
+  const cap = strut(rodEnd.clone().addScaledVector(vec(0, -Math.sin(0.14), -Math.cos(0.14)), -1.85),
+                    rodEnd.clone().addScaledVector(vec(0, -Math.sin(0.14), -Math.cos(0.14)), -2.15),
+                    0.30, MAT.rubber, 16);
+  rig.add(cap);
+
+  for (const sx of [1, -1]) {
+    const dir = vec(0.707 * sx, -0.17, 0.690).normalize();
+    const start = vec(0, -6.05, -12.85);
+    const end = start.clone().addScaledVector(dir, 14);
+    rig.add(strut(start, end, 0.19, MAT.carbon, 14));
+    rig.add(strut(end.clone().addScaledVector(dir, -0.22), end.clone().addScaledVector(dir, -0.52), 0.78, MAT.steel, 22));
+    rig.add(strut(end.clone().addScaledVector(dir, -0.56), end.clone().addScaledVector(dir, -0.86), 0.78, MAT.steel, 22));
+    rig.add(strut(end.clone().addScaledVector(dir, -0.90), end.clone().addScaledVector(dir, -1.12), 0.26, MAT.rubber, 14));
+  }
+}
+
+/* =====================================================================
+   STRING - variable diameter tube, rebuilt each frame
+   ===================================================================== */
+const STR_RINGS = 34, STR_SIDES = 8, PER = STR_RINGS / 2;
+const strGeo = new THREE.BufferGeometry();
+const strPos = new Float32Array(STR_RINGS * STR_SIDES * 3);
+strGeo.setAttribute('position', new THREE.BufferAttribute(strPos, 3));
+{
+  const si = [];
+  for (let i = 0; i < STR_RINGS - 1; i++) {
+    for (let k = 0; k < STR_SIDES; k++) {
+      const a = i * STR_SIDES + k, b = i * STR_SIDES + ((k + 1) % STR_SIDES),
+            c = (i + 1) * STR_SIDES + ((k + 1) % STR_SIDES), d = (i + 1) * STR_SIDES + k;
+      si.push(a, b, c, a, c, d);
+    }
+  }
+  strGeo.setIndex(si);
+}
+const stringMesh = new THREE.Mesh(strGeo, MAT.string);
+stringMesh.frustumCulled = false;
+rig.add(stringMesh);
+
+const loopGeo = new THREE.TorusGeometry(0.40, 0.052, 8, 26);
+const loops = [new THREE.Mesh(loopGeo, MAT.serving), new THREE.Mesh(loopGeo, MAT.serving)];
+for (const l of loops) { l.rotation.y = Math.PI / 2; l.frustumCulled = false; rig.add(l); }
+const beadGeo = new THREE.SphereGeometry(0.062, 10, 8);
+const beads = [new THREE.Mesh(beadGeo, MAT.brass), new THREE.Mesh(beadGeo, MAT.brass)];
+for (const b of beads) rig.add(b);
+
+/* =====================================================================
+   ARROW - barrelled carbon, wrap, helical vanes, glue-in point
+   ===================================================================== */
+// barrelled shaft: biggest OD at mid length, point end fatter than the nock end
+function arrowRadius(t) { return 0.094 + 0.030 * Math.sin(Math.PI * Math.pow(t, 0.92)) + 0.010 * t; }
+function arrowTube(t0, t1, rings, sides, rOf, mat) {
+  const pos = [], idx = [];
+  for (let i = 0; i < rings; i++) {
+    const t = t0 + (t1 - t0) * (i / (rings - 1)), z = -ARROW_LEN * t, r = rOf(t);
+    for (let k = 0; k < sides; k++) {
+      const a = k / sides * Math.PI * 2;
+      pos.push(Math.cos(a) * r, Math.sin(a) * r, z);
+    }
+  }
+  for (let i = 0; i < rings - 1; i++) {
+    for (let k = 0; k < sides; k++) {
+      const a = i * sides + k, b = i * sides + ((k + 1) % sides),
+            c = (i + 1) * sides + ((k + 1) % sides), d = (i + 1) * sides + k;
+      idx.push(a, b, c, a, c, d);
+    }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  const m = new THREE.Mesh(g, mat);
+  m.frustumCulled = false;
+  return m;
+}
+const arrow = new THREE.Group();
+{
+  arrow.add(arrowTube(0, 1, 22, 12, arrowRadius, MAT.shaft));
+
+  const wrap = arrowTube(0.10, 0.34, 10, 14, t => arrowRadius(t) + 0.008, MAT.wrap);
+  arrow.add(wrap);
+
+  const ptGeo = new THREE.ConeGeometry(0.108, 0.95, 18);
+  ptGeo.rotateX(-Math.PI / 2);
+  ptGeo.translate(0, 0, -ARROW_LEN - 0.42);
+  arrow.add(new THREE.Mesh(ptGeo, MAT.steel));
+  const collar = strut(vec(0, 0, -ARROW_LEN + 0.02), vec(0, 0, -ARROW_LEN + 0.42), 0.112, MAT.steel, 16);
+  arrow.add(collar);
+
+  const nkGeo = new THREE.CylinderGeometry(0.076, 0.076, 0.62, 12);
+  nkGeo.rotateX(Math.PI / 2);
+  nkGeo.translate(0, 0, -0.24);
+  arrow.add(new THREE.Mesh(nkGeo, MAT.nockPl));
+  const nkCollar = strut(vec(0, 0, 0.02), vec(0, 0, -0.10), 0.094, MAT.nockPl, 12);
+  arrow.add(nkCollar);
+
+  for (let k = 0; k < 3; k++) {
+    const holder = new THREE.Group();
+    const vane = new THREE.Mesh(new THREE.BoxGeometry(0.014, 0.56, 2.90), k === 2 ? MAT.vaneB : MAT.vaneA);
+    vane.position.set(0, 0.40, -4.30);
+    holder.add(vane);
+    holder.rotation.z = k * Math.PI * 2 / 3;
+    holder.rotation.y = 0.055;
+    arrow.add(holder);
+  }
+  arrow.frustumCulled = false;
+  rig.add(arrow);
+}
+
+/* =====================================================================
+   DRAW / SHOOT STATE MACHINE
+   ===================================================================== */
+const PH = { IDLE: 0, DRAW: 1, HOLD: 2, RELEASE: 3, FLY: 4, RESET: 5 };
+const T_IDLE = 0.7, T_DRAW = 1.2, T_HOLD = 0.55, T_REL = 0.05, T_FLY = 0.55, T_RESET = 0.85;
+let phase = PH.IDLE, pt = 0;
+let draw = 0, flex = 0, limbVib = 0, limbVibT = 0, wobble = 0, wobbleT = 0, flyZ = 0;
+
+const nockPoint = vec(0, ARROW_Y, STRING_Z);
+const nockUp = vec(0, NOCK_Y, STRING_Z);
+const nockDn = vec(0, -NOCK_Y, STRING_Z);
+const dirUp = vec(0, 1, 0), dirDn = vec(0, -1, 0);
+
+function shoot() {
+  if (phase === PH.IDLE || phase === PH.DRAW || phase === PH.HOLD) { phase = PH.RELEASE; pt = 0; }
+}
+
+function step(dt) {
+  switch (phase) {
+    case PH.IDLE:
+      pt += dt / T_IDLE; draw = 0;
+      if (pt >= 1) { phase = PH.DRAW; pt = 0; }
+      break;
+    case PH.DRAW:
+      pt += dt / T_DRAW;
+      draw = DRAW_TRAVEL * smoothstep(Math.min(pt, 1));
+      if (pt >= 1) { phase = PH.HOLD; pt = 0; }
+      break;
+    case PH.HOLD:
+      pt += dt / T_HOLD; draw = DRAW_TRAVEL;
+      if (pt >= 1) { phase = PH.RELEASE; pt = 0; }
+      break;
+    case PH.RELEASE:
+      pt += dt / T_REL;
+      draw = DRAW_TRAVEL * (1 - smoothstep(Math.min(pt, 1)));
+      if (pt >= 1) {
+        phase = PH.FLY; pt = 0; wobbleT = 0; limbVibT = 0; limbVib = 0.42;
+        flyZ = nockPoint.z;
+      }
+      break;
+    case PH.FLY:
+      pt += dt; wobbleT += dt; limbVibT += dt;
+      wobble = 0.26 * Math.sin(wobbleT * Math.PI * 2 * 15) * Math.exp(-wobbleT * 6.5);
+      limbVib = 0.42 * Math.sin(limbVibT * Math.PI * 2 * 7.5) * Math.exp(-limbVibT * 5.5);
+      arrow.position.z = flyZ - 190 * pt;
+      if (pt > T_FLY) { phase = PH.RESET; pt = 0; arrow.visible = false; }
+      break;
+    case PH.RESET:
+      pt += dt / T_RESET; wobbleT += dt; limbVibT += dt;
+      wobble = 0.26 * Math.sin(wobbleT * Math.PI * 2 * 15) * Math.exp(-wobbleT * 6.5);
+      limbVib = 0.42 * Math.sin(limbVibT * Math.PI * 2 * 7.5) * Math.exp(-limbVibT * 5.5);
+      if (pt >= 1) {
+        phase = PH.IDLE; pt = 0; wobble = 0; limbVib = 0;
+        arrow.visible = true; arrow.position.set(0, ARROW_Y, STRING_Z);
+      }
+      break;
+  }
+}
+
+/* clicker: held out by the arrow shaft, snaps in when the point clears the blade */
+let bladeBend = 1, bladeVib = 0, bladeT = 0;
+function updateClicker(dt) {
+  const pointZ = nockPoint.z - ARROW_LEN;
+  if (pointZ < BLADE_TIP_Z) {
+    bladeBend = 1; bladeVib = 0;
+  } else if (bladeBend > 0) {
+    bladeBend = 0; bladeVib = 0.9; bladeT = 0;
+  }
+  if (bladeVib > 0) {
+    bladeT += dt;
+    bladeVib = 0.9 * Math.exp(-bladeT * 9);
+    if (bladeVib < 0.01) bladeVib = 0;
+  }
+  clickerBlade.rotation.y = bladeBend * 0.030 + bladeVib * 0.040 * Math.sin(bladeT * Math.PI * 2 * 34);
+}
+
+/* ---------- limb deformation + string rebuild ---------- */
+function applyFlex(amount) {
+  flex = amount;
+  for (const L of limbs) {
+    const attr = L.geo.attributes.position, arr = attr.array, base = L.base, u = L.uArr;
+    for (let i = 0; i < u.length; i++) {
+      const k = i * 3;
+      arr[k] = base[k];
+      arr[k + 1] = base[k + 1];
+      arr[k + 2] = base[k + 2] + flex * u[i] * u[i];
+    }
+    attr.needsUpdate = true;
+    L.geo.computeVertexNormals();
+  }
+}
+
+const _b = vec(0, 0, 0), _n = vec(0, 0, 0), _d = vec(0, 0, 0);
+function writeRing(ringIdx, p, d, r) {
+  _b.set(1, 0, 0).cross(d).normalize();
+  if (!isFinite(_b.x)) _b.set(0, 1, 0);
+  _n.copy(d).cross(_b).normalize();
+  for (let k = 0; k < STR_SIDES; k++) {
+    const a = k / STR_SIDES * Math.PI * 2;
+    const o = (ringIdx * STR_SIDES + k) * 3;
+    strPos[o] = p.x + (_b.x * Math.cos(a) + _n.x * Math.sin(a)) * r;
+    strPos[o + 1] = p.y + (_b.y * Math.cos(a) + _n.y * Math.sin(a)) * r;
+    strPos[o + 2] = p.z + (_b.z * Math.cos(a) + _n.z * Math.sin(a)) * r;
+  }
+}
+
+function updateString() {
+  const bis = vec(0, 0, 0).addVectors(dirUp, dirDn).normalize();
+  const A = [nockUp, nockPoint], Bp = [nockPoint, nockDn];
+  const lens = [nockUp.distanceTo(nockPoint), nockDn.distanceTo(nockPoint)];
+  let ri = 0;
+  for (let s = 0; s < 2; s++) {
+    for (let j = 0; j < PER; j++) {
+      const t = j / (PER - 1);
+      const p = vec(0, 0, 0).lerpVectors(A[s], Bp[s], t);
+      let d = s === 0 ? dirUp : dirDn;
+      if ((s === 0 && j === PER - 1) || (s === 1 && j === 0)) d = bis;
+      const dEnd = (s === 0 ? 1 - t : t) * lens[s];
+      const dNock = (s === 0 ? t : 1 - t) * lens[s];
+      let r = 0.045;
+      if (dEnd < 5) r = 0.052;
+      if (dEnd < 0.6) r = 0.058;
+      if (dNock < 3) r = 0.064;
+      writeRing(ri++, p, d, r);
+    }
+  }
+  strGeo.attributes.position.needsUpdate = true;
+  strGeo.computeVertexNormals();
+  strGeo.computeBoundingSphere();
+}
+
+function updateBow(dt) {
+  applyFlex(draw * FLEX_K + limbVib * 0.10);
+
+  for (let i = 0; i < 2; i++) {
+    const L = limbs[i], g = L.nockU * L.nockU * flex;
+    (i === 0 ? nockUp : nockDn).set(0, L.nockP.y, L.nockP.z + g);
+  }
+  nockPoint.set(wobble, ARROW_Y, STRING_Z + draw + limbVib * 0.25);
+
+  dirUp.subVectors(nockUp, nockPoint).normalize();
+  dirDn.subVectors(nockDn, nockPoint).normalize();
+  updateString();
+
+  beads[0].position.copy(nockPoint).addScaledVector(dirUp, 0.42);
+  beads[1].position.copy(nockPoint).addScaledVector(dirDn, 0.42);
+  loops[0].position.copy(nockUp).addScaledVector(dirUp, -0.42);
+  loops[1].position.copy(nockDn).addScaledVector(dirDn, -0.42);
+
+  updateClicker(dt);
+  if (phase !== PH.FLY && phase !== PH.RESET) arrow.position.copy(nockPoint);
+}
+
+/* ---------- resize / input / loop ---------- */
+function onResize() {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight;
+  camera.fov = camera.aspect < 1 ? Math.min(72, (45 / camera.aspect) * 0.86) : 45;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', onResize);
+onResize();
+
+let downX = 0, downY = 0;
+renderer.domElement.addEventListener('pointerdown', e => { downX = e.clientX; downY = e.clientY; });
+renderer.domElement.addEventListener('pointerup', e => {
+  if (Math.hypot(e.clientX - downX, e.clientY - downY) < 6) shoot();
+});
+
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  step(dt);
+  updateBow(dt);
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>

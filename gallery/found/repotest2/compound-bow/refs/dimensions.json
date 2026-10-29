@@ -1,0 +1,637 @@
+{
+  "meta": {
+    "id": "compound-bow-dimensions",
+    "version": "0.1.0",
+    "title": "Modern compound bow dimension table",
+    "reference": "Mathews LIFT 33 (2024)",
+    "purpose": "Every number the eventual parametric model needs, each tagged with its provenance. Geometry is authored from this table; physics is a readout.",
+    "units": {
+      "length": "inch (in)",
+      "force": "pound-force (lb)",
+      "mass": "pound (lb) / grain (gr)",
+      "angle": "degree",
+      "speed": "foot per second (fps)"
+    },
+    "provenance": {
+      "published": "Manufacturer/retailer spec for the reference model.",
+      "standard": "AMO / ATA / IBO definition.",
+      "classTypical": "Typical of a modern 30-34 in ATA compound; NOT model-specific. Replace with CAD/measurement before the final build.",
+      "derived": "Computed from other rows; formula given."
+    },
+    "confidence": {
+      "high": "published or standard",
+      "medium": "class-typical, narrow band",
+      "low": "class-typical, wide band or angle-dependent"
+    }
+  },
+  "bowLevel": [
+    {
+      "id": "axleToAxle",
+      "label": "Axle-to-axle (ATA)",
+      "value": 33,
+      "unit": "in",
+      "mm": 838.2,
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "braceHeight",
+      "label": "Brace height",
+      "value": 6.5,
+      "unit": "in",
+      "mm": 165.1,
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "drawLengthMin",
+      "label": "Draw length, min",
+      "value": 26,
+      "unit": "in",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "drawLengthMax",
+      "label": "Draw length, max",
+      "value": 31.5,
+      "unit": "in",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "drawLengthStep",
+      "label": "Draw-length module step",
+      "value": 0.5,
+      "unit": "in",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "peakWeightMin",
+      "label": "Peak draw weight, min",
+      "value": 45,
+      "unit": "lb",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "peakWeightMax",
+      "label": "Peak draw weight, max",
+      "value": 80,
+      "unit": "lb",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "weightModStep",
+      "label": "SwitchWeight module step",
+      "value": 5,
+      "unit": "lb",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "weightAdjustDown",
+      "label": "Range below peak via limb bolt",
+      "value": 10,
+      "unit": "lb",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "letOffStandard",
+      "label": "Let-off, standard",
+      "value": 85,
+      "unit": "%",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "letOffOptional",
+      "label": "Let-off, optional",
+      "value": 80,
+      "unit": "%",
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "iboSpeed",
+      "label": "IBO speed",
+      "value": 343,
+      "unit": "fps",
+      "provenance": "published",
+      "confidence": "high",
+      "note": "Under IBO test (5 gr/lb arrow), typically 70 lb / 30 in."
+    },
+    {
+      "id": "massWeight",
+      "label": "Mass weight, bare bow",
+      "value": 4.26,
+      "unit": "lb",
+      "grams": 1932,
+      "provenance": "published",
+      "confidence": "high"
+    },
+    {
+      "id": "camRotation",
+      "label": "Cam rotation, brace to wall",
+      "value": 210,
+      "unit": "degree",
+      "provenance": "classTypical",
+      "confidence": "medium",
+      "source": "commons_cam_forcedraw.jpg (annotated end pose ~210 deg)"
+    }
+  ],
+  "derived": [
+    {
+      "id": "nockTravel",
+      "label": "Power stroke / nock travel",
+      "formula": "DL_AMO - 1.75 - braceHeight",
+      "unit": "in",
+      "values": {
+        "atDL28": 19.75,
+        "atDL29": 20.75,
+        "atDL30": 21.75
+      },
+      "provenance": "derived",
+      "confidence": "high"
+    },
+    {
+      "id": "holdingWeight85",
+      "label": "Holding weight at 85% let-off",
+      "formula": "peak * (1 - 0.85)",
+      "unit": "lb",
+      "values": {
+        "at70": 10.5,
+        "at80": 12
+      },
+      "provenance": "derived",
+      "confidence": "high"
+    },
+    {
+      "id": "holdingWeight80",
+      "label": "Holding weight at 80% let-off",
+      "formula": "peak * (1 - 0.80)",
+      "unit": "lb",
+      "values": {
+        "at70": 14,
+        "at80": 16
+      },
+      "provenance": "derived",
+      "confidence": "high"
+    },
+    {
+      "id": "minArrowMass",
+      "label": "Minimum recommended arrow mass",
+      "formula": "5 gr/lb * peak",
+      "unit": "gr",
+      "values": {
+        "at60": 300,
+        "at70": 350,
+        "at80": 400
+      },
+      "provenance": "standard",
+      "confidence": "high"
+    },
+    {
+      "id": "drawLengthPositions",
+      "label": "Number of draw-length positions",
+      "formula": "(DLmax - DLmin)/step + 1",
+      "value": 12,
+      "unit": "count",
+      "provenance": "derived",
+      "confidence": "high",
+      "note": "26.0 to 31.5 in in 0.5 in steps."
+    },
+    {
+      "id": "weightModuleCount",
+      "label": "Number of weight-module positions",
+      "formula": "(Wmax - Wmin)/step + 1",
+      "value": 8,
+      "unit": "count",
+      "provenance": "derived",
+      "confidence": "high",
+      "note": "45 to 80 lb in 5 lb steps."
+    },
+    {
+      "id": "arrowKE",
+      "label": "Arrow kinetic energy (IBO)",
+      "formula": "0.5*m*v^2/gc, m=350 gr, v=343 fps, gc=32.174",
+      "value": 91.4,
+      "unit": "ft.lb",
+      "provenance": "derived",
+      "confidence": "medium"
+    },
+    {
+      "id": "storedEnergyAt80",
+      "label": "Implied stored energy at 80% efficiency",
+      "formula": "KE/efficiency",
+      "value": 114.3,
+      "unit": "ft.lb",
+      "provenance": "derived",
+      "confidence": "low",
+      "note": "Sanity bound only; includes the optimistic IBO speed."
+    },
+    {
+      "id": "storedToPeak",
+      "label": "Implied stored-energy / peak-force ratio",
+      "formula": "storedEnergy/peak",
+      "value": 1.63,
+      "unit": "ft.lb/lb",
+      "provenance": "derived",
+      "confidence": "low",
+      "note": "Above the 1.0-1.4 class-typical band, as expected from an IBO figure."
+    }
+  ],
+  "componentTypical": {
+    "note": "Class-typical sizes for a modern 30-34 in ATA split-limb compound. Marked for replacement by measurement or CAD. These are the numbers the first geometry pass may use, and the verify step must flag them if they leave their bands.",
+    "riser": [
+      {
+        "id": "riserLength",
+        "label": "Riser length, end to end",
+        "value": 26,
+        "unit": "in",
+        "confidence": "low",
+        "band": [
+          24,
+          28
+        ],
+        "note": "Must satisfy ATA = riserLength + 2 * limbProjection."
+      },
+      {
+        "id": "riserWidth",
+        "label": "Riser width (lateral)",
+        "value": 1.25,
+        "unit": "in",
+        "confidence": "medium",
+        "band": [
+          1,
+          1.6
+        ]
+      },
+      {
+        "id": "riserThickness",
+        "label": "Riser body thickness (fore-aft)",
+        "value": 1.5,
+        "unit": "in",
+        "confidence": "medium",
+        "band": [
+          1.2,
+          2
+        ]
+      },
+      {
+        "id": "sightWindowHeight",
+        "label": "Sight-window height",
+        "value": 6,
+        "unit": "in",
+        "confidence": "medium",
+        "band": [
+          5,
+          8
+        ]
+      },
+      {
+        "id": "gripPivotDepth",
+        "label": "Grip pivot depth behind riser front",
+        "value": 2,
+        "unit": "in",
+        "confidence": "low",
+        "band": [
+          1.5,
+          2.5
+        ]
+      },
+      {
+        "id": "stabilizerThread",
+        "label": "Stabilizer thread",
+        "value": "5/16-24",
+        "unit": "-",
+        "confidence": "high"
+      }
+    ],
+    "limbs": [
+      {
+        "id": "limbLength",
+        "label": "Limb length, bolt to axle",
+        "value": 13,
+        "unit": "in",
+        "confidence": "low",
+        "band": [
+          11,
+          15
+        ]
+      },
+      {
+        "id": "limbWidth",
+        "label": "Limb half width",
+        "value": 0.75,
+        "unit": "in",
+        "confidence": "medium",
+        "band": [
+          0.6,
+          0.9
+        ]
+      },
+      {
+        "id": "limbSpan",
+        "label": "Split-limb span across both halves",
+        "value": 3,
+        "unit": "in",
+        "confidence": "medium",
+        "band": [
+          2.5,
+          3.5
+        ],
+        "note": "Mathews 'just under three inches' wide footprint (Bowhunter, Vertix review)."
+      },
+      {
+        "id": "limbThickness",
+        "label": "Limb laminate thickness",
+        "value": 0.3,
+        "unit": "in",
+        "confidence": "low",
+        "band": [
+          0.2,
+          0.4
+        ]
+      },
+      {
+        "id": "limbAngleBrace",
+        "label": "Limb angle from vertical at brace",
+        "value": 20,
+        "unit": "degree",
+        "confidence": "low",
+        "band": [
+          10,
+          30
+        ]
+      },
+      {
+        "id": "limbAngleFullDraw",
+        "label": "Limb angle at full draw",
+        "value": -5,
+        "unit": "degree",
+        "confidence": "low",
+        "note": "Beyond-parallel at full draw."
+      },
+      {
+        "id": "limbBoltThread",
+        "label": "Limb bolt thread",
+        "value": "1/2-20",
+        "unit": "-",
+        "confidence": "medium"
+      }
+    ],
+    "eccentrics": [
+      {
+        "id": "camDiameter",
+        "label": "Cam diameter",
+        "value": 4,
+        "unit": "in",
+        "confidence": "low",
+        "band": [
+          3,
+          5
+        ]
+      },
+      {
+        "id": "camWidth",
+        "label": "Cam width",
+        "value": 1,
+        "unit": "in",
+        "confidence": "low",
+        "band": [
+          0.7,
+          1.3
+        ]
+      },
+      {
+        "id": "camAxleBore",
+        "label": "Cam axle bore",
+        "value": 0.375,
+        "unit": "in",
+        "confidence": "medium"
+      },
+      {
+        "id": "axleDiameter",
+        "label": "Axle diameter",
+        "value": 0.375,
+        "unit": "in",
+        "confidence": "medium",
+        "band": [
+          0.3125,
+          0.375
+        ]
+      },
+      {
+        "id": "effectiveRadiusMin",
+        "label": "Effective cam radius, min (at wall)",
+        "value": 0.6,
+        "unit": "in",
+        "confidence": "low"
+      },
+      {
+        "id": "effectiveRadiusMax",
+        "label": "Effective cam radius, max (early draw)",
+        "value": 2,
+        "unit": "in",
+        "confidence": "low"
+      },
+      {
+        "id": "drawStopLength",
+        "label": "Draw-stop length",
+        "value": 1,
+        "unit": "in",
+        "confidence": "low"
+      },
+      {
+        "id": "avsOffset",
+        "label": "AVS disc offset from axle",
+        "value": 0.4,
+        "unit": "in",
+        "confidence": "low"
+      }
+    ],
+    "cables": [
+      {
+        "id": "stringLength",
+        "label": "String length",
+        "value": 55,
+        "unit": "in",
+        "confidence": "low",
+        "formula": "roughly 2*ATA - 11; confirm on the built bow",
+        "note": "Set so ATA = 33.0 at brace."
+      },
+      {
+        "id": "cableLengthUpper",
+        "label": "Harness cable length (upper)",
+        "value": 34,
+        "unit": "in",
+        "confidence": "low",
+        "note": "Cable length and anchor positions set cam timing."
+      },
+      {
+        "id": "cableLengthLower",
+        "label": "Harness cable length (lower)",
+        "value": 34,
+        "unit": "in",
+        "confidence": "low"
+      },
+      {
+        "id": "stringMaterialDenier",
+        "label": "String material",
+        "value": "HMPE (Dyneema-class)",
+        "unit": "-",
+        "confidence": "high"
+      },
+      {
+        "id": "strandCount",
+        "label": "Strand count, string",
+        "value": [
+          20,
+          28
+        ],
+        "unit": "count",
+        "confidence": "medium"
+      }
+    ],
+    "arrow": [
+      {
+        "id": "arrowLength",
+        "label": "Arrow length",
+        "value": 29,
+        "unit": "in",
+        "confidence": "medium"
+      },
+      {
+        "id": "shaftSpine",
+        "label": "Shaft spine",
+        "value": 300,
+        "unit": "deflection (0.001 in)",
+        "confidence": "medium"
+      },
+      {
+        "id": "shaftMassPerInch",
+        "label": "Shaft mass",
+        "value": 9,
+        "unit": "gr/in",
+        "confidence": "medium"
+      },
+      {
+        "id": "arrowMass",
+        "label": "Finished arrow mass (IBO)",
+        "value": 350,
+        "unit": "gr",
+        "provenance": "standard",
+        "confidence": "high"
+      },
+      {
+        "id": "fletchingCount",
+        "label": "Fletching count",
+        "value": 3,
+        "unit": "count",
+        "confidence": "high"
+      }
+    ]
+  },
+  "forceDrawCurve": {
+    "note": "Normalised shape of the draw-force curve the eccentric must produce, keyed to draw fraction (0 at brace, 1 at the wall). The cam effective-radius profile is solved to reproduce this. Points are class-typical.",
+    "provenance": "classTypical",
+    "points_by_letOff": {
+      "80": [
+        {
+          "drawFraction": 0,
+          "forceFraction": 0.1
+        },
+        {
+          "drawFraction": 0.05,
+          "forceFraction": 0.6
+        },
+        {
+          "drawFraction": 0.1,
+          "forceFraction": 0.9
+        },
+        {
+          "drawFraction": 0.15,
+          "forceFraction": 1
+        },
+        {
+          "drawFraction": 0.3,
+          "forceFraction": 1
+        },
+        {
+          "drawFraction": 0.5,
+          "forceFraction": 0.99
+        },
+        {
+          "drawFraction": 0.7,
+          "forceFraction": 0.98
+        },
+        {
+          "drawFraction": 0.8,
+          "forceFraction": 0.88
+        },
+        {
+          "drawFraction": 0.9,
+          "forceFraction": 0.62
+        },
+        {
+          "drawFraction": 0.96,
+          "forceFraction": 0.4
+        },
+        {
+          "drawFraction": 1,
+          "forceFraction": 0.2
+        }
+      ],
+      "85": [
+        {
+          "drawFraction": 0,
+          "forceFraction": 0.1
+        },
+        {
+          "drawFraction": 0.05,
+          "forceFraction": 0.6
+        },
+        {
+          "drawFraction": 0.1,
+          "forceFraction": 0.9
+        },
+        {
+          "drawFraction": 0.15,
+          "forceFraction": 1
+        },
+        {
+          "drawFraction": 0.3,
+          "forceFraction": 1
+        },
+        {
+          "drawFraction": 0.5,
+          "forceFraction": 0.99
+        },
+        {
+          "drawFraction": 0.7,
+          "forceFraction": 0.97
+        },
+        {
+          "drawFraction": 0.8,
+          "forceFraction": 0.85
+        },
+        {
+          "drawFraction": 0.9,
+          "forceFraction": 0.55
+        },
+        {
+          "drawFraction": 0.96,
+          "forceFraction": 0.32
+        },
+        {
+          "drawFraction": 1,
+          "forceFraction": 0.15
+        }
+      ]
+    }
+  }
+}

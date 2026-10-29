@@ -1,0 +1,385 @@
+/* =====================================================================
+   PART 8 — instancing bake, post pipeline, animation loop, UI wiring,
+   camera presets + intro, boot orchestration with live progress and the
+   EIFFEL-OK self test.
+   ===================================================================== */
+let usePost = false, vigPass = null;
+let frames = 0, introActive = false, introT = 0, stateDone = false;
+let tStart = 0;
+
+/* ---------- bake every beam bucket into InstancedMesh ---------- */
+function finalizeInstancing(){
+  const iron = { rough:0.48, metal:0.62 };
+  const meshes = FB.finalize(iron.rough, iron.metal);
+  for(const m of meshes){
+    scene.add(m);
+    if(structureMats.indexOf(m.material) < 0) structureMats.push(m.material);
+  }
+  for(const mat of structureMats){
+    mat.roughnessMap = TX.streak;
+    mat.metalness = iron.metal;
+    mat.needsUpdate = true;
+  }
+  // stairs collector → toggleable group
+  if(FB2 && Object.keys(FB2.buckets).length){
+    const m2 = FB2.finalize(iron.rough, iron.metal);
+    const grp = app.stairsGroup;
+    for(const m of m2){ (grp||scene).add(m); }
+  }
+}
+
+/* ---------- UI wiring ---------- */
+function btn(sel){ return $(sel); }
+function setBtn(id, on){ const b=$(id); if(b) b.classList.toggle('on', !!on); }
+
+function bindUI(){
+  const dyn = app.dynamic;
+  const toggles = [
+    ['#bRot','autoRotate',(v)=>{ dyn.autoRotate=v; }],
+    ['#bWire','wire',(v)=>{ dyn.wire=v; applyLooks(); }],
+    ['#bXray','xray',(v)=>{ dyn.xray=v; applyLooks(); }],
+    ['#bStairs','stairs',(v)=>{ if(app.stairsGroup) app.stairsGroup.visible=v; }],
+    ['#bInt','interior',(v)=>{ if(app.interiorGrp) app.interiorGrp.visible=v; }],
+    ['#bSpark','sparkle',(v)=>{ dyn.sparkleOn=v; }]
+  ];
+  for(const t of toggles){
+    const el=$(t[0]);
+    if(!el) continue;
+    const key=t[1];
+    dyn[key] = (key==='autoRotate')?false:true;
+    el.addEventListener('click',()=>{
+      dyn[key] = !dyn[key];
+      setBtn(t[0], dyn[key]);
+      t[2](dyn[key]);
+    });
+  }
+  btn('#bDay').addEventListener('click',()=>{
+    dyn.nightTarget = dyn.nightTarget<0.5 ? 1 : 0;
+    btn('#bDay', dyn.nightTarget>0.5);
+    if(dyn.nightTarget>0.5) dyn.sparkleOn=true;
+  });
+  btn('#bReset').addEventListener('click',()=> applyPreset('hero', true));
+  document.querySelectorAll('#presetRow .btnP').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('#presetRow .btnP').forEach(x=>x.classList.remove('act'));
+      b.classList.add('act');
+      if(b.dataset.p==='flyby') startIntro();
+      else applyPreset(b.dataset.p, true);
+    });
+  });
+  $('#hudTitle').addEventListener('click',()=>{
+    $('#hud').classList.toggle('collapsed');
+    $('#hudChevron').textContent = $('#hud').classList.contains('collapsed') ? '▸':'▾';
+  });
+  window.addEventListener('keydown',(e)=>{
+    const k=(e.key||'').toLowerCase();
+    if(k==='a'){ dyn.autoRotate=!dyn.autoRotate; setBtn('#bRot',dyn.autoRotate); }
+    else if(k==='n'){ dyn.nightTarget = dyn.nightTarget<0.5?1:0; setBtn('#bDay',dyn.nightTarget>0.5); }
+    else if(k==='w'){ dyn.wire=!dyn.wire; setBtn('#bWire',dyn.wire); applyLooks(); }
+    else if(k==='x'){ dyn.xray=!dyn.xray; setBtn('#bXray',dyn.xray); applyLooks(); }
+    else if(k==='s'){ dyn.stairs=!dyn.stairs; if(app.stairsGroup)app.stairsGroup.visible=dyn.stairs; setBtn('#bStairs',dyn.stairs); }
+    else if(k==='i'){ dyn.interior=!dyn.interior; if(app.interiorGrp)app.interiorGrp.visible=dyn.interior; setBtn('#bInt',dyn.interior); }
+    else if(k==='l'){ dyn.sparkleOn=!dyn.sparkleOn; setBtn('#bSpark',dyn.sparkleOn); }
+    else if(k==='r'){ applyPreset('hero',true); }
+    else if(k==='f'){ startIntro(); }
+    else if(k==='1'||k==='2'||k==='3'||k==='4'||k==='5'||k==='6'){
+      const names=['hero','ground','base','lvl1','lvl2','top'];
+      applyPreset(names[+k-1], true);
+    }
+    else if(k==='h'){
+      $('#hud').classList.toggle('collapsed');
+      $('#hudChevron').textContent=$('#hud').classList.contains('collapsed')?'▸':'▾';
+    }
+  });
+}
+
+/* x-ray / wireframe look driver */
+function applyLooks(){
+  const dyn=app.dynamic;
+  for(const m of structureMats){
+    m.wireframe = !!dyn.wire;
+    if(dyn.xray){
+      m.transparent=true; m.opacity=0.3; m.depthWrite=false;
+    } else {
+      m.transparent=false; m.opacity=1; m.depthWrite=true;
+    }
+    m.needsUpdate=true;
+  }
+}
+
+/* ---------- camera presets & flyby ---------- */
+const VIEWS={
+  hero:   { pos:[195,108,320], tgt:[0,118,0] },
+  ground: { pos:[0,2.4,188],   tgt:[0,168,0] },
+  base:   { pos:[0,1.8,96],    tgt:[0,190,0] },
+  lvl1:   { pos:[0,62,148],    tgt:[0,150,0] },
+  lvl2:   { pos:[0,120,124],   tgt:[0,225,0] },
+  top:    { pos:[118,330,170], tgt:[0,258,0] }
+};
+function applyPreset(name, tween){
+  const v=VIEWS[name]||VIEWS.hero;
+  const P=new THREE.Vector3(v.pos[0],v.pos[1],v.pos[2]);
+  const T=new THREE.Vector3(v.tgt[0],v.tgt[1],v.tgt[2]);
+  if(tween){
+    app.camTween={ active:true, t:0, dur:1.4,
+      pf:camera.position.clone(), pt:controls.target.clone(), tf:P, tt:T };
+  } else {
+    camera.position.copy(P); controls.target.copy(T);
+    app.camTween={active:false};
+  }
+}
+function startIntro(){
+  if(REDUCED){ applyPreset('hero', true); return; }
+  introActive=true; introT=0;
+  app.camTween={active:false};
+  controls.autoRotate=false;
+}
+function introCam(t){
+  const p0=new THREE.Vector3(60,190,-760);
+  const p1=new THREE.Vector3(430,260,120);
+  const p2=new THREE.Vector3(195,108,320);
+  const q=(a,b,c,u)=>{
+    const w=1-u;
+    return new THREE.Vector3().copy(a).multiplyScalar(w*w)
+      .addScaledVector(b, 2*w*u).addScaledVector(c, u*u);
+  };
+  camera.position.copy(q(p0,p1,p2,t));
+  const tt=new THREE.Vector3(0, lerp(150,118,t), 0);
+  controls.target.copy(tt);
+}
+
+/* ---------- post processing (degrades gracefully) ---------- */
+function setupPost(){
+  usePost=false;
+  try{
+    composer=new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene,camera));
+    bloomPass=new UnrealBloomPass(new THREE.Vector2(app.container.clientWidth||innerWidth, app.container.clientHeight||innerHeight), 0.35, 0.6, 0.82);
+    composer.addPass(bloomPass);
+    const vigMat=new THREE.ShaderMaterial({
+      uniforms:{ tDiffuse:{value:null}, uNight:{value:0} },
+      vertexShader:'varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+      fragmentShader:'uniform sampler2D tDiffuse; uniform float uNight; varying vec2 vUv;\n'+
+        'void main(){ vec4 c=texture2D(tDiffuse,vUv);\n'+
+        ' float d=length(vUv-0.5)*1.4142;\n'+
+        ' float vig=1.0-0.24*pow(d,2.0)*(1.0+0.9*uNight);\n'+
+        ' vec3 col=c.rgb*vig;\n'+
+        ' col=mix(col, col*vec3(1.03,0.99,0.93)+vec3(0.012,0.006,0.02)*uNight, uNight);\n'+
+        ' gl_FragColor=vec4(col,c.a); }'
+    });
+    vigPass=new ShaderPass(vigMat);
+    composer.addPass(vigPass);
+    composer.addPass(new OutputPass());
+    usePost=true;
+    composer.setSize(innerWidth, innerHeight);
+  }catch(err){
+    usePost=false;
+    composer=null; bloomPass=null; vigPass=null;
+  }
+}
+
+/* ---------- animate loop ---------- */
+function animate(){
+  requestAnimationFrame(animate);
+  try{
+    const dt=Math.min(clock.getDelta(), 0.05);
+    app.time=(app.time||0)+dt;
+    const dyn=app.dynamic;
+
+    // camera intro / tweens
+    if(introActive){
+      introT+=dt/9.5;
+      if(introT>=1){ introActive=false; applyPreset('hero',false); }
+      else introCam(easeIO(introT));
+    } else if(app.camTween && app.camTween.active){
+      const ct=app.camTween; ct.t+=dt/ct.dur;
+      const e=smooth(Math.min(1,ct.t));
+      camera.position.lerpVectors(ct.pf, ct.tf, e);
+      controls.target.lerpVectors(ct.pt, ct.tt, e);
+      if(ct.t>=1) ct.active=false;
+    }
+
+    // day ↔ night
+    dyn.nightT += (dyn.nightTarget-dyn.nightT)*Math.min(1, dt*0.55);
+    if(Math.abs(dyn.nightT-dyn.nightTarget)<0.0004) dyn.nightT=dyn.nightTarget;
+    setDynamicLights(dyn.nightT);
+
+    controls.autoRotate = !!dyn.autoRotate;
+    controls.update();
+
+    // beacon sweep + flag flutter
+    if(app.beacon && dyn.nightT>0.02){
+      app.beacon.grp.rotation.y = app.time*0.55;
+    }
+    if(app.flag){
+      app.flag.rotation.z = Math.sin(app.time*1.7)*0.02;
+      app.flag.rotation.y = Math.sin(app.time*0.6)*0.05;
+    }
+    if(app.sparkle && app.sparkle.uni) app.sparkle.uni.uTime.value=app.time;
+    if(bloomPass){
+      bloomPass.strength = 0.30+0.9*dyn.nightT;
+      bloomPass.threshold = 0.88-0.3*dyn.nightT;
+    }
+    if(vigPass) vigPass.uniforms.uNight.value=dyn.nightT;
+
+    if(usePost && composer) composer.render();
+    else renderer.render(scene,camera);
+
+    frames++;
+    if(frames===1 && !stateDone) firstFrameDone();
+
+    // fps + frame-time bookkeeping
+    app._fpsEMA = app._fpsEMA||0;
+    app._fpsEMA = app._fpsEMA*0.95 + (dt>0?1/dt:0)*0.05;
+  }catch(err){
+    if(!stateDone) __eiffelFatal(err);
+  }
+}
+
+/* audit: every beam inside sane metric bounds (catches coordinate bugs) */
+function auditFB(){
+  const b = { minX:1e9, maxX:-1e9, minY:1e9, maxY:-1e9, minZ:1e9, maxZ:-1e9, bad:0, n:0, per:{} };
+  const scan = fb => {
+    for(const k in fb.buckets){
+      const a = fb.buckets[k].beams;
+      for(let i=0;i<a.length;i+=6){
+        b.n++;
+        for(let j=0;j<6;j++){
+          const v = a[i+j];
+          if(!isFinite(v)){
+            b.bad++; b.per[k]=(b.per[k]||0)+1;
+            if(!b.samples) b.samples={};
+            if(!b.samples[k]) b.samples[k]=Array.from(a.slice(i,i+6));
+            continue;
+          }
+          if(j%3===0){ if(v<b.minX)b.minX=v; if(v>b.maxX)b.maxX=v; }
+          else if(j%3===1){ if(v<b.minY)b.minY=v; if(v>b.maxY)b.maxY=v; }
+          else { if(v<b.minZ)b.minZ=v; if(v>b.maxZ)b.maxZ=v; }
+        }
+      }
+    }
+  };
+  scan(FB); scan(FB2);
+  return b;
+}
+
+function firstFrameDone(){
+  if(stateDone) return;
+  stateDone=true;
+  // ---- static scene statistics (CPU side — stable & composer independent) ----
+  let tris=0, calls=0;
+  scene.traverse(o=>{
+    if(!o.visible) return;
+    if(o.isInstancedMesh){ calls++; const g=o.geometry;
+      const gt = g.index ? g.index.count/3 : (g.attributes.position? g.attributes.position.count/3 : 0);
+      tris += gt*o.count;
+    } else if(o.isMesh){ calls++; const g=o.geometry;
+      tris += g.index ? g.index.count/3 : (g.attributes.position? g.attributes.position.count/3 : 0);
+    } else if(o.isPoints || o.isLineSegments || o.isLine){ calls++; }
+  });
+  const beams=Math.round(FB.count()+(FB2?Object.keys(FB2.buckets).reduce((a,k)=>a+FB2.buckets[k].beams.length/6,0):0));
+  const buildMs=Math.round(performance.now()-tStart);
+  const st=window.__EIFFEL_STATE__;
+  st.ok=true; st.triangles=tris; st.calls=calls; st.beams=beams; st.buildMs=buildMs;
+  try{ st.audit = auditFB(); }catch(e){}
+  try{ document.title='EIFFEL-OK '+tris+' tris '+calls+' calls'; }catch(e){}
+  const put=(id,val)=>{ const e=document.getElementById(id); if(e) e.textContent=val; };
+  put('stTris', tris.toLocaleString());
+  put('stCalls', calls.toLocaleString());
+  put('stBeams', beams.toLocaleString());
+  put('stSparks', params.sparks.toLocaleString());
+  put('stTons', '10 100 t');
+  setTimeout(()=>{ const o=document.getElementById('overlay'); if(o) o.classList.add('hide'); }, 120);
+}
+
+/* ---------- stats refresh (FPS live, geometry static) ---------- */
+setInterval(()=>{
+  if(frames<2) return;
+  const el=document.getElementById('stFps');
+  if(el) el.textContent=Math.round(app._fpsEMA||0);
+},500);
+
+/* ---------- boot / orchestration ---------- */
+async function main(){
+  tStart=performance.now();
+
+  const step=async (f,label,detail)=>{
+    reportProgress(f, label, detail);
+    await _yield();
+  };
+
+  await step(0.02,'initialising renderer & textures');
+  initCore();
+  createTextures();
+  await step(0.05,'sky, atmosphere, sun & environment');
+
+  app.interiorGrp=new THREE.Group();
+  scene.add(app.interiorGrp);
+
+  buildSky();
+  initEnvAndLights();
+
+  await step(0.10,'Champ de Mars & esplanade…');
+  buildGround();
+
+  await step(0.16,'masonry piers');
+  buildPiers();
+
+  reportProgress(0.30,'lattice legs (stage 1/2)');
+  await _yield();
+  buildLegs();
+
+  reportProgress(0.40,'lattice legs (stage 2/2) · arches');
+  await _yield();
+  buildArches();
+
+  await step(0.52,'merged upper shaft & 196 m landing');
+  buildShaft();
+
+  await step(0.60,'mast, antennas, beacon & flag');
+  buildMastAndAntennas();
+
+  await step(0.70,'1st / 2nd / 3rd platforms & frieze');
+  buildDecks();
+
+  await step(0.80,'elevators & machinery');
+  buildElevators();
+
+  await step(0.86,'internal staircases');
+  buildStairs();
+
+  await step(0.90,'night floods & sparkle rig');
+  buildFloods();
+  buildSparkles();
+
+  reportProgress(0.96,'instancing '+FB.count().toLocaleString()+' beams…');
+  finalizeInstancing();
+
+  await step(0.99,'post-processing');
+  setupPost();
+  bindUI();
+
+  // initial dynamic settings from params
+  const dyn=app.dynamic;
+  dyn.nightTarget=params.night>0?1:0;
+  if(params.night>0) dyn.sparkleOn=true;
+  if(!params.view){
+    if(params.intro && !REDUCED) startIntro();
+    else applyPreset('hero', false);
+  } else {
+    applyPreset(params.view, false);
+  }
+
+  reportProgress(1,'ready');
+  requestAnimationFrame(animate);
+}
+
+main().catch(err=>{
+  const R=window.__eiffelFatal;
+  if(R) R(err);
+  else throw err;
+});
+/*EIF_MODULE_END*/
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stage 2 — the voids</title>
+<style>
+  :root{--paper:#f7f5f0;--card:#fffefb;--ink:#1d2027;--soft:#6b6f7a;--rule:#ddd8cd;
+        --solid:#243040;--void:#e9e4d8;--accent:#8a2f22;--ok:#2f6b3f}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{padding:22px 26px 14px;border-bottom:1px solid var(--rule)}
+  h1{margin:0 0 3px;font-size:16px;letter-spacing:.05em;text-transform:uppercase}
+  .sub{color:var(--soft);font-size:12px}
+  .sub b{color:var(--accent)}
+  main{display:grid;grid-template-columns:360px minmax(320px,1fr) minmax(300px,1fr);
+       gap:18px;padding:20px 26px 40px;align-items:start}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px}
+  .card h2{margin:0 0 8px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+           color:var(--soft);font-weight:650}
+  canvas{display:block;width:100%;height:auto;border-radius:4px}
+  .note{margin:9px 0 0;font-size:11.5px;color:var(--soft);line-height:1.55}
+  .note b{color:var(--ink)}
+  .rule{border-left:3px solid var(--accent);padding:7px 0 7px 11px;margin:0 0 11px;font-size:12.5px}
+  .rule code{background:#f0ede6;padding:1px 5px;border-radius:3px;font-size:11.5px}
+  table{border-collapse:collapse;width:100%;font-size:11.5px}
+  th,td{border-bottom:1px solid var(--rule);padding:3px 5px;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--soft);font-weight:600;font-size:10.5px;text-transform:uppercase}
+  .hi{background:#fdf3ef}
+</style>
+</head>
+<body>
+<header>
+  <h1>Stage 2 — the voids</h1>
+  <div class="sub" id="sub">The tower is <b>hollow</b> from the ground to the 2nd platform, and a <b>hollow box</b> above it.
+    Members that cross those spaces are the recurring fault.</div>
+</header>
+
+<main>
+  <div class="card">
+    <h2>1 · Vertical section through the axis</h2>
+    <canvas id="sect" width="700" height="1500"></canvas>
+    <p class="note">Dark = material. Hatched = <b>void</b>. The two horizontal bars are the
+      only members that cross the space between the four uprights.</p>
+  </div>
+
+  <div class="card">
+    <h2>2 · Plans — where the material is, at nine heights</h2>
+    <canvas id="plans" width="760" height="1180"></canvas>
+    <p class="note">Below the 2nd platform: <b>four isolated legs</b> and a cross-shaped
+      through-void. Above it: a <b>hollow square ring</b>.</p>
+  </div>
+
+  <div class="card">
+    <h2>3 · The rules, as generator assertions</h2>
+    <div class="rule">
+      <b>R-1 — no member connects two different legs below 115.73 m, except the two belts.</b><br>
+      Eiffel: « quatre montants isolés, simplement reliés au niveau du 1<sup>er</sup> et 2<sup>e</sup> étage
+      par des ceintures horizontales », and « il est inutile d'entretoiser la Tour dans les divers
+      plans horizontaux ». The builder records each member's two endpoint legs; anything touching
+      two different legs below L2 that is not a belt <b>throws</b>.
+    </div>
+    <div class="rule">
+      <b>R-2 — no member's body may fall inside the core void.</b><br>
+      <code>isVoidAt(x, z, y)</code> is true for the space bounded by the legs' inner faces,
+      ground → 115.73 m, and for <code>max(|x|,|z|) &lt; innerHalf</code> above it. Members are
+      point-sampled along their length; any sample inside a void rejects the member.
+    </div>
+    <div class="rule">
+      <b>R-3 — the leg interior is hollow too.</b><br>
+      Each leg is a caisson with 800 mm clear internally. Nothing may be placed inside a leg
+      except the lift rails and the stair, which are documented as being there.
+    </div>
+    <div class="rule">
+      <b>R-4 — the only decorative exception is the four arches.</b><br>
+      They cross the void by design, and they are the <i>only</i> members allowed to.
+    </div>
+    <p class="note">These are assertions in <code>src/build/</code>, not conventions. The harness
+      reports any violation with the member's identity and the rule it broke.</p>
+  </div>
+
+  <div class="card" style="grid-column:2/-1">
+    <h2>4 · How empty is each level?</h2>
+    <table id="vf"></table>
+    <p class="note">
+      Void fraction is the empty share of the plan square, sampled on a 64 × 64 grid, counting
+      only the structural material — so it excludes the lattice openings within a face, which are
+      a separate (measured) quantity.
+      <b>The point is the shape of the curve, not the exact numbers:</b> the tower is at its most
+      hollow low down and closes up as it rises.
+    </p>
+  </div>
+</main>
+
+<script type="module">
+import { OFFICIAL, sectionBands, planRects, voidFraction, legOuterHalf, legWidth,
+         legInnerFaceHalf, caissonAt, ARCH } from './src/geom/profile.js';
+
+const H = OFFICIAL.height;
+
+/* ---------- 1. vertical section ---------- */
+(() => {
+  const c = document.getElementById('sect'), g = c.getContext('2d');
+  const PAD = 30;
+  const sx = (c.width - 2 * PAD) / 134;         // x: metres → px
+  const sy = (c.height - 2 * PAD) / H;
+  const s = Math.min(sx, sy);
+  const ox = c.width / 2, oy = c.height - PAD;
+  const X = m => ox + m * s, Y = m => oy - m * s;
+
+  g.fillStyle = '#fffefb'; g.fillRect(0, 0, c.width, c.height);
+
+  // hatch the void slab first
+  g.fillStyle = '#e9e4d8';
+  g.fillRect(X(-64), Y(OFFICIAL.L2), (128) * s, (OFFICIAL.L2) * s);
+  g.fillRect(X(-64), Y(H), 128 * s, (H - OFFICIAL.ironTop) * s);
+  g.strokeStyle = 'rgba(160,150,130,.45)'; g.lineWidth = 1;
+  for (let k = -c.height; k < c.width; k += 9) {
+    g.beginPath(); g.moveTo(k, Y(OFFICIAL.L2)); g.lineTo(k + (OFFICIAL.L2) * s, Y(0)); g.stroke();
+  }
+
+  // material bands, sampled
+  for (let y = 0; y <= OFFICIAL.ironTop; y += 0.5) {
+    sectionBands(y).forEach(b => {
+      g.fillStyle = b.kind === 'belt' ? '#8a2f22' : '#243040';
+      g.fillRect(X(b.x0), Y(y + 0.5), (b.x1 - b.x0) * s, Math.max(1, 0.7 * s));
+    });
+  }
+
+  // the arch (the one decorative exception) drawn as a line
+  g.strokeStyle = '#8a2f22'; g.lineWidth = 1.6;
+  g.beginPath();
+  ARCH.points(80).forEach((p, i) => i ? g.lineTo(X(p.x), Y(p.y)) : g.moveTo(X(p.x), Y(p.y)));
+  g.stroke();
+
+  // annotations
+  g.fillStyle = '#243040'; g.font = '600 13px ui-sans-serif';
+  g.textAlign = 'left';
+  g.fillText('GROUND → 115.73 m', X(-63), Y(46));
+  g.font = '12px ui-sans-serif'; g.fillStyle = '#6b6f7a';
+  g.fillText('four ISOLATED uprights —', X(-63), Y(38));
+  g.fillText('this void is empty', X(-63), Y(31));
+
+  g.fillStyle = '#243040'; g.font = '600 13px ui-sans-serif';
+  g.fillText('ABOVE 115.73 m', X(-34), Y(215));
+  g.font = '12px ui-sans-serif'; g.fillStyle = '#6b6f7a';
+  g.fillText('one HOLLOW caisson —', X(-34), Y(207));
+  g.fillText('latticed walls, empty core', X(-34), Y(200));
+
+  // platform ticks + level labels
+  g.font = '11px ui-sans-serif'; g.fillStyle = '#8a2f22';
+  [['L1  57.63', OFFICIAL.L1], ['L2  115.73', OFFICIAL.L2], ['L3  276.13', OFFICIAL.L3]].forEach(([t, y]) => {
+    g.fillText(t, X(66), Y(y) + 4);
+    g.strokeStyle = 'rgba(138,47,34,.35)'; g.setLineDash([3, 4]);
+    g.beginPath(); g.moveTo(X(-66), Y(y) + .5); g.lineTo(X(-8), Y(y) + .5); g.stroke(); g.setLineDash([]);
+  });
+
+  g.fillStyle = '#8a2f22'; g.font = '11.5px ui-sans-serif';
+  g.fillText('the arch — the one decorative member', X(-60), Y(ARCH.crownY + 10));
+  g.fillText('allowed to cross this void', X(-60), Y(ARCH.crownY + 4));
+})();
+
+/* ---------- 2. plans ---------- */
+(() => {
+  const c = document.getElementById('plans'), g = c.getContext('2d');
+  const levels = [0, 30, 57.63, 85, 115.73, 150, 200, 276.13, 300];
+  const cols = 3, rows = 3, CELL = 250, PAD = 14;
+  const maxHalf = 64;
+  g.fillStyle = '#fffefb'; g.fillRect(0, 0, c.width, c.height);
+
+  levels.forEach((y, i) => {
+    const cx = PAD + (i % cols) * CELL, cy = PAD + Math.floor(i / cols) * (CELL - 10);
+    const size = CELL - 52;
+    const s = size / (2 * maxHalf);
+    const mx = cx + size / 2, my = cy + size / 2 + 14;
+    const X = m => mx + m * s, Y = m => my + m * s;
+
+    // outer envelope square, faint
+    const half = y <= OFFICIAL.L2 ? legOuterHalf(y) : (caissonAt(y)?.outerHalf ?? 0);
+    g.strokeStyle = '#e6e0d4'; g.lineWidth = 1;
+    g.strokeRect(X(-half), Y(-half), 2 * half * s, 2 * half * s);
+
+    planRects(y).forEach(r => {
+      g.fillStyle = '#243040';
+      g.fillRect(X(r.x - r.w / 2), Y(r.z - r.d / 2), r.w * s, r.d * s);
+    });
+
+    g.fillStyle = '#243040'; g.font = '600 12px ui-sans-serif'; g.textAlign = 'left';
+    g.fillText(`${y} m`, cx + 4, cy + 12);
+    g.fillStyle = '#6b6f7a'; g.font = '10.5px ui-sans-serif';
+    g.fillText(`${Math.round(voidFraction(y) * 100)}% void`, cx + 4, cy + 24);
+  });
+  g.textAlign = 'left';
+})();
+
+/* ---------- 4. void fractions ---------- */
+const rows = [0, 15, 30, 45, 57.63, 70, 85, 100, 115.73, 130, 150, 180, 220, 260, 276.13, 290, 300];
+document.getElementById('vf').innerHTML =
+  '<tr><th>height</th><th>legs</th><th>leg width</th><th>inner face</th><th>void in plan</th></tr>' +
+  rows.map(y => {
+    const t = y <= OFFICIAL.L2 ? '4 separate' : 'hollow ring';
+    const w = y <= OFFICIAL.L2 ? legWidth(y).toFixed(2) : (caissonAt(y)?.wall.toFixed(2) ?? '—');
+    const inn = y <= OFFICIAL.L2 ? legInnerFaceHalf(y).toFixed(2) : (caissonAt(y)?.innerHalf.toFixed(2) ?? '—');
+    const vf = Math.round(voidFraction(y) * 100);
+    const cls = (y > 0 && y < OFFICIAL.L2 && vf > 40) ? ' class="hi"' : '';
+    return `<tr${cls}><td>${y} m</td><td>${t}</td><td>${w}</td><td>${inn}</td><td>${vf}%</td></tr>`;
+  }).join('');
+
+document.getElementById('sub').innerHTML =
+  `Void in plan: <b>${Math.round(voidFraction(30) * 100)}%</b> at 30 m · ` +
+  `<b>${Math.round(voidFraction(57.63) * 100)}%</b> at L1 · ` +
+  `<b>${Math.round(voidFraction(115.73) * 100)}%</b> at L2 · ` +
+  `<b>${Math.round(voidFraction(200) * 100)}%</b> at 200 m`;
+</script>
+</body>
+</html>

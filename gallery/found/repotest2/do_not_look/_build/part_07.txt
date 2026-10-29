@@ -1,0 +1,189 @@
+/* =====================================================================
+   PART 7 — night lighting: warm floodlights, the 20,000-light sparkle
+   (per-instance phase blink), day/night animation of every emissive.
+   ===================================================================== */
+
+/* ---------- floodlight spots (only meaningful at night) ---------- */
+function buildFloods(){
+  const mk=(x,y,z,tx,ty,tz,ang)=>{
+    const s=new THREE.SpotLight(0xffc894, 0, 900, ang, 0.65, 1.2);
+    s.position.set(x,y,z);
+    s.target.position.set(tx,ty,tz);
+    scene.add(s); scene.add(s.target);
+    nightLights.push({ light:s, day:0, night:5200 });
+    return s;
+  };
+  // esplanade washes raking the tower from the four corners
+  mk(  95, 6,  95, 0, 45, 0, 0.85);
+  mk( -95, 6,  95, 0, 45, 0, 0.85);
+  mk(  95, 6, -95, 0, 45, 0, 0.85);
+  mk( -95, 6, -95, 0, 45, 0, 0.85);
+  // upper belfry floods from the 2nd platform corners
+  mk( 26, 117,  26, 0, 215, 0, 0.6);
+  mk(-26, 117,  26, 0, 215, 0, 0.6);
+  mk( 26, 117, -26, 0, 215, 0, 0.6);
+  mk(-26, 117, -26, 0, 215, 0, 0.6);
+}
+
+/* ---------- sparkle points (20000 “lights”) ---------- */
+function buildSparkles(){
+  const N = Math.max(0, Math.min(24000, Math.round(params.sparks)));
+  const pos=new Float32Array(N*3);
+  const ph =new Float32Array(N);
+  const rndA=new Float32Array(N);
+  const siz=new Float32Array(N);
+
+  const cornersOf = (y)=>{
+    // cross-section corners of the tower at height y
+    if(y < LEG_Y1){
+      const R0=legOutR(y), inR=legInR(y);
+      const cs=[]; // [ [x,z]... ] for quadrant corner (we later mirror)
+      cs.push([ inR, inR ],[ R0, inR ],[ R0, R0 ],[ inR, R0 ]);
+      return cs;
+    }
+    if(y < SHAFT_Y1){ const s=shaftHalf(y); return [[-s,-s],[s,-s],[s,s],[-s,s]]; }
+    const s=mastHalf(y); return [[-s,-s],[s,-s],[s,s],[-s,s]];
+  };
+  const sample=(out)=>{
+    const r=Math.random();
+    let y, c4;
+    if(r<0.795){ y=lerp(4.2, LEG_Y1-0.5, Math.random()); }
+    else if(r<0.935){ y=lerp(LEG_Y1, SHAFT_Y1-0.5, Math.random()); }
+    else if(r<0.97){ y=lerp(SHAFT_Y1, 329.5, Math.random()); }
+    else {
+      // platform rim sparkles
+      const rim = Math.random();
+      if(rim<0.4){ y=57.4; }
+      else if(rim<0.75){ y=115.4; }
+      else { y=276.6; }
+    }
+    if(y<LEG_Y1){
+      const sx=Math.random()<0.5?1:-1, sz=Math.random()<0.5?1:-1;
+      const i=legInR(y), o=legOutR(y);
+      // four corners of the (+,+) box mirrored into this quadrant
+      const c=[[i,i],[o,i],[o,o],[i,o]];
+      const ck=Math.floor(Math.random()*4), ck2=(ck+1)%4;
+      const t=Math.random();
+      const wx = sx*(c[ck][0]+(c[ck2][0]-c[ck][0])*t);
+      const wz = sz*(c[ck][1]+(c[ck2][1]-c[ck][1])*t);
+      out.push(wx,y,wz);
+    } else if(y<SHAFT_Y1){
+      const s=shaftHalf(y);
+      const c=[[-s,-s],[s,-s],[s,s],[-s,s]];
+      const ck=Math.floor(Math.random()*4), ck2=(ck+1)%4;
+      const t=Math.random();
+      out.push(c[ck][0]+(c[ck2][0]-c[ck][0])*t, y, c[ck][1]+(c[ck2][1]-c[ck][1])*t);
+    } else {
+      const s=mastHalf(y);
+      const c=[[-s,-s],[s,-s],[s,s],[-s,s]];
+      const ck=Math.floor(Math.random()*4), ck2=(ck+1)%4;
+      const t=Math.random();
+      out.push(c[ck][0]+(c[ck2][0]-c[ck][0])*t, y, c[ck][1]+(c[ck2][1]-c[ck][1])*t);
+    }
+  };
+  const arr=[];
+  for(let i=0;i<N;i++){
+    sample(arr);
+    pos[i*3]=arr[i*3]; pos[i*3+1]=arr[i*3+1]; pos[i*3+2]=arr[i*3+2];
+    ph[i]=Math.random();
+    rndA[i]=Math.random();
+    siz[i]=0.5+Math.random()*1.4;
+  }
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('aPhase', new THREE.BufferAttribute(ph,1));
+  geo.setAttribute('aRand',  new THREE.BufferAttribute(rndA,1));
+  geo.setAttribute('aSize',  new THREE.BufferAttribute(siz,1));
+  const uni={
+    uTime:{value:0},
+    uA:{value:0},
+    uPx:{value:800},
+    uGold:{value:new THREE.Color(0xffcf7a)},
+    uWhite:{value:new THREE.Color(0xf4f7ff)}
+  };
+  const mat=new THREE.ShaderMaterial({
+    uniforms:uni,
+    transparent:true,
+    depthWrite:false,
+    blending:THREE.AdditiveBlending,
+    vertexShader:/*glsl*/`
+      attribute float aPhase; attribute float aRand; attribute float aSize;
+      uniform float uTime; uniform float uPx;
+      varying float vBlink; varying float vTint;
+      void main(){
+        vec4 mv = modelViewMatrix*vec4(position,1.0);
+        float ph = fract(aPhase + uTime*0.055*(0.5+aRand));
+        float bl = 0.5+0.5*sin(ph*18.0);
+        float steady = step(0.72,aRand);
+        float tw  = 0.5+0.5*sin(ph*60.0+10.0*aRand);
+        vBlink = mix(bl, 0.55+0.45*tw, steady);
+        vTint = aRand;
+        gl_PointSize = aSize * uPx / max(1.0,-mv.z);
+        gl_Position = projectionMatrix*mv;
+      }`,
+    fragmentShader:/*glsl*/`
+      uniform float uA;
+      uniform vec3 uGold; uniform vec3 uWhite;
+      varying float vBlink; varying float vTint;
+      void main(){
+        vec2 c=gl_PointCoord-0.5;
+        float d=length(c);
+        float a=smoothstep(0.5,0.18,d);
+        vec3 col = mix(uGold, uWhite, step(0.42,vTint));
+        float core = smoothstep(0.30,0.04,d);
+        col *= 0.55+1.45*core;
+        float alpha = a*0.92*uA*vBlink;
+        if(alpha<0.003) discard;
+        gl_FragColor = vec4(col*alpha, alpha);
+      }`
+  });
+  const pts=new THREE.Points(geo,mat);
+  pts.frustumCulled=false;
+  scene.add(pts);
+  app.sparkle={ mesh:pts, mat, uni };
+}
+
+/* ============ per-frame night factor driver ============ */
+function setDynamicLights(night){
+  // emissive controllers (materials)
+  for(const fx of app.fx){
+    const m=fx.mat;
+    if(!m) continue;
+    if(m.isPointsMaterial){
+      m.opacity = (fx.d+(fx.n-fx.d)*night);
+      if(m.opacity<0.004 && m.opacity!==0) m.opacity=0;
+    } else if('emissiveIntensity' in m){
+      m.emissiveIntensity = fx.d+(fx.n-fx.d)*night;
+    } else if(m.isMeshBasicMaterial){
+      m.opacity = fx.d+(fx.n-fx.d)*night;
+    }
+  }
+  // main sun / ambient / hemi
+  if(app.sun) app.sun.intensity = 3.7*(1-night);
+  if(app.hemi) app.hemi.intensity = 0.62*Math.max(0.08, 1-night*0.9);
+  if(app.ambient) app.ambient.intensity = 0.10 + 0.10*night;
+  if(scene.environment) scene.environmentIntensity = 0.85*(1-night*0.55);
+  // flood spots
+  for(const f of nightLights){
+    f.light.intensity = f.day+(f.night-f.day)*night;
+  }
+  // sky & fog colours
+  if(skyMesh){
+    skyMesh.material.uniforms.uNight.value = night;
+    if(app.stars) app.stars.mat.opacity = night*(REDUCED?0.6:0.9);
+  }
+  if(scene.fog){
+    scene.fog.color.setHex(0xc8d4de).lerp(new THREE.Color(0x0a0f1c), night);
+  }
+  // sparkles
+  if(app.sparkle){
+    const on = night>0.02 && app.dynamic.sparkleOn;
+    app.sparkle.mesh.visible = on;
+    app.sparkle.uni.uA.value = on ? night : 0;
+    app.sparkle.uni.uTime.value = app.time||0;
+  }
+  if(app.beacon){
+    app.beacon.grp.visible = night>0.02;
+  }
+}
+

@@ -58,8 +58,10 @@ img { display: block; width: 100%; }
 .mark-glyph { color: var(--gold); font-size: 17px; }
 .topnav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;

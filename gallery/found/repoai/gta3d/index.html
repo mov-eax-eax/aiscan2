@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GTA 3D Clone</title>
+<style>
+* { margin: 0; padding: 0; }
+body { overflow: hidden; background: #000; font-family: 'Segoe UI', Arial, sans-serif; }
+canvas { display: block; }
+#blocker {
+ position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+ background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+ z-index: 10; cursor: pointer; flex-direction: column;
+}
+#blocker h1 { color: #fff; font-size: 48px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+#blocker p { color: #ddd; font-size: 18px; margin-top: 10px; }
+#hud {
+ position: fixed; bottom: 20px; left: 20px; right: 20px;
+ z-index: 5; pointer-events: none; display: flex; justify-content: space-between; align-items: flex-end;
+}
+#health-wrap { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; }
+#health-label { color: #fff; font-weight: bold; font-size: 14px; }
+#health-bar { width: 150px; height: 10px; background: #333; border-radius: 5px; overflow: hidden; }
+#health-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #f00, #0f0); border-radius: 5px; transition: width 0.2s; }
+#info {
+ background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px;
+ color: #fff; font-size: 14px; text-align: right;
+}
+#info .money { color: #4caf50; font-weight: bold; }
+#info .wanted { color: #ff5722; }
+#crosshair {
+ position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+ z-index: 6; pointer-events: none; color: #fff; font-size: 24px;
+ opacity: 0.5; text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+#controls-hint {
+ position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+ z-index: 5; color: rgba(255,255,255,0.4); font-size: 12px;
+ pointer-events: none; text-align: center; background: rgba(0,0,0,0.3);
+ padding: 6px 12px; border-radius: 6px;
+}
+#vehicle-hud {
+ position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+ z-index: 5; pointer-events: none; text-align: center;
+ color: #fff; font-size: 14px; background: rgba(0,0,0,0.4);
+ padding: 6px 16px; border-radius: 8px; display: none;
+}
+</style>
+</head>
+<body>
+
+<div id="blocker">
+ <h1>GTA 3D</h1>
+ <p>Click to play</p>
+</div>
+
+<div id="crosshair">+</div>
+<div id="controls-hint">WASD Move · Mouse Look · Click Shoot · Space Jump · E Enter/Exit Car · Shift Sprint</div>
+
+<div id="hud">
+ <div id="health-wrap">
+  <span id="health-label">HP</span>
+  <div id="health-bar"><div id="health-fill"></div></div>
+ </div>
+ <div id="info">
+  <div class="money">$<span id="money">1000</span></div>
+  <div class="wanted">Wanted: <span id="wanted">0</span></div>
+ </div>
+</div>
+
+<div id="vehicle-hud">Press E to exit vehicle</div>
+
+<script type="importmap">
+{
+ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+ }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+// ============================================================
+// SETUP
+// ============================================================
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x87ceeb);
+scene.fog = new THREE.Fog(0x87ceeb, 120, 250);
+
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 300);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+document.body.prepend(renderer.domElement);
+
+// CSS2D Renderer for labels
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0';
+labelRenderer.domElement.style.pointerEvents = 'none';
+document.body.prepend(labelRenderer.domElement);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0x404060, 0.4);
+scene.add(ambientLight);
+
+const sun = new THREE.DirectionalLight(0xffeedd, 1.8);
+sun.position.set(60, 80, 40);
+sun.castShadow = true;
+sun.shadow.mapSize.width = 2048;
+sun.shadow.mapSize.height = 2048;
+sun.shadow.camera.near = 1;
+sun.shadow.camera.far = 200;
+sun.shadow.camera.left = -100;
+sun.shadow.camera.right = 100;
+sun.shadow.camera.top = 100;
+sun.shadow.camera.bottom = -100;
+scene.add(sun);
+
+const hemiLight = new THREE.HemisphereLight(0x87ceeb, 0x3a2a1a, 0.6);
+scene.add(hemiLight);
+
+// ============================================================
+// GAME STATE
+// ============================================================
+const game = {
+ money: 1000,
+ health: 100,
+ maxHealth: 100,
+ wanted: 0,
+ isDriving: false,
+ currentVehicle: null,
+ ammo: 30,
+ score: 0,
+ paused: false,
+};
+
+// ============================================================
+// CITY GENERATION
+// ============================================================
+const CITY_SIZE = 10; // blocks in each direction
+const BLOCK_SIZE = 40;
+const ROAD_WIDTH = 12;
+const SIDEWALK_WIDTH = 3;
+const HALF_BLOCK = BLOCK_SIZE / 2;
+const TOTAL_SIZE = CITY_SIZE * BLOCK_SIZE;
+
+// Ground
+const groundGeo = new THREE.PlaneGeometry(TOTAL_SIZE, TOTAL_SIZE);
+const groundMat = new THREE.MeshStandardMaterial({
+ color: 0x3a7d3a,
+ roughness: 0.9,
+ metalness: 0.0,
+});
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI / 2;
+ground.position.set(0, -0.05, 0);
+ground.receiveShadow = true;
+scene.add(ground);
+
+function buildRoad(x, z, width, length, isHorizontal) {
+ const geo = new THREE.PlaneGeometry(width, length);
+ const mat = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.9, metalness: 0.1 });
+ const road = new THREE.Mesh(geo, mat);
+ road.rotation.x = -Math.PI / 2;
+ road.position.set(x, 0.01, z);
+ road.receiveShadow = true;
+ scene.add(road);
+ return road;
+}
+
+function buildSidewalk(x, z, width, length, isHorizontal) {
+ const geo = new THREE.BoxGeometry(width, 0.15, length);
+ const mat = new THREE.MeshStandardMaterial({ color: 0x999999, roughness: 0.8 });
+ const sw = new THREE.Mesh(geo, mat);
+ sw.position.set(x, 0.075, z);
+ sw.receiveShadow = true;
+ sw.castShadow = true;
+ scene.add(sw);
+ return sw;
+}
+
+function buildCrosswalk(x, z) {
+ const geo = new THREE.PlaneGeometry(ROAD_WIDTH, 3);
+ const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.8 });
+ const cw = new THREE.Mesh(geo, mat);
+ cw.rotation.x = -Math.PI / 2;
+ cw.position.set(x, 0.02, z);
+ scene.add(cw);
+ return cw;
+}
+
+// Build roads, sidewalks, crosswalks
+for (let i = 0; i <= CITY_SIZE; i++) {
+ const pos = -TOTAL_SIZE/2 + i * BLOCK_SIZE;
+
+ // Horizontal road
+ buildRoad(0, pos, TOTAL_SIZE, ROAD_WIDTH, true);
+ buildSidewalk(0, pos - ROAD_WIDTH/2 - SIDEWALK_WIDTH/2, TOTAL_SIZE, SIDEWALK_WIDTH, true);
+ buildSidewalk(0, pos + ROAD_WIDTH/2 + SIDEWALK_WIDTH/2, TOTAL_SIZE, SIDEWALK_WIDTH, true);
+
+ // Vertical road
+ buildRoad(pos, 0, ROAD_WIDTH, TOTAL_SIZE, false);
+ buildSidewalk(pos - ROAD_WIDTH/2 - SIDEWALK_WIDTH/2, 0, SIDEWALK_WIDTH, TOTAL_SIZE, false);
+ buildSidewalk(pos + ROAD_WIDTH/2 + SIDEWALK_WIDTH/2, 0, SIDEWALK_WIDTH, TOTAL_SIZE, false);
+}
+
+// Crosswalks at intersections
+for (let i = 0; i <= CITY_SIZE; i++) {
+ for (let j = 0; j <= CITY_SIZE; j++) {
+  const x = -TOTAL_SIZE/2 + i * BLOCK_SIZE;
+  const z = -TOTAL_SIZE/2 + j * BLOCK_SIZE;
+  if (i < CITY_SIZE) buildCrosswalk(x + BLOCK_SIZE/2, z);
+  if (j < CITY_SIZE) buildCrosswalk(x, z + BLOCK_SIZE/2);
+ }
+}
+
+// Buildings
+const buildings = [];
+
+function createBuilding(x, z, w, d, h, color) {
+ const geo = new THREE.BoxGeometry(w, h, d);
+ const mat = new THREE.MeshStandardMaterial({
+  color: color || new THREE.Color().setHSL(Math.random() * 0.1, 0.1, 0.3 + Math.random() * 0.4),
+  roughness: 0.6,
+  metalness: 0.1,
+ });
+ const mesh = new THREE.Mesh(geo, mat);
+ mesh.position.set(x, h/2, z);
+ mesh.castShadow = true;
+ mesh.receiveShadow = true;
+ scene.add(mesh);
+ buildings.push(mesh);
+
+ // Windows (small emissive boxes on the face)
+ const winMat = new THREE.MeshStandardMaterial({
+  color: 0x88ccff,
+  emissive: 0x224466,
+  emissiveIntensity: 0.3,
+  roughness: 0.2,
+  metalness: 0.8,
+ });
+ if (h > 3) {
+  const floors = Math.floor(h / 3);
+  for (let f = 1; f < floors; f++) {
+   const wy = f * 3 + 0.5;
+   const ww = w * 0.15;
+   const wd = d * 0.15;
+   const gap = w * 0.25;
+   for (let side = 0; side < 4; side++) {
+    const count = side < 2 ? Math.floor(w / gap) : Math.floor(d / gap);
+    const maxDim = side < 2 ? w : d;
+    const otherDim = side < 2 ? d : w;
+    for (let wi = 0; wi < count && wi < 4; wi++) {
+     const wf = new THREE.Mesh(
+      new THREE.BoxGeometry(side < 2 ? ww : 0.05, 1.2, side < 2 ? 0.05 : ww),
+      winMat
+     );
+     const posX = side === 0 ? x + w/2 + 0.05 : side === 1 ? x - w/2 - 0.05 : x + (wi - count/2 + 0.5) * gap;
+     const posZ = side === 2 ? z + d/2 + 0.05 : side === 3 ? z - d/2 - 0.05 : z + (wi - count/2 + 0.5) * gap;
+     wf.position.set(
+      side < 2 ? posX : x + (wi - count/2 + 0.5) * gap,
+      wy,
+      side < 2 ? z + (wi - count/2 + 0.5) * gap : posZ
+     );
+     scene.add(wf);
+    }
+   }
+  }
+ }
+
+ return mesh;
+}
+
+function createTree(x, z) {
+ const trunkMat = new THREE.MeshStandardMaterial({ color: 0x5d3a1a, roughness: 0.9 });
+ const leafMat = new THREE.MeshStandardMaterial({ color: 0x2d8a2d, roughness: 0.8 });
+ const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 2, 6), trunkMat);
+ trunk.position.set(x, 1, z);
+ trunk.castShadow = true;
+ scene.add(trunk);
+ const crown = new THREE.Mesh(new THREE.SphereGeometry(1.2, 6, 6), leafMat);
+ crown.position.set(x, 2.8 + Math.random() * 0.5, z);
+ crown.castShadow = true;
+ scene.add(crown);
+}
+
+function createStreetlight(x, z) {
+ const poleMat = new THREE.MeshStandardMaterial({ color: 0x444444, metalness: 0.6, roughness: 0.4 });
+ const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.12, 4.5, 6), poleMat);
+ pole.position.set(x, 2.25, z);
+ pole.castShadow = true;
+ scene.add(pole);
+ const arm = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.06, 0.06), poleMat);
+ arm.position.set(x + 0.3, 4.5, z);
+ scene.add(arm);
+ const lightMat = new THREE.MeshStandardMaterial({ color: 0xffee88, emissive: 0xffee88, emissiveIntensity: 0.5 });
+ const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.15, 6, 6), lightMat);
+ bulb.position.set(x + 0.5, 4.4, z);
+ scene.add(bulb);
+}
+
+// Generate city blocks
+const buildingColors = [0x8B7355, 0xA0522D, 0x6B4226, 0x7B6B5A, 0x9B8B7A, 0x5B4B3A, 0xB8860B, 0xCD853F, 0x8B7D6B, 0x6B5B4B, 0x4B6B8B, 0x5B7B9B, 0x7B6B8B];
+const buildingPositions = [];
+
+for (let bx = 0; bx < CITY_SIZE; bx++) {
+ for (let bz = 0; bz < CITY_SIZE; bz++) {
+  const cx = -TOTAL_SIZE/2 + bx * BLOCK_SIZE + BLOCK_SIZE/2;
+  const cz = -TOTAL_SIZE/2 + bz * BLOCK_SIZE + BLOCK_SIZE/2;
+
+  const roadGap = ROAD_WIDTH/2 + SIDEWALK_WIDTH + 1;
+  const maxDim = (BLOCK_SIZE - 2 * roadGap) * 0.9;
+
+  // 1-4 buildings per block
+  const numBld = 1 + Math.floor(Math.random() * 3);
+  for (let bi = 0; bi < numBld; bi++) {
+   const w = 5 + Math.random() * (maxDim * 0.4);
+   const d = 5 + Math.random() * (maxDim * 0.4);
+   const h = 3 + Math.random() * 25;
+   const color = buildingColors[Math.floor(Math.random() * buildingColors.length)];
+
+   const maxX = maxDim / 2 - w/2;
+   const maxZ = maxDim / 2 - d/2;
+
+   let px, pz, attempts = 0;
+   do {
+    px = cx + (Math.random() - 0.5) * (maxDim - w);
+    pz = cz + (Math.random() - 0.5) * (maxDim - d);
+    attempts++;
+   } while (attempts < 20 && buildingPositions.some(b => Math.abs(b.x - px) < (b.w + w)/2 + 1 && Math.abs(b.z - pz) < (b.d + d)/2 + 1));
+
+   createBuilding(px, pz, w, d, h, color);
+   buildingPositions.push({ x: px, z: pz, w, d, h });
+  }
+
+  // Trees along roads
+  if (Math.random() < 0.4) {
+   const side = Math.floor(Math.random() * 4);
+   const off = ROAD_WIDTH/2 + SIDEWALK_WIDTH + 1 + Math.random() * 2;
+   if (side === 0) createTree(cx + maxDim/2 * 0.7, cz + off);
+   else if (side === 1) createTree(cx - maxDim/2 * 0.7, cz - off);
+   else if (side === 2) createTree(cx + off, cz + maxDim/2 * 0.7);
+   else createTree(cx - off, cz - maxDim/2 * 0.7);
+  }
+ }
+}
+
+// ============================================================
+// PLAYER
+// ============================================================
+const playerGroup = new THREE.Group();
+
+// Body
+const bodyMat = new THREE.MeshStandardMaterial({ color: 0x2266cc, roughness: 0.5 });
+const body = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.35, 1.2, 8), bodyMat);
+body.position.y = 0.6;
+body.castShadow = true;
+playerGroup.add(body);
+
+// Head
+const headMat = new THREE.MeshStandardMaterial({ color: 0xf5cba7, roughness: 0.3 });
+const head = new THREE.Mesh(new THREE.SphereGeometry(0.22, 8, 8), headMat);
+head.position.y = 1.3;
+head.castShadow = true;
+playerGroup.add(head);
+
+// Arms
+const armMat = new THREE.MeshStandardMaterial({ color: 0xf5cba7, roughness: 0.3 });
+for (let side = -1; side <= 1; side += 2) {
+ const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.5, 6), armMat);
+ arm.position.set(side * 0.35, 0.9, 0);
+ arm.rotation.z = side * 0.2;
+ arm.castShadow = true;
+ playerGroup.add(arm);
+}
+
+// Legs
+const legMat = new THREE.MeshStandardMaterial({ color: 0x1a1a2e, roughness: 0.7 });
+for (let side = -1; side <= 1; side += 2) {
+ const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.08, 0.5, 6), legMat);
+ leg.position.set(side * 0.12, 0.25, 0);
+ leg.castShadow = true;
+ playerGroup.add(leg);
+}
+
+playerGroup.position.set(0, 0, 20);
+scene.add(playerGroup);
+
+const player = {
+ mesh: playerGroup,
+ height: 1.5,
+ speed: 0,
+ maxSpeed: 8,
+ accel: 20,
+ friction: 8,
+ angle: 0,
+ velocity: new THREE.Vector3(),
+ grounded: true,
+ jumpVelocity: 0,
+ onGround: true,
+};
+
+// ============================================================
+// VEHICLES
+// ============================================================
+const vehicles = [];
+
+function createCar(x, z, angle) {
+ const group = new THREE.Group();
+
+ const bodyMat = new THREE.MeshStandardMaterial({ color: 0xcc2222, roughness: 0.5, metalness: 0.3 });
+ const darkMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.8 });
+ const glassMat = new THREE.MeshStandardMaterial({
+  color: 0x4488aa,
+  transparent: true,
+  opacity: 0.3,
+  roughness: 0.1,
+  metalness: 0.9,
+ });
+ const lightMat = new THREE.MeshStandardMaterial({ color: 0xffee44, emissive: 0xffcc00, emissiveIntensity: 0.3 });
+ const tailMat = new THREE.MeshStandardMaterial({ color: 0xff2200, emissive: 0xff0000, emissiveIntensity: 0.2 });
+
+ // Main body
+ const bodyMesh = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.4, 2.4), bodyMat);
+ bodyMesh.position.y = 0.3;
+ bodyMesh.castShadow = true;
+ group.add(bodyMesh);
+
+ // Cabin
+ const cabin = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.35, 1.2), glassMat);
+ cabin.position.set(0, 0.65, -0.2);
+ cabin.castShadow = true;
+ group.add(cabin);
+
+ // Hood
+ const hood = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.08, 0.5), darkMat);
+ hood.position.set(0, 0.52, 0.9);
+ group.add(hood);
+
+ // Bumpers
+ const bumpMat = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.9 });
+ const fBump = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.08, 0.08), bumpMat);
+ fBump.position.set(0, 0.15, 1.24);
+ group.add(fBump);
+ const bBump = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.08, 0.08), bumpMat);
+ bBump.position.set(0, 0.15, -1.24);
+ group.add(bBump);
+
+ // Headlights
+ const hl = new THREE.Mesh(new THREE.SphereGeometry(0.06, 6, 6), lightMat);
+ hl.position.set(-0.3, 0.25, 1.22);
+ group.add(hl);
+ const hr = new THREE.Mesh(new THREE.SphereGeometry(0.06, 6, 6), lightMat);
+ hr.position.set(0.3, 0.25, 1.22);
+ group.add(hr);
+
+ // Taillights
+ const tl = new THREE.Mesh(new THREE.SphereGeometry(0.06, 6, 6), tailMat);
+ tl.position.set(-0.3, 0.25, -1.22);
+ group.add(tl);
+ const tr = new THREE.Mesh(new THREE.SphereGeometry(0.06, 6, 6), tailMat);
+ tr.position.set(0.3, 0.25, -1.22);
+ group.add(tr);
+
+ // Wheels
+ const wheelMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.9 });
+ const rimMat = new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.6, roughness: 0.3 });
+ const wheelPositions = [
+  [-0.65, 0.12, 0.7], [0.65, 0.12, 0.7],
+  [-0.65, 0.12, -0.7], [0.65, 0.12, -0.7],
+ ];
+ const wheels = [];
+ for (const wp of wheelPositions) {
+  const wheelGroup = new THREE.Group();
+  const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.1, 8), wheelMat);
+  wheel.rotation.x = Math.PI / 2;
+  wheelGroup.add(wheel);
+  const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.11, 6), rimMat);
+  rim.rotation.x = Math.PI / 2;
+  wheelGroup.add(rim);
+  wheelGroup.position.set(wp[0], wp[1], wp[2]);
+  group.add(wheelGroup);
+  wheels.push(wheelGroup);
+ }
+
+ group.position.set(x, 0, z);
+ group.rotation.y = angle;
+ scene.add(group);
+
+ const car = {
+  mesh: group,
+  speed: 0,
+  maxSpeed: 25,
+  acceleration: 15,
+  braking: 30,
+  friction: 4,
+  turnSpeed: 2.5,
+  angle: angle,
+  wheels: wheels,
+  isPlayerCar: false,
+  color: bodyMat.color.getHex(),
+ };
+
+ vehicles.push(car);
+ return car;
+}
+
+// Spawn cars around the city
+for (let i = 0; i < 8; i++) {
+ let cx, cz, valid;
+ do {
+  const bx = Math.floor(Math.random() * CITY_SIZE);
+  const bz = Math.floor(Math.random() * CITY_SIZE);
+  cx = -TOTAL_SIZE/2 + bx * BLOCK_SIZE + BLOCK_SIZE/2 + (Math.random() - 0.5) * BLOCK_SIZE * 0.6;
+  cz = -TOTAL_SIZE/2 + bz * BLOCK_SIZE + BLOCK_SIZE/2 + (Math.random() - 0.5) * BLOCK_SIZE * 0.6;
+  valid = true;
+  for (const b of buildingPositions) {
+   if (Math.abs(b.x - cx) < b.w/2 + 1.5 && Math.abs(b.z - cz) < b.d/2 + 1.5) { valid = false; break; }
+  }
+ } while (!valid);
+
+ const angle = Math.random() * Math.PI * 2;
+ createCar(cx, cz, angle);
+}
+
+// Place a special car near player
+const playerCar = createCar(8, 20, 0);
+playerCar.isPlayerCar = true;
+
+// ============================================================
+// NPCS
+// ============================================================
+const npcs = [];
+
+function createNPC(x, z) {
+ const group = new THREE.Group();
+ const skinMat = new THREE.MeshStandardMaterial({ color: 0xf5cba7, roughness: 0.5 });
+ const clothMat = new THREE.MeshStandardMaterial({
+  color: new THREE.Color().setHSL(Math.random() * 0.15, 0.5, 0.4 + Math.random() * 0.3),
+  roughness: 0.6,
+ });
+ const darkMat = new THREE.MeshStandardMaterial({ color: 0x1a1a2e, roughness: 0.7 });
+
+ const body = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.28, 0.8, 6), clothMat);
+ body.position.y = 0.4;
+ body.castShadow = true;
+ group.add(body);
+
+ const head = new THREE.Mesh(new THREE.SphereGeometry(0.16, 6, 6), skinMat);
+ head.position.y = 0.95;
+ head.castShadow = true;
+ group.add(head);
+
+ for (let s = -1; s <= 1; s += 2) {
+  const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.4, 5), darkMat);
+  leg.position.set(s * 0.09, 0.2, 0);
+  leg.castShadow = true;
+  group.add(leg);
+  const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.05, 0.4, 5), skinMat);
+  arm.position.set(s * 0.28, 0.7, 0);
+  arm.rotation.z = s * 0.3;
+  arm.castShadow = true;
+  group.add(arm);
+ }
+
+ group.position.set(x, 0, z);
+ scene.add(group);
+
+ const npc = {
+  mesh: group,
+  angle: Math.random() * Math.PI * 2,
+  speed: 1 + Math.random() * 2,
+  targetPos: null,
+  stuckTimer: 0,
+  alive: true,
+  health: 30,
+  wanderTimer: 0,
+  state: 'walk', // walk, idle
+  stateTimer: 0,
+ };
+
+ npcs.push(npc);
+ return npc;
+}
+
+// Spawn NPCs
+for (let i = 0; i < 25; i++) {
+ let nx, nz, valid;
+ do {
+  const bx = Math.floor(Math.random() * CITY_SIZE);
+  const bz = Math.floor(Math.random() * CITY_SIZE);
+  nx = -TOTAL_SIZE/2 + bx * BLOCK_SIZE + BLOCK_SIZE/2 + (Math.random() - 0.5) * BLOCK_SIZE * 0.7;
+  nz = -TOTAL_SIZE/2 + bz * BLOCK_SIZE + BLOCK_SIZE/2 + (Math.random() - 0.5) * BLOCK_SIZE * 0.7;
+  valid = true;
+  for (const b of buildingPositions) {
+   if (Math.abs(b.x - nx) < b.w/2 + 0.5 && Math.abs(b.z - nz) < b.d/2 + 0.5) { valid = false; break; }
+  }
+ } while (!valid);
+
+ createNPC(nx, nz);
+}
+
+// ============================================================
+// PROJECTILES
+// ============================================================
+const projectiles = [];
+
+function fireProjectile(origin, direction) {
+ const bulletMat = new THREE.MeshStandardMaterial({
+  color: 0xffcc00,
+  emissive: 0xff8800,
+  emissiveIntensity: 1,
+ });
+ const bullet = new THREE.Mesh(new THREE.SphereGeometry(0.08, 6, 6), bulletMat);
+ bullet.position.copy(origin);
+ scene.add(bullet);
+
+ const flash = new THREE.PointLight(0xff8800, 2, 5);
+ flash.position.copy(origin);
+ scene.add(flash);
+ setTimeout(() => scene.remove(flash), 50);
+
+ projectiles.push({
+  mesh: bullet,
+  velocity: direction.clone().multiplyScalar(60),
+  life: 2,
+  damage: 15,
+ });
+}
+
+// ============================================================
+// EXPLOSIONS
+// ============================================================
+const explosions = [];
+
+function createExplosion(position, size) {
+ const particleCount = 20;
+ const particles = [];
+ const color = 0xff6600;
+
+ for (let i = 0; i < particleCount; i++) {
+  const geo = new THREE.SphereGeometry(0.08 + Math.random() * 0.12, 4, 4);
+  const mat = new THREE.MeshStandardMaterial({
+   color: color,
+   emissive: 0xff4400,
+   emissiveIntensity: 0.8,
+  });
+  const p = new THREE.Mesh(geo, mat);
+  p.position.copy(position);
+  p.position.x += (Math.random() - 0.5) * 0.3;
+  p.position.z += (Math.random() - 0.5) * 0.3;
+  scene.add(p);
+  particles.push({
+   mesh: p,
+   velocity: new THREE.Vector3(
+    (Math.random() - 0.5) * 8,
+    Math.random() * 8,
+    (Math.random() - 0.5) * 8,
+   ),
+   life: 0.5 + Math.random() * 0.5,
+  });
+ }
+
+ explosions.push({ particles, timer: 1 });
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+const keys = {};
+let mouseX = 0, mouseY = 0;
+let isLocked = false;
+
+document.addEventListener('keydown', (e) => { keys[e.key.toLowerCase()] = true; });
+document.addEventListener('keyup', (e) => { keys[e.key.toLowerCase()] = false; });
+
+const blocker = document.getElementById('blocker');
+blocker.addEventListener('click', () => {
+ renderer.domElement.requestPointerLock();
+});
+
+document.addEventListener('pointerlockchange', () => {
+ isLocked = document.pointerLockElement === renderer.domElement;
+ blocker.style.display = isLocked ? 'none' : 'flex';
+});
+
+document.addEventListener('mousemove', (e) => {
+ if (!isLocked) return;
+ mouseX += e.movementX * 0.001;
+ mouseY += e.movementY * 0.001;
+ mouseY = Math.max(-1.2, Math.min(0.8, mouseY));
+});
+
+document.addEventListener('mousedown', (e) => {
+ if (!isLocked || e.button !== 0) return;
+ if (game.health <= 0) return;
+
+ const dir = new THREE.Vector3(0, 0, -1);
+ dir.applyQuaternion(camera.quaternion);
+
+ const origin = camera.position.clone();
+ origin.add(dir.clone().multiplyScalar(1.5));
+
+ fireProjectile(origin, dir);
+ game.ammo--;
+});
+
+// ============================================================
+// CAMERA
+// ============================================================
+const CAM_DISTANCE = 8;
+const CAM_HEIGHT = 3;
+let camAngle = 0;
+let camElevation = 0.3;
+let camSmoothPos = new THREE.Vector3();
+let camSmoothTarget = new THREE.Vector3();
+
+// ============================================================
+// INPUT STATE
+// ============================================================
+let moveForward = false;
+let moveBackward = false;
+let moveLeft = false;
+let moveRight = false;
+let jumpPressed = false;
+let interactPressed = false;
+let sprintHeld = false;
+
+// ============================================================
+// GAME LOOP
+// ============================================================
+const clock = new THREE.Clock();
+let time = 0;
+
+function updatePlayer(dt) {
+ if (game.health <= 0) return;
+
+ const forward = new THREE.Vector3(0, 0, -1);
+ forward.applyQuaternion(camera.quaternion);
+ forward.y = 0;
+ forward.normalize();
+
+ const right = new THREE.Vector3(1, 0, 0);
+ right.applyQuaternion(camera.quaternion);
+ right.y = 0;
+ right.normalize();
+
+ let moveDir = new THREE.Vector3();
+ if (moveForward) moveDir.add(forward);
+ if (moveBackward) moveDir.sub(forward);
+ if (moveLeft) moveDir.sub(right);
+ if (moveRight) moveDir.add(right);
+
+ const sprintMult = sprintHeld ? 1.6 : 1;
+
+ if (moveDir.length() > 0) {
+  moveDir.normalize();
+  const targetAngle = Math.atan2(moveDir.x, moveDir.z);
+  player.angle += Math.sin(targetAngle - player.angle) * 10 * dt;
+
+  player.speed += player.accel * dt;
+  if (player.speed > player.maxSpeed * sprintMult) player.speed = player.maxSpeed * sprintMult;
+
+  // Update mesh rotation smoothly
+  player.mesh.rotation.y = player.angle;
+ } else {
+  player.speed -= player.friction * dt;
+  if (player.speed < 0) player.speed = 0;
+ }
+
+ // Jump
+ if (jumpPressed && player.onGround) {
+  player.jumpVelocity = 6;
+  player.onGround = false;
+ }
+
+ // Apply velocity
+ const moveVec = new THREE.Vector3(
+  Math.sin(player.angle) * player.speed,
+  0,
+  Math.cos(player.angle) * player.speed,
+ );
+
+ player.mesh.position.x += moveVec.x * dt;
+ player.mesh.position.z += moveVec.z * dt;
+
+ // Gravity
+ if (!player.onGround) {
+  player.jumpVelocity -= 15 * dt;
+  player.mesh.position.y += player.jumpVelocity * dt;
+  if (player.mesh.position.y <= 0) {
+   player.mesh.position.y = 0;
+   player.jumpVelocity = 0;
+   player.onGround = true;
+  }
+ }
+
+ // Stay in bounds
+ const bound = TOTAL_SIZE / 2 - 2;
+ player.mesh.position.x = Math.max(-bound, Math.min(bound, player.mesh.position.x));
+ player.mesh.position.z = Math.max(-bound, Math.min(bound, player.mesh.position.z));
+
+ // Check car proximity for enter
+ if (interactPressed && !game.isDriving) {
+  for (const car of vehicles) {
+   const dist = player.mesh.position.distanceTo(car.mesh.position);
+   if (dist < 3) {
+    enterVehicle(car);
+    break;
+   }
+  }
+ }
+}
+
+function enterVehicle(car) {
+ game.isDriving = true;
+ game.currentVehicle = car;
+ player.mesh.visible = false;
+ document.getElementById('vehicle-hud').style.display = 'block';
+}
+
+function exitVehicle() {
+ if (!game.currentVehicle) return;
+ game.isDriving = false;
+ const car = game.currentVehicle;
+ player.mesh.position.set(car.mesh.position.x + 2, 0, car.mesh.position.z + 2);
+ player.mesh.visible = true;
+ game.currentVehicle = null;
+ document.getElementById('vehicle-hud').style.display = 'none';
+}
+
+function updateVehicle(dt) {
+ if (!game.isDriving || !game.currentVehicle) return;
+ const car = game.currentVehicle;
+
+ let accel = 0;
+ let steer = 0;
+
+ if (moveForward) accel = 1;
+ if (moveBackward) accel = -0.7;
+ if (moveLeft) steer = 1;
+ if (moveRight) steer = -1;
+
+ // Acceleration
+ if (accel > 0) {
+  car.speed += car.acceleration * accel * dt;
+  if (car.speed > car.maxSpeed) car.speed = car.maxSpeed;
+ } else if (accel < 0) {
+  if (car.speed > 0) {
+   car.speed += car.acceleration * accel * dt;
+  } else {
+   car.speed += car.acceleration * accel * 0.7 * dt;
+   if (car.speed < -car.maxSpeed * 0.4) car.speed = -car.maxSpeed * 0.4;
+  }
+ } else {
+  // Friction
+  if (car.speed > 0) {
+   car.speed -= car.friction * dt;
+   if (car.speed < 0) car.speed = 0;
+  } else if (car.speed < 0) {
+   car.speed += car.friction * dt;
+   if (car.speed > 0) car.speed = 0;
+  }
+ }
+
+ // Steering
+ if (Math.abs(car.speed) > 0.5) {
+  const turnFactor = Math.min(Math.abs(car.speed) / car.maxSpeed, 1) * car.turnSpeed;
+  car.angle += steer * turnFactor * dt * Math.sign(car.speed);
+ }
+
+ // Move
+ car.mesh.position.x += Math.sin(car.angle) * car.speed * dt;
+ car.mesh.position.z += Math.cos(car.angle) * car.speed * dt;
+ car.mesh.rotation.y = car.angle;
+
+ // Wheel rotation
+ const wheelRotSpeed = car.speed * 3;
+ for (const w of car.wheels) {
+  w.children[0].rotation.x += wheelRotSpeed * dt;
+  w.children[1].rotation.x += wheelRotSpeed * dt;
+ }
+
+ // Bound check
+ const bound = TOTAL_SIZE / 2 - 2;
+ car.mesh.position.x = Math.max(-bound, Math.min(bound, car.mesh.position.x));
+ car.mesh.position.z = Math.max(-bound, Math.min(bound, car.mesh.position.z));
+
+ // Exit vehicle
+ if (interactPressed) {
+  exitVehicle();
+ }
+}
+
+function updateCamera(dt) {
+ let target, followAngle;
+ let heightOffset = CAM_HEIGHT;
+
+ if (game.isDriving && game.currentVehicle) {
+  target = game.currentVehicle.mesh.position.clone();
+  followAngle = game.currentVehicle.angle;
+  heightOffset = 3.5;
+  camAngle += (followAngle + Math.PI - camAngle) * 0.02;
+ } else {
+  target = player.mesh.position.clone();
+  target.y += 0.5;
+  followAngle = player.angle;
+ }
+
+ // Mouse control
+  if (isLocked) {
+   camAngle += mouseX * 0.5;
+   camElevation += mouseY * 0.3;
+   camElevation = Math.max(0.1, Math.min(1.2, camElevation));
+   mouseX = 0;
+   mouseY = 0;
+  }
+
+ const dist = CAM_DISTANCE;
+ const desiredPos = new THREE.Vector3(
+  target.x + Math.sin(camAngle) * dist * Math.cos(camElevation),
+  target.y + heightOffset + Math.sin(camElevation) * dist,
+  target.z + Math.cos(camAngle) * dist * Math.cos(camElevation),
+ );
+
+ if (!camSmoothPos.length()) camSmoothPos.copy(desiredPos);
+
+ const smoothSpeed = game.isDriving ? 4 : 6;
+ camSmoothPos.lerp(desiredPos, 1 - Math.exp(-smoothSpeed * dt));
+ camSmoothTarget.lerp(target, 1 - Math.exp(-smoothSpeed * dt));
+
+ camera.position.copy(camSmoothPos);
+ camera.lookAt(camSmoothTarget);
+}
+
+function updateNPCs(dt) {
+ const playerPos = player.mesh.position;
+
+ for (const npc of npcs) {
+  if (!npc.alive) continue;
+
+  npc.stateTimer -= dt;
+
+  if (npc.state === 'idle') {
+   if (npc.stateTimer <= 0) {
+    npc.state = 'walk';
+    npc.stateTimer = 2 + Math.random() * 4;
+    npc.angle = Math.random() * Math.PI * 2;
+    npc.speed = 1 + Math.random() * 2;
+   }
+  } else {
+   // Walk
+   npc.mesh.position.x += Math.sin(npc.angle) * npc.speed * dt;
+   npc.mesh.position.z += Math.cos(npc.angle) * npc.speed * dt;
+   npc.mesh.rotation.y = npc.angle;
+
+   // Avoid buildings (simple push)
+   for (const b of buildingPositions) {
+    const dx = npc.mesh.position.x - b.x;
+    const dz = npc.mesh.position.z - b.z;
+    if (Math.abs(dx) < b.w/2 + 0.5 && Math.abs(dz) < b.d/2 + 0.5) {
+     if (Math.abs(dx / (b.w/2)) > Math.abs(dz / (b.d/2))) {
+      npc.mesh.position.x += Math.sign(dx) * 0.5 * dt;
+     } else {
+      npc.mesh.position.z += Math.sign(dz) * 0.5 * dt;
+     }
+     npc.angle += Math.PI * 0.5;
+    }
+   }
+
+   // Keep in bounds
+   const bound = TOTAL_SIZE / 2 - 2;
+   npc.mesh.position.x = Math.max(-bound, Math.min(bound, npc.mesh.position.x));
+   npc.mesh.position.z = Math.max(-bound, Math.min(bound, npc.mesh.position.z));
+
+   if (npc.stateTimer <= 0) {
+    npc.state = Math.random() < 0.3 ? 'idle' : 'walk';
+    npc.stateTimer = 1 + Math.random() * 3;
+    if (npc.state === 'walk') {
+     npc.angle = Math.random() * Math.PI * 2;
+    }
+   }
+  }
+
+  // React to gunfire nearby
+  const distToPlayer = npc.mesh.position.distanceTo(playerPos);
+  if (distToPlayer < 15 && game.health > 0) {
+   // NPCs flee from player if shooting nearby
+   for (const p of projectiles) {
+    if (npc.mesh.position.distanceTo(p.mesh.position) < 20) {
+     npc.angle = Math.atan2(
+      npc.mesh.position.x - playerPos.x,
+      npc.mesh.position.z - playerPos.z,
+     );
+     npc.speed = 4;
+     npc.state = 'walk';
+     npc.stateTimer = 3;
+     break;
+    }
+   }
+  }
+ }
+}
+
+function updateProjectiles(dt) {
+ for (let i = projectiles.length - 1; i >= 0; i--) {
+  const p = projectiles[i];
+  p.life -= dt;
+
+  if (p.life <= 0) {
+   scene.remove(p.mesh);
+   projectiles.splice(i, 1);
+   continue;
+  }
+
+  p.mesh.position.add(p.velocity.clone().multiplyScalar(dt));
+
+  // Check NPC hits
+  for (const npc of npcs) {
+   if (!npc.alive) continue;
+   const dist = p.mesh.position.distanceTo(npc.mesh.position);
+   if (dist < 0.8) {
+    npc.health -= p.damage;
+    if (npc.health <= 0) {
+     npc.alive = false;
+     npc.mesh.visible = false;
+     createExplosion(npc.mesh.position.clone(), 1);
+     game.money += 50;
+     game.wanted = Math.min(5, game.wanted + 1);
+     document.getElementById('money').textContent = game.money;
+     document.getElementById('wanted').textContent = game.wanted;
+    } else {
+     createExplosion(p.mesh.position.clone(), 0.5);
+     npc.angle = Math.atan2(
+      npc.mesh.position.x - p.mesh.position.x,
+      npc.mesh.position.z - p.mesh.position.z,
+     );
+     npc.speed = 5;
+    }
+    scene.remove(p.mesh);
+    projectiles.splice(i, 1);
+    break;
+   }
+  }
+
+  // Check bounds
+  const bound = TOTAL_SIZE / 2;
+  if (Math.abs(p.mesh.position.x) > bound || Math.abs(p.mesh.position.z) > bound) {
+   scene.remove(p.mesh);
+   projectiles.splice(i, 1);
+  }
+ }
+}
+
+function updateExplosions(dt) {
+ for (let i = explosions.length - 1; i >= 0; i--) {
+  const exp = explosions[i];
+  exp.timer -= dt;
+  let allDead = true;
+  for (const p of exp.particles) {
+   p.life -= dt;
+   if (p.life <= 0) {
+    p.mesh.visible = false;
+   } else {
+    allDead = false;
+    p.mesh.position.add(p.velocity.clone().multiplyScalar(dt));
+    p.velocity.y -= 9.8 * dt;
+   }
+  }
+  if (exp.timer <= 0 || allDead) {
+   for (const p of exp.particles) scene.remove(p.mesh);
+   explosions.splice(i, 1);
+  }
+ }
+}
+
+function updateHUD() {
+ const healthPct = Math.max(0, game.health / game.maxHealth * 100);
+ document.getElementById('health-fill').style.width = healthPct + '%';
+}
+
+function handleRespawn() {
+ if (game.health <= 0) {
+  if (keys['r']) {
+   game.health = game.maxHealth;
+   player.mesh.position.set(0, 0, 20);
+   player.speed = 0;
+   player.jumpVelocity = 0;
+   player.onGround = true;
+   if (game.isDriving) exitVehicle();
+  }
+ }
+}
+
+// ============================================================
+// MAIN LOOP
+// ============================================================
+function animate() {
+ requestAnimationFrame(animate);
+
+ const dt = Math.min(clock.getDelta(), 0.05);
+ time += dt;
+
+ // Read controls
+ moveForward = keys['w'];
+ moveBackward = keys['s'];
+ moveLeft = keys['a'];
+ moveRight = keys['d'];
+ jumpPressed = keys[' '];
+ sprintHeld = keys['shift'];
+ interactPressed = keys['e'];
+
+ if (game.health <= 0) {
+  moveForward = moveBackward = moveLeft = moveRight = jumpPressed = false;
+ }
+
+ // Update
+ if (!game.isDriving) {
+  updatePlayer(dt);
+ } else {
+  updateVehicle(dt);
+ }
+
+ updateCamera(dt);
+ updateNPCs(dt);
+ updateProjectiles(dt);
+ updateExplosions(dt);
+ updateHUD();
+
+ // Respawn
+ if (game.health <= 0) {
+  if (keys['r']) {
+   const closestCar = vehicles.reduce((a, b) => {
+    const da = a.mesh.position.distanceTo(new THREE.Vector3(0, 0, 20));
+    const db = b.mesh.position.distanceTo(new THREE.Vector3(0, 0, 20));
+    return da < db ? a : b;
+   });
+   game.health = game.maxHealth;
+   game.wanted = 0;
+   document.getElementById('wanted').textContent = game.wanted;
+   player.mesh.position.set(0, 0, 20);
+   player.speed = 0;
+   player.jumpVelocity = 0;
+   player.onGround = true;
+   if (game.isDriving) exitVehicle();
+   keys['r'] = false;
+  }
+ }
+
+ // Sun movement (simple day cycle)
+ const sunAngle = time * 0.02;
+ sun.position.x = Math.cos(sunAngle) * 80;
+ sun.position.z = Math.sin(sunAngle) * 80;
+ sun.position.y = 40 + Math.sin(sunAngle) * 40;
+
+ // Night detection for emissive
+ const nightAmount = Math.max(0, -Math.sin(sunAngle));
+ scene.background.setHSL(0.6, 0.4, 0.5 + nightAmount * (-0.3));
+ scene.fog.color.copy(scene.background);
+
+ // Render
+ renderer.render(scene, camera);
+ labelRenderer.render(scene, camera);
+}
+
+// ============================================================
+// RESIZE
+// ============================================================
+window.addEventListener('resize', () => {
+ camera.aspect = window.innerWidth / window.innerHeight;
+ camera.updateProjectionMatrix();
+ renderer.setSize(window.innerWidth, window.innerHeight);
+ labelRenderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Start
+animate();
+
+// Initial HUD
+document.getElementById('money').textContent = game.money;
+document.getElementById('wanted').textContent = game.wanted;
+
+</script>
+</body>
+</html>

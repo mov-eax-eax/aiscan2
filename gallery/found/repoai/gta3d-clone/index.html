@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffeb3b'/%3E%3Ctext y='52' font-size='52' text-anchor='middle' x='32' font-family='Arial Black'%3E%F0%9F%8E%B2%3C/text%3E%3C/svg%3E" />
+<title>GTA 3D Clone</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="hud">
+  <div id="wanted">
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+  </div>
+  <div id="missionObjective"><span id="objectiveText">FIND THE MISSION GIVER</span><span id="objectiveProgress"></span></div>
+  <div id="stats">
+    <div id="health">
+      <svg class="statIcon" viewBox="0 0 24 24"><path fill="#f44336" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <div id="healthBar"></div>
+      <span id="healthText">100</span>
+    </div>
+    <div id="armor">
+      <svg class="statIcon" viewBox="0 0 24 24"><path fill="#42a5f5" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      <div id="armorBar"></div>
+      <span id="armorText">0</span>
+    </div>
+  </div>
+  <div id="moneyBox">
+    <span id="moneyDollar">$</span><span id="money">0</span>
+  </div>
+  <div id="weaponBox">
+    <div id="weaponName">Fists</div>
+    <div id="weaponAmmo">&infin;</div>
+  </div>
+  <div id="combo"></div>
+  <div id="info">1-7 weapons &middot; Q lock-on &middot; R reload &middot; F melee &middot; E interact &middot; Click shoot</div>
+  <div id="message"></div>
+  <div id="minimap">
+    <canvas id="minimapCanvas" width="180" height="180"></canvas>
+  </div>
+  <svg id="crosshair" viewBox="0 0 40 40" width="60" height="60">
+    <line x1="20" y1="4" x2="20" y2="14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="20" y1="26" x2="20" y2="36" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="4" y1="20" x2="14" y2="20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="26" y1="20" x2="36" y2="20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="20" cy="20" r="1.5" fill="white"/>
+  </svg>
+  <div id="lockStatus">⌐ LOCK ■</div>
+  <div id="hitMarker">&#10005;</div>
+  <div id="damageBorder"></div>
+  <div id="pause">CLICK TO PLAY</div>
+</div>
+
+<div id="titleScreen">
+  <div class="titleContent">
+    <div class="titleBadge">3D OPEN WORLD</div>
+    <h1>CRIME CITY</h1>
+    <p class="subtitle">A GTA-inspired sandbox</p>
+    <button id="playBtn">▶  CLICK TO PLAY</button>
+    <div class="controls">
+      <div class="controlRow"><span class="key">WASD</span> Move</div>
+      <div class="controlRow"><span class="key">SHIFT</span> Run</div>
+      <div class="controlRow"><span class="key">SPACE</span> Jump</div>
+      <div class="controlRow"><span class="key">E</span> Interact / Enter Vehicle</div>
+      <div class="controlRow"><span class="key">F</span> Punch / Melee</div>
+      <div class="controlRow"><span class="key">CLICK</span> Shoot</div>
+      <div class="controlRow"><span class="key">R</span> Reload &middot; <span class="key">ESC</span> Release Mouse</div>
+    </div>
+    <div class="objective">Find the yellow marker to start your first job</div>
+  </div>
+</div>
+
+<canvas id="game"></canvas>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="game.js"></script>
+</body>
+</html>

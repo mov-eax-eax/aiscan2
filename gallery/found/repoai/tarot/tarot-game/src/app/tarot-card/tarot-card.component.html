@@ -1,0 +1,37 @@
+<div class="card-container" [@cardEnter] *ngIf="card">
+  <div class="card" [ngClass]="{'transform rotate-180': card.isReversed}" (click)="flipCard()">
+    <div class="card-inner" [@cardFlip]="cardState">
+      <div class="card-front">
+        <div class="flex flex-col items-center justify-center h-full bg-gradient-to-br {{ card.imagery.backgroundColor }} border-4 border-{{ card.imagery.borderColor }} rounded-lg">
+          <div class="text-6xl font-bold mb-3 text-{{ card.imagery.symbolColor }} opacity-90">{{ card.name.charAt(0) }}</div>
+          <div class="text-xl font-bold text-center text-{{ card.imagery.detailColor }} px-2">{{ card.name }}</div>
+          <div class="mt-3 flex flex-wrap justify-center gap-1 px-2">
+            <span *ngFor="let keyword of card.keywords.slice(0, 3)" class="text-xs bg-{{ card.imagery.borderColor }} bg-opacity-30 text-{{ card.imagery.symbolColor }} px-2 py-1 rounded-full">
+              {{ keyword }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="card-back">
+        <div class="card-content text-center bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 h-full overflow-y-auto">
+          <h3 class="text-xl font-bold mb-2 text-yellow-400">{{ card.name }} 
+            <span *ngIf="card.isReversed" class="text-sm">(Reversed)</span>
+          </h3>
+          <div class="mb-3">
+            <span class="inline-block bg-purple-900 text-purple-200 text-xs px-2 py-1 rounded mr-2">{{ card.suit }}</span>
+            <span class="inline-block bg-blue-900 text-blue-200 text-xs px-2 py-1 rounded" *ngIf="card.numerology !== undefined">№ {{ card.numerology }}</span>
+          </div>
+          <p class="italic mb-3 text-purple-100">
+            <span class="font-semibold text-yellow-300">Meaning:</span> 
+            {{ card.isReversed ? card.reversedMeaning : card.uprightMeaning }}
+          </p>
+          <p class="text-sm text-gray-300 mb-3">{{ card.description }}</p>
+          <div class="text-xs text-gray-400">
+            <div *ngIf="card.element" class="mb-1"><span class="text-gray-500">Element:</span> {{ card.element }}</div>
+            <div *ngIf="card.astrologicalSign" class="mb-1"><span class="text-gray-500">Sign:</span> {{ card.astrologicalSign }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

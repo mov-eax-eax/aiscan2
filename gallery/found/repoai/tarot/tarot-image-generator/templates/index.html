@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Card Viewer - Multi-Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card-container {
+            perspective: 1500px;
+            width: 200px;
+            height: 350px;
+            margin: 20px;
+        }
+        
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* Classic style */
+        .classic .card-front {
+            background: #f5f5dc;
+            border: 3px solid #8b4513;
+        }
+        
+        .classic .card-back {
+            background: #654321;
+        }
+        
+        /* Contemporary style */
+        .contemporary .card-front {
+            background: #ffffff;
+            border: 2px solid #4682b4;
+        }
+        
+        .contemporary .card-back {
+            background: #4682b4;
+        }
+        
+        /* Futuristic style */
+        .futuristic .card-front {
+            background: #0f1928;
+            border: 2px solid #00c8ff;
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+        }
+        
+        .futuristic .card-back {
+            background: #0f1928;
+            border: 2px solid #00c8ff;
+        }
+        
+        /* Card back patterns */
+        .card-back-pattern {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .card-back-inner {
+            width: 60%;
+            height: 60%;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .card-back-center {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .card-back-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .card-back-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-300">Multi-Style Tarot Card Viewer</h1>
+            <p class="text-xl text-purple-200">View beautifully generated tarot cards in three distinct styles</p>
+        </header>
+        
+        <!-- Style Selector -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 flex flex-wrap justify-center gap-4">
+                <button id="classicBtn" class="px-6 py-2 rounded-lg font-semibold transition-all duration-300 style-btn" data-style="classic">
+                    Classic
+                </button>
+                <button id="contemporaryBtn" class="px-6 py-2 rounded-lg font-semibold transition-all duration-300 style-btn" data-style="contemporary">
+                    Contemporary
+                </button>
+                <button id="futuristicBtn" class="px-6 py-2 rounded-lg font-semibold transition-all duration-300 style-btn" data-style="futuristic">
+                    Futuristic
+                </button>
+            </div>
+        </div>
+        
+        <!-- View Toggle -->
+        <div class="flex justify-center mb-8">
+            <button id="viewToggle" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
+                Switch to Grid View
+            </button>
+        </div>
+        
+        <!-- Card Viewer -->
+        <div id="cardViewer" class="flex justify-center">
+            <div class="card-container classic" id="mainCardContainer">
+                <div class="card" id="mainCard">
+                    <div class="card-face card-front">
+                        <div class="w-full h-full flex flex-col items-center justify-center p-4">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-48 mb-4 flex items-center justify-center">
+                                <span class="text-gray-500">Card Image</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-amber-900">The Fool</h3>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-back-pattern" style="border: 3px solid #d2b48c;">
+                            <div class="card-back-inner" style="border: 2px solid #d2b48c;"></div>
+                            <div class="card-back-center" style="background: #d2b48c;"></div>
+                            <div class="card-back-lines">
+                                <div class="card-back-line" style="background: #d2b48c;"></div>
+                                <div class="card-back-line" style="background: #d2b48c; transform: rotate(45deg);"></div>
+                                <div class="card-back-line" style="background: #d2b48c; transform: rotate(90deg);"></div>
+                                <div class="card-back-line" style="background: #d2b48c; transform: rotate(135deg);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Grid View -->
+        <div id="gridView" class="hidden">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Sample cards -->
+                <div class="card-container classic">
+                    <div class="card">
+                        <div class="card-face card-front">
+                            <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-24 mb-2 flex items-center justify-center">
+                                    <span class="text-xs text-gray-500">Image</span>
+                                </div>
+                                <h3 class="text-xs font-bold text-amber-900 text-center">The Fool</h3>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-back-pattern" style="border: 2px solid #d2b48c;">
+                                <div class="card-back-inner" style="border: 1px solid #d2b48c;"></div>
+                                <div class="card-back-center" style="background: #d2b48c;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-container classic">
+                    <div class="card">
+                        <div class="card-face card-front">
+                            <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-24 mb-2 flex items-center justify-center">
+                                    <span class="text-xs text-gray-500">Image</span>
+                                </div>
+                                <h3 class="text-xs font-bold text-amber-900 text-center">The Magician</h3>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-back-pattern" style="border: 2px solid #d2b48c;">
+                                <div class="card-back-inner" style="border: 1px solid #d2b48c;"></div>
+                                <div class="card-back-center" style="background: #d2b48c;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-container classic">
+                    <div class="card">
+                        <div class="card-face card-front">
+                            <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-24 mb-2 flex items-center justify-center">
+                                    <span class="text-xs text-gray-500">Image</span>
+                                </div>
+                                <h3 class="text-xs font-bold text-amber-900 text-center">The High Priestess</h3>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-back-pattern" style="border: 2px solid #d2b48c;">
+                                <div class="card-back-inner" style="border: 1px solid #d2b48c;"></div>
+                                <div class="card-back-center" style="background: #d2b48c;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-container classic">
+                    <div class="card">
+                        <div class="card-face card-front">
+                            <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-24 mb-2 flex items-center justify-center">
+                                    <span class="text-xs text-gray-500">Image</span>
+                                </div>
+                                <h3 class="text-xs font-bold text-amber-900 text-center">The Empress</h3>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-back-pattern" style="border: 2px solid #d2b48c;">
+                                <div class="card-back-inner" style="border: 1px solid #d2b48c;"></div>
+                                <div class="card-back-center" style="background: #d2b48c;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Card flipping functionality
+        document.getElementById('mainCard').addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+        
+        // View toggle functionality
+        document.getElementById('viewToggle').addEventListener('click', function() {
+            const cardViewer = document.getElementById('cardViewer');
+            const gridView = document.getElementById('gridView');
+            const button = this;
+            
+            if (cardViewer.classList.contains('hidden')) {
+                cardViewer.classList.remove('hidden');
+                gridView.classList.add('hidden');
+                button.textContent = 'Switch to Grid View';
+            } else {
+                cardViewer.classList.add('hidden');
+                gridView.classList.remove('hidden');
+                button.textContent = 'Switch to Card View';
+            }
+        });
+        
+        // Add flip functionality to grid cards
+        document.querySelectorAll('#gridView .card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+        });
+        
+        // Style selection functionality
+        document.querySelectorAll('.style-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const selectedStyle = this.getAttribute('data-style');
+                
+                // Update button styles
+                document.querySelectorAll('.style-btn').forEach(btn => {
+                    btn.classList.remove('bg-purple-600', 'text-white');
+                    btn.classList.add('bg-gray-700', 'text-gray-300');
+                });
+                
+                this.classList.remove('bg-gray-700', 'text-gray-300');
+                this.classList.add('bg-purple-600', 'text-white');
+                
+                // Update card containers with selected style
+                document.querySelectorAll('.card-container').forEach(container => {
+                    container.className = 'card-container ' + selectedStyle;
+                });
+                
+                // Update card back patterns based on style
+                updateCardBackPatterns(selectedStyle);
+            });
+        });
+        
+        function updateCardBackPatterns(style) {
+            let borderColor, innerBorderColor, centerColor;
+            
+            switch(style) {
+                case 'classic':
+                    borderColor = '#d2b48c';
+                    innerBorderColor = '#d2b48c';
+                    centerColor = '#d2b48c';
+                    break;
+                case 'contemporary':
+                    borderColor = '#ffffff';
+                    innerBorderColor = '#ffffff';
+                    centerColor = '#ffffff';
+                    break;
+                case 'futuristic':
+                    borderColor = '#00c8ff';
+                    innerBorderColor = '#ff3296';
+                    centerColor = '#00c8ff';
+                    break;
+            }
+            
+            // Update main card back
+            const mainPattern = document.querySelector('#mainCard .card-back-pattern');
+            if (mainPattern) {
+                mainPattern.style.border = `3px solid ${borderColor}`;
+            }
+            
+            const mainInner = document.querySelector('#mainCard .card-back-inner');
+            if (mainInner) {
+                mainInner.style.border = `2px solid ${innerBorderColor}`;
+            }
+            
+            const mainCenter = document.querySelector('#mainCard .card-back-center');
+            if (mainCenter) {
+                mainCenter.style.background = centerColor;
+            }
+            
+            const mainLines = document.querySelectorAll('#mainCard .card-back-line');
+            mainLines.forEach(line => {
+                line.style.background = borderColor;
+            });
+            
+            // Update grid card backs
+            document.querySelectorAll('#gridView .card-back-pattern').forEach(pattern => {
+                pattern.style.border = `2px solid ${borderColor}`;
+            });
+            
+            document.querySelectorAll('#gridView .card-back-inner').forEach(inner => {
+                inner.style.border = `1px solid ${innerBorderColor}`;
+            });
+            
+            document.querySelectorAll('#gridView .card-back-center').forEach(center => {
+                center.style.background = centerColor;
+            });
+        }
+    </script>
+</body>
+</html>

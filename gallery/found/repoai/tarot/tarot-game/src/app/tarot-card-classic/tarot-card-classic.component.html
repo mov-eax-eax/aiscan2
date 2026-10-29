@@ -1,0 +1,68 @@
+<div class="card-container" [@cardEnter] *ngIf="card">
+  <div class="card aspect-[2/3] w-48 shadow-2xl rounded-lg overflow-hidden border-2 border-amber-800" 
+       [ngClass]="{'transform rotate-180': card.isReversed}" 
+       (click)="flipCard()">
+    <div class="card-inner relative w-full h-full transition-transform duration-700 transform-style-3d" [@cardFlip]="cardState">
+      <!-- Card Front - Classic Tarot Design -->
+      <div class="card-front absolute w-full h-full backface-hidden bg-gradient-to-br from-amber-50 to-amber-100">
+        <div class="relative w-full h-full flex flex-col">
+          <!-- Top Corner Symbol -->
+          <div class="absolute top-2 left-2 w-8 h-8 flex items-center justify-center text-2xl font-bold text-amber-800">
+            {{ card.name.charAt(0) }}
+          </div>
+          
+          <!-- Center Artwork Area -->
+          <div class="flex-grow flex items-center justify-center p-2">
+            <div class="w-full h-full bg-gradient-to-br from-amber-200 to-amber-300 rounded-lg border-2 border-amber-400 flex items-center justify-center">
+              <div class="text-5xl font-serif text-amber-800">✦</div>
+            </div>
+          </div>
+          
+          <!-- Card Name -->
+          <div class="p-2 text-center">
+            <div class="text-sm font-semibold text-amber-900">{{ card.name }}</div>
+          </div>
+          
+          <!-- Bottom Corner Symbol -->
+          <div class="absolute bottom-2 right-2 w-8 h-8 flex items-center justify-center text-2xl font-bold text-amber-800 transform rotate-180">
+            {{ card.name.charAt(0) }}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card Back - Classic Tarot Design -->
+      <div class="card-back absolute w-full h-full backface-hidden transform-rotate-y-180 bg-gradient-to-br from-red-800 via-red-900 to-amber-900">
+        <div class="relative w-full h-full p-3 flex flex-col">
+          <!-- Decorative Border -->
+          <div class="absolute inset-0 border-4 border-amber-500 rounded-lg pointer-events-none"></div>
+          
+          <!-- Center Rosette Pattern -->
+          <div class="flex-grow flex items-center justify-center">
+            <div class="relative">
+              <!-- Outer Circle -->
+              <div class="w-32 h-32 rounded-full border-4 border-amber-300 flex items-center justify-center">
+                <!-- Inner Circle -->
+                <div class="w-24 h-24 rounded-full border-2 border-amber-200 flex items-center justify-center">
+                  <!-- Center Symbol -->
+                  <div class="text-4xl text-amber-200">✦</div>
+                  
+                  <!-- Radiating Lines -->
+                  <div class="absolute w-full h-1 bg-amber-300 transform rotate-45"></div>
+                  <div class="absolute w-full h-1 bg-amber-300 transform -rotate-45"></div>
+                  <div class="absolute w-1 h-full bg-amber-300 transform rotate-0"></div>
+                  <div class="absolute w-1 h-full bg-amber-300 transform rotate-90"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card Information -->
+          <div class="text-amber-100 text-center text-xs mt-2">
+            <div class="font-bold">{{ card.name }}</div>
+            <div class="italic mt-1">{{ card.isReversed ? 'Reversed' : 'Upright' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

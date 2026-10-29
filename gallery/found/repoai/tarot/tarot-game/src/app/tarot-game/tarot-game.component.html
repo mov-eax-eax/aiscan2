@@ -1,0 +1,85 @@
+<div class="max-w-6xl mx-auto px-4 py-8">
+  <header class="text-center mb-12 animate-float">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">Mystic Tarot Reading</h1>
+    <p class="text-xl text-purple-200">Discover what the cards have in store for you</p>
+  </header>
+  
+  <main>
+    <!-- Start screen -->
+    <div *ngIf="!gameStarted" @fadeInOut class="text-center">
+      <div class="max-w-2xl mx-auto mb-12">
+        <p class="text-lg mb-8 text-purple-100">
+          Welcome to the mystical world of Tarot. Select a reading type to begin your journey:
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <button 
+          (click)="drawCards(1)" 
+          class="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-yellow-500"
+        >
+          <h3 class="text-2xl font-bold mb-3 text-yellow-300">Single Card</h3>
+          <p class="text-purple-100">For a quick insight into your current situation</p>
+        </button>
+        
+        <button 
+          (click)="drawCards(3)" 
+          class="bg-gradient-to-br from-indigo-600 to-blue-700 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-yellow-500"
+        >
+          <h3 class="text-2xl font-bold mb-3 text-yellow-300">Three Card Spread</h3>
+          <p class="text-purple-100">Past, Present, and Future reading</p>
+        </button>
+        
+        <button 
+          (click)="drawCards(5)" 
+          class="bg-gradient-to-br from-blue-600 to-teal-700 rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-yellow-500"
+        >
+          <h3 class="text-2xl font-bold mb-3 text-yellow-300">Celtic Cross</h3>
+          <p class="text-purple-100">Comprehensive insight into your life path</p>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Card reading display -->
+    <div *ngIf="showReading" id="card-reading" @fadeInOut class="mt-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+        <h2 class="text-3xl font-bold text-yellow-400">Your Tarot Reading</h2>
+        <div class="flex gap-3">
+          <button 
+            (click)="toggleViewMode()" 
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300"
+          >
+            {{ viewMode === 'modern' ? 'Classic View' : 'Modern View' }}
+          </button>
+          <button 
+            (click)="resetGame()" 
+            class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+          >
+            New Reading
+          </button>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <!-- Cards Container -->
+        <ng-container *ngFor="let card of selectedCards; let i = index">
+          <!-- Modern View -->
+          <app-tarot-card 
+            *ngIf="viewMode === 'modern'"
+            [card]="card"
+            [@cardEnter]
+            [style.animation-delay]="i * 0.2 + 's'">
+          </app-tarot-card>
+          
+          <!-- Classic View -->
+          <app-tarot-card-classic 
+            *ngIf="viewMode === 'classic'"
+            [card]="card"
+            [@cardEnter]
+            [style.animation-delay]="i * 0.2 + 's'">
+          </app-tarot-card-classic>
+        </ng-container>
+      </div>
+    </div>
+  </main>
+</div>
